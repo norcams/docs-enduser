@@ -3,15 +3,17 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to UH-IaaS end user documentation's documentation!
-==========================================================
+Welcome to UH-IaaS end user documentation
+=========================================
+
+End user guide for the UH-IaaS cloud.
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
-
+   old/index
 
 Indices and tables
 ==================
@@ -19,4 +21,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
