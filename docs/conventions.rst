@@ -33,12 +33,16 @@ Command prompts
 
 A lot of OpenStack interaction is possible by utilizing the command
 prompt. When describing something that should be done on the command
-line, this text will use the following convention::
+line, this text will use the following convention:
+
+.. code-block:: console
 
   $ command
 
 If the command should be run by the root user, the prompt will instead
-be the following::
+be the following:
+
+.. code-block:: console
 
   # command
 
