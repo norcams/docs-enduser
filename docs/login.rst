@@ -51,12 +51,22 @@ In order to use this service, and to authenticate using `Dataporten`_,
 you need to accept that the service stores some information about
 you. Click ``Yes, I accept`` to continue.
 
-.. image:: images/access-04.png
+.. image:: images/access-05.png
    :align: center
    :alt: Access
 
-This finishes the initial login and provision procedure. In order to
-continue to the dashboard, click ``Fortsett til UH-IaaS``.
+This finishes the initial login and provision procedure.
+
+.. IMPORTANT::
+   **Copy and save the API password**
+
+   The password for API access is generated and shown here. This
+   is **the only time** that the API password is generated and shown
+   to you. If you misplace or forget the API password and need another
+   one, it requires a support case and manual steps. Please remember
+   to store the password safely.
+
+In order to continue to the dashboard, click ``Fortsett til UH-IaaS``.
 
 
 
