@@ -13,6 +13,10 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   pilot
+   conventions
+   intro
+
    old/index
 
 Indices and tables
