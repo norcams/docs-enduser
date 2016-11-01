@@ -1,8 +1,8 @@
 ==============
-End User Guide
+OBSOLETE STUFF
 ==============
 
-End user guide for the UH-IaaS OpenStack cloud.
+This is the old enduser doc.
 
 .. toctree::
     :maxdepth: 2
