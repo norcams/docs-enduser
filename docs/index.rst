@@ -17,6 +17,7 @@ Contents:
    conventions
    intro
    login
+   dashboard
 
    old/index
 
