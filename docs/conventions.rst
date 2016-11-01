@@ -38,6 +38,7 @@ line, this text will use the following convention:
 .. code-block:: console
 
   $ command
+  Some command output
 
 If the command should be run by the root user, the prompt will instead
 be the following:
@@ -45,4 +46,5 @@ be the following:
 .. code-block:: console
 
   # command
+  Some command output
 
