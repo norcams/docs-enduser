@@ -16,6 +16,7 @@ Contents:
    pilot
    conventions
    intro
+   login
 
    old/index
 
