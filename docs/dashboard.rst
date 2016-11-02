@@ -12,6 +12,36 @@ simple web GUI where you can perform regular tasks, including
 provision instances, set up access control, provision volumes etc.
 
 
+Overview
+--------
+
+When logging in, you will be presented with an overview of your
+instances and other resource usage:
+
+.. image:: images/dashboard-overview-project-01.png
+   :align: center
+   :alt: Dashboard Project tab
+
+
+Choosing Region
+---------------
+
+Regions in OpenStack are a way to have different clusters in different
+geographical regions that share the same user database and federated
+authentication. In our case, there are two regions: **BGO**
+and **OSL**. These are located at the Universities of Bergen and Oslo,
+respectively. You may provision VMs (instances) and use other
+resources in both regions, whichever suits your needs.
+
+.. image:: images/dashboard-region-01.png
+   :align: center
+   :alt: Dashboard: Choosing Region
+
+In order to select a region, or to simply see which region (and
+project) you are currently working with, click on your username and a
+menu appears as shown in the picture above.
+
+
 Project tab
 -----------
 
@@ -22,10 +52,6 @@ projects. Within a project, a user creates and manages instances.
 From the Project tab, you can view and manage the resources in a
 selected project, including instances and images. You can select the
 project from the drop down menu at the top left.
-
-.. image:: images/dashboard-overview-project-01.png
-   :align: center
-   :alt: Dashboard Project tab
 
 From the Project tab, you can access the following categories:
 
