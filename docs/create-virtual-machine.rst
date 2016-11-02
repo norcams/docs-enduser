@@ -135,69 +135,63 @@ Click "Launch Instance". The following window will appear:
 
 In this window, enter the following values:
 
-* **Availability Zone**: nova (the default)
 * **Instance Name**: Select a name for your new virtual machine
-* **Flavor**: Choose whichever size that fits your purpose
+* **Availability Zone**: nova (the default)
 * **Instance Count**: How many virtual machines to create (usually only 1)
-* **Instance Boot Source**: Select whichever is appropriate for your
-  needs:
 
-  - *Boot from image*: This is usually preferred. In this case, the
-    virtual machine will boot from a standard cloud image. When
-    selecting this option, you can choose from a list of images.
-  - *Boot from snapshot*: If you have previously taken a snapshot from
-    another virtual machine, you can boot from it when creating your
-    new virtual machine
-  - *Boot from volume*: FIXME.
-  - *Boot from image (creates a new volume)*: FIXME
-  - *Boot from volume snapshot (creates a new volume)*: FIXME
+When finished with this tab, select the next, "Source":
 
-When finished with the "Details" tab, select the "Access & Security"
-tab:
-
-.. image:: images/dashboard-create-instance-03.png
+.. image:: images/dashboard-create-instance-06.png
    :align: center
-   :alt: Dashboard - Launch instance - Access & Security
+   :alt: Dashboard - Launch instance - Source
+
+**Select Boot Source** should be left at "Image", which is the
+default. In this case, the virtual machine will boot from a standard
+cloud image. When selecting this option, you can choose from a list of
+images. In our example, we have selected "Fedora 24".
+
+When finished with this tab, select the next, "Flavor":
+
+.. image:: images/dashboard-create-instance-07.png
+   :align: center
+   :alt: Dashboard - Launch instance - Flavor
+
+This is where you select the flavor for the virtual machine, i.e. a
+pre-defined set of compute resources. In our example, we've selected
+the "Small" flavor, which is just enough to run our Fedora instance.
+
+When finished with this tab, select the next, "Networks":
+
+.. image:: images/dashboard-create-instance-08.png
+   :align: center
+   :alt: Dashboard - Launch instance - Networks
+
+In the UH-IaaS cloud, there aren't many networks to choose from. In
+our example, we have selected the "public" network.
+
+When finished with this tab, select the "Security Groups" tab:
+
+.. image:: images/dashboard-create-instance-10.png
+   :align: center
+   :alt: Dashboard - Launch instance - Security Groups
+
+Here, select any "Security Groups" you want to add to the virtual
+machine. In our example, we haven't created any security groups yet,
+and select only the "Default" security group. For more info, see
+the section `Allowing SSH and ICMP access`_ below.
+
+When finished with this tab, select the "Key Pairs" tab:
+
+.. image:: images/dashboard-create-instance-09.png
+   :align: center
+   :alt: Dashboard - Launch instance - Key Pairs
 
 Here, choose which SSH keypair you want to assign to this virtual
-machine, and choose any security groups. The "default" security group
-doesn't allow any access to the virtual machine unless it's
-modified. When finished with this tab, select the "Networking" tab:
+machine.
 
-.. image:: images/dashboard-create-instance-04.png
-   :align: center
-   :alt: Dashboard - Launch instance - Networking
+When satisfied, clik "Launch" to create your virtual machine.
 
-Here, you may select to attach networks to the virtual machine:
-
-* **public**: The virtual machine will be on the public network, and
-  receive a "real" IPv4 address which is accessible from the Internet.
-* **private**: The virtual machine will be on the private network,
-  which is shared within the OpenStack location (e.g. Bergen, Oslo) in
-  which the virtual machine is created.
-
-You can choose one or both of these networks.
-
-.. IMPORTANT::
-   Currently, you should choose only one of these networks. Due to a
-   technical issue with default routing setup on the virtual machine,
-   using both simultanously may not work. This will be fixed in the
-   future. FIXME.
-
-.. WARNING::
-   The networking setup in UH-IaaS differs from the default OpenStack
-   networking as documented elsewhere. There are no really private
-   network available just for one project. The private network, as
-   mentioned above, is shared within the location (e.g. Oslo,
-   Bergen). This means that all virtual machines can reach each other
-   within the location regardless of their project association. You
-   should use Security Groups to restrict network traffic access to
-   your virtual machines also on the private network.
-
-The "Post-Creation" and "Advanced" tabs are normally not used. When
-satisfied, clik "Launch" to create your virtual machine.
-
-.. image:: images/dashboard-create-instance-05.png
+.. image:: images/dashboard-create-instance-11.png
    :align: center
    :alt: Dashboard - Launch instance - finished
 
