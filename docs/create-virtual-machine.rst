@@ -78,7 +78,7 @@ You can let OpenStack create a keypair for you, if you don't wish to
 use an existing one. Go to the **Access & Security** tab
 under **Project** and select "Key Pairs":
 
-.. image:: images/dashboard-access-and-security-01.png
+.. image:: images/dashboard-access-and-security-03.png
    :align: center
    :alt: Dashboard - Access & Security
 
