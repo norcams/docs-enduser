@@ -272,7 +272,7 @@ reachable from the Internet:
 
 .. code-block:: console
 
-  $ ping 158.39.77.15
+  $ ping 158.39.77.101
   PING 158.39.77.15 (158.39.77.15) 56(84) bytes of data.
   64 bytes from 158.39.77.15: icmp_seq=1 ttl=55 time=6.15 ms
   64 bytes from 158.39.77.15: icmp_seq=2 ttl=55 time=6.05 ms
@@ -284,11 +284,11 @@ you (example with "test.pem" above):
 
 .. code-block:: console
 
-  $ ssh -i test.pem cirros@158.39.77.15
-  $ uname -sr
+  $ ssh -i test.pem fedora@158.39.77.101
+  [fedora@test ~]$ uname -sr
   Linux 3.2.0-80-virtual
-  $ sudo -i
-  # whoami
+  [fedora@test ~]$ sudo -i
+  [fedora@test ~]# whoami
   root
 
 Each image has its own default user, for which the SSH public key is
