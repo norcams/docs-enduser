@@ -18,6 +18,7 @@ Contents:
    intro
    login
    dashboard
+   create-virtual-machine
 
    old/index
 
