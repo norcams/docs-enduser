@@ -273,10 +273,10 @@ reachable from the Internet:
 .. code-block:: console
 
   $ ping 158.39.77.101
-  PING 158.39.77.15 (158.39.77.15) 56(84) bytes of data.
-  64 bytes from 158.39.77.15: icmp_seq=1 ttl=55 time=6.15 ms
-  64 bytes from 158.39.77.15: icmp_seq=2 ttl=55 time=6.05 ms
-  64 bytes from 158.39.77.15: icmp_seq=3 ttl=55 time=6.01 ms
+  PING 158.39.77.101 (158.39.77.101) 56(84) bytes of data.
+  64 bytes from 158.39.77.101: icmp_seq=1 ttl=55 time=6.15 ms
+  64 bytes from 158.39.77.101: icmp_seq=2 ttl=55 time=6.05 ms
+  64 bytes from 158.39.77.101: icmp_seq=3 ttl=55 time=6.01 ms
 
 You can log in to the virtual machine using the SSH key assigned to
 the virtual machine. In case you let OpenStack create the keypair for
@@ -286,7 +286,7 @@ you (example with "test.pem" above):
 
   $ ssh -i test.pem fedora@158.39.77.101
   [fedora@test ~]$ uname -sr
-  Linux 3.2.0-80-virtual
+  Linux 4.5.5-300.fc24.x86_64
   [fedora@test ~]$ sudo -i
   [fedora@test ~]# whoami
   root
