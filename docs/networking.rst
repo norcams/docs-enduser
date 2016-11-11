@@ -46,7 +46,7 @@ the TAP device by the networking system.
 Our chosen networking model provides a host of benefits:
 
 .. image:: images/network-model.png
-   :align: left
+   :align: center
    :alt: UH-IaaS Networking Model
 
 Simplicity
