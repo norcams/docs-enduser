@@ -45,6 +45,10 @@ the TAP device by the networking system.
 
 Our chosen networking model provides a host of benefits:
 
+.. image:: images/network-model.png
+   :align: left
+   :alt: UH-IaaS Networking Model
+
 Simplicity
 ~~~~~~~~~~
 Layer 2 domains are kept small, and only a single IP name space is used
