@@ -138,3 +138,90 @@ The confirm your choice, click ``Delete Volumes``:
    :alt: Dashboard - Delete volumes confirmation
 
 The volume is then deleted.
+
+
+Doing the same in CLI
+---------------------
+
+#. Creating the volume:
+
+   .. code-block:: console
+     $ openstack volume create --size 10 --description "A test volume" mytestvolume
+     +---------------------+--------------------------------------+
+     | Field               | Value                                |
+     +---------------------+--------------------------------------+
+     | attachments         | []                                   |
+     | availability_zone   | nova                                 |
+     | bootable            | false                                |
+     | consistencygroup_id | None                                 |
+     | created_at          | 2016-11-11T15:41:00.171512           |
+     | description         | A test volume                        |
+     | encrypted           | False                                |
+     | id                  | a7234dda-a97a-44c3-aa93-9b2952fd2bcf |
+     | multiattach         | False                                |
+     | name                | mytestvolume                         |
+     | properties          |                                      |
+     | replication_status  | disabled                             |
+     | size                | 10                                   |
+     | snapshot_id         | None                                 |
+     | source_volid        | None                                 |
+     | status              | creating                             |
+     | type                | None                                 |
+     | updated_at          | None                                 |
+     | user_id             | 6bb8dbcdc9b94fff89258094bc56a49f     |
+     +---------------------+--------------------------------------+
+
+#. Listing the servers and volumes:
+
+   .. code-block:: console
+
+     $ openstack volume list
+     +--------------------------------------+--------------+-----------+------+-------------+
+     | ID                                   | Display Name | Status    | Size | Attached to |
+     +--------------------------------------+--------------+-----------+------+-------------+
+     | a7234dda-a97a-44c3-aa93-9b2952fd2bcf | mytestvolume | available |   10 |             |
+     +--------------------------------------+--------------+-----------+------+-------------+
+     
+     $ openstack server list
+     +--------------------------------------+------+--------+----------------------+------------+
+     | ID                                   | Name | Status | Networks             | Image Name |
+     +--------------------------------------+------+--------+----------------------+------------+
+     | 5a102c14-83fd-4788-939e-bb2e635e49de | test | ACTIVE | public=158.39.77.147 | Fedora 24  |
+     +--------------------------------------+------+--------+----------------------+------------+
+
+#. Attaching the volume to the server:
+
+   .. code-block:: console
+
+     $ openstack server add volume test mytestvolume
+
+   You may also use the IDs of the server and volume instead of the names.
+
+#. Confirming that the volume is attached:
+
+   .. code-block:: console
+
+     $ openstack volume list
+     +--------------------------------------+--------------+--------+------+-------------------------------+
+     | ID                                   | Display Name | Status | Size | Attached to                   |
+     +--------------------------------------+--------------+--------+------+-------------------------------+
+     | a7234dda-a97a-44c3-aa93-9b2952fd2bcf | mytestvolume | in-use |   10 | Attached to test on /dev/vdb  |
+     +--------------------------------------+--------------+--------+------+-------------------------------+
+
+#. Detaching the volume:
+
+   .. code-block:: console
+
+     $ openstack server remove volume test mytestvolume
+
+#. Deleting the volume:
+
+   .. code-block:: console
+
+     $ openstack volume delete mytestvolume
+
+#. Confirming that the volume is deleted:
+
+   .. code-block:: console
+
+     $ openstack volume list
