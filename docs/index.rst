@@ -14,7 +14,6 @@ Contents:
    :maxdepth: 2
 
    terms-of-service
-   sla
    conventions
    intro
    login

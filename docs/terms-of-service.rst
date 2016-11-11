@@ -39,8 +39,9 @@ Our services
 .. _Service Level Agreement: sla.html
 
 #. We will make the UH-IaaS services available to you in accordance
-   with our `Service Level Agreement`_. Subject to these Terms, we
-   grant you a non-exclusive, revocable license and right to:
+   with our agreement with your participating educational
+   organization. Subject to these Terms, we grant you a non-exclusive,
+   revocable license and right to:
 
    * Create and manage virtual machines within your quota limit.
    * Create and manage firewalls and SSH keys for use with your
@@ -79,6 +80,35 @@ Security
 
 #. Please adjust your firewalls (security groups) carefully, allowing
    only necessary traffic to and from your virtual machines.
+
+Availability
+------------
+
+#. We do not guarantee anything at this time. We will try to keep
+   things up and running, but this is done on a best effort basis.
+
+#. There will be regular, scheduled maintenance downtime every 4
+   weeks. Downtime may require that running virtual machines are
+   rebooted.
+
+#. Whenever scheduled downtime affects running virtual machines, the
+   owner of the virtual machines will be notified at least 5 days in
+   advance.
+
+#. A period of unavailability is excluded from the service level
+   guarantee, if:
+
+   * the unavailability is due to scheduled maintenance, provided we
+     notify you at least 5 days in advance;
+   * you are in breach of our terms of service, or your services
+     agreement with us, as applicable (including your payment
+     obligations to us), or the unavailability is otherwise due to
+     your actions;
+   * the unavailability is caused by factors outside of our reasonable
+     control, including a force majeure event; internet access
+     problems; blocking, filtering, or censorship of our services by a
+     government or other third party; or other problems beyond our
+     services.
 
 Ownership of content
 --------------------
