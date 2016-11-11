@@ -58,6 +58,9 @@ Our services
 #. If you need more resources (number of virtual machines, storage
    etc.) than your quota allows, please contact us.
 
+#. If you want to use UH-IaaS for critical services, or services that
+   require high availability, please contact us.
+
 #. Please make sure to free resources that you no longer use or need,
    such as terminating obsolete virtual machines.
 
@@ -84,8 +87,9 @@ Security
 Availability
 ------------
 
-#. We do not guarantee anything at this time. We will try to keep
-   things up and running, but this is done on a best effort basis.
+#. We do not guarantee a specific availability percentage at this
+   time. We will try to keep things up and running, but this is done
+   on a best effort basis.
 
 #. There will be regular, scheduled maintenance downtime every 4
    weeks. Downtime may require that running virtual machines are
