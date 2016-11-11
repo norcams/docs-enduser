@@ -25,7 +25,7 @@ by following the steps below.
 
 To provision yourself as a user, visit the following URL:
 
-  https://access.iaas.uib.no/
+  https://access.uh-iaas.no/
 
 The following window will appear:
 
@@ -75,7 +75,7 @@ Subsequent logins
 
 To log in to the UH-IaaS dashboard, point your browser to:
 
-  https://dashboard.iaas.uib.no/
+  https://dashboard.uh-iaas.no/
 
 You'll be presented with the following:
 
