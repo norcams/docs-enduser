@@ -33,7 +33,7 @@ Who can use the UH-IaaS cloud?
 .. _Logging in: login.html
 
 .. NOTE::
-   At the time of this writing, the UH-IaaS cloud is in a pilot stage,
+   At the time of writing, the UH-IaaS cloud is in a pilot stage,
    i.e. not yet in production state. The terms for using the UH-IaaS
    cloud is explained in `Pilot - Terms of Service`_.
 
@@ -161,10 +161,10 @@ Glossary
 ~~~~~~~~
 
 **BGO**
-  The OpenStack infrastructure located University of Bergen (UiB).
+  The OpenStack infrastructure located at the University of Bergen (UiB).
 
 **OSL**
-  The OpenStack infrastructure located University of Oslo (UiO).
+  The OpenStack infrastructure located at the University of Oslo (UiO).
 
 **Project**
   A container used to group a set of resources such as virtual

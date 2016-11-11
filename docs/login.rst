@@ -15,8 +15,8 @@ First time login
 ----------------
 
 .. NOTE::
-   This step is only needed if you've never logged in before. For
-   the normal login procedure, skip this step and go directly to
+   This step is only required if you've never previously logged in. For
+   normal login procedure, skip this step and go directly to
    `Subsequent logins`_.
 
 In order to successfully log in, you first need to provision yourself

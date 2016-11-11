@@ -52,7 +52,7 @@ Attach a volume to a virtual machine
 ------------------------------------
 
 After creating one or more volumes, you can attach them to virtual
-machine (instances). A volume is a block storage device, and can only
+machines (instances). A volume is a block storage device, and can only
 be attached to one virtual machine at a time. In the **Volumes** tab
 under **Compute**, select *Manage Attachments* from the dropdown menu:
 
@@ -131,7 +131,7 @@ that you want to delete, and click ``Delete Volumes``:
    :align: center
    :alt: Dashboard - Delete volumes
 
-The confirm your choice, click ``Delete Volumes``:
+Then confirm your choice, click ``Delete Volumes``:
 
 .. image:: images/dashboard-delete-volume-02.png
    :align: center

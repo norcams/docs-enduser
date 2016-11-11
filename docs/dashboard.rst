@@ -89,12 +89,6 @@ Network tab
 ~~~~~~~~~~~
 
 * **Network Topology**: View the network topology.
-* **Networks**: Create and manage public and private networks.
-* **Routers**: Create and manage routers.
-
-.. NOTE::
-   The *Networks* and *Routers* tabs are present, but their
-   functionality is not used in the UH-IaaS cloud.
 
 Identity tab
 ------------
