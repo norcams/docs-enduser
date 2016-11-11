@@ -22,11 +22,11 @@ Contents:
    create-virtual-machine
    manage-volumes
    api
-
+   changelog
+   support
 
 Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
