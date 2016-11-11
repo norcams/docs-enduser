@@ -22,7 +22,6 @@ Contents:
    manage-volumes
    api
 
-   old/index
 
 Indices and tables
 ==================
