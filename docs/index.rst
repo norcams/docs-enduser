@@ -19,6 +19,7 @@ Contents:
    login
    dashboard
    create-virtual-machine
+   manage-volumes
 
    old/index
 
