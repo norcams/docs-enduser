@@ -13,6 +13,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   known-issues
    terms-of-service
    conventions
    intro
