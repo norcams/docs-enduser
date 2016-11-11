@@ -184,17 +184,17 @@ Doing the same in CLI
      +--------------------------------------+--------------+-----------+------+-------------+
      
      $ openstack server list
-     +--------------------------------------+------+--------+----------------------+------------+
-     | ID                                   | Name | Status | Networks             | Image Name |
-     +--------------------------------------+------+--------+----------------------+------------+
-     | 5a102c14-83fd-4788-939e-bb2e635e49de | test | ACTIVE | public=158.39.77.147 | Fedora 24  |
-     +--------------------------------------+------+--------+----------------------+------------+
+     +--------------------------------------+----------+--------+----------------------+------------+
+     | ID                                   | Name     | Status | Networks             | Image Name |
+     +--------------------------------------+----------+--------+----------------------+------------+
+     | 5a102c14-83fd-4788-939e-bb2e635e49de | myserver | ACTIVE | public=158.39.77.147 | Fedora 24  |
+     +--------------------------------------+----------+--------+----------------------+------------+
 
 #. Attaching the volume to the server:
 
    .. code-block:: console
 
-     $ openstack server add volume test mytestvolume
+     $ openstack server add volume myserver mytestvolume
 
    You may also use the IDs of the server and volume instead of the names.
 
@@ -203,17 +203,17 @@ Doing the same in CLI
    .. code-block:: console
 
      $ openstack volume list
-     +--------------------------------------+--------------+--------+------+-------------------------------+
-     | ID                                   | Display Name | Status | Size | Attached to                   |
-     +--------------------------------------+--------------+--------+------+-------------------------------+
-     | a7234dda-a97a-44c3-aa93-9b2952fd2bcf | mytestvolume | in-use |   10 | Attached to test on /dev/vdb  |
-     +--------------------------------------+--------------+--------+------+-------------------------------+
+     +--------------------------------------+--------------+--------+------+-----------------------------------+
+     | ID                                   | Display Name | Status | Size | Attached to                       |
+     +--------------------------------------+--------------+--------+------+-----------------------------------+
+     | a7234dda-a97a-44c3-aa93-9b2952fd2bcf | mytestvolume | in-use |   10 | Attached to myserver on /dev/vdb  |
+     +--------------------------------------+--------------+--------+------+-----------------------------------+
 
 #. Detaching the volume:
 
    .. code-block:: console
 
-     $ openstack server remove volume test mytestvolume
+     $ openstack server remove volume myserver mytestvolume
 
 #. Deleting the volume:
 
