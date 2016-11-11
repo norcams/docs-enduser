@@ -13,7 +13,8 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   pilot
+   terms-of-service
+   sla
    conventions
    intro
    login
