@@ -147,7 +147,7 @@ Doing the same in CLI
 
    .. code-block:: console
 
-     $ openstack volume create --size 10 --description "A test volume" mytestvolume
+     $ **openstack volume create --size 10 --description "A test volume" mytestvolume**
      +---------------------+--------------------------------------+
      | Field               | Value                                |
      +---------------------+--------------------------------------+
