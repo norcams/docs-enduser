@@ -22,8 +22,10 @@ Contents:
    create-virtual-machine
    manage-volumes
    api
+   networking
    changelog
    support
+
 
 Indices and tables
 ==================
