@@ -20,6 +20,7 @@ Contents:
    dashboard
    create-virtual-machine
    manage-volumes
+   api
 
    old/index
 
