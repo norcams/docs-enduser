@@ -29,13 +29,12 @@ appropriate.
 Who can use the UH-IaaS cloud?
 ------------------------------
 
-.. _Pilot - Terms of Service: pilot.html
+.. _Terms of Service: terms-of-service.html
 .. _Logging in: login.html
 
-.. NOTE::
-   At the time of writing, the UH-IaaS cloud is in a pilot stage,
-   i.e. not yet in production state. The terms for using the UH-IaaS
-   cloud is explained in `Pilot - Terms of Service`_.
+.. IMPORTANT::
+   Before using this cloud service, you should familiarize yourself
+   with our `Terms of Service`_.
 
 All users at UiO and UiB can use the UH-IaaS cloud. All you need is an
 account at either university. Before using the service, you must
