@@ -450,7 +450,9 @@ Doing the same with CLI
 
    .. code-block:: console
 
-     $ openstack server create --image "Fedora 24" --flavor m1.small --security-group SSH_and_ICMP --security-group default --key-name mykey --nic net-id=osl-public myserver
+     $ openstack server create --image "Fedora 24" --flavor m1.small \
+           --security-group SSH_and_ICMP --security-group default \
+           --key-name mykey --nic net-id=osl-public myserver
      +--------------------------------------+-----------------------------------------------------+
      | Field                                | Value                                               |
      +--------------------------------------+-----------------------------------------------------+
