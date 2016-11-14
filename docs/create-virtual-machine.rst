@@ -308,3 +308,189 @@ CirrOS         cirros
 This is a non-exhaustive list. For images not listed here, consult the
 image vendor's documentation.
 
+
+Doing the same with CLI
+-----------------------
+
+#. Listing any existing servers, keypairs and security groups:
+
+   .. code-block:: console
+
+     $ openstack server list
+     
+     $ openstack keypair list
+     
+     $ openstack security group list
+     +--------------------------------------+---------+------------------------+----------------------------------+
+     | ID                                   | Name    | Description            | Project                          |
+     +--------------------------------------+---------+------------------------+----------------------------------+
+     | 5c87d72e-2186-4878-94cd-27a784019988 | default | Default security group | dd21945e2e094a4dad277ed7846b3cf0 |
+     +--------------------------------------+---------+------------------------+----------------------------------+
+
+   In this example, we have no servers and keypairs, and our copy of
+   the default security group.
+
+#. Uploading an SSH key:
+
+   .. code-block:: console
+
+     $ openstack keypair create --public-key ~/.ssh/id_rsa.pub mykey
+     +-------------+-------------------------------------------------+
+     | Field       | Value                                           |
+     +-------------+-------------------------------------------------+
+     | fingerprint | e2:2e:26:7f:5d:98:9e:8f:5e:fd:c7:d5:d0:6b:44:e7 |
+     | name        | mykey                                           |
+     | user_id     | 6bb8dbcdc9b94fff89258094bc56a49f                |
+     +-------------+-------------------------------------------------+
+
+#. Creating a security group:
+
+   .. code-block:: console
+
+     $ openstack security group create --description "Allow incoming SSH and ICMP" SSH_and_ICMP
+     +-------------+---------------------------------------------------------------------------------+
+     | Field       | Value                                                                           |
+     +-------------+---------------------------------------------------------------------------------+
+     | description | Allow incoming SSH and ICMP                                                     |
+     | headers     |                                                                                 |
+     | id          | 0da85d7a-bd96-4d4d-a77b-e7e2d78c8d0a                                            |
+     | name        | SSH_and_ICMP                                                                    |
+     | project_id  | dd21945e2e094a4dad277ed7846b3cf0                                                |
+     | rules       | direction='egress', ethertype='IPv4', id='b04b0cfc-1f2e-44b5-acc2-7102d57fe941' |
+     |             | direction='egress', ethertype='IPv6', id='2d72e9f9-70c1-4c33-816c-83b5e3c649df' |
+     +-------------+---------------------------------------------------------------------------------+
+
+#. Adding rules to the security group:
+
+   .. code-block:: console
+
+     $ openstack security group rule create --src-ip 0.0.0.0/0 --dst-port 22 --protocol tcp --ingress SSH_and_ICMP
+     +-------------------+--------------------------------------+
+     | Field             | Value                                |
+     +-------------------+--------------------------------------+
+     | description       |                                      |
+     | direction         | ingress                              |
+     | ethertype         | IPv4                                 |
+     | headers           |                                      |
+     | id                | 8c10f0a3-c284-4b92-a234-7ceda998d356 |
+     | port_range_max    | 22                                   |
+     | port_range_min    | 22                                   |
+     | project_id        | dd21945e2e094a4dad277ed7846b3cf0     |
+     | protocol          | tcp                                  |
+     | remote_group_id   | None                                 |
+     | remote_ip_prefix  | 0.0.0.0/0                            |
+     | security_group_id | 0da85d7a-bd96-4d4d-a77b-e7e2d78c8d0a |
+     +-------------------+--------------------------------------+
+     
+     $ openstack security group rule create --src-ip 0.0.0.0/0 --protocol icmp --ingress SSH_and_ICMP
+     +-------------------+--------------------------------------+
+     | Field             | Value                                |
+     +-------------------+--------------------------------------+
+     | description       |                                      |
+     | direction         | ingress                              |
+     | ethertype         | IPv4                                 |
+     | headers           |                                      |
+     | id                | d741564d-886d-4019-915d-b1eecb936100 |
+     | port_range_max    | None                                 |
+     | port_range_min    | None                                 |
+     | project_id        | dd21945e2e094a4dad277ed7846b3cf0     |
+     | protocol          | icmp                                 |
+     | remote_group_id   | None                                 |
+     | remote_ip_prefix  | 0.0.0.0/0                            |
+     | security_group_id | 0da85d7a-bd96-4d4d-a77b-e7e2d78c8d0a |
+     +-------------------+--------------------------------------+
+
+#. Listing available images:
+
+   .. code-block:: console
+
+     $ openstack image list
+     +--------------------------------------+---------------------+-------------+
+     | ID                                   | Name                | Status      |
+     +--------------------------------------+---------------------+-------------+
+     | 2120eb31-09b6-4945-a904-7579ac579aed | Ubuntu server 16.04 | active      |
+     | cbd76177-c79b-490f-9a7f-59f9eed3412e | Debian Jessie 8     | active      |
+     | d175564a-156e-41c7-b2a3-fd8b018e9e11 | Outdated (Ubuntu)   | deactivated |
+     | 484e5754-f4f7-409c-8ba1-454e422816b4 | Outdated (Ubuntu)   | deactivated |
+     | fecf1f4d-e36d-44fe-94de-4eae707b40aa | Outdated (Ubuntu)   | deactivated |
+     | 6f24613b-4f98-4caa-9bc6-0294f4c67fac | Outdated (Ubuntu)   | deactivated |
+     | 1ae6303e-5d08-454e-94e6-083d05559998 | Fedora 24           | active      |
+     | ceb6ff80-24de-460a-9ecc-85f3283aa98e | Outdated (Debian)   | deactivated |
+     | d241a2b5-cd1d-4812-8d59-2ccfb1acbf88 | CentOS 7            | active      |
+     +--------------------------------------+---------------------+-------------+
+
+#. Listing available flavors:
+
+   .. code-block:: console
+
+     $ openstack flavor list
+     +--------------------------------------+------------+-------+------+-----------+-------+-----------+
+     | ID                                   | Name       |   RAM | Disk | Ephemeral | VCPUs | Is Public |
+     +--------------------------------------+------------+-------+------+-----------+-------+-----------+
+     | 1                                    | m1.tiny    |   512 |    1 |         0 |     1 | True      |
+     | 34532829-2bb7-42f6-aae1-9654908a521e | m1.large   |  8192 |   20 |         0 |     4 | True      |
+     | 47d7f445-db26-4f1d-bf58-e79de7394f97 | m1.medium  |  4096 |   20 |         0 |     2 | True      |
+     | 922bfed4-42e5-4baa-8ea4-9e164839ca41 | m1.windows |  8192 |   50 |         0 |     4 | True      |
+     | b128b802-3d12-401d-bf51-878122c0e908 | m1.small   |  2048 |   10 |         0 |     1 | True      |
+     | ff6e88a4-3da9-4cbe-9c5d-a47d51f9c37a | m1.xlarge  | 16384 |   20 |         0 |     8 | True      |
+     +--------------------------------------+------------+-------+------+-----------+-------+-----------+
+
+#. Listing available networks:
+
+   .. code-block:: console
+
+     $ openstack network list
+     +--------------------------------------+------------+--------------------------------------+
+     | ID                                   | Name       | Subnets                              |
+     +--------------------------------------+------------+--------------------------------------+
+     | c97fa886-592e-4ad1-a995-6d55651bed78 | osl-public | c4f1c0aa-6b02-4870-a743-3403d0740082 |
+     +--------------------------------------+------------+--------------------------------------+
+
+#. Creating a server (instance):
+
+   .. code-block:: console
+
+     $ openstack server create --image "Fedora 24" --flavor m1.small --security-group SSH_and_ICMP --security-group default --key-name mykey --nic net-id=osl-public myserver
+     +--------------------------------------+-----------------------------------------------------+
+     | Field                                | Value                                               |
+     +--------------------------------------+-----------------------------------------------------+
+     | OS-DCF:diskConfig                    | MANUAL                                              |
+     | OS-EXT-AZ:availability_zone          |                                                     |
+     | OS-EXT-STS:power_state               | NOSTATE                                             |
+     | OS-EXT-STS:task_state                | scheduling                                          |
+     | OS-EXT-STS:vm_state                  | building                                            |
+     | OS-SRV-USG:launched_at               | None                                                |
+     | OS-SRV-USG:terminated_at             | None                                                |
+     | accessIPv4                           |                                                     |
+     | accessIPv6                           |                                                     |
+     | addresses                            |                                                     |
+     | adminPass                            | P7QpJ7gQzdva                                        |
+     | config_drive                         |                                                     |
+     | created                              | 2016-11-14T12:12:07Z                                |
+     | flavor                               | m1.small (b128b802-3d12-401d-bf51-878122c0e908)     |
+     | hostId                               |                                                     |
+     | id                                   | 132c186a-03a2-4449-b8d0-04b85a37e21a                |
+     | image                                | Fedora 24 (1ae6303e-5d08-454e-94e6-083d05559998)    |
+     | key_name                             | mykey                                               |
+     | name                                 | myserver                                            |
+     | os-extended-volumes:volumes_attached | []                                                  |
+     | progress                             | 0                                                   |
+     | project_id                           | dd21945e2e094a4dad277ed7846b3cf0                    |
+     | properties                           |                                                     |
+     | security_groups                      | [{u'name': u'SSH_and_ICMP'}, {u'name': u'default'}] |
+     | status                               | BUILD                                               |
+     | updated                              | 2016-11-14T12:12:07Z                                |
+     | user_id                              | 6bb8dbcdc9b94fff89258094bc56a49f                    |
+     +--------------------------------------+-----------------------------------------------------+
+
+#. Listing servers:
+
+   .. code-block:: console
+
+     $ openstack server list
+     +--------------------------------------+----------+--------+-------------------------+------------+
+     | ID                                   | Name     | Status | Networks                | Image Name |
+     +--------------------------------------+----------+--------+-------------------------+------------+
+     | 132c186a-03a2-4449-b8d0-04b85a37e21a | myserver | ACTIVE | osl-public=158.37.63.62 | Fedora 24  |
+     +--------------------------------------+----------+--------+-------------------------+------------+
+
