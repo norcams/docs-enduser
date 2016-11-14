@@ -11,11 +11,11 @@ You will get a password when you do the initial first login
 (see :doc:`login`). Please make sure you write this down for later
 user. If you where an early adopter or forgot your password please contact us.
 
-OpenStack cli
--------------
+OpenStack Command Line Interface (CLI)
+--------------------------------------
 
 After you receive your password for API access you can use the OpenStack
-command line client (OpenStack cli) to test the access.
+command line interface (OpenStack CLI) to test the access.
 
 Create a ::file:`keystone_rc.sh` file:
 
@@ -47,4 +47,4 @@ Install the openstack cli for your system. More help on `Installing the Openstac
   | 5a102c14-83fd-4788-939e-bb2e635e49de | test | ACTIVE | public=158.39.77.147 | Fedora 24  |
   +--------------------------------------+------+--------+----------------------+------------+
 
-Read more about the openstack cli at http://docs.openstack.org/cli-reference/
+Read more about the OpenStack CLI at http://docs.openstack.org/cli-reference/
