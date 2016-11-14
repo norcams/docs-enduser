@@ -140,8 +140,8 @@ Then confirm your choice, click ``Delete Volumes``:
 The volume is then deleted.
 
 
-Doing the same in CLI
----------------------
+Doing the same with CLI
+-----------------------
 
 #. Creating the volume:
 
