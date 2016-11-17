@@ -33,10 +33,6 @@ or not at all), change keymapping for your local browser to EN. This is
 done differently in different operating systems. Please refer to the
 operating system documentation.
 
-The console should be considered to be a last resort. We strongly recommend
-you to use other protocols and tools to interact with your instances.
-Examples include ssh, rdp, vnc, nx and x2go.
-
 
 Dashboard region selecton
 -------------------------
