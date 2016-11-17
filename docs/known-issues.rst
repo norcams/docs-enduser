@@ -55,7 +55,7 @@ Cannot create volume from image
 
 When attempting to create a volume based on an image (for example, an instance
 snapshot), the task will fail. This is a bug in our installation, but considered
-to be a corner use case which may be fixed in the futere. If you want to launch
+to be a corner use case which may be fixed in the future. If you want to launch
 an instance based on a snapshot, select launch instance and select "instance 
 snapshot" as boot source (which may be what you actually wanted in the first
 place).
