@@ -53,7 +53,8 @@ may consider for accessing your instances:
 |Virtual Network Computer (vnc_)  |VNC is a platform independent method to access   |
 |                                 |a remote machine with graphical console. Clients |
 |                                 |and servers are available on most operating      |
-|                                 |systems.                                         |
+|                                 |systems. This protocol is used by ubuntu's       |
+|                                 |remote desktop function.                         |
 +---------------------------------+-------------------------------------------------+
 |x2go (x2go_)                     |X2Go gives remote access to the Linux graphical  |
 |                                 |user interface. It's very easy to configure, as  |
@@ -63,14 +64,16 @@ may consider for accessing your instances:
 |                                 |disconnect. Clients are available on all         |
 |                                 |operating systems.                               |
 +---------------------------------+-------------------------------------------------+
-|Team Viewer (teamviewer _)       |Team Viewer is proprietary protocol offering     |
+|Team Viewer (teamviewer_)        |Team Viewer is proprietary protocol offering     |
 |                                 |remote control of a remote machine. Clients and  |
 |                                 |servers are available for many operating systems |
 +---------------------------------+-------------------------------------------------+
-|Remote Desktop Protocol (rdp _)  |RDP is a proprietary protocol from Microsoft,    |
+|Remote Desktop Protocol (rdp_)   |RDP is a proprietary protocol from Microsoft,    |
 |                                 |and while clients are available for most systems |
 |                                 |the server is exclusivly Windows based.          |
 +---------------------------------+-------------------------------------------------+
 
 Please note that all the above mentioned protocols requires you to modify or create
-security groups.
+security groups. In addition, linux based cloud images will not have a graphical
+console installed by default. If you wan't to use a graphical console, you need to
+install the appropriate packages.
