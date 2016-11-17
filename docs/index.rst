@@ -21,6 +21,7 @@ Contents:
    dashboard
    create-virtual-machine
    manage-volumes
+   console
    api
    networking
    changelog
