@@ -17,7 +17,7 @@ OpenStack Command Line Interface (CLI)
 After you receive your password for API access you can use the OpenStack
 command line interface (OpenStack CLI) to test the access.
 
-Create a ::file:`keystone_rc.sh` file:
+Create a :file:`keystone_rc.sh` file:
 
 .. code-block:: bash
 
@@ -32,7 +32,15 @@ Create a ::file:`keystone_rc.sh` file:
   export OS_NO_CACHE=1
 
 Make sure *<email>* is the same as the one used by FEIDE. You'll also
-have to choose between the "bgo" and "osl" regions. 
+have to choose between the "bgo" and "osl" regions.
+
+This file :file:`keystone_rc.sh` contains your API password, and
+should be protected. At a minimum, make sure that you are the only one
+with read and access:
+
+.. code-block:: console
+
+  $ chmod 0600 keystone_rc.sh
 
 Install the openstack cli for your system. More help on `Installing the Openstack cli
 <http://docs.openstack.org/cli-reference/common/cli_install_openstack_command_line_clients.html>`_
