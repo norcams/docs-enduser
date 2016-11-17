@@ -85,11 +85,6 @@ Compute tab
    Even though the *Floating IPs* tab is present under "Access &
    Security", this feature is not used in the UH-IaaS cloud.
 
-Network tab
-~~~~~~~~~~~
-
-* **Network Topology**: View the network topology.
-
 Identity tab
 ------------
 
