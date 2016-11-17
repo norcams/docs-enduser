@@ -75,5 +75,5 @@ may consider for accessing your instances:
 
 Please note that all the above mentioned protocols requires you to modify or create
 security groups. In addition, linux based cloud images will not have a graphical
-console installed by default. If you wan't to use a graphical console, you need to
+console installed by default. If you want to use a graphical console, you need to
 install the appropriate packages.
