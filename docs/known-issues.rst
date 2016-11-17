@@ -50,6 +50,18 @@ corner.
    :alt: Dashboard region selection
 
 
+SSH keys different in API and dashboard
+---------------------------------------
+
+When uploading SSH keys in dashboard, those keys are not accessable from the
+API (and vice versa). This is because of the way we federate FEIDE users into
+our system. In effect, the API user is actually a different user than the
+federated user who logs into the dashboard. As the two users share a common
+project, most resources are shared, SSH keys being an execption.
+Work around the issue by uploading the SSH keys both in dashboard and via
+the API.
+
+
 Cannot create volume from image
 -------------------------------
 
