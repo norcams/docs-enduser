@@ -110,10 +110,12 @@ ssh, like this (example for "test.pem" above):
 
 .. code-block:: console
 
-  $ ssh -i test.pem <virtual-machine>
+  $ ssh -i test.pem -l <username> <virtual-machine>
 
 Replace "<virtual-machine>" with the name or IP of the virtual machine
-that this keypair is assigned to.
+that this keypair is assigned to, and "<username>" with the username
+for which the SSH key is added to authorized_keys. For more info, see
+`Accessing the virtual machine`_.
 
 
 Create a virtual machine
