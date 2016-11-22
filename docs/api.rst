@@ -21,7 +21,7 @@ Installing the CLI tools
 
 Before using the command line tools, they need to be installed. A
 relatively recent version of the command line tools are available
-natively on som Linux distributions.
+natively on some Linux distributions.
 
 **Fedora Linux**
   Installing on Fedora is simple, using the native package manager:
