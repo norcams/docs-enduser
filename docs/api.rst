@@ -81,7 +81,7 @@ have to choose between the "bgo" and "osl" regions.
 
 This file :file:`keystone_rc.sh` contains your API password, and
 should be protected. At a minimum, make sure that you are the only one
-with read and access:
+with read and write access:
 
 .. code-block:: console
 
