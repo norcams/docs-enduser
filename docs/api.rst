@@ -87,6 +87,8 @@ with read and access:
 
   $ chmod 0600 keystone_rc.sh
 
+When this file has been created, you should be able to source it and
+run openstack commands:
 
 .. code-block:: console
 
