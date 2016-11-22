@@ -14,7 +14,7 @@ user. If you where an early adopter or forgot your password please contact us.
 OpenStack Command Line Interface (CLI)
 --------------------------------------
 
-.. _Installing the Openstack cli: http://docs.openstack.org/cli-reference/common/cli_install_openstack_command_line_clients.html
+.. _Installing the Openstack command-line clients: http://docs.openstack.org/cli-reference/common/cli_install_openstack_command_line_clients.html
 
 Installing the CLI tools
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -52,8 +52,8 @@ natively on some Linux distributions.
 
        # yum install python-openstackclient
 
-**Other Linux and UNIX**
-  Follow this guide: `Installing the Openstack cli`_
+**Other Linux, Apple MacOS and Microsoft Windows**
+  Follow this guide: `Installing the Openstack command-line clients`_
 
 
 Using the CLI tools
