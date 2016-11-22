@@ -14,6 +14,51 @@ user. If you where an early adopter or forgot your password please contact us.
 OpenStack Command Line Interface (CLI)
 --------------------------------------
 
+.. _Installing the Openstack cli: http://docs.openstack.org/cli-reference/common/cli_install_openstack_command_line_clients.html
+
+Installing the CLI tools
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Before using the command line tools, they need to be installed. A
+relatively recent version of the command line tools are available
+natively on som Linux distributions.
+
+**Fedora Linux**
+  Installing on Fedora is simple, using the native package manager:
+
+  .. code-block:: console
+
+    # dnf install python-openstackclient
+
+**RHEL7 at UiO**
+  The CLI tools aren't generally available on RHEL. At UiO, we're
+  using part of the RDO repos for this. To install the tools:
+
+  #. Touch this file:
+
+     .. code-block:: console
+
+       # touch /etc/yum.repos.d/uio-openstack-client.repo
+
+  #. Wait 5 minutes, or run:
+
+     .. code-block:: console
+
+       # cf-agent -KI
+
+  #. Install the CLI tools using yum:
+
+     .. code-block:: console
+
+       # yum install python-openstackclient
+
+**Other Linux and UNIX**
+  Follow this guide: `Installing the Openstack cli`_
+
+
+Using the CLI tools
+~~~~~~~~~~~~~~~~~~~
+
 After you receive your password for API access you can use the OpenStack
 command line interface (OpenStack CLI) to test the access.
 
@@ -42,8 +87,6 @@ with read and access:
 
   $ chmod 0600 keystone_rc.sh
 
-Install the openstack cli for your system. More help on `Installing the Openstack cli
-<http://docs.openstack.org/cli-reference/common/cli_install_openstack_command_line_clients.html>`_
 
 .. code-block:: console
 
