@@ -114,11 +114,17 @@ Availability
      government or other third party; or other problems beyond our
      services.
 
-Ownership of content
---------------------
+Content
+-------
 
 #. Your content is your content. You retain ownership of all content
    that you place in your personal project.
 
 #. Your associated educational institution may exercise ownership of
    content according to Norwegian law.
+
+#. There are no backups. Deleted data is gone forever. Important data
+   should be backed up outside of UH-IaaS.
+
+#. Content that needs to be persistent across reinstalls should be
+   placed on volumes. The OS disks are ephemeral.
