@@ -67,7 +67,7 @@ Create a :file:`keystone_rc.sh` file:
 .. code-block:: bash
 
   export OS_USERNAME=<email>
-  export OS_TENANT_NAME=<email>
+  export OS_PROJECT_NAME=<email>
   export OS_PASSWORD=<password>
   export OS_AUTH_URL=https://api.uh-iaas.no:5000/v3
   export OS_IDENTITY_API_VERSION=3
