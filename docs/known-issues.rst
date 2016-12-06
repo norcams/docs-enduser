@@ -28,7 +28,7 @@ Console considerations
 
 The instance web console is configured with EN keymapping. This may be
 an issue for users with other locales, like NO. If you experience problems
-with keymapping (for example, special characthers may map to enexpected keys,
+with keymapping (for example, special characthers may map to unexpected keys,
 or not at all), change keymapping for your local browser to EN. This is
 done differently in different operating systems. Please refer to the
 operating system documentation.
