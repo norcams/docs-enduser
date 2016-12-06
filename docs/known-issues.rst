@@ -57,9 +57,10 @@ Limitations on distributed workloads
 ------------------------------------
 
 Because of resource constraints, it's not possible to order distribution over
-multiple compute hosts in the same region. A workaround is to distribute
-workloads over two regions. These constraints will be lifted as more hardware
-is deployed in the IaaS.
+multiple compute hosts in the same region. Trying to do so will result in a
+"No valid host" error message. A workaround is to distribute workloads over
+two regions. These constraints will be lifted as more hardware is deployed in
+the IaaS.
 
 
 Cannot create volume from image
