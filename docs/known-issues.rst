@@ -38,7 +38,7 @@ Dashboard region selecton
 -------------------------
 
 When selecting region and project, use the dropdown menu to the top left
-beside the logo. Do not attempt to use the dropdown menu in the upper left
+beside the logo. Do not attempt to use the dropdown menu in the upper right
 corner.
 
 .. image:: images/dash-regions.png
