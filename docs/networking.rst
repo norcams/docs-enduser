@@ -82,7 +82,7 @@ we configure our servers, management overhead and hardware cost is reduced.
 Implications
 ------------
 While our chosen networking model in most cases is invisible for the end user,
-there are some uses cases where popular and traditional methodologies won't work.
+there are some use cases where popular and traditional methodologies won't work.
 In short, every system that needs Layer 2 visibility from instance to instance
 will not work. While there are not many systems which need this Layer 2
 connectivity, there are exceptions, the most popular these days being the
