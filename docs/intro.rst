@@ -32,14 +32,34 @@ Who can use the UH-IaaS cloud?
 .. _Terms of Service: terms-of-service.html
 .. _Logging in: login.html
 
+.. _University of Bergen (UiB): http://www.uib.no/
+.. _University of Oslo (UiO): http://www.uio.no/
+.. _UNINETT: https://www.uninett.no/
+.. _University of Agder (UiA): http://www.uia.no/
+
 .. IMPORTANT::
    Before using this cloud service, you should familiarize yourself
    with our `Terms of Service`_.
 
-All users at UiO and UiB can use the UH-IaaS cloud. All you need is an
-account at either university. Before using the service, you must
-register with the authentication mechanism and the service
-itself. This is explained in detail in `Logging in`_.
+All users at educational institutions that are allegeable for access
+can use the UH-IaaS cloud. All you need is an account any of these
+universities or colleges.
+
++--------------------------------+---------------------------------+
+| University / College           | Type of access                  |
++================================+=================================+
+| `University of Bergen (UiB)`_  | Full Access                     |
++--------------------------------+---------------------------------+
+| `University of Oslo (UiO)`_    | Full Access                     |
++--------------------------------+---------------------------------+
+| `UNINETT`_                     | Limited testing                 |
++--------------------------------+---------------------------------+
+| `University of Agder (UiA)`_   | Limited testing                 |
++--------------------------------+---------------------------------+
+
+Before using the service, you must register with the authentication
+mechanism and the service itself. This is explained in detail in
+`Logging in`_.
 
 
 What can you do with the UH-IaaS cloud?
