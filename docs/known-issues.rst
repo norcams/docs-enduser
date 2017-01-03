@@ -81,5 +81,5 @@ While you control the access to your own virtual machines, the network
 access to the infrastructure is limited. To use the dashboard and
 access web pages, as well as the API, you need to use a computer at
 your educational institution. Usually, this implies only the wired
-network at the universities and colleges that are allegable for
+network at the universities and colleges that are allegeable for
 access.
