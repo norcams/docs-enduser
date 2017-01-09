@@ -72,3 +72,14 @@ to be a corner use case which may be fixed in the future. If you want to launch
 an instance based on a snapshot, select launch instance and select "instance 
 snapshot" as boot source (which may be what you actually wanted in the first
 place).
+
+
+Network availability
+--------------------
+
+While you control the access to your own virtual machines, the network
+access to the infrastructure is limited. To use the dashboard and
+access web pages, as well as the API, you need to use a computer at
+your educational institution. Usually, this implies only the wired
+network at the universities and colleges that are allegeable for
+access.
