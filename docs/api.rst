@@ -14,7 +14,7 @@ user. If you where an early adopter or forgot your password please contact us.
 OpenStack Command Line Interface (CLI)
 --------------------------------------
 
-.. _Installing the Openstack command-line clients: https://docs.openstack.org/user-guide/common/cli-install-openstack-command-line-clients.html
+.. _Installing the Openstack command-line clients: http://docs.openstack.org/user-guide/common/cli-install-openstack-command-line-clients.html
 
 Installing the CLI tools
 ~~~~~~~~~~~~~~~~~~~~~~~~
