@@ -54,7 +54,7 @@ universities or colleges.
 +--------------------------------+---------------------------------+
 | `UNINETT`_                     | Limited testing                 |
 +--------------------------------+---------------------------------+
-| `University of Agder (UiA)`_   | Limited testing                 |
+| `University of Agder (UiA)`_   | Full Access                     |
 +--------------------------------+---------------------------------+
 
 Before using the service, you must register with the authentication
