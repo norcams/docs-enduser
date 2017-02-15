@@ -19,9 +19,7 @@ Setting up a keypair
 
 Virtual Windows machines in UH-IaaS are not accessed using SSH keypairs,
 but you will use a keypair to retrieve a random generated password. Refer
-to [Link] 
-http://docs.uh-iaas.no/en/latest/create-virtual-machine.html
-for more information on how to create a SSH keypair.
+to :ref:`_setting-up-keypair` for more information on how to create a SSH keypair.
 
 
 Create a virtual machine
