@@ -7,7 +7,7 @@ Last changed: |date|
 
 .. contents::
 
-.. _setting-up-keypair
+.. _setting-up-keypair:
 Setting up a keypair
 --------------------
 
