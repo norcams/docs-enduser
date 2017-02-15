@@ -20,6 +20,7 @@ Contents:
    login
    dashboard
    create-virtual-machine
+   create-windows-machine
    manage-volumes
    console
    api
