@@ -83,3 +83,16 @@ access web pages, as well as the API, you need to use a computer at
 your educational institution. Usually, this implies only the wired
 network at the universities and colleges that are allegeable for
 access.
+
+
+No access after changed email address
+-------------------------------------
+
+Sometimes a user's primary email address changes. This is a problem
+because Dataporten uses this email address as the user ID, and
+therefore the user ID and personal project in UH-IaaS is this
+address. This happens when users e.g. changes their status from
+student to employee or vice versa. If this happens to you, please send
+an email to support@uh-iaas.no which includes your current and
+previous primary email address. You will then be given further
+instructions on how to proceed.
