@@ -6,10 +6,25 @@ Support
 Getting help
 ------------
 
-We have a public chat room at https://uhps.slack.com
+We have a public chat room;
 
-Reporting issues
-----------------
+  https://uhps.slack.com
 
-Issues should be reported via the GitHub project norcams/iaas:
-https://github.com/norcams/iaas/issues
+Use this for quick questions and informal chat.
+
+
+Getting support
+---------------
+
+If you need assistance or have special requests (e.g. increased
+quota), please contact us via our support email:
+
+  support@uh-iaas.no
+
+
+Reporting bugs and issues
+-------------------------
+
+Bugs and issues should be reported via the GitHub project norcams/iaas:
+
+  https://github.com/norcams/iaas/issues
