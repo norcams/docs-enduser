@@ -15,12 +15,13 @@ a demo project (see :doc:`login`). We do not have any easy way to recrate
 the pass phrase at the moment. If you lose yours please contact us.
 
 
-Only personal projects
-----------------------
+Demo projects
+-------------
 
-We currently have a limitation on projects, in which only personal
-projects are supported. If you need a project for more general purpose,
-please contact us.
+When you first sign in, you are given a demo project. This project is
+personal and for testing purposes. The quota in the demo project is
+very limited. If you need more resources, or a project in which you
+wish to collaborate with other users, please contact us.
 
 
 Console considerations
