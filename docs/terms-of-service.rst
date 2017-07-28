@@ -125,7 +125,8 @@ Content
 -------
 
 #. Your content is your content. You retain ownership of all content
-   that you place in your personal project.
+   that you place in your personal projects. We may delete content in
+   your demo project without notice.
 
 #. Your associated educational institution may exercise ownership of
    content according to Norwegian law.
