@@ -117,9 +117,9 @@ Availability
      government or other third party; or other problems beyond our
      services.
 
-#. We reserve the right to delete instances in your demo project, if a
-   situation should arise in which we need the compute resources
-   elsewhere.
+#. We reserve the right to terminate instances in your demo project
+   without notice, if a situation should arise in which we need the
+   compute resources elsewhere.
 
 Content
 -------
