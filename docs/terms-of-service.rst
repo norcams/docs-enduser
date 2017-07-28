@@ -125,8 +125,8 @@ Content
 -------
 
 #. Your content is your content. You retain ownership of all content
-   that you place in your personal projects. We may delete content in
-   your demo project without notice.
+   that you place in UH-IaaS. Note that we may delete content in your
+   demo project without notice.
 
 #. Your associated educational institution may exercise ownership of
    content according to Norwegian law.
