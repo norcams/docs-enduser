@@ -33,6 +33,9 @@ Signing up
    under your account, whether or not authorized, including any use of
    your API keys.
 
+#. When you first log in, you are granted with a demo project. This
+   project is personal and only for testing purposes.
+
 Our services
 ------------
 
@@ -61,8 +64,8 @@ Our services
 #. If you want to use UH-IaaS for critical services, or services that
    require high availability, please contact us.
 
-#. Please make sure to free resources that you no longer use or need,
-   such as terminating obsolete virtual machines.
+#. Please make sure to free up resources that you no longer use or
+   need, such as terminating obsolete virtual machines.
 
 Security
 --------
@@ -113,6 +116,10 @@ Availability
      problems; blocking, filtering, or censorship of our services by a
      government or other third party; or other problems beyond our
      services.
+
+#. We reserve the right to delete instances in your demo project, if a
+   situation should arise in which we need the compute resources
+   elsewhere.
 
 Content
 -------
