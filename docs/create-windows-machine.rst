@@ -8,7 +8,7 @@ Last changed: |date|
 .. contents::
 
 .. IMPORTANT::
-   Because of Windows' rather steep resource demands, a personal
+   Because of Windows' rather steep resource demands, a demo
    project will have insufficient disk quota to launch windows
    instances. In other words, you will need another project with
    higher quotas in order to run Windows.
@@ -65,7 +65,7 @@ When finished with this tab, select the next, "Flavor":
 This is where you select the flavor for the virtual machine, i.e. a
 pre-defined set of compute resources. In our example, we've selected
 the "d1.medium" flavor, which is just enough to run our Windows instance. By
-default, personal projects don't have access to this flavor. The other
+default, demo projects don't have access to this flavor. The other
 flavors lack sufficient resources to run Windows.
 
 When finished with this tab, select the next, "Networks":

@@ -11,7 +11,7 @@ API access
 ----------
 
 All new users will get a pass phrase to use with API when they provision
-a personal project (see :doc:`login`). We do not have any easy way to recrate
+a demo project (see :doc:`login`). We do not have any easy way to recrate
 the pass phrase at the moment. If you lose yours please contact us.
 
 
@@ -90,7 +90,7 @@ No access after changed email address
 
 Sometimes a user's primary email address changes. This is a problem
 because Dataporten uses this email address as the user ID, and
-therefore the user ID and personal project in UH-IaaS is this
+therefore the user ID and demo/personal project in UH-IaaS is this
 address. This happens when users e.g. changes their status from
 student to employee or vice versa. If this happens to you, please send
 an email to support@uh-iaas.no which includes your current and
