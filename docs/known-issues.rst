@@ -23,6 +23,10 @@ personal and for testing purposes. The quota in the demo project is
 very limited. If you need more resources, or a project in which you
 wish to collaborate with other users, please contact us.
 
+The demo project uses excess resources that usually are available in
+the cluster. If we experience a shortage of resources, we may
+terminate instances running in the demo project without notice.
+
 
 Console considerations
 ----------------------
