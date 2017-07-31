@@ -39,18 +39,6 @@ done differently in different operating systems. Please refer to the
 operating system documentation.
 
 
-Dashboard region selecton
--------------------------
-
-When selecting region and project, use the dropdown menu to the top left
-beside the logo. Do not attempt to use the dropdown menu in the upper right
-corner.
-
-.. image:: images/dash-regions.png
-   :align: center
-   :alt: Dashboard region selection
-
-
 SSH keys different in API and dashboard
 ---------------------------------------
 
