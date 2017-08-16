@@ -51,6 +51,8 @@ natively on some Linux distributions.
 Using the CLI tools
 ~~~~~~~~~~~~~~~~~~~
 
+.. _First time login: http://docs.uh-iaas.no/en/latest/login.html#first-time-login
+
 After you receive your password for API access you can use the OpenStack
 command line interface (OpenStack CLI) to test the access.
 
