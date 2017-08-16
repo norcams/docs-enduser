@@ -60,14 +60,14 @@ Create a :file:`keystone_rc.sh` file:
 
 .. code-block:: bash
 
-  export OS_USERNAME=**<feide-id>**
-  export OS_PROJECT_NAME=**<project>**
-  export OS_PASSWORD=**<password>**
+  export OS_USERNAME=<feide-id>
+  export OS_PROJECT_NAME=<project>
+  export OS_PASSWORD=<password>
   export OS_AUTH_URL=https://api.uh-iaas.no:5000/v3
   export OS_IDENTITY_API_VERSION=3
   export OS_USER_DOMAIN_NAME=dataporten
   export OS_PROJECT_DOMAIN_NAME=dataporten
-  export OS_REGION_NAME=**<region>**
+  export OS_REGION_NAME=<region>
   export OS_NO_CACHE=1
 
 The above is a template. Replace the following:
