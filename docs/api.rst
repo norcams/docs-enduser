@@ -56,20 +56,27 @@ command line interface (OpenStack CLI) to test the access.
 
 Create a :file:`keystone_rc.sh` file:
 
-.. code-block:: bash
+.. code-block::
 
-  export OS_USERNAME=<email>
-  export OS_PROJECT_NAME=<email>
-  export OS_PASSWORD=<password>
+  export OS_USERNAME=**<feide-id>**
+  export OS_PROJECT_NAME=**<project>**
+  export OS_PASSWORD=**<password>**
   export OS_AUTH_URL=https://api.uh-iaas.no:5000/v3
   export OS_IDENTITY_API_VERSION=3
   export OS_USER_DOMAIN_NAME=dataporten
   export OS_PROJECT_DOMAIN_NAME=dataporten
-  export OS_REGION_NAME=<bgo|osl>
+  export OS_REGION_NAME=**<region>**
   export OS_NO_CACHE=1
 
-Make sure *<email>* is the same as the one used by FEIDE. You'll also
-have to choose between the "bgo" and "osl" regions.
+The above is a template. Replace the following:
+
+* Replace *<feide-id>* with your FEIDE identity
+* Replace *<project>* with the project name,
+  e.g. "DEMO-ola.normann.ifi.uio.no"
+* Replace *<password>* with the API password that you got when first
+  logging in. See `First time login`_
+* Replace *<region>* with either "osl" or "bgo", whichever you want to
+  use.
 
 This file :file:`keystone_rc.sh` contains your API password, and
 should be protected. At a minimum, make sure that you are the only one
