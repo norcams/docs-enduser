@@ -34,9 +34,17 @@ natively on some Linux distributions.
   In order to install the CLI tools on RHEL7, you need to enable the
   proper repository using **subscription-manager**:
 
-  .. code-block:: console
+  * For RHEL7 Workstation:
 
-    # subscription-manager repos --enable=rhel-7-workstation-openstack-11-tools-rpms
+    .. code-block:: console
+
+      # subscription-manager repos --enable=rhel-7-workstation-openstack-11-tools-rpms
+
+  * For RHEL7 Server:
+
+    .. code-block:: console
+
+      # subscription-manager repos --enable=rhel-7-server-openstack-11-tools-rpms
 
   Then, install the CLI tools using yum:
 
