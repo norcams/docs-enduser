@@ -31,26 +31,18 @@ natively on some Linux distributions.
     # dnf install python-openstackclient
 
 **RHEL7 at UiO**
-  The CLI tools aren't generally available on RHEL. At UiO, we're
-  using part of the RDO repos for this. To install the tools:
+  In order to install the CLI tools on RHEL7, you need to enable the
+  proper repository using **subscription-manager**:
 
-  #. Touch this file:
+  .. code-block:: console
 
-     .. code-block:: console
+    # subscription-manager repos --enable=rhel-7-workstation-openstack-11-tools-rpms
 
-       # touch /etc/yum.repos.d/uio-openstack-client.repo
+  Then, install the CLI tools using yum:
 
-  #. Wait 5 minutes, or run:
+  .. code-block:: console
 
-     .. code-block:: console
-
-       # cf-agent -KI
-
-  #. Install the CLI tools using yum:
-
-     .. code-block:: console
-
-       # yum install python-openstackclient
+    # yum install python-openstackclient
 
 **Other Linux, Apple MacOS and Microsoft Windows**
   Follow this guide: `Installing the Openstack command-line clients`_
