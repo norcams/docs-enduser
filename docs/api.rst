@@ -80,7 +80,7 @@ Create a :file:`keystone_rc.sh` file:
 
 The above is a template. Replace the following:
 
-* Replace *<feide-id>* with your FEIDE identity
+* Replace *<feide-id>* with your FEIDE identity, e.g. "ola.normann\@ifi.uio.no"
 * Replace *<project>* with the project name,
   e.g. "DEMO-ola.normann.ifi.uio.no"
 * Replace *<password>* with the API password that you got when first
