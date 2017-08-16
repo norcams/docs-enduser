@@ -56,7 +56,7 @@ command line interface (OpenStack CLI) to test the access.
 
 Create a :file:`keystone_rc.sh` file:
 
-.. code-block::
+.. code-block:: bash
 
   export OS_USERNAME=**<feide-id>**
   export OS_PROJECT_NAME=**<project>**
