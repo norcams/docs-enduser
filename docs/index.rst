@@ -12,10 +12,7 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
-
-   known-issues
-   terms-of-service
-   conventions
+   
    intro
    login
    dashboard
@@ -25,8 +22,10 @@ Contents:
    console
    api
    networking
-   changelog
    support
+   known-issues
+   changelog
+   terms-of-service
 
 
 Indices and tables
