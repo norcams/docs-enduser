@@ -219,7 +219,7 @@ Last changed: |date|
 .. contents::
 
 Notices
--------
+~~~~~~~
 
 You may encounter the following notices:
 
@@ -240,7 +240,7 @@ You may encounter the following notices:
 
 
 Command prompts
----------------
+~~~~~~~~~~~~~~~
 
 A lot of OpenStack interaction is possible by utilizing the command
 prompt. When describing something that should be done on the command

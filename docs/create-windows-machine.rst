@@ -1,7 +1,7 @@
 .. |date| date::
 
 Create a Windows virtual machine
-==============================
+================================
 
 Last changed: |date|
 
