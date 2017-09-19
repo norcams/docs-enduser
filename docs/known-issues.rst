@@ -92,4 +92,4 @@ instructions on how to proceed.
 
 Resizing an instance
 --------------------
-Resizing an instance is not an available option in the dropdown menu for now. If you try to resize an instance via API, you will get an HTTP 403 Forbidden error.
+Resizing an instance is not an available option in the dropdown menu for now. If you try to resize an instance via API, you will get an HTTP 403 Forbidden error. As a workaround, you can create a snapshot of the instance, then edit and resize the snapshot and launch a new instance based on that.
