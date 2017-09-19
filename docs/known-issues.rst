@@ -89,3 +89,7 @@ student to employee or vice versa. If this situation applies, then please send
 an email to support@uh-iaas.no which includes your current and
 previous primary email addresses. You will then receive further
 instructions on how to proceed.
+
+Resizing an instance
+--------------------
+Resizing an instance is not an available option in the dropdown menu for now. If you try to resize an instance via API, you will get an HTTP 403 Forbidden error.
