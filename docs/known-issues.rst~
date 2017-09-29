@@ -15,6 +15,19 @@ a personal project (see :doc:`login`). There are no means of retrieving this
 pass phrase at the moment. Please contact us in case it is lost.
 
 
+Demo projects
+-------------
+
+On first log on, you are allocated a demo project. This project is
+personal and for testing purposes. The quota in this demo project is
+very limited. If you need additional resources, or a project in which you
+wish to collaborate with other users, please contact us.
+
+These demo projects uses excess resources that are usually available in
+the cluster. Though, if there is a shortage of resources, we may
+terminate some or all instances running in demo projects without notice!
+
+
 Console considerations
 ----------------------
 

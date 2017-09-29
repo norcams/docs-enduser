@@ -271,12 +271,12 @@ Quotas are set by region. Projects that haven't been given a quota in their resp
 =================== =========== =========== 
  Quota               Name        Default
 =================== =========== ===========
- Instances           instances    2         
- vCPU                cores        2        
- Memory              ram          2048 MB   
- Number of volumes   volumes      1       
- Volume size         gigabytes    20 GB     
- Volume snapshots    snapshots    3          
+ Instances           instances   2         
+ vCPU               cores        2        
+ Memory             ram          2048 MB   
+ Number of volumes  volumes      1       
+ Volume size        gigabytes    20 GB     
+ Volume snapshots   snapshots    3          
 =================== =========== ===========
 
 **Instances**
