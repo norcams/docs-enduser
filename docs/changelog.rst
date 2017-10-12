@@ -1,12 +1,13 @@
-.. |date| date::
-
+=========
 Changelog
 =========
 
 All major changes to UH-IaaS will be listen on this page.
 
-.. code-block:: console
+2017-10-12
+==========
 
-  ## 2017-10-12
-  ### Changed
-  - The networks in UH-IaaS (both regions) that was named "public" are now named "dualStack" - network IDs are the same.
+Changed
+-------
+
+- The networks in UH-IaaS (both regions) that was named "public" are now named "dualStack" - network IDs are the same.
