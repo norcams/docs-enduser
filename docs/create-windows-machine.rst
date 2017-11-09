@@ -74,8 +74,13 @@ When finished with this tab, select the next, "Networks":
    :align: center
    :alt: Dashboard - Launch instance - Networks
 
-In the UH-IaaS cloud, there aren't many networks to choose from. In
-our example, we have selected the "public" network.
+In the UH-IaaS cloud, there are two networks to choose from, "dualStack"
+and "IPv6". Both networks provides a public IPv6 address, so the difference
+lays in IPv4. "dualStack" provides a public IPv4 address as well, while
+"IPv6" provides a "private" IPv4 address (rfc 1918) which gives the
+instance outbound IPv4 connectivity through NAT. IPv6 is the future
+of internet addressing, but unfortunately not all computers are
+IPv6 enabled as yet. Check your IPv6 connectivity before choosing "IPv6".
 
 When finished with this tab, you can optionally add security groups. In
 our example, we skip this stage (we will create and add security group later)
