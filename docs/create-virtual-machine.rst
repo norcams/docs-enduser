@@ -174,6 +174,7 @@ lays in IPv4. "IPv6" provides a "private" IPv4 address (RFC 1918), which gives
 the instance outbound IPv4 connectivity through NAT, while "dualStack" provides 
 a public IPv4 address as well. IPv6 is the future of internet IP addressing, but 
 unfortunately, not all devices support IPv6 yet. 
+
 NB! Check your IPv6 connectivity before choosing "IPv6".
 
 When finished with this tab, select the "Security Groups" tab:
