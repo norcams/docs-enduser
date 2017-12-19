@@ -172,9 +172,14 @@ In UH-IaaS, there are two networks to choose from, "dualStack"
 and "IPv6". Both networks provide a public IPv6 address, so the difference 
 lays in IPv4. "IPv6" provides a "private" IPv4 address (RFC 1918), which gives 
 the instance outbound IPv4 connectivity through NAT, while "dualStack" provides 
-a public IPv4 address as well. IPv6 is the future of internet IP addressing, but 
-unfortunately, not all devices support IPv6 yet. 
+a public IPv4 address as well. 
+
+IPv6 is the future of internet IP addressing, but unfortunately, not all devices 
+support IPv6 yet. 
 **NB!** Check your IPv6 connectivity before choosing "IPv6".
+
+You should also note that you only can choose either "dualStack" or "IPv6", choosing
+both networks at the same time will result in networking issues. 
 
 When finished with this tab, select the "Security Groups" tab:
 
