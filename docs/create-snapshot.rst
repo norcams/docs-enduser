@@ -12,6 +12,8 @@ You can create a snapshot and use it as the base for your new instances.
 
 Create a snapshot
 -----------------
+*NB!* Make sure that the instance is turned off, before creating a snapshot.
+
 In the dashboard, select *Instances* in the *Compute* tab:
 
 .. image:: images/create-snapshot-01.png
