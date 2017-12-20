@@ -19,6 +19,7 @@ Contents:
    create-virtual-machine
    create-windows-machine
    manage-volumes
+   create-snapshot
    console
    api
    networking
