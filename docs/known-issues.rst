@@ -89,8 +89,8 @@ To transfer a volume from one project to another, both projects have to be withi
 
 You will experience "Unable to accept volume transfer" error if you try to transfer a volume to a project which is located in another region, or if the project recipient does not have enough quota to accept the volume request.
 
-Creating a snapshot
--------------------
+Creating a snapshot of a running instance
+-----------------------------------------
 
 Make sure that the instance is turned off, before creating a snapshot. Creating a snapshot while the instance is running, will disable the network connection.
 
