@@ -1,7 +1,7 @@
 .. |date| date::
 
-Create and manage a snapshot
-============================
+Create and manage snapshots
+===========================
 
 Last changed: |date|
 
@@ -57,7 +57,7 @@ Select *Images* in the *Compute* tab:
 
 
 
-Choose the snapshot, and click on ``Launch``, and further steps are described here_ :ref:`create-virtual-machine` .
+Choose the snapshot, and click on ``Launch``, and further steps are described under :ref:`create virtual machine`.
 
 The new instance contains now the expected customizations made earlier in your previous instance. 
 
