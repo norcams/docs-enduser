@@ -171,13 +171,14 @@ In order to update an instance running Ubuntu, perform the following:
      $ **ssh ubuntu@<instance-ip-address> 'uname -sr'**
      Linux 4.4.0-104-generic
 
-   if Ubuntu 16.04 LTS or:
+   if Ubuntu 16.04 LTS, or:
 
    .. parsed-literal::
 
+     $ **ssh ubuntu@<instance-ip-address> 'uname -sr'**
      Linux 4.13.0-21-generic
 
-     if Ubuntu 17.10
+   if Ubuntu 17.10
 
    The output above shows the latest kernel for Ubuntu 16.04 LTS and Ubuntu 17.10 as of January
    8, 2018.
