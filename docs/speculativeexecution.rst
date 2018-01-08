@@ -26,7 +26,7 @@ project.  As the service provider, we will make available updated
 images in which these speculative execution issues are mitigated.
 However, the customer still needs to take action either by
 reprovisioning the instances using the updated images, or by updating
-the running images using the appropriate tools for the operating
+any running instances using the appropriate tools for the operating
 system.
 
 For more information regarding these security issues, refer to
