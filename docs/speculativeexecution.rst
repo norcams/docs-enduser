@@ -30,8 +30,14 @@ the running images using the appropriate tools for the operating
 system.
 
 
-Updating CentOS
----------------
+Updating your Instances
+-----------------------
+
+This paragraph describes in detail how to update any of the standard
+Linux distributions offered in UH-IaaS.
+
+CentOS
+~~~~~~
 
 In order to update an instance running CentOS, perform the following:
 
@@ -64,8 +70,8 @@ In order to update an instance running CentOS, perform the following:
    8, 2018.
 
 
-Updating Fedora
----------------
+Fedora
+~~~~~~
 
 In order to update an instance running Fedora, perform the following:
 
@@ -98,8 +104,8 @@ In order to update an instance running Fedora, perform the following:
    8, 2018.
 
 
-Updating Debian
----------------
+Debian
+~~~~~~
 
 In order to update an instance running Debian, perform the following:
 
@@ -132,8 +138,8 @@ In order to update an instance running Debian, perform the following:
    8, 2018.
 
 
-Updating Ubuntu
----------------
+Ubuntu
+~~~~~~
 
 In order to update an instance running Ubuntu, perform the following:
 
