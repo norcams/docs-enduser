@@ -6,7 +6,16 @@
 Welcome to UH-IaaS end user documentation
 =========================================
 
+.. _Speculative Execution Attacks: http://docs.uh-iaas.no/en/latest/speculativeexecution.html
+
 End user guide for the UH-IaaS cloud.
+
+.. IMPORTANT::
+   **Kernel Side-Channel Attacks**
+
+   For information regarding the recently discovered speculative
+   execution vulnerabilities in modern microprocessors, see
+   `Speculative Execution Attacks`_.
 
 Contents:
 
