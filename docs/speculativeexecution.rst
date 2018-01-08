@@ -29,6 +29,9 @@ reprovisioning the instances using the updated images, or by updating
 the running images using the appropriate tools for the operating
 system.
 
+For more information regarding these security issues, refer to
+`Additional References`_.
+
 
 Updating your Instances
 -----------------------
