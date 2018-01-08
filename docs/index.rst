@@ -27,6 +27,7 @@ Contents:
    known-issues
    changelog
    terms-of-service
+   speculativeexecution
 
 
 Indices and tables
