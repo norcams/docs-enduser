@@ -109,11 +109,11 @@ In order to update an instance running Debian, perform the following:
 
      $ **ssh debian@<instance-ip-address>**
 
-#. Run "FIXME" using sudo:
+#. Update and upgrade using sudo:
 
    .. parsed-literal::
 
-     $ **FIXME**
+     $ **sudo apt-get update && sudo apt-get -y dist-upgrade**
 
 #. Reboot the instance:
 
@@ -126,9 +126,9 @@ In order to update an instance running Debian, perform the following:
    .. parsed-literal::
 
      $ **ssh debian@<instance-ip-address> 'uname -sr'**
-     FIXME
+     Linux it010111 4.9.0-5-amd64
 
-   The output above shows the latest kernel for Debian FIXME as of January
+   The output above shows the latest kernel for Debian 9 as of January
    8, 2018.
 
 
@@ -143,11 +143,11 @@ In order to update an instance running Ubuntu, perform the following:
 
      $ **ssh ubuntu@<instance-ip-address>**
 
-#. Run "FIXME" using sudo:
+#. Update and upgrade using sudo:
 
    .. parsed-literal::
 
-     $ **FIXME**
+     $ **sudo apt-get update && sudo apt-get -y dist-upgrade**
 
 #. Reboot the instance:
 
@@ -160,9 +160,17 @@ In order to update an instance running Ubuntu, perform the following:
    .. parsed-literal::
 
      $ **ssh ubuntu@<instance-ip-address> 'uname -sr'**
-     FIXME
+     Linux 4.4.0-104-generic
 
-   The output above shows the latest kernel for Ubuntu FIXME as of January
+   if Ubuntu 16.04 LTS or:
+
+   .. parsed-literal::
+
+     Linux 4.13.0-21-generic
+
+     if Ubuntu 17.10
+
+   The output above shows the latest kernel for Ubuntu 16.04 LTS and Ubuntu 17.10 as of January
    8, 2018.
 
 
