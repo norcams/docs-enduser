@@ -3,7 +3,7 @@ Speculative Execution Attacks
 
 Last changed: 2018-01-09
 
-.. _Important update 2018-01-09:
+.. IMPORTANT UPDATE 2018-01-09::
 
 Contrary to what's been said in this security advisory earlier, a kernel patch
 for Ubuntu is not yet available, however, it is expected by January 9, 2018.
