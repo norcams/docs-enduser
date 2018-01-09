@@ -1,12 +1,16 @@
-.. |date| date::
-
 Speculative Execution Attacks
 =============================
 
-Last changed: |date|
+Last changed: 2018-01-09
+
+.. _Important update 2018-01-09:
+
+Contrary to what's been said in this security advisory earlier, a kernel patch
+for Ubuntu is not yet available, however, it is expected by January 9, 2018.
+We're sorry to have provided misleading information and will notitfy our users
+when a patch is availible.
 
 .. contents::
-
 
 Background Information
 ----------------------
@@ -134,8 +138,8 @@ In order to update an instance running Debian, perform the following:
 
    .. parsed-literal::
 
-     $ **ssh debian@<instance-ip-address> 'uname -sr'**
-     Linux it010111 4.9.0-5-amd64
+     $ **ssh debian@<instance-ip-address> 'uname -srv'**
+     Linux 4.9.0-5-amd64 #1 SMP Debian 4.9.65-3+deb9u2 (2018-01-04)
 
    The output above shows the latest kernel for Debian 9 as of January
    8, 2018.
@@ -144,45 +148,7 @@ In order to update an instance running Debian, perform the following:
 Ubuntu
 ~~~~~~
 
-In order to update an instance running Ubuntu, perform the following:
-
-#. Log in as user "ubuntu":
-
-   .. parsed-literal::
-
-     $ **ssh ubuntu@<instance-ip-address>**
-
-#. Update and upgrade using sudo:
-
-   .. parsed-literal::
-
-     $ **sudo apt-get update && sudo apt-get -y dist-upgrade**
-
-#. Reboot the instance:
-
-   .. parsed-literal::
-
-     $ **sudo reboot**
-
-#. Check that the running kernel has been updated:
-
-   .. parsed-literal::
-
-     $ **ssh ubuntu@<instance-ip-address> 'uname -sr'**
-     Linux 4.4.0-104-generic
-
-   if Ubuntu 16.04 LTS, or:
-
-   .. parsed-literal::
-
-     $ **ssh ubuntu@<instance-ip-address> 'uname -sr'**
-     Linux 4.13.0-21-generic
-
-   if Ubuntu 17.10
-
-   The output above shows the latest kernel for Ubuntu 16.04 LTS and Ubuntu 17.10 as of January
-   8, 2018.
-
+A patch for Ubuntu has not yet been released.
 
 Additional References
 ---------------------
