@@ -162,34 +162,36 @@ need to reboot your instances in order to actually run the updated kernel.
 
      $ **ssh ubuntu@<instance-ip-address> 'uname -srv'**
 
-  You should get the following output if you have the updated kernel in 16.04
-  LTS:
-  .. parsed-literal::
+   You should get the following output if you have the updated kernel in 16.04
+   LTS:
+
+   .. parsed-literal::
 
      Linux 4.4.0-108-generic #131-Ubuntu SMP Sun Jan 7 14:34:49 UTC 2018
 
-  or in Ubuntu 17.10:
-  .. parsed-literal::
+   or in Ubuntu 17.10:
+
+   .. parsed-literal::
 
      Linux 4.13.0-25-generic #29-Ubuntu SMP Mon Jan 8 21:14:41 UTC 2018
 
 #. If the output shows something else, check the unattended upgrades log:
 
-  .. parsed-literal::
+   .. parsed-literal::
 
      $ **ssh ubuntu@<instance-ip-address>**
      $ **less /var/log/unattended-upgrades/unattended-upgrades.log**
 
-  and look for a line similar to this:
+   and look for a line similar to this:
 
-  .. parsed-literal::
+   .. parsed-literal::
 
      2018-01-10 09:25:25,440 INFO Packages that will be upgraded: linux-headers-generic linux-headers-virtual linux-image-virtual linux-virtual
 
 #. If you have something that looks like the above, reboot your instance and
    check your kernel version again
 
-  .. parsed-literal::
+   .. parsed-literal::
 
      $ **sudo reboot**
 
@@ -225,6 +227,9 @@ In order to manually update an instance running Ubuntu, perform the following:
 
    if you're running 16.04 LTS or
 
+   .. parsed-literal::
+
+     $ **ssh ubuntu@<instance-ip-address> 'uname -srv'**
      Linux 4.13.0-25-generic #29-Ubuntu SMP Mon Jan 8 21:14:41 UTC 2018
 
    if you're running 17.10.
