@@ -157,6 +157,7 @@ updates will be automacially installed when they're available.  However, you
 need to reboot your instances in order to actually run the updated kernel.
 
 #. Check your kernel version
+
    .. parsed-literal::
 
      $ **ssh ubuntu@<instance-ip-address> 'uname -srv'**
@@ -173,6 +174,7 @@ need to reboot your instances in order to actually run the updated kernel.
      Linux 4.13.0-25-generic #29-Ubuntu SMP Mon Jan 8 21:14:41 UTC 2018
 
 #. If the output shows something else, check the unattended upgrades log:
+
   .. parsed-literal::
 
      $ **ssh ubuntu@<instance-ip-address>**
