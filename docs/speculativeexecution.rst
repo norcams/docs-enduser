@@ -16,6 +16,8 @@ Last changed: 2018-01-10
 
 .. contents::
 
+.. highlight:: none
+
 Background Information
 ----------------------
 
