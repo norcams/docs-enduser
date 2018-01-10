@@ -1,15 +1,18 @@
 Speculative Execution Attacks
 =============================
 
-Last changed: 2018-01-09
+Last changed: 2018-01-10
 
 .. IMPORTANT::
+   **UPDATE 2018-01-10**
+   Kernel patches for Ubuntu 16.04 LTS and 17.10 are now available. See
+   instructions below.  New instances will have the updated kernel.
 
    **UPDATE 2018-01-09**
    Contrary to what's been said in this security advisory earlier, a kernel patch
    for Ubuntu is not yet available, however, it is expected by January 9, 2018.
    We're sorry to have provided misleading information and will notitfy our users
-   when a patch is availible.
+   when a patch is available.
 
 .. contents::
 
@@ -149,7 +152,83 @@ In order to update an instance running Debian, perform the following:
 Ubuntu
 ~~~~~~
 
-A patch for Ubuntu has not yet been released.
+Ubuntu Cloud images are preinstalled with Unattended Upgrades meaning security
+updates will be automacially installed when they're available.  However, you
+need to reboot your instances in order to actually run the updated kernel.
+
+#. Check your kernel version
+   .. parsed-literal::
+
+     $ **ssh ubuntu@<instance-ip-address> 'uname -srv'**
+
+  You should get the following output if you have the updated kernel in 16.04
+  LTS:
+  .. parsed-literal::
+
+     Linux 4.4.0-108-generic #131-Ubuntu SMP Sun Jan 7 14:34:49 UTC 2018
+
+  or in Ubuntu 17.10:
+  .. parsed-literal::
+
+     Linux 4.13.0-25-generic #29-Ubuntu SMP Mon Jan 8 21:14:41 UTC 2018
+
+#. If the output shows something else, check the unattended upgrades log:
+  .. parsed-literal::
+
+     $ **ssh ubuntu@<instance-ip-address>**
+     $ **less /var/log/unattended-upgrades/unattended-upgrades.log**
+
+  and look for a line similar to this:
+
+  .. parsed-literal::
+
+     2018-01-10 09:25:25,440 INFO Packages that will be upgraded: linux-headers-generic linux-headers-virtual linux-image-virtual linux-virtual
+
+#. If you have something that looks like the above, reboot your instance and
+   check your kernel version again
+
+  .. parsed-literal::
+
+     $ **sudo reboot**
+
+#. If you don't, or if you've disabled or uninstalled Unattended Upgrades for
+   some reason, proceed with manual updating shown bellow.
+
+In order to manually update an instance running Ubuntu, perform the following:
+
+#. Log in as user "ubuntu":
+
+   .. parsed-literal::
+
+     $ **ssh ubuntu@<instance-ip-address>**
+
+#. Update and upgrade using sudo:
+
+   .. parsed-literal::
+
+     $ **sudo apt-get update && sudo apt-get -y dist-upgrade**
+
+#. Reboot the instance:
+
+   .. parsed-literal::
+
+     $ **sudo reboot**
+
+#. Check that the running kernel has been updated:
+
+   .. parsed-literal::
+
+     $ **ssh ubuntu@<instance-ip-address> 'uname -srv'**
+     Linux 4.4.0-108-generic #131-Ubuntu SMP Sun Jan 7 14:34:49 UTC 2018
+
+   if you're running 16.04 LTS or
+
+     Linux 4.13.0-25-generic #29-Ubuntu SMP Mon Jan 8 21:14:41 UTC 2018
+
+   if you're running 17.10.
+
+   The output above shows the latest kernel for Ubuntu 16.04 LTS and 17.10 as
+   of January 10, 2018.
 
 Additional References
 ---------------------
