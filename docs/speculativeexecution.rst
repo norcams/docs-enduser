@@ -246,12 +246,15 @@ Additional References
 .. _[Google Project Zero] Reading privileged memory with a side-channel: https://googleprojectzero.blogspot.ca/2018/01/reading-privileged-memory-with-side.html
 .. _Meltdown and Spectre main site: https://meltdownattack.com/
 .. _[Red Hat] Controlling the Performance Impact of Microcode and Security Patches for CVE-2017-5754 CVE-2017-5715 and CVE-2017-5753 using Red Hat Enterprise Linux Tunables: https://access.redhat.com/articles/3311301
+.. _[Red Hat] Speculative Execution Exploit Performance Impacts: https://access.redhat.com/articles/3307751
 
 * `[Red Hat] Kernel Side-Channel Attacks - CVE-2017-5754 CVE-2017-5753
   CVE-2017-5715`_
 
 * `[Google Project Zero] Reading privileged memory with a
   side-channel`_
+
+* `[Red Hat] Speculative Execution Exploit Performance Impacts`_
 
 * `[Red Hat] Controlling the Performance Impact of Microcode and
   Security Patches for CVE-2017-5754 CVE-2017-5715 and CVE-2017-5753
