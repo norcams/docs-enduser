@@ -247,6 +247,7 @@ Additional References
 .. _Meltdown and Spectre main site: https://meltdownattack.com/
 .. _[Red Hat] Controlling the Performance Impact of Microcode and Security Patches for CVE-2017-5754 CVE-2017-5715 and CVE-2017-5753 using Red Hat Enterprise Linux Tunables: https://access.redhat.com/articles/3311301
 .. _[Red Hat] Speculative Execution Exploit Performance Impacts: https://access.redhat.com/articles/3307751
+.. _[Microsoft] Understanding the performance impact of Spectre and Meltdown mitigations on Windows Systems: https://cloudblogs.microsoft.com/microsoftsecure/2018/01/09/understanding-the-performance-impact-of-spectre-and-meltdown-mitigations-on-windows-systems/
 
 * `[Red Hat] Kernel Side-Channel Attacks - CVE-2017-5754 CVE-2017-5753
   CVE-2017-5715`_
@@ -259,6 +260,9 @@ Additional References
 * `[Red Hat] Controlling the Performance Impact of Microcode and
   Security Patches for CVE-2017-5754 CVE-2017-5715 and CVE-2017-5753
   using Red Hat Enterprise Linux Tunables`_
+
+* `[Microsoft] Understanding the performance impact of Spectre and
+  Meltdown mitigations on Windows Systems`_
 
 * `Meltdown and Spectre main site`_
 
