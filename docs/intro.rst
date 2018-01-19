@@ -265,7 +265,7 @@ You will be allocated a demo project the first time you logon . This
 project is personal and for testing purposes.  There is a limited
 quota for this demo project. If you need additional resources or a
 project in which you wish to collaborate with other users, please
-apply for a proper project using **`this web form`_**.
+apply for a proper project using `this web form`_.
 
 Demo projects use excess resources that are usually available under
 normal operation, however, if there is a shortage of resources please
@@ -308,8 +308,8 @@ their respective region will be automatically given a default quota.
 Proper projects
 ---------------
 
-You can apply for a proper project (i.e. not demo) by using **`this
-web form`_**. In this form, you need to give some information about
+You can apply for a proper project (i.e. not demo) by using `this
+web form`_. In this form, you need to give some information about
 the project. Most importantly, we separate between personal and shared
 projects:
 
