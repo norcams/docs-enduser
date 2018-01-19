@@ -259,14 +259,21 @@ be the following:
 Demo projects
 -------------
 
-You will be allocated a demo project the first time you logon . This project is personal and for testing purposes. 
-There is a limited quota for this demo project. If you need additional resources or a project in which you wish to collaborate with other users, please contact us.
+.. _this web form: https://skjema.uio.no/iaas-project
 
-Demo projects use excess resources that are usually available under normal operation, however, if there is a shortage of resources please note that we may terminate some or all instances running in demo projects without prior notice.
+You will be allocated a demo project the first time you logon . This
+project is personal and for testing purposes.  There is a limited
+quota for this demo project. If you need additional resources or a
+project in which you wish to collaborate with other users, please
+apply for a proper project using **`this web form`_**.
 
-Quotas are set by region. Projects that haven't been given a quota in their respective region will be automatically given a default quota. 
+Demo projects use excess resources that are usually available under
+normal operation, however, if there is a shortage of resources please
+note that we may terminate some or all instances running in demo
+projects without prior notice.
 
-
+Quotas are set by region. Projects that haven't been given a quota in
+their respective region will be automatically given a default quota.
 
 =================== =========== =========== 
  Quota               Name        Default
@@ -297,3 +304,22 @@ Quotas are set by region. Projects that haven't been given a quota in their resp
 **Volume snapshots**
   The total number of snapshots of all volumes in a project.
 
+
+Proper projects
+---------------
+
+You can apply for a proper project (i.e. not demo) by using **`this
+web form`_**. In this form, you need to give some information about
+the project. Most importantly, we separate between personal and shared
+projects:
+
+**Personal**
+  Personal projects are used by only one user. Only you will have
+  access to your personal project.
+
+**Shared**
+  Shared projects can have multiple users. Users can be added or
+  removed at any time, but access control is done by contacting
+  UH-IaaS support. In order to add a user, the user must have logged
+  in to UH-IaaS at least once, else the user isn't known in the
+  system.
