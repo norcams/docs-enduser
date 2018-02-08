@@ -141,6 +141,14 @@ In this window, enter the following values:
 * **Availability Zone**: No need to change this, use the default
 * **Instance Count**: How many virtual machines to create (usually only 1)
 
+**Instance Name**: Select a name for your new virtual machine
+
+**Availability Zone**: 
+You can choose between `<region>-default-1` and `<region>-legacy-1`. `default` uses a centralized storage, which means that instances will not need to be rebooted while doing maintenance work. On the other hand, `legacy` uses a local storage, which will then require reboot in the case of maintenance work.
+   
+**Instance Count**: How many virtual machines to create (usually only 1)
+
+
 When finished with this tab, select the next, "Source":
 
 .. image:: images/dashboard-create-instance-06.png
