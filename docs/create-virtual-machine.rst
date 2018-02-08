@@ -137,10 +137,6 @@ Click "Launch Instance". The following window will appear:
 
 In this window, enter the following values:
 
-* **Instance Name**: Select a name for your new virtual machine
-* **Availability Zone**: No need to change this, use the default
-* **Instance Count**: How many virtual machines to create (usually only 1)
-
 **Instance Name**: Select a name for your new virtual machine
 
 **Availability Zone**: 
