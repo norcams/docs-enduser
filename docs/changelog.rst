@@ -11,7 +11,7 @@ All major changes to UH-IaaS will be listed on this page.
 Updated Horizon dashboard login page
 ------------------------------------
 
-We have updated the Horizon dashboard with links to UH-IaaS documentation and first time login page.
+We have updated the Horizon dashboard with links to UH-IaaS documentation and first-time login page.
 
 2018-02-26
 ==========
