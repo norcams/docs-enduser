@@ -94,3 +94,8 @@ Creating a snapshot of a running instance
 
 Make sure that the instance is turned off, before creating a snapshot. Creating a snapshot while the instance is running, will disable the network connection.
 
+Outdated size
+-------------
+.. _flavors: http://docs.uh-iaas.no/en/latest/changelog.html#id1
+
+As we have updated flavors_, the users that have had access to the larger machines may now notice new size status "Outdated" in the Horizon dashboard, as those flavors are not available anymore. This will not affect running instances.
