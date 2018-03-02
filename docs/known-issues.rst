@@ -98,4 +98,5 @@ Outdated size
 -------------
 .. _flavors: http://docs.uh-iaas.no/en/latest/changelog.html#id1
 
-As we have updated flavors_, the users that have had access to the larger machines may now notice new size status "Outdated" in the Horizon dashboard, as those flavors are not available anymore. This will not affect running instances.
+As we have updated flavors_, the users that have had access to the larger machines may now notice new size status "Outdated" on the Horizon dashboard. Those flavors are not available anymore, but it will not affect the running instances.
+
