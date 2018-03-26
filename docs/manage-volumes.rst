@@ -77,16 +77,25 @@ The volume is now attached to the virtual machine.
 The volume can now be used as a regular block device from within the
 virtual machine (example):
 
+
 .. code-block:: console
 
+  If this is the first time using this volume, you need to create a file system on it.
+  Check if there is already an available block device:
   # lsblk
   NAME   MAJ:MIN RM    SIZE RO TYPE MOUNTPOINT
   vda    253:0    0      1G  0 disk
   `-vda1 253:1    0 1011.9M  0 part /
   vdb    253:16   0     10G  0 disk
+
+  If there are not any file systems, you need to create one:
   # mkfs.ext4 /dev/vdb
   [...]
+
+  Create a folder and mount the volume on it:
   # mkdir /persistent01 && mount /dev/vdb /persistent01
+
+  Check the amount of disk space available on the file system, and start storing data:
   # df -h /persistent01
   Filesystem                Size      Used Available Use% Mounted on
   /dev/vdb                  9.8G    150.5M      9.2G   2% /persistent01
