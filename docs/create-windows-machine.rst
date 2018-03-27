@@ -124,6 +124,11 @@ example we limit access to a CIDR mask corresponding to the campus network for
 The University of Bergen. If you instead enter 0.0.0.0/0, that will translate
 to the entire Internet, granting global access. Click "Add".
 
+.. IMPORTANT::
+   We advice you to be restrictive with regards to where you open up access to
+   the machine (especially through RDP) until you have ensured the instance is
+   properly secured!
+
 If the instance is ready, we can now assign our new rule to the virtual machine.
 Click on your instance in "Instances" tab, then select "Edit Security Groups":
 
