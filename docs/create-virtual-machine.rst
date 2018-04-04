@@ -327,6 +327,9 @@ image vendor's documentation.
 Doing the same with CLI
 -----------------------
 
+For information on how to install the *command line tools*, check the section
+`Installing the CLI tools<http://docs.uh-iaas.no/en/latest/api.html#openstack-command-line-interface-cli>`_.
+
 #. Listing any existing servers, keypairs and security groups:
 
    .. code-block:: console
