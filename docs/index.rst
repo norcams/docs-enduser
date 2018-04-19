@@ -6,22 +6,21 @@
 Welcome to UH-IaaS end user documentation
 =========================================
 
-.. _Speculative Execution Attacks: http://docs.uh-iaas.no/en/latest/speculativeexecution.html
+.. _IPv6 issues: http://docs.uh-iaas.no/en/latest/fix-ipv6.html
 
 End user guide for the UH-IaaS cloud.
 
 .. IMPORTANT::
-   **Kernel Side-Channel Attacks**
+   **IPv6 issues in OSL**
 
-   For information regarding the recently discovered speculative
-   execution vulnerabilities in modern microprocessors, see
-   `Speculative Execution Attacks`_.
+   We are experiencing issues with IPv6 networking on new instances in OSL.
+   For temporary workarounds, please see `IPv6 issues`_.
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
-   
+
    intro
    login
    dashboard
