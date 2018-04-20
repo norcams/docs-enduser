@@ -1,7 +1,13 @@
 IPv6 issues
 ============
 
-Last changed: 2018-04-19
+Last changed: 2018-04-20
+
+.. IMPORTANT::
+   **UPDATE 2018-04-20**
+   IPv6 networking should work in OSL for now, however, we still have limited
+   capacity while we wait for new hardware and recommend that you launch new
+   instances in BGO until further notice.
 
 .. contents::
 
