@@ -10,12 +10,6 @@ Welcome to UH-IaaS end user documentation
 
 End user guide for the UH-IaaS cloud.
 
-.. IMPORTANT::
-   **IPv6 issues in OSL**
-
-   We are experiencing issues with IPv6 networking on new instances in OSL.
-   For temporary workarounds, please see `IPv6 issues`_.
-
 Contents:
 
 .. toctree::
