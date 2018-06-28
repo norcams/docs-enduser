@@ -30,6 +30,7 @@ Contents:
    changelog
    terms-of-service
    speculativeexecution
+   FAQ
 
 
 Indices and tables
