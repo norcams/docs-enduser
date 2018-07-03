@@ -121,7 +121,7 @@ Group". Click "Manage Rules" on your newly created security group, then
 
 "RDP" is pre-defined in the system, so select that from the menu. In this
 example we limit access to a CIDR mask corresponding to the campus network for
-The University of Bergen. If you instead enter 0.0.0.0/0, that will translate
+The University of Bergen. If you instead enter 0.0.0.0/0 or ::/0, that will translate
 to the entire Internet, granting global access. Click "Add".
 
 .. IMPORTANT::
