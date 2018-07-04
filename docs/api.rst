@@ -38,13 +38,13 @@ natively on some Linux distributions.
 
     .. code-block:: console
 
-      # subscription-manager repos --enable=rhel-7-workstation-openstack-12-tools-rpms
+      # subscription-manager repos --enable=rhel-7-workstation-openstack-11-tools-rpms
 
   * For RHEL7 Server:
 
     .. code-block:: console
 
-      # subscription-manager repos --enable=rhel-7-server-openstack-12-tools-rpms
+      # subscription-manager repos --enable=rhel-7-server-openstack-11-tools-rpms
 
   Then, install the CLI tools using yum:
 
