@@ -84,8 +84,7 @@ You can modify these examples for your specific use cases.
 In addition to these ways of interacting with a cloud, you can access
 the OpenStack APIs directly or indirectly through cURL commands or
 open SDKs. You can automate access or build tools to manage resources
-and services by using the native OpenStack APIs or the EC2
-compatibility API.
+and services by using the native OpenStack APIs.
 
 To use the OpenStack APIs, it helps to be familiar with HTTP/1.1,
 RESTful_ web services, the `OpenStack services`_, and JSON_ or XML_ data
