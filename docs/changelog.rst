@@ -4,7 +4,7 @@ Changelog
 
 All major changes to UH-IaaS will be listed on this page.
 
-2018-07-26
+2018-07-19
 ==========
 
 UH-IaaS are now running OpenStack Ocata
