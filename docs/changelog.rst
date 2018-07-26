@@ -4,6 +4,16 @@ Changelog
 
 All major changes to UH-IaaS will be listed on this page.
 
+2018-07-26
+==========
+
+UH-IaaS are now running OpenStack Ocata
+---------------------------------------
+
+We've upgraded OpenStack to Ocata, which is the 15th release of the software
+UH-IaaS is built on. For end users the most obvious change is the look of
+OpenStack's dashboard Horizon. If you run into any problems you suspect are
+caused by the upgrade, please let us know.
 
 2018-02-28
 ==========
