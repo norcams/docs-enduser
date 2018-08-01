@@ -7,6 +7,8 @@ Last changed: |date|
 
 .. contents::
 
+.. _access: https://access.uh-iaas.no
+
 You will get a password when you do the initial first login
 (see :doc:`login`). Please make sure you write this down for later
 user.
