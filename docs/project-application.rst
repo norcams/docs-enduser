@@ -4,7 +4,7 @@ Project application
 Demo projects
 -------------
 
-.. _this web form: http://request.uh-iaas.no
+.. _this web form: https://request.uh-iaas.no
 
 You will be allocated a demo project the first time you logon . This
 project is personal and for testing purposes.  There is a limited
