@@ -4,7 +4,7 @@ Project application
 Demo projects
 -------------
 
-.. _this web form: https://skjema.uio.no/iaas-project
+.. _this web form: http://request.uh-iaas.no
 
 You will be allocated a demo project the first time you logon . This
 project is personal and for testing purposes.  There is a limited
@@ -41,7 +41,8 @@ their respective region will be automatically given a default quota.
   The amount of memory availble to an instance.
 
 **Number of volumes**
-  In UH-Iaas, block storage is called volume. The number indicates how many volumes are available in a project.
+  In UH-Iaas, block storage is called volume. The number indicates how many 
+  volumes are available in a project.
 
 **Volume size**
   The total size of all volumes in a project.
