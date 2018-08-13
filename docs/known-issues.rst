@@ -43,25 +43,12 @@ two regions. These constraints will be lifted as more hardware is deployed in
 the IaaS.
 
 
-Cannot create volume from image
--------------------------------
-
-When attempting to create a volume based on an image (for example: an instance
-snapshot), thcwate task will fail. This is a bug in our installation, but considered
-to be a corner use case which may be fixed in the future. If you want to launch
-an instance based on a snapshot, select launch instance and then "instance 
-snapshot" as boot source (which may be what you actually wanted in the first
-place).
-
-
 Network availability
 --------------------
 
-While you control the access to your own virtual machines, the network
-access to the infrastructure is limited. To use the access web page, as well as the API, 
-you are required to use a computer at your educational institution. 
-Currently this usually implies the wired network only at the universities and colleges 
-that are authorized for access.
+To use the access web page you are required to use a computer at your educational
+institution.  Currently this usually implies the wired network only at the universitie
+and colleges that are authorized for access.
 
 
 No access after changed email address
