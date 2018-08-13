@@ -76,10 +76,6 @@ an email to support@uh-iaas.no which includes your current and
 previous primary email addresses. You will then receive further
 instructions on how to proceed.
 
-Creating a snapshot of a running instance
------------------------------------------
-
-Make sure that the instance is turned off, before creating a snapshot. Creating a snapshot while the instance is running, will disable the network connection.
 
 Outdated size
 -------------

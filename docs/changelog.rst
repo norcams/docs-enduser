@@ -4,6 +4,17 @@ Changelog
 
 All major changes to UH-IaaS will be listed on this page.
 
+
+2018-08-13
+==========
+
+Creating a snapshot from a running instance
+-------------------------------------------
+
+Creating a snapshot from a running instance no longer breaks network connectivity.
+It is still highly recommended to turn off the instance before creating a snapshot.
+
+
 2018-07-19
 ==========
 
