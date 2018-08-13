@@ -16,10 +16,14 @@ were limitations as from where the APIs were available without the use of VPN or
 similar services. The registration web page is still limited, though. This will be
 fixed in the near future.
 
+It is now possible to create a volume from an image source.
+
 Creating a snapshot from a running instance no longer breaks network connectivity.
 It is still highly recommended to turn off the instance before creating a snapshot.
 
-It is now possible to create a volume from an image source.
+As an experimental feature it is now possible to boot an instance from a volume, and
+create a new instance on a volume from image. For now, however, there are several
+constraints. Read more in Known Issues.
 
 
 2018-07-19

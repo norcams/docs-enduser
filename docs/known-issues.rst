@@ -42,6 +42,15 @@ more than two compute hosts in the same region. Trying to do so will result in a
 two regions. These constraints will be lifted as more hardware is deployed in
 the IaaS.
 
+Booting instance from a volume
+------------------------------
+
+Booting instances from volumes is an experimental feature. Several features do not
+work when the instance is bootet from a volume: If you create a snapshot of the
+instance, the snapshot will not be bootable. You can, however, turn off the instance and
+create a volume snapshot of the bootdisk. Also, it is not possible to attach
+another volume to the instance. These constrains should be fixed in future upgrades.
+
 
 Network availability
 --------------------
