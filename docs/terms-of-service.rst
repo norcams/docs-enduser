@@ -16,10 +16,10 @@ Signing up
 ----------
 
 .. _Dataporten: https://www.uninett.no/en/
-.. _Feide: https://www.uninett.no/en/tjenester/feide-%E2%80%93-log
+.. _here: https://access.uh-iaas.no/
 
-* In order to use the UH-IaaS infrastructure service, you must sign
-  up with the Feide_ authentication.
+* In order to use the UH-IaaS infrastructure service, you first need to
+  provision yourself here_.
 
 * You must have a valid user account at an educational institution
   in Norway that has signed up for using UH-IaaS.
