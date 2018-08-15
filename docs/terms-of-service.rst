@@ -16,24 +16,25 @@ Signing up
 ----------
 
 .. _Dataporten: https://www.uninett.no/en/
+.. _Feide: https://www.uninett.no/en/tjenester/feide-%E2%80%93-log
 
 * In order to use the UH-IaaS infrastructure service, you must sign
-  up with the Dataporten_ authentication and authorization service.
+  up with the Feide_ authentication.
 
-* You must have a valid user account at any educational institutions
+* You must have a valid user account at an educational institution
   in Norway that has signed up for using UH-IaaS.
 
 * You must provide your username, a valid email address, and any
   other information requested in order to complete the signup
   process.
 
-* When signing up with Dataporten_, make sure to note your API key. It
-  cannot be retrieved afterward.
+* After you successfully signing up, you will get your API password.
+  Make sure to note the password.
 
 * Please carefully guard the security of your account and monitor use
-  of your API keys. You are responsible for all use of the services
+  of your API password. You are responsible for all use of the services
   under your account, whether or not authorized, including any use of
-  your API keys.
+  your API password.
 
 * When you first log in, you are granted with a demo project. This
   project is personal and only for testing purposes.
