@@ -16,6 +16,7 @@ Contents:
    :maxdepth: 2
 
    intro
+   project-application
    login
    dashboard
    create-virtual-machine
