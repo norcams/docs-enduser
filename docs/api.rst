@@ -7,9 +7,14 @@ Last changed: |date|
 
 .. contents::
 
+.. _access: https://access.uh-iaas.no
+
 You will get a password when you do the initial first login
 (see :doc:`login`). Please make sure you write this down for later
-user. If you were an early adopter or forgot your password please contact us.
+use.
+
+If you were an early adopter or forgot your password, you can
+reset your password by clicking on "Reset API password" on access_ page.
 
 OpenStack Command Line Interface (CLI)
 --------------------------------------
