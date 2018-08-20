@@ -49,7 +49,7 @@ you don't already have one:
 
 Another option is to let OpenStack create a keypair for you, more
 about that later. To import your existing keypair into OpenStack, go
-to the **Access & Security** tab under **Project** and select "Key
+to the **Key Pairs** tab under **Project** and select "Key
 Pairs":
 
 .. image:: images/dashboard-access-and-security-01.png
@@ -75,7 +75,7 @@ Letting OpenStack create a keypair
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can let OpenStack create a keypair for you, if you don't wish to
-use an existing one. Go to the **Access & Security** tab
+use an existing one. Go to the **Key Pairs** tab
 under **Project** and select "Key Pairs":
 
 .. image:: images/dashboard-access-and-security-03.png
@@ -222,8 +222,8 @@ Allowing SSH and ICMP access
 In order to allow traffic to the virtual machine, you need to create a
 new security group which allows it, and attach that security group to
 the virtual machine. Alternatively, you can modify an existing rule
-such as "default". To create a new security group, go to the **Access &
-Security** tab under **Project** and select "Security Groups":
+such as "default". To create a new security group, go to the **Network** 
+tab under **Project** and select "Security Groups":
 
 .. image:: images/dashboard-access-and-security-02.png
    :align: center

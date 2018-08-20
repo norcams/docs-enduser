@@ -42,26 +42,22 @@ more than two compute hosts in the same region. Trying to do so will result in a
 two regions. These constraints will be lifted as more hardware is deployed in
 the IaaS.
 
+Booting instance from a volume
+------------------------------
 
-Cannot create volume from image
--------------------------------
-
-When attempting to create a volume based on an image (for example: an instance
-snapshot), thcwate task will fail. This is a bug in our installation, but considered
-to be a corner use case which may be fixed in the future. If you want to launch
-an instance based on a snapshot, select launch instance and then "instance 
-snapshot" as boot source (which may be what you actually wanted in the first
-place).
+Booting instances from volumes is an experimental feature. Several features do not
+work when the instance is bootet from a volume: If you create a snapshot of the
+instance, the snapshot will not be bootable. You can, however, turn off the instance and
+create a volume snapshot of the bootdisk. Also, it is not possible to attach
+another volume to the instance. These constrains should be fixed in future upgrades.
 
 
 Network availability
 --------------------
 
-While you control the access to your own virtual machines, the network
-access to the infrastructure is limited. To use the access web page, as well as the API, 
-you are required to use a computer at your educational institution. 
-Currently this usually implies the wired network only at the universities and colleges 
-that are authorized for access.
+To use the access web page you are required to use a computer at your educational
+institution.  Currently this usually implies the wired network only at the universitie
+and colleges that are authorized for access.
 
 
 No access after changed email address
@@ -76,10 +72,6 @@ an email to support@uh-iaas.no which includes your current and
 previous primary email addresses. You will then receive further
 instructions on how to proceed.
 
-Creating a snapshot of a running instance
------------------------------------------
-
-Make sure that the instance is turned off, before creating a snapshot. Creating a snapshot while the instance is running, will disable the network connection.
 
 Outdated size
 -------------

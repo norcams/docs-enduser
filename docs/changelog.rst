@@ -4,6 +4,28 @@ Changelog
 
 All major changes to UH-IaaS will be listed on this page.
 
+
+2018-08-13
+==========
+
+Several issues fixed
+--------------------
+
+The APIs for all UH-IaaS services are now open from everywhere. Earlier there
+were limitations as from where the APIs were available without the use of VPN or
+similar services. The registration web page is still limited, though. This will be
+fixed in the near future.
+
+It is now possible to create a volume from an image source.
+
+Creating a snapshot from a running instance no longer breaks network connectivity.
+It is still highly recommended to turn off the instance before creating a snapshot.
+
+As an experimental feature it is now possible to boot an instance from a volume, and
+create a new instance on a volume from image. For now, however, there are several
+constraints. Read more in Known Issues.
+
+
 2018-07-19
 ==========
 
