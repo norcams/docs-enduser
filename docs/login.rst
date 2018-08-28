@@ -101,7 +101,7 @@ then reach this page:
    :align: center
    :alt: Dataporten: login
 
-Type in your regular user name and password, and click "Login". You
+Type in your regular user name and password, and click "Sign up". You
 should then be redirected back to the UH-IaaS dashboard:
 
 .. image:: images/dashboard-login-99.png
