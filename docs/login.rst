@@ -33,7 +33,7 @@ The following window will appear:
    :align: center
    :alt: Access
 
-Click ``Logg inn``:
+Click ``Sign up``:
 
 .. image:: images/access-02.png
    :align: center
