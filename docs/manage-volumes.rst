@@ -100,6 +100,9 @@ virtual machine (example):
   Filesystem                Size      Used Available Use% Mounted on
   /dev/vdb                  9.8G    150.5M      9.2G   2% /persistent01
 
+Note that in order for the volume to be mounted automatically after a reboot, 
+you will have to add an entry to /etc/fstab.
+
 
 
 Detach a volume from a virtual machine
