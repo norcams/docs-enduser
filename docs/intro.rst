@@ -45,17 +45,19 @@ All users at educational institutions that are allegeable for access
 can use the UH-IaaS cloud. All you need is an account any of these
 universities or colleges.
 
-+--------------------------------+---------------------------------+
-| University / College           | Type of access                  |
-+================================+=================================+
-| `University of Bergen (UiB)`_  | Full Access                     |
-+--------------------------------+---------------------------------+
-| `University of Oslo (UiO)`_    | Full Access                     |
-+--------------------------------+---------------------------------+
-| `UNINETT`_                     | Limited testing                 |
-+--------------------------------+---------------------------------+
-| `University of Agder (UiA)`_   | Full Access                     |
-+--------------------------------+---------------------------------+
++-----------------------------------------+------------------------------------------+
+| University / College / Organization              | Type of access                  |
++=========================================+==========================================+
+| `The Arctic University of Norway (UiT)`_         | Limited testing                 |
++-----------------------------------------+------------------------------------------+
+| `Norwegian University of Life Sciences (NMBU)`_  | Limited testing                 |
++-----------------------------------------+------------------------------------------+
+| `UNINETT`_                                       | Limited testing                 |
++-----------------------------------------+------------------------------------------+
+| `University of Bergen (UiB)`_                    | Full Access                     |
++-----------------------------------------+------------------------------------------+
+| `University of Oslo (UiO)`_                      | Full Access                     |
++-----------------------------------------+------------------------------------------+
 
 Before using the service, you must register with the authentication
 mechanism and the service itself. This is explained in detail in
