@@ -32,10 +32,11 @@ Who can use the UH-IaaS cloud?
 .. _Terms of Service: terms-of-service.html
 .. _Logging in: login.html
 
+.. _The Arctic University of Norway (UiT): https://www.uit.no/
+.. _Norwegian University of Life Sciences (NMBU): https://www.nmbu.no/
+.. _UNINETT: https://www.uninett.no/
 .. _University of Bergen (UiB): http://www.uib.no/
 .. _University of Oslo (UiO): http://www.uio.no/
-.. _UNINETT: https://www.uninett.no/
-.. _University of Agder (UiA): http://www.uia.no/
 
 .. IMPORTANT::
    Before using this cloud service, you should familiarize yourself
