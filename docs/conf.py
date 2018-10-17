@@ -55,7 +55,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'UH-IaaS end user documentation'
-copyright = u'2016, NorCAMS'
+copyright = u'2018, UH-IaaS'
 author = u'UH-IaaS team'
 
 # The version info for the project you're documenting, acts as replacement for
