@@ -47,6 +47,13 @@ available:
    :align: center
    :alt: Dashboard - Create Volume finished
 
+You can also ``Create Snapshot`` of the volume. The snapshot of the volume
+will be located under **Volumes** tab:
+
+.. image:: images/dashboard-snapshot-01.png
+   :align: center
+   :alt: Dashboard - Volumes -> Snapshots
+
 
 Attach a volume to a virtual machine
 ------------------------------------
