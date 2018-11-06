@@ -14,7 +14,7 @@ Create a snapshot
 -----------------
 *NB!* Make sure that the instance is turned off, before creating a snapshot.
 
-In the dashboard, select *Instances* in the *Compute* tab:
+In the dashboard, select **Instances** in the **Compute** tab:
 
 .. image:: images/create-snapshot-01.png
    :align: center
@@ -31,7 +31,7 @@ Click on ``Create Snapshot``, and the following window appears:
    
 
 Fill in the **Snapshot Name** and click on ``Create Snapshot``. The snapshot
-will be created and located under *Images* in the *Compute* tab:
+will be created and located under **Images** in the **Compute** tab:
 
 .. image:: images/create-snapshot-03.png
    :align: center
