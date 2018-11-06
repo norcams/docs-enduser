@@ -17,11 +17,11 @@ time. You can also create a snapshot from or delete a volume.
 Create a volume
 ---------------
 
-In the dashboard, select **Volumes** in the **Compute** tab:
+In the dashboard, select **Volumes** in the **Volumes** tab:
 
 .. image:: images/dashboard-volumes-01.png
    :align: center
-   :alt: Dashboard - Compute -> Volumes
+   :alt: Dashboard - Volumes -> Volumes
 
 Click on ``Create Volume``, and the following window appears:
 
@@ -47,6 +47,13 @@ available:
    :align: center
    :alt: Dashboard - Create Volume finished
 
+You can also ``Create Snapshot`` of the volume. The snapshot of the volume
+will be located under **Volumes** tab:
+
+.. image:: images/dashboard-snapshot-01.png
+   :align: center
+   :alt: Dashboard - Volumes -> Snapshots
+
 
 Attach a volume to a virtual machine
 ------------------------------------
@@ -54,7 +61,7 @@ Attach a volume to a virtual machine
 After creating one or more volumes, you can attach them to virtual
 machines (instances). A volume is a block storage device, and can only
 be attached to one virtual machine at a time. In the **Volumes** tab
-under **Compute**, select *Manage Attachments* from the dropdown menu:
+under **Volumes**, select *Manage Attachments* from the dropdown menu:
 
 .. image:: images/dashboard-attach-volume-01.png
    :align: center
@@ -109,8 +116,7 @@ Detach a volume from a virtual machine
 --------------------------------------
 
 In order to detach a volume from a virtual machine (instance),
-select *Manage Attachments* from the dropdown menu in the **Volumes** tab
-under **Compute**:
+select *Manage Attachments* from the dropdown menu in the **Volumes**:
 
 .. image:: images/dashboard-detach-volume-01.png
    :align: center
@@ -135,8 +141,7 @@ The volume is now detached.
 Delete a volume
 ---------------
 
-Deleting a volume is pretty straightforward. In the **Volumes** tab
-under **Compute**, select the appropriate check boxes for the volumes
+Deleting a volume is pretty straightforward. In the **Volumes**, select the appropriate check boxes for the volumes
 that you want to delete, and click ``Delete Volumes``:
 
 .. image:: images/dashboard-delete-volume-01.png
