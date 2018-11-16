@@ -4,6 +4,29 @@ Changelog
 
 All major changes to UH-IaaS will be listed on this page.
 
+2018-11-13
+==========
+
+We've upgraded all the remaining services to the Pike version which includes
+Compute (Nova), Network (Neutron), Volume (Cinder) and Image (Glance). Some of
+you may have noticed that we ran into a few problems the following day, but all
+those should be resolved now. If you would like more details, please refer to
+the Pike release notes available here:
+https://releases.openstack.org/pike/index.html
+If you run into any problems you suspect are caused by the upgrade, please let
+us know.
+
+2018-10-31
+==========
+
+Dashboard (Horizon) has been upgraded to the Pike version. There are small
+changes in the GUI, but none of them are very intrusive. If you run into any
+problems, please let us know.
+
+2018-10-17
+==========
+
+Identity (Keystone) has been upgraded to the Pike version.
 
 2018-08-13
 ==========
