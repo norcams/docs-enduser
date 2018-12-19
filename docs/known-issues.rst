@@ -79,3 +79,53 @@ Outdated size
 
 As we have updated flavors_, the users that have had access to the larger machines may now notice new size status "Outdated" on the Horizon dashboard. Those flavors are not available anymore, but it will not affect the running instances.
 
+
+Missing network when provisioning from snapshot
+-----------------------------------------------
+
+There is an issue with CentOS and provisioning instances from a
+snapshot. This is due to a local workaround we have added to mitigate
+a bug in the CentOS cloud-init package. This bug is fixed in CentOS
+7.6 onwards. However, for instances originally provisioned with CentOS
+7.5 or older this is a problem. Here is how to fix this:
+
+#. Log into your instance as the `centos` user
+
+#. Make sure that the instance is fully updated::
+
+     sudo yum upgrade -y
+
+#. Make sure that the instance is running at least CentOS 7.6
+   (example)::
+
+     [centos@centos ~]$ cat /etc/centos-release
+     CentOS Linux release 7.6.1810 (Core)
+
+#. Install `NetworkManager`::
+
+     sudo yum -y install NetworkManager
+
+#. Enable the `NetworkManager` service::
+
+     sudo systemctl enable NetworkManager
+
+#. Remove the file
+   `/etc/cloud/cloud.cfg.d/99-disable-network-config.cfg`::
+
+     sudo rm /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
+
+#. Create a file `/etc/cloud/cloud.cfg.d/custom-networking.cfg`
+   with the following contents::
+
+     network:
+       version: 2
+       ethernets:
+         eth0:
+           dhcp4: true
+           dhcp6: true
+
+After this change, you should be able to take a snapshot from the
+instance, and use that snapshot to provision other
+instances. Networking should just work. Since we have introduced a
+significant change to the original instance, this instance should be
+rebooted also.
