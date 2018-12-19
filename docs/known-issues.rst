@@ -89,7 +89,7 @@ a bug in the CentOS cloud-init package. This bug is fixed in CentOS
 7.6 onwards. However, for instances originally provisioned with CentOS
 7.5 or older this is a problem. Here is how to fix this:
 
-#. Log into your instance as the **centos** user
+#. Log in to your instance as the **centos** user
 
 #. Make sure that the instance is fully updated::
 
