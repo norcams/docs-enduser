@@ -89,7 +89,7 @@ a bug in the CentOS cloud-init package. This bug is fixed in CentOS
 7.6 onwards. However, for instances originally provisioned with CentOS
 7.5 or older this is a problem. Here is how to fix this:
 
-#. Log into your instance as the `centos` user
+#. Log into your instance as the **centos** user
 
 #. Make sure that the instance is fully updated::
 
@@ -101,20 +101,20 @@ a bug in the CentOS cloud-init package. This bug is fixed in CentOS
      [centos@centos ~]$ cat /etc/centos-release
      CentOS Linux release 7.6.1810 (Core)
 
-#. Install `NetworkManager`::
+#. Install the **NetworkManager** package::
 
      sudo yum -y install NetworkManager
 
-#. Enable the `NetworkManager` service::
+#. Enable the **NetworkManager** service::
 
      sudo systemctl enable NetworkManager
 
 #. Remove the file
-   `/etc/cloud/cloud.cfg.d/99-disable-network-config.cfg`::
+   ``/etc/cloud/cloud.cfg.d/99-disable-network-config.cfg``::
 
      sudo rm /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
 
-#. Create a file `/etc/cloud/cloud.cfg.d/custom-networking.cfg`
+#. Create a file ``/etc/cloud/cloud.cfg.d/custom-networking.cfg``
    with the following contents::
 
      network:
@@ -126,6 +126,6 @@ a bug in the CentOS cloud-init package. This bug is fixed in CentOS
 
 After this change, you should be able to take a snapshot from the
 instance, and use that snapshot to provision other
-instances. Networking should just work. Since we have introduced a
-significant change to the original instance, this instance should be
-rebooted also.
+instances. Networking should just work. Note that we have introduced a
+significant change to the original instance. This instance should be
+rebooted after the changes, if possible.
