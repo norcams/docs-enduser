@@ -83,6 +83,12 @@ As we have updated flavors_, the users that have had access to the larger machin
 Missing network when provisioning from snapshot
 -----------------------------------------------
 
+.. NOTE::
+   This issue only affects CentOS 7 instances provisioned from our
+   GOLD image before 2019-01-01. As of January 1, 2019 the GOLD image
+   for CentOS 7 is upgraded to CentOS 7.6, and the networking setup
+   has been fixed.
+
 There is an issue with CentOS and provisioning instances from a
 snapshot. This is due to a local workaround we have added to mitigate
 a bug in the CentOS cloud-init package. This bug is fixed in CentOS
