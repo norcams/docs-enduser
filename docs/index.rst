@@ -3,12 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to UH-IaaS end user documentation
+Welcome to UH-IaaS End User Documentation
 =========================================
 
 .. _IPv6 issues: http://docs.uh-iaas.no/en/latest/fix-ipv6.html
 
-End user guide for the UH-IaaS cloud.
+End user guide for the UH-IaaS cloud
 
 Contents:
 
