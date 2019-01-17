@@ -4,6 +4,11 @@ Changelog
 
 All major changes to UH-IaaS will be listed on this page.
 
+2019-01-17
+==========
+
+We've launched a new logo for UH-IaaS.
+
 2018-11-13
 ==========
 
