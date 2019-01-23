@@ -11,6 +11,12 @@ The UH-IaaS DNS service is an OpenStack component
 named **Designate**. With this, you can create DNS zones (domain
 names) and DNS records within your zones.
 
+.. NOTE::
+   The documentation for the UH-IaaS DNS service is under
+   construction. If you find parts that are missing, unclear og just
+   plain wrong, please contact us.
+
+
 Accessing the DNS zones GUI pane
 --------------------------------
 
