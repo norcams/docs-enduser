@@ -11,6 +11,18 @@ The UH-IaaS DNS service is an OpenStack component
 named **Designate**. With this, you can create DNS zones (domain
 names) and DNS records within your zones.
 
+Accessing the DNS zones GUI pane
+--------------------------------
+
+In the menu to the left in the dasboard, click on **DNS** and
+then **zones**:
+
+.. image:: images/dns-menu-01.png
+   :align: center
+   :alt: Accessing DNS zones menu item
+
+
+
 FIXME.
 
 Doing the same with CLI
