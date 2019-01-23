@@ -230,11 +230,16 @@ we wish to create an alias ``www.mytestzone.com`` that points to
 Using the GUI
 ~~~~~~~~~~~~~
 
-foo
+Click on **Create Record Set** as before. In the form, select **CNAME
+- Canonical name record** as the type. Here, the name is the alias and
+the record is the DNS entry which it points to:
 
-Doing the same with CLI
------------------------
+.. image:: images/dns-create-recordset-06.png
+   :align: center
+   :alt: Create a CNAME record
 
+Using the OpenStack CLI
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Creating a **CNAME** record, i.e. an alias for another DNS entry:
 
@@ -260,6 +265,23 @@ Creating a **CNAME** record, i.e. an alias for another DNS entry:
   | zone_name   | mytestzone.com.                      |
   +-------------+--------------------------------------+
 
+
+Listing your DNS records
+------------------------
+
+Using the GUI
+~~~~~~~~~~~~~
+
+In order to list the records for a given zone, click on the zone name
+in the zones listing, and select **Record Sets**:
+
+.. image:: images/dns-list-recordsets-01.png
+   :align: center
+   :alt: Listing record sets for a zone
+
+Using the OpenStack CLI
+~~~~~~~~~~~~~~~~~~~~~~~
+
 Listing your DNS records for ``mytestzone.com``:
 
 .. code-block:: console
@@ -276,7 +298,14 @@ Listing your DNS records for ``mytestzone.com``:
   | da6708fd-4023-48a0-adb6-5c3373605e37 | www.mytestzone.com.    | CNAME | test01.mytestzone.com.                                      | ACTIVE | NONE   |
   +--------------------------------------+------------------------+-------+-------------------------------------------------------------+--------+--------+
 
-Testing your records:
+
+
+Testing your records
+--------------------
+
+In order to test your record, you can query the UH-IaaS name servers,
+which are authoritative for all zones created via the UH-IaaS DNS
+service. Example:
 
 .. code-block:: console
 
