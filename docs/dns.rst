@@ -18,15 +18,40 @@ In the menu to the left in the dasboard, click on **DNS** and
 then **zones**:
 
 .. image:: images/dns-menu-01.png
-   :align: center
+   :align: left
    :alt: Accessing DNS zones menu item
 
 You will then see the zones window, which looks like this if there are
 no currently configured DNS zones in the project:
 
 .. image:: images/dns-zones-01.png
-   :align: center
+   :align: left
    :alt: Empty DNS zones
+
+Creating a new zone
+-------------------
+
+In order to create a new zone, click on **Create Zone**. You will
+presented with the following form:
+
+.. image:: images/dns-create-zone-01.png
+   :align: left
+   :alt: Creating av zone
+
+Here, you need to fill in:
+
+* The name of the zone, ending with a dot ("**.**"). In the example,
+  we've chosen ``mytestzone.com.``.
+* Email address, which will be presented to the world as the point of
+  contact for this DNS zone.
+
+The rest is optional or has default values that you usually don't need
+to adjust unless you know what you're doing. When you're satisfied,
+click **Submit** and the zone will be created:
+
+.. image:: images/dns-create-zone-02.png
+   :align: left
+   :alt: Finished creating a zone
 
 
 FIXME.
