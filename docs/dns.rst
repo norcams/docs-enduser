@@ -21,6 +21,12 @@ then **zones**:
    :align: center
    :alt: Accessing DNS zones menu item
 
+You will then see the zones window, which looks like this if there are
+no currently configured DNS zones in the project:
+
+.. image:: images/dns-zones-01.png
+   :align: center
+   :alt: Empty DNS zones
 
 
 FIXME.
