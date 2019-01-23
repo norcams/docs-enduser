@@ -18,25 +18,41 @@ In the menu to the left in the dasboard, click on **DNS** and
 then **zones**:
 
 .. image:: images/dns-menu-01.png
-   :align: left
+   :align: center
    :alt: Accessing DNS zones menu item
 
 You will then see the zones window, which looks like this if there are
 no currently configured DNS zones in the project:
 
 .. image:: images/dns-zones-01.png
-   :align: left
+   :align: center
    :alt: Empty DNS zones
+
+
+Installing the CLI extension
+----------------------------
+
+In order to use the command line interface to work with the DNS
+service, you need to install the extension. On RHEL/CentOS and Fedora,
+you can install this extension via the package manager:
+
+.. code-block:: console
+
+  # yum install python-designateclient
+
 
 Creating a new zone
 -------------------
+
+Using the GUI
+~~~~~~~~~~~~~
 
 In order to create a new zone, click on **Create Zone**. You will
 presented with the following form:
 
 .. image:: images/dns-create-zone-01.png
-   :align: left
-   :alt: Creating av zone
+   :align: center
+   :alt: Creating a zone
 
 Here, you need to fill in:
 
@@ -50,16 +66,13 @@ to adjust unless you know what you're doing. When you're satisfied,
 click **Submit** and the zone will be created:
 
 .. image:: images/dns-create-zone-02.png
-   :align: left
+   :align: center
    :alt: Finished creating a zone
 
+Using OpenStack CLI
+~~~~~~~~~~~~~~~~~~~
 
-FIXME.
-
-Doing the same with CLI
------------------------
-
-Creating the zone via `openstack zone create`:
+Creating the zone via ``openstack zone create``:
 
 .. code-block:: console
 
@@ -97,6 +110,44 @@ List your zones:
   | ffdba4fd-0e04-4edb-8756-e4944c148d0a | mytestzone.com. | PRIMARY | 1548167577 | ACTIVE | NONE   |
   +--------------------------------------+-----------------+---------+------------+--------+--------+
 
+
+Adding an A record
+------------------
+
+An **A** record is perhaps the most basic of DNS records. It creates a
+mapping between an IPv4 address and a name in DNS.
+
+Using the GUI
+~~~~~~~~~~~~~
+
+In your zones summary, click on **Create Record Set**:
+
+.. image:: images/dns-create-recordset-01.png
+   :align: center
+   :alt: Create Record Set
+
+The following form will appear:
+
+.. image:: images/dns-create-recordset-02.png
+   :align: center
+   :alt: Create an A record
+
+You need to fill out the following:
+
+* The type of record. In this case **A - Address Record**, which is
+  the default.
+* The name of the record, which includes your zone name and ending in
+  a dot ("**.**"). In the example, we've chosen
+  ``test01.mytestzone.com.``.
+* The record, which is the IPv4 address that you want the name to
+  point to in DNS. In the example: ``10.0.0.1``.
+
+When you're satisfied, click **Submit** and the record will be
+created.
+
+Using the OpenStack CLI
+~~~~~~~~~~~~~~~~~~~~~~~
+
 Creating an **A** record (IPv4 pointer), i.e. a DNS entry for
 ``test01.mytestzone.com`` that points to the IPv4 address ``10.0.0.1``:
 
@@ -121,6 +172,26 @@ Creating an **A** record (IPv4 pointer), i.e. a DNS entry for
   | zone_id     | ffdba4fd-0e04-4edb-8756-e4944c148d0a |
   | zone_name   | mytestzone.com.                      |
   +-------------+--------------------------------------+
+
+
+
+Adding an AAAA record
+---------------------
+
+An **AAAA** record is exactly the same as an **A** record, except that
+it applies to IPv6 addresses instead of IPv4.
+
+Using the GUI
+~~~~~~~~~~~~~
+
+Follow the guide for `Adding an A record`_ above, but:
+
+* In the type selection, select **AAAA - IPv6 address record**
+* For the record, enter an IPv6 address. In our example, we've chosen
+  ``fd32:100:200:300::12``.
+
+Using the OpenStack CLI
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Creating a **AAAA** record (IPv6 pointer), i.e. a DNS entry for
 ``test01.mytestzone.com`` that points to the IPv6 address
@@ -147,6 +218,23 @@ Creating a **AAAA** record (IPv6 pointer), i.e. a DNS entry for
   | zone_id     | ffdba4fd-0e04-4edb-8756-e4944c148d0a |
   | zone_name   | mytestzone.com.                      |
   +-------------+--------------------------------------+
+
+
+Adding a CNAME record
+---------------------
+
+A **CNAME** record is an alias to another DNS record. In our example,
+we wish to create an alias ``www.mytestzone.com`` that points to
+``test01.mytestzone.com``.
+
+Using the GUI
+~~~~~~~~~~~~~
+
+foo
+
+Doing the same with CLI
+-----------------------
+
 
 Creating a **CNAME** record, i.e. an alias for another DNS entry:
 
