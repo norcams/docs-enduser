@@ -141,7 +141,7 @@ Adding an AAAA record
 An **AAAA** record is exactly the same as an **A** record, except that
 it applies to IPv6 addresses instead of IPv4.
 
-Follow the guide for `Adding an A record`_ above, but:
+Follow the guide for **Adding an A record** above, but:
 
 * In the type selection, select **AAAA - IPv6 address record**
 * For the record, enter an IPv6 address. In our example, we've chosen
