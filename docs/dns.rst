@@ -1,7 +1,7 @@
 .. |date| date::
 
-Using the DNS service
-=====================
+The UH-IaaS DNS service
+=======================
 
 Last changed: |date|
 
