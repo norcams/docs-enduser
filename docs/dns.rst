@@ -79,18 +79,6 @@ no currently configured DNS zones in the project:
    :alt: Empty DNS zones
 
 
-Installing the CLI extension
-----------------------------
-
-In order to use the command line interface to work with the DNS
-service, you need to install the extension. On RHEL/CentOS and Fedora,
-you can install this extension via the package manager:
-
-.. code-block:: console
-
-  # yum install python-designateclient
-
-
 Creating a new zone
 -------------------
 
@@ -226,6 +214,18 @@ themselves.
 
 Doing the same with CLI
 -----------------------
+
+Installing the CLI extension
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In order to use the command line interface to work with the DNS
+service, you need to install the extension. On RHEL/CentOS and Fedora,
+you can install this extension via the package manager:
+
+.. code-block:: console
+
+  # yum install python-designateclient
+
 
 Creating a new zone
 ~~~~~~~~~~~~~~~~~~~
