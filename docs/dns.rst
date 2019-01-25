@@ -63,7 +63,7 @@ Accessing the DNS zones GUI panel
 ---------------------------------
 
 In the menu to the left in the dasboard, click on **DNS** and
-then **zones**:
+then **Zones**:
 
 .. image:: images/dns-menu-01.png
    :align: center
