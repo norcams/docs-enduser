@@ -18,16 +18,16 @@ in `this Wikipedia article`_.
 When to use the DNS service
 ---------------------------
 
-The UH-IaaS DNS service allows you to register and manage DNS zones
-using the OpenStack GUI, API and command line interface (CLI). Any
-zone can be registered and managed, providing it is using a legal top
-level domain (TLD). You don't have to own the zone in question, but
-registering and managing an unowned zone doesn't make sense unless for
-testing purposes. DNS is a global namespace, and in order to use this
-service properly the global DNS namespace needs to know which name
-servers are authoritative for your zone. The following lists the
-requirements for using the UH-IaaS DNS service for production
-purposes:
+The UH-IaaS DNS service allows the registration and management of DNS
+zones using the OpenStack GUI, API and command line interface
+(CLI). Any zone can be registered and managed, providing it is using a
+legal top level domain (TLD). You don't have to own the zone in
+question, but registering and managing an unowned zone doesn't make
+sense unless for testing purposes. DNS is a global namespace, and in
+order to use this service properly the global DNS namespace needs to
+know which name servers are authoritative for your zone. The following
+lists the requirements for using the UH-IaaS DNS service for
+production purposes:
 
 #. You need to own a zone, or have it delegated. There are a number of
    DNS vendors from which you can purchase DNS zones.
