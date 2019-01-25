@@ -18,8 +18,8 @@ in `this Wikipedia article`_.
 When to use the DNS service
 ---------------------------
 
-The UH-IaaS DNS service allows the registration and management of DNS
-zones using the OpenStack GUI, API and command line interface
+The UH-IaaS DNS service allows for the registration and management of
+DNS zones using the OpenStack GUI, API and command line interface
 (CLI). Any zone can be registered and managed, providing it is using a
 legal top level domain (TLD). You don't have to own the zone in
 question, but registering and managing an unowned zone doesn't make
