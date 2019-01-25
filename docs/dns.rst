@@ -37,13 +37,11 @@ purposes:
 #. Instruct the DNS vendor, or the entity that is delegating this zone
    to you, that the authoritative DNS servers for the zone should be:
 
-   * **ns1.uh-iaas.no**
-     - IPv4 address: ``158.37.63.251``
-     - IPv6 address: ``2001:700:2:82ff::251``
+   * **ns1.uh-iaas.no** (IPv4 address: ``158.37.63.251``, IPv6
+     address: ``2001:700:2:82ff::251``)
 
-   * **ns2.uh-iaas.no**
-     - IPv4 address: ``158.39.77.251``
-     - IPv6 address: ``2001:700:2:83ff::251``
+   * **ns2.uh-iaas.no** (IPv4 address: ``158.39.77.251``, IPv6
+     address: ``2001:700:2:83ff::251``)
 
    You can verify that this change has been made by the vendor, by
    querying DNS (example)::
