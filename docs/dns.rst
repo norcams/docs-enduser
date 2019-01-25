@@ -185,7 +185,7 @@ service. Example:
 
 .. code-block:: console
 
-  $ **host test01.mytestzone.com ns1.uh-iaas.no**
+  $ host test01.mytestzone.com ns1.uh-iaas.no
   Using domain server:
   Name: ns1.uh-iaas.no
   Address: 2001:700:2:82ff::251#53
