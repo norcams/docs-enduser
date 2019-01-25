@@ -94,9 +94,6 @@ you can install this extension via the package manager:
 Creating a new zone
 -------------------
 
-Using the GUI
-~~~~~~~~~~~~~
-
 In order to create a new zone, click on **Create Zone**. You will
 presented with the following form:
 
@@ -119,7 +116,118 @@ click **Submit** and the zone will be created:
    :align: center
    :alt: Finished creating a zone
 
-Using OpenStack CLI
+
+Adding an A record
+------------------
+
+An **A** record is perhaps the most basic of DNS records. It creates a
+mapping between an IPv4 address and a name in DNS.
+
+In your zones summary, click on **Create Record Set**:
+
+.. image:: images/dns-create-recordset-01.png
+   :align: center
+   :alt: Create Record Set
+
+The following form will appear:
+
+.. image:: images/dns-create-recordset-02.png
+   :align: center
+   :alt: Create an A record
+
+You need to fill out the following:
+
+* The type of record. In this case **A - Address Record**, which is
+  the default.
+* The name of the record, which includes your zone name and ending in
+  a dot ("**.**"). In the example, we've chosen
+  ``test01.mytestzone.com.``.
+* The record, which is the IPv4 address that you want the name to
+  point to in DNS. In the example: ``10.0.0.1``.
+
+When you're satisfied, click **Submit** and the record will be
+created.
+
+
+Adding an AAAA record
+---------------------
+
+An **AAAA** record is exactly the same as an **A** record, except that
+it applies to IPv6 addresses instead of IPv4.
+
+Follow the guide for `Adding an A record`_ above, but:
+
+* In the type selection, select **AAAA - IPv6 address record**
+* For the record, enter an IPv6 address. In our example, we've chosen
+  ``fd32:100:200:300::12``.
+
+
+Adding a CNAME record
+---------------------
+
+A **CNAME** record is an alias to another DNS record. In our example,
+we wish to create an alias ``www.mytestzone.com`` that points to
+``test01.mytestzone.com``.
+
+Click on **Create Record Set** as before. In the form, select **CNAME
+- Canonical name record** as the type. Here, the name is the alias and
+the record is the DNS entry which it points to:
+
+.. image:: images/dns-create-recordset-06.png
+   :align: center
+   :alt: Create a CNAME record
+
+
+Listing your DNS records
+------------------------
+
+In order to list the records for a given zone, click on the zone name
+in the zones listing, and select **Record Sets**:
+
+.. image:: images/dns-list-recordsets-01.png
+   :align: center
+   :alt: Listing record sets for a zone
+
+
+
+Testing your records
+--------------------
+
+In order to test your record, you can query the UH-IaaS name servers,
+which are authoritative for all zones created via the UH-IaaS DNS
+service. Example:
+
+.. code-block:: console
+
+  $ host test01.mytestzone.com ns1.uh-iaas.no
+  Using domain server:
+  Name: ns1.uh-iaas.no
+  Address: 2001:700:2:82ff::251#53
+  Aliases: 
+  
+  test01.mytestzone.com has address 10.0.0.1
+  test01.mytestzone.com has IPv6 address fd32:100:200:300::12
+  
+  $ host www.mytestzone.com ns2.uh-iaas.no
+  Using domain server:
+  Name: ns2.uh-iaas.no
+  Address: 2001:700:2:83ff::251#53
+  Aliases: 
+  
+  www.mytestzone.com is an alias for test01.mytestzone.com.
+  test01.mytestzone.com has address 10.0.0.1
+  test01.mytestzone.com has IPv6 address fd32:100:200:300::12
+
+You can test against either **ns1.uh-iaas.no** or **ns2.uh-iaas.no**,
+it doesn't matter. Both are authoritative name servers in the UH-IaaS
+infrastructure, and does not resolve other domains than they serve
+themselves.
+
+
+Doing the same with CLI
+-----------------------
+
+Creating a new zone
 ~~~~~~~~~~~~~~~~~~~
 
 Creating the zone via ``openstack zone create``:
@@ -162,41 +270,7 @@ List your zones:
 
 
 Adding an A record
-------------------
-
-An **A** record is perhaps the most basic of DNS records. It creates a
-mapping between an IPv4 address and a name in DNS.
-
-Using the GUI
-~~~~~~~~~~~~~
-
-In your zones summary, click on **Create Record Set**:
-
-.. image:: images/dns-create-recordset-01.png
-   :align: center
-   :alt: Create Record Set
-
-The following form will appear:
-
-.. image:: images/dns-create-recordset-02.png
-   :align: center
-   :alt: Create an A record
-
-You need to fill out the following:
-
-* The type of record. In this case **A - Address Record**, which is
-  the default.
-* The name of the record, which includes your zone name and ending in
-  a dot ("**.**"). In the example, we've chosen
-  ``test01.mytestzone.com.``.
-* The record, which is the IPv4 address that you want the name to
-  point to in DNS. In the example: ``10.0.0.1``.
-
-When you're satisfied, click **Submit** and the record will be
-created.
-
-Using the OpenStack CLI
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
 Creating an **A** record (IPv4 pointer), i.e. a DNS entry for
 ``test01.mytestzone.com`` that points to the IPv4 address ``10.0.0.1``:
@@ -226,22 +300,7 @@ Creating an **A** record (IPv4 pointer), i.e. a DNS entry for
 
 
 Adding an AAAA record
----------------------
-
-An **AAAA** record is exactly the same as an **A** record, except that
-it applies to IPv6 addresses instead of IPv4.
-
-Using the GUI
-~~~~~~~~~~~~~
-
-Follow the guide for `Adding an A record`_ above, but:
-
-* In the type selection, select **AAAA - IPv6 address record**
-* For the record, enter an IPv6 address. In our example, we've chosen
-  ``fd32:100:200:300::12``.
-
-Using the OpenStack CLI
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 Creating a **AAAA** record (IPv6 pointer), i.e. a DNS entry for
 ``test01.mytestzone.com`` that points to the IPv6 address
@@ -271,25 +330,7 @@ Creating a **AAAA** record (IPv6 pointer), i.e. a DNS entry for
 
 
 Adding a CNAME record
----------------------
-
-A **CNAME** record is an alias to another DNS record. In our example,
-we wish to create an alias ``www.mytestzone.com`` that points to
-``test01.mytestzone.com``.
-
-Using the GUI
-~~~~~~~~~~~~~
-
-Click on **Create Record Set** as before. In the form, select **CNAME
-- Canonical name record** as the type. Here, the name is the alias and
-the record is the DNS entry which it points to:
-
-.. image:: images/dns-create-recordset-06.png
-   :align: center
-   :alt: Create a CNAME record
-
-Using the OpenStack CLI
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 Creating a **CNAME** record, i.e. an alias for another DNS entry:
 
@@ -317,20 +358,7 @@ Creating a **CNAME** record, i.e. an alias for another DNS entry:
 
 
 Listing your DNS records
-------------------------
-
-Using the GUI
-~~~~~~~~~~~~~
-
-In order to list the records for a given zone, click on the zone name
-in the zones listing, and select **Record Sets**:
-
-.. image:: images/dns-list-recordsets-01.png
-   :align: center
-   :alt: Listing record sets for a zone
-
-Using the OpenStack CLI
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Listing your DNS records for ``mytestzone.com``:
 
@@ -347,38 +375,3 @@ Listing your DNS records for ``mytestzone.com``:
   | aead6644-b5e7-4f67-be23-f3ce3423c0e7 | test01.mytestzone.com. | AAAA  | fd32:100:200:300::12                                        | ACTIVE | NONE   |
   | da6708fd-4023-48a0-adb6-5c3373605e37 | www.mytestzone.com.    | CNAME | test01.mytestzone.com.                                      | ACTIVE | NONE   |
   +--------------------------------------+------------------------+-------+-------------------------------------------------------------+--------+--------+
-
-
-
-Testing your records
---------------------
-
-In order to test your record, you can query the UH-IaaS name servers,
-which are authoritative for all zones created via the UH-IaaS DNS
-service. Example:
-
-.. code-block:: console
-
-  $ host test01.mytestzone.com ns1.uh-iaas.no
-  Using domain server:
-  Name: ns1.uh-iaas.no
-  Address: 2001:700:2:82ff::251#53
-  Aliases: 
-  
-  test01.mytestzone.com has address 10.0.0.1
-  test01.mytestzone.com has IPv6 address fd32:100:200:300::12
-  
-  $ host www.mytestzone.com ns2.uh-iaas.no
-  Using domain server:
-  Name: ns2.uh-iaas.no
-  Address: 2001:700:2:83ff::251#53
-  Aliases: 
-  
-  www.mytestzone.com is an alias for test01.mytestzone.com.
-  test01.mytestzone.com has address 10.0.0.1
-  test01.mytestzone.com has IPv6 address fd32:100:200:300::12
-
-You can test against either **ns1.uh-iaas.no** or **ns2.uh-iaas.no**,
-it doesn't matter. Both are authoritative name servers in the UH-IaaS
-infrastructure, and does not resolve other domains than they serve
-themselves.
