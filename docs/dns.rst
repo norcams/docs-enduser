@@ -17,6 +17,52 @@ names) and DNS records within your zones.
    plain wrong, please contact us.
 
 
+When to use the DNS service
+---------------------------
+
+The UH-IaaS DNS service allows you to register and manage DNS zones
+using the OpenStack GUI, API and command line interface (CLI). Any
+zone can be registered and managed, providing it is using a legal top
+level domain (TLD). You don't have to own the zone in question, but
+registering and managing an unowned zone doesn't make sense unless for
+testing purposes. DNS is a global namespace, and in order to use this
+service properly the global DNS namespace needs to know which name
+servers are authoritative for your zone. The following lists the
+requirements for using the UH-IaaS DNS service for production
+purposes:
+
+#. You need to own a zone, or have it delegated. There are a number of
+   DNS vendors from which you can purchase DNS zones.
+
+#. Instruct the DNS vendor, or the entity that is delegating this zone
+   to you, that the authoritative DNS servers for the zone should be:
+
+   * **ns1.uh-iaas.no**
+     - IPv4 address: ``158.37.63.251``
+     - IPv6 address: ``2001:700:2:82ff::251``
+
+   * **ns2.uh-iaas.no**
+     - IPv4 address: ``158.39.77.251``
+     - IPv6 address: ``2001:700:2:83ff::251``
+
+   You can verify that this change has been made by the vendor, by
+   querying DNS (example)::
+
+     $ host -t ns mytestzone.com
+     mytestzone.com name server ns1.uh-iaas.no.
+     mytestzone.com name server ns2.uh-iaas.no.
+
+When these requirements are in place, you can manage the zone and its
+records completely using the UH-IaaS DNS service.
+
+Special case for UiO users
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+UiO has acquired the DNS zone **uiocloud.no**, and can delegate sub
+zones to projects using UH-IaaS. In order to have a sub zone
+of **uiocloud.no** delegated, contact hostmaster@usit.uio.no
+
+
 Accessing the DNS zones GUI pane
 --------------------------------
 
