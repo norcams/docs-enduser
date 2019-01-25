@@ -61,8 +61,8 @@ zones to projects using UH-IaaS. In order to have a sub zone
 of **uiocloud.no** delegated, contact hostmaster@usit.uio.no
 
 
-Accessing the DNS zones GUI pane
---------------------------------
+Accessing the DNS zones GUI panel
+---------------------------------
 
 In the menu to the left in the dasboard, click on **DNS** and
 then **zones**:
