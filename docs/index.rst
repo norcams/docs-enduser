@@ -24,6 +24,7 @@ Contents:
    manage-volumes
    create-snapshot
    console
+   dns
    api
    networking
    support
