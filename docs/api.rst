@@ -24,6 +24,8 @@ OpenStack Command Line Interface (CLI)
 Installing the CLI tools
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. _DNS service: dns.html
+
 Before using the command line tools, they need to be installed. A
 relatively recent version of the command line tools are available
 natively on some Linux distributions.
@@ -33,7 +35,15 @@ natively on some Linux distributions.
 
   .. code-block:: console
 
-    # dnf install python-openstackclient
+    # dnf install python2-openstackclient
+
+  In order to use the `DNS service`_ you also need the designate
+  client package:
+
+  .. code-block:: console
+
+    # dnf install python2-designateclient
+
 
 **RHEL7 at UiO**
   In order to install the CLI tools on RHEL7, you need to enable the
@@ -56,6 +66,14 @@ natively on some Linux distributions.
   .. code-block:: console
 
     # yum install python-openstackclient
+
+  In order to use the `DNS service`_ you also need the designate
+  client package:
+
+  .. code-block:: console
+
+    # yum install python-designateclient
+
 
 **Other Linux, Apple MacOS and Microsoft Windows**
   Follow this guide: `Installing the Openstack command-line clients`_
