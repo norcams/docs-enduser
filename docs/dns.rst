@@ -21,15 +21,15 @@ When to use the DNS service
 The UH-IaaS DNS service allows for the registration and management of
 DNS zones using the OpenStack GUI, API and command line interface
 (CLI). Any zone can be registered and managed, providing it is using a
-legal top level domain (TLD). You don't have to own the zone in
+legal top-level domain (TLD). You don't have to own the zone in
 question, but registering and managing an unowned zone doesn't make
 sense unless for testing purposes. DNS is a global namespace, and in
-order to use this service properly the global DNS namespace needs to
+order to use this service properly, the global DNS namespace needs to
 know which name servers are authoritative for your zone. The following
 lists the requirements for using the UH-IaaS DNS service for
 production purposes:
 
-#. You need to own a zone, or have it delegated. There are a number of
+#. You need to own a zone or have it delegated. There are a number of
    DNS vendors from which you can purchase DNS zones.
 
 #. Instruct the DNS vendor, or the entity that is delegating this zone
@@ -54,15 +54,15 @@ records completely using the UH-IaaS DNS service.
 Special case for UiO users
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-UiO has acquired the DNS zone **uiocloud.no**, and can delegate sub
-zones to projects using UH-IaaS. In order to have a sub zone
+UiO has acquired the DNS zone **uiocloud.no**, and can delegate
+subzones to projects using UH-IaaS. In order to have a subzone
 of **uiocloud.no** delegated, contact hostmaster@usit.uio.no
 
 
 Accessing the DNS zones GUI panel
 ---------------------------------
 
-In the menu to the left in the dasboard, click on **DNS** and
+In the menu to the left in the dashboard, click on **DNS** and
 then **Zones**:
 
 .. image:: images/dns-menu-01.png
