@@ -8,11 +8,12 @@ Last changed: |date|
 .. contents::
 
 .. _this Wikipedia article: https://en.wikipedia.org/wiki/Domain_Name_System
+.. _Designate: https://docs.openstack.org/designate/latest/
 
-The UH-IaaS **DNS** (**Domain Name System**) service is an OpenStack
-component named **Designate**. With this, you can create DNS zones
-(domain names) and DNS records within your zones. Read more about DNS
-in `this Wikipedia article`_.
+The UH-IaaS **DNS** (**Domain Name System**) service is based on an
+OpenStack component named Designate_. With this, you can create DNS
+zones (domain names) and DNS records within your zones. Read more
+about DNS in `this Wikipedia article`_.
 
 
 When to use the DNS service
