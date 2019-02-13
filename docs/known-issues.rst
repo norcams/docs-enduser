@@ -25,6 +25,13 @@ or not at all), change keymapping for your local browser to EN. This is
 done differently in different operating systems. Please refer to the
 operating system documentation.
 
+Console doesn't appear
+----------------------
+.. _here: http://docs.uh-iaas.no/en/latest/powercycle.html
+
+We've recently made some changes to the console which requires you to reboot
+your instance. Note that you'll have to power cycle from within Openstack, soft
+rebooting doesn't help. We've made a short guide on how to do that here_
 
 SSH keys different in API and dashboard
 ---------------------------------------
