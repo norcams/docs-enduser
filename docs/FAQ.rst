@@ -55,7 +55,9 @@ How to acknowledge the use of UH-IaaS
 If you have used our infrastructure services for computing or other
 needs, we appreciate if you include this in your acknowledgment.
 
-An example of an acknowledgement of having used UH-IaaS is::
+An example of an acknowledgement of having used UH-IaaS is:
+
+.. code-block:: none
 
   This work was performed on the UH-IaaS infrastructure cloud, owned
   by the University of Oslo and University of Bergen, and co-operated
