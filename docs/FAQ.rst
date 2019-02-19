@@ -10,7 +10,7 @@ Last changed: |date|
 HTTP 401 Unauthorized Error from the OpenStack API
 --------------------------------------------------
 
-::
+.. code-block:: none
 
   The request you have made requires authentication. (HTTP 401) (Request-ID: req-xxxx-xxxx-xxxx-xxxx-xxxx)
 
