@@ -59,9 +59,6 @@ An example of an acknowledgement of having used UH-IaaS is:
 
 .. code-block:: none
 
-  This work was performed on the UH-IaaS infrastructure cloud, owned
-  by the University of Oslo and University of Bergen, and co-operated
-  by their respective IT departments. http://www.uh-iaas.no/
-
-If you publish a paper where we, or rather one or more of us, are
-co-authors, please contact us for the correct author information.
+  The computations/simulations was performed on the Norwegian Academic
+  Community Cloud (UH-IaaS), using resources provided by the
+  University of Bergen and the University of Oslo. http://www.uh-iaas.no/
