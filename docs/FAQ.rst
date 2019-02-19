@@ -33,7 +33,7 @@ To transfer a volume from one project to another, both projects have
 to be within the same region. Please also note that the projects
 cannot use the same volume simultaneously.
 
-You will experience `Unable to accept volume transfer` error if you
+You will experience ``Unable to accept volume transfer`` error if you
 try to transfer a volume to a project which is located in another
 region, or if the project recipient does not have enough quota to
 accept the volume request.
@@ -44,7 +44,7 @@ Resizing an instance
 
 Resizing an instance is not an available option in the dropdown menu
 for now. If you try to resize an instance via API, you will get an
-`HTTP 403 Forbidden` error. As a workaround, you can create a snapshot
+``HTTP 403 Forbidden`` error. As a workaround, you can create a snapshot
 of the instance, then edit and resize the snapshot and launch a new
 instance based on that.
 
