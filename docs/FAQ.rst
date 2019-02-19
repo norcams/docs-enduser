@@ -59,6 +59,6 @@ An example of an acknowledgement of having used UH-IaaS is:
 
 .. code-block:: none
 
-  The computations/simulations was performed on the Norwegian Academic
+  The computations/simulations were performed on the Norwegian Academic
   Community Cloud (UH-IaaS), using resources provided by the
   University of Bergen and the University of Oslo. http://www.uh-iaas.no/
