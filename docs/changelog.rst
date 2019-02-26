@@ -24,7 +24,7 @@ details: :doc:`create-windows-machine`
 2019-02-06
 ==========
 
-We've upgraded all the remaining services to the Queens version which includes
+We've upgraded all the services to the Queens version which includes
 Compute (Nova), Network (Neutron), Volume (Cinder) and Image (Glance). If you would
 like more details, please refer to the Queens release notes available here:
 https://releases.openstack.org/queens/index.html
