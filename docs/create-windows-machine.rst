@@ -19,6 +19,11 @@ Last changed: |date|
    appears configured until it is actually finished. Be patient if you want
    to start a SSH session to your Windows instance.
 
+.. NOTE::
+   When launching Windows instances in the BGO region, these will automatically
+   be activated. However, for licensing reasons, this will not as yet happen
+   in the OSL region, and the Windows instances there will run unactivated.
+
 
 Setting up a keypair
 --------------------
