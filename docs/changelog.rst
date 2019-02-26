@@ -4,6 +4,23 @@ Changelog
 
 All major changes to UH-IaaS will be listed on this page.
 
+
+2019-02-26
+==========
+
+The support for Windows workloads has been reworked, and we have added several
+new features. First, we've added support for Windows Server 2019 Standard and
+Windows Server 2019 Core in addition to the existing support for Windows Server
+2016 Standard. On the new 2019 images a SSH server is automatically installed and
+configured. Also, when launching Windows instances in the BGO region, those instances
+will be automatically activated. The activation feature is not yet available in the
+OSL region for licensing reasons. Furthermore, several fixes and improvements have
+been implemented in the images, including automatic disabling of the Administrator
+account. New Windows images with the latest cumulative updates from Microsoft will
+be automatically created every month, and will be available for UH-IaaS users a few
+days after "Microsoft Patch Tuesday". See our updated Windows documentation for more
+details: :doc:`create-windows-machine`
+
 2019-01-17
 ==========
 
