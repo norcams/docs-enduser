@@ -21,6 +21,16 @@ be automatically created every month, and will be available for UH-IaaS users a 
 days after "Microsoft Patch Tuesday". See our updated Windows documentation for more
 details: :doc:`create-windows-machine`
 
+2019-02-06
+==========
+
+We've upgraded all the remaining services to the Queens version which includes
+Compute (Nova), Network (Neutron), Volume (Cinder) and Image (Glance). If you would
+like more details, please refer to the Queens release notes available here:
+https://releases.openstack.org/queens/index.html
+If you run into any problems you suspect are caused by the upgrade, please let
+us know.
+
 2019-01-17
 ==========
 
