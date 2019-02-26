@@ -11,15 +11,23 @@ Last changed: |date|
    Because of Windows' rather steep resource demands, a demo
    project will have insufficient disk quota to launch windows
    instances. In other words, you will need another project with
-   higher quotas in order to run Windows.
+   higher quotas in order to run Windows. Ask for access to the "win" flavor.
+
+.. TIP::
+   Starting with Windows Server 2019, a SSH server is automatically configured
+   and started in your Windows Instance. It takes some time from the instance
+   appears configured until it is actually finished. Be patient if you want
+   to start a SSH session to your Windows instance.
 
 
 Setting up a keypair
 --------------------
 
-Virtual Windows machines in UH-IaaS are not accessed using SSH keypairs,
-but you will use a keypair to retrieve a random generated password. Refer
-to :doc:`create-virtual-machine` for more information on how to create a SSH keypair.
+For Windows instances SSH keys may be used to retreive a random generated
+password, or, for Windows Server 2019 or newer, to create a SSH session
+to the instance. Either way you will need a SSH keypair to go with your
+Windows instance. Refer to :doc:`create-virtual-machine` for more information
+on how to create a SSH keypair.
 
 
 Create a virtual machine
@@ -64,9 +72,9 @@ When finished with this tab, select the next, "Flavor":
 
 This is where you select the flavor for the virtual machine, i.e. a
 pre-defined set of compute resources. In our example, we've selected
-the "d1.medium" flavor, which is just enough to run our Windows instance. By
-default, demo projects don't have access to this flavor. The other
-flavors lack sufficient resources to run Windows.
+the "win.small" flavor, which is just enough to run our Windows instance. By
+default, you don't have access to this flavor. Ask in your project request, or
+post a support case.
 
 When finished with this tab, select the next, "Networks":
 
@@ -101,6 +109,13 @@ When satisfied, clik "Launch Instance" to create your virtual machine.
 Allowing RDP access
 -------------------
 
+.. TIP::
+   Starting with Windows Server 2019, a SSH server is automatically configured
+   and started in your Windows Instance. You will have to create a security group
+   that opens for port 22 in order to access the service. Unlike on linux instances,
+   the username is "Admin". When you ssh into your Windows instance, you will
+   start in a CMD shell. If you want powershell instead, just type "powershell"
+
 While we wait for our virtual machine to be created and configured, we can
 create a security group for the Remote Desktop protocol in order to grant
 ourselves access to the new virtual machine:
@@ -125,9 +140,11 @@ The University of Bergen. If you instead enter 0.0.0.0/0 or ::/0, that will tran
 to the entire Internet, granting global access. Click "Add".
 
 .. IMPORTANT::
-   We advice you to be restrictive with regards to where you open up access to
-   the machine (especially through RDP) until you have ensured the instance is
-   properly secured!
+   Unlike linux instances, the Windows instances have both an internal "Windows
+   Firewall" and external security groups. By default the internal "Windows Firewall"
+   has the ports for RDP and SSH (on Windows Server 2019 and later) open, but you still
+   have to create the proper security groups and associate them with the instance in order
+   to consume the services.
 
 If the instance is ready, we can now assign our new rule to the virtual machine.
 Click on your instance in "Instances" tab, then select "Edit Security Groups":
@@ -149,6 +166,10 @@ instance. This is described in the previous chapter, "Create a Linux virtual mac
 
 Retrieve Admin password
 -----------------------
+
+.. IMPORTANT::
+   The local "Administrator" account is disabled by the system a short while after
+   your instance is spawned. "Admin" is the only account available for logon.
 
 We are now almost ready to log on to our new Windows virtual machine, but first
 we must retrieve a password. Select "Retrieve Password" from the drop down menu:
