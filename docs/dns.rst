@@ -215,7 +215,7 @@ Deleting records
 
 .. _currently not possible due to a bug: known-issues.html#cannot-delete-dns-zones-or-records-in-dashboard
 
-Deleting records is currently not possible due to a bug in the GUI
+Deleting records is `currently not possible due to a bug`_ in the GUI
 component of the DNS service. Please see below for how to do this with
 command line.
 
@@ -224,7 +224,7 @@ Deleting a zone
 
 .. _currently not possible due to a bug: known-issues.html#cannot-delete-dns-zones-or-records-in-dashboard
 
-Deleting zones is currently not possible due to a bug in the GUI
+Deleting zones is `currently not possible due to a bug`_ in the GUI
 component of the DNS service. Please see below for how to do this with
 command line.
 
