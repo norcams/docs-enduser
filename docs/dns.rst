@@ -210,6 +210,24 @@ it doesn't matter. Both are authoritative name servers in the UH-IaaS
 infrastructure, and does not resolve other domains than they serve
 themselves.
 
+Deleting records
+~~~~~~~~~~~~~~~~
+
+.. _currently not possible due to a bug: known-issues.html#cannot-delete-dns-zones-or-records-in-dashboard
+
+Deleting records is currently not possible due to a bug in the GUI
+component of the DNS service. Please see below for how to do this with
+command line.
+
+Deleting a zone
+~~~~~~~~~~~~~~~
+
+.. _currently not possible due to a bug: known-issues.html#cannot-delete-dns-zones-or-records-in-dashboard
+
+Deleting zones is currently not possible due to a bug in the GUI
+component of the DNS service. Please see below for how to do this with
+command line.
+
 
 ------------
 
@@ -377,3 +395,75 @@ Listing your DNS records for ``mytestzone.com``:
   | aead6644-b5e7-4f67-be23-f3ce3423c0e7 | test01.mytestzone.com. | AAAA  | fd32:100:200:300::12                                        | ACTIVE | NONE   |
   | da6708fd-4023-48a0-adb6-5c3373605e37 | www.mytestzone.com.    | CNAME | test01.mytestzone.com.                                      | ACTIVE | NONE   |
   +--------------------------------------+------------------------+-------+-------------------------------------------------------------+--------+--------+
+
+
+Deleting records
+~~~~~~~~~~~~~~~~
+
+A record (recordset) can be deleted using the following command::
+
+  openstack recordset delete <zone_id> <id>
+
+Example:
+
+.. code-block:: console
+
+  $ openstack recordset delete mytestzone.com. test08.mytestzone.com.
+  +-------------+--------------------------------------+
+  | Field       | Value                                |
+  +-------------+--------------------------------------+
+  | action      | DELETE                               |
+  | created_at  | 2019-03-07T14:56:10.000000           |
+  | description | None                                 |
+  | id          | 988ae646-a1ce-4b60-b235-60c1d1d01199 |
+  | name        | test08.mytestzone.com.               |
+  | project_id  | a56e80c7c777419585b13ebafe024330     |
+  | records     | 10.0.0.8                             |
+  | status      | PENDING                              |
+  | ttl         | None                                 |
+  | type        | A                                    |
+  | updated_at  | 2019-03-15T11:17:07.000000           |
+  | version     | 2                                    |
+  | zone_id     | ffdba4fd-0e04-4edb-8756-e4944c148d0a |
+  | zone_name   | mytestzone.com.                      |
+  +-------------+--------------------------------------+
+
+You can also use the ID of the zone and the recordset, respectively.
+
+
+Deleting a zone
+~~~~~~~~~~~~~~~
+
+A zone (and all it contains) can be deleted using the following
+command::
+
+  openstack zone delete <id>
+
+Example:
+
+.. code-block:: console
+
+  $ openstack zone delete mytestzone.com.
+  +----------------+--------------------------------------+
+  | Field          | Value                                |
+  +----------------+--------------------------------------+
+  | action         | DELETE                               |
+  | attributes     |                                      |
+  | created_at     | 2019-01-22T12:38:57.000000           |
+  | description    | None                                 |
+  | email          | foo@bar.com                          |
+  | id             | ffdba4fd-0e04-4edb-8756-e4944c148d0a |
+  | masters        |                                      |
+  | name           | mytestzone.com.                      |
+  | pool_id        | 794ccc2c-d751-44fe-b57f-8894c9f5c842 |
+  | project_id     | a56e80c7c777419585b13ebafe024330     |
+  | serial         | 1548164918                           |
+  | status         | PENDING                              |
+  | transferred_at | None                                 |
+  | ttl            | 3600                                 |
+  | type           | PRIMARY                              |
+  | updated_at     | 2019-03-15T11:21:06.000000           |
+  | version        | 5                                    |
+  +----------------+--------------------------------------+
+
+Note that deleting a zone also deletes all records within that zone.

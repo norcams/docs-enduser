@@ -142,3 +142,20 @@ instance, and use that snapshot to provision other
 instances. Networking should just work. Note that we have introduced a
 significant change to the original instance. This instance should be
 rebooted after the changes, if possible.
+
+
+Cannot delete DNS zones or records in dashboard
+-----------------------------------------------
+
+.. _Deleting records in CLI: dns.html
+.. _Deleting a zone in CLI: dns.html
+
+Currently, the GUI module for the DNS service has a Javascript bug
+which prevents deletion of zones and records from the GUI. Preliminary
+testing suggests that thus bug is fixed in the next release of
+Openstack (the "Rocky" release). An upgrade to the "Rocky" release is
+planned later this year. For now, zones and records can be deleted
+using the API, for example via the command line (CLI):
+
+* `Deleting records in CLI`_
+* `Deleting a zone in CLI`_
