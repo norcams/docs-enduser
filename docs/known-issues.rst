@@ -147,8 +147,8 @@ rebooted after the changes, if possible.
 Cannot delete DNS zones or records in dashboard
 -----------------------------------------------
 
-.. _Deleting records in CLI: dns.html
-.. _Deleting a zone in CLI: dns.html
+.. _Deleting records in CLI: dns.html#id7
+.. _Deleting a zone in CLI: dns.html#id8
 
 Currently, the GUI module for the DNS service has a Javascript bug
 which prevents deletion of zones and records from the GUI. Preliminary
