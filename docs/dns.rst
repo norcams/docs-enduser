@@ -211,7 +211,7 @@ infrastructure, and does not resolve other domains than they serve
 themselves.
 
 Deleting records
-~~~~~~~~~~~~~~~~
+----------------
 
 .. _currently not possible due to a bug: known-issues.html#cannot-delete-dns-zones-or-records-in-dashboard
 
@@ -220,7 +220,7 @@ component of the DNS service. Please see below for how to do this with
 command line.
 
 Deleting a zone
-~~~~~~~~~~~~~~~
+---------------
 
 .. _currently not possible due to a bug: known-issues.html#cannot-delete-dns-zones-or-records-in-dashboard
 
