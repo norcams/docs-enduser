@@ -90,6 +90,33 @@ As we have updated flavors_, the users that have had access to the larger machin
 Missing network when provisioning from snapshot
 -----------------------------------------------
 
+Debian 9
+''''''''
+
+IPv6 is broken in an instance started from a snapshot, and this ccan also affect
+the original instance. If the resolver addresses is configured using their ipv6
+addresses, even ipv4 is affected. This issue appears regardless of which network
+is selected for the instance. Here is a workaround:
+
+1. Log in to the instance as the **debian** user
+
+#. Remove the IPv6 dhclient leases file::
+
+     rm /var/lib/dhcp/dhclient6.eth0.leases
+
+#. Log out and shut down the system
+
+#. Create a snapshot
+
+#. The original instance might be restarted at this point
+
+You should now be able to create new machines based upon this snapshot and get
+fully functional networks.
+
+
+CentOS 7
+''''''''
+
 .. NOTE::
    This issue only affects CentOS 7 instances provisioned from our
    GOLD image before 2019-01-01. As of January 1, 2019 the GOLD image
