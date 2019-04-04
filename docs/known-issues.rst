@@ -186,3 +186,8 @@ using the API, for example via the command line (CLI):
 
 * `Deleting records in CLI`_
 * `Deleting a zone in CLI`_
+
+Intance name
+------------
+We recommend you to name your instances only with [a-zA-Z0-9]
+characters to avoid any maintenance issues.

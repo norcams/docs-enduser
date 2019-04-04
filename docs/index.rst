@@ -29,10 +29,10 @@ Contents:
    networking
    support
    known-issues
-   changelog
    terms-of-service
    speculativeexecution
    FAQ
+   changelog
 
 
 Indices and tables
