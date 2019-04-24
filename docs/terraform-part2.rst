@@ -14,8 +14,8 @@ This document describes how to create and manage several instances
 (virtual machines) using Terraform_. This document builds on
 `Terraform and UH-IaaS\: Part I - Basics`_.
 
-The example file can be downloaded here: :download:`intermediate.tf
-<downloads/intermediate.tf>`.
+The example file can be downloaded here: :download:`advanced.tf
+<downloads/advanced.tf>`.
 
 
 Multiple instances
@@ -34,7 +34,7 @@ directive to specify how many we want to provision. When doing so, we
 should also make sure that the instances have unique names, and we
 accomplish that by using the count when specifying the instance name:
 
-.. literalinclude:: downloads/intermediate.tf
+.. literalinclude:: downloads/advanced.tf
    :linenos:
    :lines: 1-2,55-68
    :emphasize-lines: 57-58
@@ -63,7 +63,7 @@ We can have Terraform automatically create a key pair for us, instead
 of relying on a preexisting key pair. This is accomplished by creating
 a resource block for a key pair:
 
-.. literalinclude:: downloads/intermediate.tf
+.. literalinclude:: downloads/advanced.tf
    :linenos:
    :lines: 3-8, 55-68
    :emphasize-lines: 62
@@ -89,7 +89,7 @@ In all the previous examples, we use existing security groups when
 provisioning instances. We can use Terraform to create security groups
 on the fly for us to use:
 
-.. literalinclude:: downloads/intermediate.tf
+.. literalinclude:: downloads/advanced.tf
    :linenos:
    :lines: 9-68
    :emphasize-lines: 63
@@ -159,14 +159,14 @@ Volumes
 Creating volumes is often required, and Terraform can do that as
 well. In order to create a volume you will define the resource:
 
-.. literalinclude:: downloads/intermediate.tf
+.. literalinclude:: downloads/advanced.tf
    :linenos:
    :lines: 70-74
 
 Here, we create a volume named "my-volume" with a size of 10 GB. We
 also want to attach the volume to one of our instances:
 
-.. literalinclude:: downloads/intermediate.tf
+.. literalinclude:: downloads/advanced.tf
    :linenos:
    :lines: 76-80
 
