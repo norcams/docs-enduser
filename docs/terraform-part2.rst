@@ -180,3 +180,14 @@ CLI:
   | b75b654e-bd74-4796-9405-27ca2e056e96 | my-volume | in-use |   10 | Attached to test-0 on /dev/sdb  |
   +--------------------------------------+-----------+--------+------+---------------------------------+
 
+
+Complete example
+----------------
+
+A complete listing of the example :download:`advanced.tf
+<downloads/advanced.tf>` file used in this document is
+provided below.
+
+.. literalinclude:: downloads/advanced.tf
+   :caption: advanced.tf
+   :linenos:
