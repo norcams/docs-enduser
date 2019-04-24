@@ -14,6 +14,9 @@ This document describes how to create and manage several instances
 (virtual machines) using Terraform_. This document builds on
 `Terraform and UH-IaaS\: Part I - Basics`_.
 
+The example file can be downloaded here: :download:`intermediate.tf
+<downloads/intermediate.tf>`.
+
 
 Multiple instances
 ------------------
@@ -31,14 +34,10 @@ directive to specify how many we want to provision. When doing so, we
 should also make sure that the instances have unique names, and we
 accomplish that by using the count when specifying the instance name:
 
-.. literalinclude:: downloads/multiple.tf
-   :caption: multiple.tf
-   :name: multiple-tf
+.. literalinclude:: downloads/intermediate.tf
    :linenos:
-   :emphasize-lines: 4-5
-
-This file can be downloaded here: :download:`multiple.tf
-<downloads/multiple.tf>`.
+   :lines: 1-2,55-68
+   :emphasize-lines: 57-58
 
 When running this file with ``terraform apply``, a total of 5
 instances are created, as expected:
