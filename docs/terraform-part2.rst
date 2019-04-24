@@ -1,7 +1,7 @@
 .. |date| date::
 
-Terraform and UH-IaaS: Part II - Multiple instances
-===================================================
+Terraform and UH-IaaS: Part II - Additional resources
+=====================================================
 
 Last changed: |date|
 
@@ -57,6 +57,32 @@ instances are created, as expected:
   +--------+---------------------------------------+---------------+----------+
 
 
+Key pairs
+---------
+
+We can have Terraform automatically create a key pair for us, instead
+of relying on a preexisting key pair. This is accomplished by creating
+a resource block for a key pair:
+
+.. literalinclude:: downloads/intermediate.tf
+   :linenos:
+   :lines: 3-8, 55-68
+   :emphasize-lines: 62
+
+After running Terraform, we can verify that the key has been created:
+
+.. code-block:: console
+
+  $ openstack keypair list
+  +------------------+-------------------------------------------------+
+  | Name             | Fingerprint                                     |
+  +------------------+-------------------------------------------------+
+  | my-terraform-key | e2:2e:26:7f:5d:98:9e:8f:5e:fd:c7:d5:d0:6b:44:e7 |
+  | mykey            | e2:2e:26:7f:5d:98:9e:8f:5e:fd:c7:d5:d0:6b:44:e7 |
+  +------------------+-------------------------------------------------+
+
+
+
 Security groups
 ---------------
 
@@ -64,10 +90,10 @@ In all the previous examples, we use existing security groups when
 provisioning instances. We can use Terraform to create security groups
 on the fly for us to use:
 
-.. literalinclude:: downloads/secgroup.tf
-   :caption: secgroup.tf
-   :name: secgroup-tf
+.. literalinclude:: downloads/intermediate.tf
    :linenos:
+   :lines: 9-68
+   :emphasize-lines: 63
 
 The file listed above can be downloaded here: :download:`secgroup.tf
 <downloads/secgroup.tf>`. There are a lot of new stuff in this file
@@ -126,4 +152,35 @@ created, to verify that the specified rules are present:
   |                 | created_at='2019-04-24T12:24:37Z', direction='ingress', ethertype='IPv6', id='e7131d6e-9a56-43ca-819d-bd3428013b44', port_range_max='22', port_range_min='22', protocol='tcp', remote_ip_prefix='2001:700:100::/40', updated_at='2019-04-24T12:24:37Z' |
   | updated_at      | 2019-04-24T12:24:37Z                                                                                                                                                                                                                                   |
   +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
+Volumes
+-------
+
+Creating volumes is often required, and Terraform can do that as
+well. In order to create a volume you will define the resource:
+
+.. literalinclude:: downloads/intermediate.tf
+   :linenos:
+   :lines: 70-74
+
+Here, we create a volume named "my-volume" with a size of 10 GB. We
+also want to attach the volume to one of our instances:
+
+.. literalinclude:: downloads/intermediate.tf
+   :linenos:
+   :lines: 76-80
+
+In this example, we choose to attach the volume to instance number 0,
+which is the instance named "test-0". We can inspect using Openstack
+CLI:
+
+.. code-block:: console
+
+  $ openstack volume list
+  +--------------------------------------+-----------+--------+------+---------------------------------+
+  | ID                                   | Name      | Status | Size | Attached to                     |
+  +--------------------------------------+-----------+--------+------+---------------------------------+
+  | b75b654e-bd74-4796-9405-27ca2e056e96 | my-volume | in-use |   10 | Attached to test-0 on /dev/sdb  |
+  +--------------------------------------+-----------+--------+------+---------------------------------+
 
