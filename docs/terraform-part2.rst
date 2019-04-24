@@ -94,9 +94,7 @@ on the fly for us to use:
    :lines: 9-68
    :emphasize-lines: 55
 
-The file listed above can be downloaded here: :download:`secgroup.tf
-<downloads/secgroup.tf>`. There are a lot of new stuff in this file
-compared to :ref:`multiple-tf`.
+There is a lot of new stuff here:
 
 #. Line 3-5 contains a resource for a security group. This is pretty
    straightforward and only contains a name and description
