@@ -37,7 +37,7 @@ accomplish that by using the count when specifying the instance name:
 .. literalinclude:: downloads/advanced.tf
    :linenos:
    :lines: 1-2,55-68
-   :emphasize-lines: 57-58
+   :emphasize-lines: 5-6
 
 When running this file with ``terraform apply``, a total of 5
 instances are created, as expected:
