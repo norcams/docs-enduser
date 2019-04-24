@@ -185,9 +185,8 @@ CLI:
 Complete example
 ----------------
 
-A complete listing of the example :download:`advanced.tf
-<downloads/advanced.tf>` file used in this document is
-provided below.
+A complete listing of the example file :download:`advanced.tf
+<downloads/advanced.tf>` used in this document is provided below.
 
 .. literalinclude:: downloads/advanced.tf
    :caption: advanced.tf
