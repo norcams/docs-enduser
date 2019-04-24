@@ -85,7 +85,13 @@ add that, and the same with security groups.
    dashboard are not available via API, and vice versa.
 
 Having established which key pairs and security groups we wish to use,
-we can add those to our Terraform file::
+we can add those to our Terraform file:
+
+.. literalinclude:: downloads/basic.tf
+   :caption: basic.tf
+   :name: basic-tf
+   :linenos:
+   :emphasize-lines: 8-9
 
   provider "openstack" {}
   
@@ -128,13 +134,13 @@ creating a directory which we'll call **tf-project**:
   $ **mkdir ~/tf-project**
 
 We then create the initial Terraform file as outlined in the previous
-section, and we'll call it **project.tf**:
+section, and we'll call it **basic.tf**:
 
 .. parsed-literal::
 
   $ **cd ~/tf-project**
   $ **ls -a**
-  ./  ../  project.tf
+  ./  ../  basic.tf
 
 Next we need to initialise Terraform:
 
