@@ -66,7 +66,7 @@ a resource block for a key pair:
 .. literalinclude:: downloads/advanced.tf
    :linenos:
    :lines: 3-8, 55-68
-   :emphasize-lines: 62
+   :emphasize-lines: 15
 
 After running Terraform, we can verify that the key has been created:
 
@@ -92,7 +92,7 @@ on the fly for us to use:
 .. literalinclude:: downloads/advanced.tf
    :linenos:
    :lines: 9-68
-   :emphasize-lines: 63
+   :emphasize-lines: 55
 
 The file listed above can be downloaded here: :download:`secgroup.tf
 <downloads/secgroup.tf>`. There are a lot of new stuff in this file
