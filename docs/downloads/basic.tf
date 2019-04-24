@@ -9,6 +9,6 @@ resource "openstack_compute_instance_v2" "basic" {
   security_groups = [ "default", "SSH and ICMP" ]
 
   network {
-    name = "Ipv6"
+    name = "IPv6"
   }
 }
