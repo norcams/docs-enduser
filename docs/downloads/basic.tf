@@ -1,6 +1,6 @@
 provider "openstack" {}
 
-resource "openstack_compute_instance_v2" "basic" {
+resource "openstack_compute_instance_v2" "example" {
   name = "test"
   image_name = "GOLD CentOS 7"
   flavor_name = "m1.small"

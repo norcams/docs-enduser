@@ -1,6 +1,6 @@
 provider "openstack" {}
 
-resource "openstack_compute_instance_v2" "basic" {
+resource "openstack_compute_instance_v2" "example" {
   count = 5
   name = "test-${count.index}"
   image_name = "GOLD CentOS 7"
