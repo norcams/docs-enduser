@@ -68,3 +68,47 @@ on the fly for us to use:
    :caption: secgroup.tf
    :name: secgroup-tf
    :linenos:
+
+The file listed above can be downloaded here: :download:`secgroup.tf
+<downloads/secgroup.tf>`.
+
+As before, 5 instances are created. In addition a new security group
+is created, with the name and description as specified in the
+Terraform file:
+
+.. code-block:: console
+
+  $ openstack security group list -c Name -c Description
+  +--------------+-------------------------------------------------+
+  | Name         | Description                                     |
+  +--------------+-------------------------------------------------+
+  | RDP          |                                                 |
+  | ssh-and-icmp | Security group for allowing SSH and ICMP access |
+  | SSH and ICMP |                                                 |
+  | default      | Default security group                          |
+  +--------------+-------------------------------------------------+
+
+We can also inspect the security group ``ssh-and-icmp`` that we
+created, to verify that the specified rules are present:
+
+.. code-block:: console
+
+  $ openstack security group show ssh-and-icmp
+  +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  | Field           | Value                                                                                                                                                                                                                                                  |
+  +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  | created_at      | 2019-04-24T12:24:35Z                                                                                                                                                                                                                                   |
+  | description     | Security group for allowing SSH and ICMP access                                                                                                                                                                                                        |
+  | id              | 43863c7f-d105-47a5-afe2-22d74f7a4623                                                                                                                                                                                                                   |
+  | name            | ssh-and-icmp                                                                                                                                                                                                                                           |
+  | project_id      | b56e80c7c777419585b13ebafe024330                                                                                                                                                                                                                       |
+  | revision_number | 6                                                                                                                                                                                                                                                      |
+  | rules           | created_at='2019-04-24T12:24:35Z', direction='egress', ethertype='IPv6', id='53bfef03-fea6-4504-a996-69c12f5c00bd', updated_at='2019-04-24T12:24:35Z'                                                                                                  |
+  |                 | created_at='2019-04-24T12:24:35Z', direction='egress', ethertype='IPv4', id='7565bdf1-827a-4736-ba1c-dab822037c4b', updated_at='2019-04-24T12:24:35Z'                                                                                                  |
+  |                 | created_at='2019-04-24T12:24:36Z', direction='ingress', ethertype='IPv4', id='93458178-15b1-4ae5-bee0-225ae56aeeef', port_range_max='22', port_range_min='22', protocol='tcp', remote_ip_prefix='129.240.0.0/16', updated_at='2019-04-24T12:24:36Z'    |
+  |                 | created_at='2019-04-24T12:24:36Z', direction='ingress', ethertype='IPv4', id='9d1724ae-c375-4b64-98ec-43d0f6b58383', protocol='icmp', remote_ip_prefix='129.240.0.0/16', updated_at='2019-04-24T12:24:36Z'                                             |
+  |                 | created_at='2019-04-24T12:24:36Z', direction='ingress', ethertype='IPv6', id='b0d110ad-8e43-4493-a178-a3ef56854c20', protocol='icmp', remote_ip_prefix='2001:700:100::/40', updated_at='2019-04-24T12:24:36Z'                                          |
+  |                 | created_at='2019-04-24T12:24:37Z', direction='ingress', ethertype='IPv6', id='e7131d6e-9a56-43ca-819d-bd3428013b44', port_range_max='22', port_range_min='22', protocol='tcp', remote_ip_prefix='2001:700:100::/40', updated_at='2019-04-24T12:24:37Z' |
+  | updated_at      | 2019-04-24T12:24:37Z                                                                                                                                                                                                                                   |
+  +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
