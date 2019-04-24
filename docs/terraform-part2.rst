@@ -115,7 +115,6 @@ is created, with the name and description as specified in the
 Terraform file:
 
 .. code-block:: console
-   :emphasize-lines: 6
 
   $ openstack security group list -c Name -c Description
   +--------------+-------------------------------------------------+
