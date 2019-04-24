@@ -13,6 +13,9 @@ This document describes how to create and manage instances (virtual
 machines) using Terraform_. This is an introduction to Terraform and
 shows how to use Terraform in its simplest and most basic form.
 
+The example file can be downloaded here: :download:`basic.tf
+<downloads/basic.tf>`.
+
 
 Prerequisites
 -------------
