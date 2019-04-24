@@ -1,7 +1,7 @@
 .. |date| date::
 
-Using Terraform with UH-IaaS - Part 1
-=====================================
+Terraform and UH-IaaS: Part I - Basics
+======================================
 
 Last changed: |date|
 
