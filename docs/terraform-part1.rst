@@ -34,19 +34,12 @@ Basic Terraform usage
 ---------------------
 
 Here is a Terraform file that works with UH-IaaS, in its simplest
-possible form::
+possible form:
 
-  provider "openstack" {}
-  
-  resource "openstack_compute_instance_v2" "basic" {
-    name = "test"
-    image_name = "GOLD CentOS 7"
-    flavor_name = "m1.small"
-  
-    network {
-      name = "Ipv6"
-    }
-  }
+.. literalinclude:: downloads/basic.tf
+   :caption: very-basic.tf
+   :linenos:
+   :lines: 1-7,11-
 
 As an absolute minimum, you need to specify the name, image, flavor
 and network of the instance that you want Terraform to
