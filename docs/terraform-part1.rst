@@ -51,9 +51,11 @@ and network of the instance that you want Terraform to
 create. However, the instance isn't very usable unless you also
 provide an SSH key pair and a security group that allows access via
 SSH to the instance. We'll add these, but first we'll use the CLI to
-list which are available::
+list which are available:
 
-  $ openstack keypair list
+.. parsed-literal::
+
+  $ **openstack keypair list**
   +-------+-------------------------------------------------+
   | Name  | Fingerprint                                     |
   +-------+-------------------------------------------------+
