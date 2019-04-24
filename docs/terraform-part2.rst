@@ -129,7 +129,6 @@ We can also inspect the security group ``ssh-and-icmp`` that we
 created, to verify that the specified rules are present:
 
 .. code-block:: console
-   :emphasize-lines: 11-16
 
   $ openstack security group show ssh-and-icmp
   +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
