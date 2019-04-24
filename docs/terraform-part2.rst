@@ -66,7 +66,7 @@ a resource block for a key pair:
 .. literalinclude:: downloads/advanced.tf
    :linenos:
    :lines: 3-8, 55-68
-   :emphasize-lines: 15
+   :emphasize-lines: 14
 
 After running Terraform, we can verify that the key has been created:
 
