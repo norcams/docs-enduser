@@ -37,7 +37,6 @@ Here is a Terraform file that works with UH-IaaS, in its simplest
 possible form:
 
 .. literalinclude:: downloads/basic.tf
-   :caption: very-basic.tf
    :linenos:
    :lines: 1-7,11-
 
