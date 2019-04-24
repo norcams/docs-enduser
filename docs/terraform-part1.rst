@@ -37,6 +37,7 @@ Here is a Terraform file that works with UH-IaaS, in its simplest
 possible form:
 
 .. literalinclude:: downloads/basic.tf
+   :language: terraform
    :linenos:
    :lines: 1-7,11-
 
@@ -80,7 +81,7 @@ Having established which key pairs and security groups we wish to use,
 we can add those to our Terraform file:
 
 .. literalinclude:: downloads/basic.tf
-   :language: ruby
+   :language: terraform
    :caption: basic.tf
    :name: basic-tf
    :linenos:
