@@ -86,7 +86,9 @@ we can add those to our Terraform file:
    :linenos:
    :emphasize-lines: 8-9
 
-We now have a Terraform execution file that is ready to be used.
+We now have a Terraform execution file that is ready to be used. If
+you decide to use this file, you'll probably want to change at least
+the two emphasized lines.
 
 
 Running Terraform
