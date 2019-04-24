@@ -110,8 +110,10 @@ creating a directory which we'll call **tf-project**:
 
   $ **mkdir ~/tf-project**
 
-We then create the initial Terraform file as outlined in the previous
-section, and we'll call it **basic.tf**:
+We then create the initial Terraform :ref:`basic-tf` file as outlined
+in the previous section, and we'll call it **basic.tf**. This file can
+be :download:`downloaded here <downloads/basic.tf>`. Our Terraform
+directory should now contain only this file:
 
 .. parsed-literal::
 
