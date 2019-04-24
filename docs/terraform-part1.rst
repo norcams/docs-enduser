@@ -152,7 +152,7 @@ Next we need to initialise Terraform:
   rerun this command to reinitialize your working directory. If you forget, other
   commands will detect it and remind you to do so if necessary.
 
-We can then run **terraform plan** to see what actions Terraform will
+We can then run ``terraform plan`` to see what actions Terraform will
 perform in a subsequent run:
 
 .. code-block:: console
