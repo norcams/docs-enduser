@@ -81,7 +81,7 @@ Having established which key pairs and security groups we wish to use,
 we can add those to our Terraform file:
 
 .. literalinclude:: downloads/basic.tf
-   :caption: basic.tf (usable)
+   :caption: basic.tf
    :name: basic-tf
    :linenos:
    :emphasize-lines: 8-9
