@@ -19,10 +19,12 @@ Prerequisites
 
 .. _OpenStack CLI tools: api.html
 
-You need to download and install Terraform_ (example)::
+You need to download and install Terraform_ (example):
 
-  $ unzip ~/Downloads/terraform_0.11.13_linux_amd64.zip
-  $ ./terraform --version
+.. parsed-literal::
+
+  $ **unzip ~/Downloads/terraform_0.11.13_linux_amd64.zip**
+  $ **./terraform --version**
   Terraform v0.11.13
 
 You also need to have the `OpenStack CLI tools`_ installed.
@@ -62,7 +64,7 @@ list which are available:
   | mykey | e2:2e:26:7f:5d:98:9e:8f:5e:fd:c7:d5:d0:6b:44:e7 |
   +-------+-------------------------------------------------+
   
-  $ openstack security group list -c ID -c Name
+  $ **openstack security group list -c ID -c Name**
   +--------------------------------------+--------------+
   | ID                                   | Name         |
   +--------------------------------------+--------------+
@@ -110,27 +112,35 @@ While it is possible to enter the project name, credentials such as
 user ID and password etc. in the Terraform file, this is
 discouraged. Terraform will use the shell environment variables
 defined in your API credentials file. Before continuing, source this
-file::
+file:
 
-  $ source ~/keystone_rc.sh
+.. parsed-literal::
+
+  $ **source ~/keystone_rc.sh**
 
 Terraform manages its own state in the directory in which it is
 run. Therefore, it is always a good idea to maintain the Terraform
 files and run Terraform within a specified directory. We'll start with
-creating a directory which we'll call **tf-project**::
+creating a directory which we'll call **tf-project**:
 
-  $ mkdir ~/tf-project
+.. parsed-literal::
+
+  $ **mkdir ~/tf-project**
 
 We then create the initial Terraform file as outlined in the previous
-section, and we'll call it **project.tf**::
+section, and we'll call it **project.tf**:
 
-  $ cd ~/tf-project
-  $ ls -a
+.. parsed-literal::
+
+  $ **cd ~/tf-project**
+  $ **ls -a**
   ./  ../  project.tf
 
-Next we need to initialise Terraform::
+Next we need to initialise Terraform:
 
-  $ ~/terraform init
+.. parsed-literal::
+
+  $ **~/terraform init**
   
   Initializing provider plugins...
   - Checking for available provider plugins on https://releases.hashicorp.com...
@@ -144,7 +154,7 @@ Next we need to initialise Terraform::
   corresponding provider blocks in configuration, with the constraint strings
   suggested below.
   
-  * provider.openstack: version = "~> 1.17"
+  \* provider.openstack: version = "~> 1.17"
   
   Terraform has been successfully initialized!
   
@@ -157,9 +167,11 @@ Next we need to initialise Terraform::
   commands will detect it and remind you to do so if necessary.
 
 We can then run **terraform plan** to see what actions Terraform will
-perform in a subsequent run::
+perform in a subsequent run:
 
-  $ ~/terraform plan
+.. parsed-literal::
+
+  $ **~/terraform plan**
   Refreshing Terraform state in-memory prior to plan...
   The refreshed state will be used to calculate this plan, but will not be
   persisted to local or remote state storage.
@@ -170,11 +182,11 @@ perform in a subsequent run::
   
   An execution plan has been generated and is shown below.
   Resource actions are indicated with the following symbols:
-    + create
+    \+ create
   
   Terraform will perform the following actions:
   
-    + openstack_compute_instance_v2.basic
+    \+ openstack_compute_instance_v2.basic
         id:                         <computed>
         access_ip_v4:               <computed>
         access_ip_v6:               <computed>
@@ -212,18 +224,20 @@ perform in a subsequent run::
   can't guarantee that exactly these actions will be performed if
   "terraform apply" is subsequently run.
 
-The next step will be to actually run Terraform::
+The next step will be to actually run Terraform:
 
-  $ ~/terraform apply
+.. parsed-literal::
+
+  $ **~/terraform apply**
   openstack_compute_instance_v2.basic: Refreshing state... (ID: 66c0720b-aa1e-462a-bc5c-1e93611b7824)
   
   An execution plan has been generated and is shown below.
   Resource actions are indicated with the following symbols:
-    + create
+    \+ create
   
   Terraform will perform the following actions:
   
-    + openstack_compute_instance_v2.basic
+    \+ openstack_compute_instance_v2.basic
         id:                         <computed>
         access_ip_v4:               <computed>
         access_ip_v6:               <computed>
@@ -294,18 +308,22 @@ The next step will be to actually run Terraform::
   Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 And we can use the Openstack CLI to verify that the instance has been
-created::
+created:
 
-  $ openstack server list
+.. parsed-literal::
+
+  $ **openstack server list**
   +--------------------------------------+------+--------+---------------------------------------+---------------+----------+
   | ID                                   | Name | Status | Networks                              | Image         | Flavor   |
   +--------------------------------------+------+--------+---------------------------------------+---------------+----------+
   | e1df5188-fa7d-4752-8819-9a9b7e781141 | test | ACTIVE | IPv6=2001:700:2:8201::1029, 10.2.0.57 | GOLD CentOS 7 | m1.small |
   +--------------------------------------+------+--------+---------------------------------------+---------------+----------+
 
-The host should be pingable and accessible via SSH. Let's test that::
+The host should be pingable and accessible via SSH. Let's test that:
 
-  $ ping6 -c3 2001:700:2:8201::1029
+.. parsed-literal::
+
+  $ **ping6 -c3 2001:700:2:8201::1029**
   PING 2001:700:2:8201::1029(2001:700:2:8201::1029) 56 data bytes
   64 bytes from 2001:700:2:8201::1029: icmp_seq=1 ttl=56 time=0.652 ms
   64 bytes from 2001:700:2:8201::1029: icmp_seq=2 ttl=56 time=0.510 ms
@@ -315,7 +333,7 @@ The host should be pingable and accessible via SSH. Let's test that::
   3 packets transmitted, 3 received, 0% packet loss, time 2000ms
   rtt min/avg/max/mdev = 0.486/0.549/0.652/0.075 ms
   
-  $ ssh centos@2001:700:2:8201::1029
+  $ **ssh centos\@2001:700:2:8201::1029**
   The authenticity of host '2001:700:2:8201::1029 (2001:700:2:8201::1029)' can't be established.
   ECDSA key fingerprint is SHA256:H2gmupThy7A0qFTQWTFl/1VmT75G7vuITSOCMHhUzLs.
   ECDSA key fingerprint is MD5:68:a7:94:9b:32:4e:98:8d:8e:26:f8:8c:03:7e:1b:d5.
@@ -325,9 +343,11 @@ The host should be pingable and accessible via SSH. Let's test that::
 
 As stated earlier, Terraform maintains its state in the local
 directory, so we can use Terraform to destroy the resources it has
-previously created::
+previously created:
 
-  $ ~/terraform destroy
+.. parsed-literal::
+
+  $ **~/terraform destroy**
   openstack_compute_instance_v2.basic: Refreshing state... (ID: e1df5188-fa7d-4752-8819-9a9b7e781141)
   
   An execution plan has been generated and is shown below.
