@@ -12,7 +12,9 @@ Last changed: |date|
 
 This document describes how to create and manage several instances
 (virtual machines) using Terraform_. This document builds on
-`Terraform and UH-IaaS\: Part I - Basics`_.
+`Terraform and UH-IaaS\: Part I - Basics`_. While part 1 relied on
+preexisting resources such as SSH key pairs and security groups, in
+this example we create everything from scratch.
 
 The example file can be downloaded here: :download:`advanced.tf
 <downloads/advanced.tf>`.
