@@ -70,13 +70,27 @@ on the fly for us to use:
    :linenos:
 
 The file listed above can be downloaded here: :download:`secgroup.tf
-<downloads/secgroup.tf>`.
+<downloads/secgroup.tf>`. There are a lot of new stuff in this file
+compared to :ref:`multiple-tf`.
+
+#. Line 3-5 contains a resource for a security group. This is pretty
+   straightforward and only contains a name and description
+
+#. Line 9-47 contains 4 security group rules. They are all ingress
+   rules (e.g. incoming traffic) and allows for SSH and ICMP from the
+   UiO IPv4 and IPv6 networks.
+
+#. The ``security_group_id`` is a required field which specifies the
+   security group where the rule shall be applied, and we use the
+   Terraform object notation to specify the security group we created
+   earlier.
 
 As before, 5 instances are created. In addition a new security group
 is created, with the name and description as specified in the
 Terraform file:
 
 .. code-block:: console
+   :emphasize-lines: 6
 
   $ openstack security group list -c Name -c Description
   +--------------+-------------------------------------------------+
@@ -92,6 +106,7 @@ We can also inspect the security group ``ssh-and-icmp`` that we
 created, to verify that the specified rules are present:
 
 .. code-block:: console
+   :emphasize-lines: 11-16
 
   $ openstack security group show ssh-and-icmp
   +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
