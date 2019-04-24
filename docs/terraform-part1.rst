@@ -93,21 +93,6 @@ we can add those to our Terraform file:
    :linenos:
    :emphasize-lines: 8-9
 
-  provider "openstack" {}
-  
-  resource "openstack_compute_instance_v2" "basic" {
-    name = "test"
-    image_name = "GOLD CentOS 7"
-    flavor_name = "m1.small"
-  
-    key_pair = "mykey"
-    security_groups = [ "default", "SSH and ICMP" ]
-  
-    network {
-      name = "Ipv6"
-    }
-  }
-
 We now have a Terraform execution file that is ready to be used.
 
 
