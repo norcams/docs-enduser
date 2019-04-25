@@ -1,6 +1,3 @@
-# Number of instances of each image type
-count = 1
-
 # Region
 region = "bgo"
 
