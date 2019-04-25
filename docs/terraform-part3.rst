@@ -31,6 +31,7 @@ contains all variables, with default values, used throughout the code:
    :caption: variables.tf
    :name: variables-tf
    :linenos:
+   :emphasize-lines: 2,6,7
 
 Notice that the **region** variable is empty and doesn't have a
 default value. For this reason, the region must always be specified in
@@ -45,4 +46,35 @@ multi-region environment:
 
 As shown above, when a default value isn't specified in the code
 Terraform will ask for it interactively.
+
+Also note that the **allow_ssh_from_v6** and **allow_ssh_from_v4**
+variables are empty lists. It is expected that we specify these in the
+``local.tfvars`` file, explained in the next section.
+
+
+Local variables
+---------------
+
+Terraform supports specification of local variables that completes or
+overrides the variable set given in :ref:`variables-tf`. We can do
+this on command line:
+
+.. code-block:: console
+
+  terraform -var 'region=bgo'
+
+This does not scale, however. Terraform has an option ``-var-file``
+that takes one argument, a variables file:
+
+.. code-block:: console
+
+  terraform -var-file <file>
+
+An example file :download:`local.tfvars <download/local.tfvars` that
+complements our :ref:`variables-tf` could look like this:
+
+.. literalinclude:: downloads/local.tfvars
+   :caption: local.tfvars
+   :name: local-tfvars
+   :linenos:
 
