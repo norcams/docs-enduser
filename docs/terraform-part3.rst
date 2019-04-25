@@ -70,7 +70,7 @@ that takes one argument, a variables file:
 
   terraform -var-file <file>
 
-An example file :download:`local.tfvars <download/local.tfvars` that
+An example file :download:`local.tfvars <download/local.tfvars>` that
 complements our :ref:`variables-tf` could look like this:
 
 .. literalinclude:: downloads/local.tfvars
