@@ -35,8 +35,7 @@ contains all variables, with default values, used throughout the code:
 
 Notice that the **region** variable is empty and doesn't have a
 default value. For this reason, the region must always be specified in
-a way when running Terraform. This is one way of doing Terraform in a
-multi-region environment:
+some way when running Terraform:
 
 .. code-block:: console
 
@@ -77,4 +76,26 @@ complements our :ref:`variables-tf` could look like this:
    :caption: local.tfvars
    :name: local-tfvars
    :linenos:
+
+Here, we specify the region and the addresses to be used for the
+security group. We would use this file like this:
+
+.. code-block:: console
+
+  $ terraform plan -var-file local.tfvars
+  $ terraform apply -var-file local.tfvars
+
+
+Using variables
+---------------
+
+Terraform supports a variety of different variable types, and should
+be familiar to anyone who has used modern programming languages. We're
+using string, list (array) and map (hash) variables:
+
+.. literalinclude:: downloads/variables.tf
+   :caption: variables.tf
+   :name: variables-tf
+   :linenos:
+
 
