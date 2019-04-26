@@ -205,7 +205,7 @@ of web servers from 4 to 2, we would change this line in
 .. literalinclude:: downloads/variables.tf
    :caption: variables.tf
    :linenos:
-   :lines: 36-
+   :lines: 35-
    :emphasize-lines: 5
 
 After changing the count from **4** to **2** here, we can run
