@@ -48,7 +48,7 @@ contains all variables, with default values, used throughout the code:
    :caption: variables.tf
    :name: variables-tf
    :linenos:
-   :emphasize-lines: 2,11-16
+   :emphasize-lines: 2,10-15
 
 Notice that the **region** variable is empty and doesn't have a
 default value. For this reason, the region must always be specified in
