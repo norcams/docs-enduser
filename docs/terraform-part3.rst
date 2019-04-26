@@ -95,18 +95,17 @@ using string, list (array) and map (hash) variables. In this example,
 we have divided our original one-file setup into 3 files, in addition
 to the local variables file:
 
-**main.tf**
-  Our main file.
-
-**secgroup.tf**
-  Since the security group definitions are rather verbose, we have
-  separated these from the main file.
-
-**variables.tf**
-  Variable definitions with default values.
-
-**local.tfvars**
-  Local variables.
++------------------+-------------------------------------------------+
+| **main.tf**      |Our main file.                                   |
++------------------+-------------------------------------------------+
+| **secgroup.tf**  |Since the security group definitions are rather  |
+|                  |verbose, we have separated these from the main   |
+|                  |file.                                            |
++------------------+-------------------------------------------------+
+| **variables.tf** |Variable definitions with default values.        |
++------------------+-------------------------------------------------+
+| **local.tfvars** |Local variables.                                 |
++------------------+-------------------------------------------------+
 
 We'll take a look at **main.tf**. The first part, containing the SSH
 key pair resource, is as before but using variables:
