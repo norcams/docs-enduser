@@ -60,7 +60,7 @@ resource "openstack_compute_instance_v2" "db_instance" {
 # Volume
 resource "openstack_blockstorage_volume_v2" "volume" {
     name = "database"
-    size = ${var.volume_size}
+    size = "${var.volume_size}"
 }
 
 # Attach volume
