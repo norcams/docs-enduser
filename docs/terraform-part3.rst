@@ -91,11 +91,39 @@ Using variables
 
 Terraform supports a variety of different variable types, and should
 be familiar to anyone who has used modern programming languages. We're
-using string, list (array) and map (hash) variables:
+using string, list (array) and map (hash) variables. In this example,
+we have divided our original one-file setup into 3 files, in addition
+to the local variables file:
+
+**main.tf**
+  Our main file.
+
+**secgroup.tf**
+  Since the security group definitions are rather verbose, we have
+  separated these from the main file.
+
+**variables.tf**
+  Variable definitions with default values.
+
+**local.tfvars**
+  Local variables.
+
+We'll take a look at **main.tf**. The first part, containing the SSH
+key pair resource, is as before but using variables:
 
 .. literalinclude:: downloads/main.tf
-   :caption: main.tf
-   :name: main-tf
    :linenos:
+   :lines: 1-8
+
+Next, we'll look at our security groups. We now have three of them:
+
+.. literalinclude:: downloads/secgroup.tf
+   :linenos:
+   :lines: 1-20
+
+Since these are web and database serves, we create a security group
+for allowing HTTP for the web servers and port 3306 for the database
+server, in addition to allowing SSH and ICMP.
+
 
 
