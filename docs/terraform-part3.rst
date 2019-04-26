@@ -16,6 +16,23 @@ the code base to make it more dynamic. We also make use of more
 advanced functionality in Terraform_ such as output handling and local
 variables.
 
+The goal with this document is to show how Terraform can be used to
+set up a real environment on UH-IaaS. We will create:
+
+* An SSH key pair
+* Four web servers running CentOS
+* One database server running Ubuntu
+* A volume that is attached to the database server
+* Security groups that allows access to the different servers, as well
+  as allowing the web servers to access the database server
+
+The files used in this document can be downloaded:
+
+* :download:`main.tf <downloads/main.tf>`
+* :download:`secgroup.tf <downloads/secgroup.tf>`
+* :download:`variables.tf <downloads/variables.tf>`
+* :download:`local.tfvars <downloads/local.tfvars>`
+
 
 Variables
 ---------
