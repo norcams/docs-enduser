@@ -46,7 +46,6 @@ contains all variables, with default values, used throughout the code:
 
 .. literalinclude:: downloads/variables.tf
    :caption: variables.tf
-   :name: variables-tf
    :linenos:
    :emphasize-lines: 2,10-15
 
@@ -91,7 +90,6 @@ complements our :ref:`variables-tf` could look like this:
 
 .. literalinclude:: downloads/local.tfvars
    :caption: local.tfvars
-   :name: local-tfvars
    :linenos:
 
 Here, we specify the region and the addresses to be used for the
@@ -238,3 +236,30 @@ After changing the count from **4** to **2** here, we can run
 Applying this with ``terraform apply`` will then destroy two of the
 web servers and the corresponding security group rules that allowed
 those web servers access to the database server.
+
+
+Complete example
+----------------
+
+A complete listing of the example files used in this document is
+provided below.
+
+.. literalinclude:: downloads/main.tf
+   :caption: main.tf
+   :name: main-tf
+   :linenos:
+
+.. literalinclude:: downloads/secgroup.tf
+   :caption: secgroup.tf
+   :name: secgroup-tf
+   :linenos:
+
+.. literalinclude:: downloads/variables.tf
+   :caption: variables.tf
+   :name: variables-tf
+   :linenos:
+
+.. literalinclude:: downloads/local.tfvars
+   :caption: local.tfvars
+   :name: local-tfvars
+   :linenos:
