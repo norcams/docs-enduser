@@ -195,3 +195,46 @@ resource and attach this volume to the database server:
    :lines: 60-
 
 
+Making changes
+--------------
+
+Terraform maintains the state of the infrastructure it manages in the
+workspace directory. It is possible to make simple changes just by
+updating and applying the code. If we wanted to scale down the number
+of web servers from 4 to 2, we would change this line in
+:ref:`variables-tf`:
+
+.. literalinclude:: downloads/variables.tf
+   :caption: variables.tf
+   :linenos:
+   :lines: 36-
+   :emphasize-lines: 5
+
+After changing the count from **4** to **2** here, we can run
+``terraform plan``::
+
+.. code-block:: console
+
+  $ terraform plan -var-file local.tfvars
+  ...
+  Terraform will perform the following actions:
+  
+    - openstack_compute_instance_v2.web_instance[2]
+  
+    - openstack_compute_instance_v2.web_instance[3]
+  
+    - openstack_networking_secgroup_rule_v2.rule2_mysql_access_ipv4[2]
+  
+    - openstack_networking_secgroup_rule_v2.rule2_mysql_access_ipv4[3]
+  
+    - openstack_networking_secgroup_rule_v2.rule2_mysql_access_ipv6[2]
+  
+    - openstack_networking_secgroup_rule_v2.rule2_mysql_access_ipv6[3]
+  
+  
+  Plan: 0 to add, 0 to change, 6 to destroy.
+  ...
+
+Applying this with ``terraform apply`` will then destroy two of the
+web servers and the corresponding security group rules that allowed
+those web servers access to the database server.
