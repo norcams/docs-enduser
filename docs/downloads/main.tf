@@ -7,7 +7,6 @@ resource "openstack_compute_keypair_v2" "keypair" {
     public_key = "${file(var.ssh_public_key)}"
 }
 
-
 # Web servers
 resource "openstack_compute_instance_v2" "web_instance" {
     region = "${var.region}"
