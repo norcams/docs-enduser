@@ -235,7 +235,9 @@ After changing the count from **4** to **2** here, we can run
 
 Applying this with ``terraform apply`` will then destroy two of the
 web servers and the corresponding security group rules that allowed
-those web servers access to the database server.
+those web servers access to the database server. Similarly, if we were
+to increase the web server count from **4** to **5**, Terraform would
+add a new web server and update the security groups accordingly.
 
 
 Complete example
