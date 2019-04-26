@@ -107,22 +107,33 @@ to the local variables file:
 | **local.tfvars** |Local variables.                                 |
 +------------------+-------------------------------------------------+
 
-We'll take a look at **main.tf**. The first part, containing the SSH
+We'll take a look at :ref:`main-tf`. The first part, containing the SSH
 key pair resource, is as before but using variables:
 
 .. literalinclude:: downloads/main.tf
+   :caption: main.tf
    :linenos:
    :lines: 1-8
 
-Next, we'll look at our security groups. We now have three of them:
+Next, we'll look at our security groups in :ref:`secgroup-tf`. We now
+have three of them:
 
 .. literalinclude:: downloads/secgroup.tf
+   :caption: secgroup.tf
    :linenos:
    :lines: 1-20
 
 Since these are web and database serves, we create a security group
 for allowing HTTP for the web servers and port 3306 for the database
-server, in addition to allowing SSH and ICMP.
+server, in addition to allowing SSH and ICMP. The security group rules
+for SSH and ICMP are pretty much the same as before, but using
+variables:
+
+.. literalinclude:: downloads/secgroup.tf
+   :caption: secgroup.tf
+   :linenos:
+   :lines: 22-68
+
 
 
 
