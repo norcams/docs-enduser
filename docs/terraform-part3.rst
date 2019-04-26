@@ -31,7 +31,7 @@ contains all variables, with default values, used throughout the code:
    :caption: variables.tf
    :name: variables-tf
    :linenos:
-   :emphasize-lines: 2,6,7
+   :emphasize-lines: 2,11-16
 
 Notice that the **region** variable is empty and doesn't have a
 default value. For this reason, the region must always be specified in
@@ -93,9 +93,9 @@ Terraform supports a variety of different variable types, and should
 be familiar to anyone who has used modern programming languages. We're
 using string, list (array) and map (hash) variables:
 
-.. literalinclude:: downloads/variables.tf
-   :caption: variables.tf
-   :name: variables-tf
+.. literalinclude:: downloads/main.tf
+   :caption: main.tf
+   :name: main-tf
    :linenos:
 
 
