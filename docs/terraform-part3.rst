@@ -134,6 +134,47 @@ variables:
    :linenos:
    :lines: 22-68
 
+Notice that we now use implicit iteration over the number of entries
+listed in the ``allow_ssh_from_v4`` variable, which is an empty list
+in :ref:`variables-tf` but is properly defined in :ref:`local-tfvars`.
 
+Let's take a look at the security group rules defined for HTTP and
+MySQL access:
+
+.. literalinclude:: downloads/secgroup.tf
+   :caption: secgroup.tf
+   :linenos:
+   :lines: 70-120
+
+The resource definition for the HTTP access, as well as the first two
+resource definitions for MySQL access, follows the same logic as that
+of the SSH and ICMP rules. The last two MySQL rules are different:
+
+.. literalinclude:: downloads/secgroup.tf
+   :caption: secgroup.tf
+   :linenos:
+   :lines: 122-
+
+Here, we make use of the computed value for the instance IPv4 and IPv6
+addresses given to the web servers when provisioned, which is why we
+also have included a ``depends_on`` directive. Terraform won't attempt
+to create these resources until the web servers are provisioned.
+
+We'll circle back to :ref:`main-tf`:
+
+.. literalinclude:: downloads/main.tf
+   :caption: main.tf
+   :linenos:
+   :lines: 10-58
+
+We now define two different instance resources. One for web servers
+and one for the database server. They use different values defined in
+:ref:`variables-tf` for image, flavor etc. Lastly, we define a volume
+resource and attach this volume to the database server:
+
+.. literalinclude:: downloads/main.tf
+   :caption: main.tf
+   :linenos:
+   :lines: 60-
 
 
