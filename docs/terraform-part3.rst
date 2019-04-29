@@ -209,8 +209,8 @@ of web servers from 4 to 2, we would change this line in
    :lines: 35-
    :emphasize-lines: 5
 
-After changing the count from **4** to **2** here, we can run
-``terraform plan``:
+After changing the count from **4** to **2** here (the highlighted
+line), we can run ``terraform plan``:
 
 .. code-block:: console
 
