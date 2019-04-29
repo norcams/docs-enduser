@@ -4,7 +4,6 @@ variable "name" { default = "myproject" }
 variable "ssh_public_key" { default = "~/.ssh/id_rsa.pub" }
 variable "network" { default = "IPv6" }
 variable "volume_size" { default = 20 }
-variable "metadata" { type = "map" default = {}}
 
 # Security group defaults
 variable "allow_ssh_from_v6"   { type = "list" default = [] }

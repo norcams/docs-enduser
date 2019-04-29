@@ -47,7 +47,7 @@ contains all variables, with default values, used throughout the code:
 .. literalinclude:: downloads/variables.tf
    :caption: variables.tf
    :linenos:
-   :emphasize-lines: 2,10-15
+   :emphasize-lines: 2,9-14
 
 Notice that the **region** variable (highlighted) is empty and doesn't
 have a default value. For this reason, the region must always be
@@ -206,7 +206,7 @@ of web servers from 4 to 2, we would change this line in
 .. literalinclude:: downloads/variables.tf
    :caption: variables.tf
    :linenos:
-   :lines: 35-
+   :lines: 34-
    :emphasize-lines: 5
 
 After changing the count from **4** to **2** here (the highlighted
