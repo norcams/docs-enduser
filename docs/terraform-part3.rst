@@ -151,8 +151,8 @@ variables:
    :lines: 22-68
 
 Notice that we now use implicit iteration over the number of entries
-listed in the ``allow_ssh_from_v4`` variable, which is an empty list
-in :ref:`variables-tf` but is properly defined in :ref:`local-tfvars`.
+listed in the "allow_from" variables, which are empty lists in
+:ref:`variables-tf` but is properly defined in :ref:`local-tfvars`.
 
 Let's take a look at the security group rules defined for HTTP and
 MySQL access:
