@@ -30,6 +30,18 @@ You need to download and install Terraform_ (example):
   $ ./terraform --version
   Terraform v0.11.13
 
+Install the ``terraform`` binary into ``~/.local/bin`` (e.g. your home
+directory):
+
+  $ mv ./terraform ~/.local/bin/
+
+Usually, this directory should be in your shell path. If
+it isn't, you can add it (for bash):
+
+.. code-block:: console
+
+  export PATH=$PATH:~/.local/bin
+
 You also need to have the `OpenStack CLI tools`_ installed.
 
 
@@ -132,7 +144,7 @@ Next we need to initialise Terraform:
 
 .. code-block:: console
 
-  $ ~/terraform init
+  $ terraform init
   
   Initializing provider plugins...
   - Checking for available provider plugins on https://releases.hashicorp.com...
@@ -163,7 +175,7 @@ perform in a subsequent run:
 
 .. code-block:: console
 
-  $ ~/terraform plan
+  $ terraform plan
   Refreshing Terraform state in-memory prior to plan...
   The refreshed state will be used to calculate this plan, but will not be
   persisted to local or remote state storage.
@@ -220,7 +232,7 @@ The next step will be to actually run Terraform:
 
 .. code-block:: console
 
-  $ ~/terraform apply
+  $ terraform apply
   openstack_compute_instance_v2.basic: Refreshing state... (ID: 66c0720b-aa1e-462a-bc5c-1e93611b7824)
   
   An execution plan has been generated and is shown below.
@@ -339,7 +351,7 @@ previously created:
 
 .. code-block:: console
 
-  $ ~/terraform destroy
+  $ terraform destroy
   openstack_compute_instance_v2.basic: Refreshing state... (ID: e1df5188-fa7d-4752-8819-9a9b7e781141)
   
   An execution plan has been generated and is shown below.
