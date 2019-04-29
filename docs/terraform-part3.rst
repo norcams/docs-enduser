@@ -49,9 +49,9 @@ contains all variables, with default values, used throughout the code:
    :linenos:
    :emphasize-lines: 2,10-15
 
-Notice that the **region** variable is empty and doesn't have a
-default value. For this reason, the region must always be specified in
-some way when running Terraform:
+Notice that the **region** variable (highlighted) is empty and doesn't
+have a default value. For this reason, the region must always be
+specified in some way when running Terraform:
 
 .. code-block:: console
 
@@ -62,9 +62,10 @@ some way when running Terraform:
 As shown above, when a default value isn't specified in the code
 Terraform will ask for it interactively.
 
-Also note that the **allow_ssh_from_v6** and **allow_ssh_from_v4**
-variables are empty lists. It is expected that we specify these in the
-``local.tfvars`` file, explained in the next section.
+Also note that the **allow_ssh_from_v6**, **allow_ssh_from_v4**
+etc. (highlighted) variables are empty lists. It is expected that we
+specify these in the ``local.tfvars`` file, explained in the next
+section.
 
 
 Local variables
