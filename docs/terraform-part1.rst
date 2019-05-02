@@ -34,6 +34,8 @@ You need to download and install Terraform_ (example):
 Install the ``terraform`` binary into ``~/.local/bin`` (e.g. your home
 directory):
 
+.. code-block:: console
+
   $ mv ./terraform ~/.local/bin/
 
 Usually, this directory should be in your shell path. If
@@ -41,7 +43,7 @@ it isn't, you can add it (for bash):
 
 .. code-block:: console
 
-  export PATH=$PATH:~/.local/bin
+  $ export PATH=$PATH:~/.local/bin
 
 You also need to have the `OpenStack CLI tools`_ installed.
 
