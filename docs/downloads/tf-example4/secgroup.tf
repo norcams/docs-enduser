@@ -133,7 +133,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule_mysql_from_web_access_ipv
 }
 
 # Allow MYSQL from web servers (IPv6)
-resource "openstack_networking_secgroup_rule_v2" "rule_mysql_from_web_access" {
+resource "openstack_networking_secgroup_rule_v2" "rule_mysql_from_web_access_ipv6" {
     region = "${var.region}"
     count = 1
     direction = "ingress"
