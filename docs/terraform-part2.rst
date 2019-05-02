@@ -37,7 +37,12 @@ The consequence of using ``image_name`` to specify the image is that
 Terraform's own state becomes outdated. When using Terraform at a
 later time to make changes in the virtual infrastructure, it will
 destroy all running instances and create new ones, in order to comply
-with the configuration. This is probably not what you want.
+with the configuration. This is probably not what you want. Running
+``terraform plan`` in this scenario would output:
+
+.. code-block:: console
+
+  image_name:     "Outdated (CentOS)" => "GOLD CentOS 7" (forces new resource)
 
 We find the correct ``image_id`` by using the Openstack CLI:
 
