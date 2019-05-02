@@ -50,12 +50,14 @@ Instead of specifying ``image_name`` as in `Part 1`_:
 
 .. literalinclude:: downloads/tf-example1/basic.tf
    :caption: basic.tf
+   :linenos:
    :lines: 5
 
 We use the ``image_id`` found using Openstack CLI above:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :caption: advanced.tf
+   :linenos:
    :lines: 59
 
 
