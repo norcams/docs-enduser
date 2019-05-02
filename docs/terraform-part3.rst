@@ -222,24 +222,14 @@ line), we can run ``terraform plan``:
     - openstack_compute_instance_v2.web_instance[2]
   
     - openstack_compute_instance_v2.web_instance[3]
+    
   
-    - openstack_networking_secgroup_rule_v2.rule2_mysql_access_ipv4[2]
-  
-    - openstack_networking_secgroup_rule_v2.rule2_mysql_access_ipv4[3]
-  
-    - openstack_networking_secgroup_rule_v2.rule2_mysql_access_ipv6[2]
-  
-    - openstack_networking_secgroup_rule_v2.rule2_mysql_access_ipv6[3]
-  
-  
-  Plan: 0 to add, 0 to change, 6 to destroy.
+  Plan: 0 to add, 0 to change, 2 to destroy.
   ...
 
 Applying this with ``terraform apply`` will then destroy two of the
-web servers and the corresponding security group rules that allowed
-those web servers access to the database server. Similarly, if we were
-to increase the web server count from **4** to **5**, Terraform would
-add a new web server and update the security groups accordingly.
+web servers. Similarly, if we were to increase the web server count
+from **4** to **5**, Terraform would add a new web server.
 
 
 Complete example
