@@ -174,8 +174,8 @@ of the SSH and ICMP rules. The last two MySQL rules are different:
 Here, we use rather advanced functionality for security groups in
 Openstack. We can allow IP addresses from other security groups
 (source groups) access by specifying ``remote_group_id`` rather than
-``remote_ip_prefix``. See [#f1]_ for alternative using
-``remote_ip_prefix``.
+``remote_ip_prefix``. It is possible to achieve the same using
+remote_ip_prefix, however it is less elegant [#f1]_.
 
 We'll circle back to :ref:`main-tf`:
 
