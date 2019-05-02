@@ -48,8 +48,20 @@ We find the correct ``image_id`` by using the Openstack CLI:
 
 .. code-block:: console
 
-  $ openstack image list | grep 'GOLD CentOS 7'
-  | 4756b700-9489-4d59-bfd6-24d3b8b4167b | GOLD CentOS 7                                   | active      |
+  $ openstack image list --status active
+  +--------------------------------------+-----------------------------------+--------+
+  | ID                                   | Name                              | Status |
+  +--------------------------------------+-----------------------------------+--------+
+  | ea951bf5-9bda-4aef-af1a-0cecba3089fc | GOLD CentOS 6                     | active |
+  | 4756b700-9489-4d59-bfd6-24d3b8b4167b | GOLD CentOS 7                     | active |
+  | 108b6b0c-d88f-4683-9f44-3ca7329674dd | GOLD Debian 9                     | active |
+  | a15f6150-4ab3-409a-a5b4-3cb69bd7b409 | GOLD Fedora 28                    | active |
+  | be5bce21-3346-4bb9-bc22-3a780d77b4d3 | GOLD Ubuntu 16.04 LTS             | active |
+  | 974d7df1-d845-4bf0-a3c0-d95d85267d43 | GOLD Ubuntu 18.04 LTS             | active |
+  | b2d189c0-a5b4-4660-8007-555f34dcd4c4 | GOLD Windows Server 2016 Standard | active |
+  | b7047043-8d00-4ab5-8db5-8b2688d0d74b | GOLD Windows Server 2019 Core     | active |
+  | 72568f04-d909-4809-8b0a-279679c054de | GOLD Windows Server 2019 Standard | active |
+  +--------------------------------------+-----------------------------------+--------+
 
 Instead of specifying ``image_name`` as in `Part 1`_:
 
