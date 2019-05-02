@@ -10,7 +10,7 @@ Welcome to UH-IaaS End User Documentation
 
 End user guide for the UH-IaaS cloud
 
-Contents:
+**Contents:**
 
 .. toctree::
    :maxdepth: 2
@@ -25,7 +25,7 @@ Contents:
    create-snapshot
    console
 
-Advanced topics:
+**Advanced topics:**
 
 .. toctree::
    :maxdepth: 1
@@ -36,7 +36,7 @@ Advanced topics:
    terraform-part2
    terraform-part3
 
-Other:
+**Other:**
 
 .. toctree::
    :maxdepth: 1
