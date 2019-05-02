@@ -56,7 +56,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv6" {
 resource "openstack_compute_instance_v2" "instance" {
     count = 5
     name = "test-${count.index}"
-    image_name = "GOLD CentOS 7"
+    image_id = "4756b700-9489-4d59-bfd6-24d3b8b4167b"
     flavor_name = "m1.small"
 
     key_pair = "my-terraform-key"

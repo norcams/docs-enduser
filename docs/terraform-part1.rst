@@ -8,6 +8,7 @@ Last changed: |date|
 .. contents::
 
 .. _Terraform: https://www.terraform.io/
+.. _Part 2: terraform-part2.html
 
 This document describes how to create and manage instances (virtual
 machines) using Terraform_. This is an introduction to Terraform and
@@ -58,10 +59,21 @@ possible form:
 
 As an absolute minimum, you need to specify the name, image, flavor
 and network of the instance that you want Terraform to
-create. However, the instance isn't very usable unless you also
-provide an SSH key pair and a security group that allows access via
-SSH to the instance. We'll add these, but first we'll use the CLI to
-list which are available:
+create.
+
+.. WARNING::
+   We are using ``image_name`` here. This is usually not a good idea,
+   unless for testing purposes. The "GOLD" images provided in UH-IaaS
+   are renewed (e.g. replaced) each month, and Terraform uses the
+   image ID in its state. If using Terraform as a oneshot utility to
+   spin up instances, this isn't a problem. But if you rely on
+   Terraform to maintain your virtual infrastructure over time,
+   switching to ``image_id`` is encouraged. An example using
+   ``image_id`` is provided in `Part 2`_.
+
+The instance isn't very usable unless you also provide an SSH key pair
+and a security group that allows access via SSH to the instance. We'll
+add these, but first we'll use the CLI to list which are available:
 
 .. code-block:: console
 

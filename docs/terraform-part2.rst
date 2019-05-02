@@ -9,6 +9,7 @@ Last changed: |date|
 
 .. _Terraform: https://www.terraform.io/
 .. _Terraform and UH-IaaS\: Part I - Basics: terraform-part1.html
+.. _Part 1: terraform-part1.html
 
 This document describes how to create and manage several instances
 (virtual machines) using Terraform_. This document builds on
@@ -20,11 +21,49 @@ The example file can be downloaded here: :download:`advanced.tf
 <downloads/tf-example2/advanced.tf>`.
 
 
+Image ID
+--------
+
+In `Part 1`_ we used ``image_name`` to specify our preferred
+image. This is usually not a good idea, unless for testing
+purposes. The "GOLD" images provided in UH-IaaS are renewed
+(e.g. replaced) each month, and Terraform uses the image ID in its
+state. If using Terraform as a oneshot utility to spin up instances,
+this isn't a problem. But if you rely on Terraform to maintain your
+virtual infrastructure over time, switching to ``image_id`` is
+encouraged.
+
+The consequence of using ``image_name`` to specify the image is that
+Terraform's own state becomes outdated. When using Terraform at a
+later time to make changes in the virtual infrastructure, it will
+destroy all running instances and create new ones, in order to comply
+with the configuration. This is probably not what you want.
+
+We find the correct ``image_id`` by using the Openstack CLI:
+
+.. code-block:: console
+
+  $ openstack image list | grep 'GOLD CentOS 7'
+  | 4756b700-9489-4d59-bfd6-24d3b8b4167b | GOLD CentOS 7                                   | active      |
+
+Instead of specifying ``image_name`` as in `Part 1`_:
+
+.. literalinclude:: downloads/tf-example1/basic.tf
+   :caption: basic.tf
+   :lines: 5
+
+We use the ``image_id`` found using Openstack CLI above:
+
+.. literalinclude:: downloads/tf-example2/advanced.tf
+   :caption: advanced.tf
+   :lines: 59
+
+
 Multiple instances
 ------------------
 
 Building on the :download:`basic.tf <downloads/tf-example2/basic.tf>` file
-discussed in part I:
+discussed in `Part 1`_:
 
 .. literalinclude:: downloads/tf-example2/basic.tf
    :caption: basic.tf
