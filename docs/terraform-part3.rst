@@ -174,17 +174,8 @@ of the SSH and ICMP rules. The last two MySQL rules are different:
 Here, we use rather advanced functionality for security groups in
 Openstack. We can allow IP addresses from other security groups
 (source groups) access by specifying ``remote_group_id`` rather than
+``remote_ip_prefix``. See [#f1]_ for alternative using
 ``remote_ip_prefix``.
-
-.. NOTE::
-   An alternative way to dynamically add access for the web servers,
-   by using ``remote_ip_prefix``, would be to make use of the computed
-   value for the instance IPv4 and IPv6 addresses given to the web
-   servers when provisioned:
-
-   .. literalinclude:: downloads/tf-example3/alternative-secgroup.tf
-      :caption: secgroup alternative
-      :linenos:
 
 We'll circle back to :ref:`main-tf`:
 
@@ -276,3 +267,14 @@ provided below.
    :caption: local.tfvars
    :name: local-tfvars
    :linenos:
+
+.. rubric:: Footnotes
+
+.. [#f1] An alternative way to dynamically add access for the web servers,
+   by using ``remote_ip_prefix``, would be to make use of the computed
+   value for the instance IPv4 and IPv6 addresses given to the web
+   servers when provisioned:
+
+   .. literalinclude:: downloads/tf-example3/alternative-secgroup.tf
+      :caption: secgroup alternative
+      :linenos:
