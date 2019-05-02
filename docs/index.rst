@@ -10,7 +10,7 @@ Welcome to UH-IaaS End User Documentation
 
 End user guide for the UH-IaaS cloud
 
-Contents:
+**Contents:**
 
 .. toctree::
    :maxdepth: 2
@@ -24,11 +24,23 @@ Contents:
    manage-volumes
    create-snapshot
    console
+
+**Advanced topics:**
+
+.. toctree::
+   :maxdepth: 1
+
    dns
    api
    terraform-part1
    terraform-part2
    terraform-part3
+
+**Other:**
+
+.. toctree::
+   :maxdepth: 1
+
    networking
    support
    known-issues
