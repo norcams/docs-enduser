@@ -17,16 +17,16 @@ preexisting resources such as SSH key pairs and security groups, in
 this example we create everything from scratch.
 
 The example file can be downloaded here: :download:`advanced.tf
-<downloads/advanced.tf>`.
+<downloads/tf-example2/advanced.tf>`.
 
 
 Multiple instances
 ------------------
 
-Building on the :download:`basic.tf <downloads/basic.tf>` file
+Building on the :download:`basic.tf <downloads/tf-example2/basic.tf>` file
 discussed in part I:
 
-.. literalinclude:: downloads/basic.tf
+.. literalinclude:: downloads/tf-example2/basic.tf
    :caption: basic.tf
    :name: basic-tf
    :linenos:
@@ -36,7 +36,7 @@ directive to specify how many we want to provision. When doing so, we
 should also make sure that the instances have unique names, and we
 accomplish that by using the count when specifying the instance name:
 
-.. literalinclude:: downloads/advanced.tf
+.. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
    :lines: 1-2,55-68
    :emphasize-lines: 5-6
@@ -65,7 +65,7 @@ We can have Terraform automatically create a key pair for us, instead
 of relying on a preexisting key pair. This is accomplished by creating
 a resource block for a key pair:
 
-.. literalinclude:: downloads/advanced.tf
+.. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
    :lines: 3-8, 55-68
    :emphasize-lines: 14
@@ -91,7 +91,7 @@ In all the previous examples, we use existing security groups when
 provisioning instances. We can use Terraform to create security groups
 on the fly for us to use:
 
-.. literalinclude:: downloads/advanced.tf
+.. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
    :lines: 9-68
    :emphasize-lines: 55
@@ -157,14 +157,14 @@ Volumes
 Creating volumes is often required, and Terraform can do that as
 well. In order to create a volume you will define the resource:
 
-.. literalinclude:: downloads/advanced.tf
+.. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
    :lines: 70-74
 
 Here, we create a volume named "my-volume" with a size of 10 GB. We
 also want to attach the volume to one of our instances:
 
-.. literalinclude:: downloads/advanced.tf
+.. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
    :lines: 76-80
 
@@ -186,8 +186,8 @@ Complete example
 ----------------
 
 A complete listing of the example file :download:`advanced.tf
-<downloads/advanced.tf>` used in this document is provided below.
+<downloads/tf-example2/advanced.tf>` used in this document is provided below.
 
-.. literalinclude:: downloads/advanced.tf
+.. literalinclude:: downloads/tf-example2/advanced.tf
    :caption: advanced.tf
    :linenos:

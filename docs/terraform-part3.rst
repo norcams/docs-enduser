@@ -28,10 +28,10 @@ set up a real environment on UH-IaaS. We will create:
 
 The files used in this document can be downloaded:
 
-* :download:`main.tf <downloads/main.tf>`
-* :download:`secgroup.tf <downloads/secgroup.tf>`
-* :download:`variables.tf <downloads/variables.tf>`
-* :download:`local.tfvars <downloads/local.tfvars>`
+* :download:`main.tf <downloads/tf-example3/main.tf>`
+* :download:`secgroup.tf <downloads/tf-example3/secgroup.tf>`
+* :download:`variables.tf <downloads/tf-example3/variables.tf>`
+* :download:`local.tfvars <downloads/tf-example3/local.tfvars>`
 
 
 Variables
@@ -44,7 +44,7 @@ supports a concept of default values for variables, which can be
 overridden. In our example, we are opting for a single file that
 contains all variables, with default values, used throughout the code:
 
-.. literalinclude:: downloads/variables.tf
+.. literalinclude:: downloads/tf-example3/variables.tf
    :caption: variables.tf
    :linenos:
    :emphasize-lines: 2,9-14
@@ -86,10 +86,10 @@ that takes one argument, a variables file:
 
   terraform -var-file <file>
 
-An example file :download:`local.tfvars <downloads/local.tfvars>` that
+An example file :download:`local.tfvars <downloads/tf-example3/local.tfvars>` that
 complements our :ref:`variables-tf` could look like this:
 
-.. literalinclude:: downloads/local.tfvars
+.. literalinclude:: downloads/tf-example3/local.tfvars
    :caption: local.tfvars
    :linenos:
 
@@ -126,7 +126,7 @@ to the local variables file:
 We'll take a look at :ref:`main-tf`. The first part, containing the SSH
 key pair resource, is as before but using variables:
 
-.. literalinclude:: downloads/main.tf
+.. literalinclude:: downloads/tf-example3/main.tf
    :caption: main.tf
    :linenos:
    :lines: 1-8
@@ -134,7 +134,7 @@ key pair resource, is as before but using variables:
 Next, we'll look at our security groups in :ref:`secgroup-tf`. We now
 have three of them:
 
-.. literalinclude:: downloads/secgroup.tf
+.. literalinclude:: downloads/tf-example3/secgroup.tf
    :caption: secgroup.tf
    :linenos:
    :lines: 1-20
@@ -145,7 +145,7 @@ server, in addition to allowing SSH and ICMP. The security group rules
 for SSH and ICMP are pretty much the same as before, but using
 variables:
 
-.. literalinclude:: downloads/secgroup.tf
+.. literalinclude:: downloads/tf-example3/secgroup.tf
    :caption: secgroup.tf
    :linenos:
    :lines: 22-68
@@ -157,7 +157,7 @@ listed in the "allow_from" variables, which are empty lists in
 Let's take a look at the security group rules defined for HTTP and
 MySQL access:
 
-.. literalinclude:: downloads/secgroup.tf
+.. literalinclude:: downloads/tf-example3/secgroup.tf
    :caption: secgroup.tf
    :linenos:
    :lines: 70-120
@@ -166,7 +166,7 @@ The resource definition for the HTTP access, as well as the first two
 resource definitions for MySQL access, follows the same logic as that
 of the SSH and ICMP rules. The last two MySQL rules are different:
 
-.. literalinclude:: downloads/secgroup.tf
+.. literalinclude:: downloads/tf-example3/secgroup.tf
    :caption: secgroup.tf
    :linenos:
    :lines: 122-
@@ -178,7 +178,7 @@ to create these resources until the web servers are provisioned.
 
 We'll circle back to :ref:`main-tf`:
 
-.. literalinclude:: downloads/main.tf
+.. literalinclude:: downloads/tf-example3/main.tf
    :caption: main.tf
    :linenos:
    :lines: 10-58
@@ -188,7 +188,7 @@ and one for the database server. They use different values defined in
 :ref:`variables-tf` for image, flavor etc. Lastly, we define a volume
 resource and attach this volume to the database server:
 
-.. literalinclude:: downloads/main.tf
+.. literalinclude:: downloads/tf-example3/main.tf
    :caption: main.tf
    :linenos:
    :lines: 60-
@@ -203,7 +203,7 @@ updating and applying the code. If we wanted to scale down the number
 of web servers from 4 to 2, we would change this line in
 :ref:`variables-tf`:
 
-.. literalinclude:: downloads/variables.tf
+.. literalinclude:: downloads/tf-example3/variables.tf
    :caption: variables.tf
    :linenos:
    :lines: 34-
@@ -247,22 +247,22 @@ Complete example
 A complete listing of the example files used in this document is
 provided below.
 
-.. literalinclude:: downloads/main.tf
+.. literalinclude:: downloads/tf-example3/main.tf
    :caption: main.tf
    :name: main-tf
    :linenos:
 
-.. literalinclude:: downloads/secgroup.tf
+.. literalinclude:: downloads/tf-example3/secgroup.tf
    :caption: secgroup.tf
    :name: secgroup-tf
    :linenos:
 
-.. literalinclude:: downloads/variables.tf
+.. literalinclude:: downloads/tf-example3/variables.tf
    :caption: variables.tf
    :name: variables-tf
    :linenos:
 
-.. literalinclude:: downloads/local.tfvars
+.. literalinclude:: downloads/tf-example3/local.tfvars
    :caption: local.tfvars
    :name: local-tfvars
    :linenos:

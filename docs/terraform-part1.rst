@@ -14,7 +14,7 @@ machines) using Terraform_. This is an introduction to Terraform and
 shows how to use Terraform in its simplest and most basic form.
 
 The example file can be downloaded here: :download:`basic.tf
-<downloads/basic.tf>`.
+<downloads/tf-example1/basic.tf>`.
 
 
 Prerequisites
@@ -51,7 +51,7 @@ Basic Terraform usage
 Here is a Terraform file that works with UH-IaaS, in its simplest
 possible form:
 
-.. literalinclude:: downloads/basic.tf
+.. literalinclude:: downloads/tf-example1/basic.tf
    :caption: basic.tf (minimal)
    :linenos:
    :lines: 1-7,11-
@@ -95,7 +95,7 @@ add that, and the same with security groups.
 Having established which key pairs and security groups we wish to use,
 we can add those to our Terraform file:
 
-.. literalinclude:: downloads/basic.tf
+.. literalinclude:: downloads/tf-example1/basic.tf
    :caption: basic.tf
    :name: basic-tf
    :linenos:
@@ -131,7 +131,7 @@ creating a directory which we'll call **tf-project**:
 We then create the initial Terraform :ref:`basic-tf` file as outlined
 in the previous section. The name "basic.tf" is arbitrary, Terraform
 will search for any files with a ".tf" ending. This file can be
-:download:`downloaded here <downloads/basic.tf>`. Our Terraform
+:download:`downloaded here <downloads/tf-example1/basic.tf>`. Our Terraform
 directory should now contain only this file:
 
 .. code-block:: console
