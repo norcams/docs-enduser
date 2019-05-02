@@ -157,9 +157,9 @@ Privacy Policy
 
   When you are no longer registered as an active student or no longer working at any educational institutions, your project will be terminated and deleted from our system after 90 days without prior notice.
 
-  * Withdrawal
+* Withdrawal
 
-    If you for any reasons want to stop using our services, you should notify us by sending an email_. We will then delete your project and all your data from our system. You are welcome to rejoin the UH-IaaS cloud whenever you want.
+  If you for any reasons want to stop using our services, you should notify us by sending an email_. We will then delete your project and all your data from our system. You are welcome to rejoin the UH-IaaS cloud whenever you want.
 
 * Cookies
 
