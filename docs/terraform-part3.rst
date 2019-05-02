@@ -170,6 +170,7 @@ of the SSH and ICMP rules. The last two MySQL rules are different:
    :caption: secgroup.tf
    :linenos:
    :lines: 122-
+   :emphasize-lines: 10,23
 
 Here, we use rather advanced functionality for security groups in
 Openstack. We can allow IP addresses from other security groups
