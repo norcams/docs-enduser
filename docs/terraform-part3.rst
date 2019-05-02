@@ -23,7 +23,7 @@ set up a real environment on UH-IaaS. We will create:
 * Four web servers running CentOS
 * One database server running Ubuntu
 * A volume that is attached to the database server
-* Security groups that allows access to the different servers, as well
+* Security groups that allow access to the different servers, as well
   as allowing the web servers to access the database server
 
 The files used in this document can be downloaded:
