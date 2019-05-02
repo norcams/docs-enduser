@@ -152,7 +152,7 @@ variables:
 
 Notice that we now use implicit iteration over the number of entries
 listed in the "allow_from" variables, which are empty lists in
-:ref:`variables-tf` but is properly defined in :ref:`local-tfvars`.
+:ref:`variables-tf` but are properly defined in :ref:`local-tfvars`.
 
 Let's take a look at the security group rules defined for HTTP and
 MySQL access:
