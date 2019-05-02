@@ -182,7 +182,7 @@ Openstack. We can allow IP addresses from other security groups
    value for the instance IPv4 and IPv6 addresses given to the web
    servers when provisioned:
 
-   .. literalinclude:: downloads/tf-example3/secgroup.tf
+   .. literalinclude:: downloads/tf-example3/alternative-secgroup.tf
       :caption: secgroup alternative
       :linenos:
 
