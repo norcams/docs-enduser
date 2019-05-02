@@ -34,8 +34,8 @@ The files used in this document can be downloaded:
 * :download:`local.tfvars <downloads/tf-example3/local.tfvars>`
 
 
-Variables
----------
+Variables file
+--------------
 
 In order to keep the management of the Terraform infrastructure easy
 and intuitive, it is a good idea to consolidate definitions and
@@ -68,8 +68,8 @@ specify these in the ``local.tfvars`` file, explained in the next
 section.
 
 
-Local variables
----------------
+Local variables file
+--------------------
 
 Terraform supports specification of local variables that completes or
 overrides the variable set given in :ref:`variables-tf`. We can do
@@ -164,17 +164,27 @@ MySQL access:
 
 The resource definition for the HTTP access, as well as the first two
 resource definitions for MySQL access, follows the same logic as that
-of the SSH and ICMP rules. The last two MySQL rules are different:
+of the SSH and ICMP rules. The last MySQL rule is different:
 
 .. literalinclude:: downloads/tf-example3/secgroup.tf
    :caption: secgroup.tf
    :linenos:
    :lines: 122-
 
-Here, we make use of the computed value for the instance IPv4 and IPv6
-addresses given to the web servers when provisioned, which is why we
-also have included a ``depends_on`` directive. Terraform won't attempt
-to create these resources until the web servers are provisioned.
+Here, we use rather advanced functionality for security groups in
+Openstack. We can allow IP addresses from other security groups
+(source groups) access by specifying ``remote_group_id`` rather than
+``remote_ip_prefix``.
+
+.. NOTE::
+   An alternative way to dynamically add access for the web servers,
+   by using ``remote_ip_prefix``, would be to make use of the computed
+   value for the instance IPv4 and IPv6 addresses given to the web
+   servers when provisioned:
+
+   .. literalinclude:: downloads/tf-example3/secgroup.tf
+      :caption: secgroup alternative
+      :linenos:
 
 We'll circle back to :ref:`main-tf`:
 
