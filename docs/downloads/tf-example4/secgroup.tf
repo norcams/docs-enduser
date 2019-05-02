@@ -20,7 +20,7 @@ resource "openstack_networking_secgroup_v2" "instance_db_access" {
 }
 
 # Allow ssh from IPv4 net
-resource "openstack_networking_secgroup_rule_v2" "rule1_ssh_access_ipv4" {
+resource "openstack_networking_secgroup_rule_v2" "rule_ssh_access_ipv4" {
     region = "${var.region}"
     count = "${length(var.allow_ssh_from_v4)}"
     direction = "ingress"
@@ -33,7 +33,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule1_ssh_access_ipv4" {
 }
 
 # Allow ssh from IPv6 net
-resource "openstack_networking_secgroup_rule_v2" "rule1_ssh_access_ipv6" {
+resource "openstack_networking_secgroup_rule_v2" "rule_ssh_access_ipv6" {
     region = "${var.region}"
     count = "${length(var.allow_ssh_from_v6)}"
     direction = "ingress"
@@ -46,7 +46,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule1_ssh_access_ipv6" {
 }
 
 # Allow icmp from IPv4 net
-resource "openstack_networking_secgroup_rule_v2" "rule1_icmp_access_ipv4" {
+resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv4" {
     region = "${var.region}"
     count = "${length(var.allow_ssh_from_v4)}"
     direction = "ingress"
@@ -57,7 +57,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule1_icmp_access_ipv4" {
 }
 
 # Allow icmp from IPv6 net
-resource "openstack_networking_secgroup_rule_v2" "rule1_icmp_access_ipv6" {
+resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv6" {
     region = "${var.region}"
     count = "${length(var.allow_ssh_from_v6)}"
     direction = "ingress"
@@ -68,7 +68,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule1_icmp_access_ipv6" {
 }
 
 # Allow HTTP from IPv4 net
-resource "openstack_networking_secgroup_rule_v2" "rule1_http_access_ipv4" {
+resource "openstack_networking_secgroup_rule_v2" "rule_http_access_ipv4" {
     region = "${var.region}"
     count = "${length(var.allow_http_from_v4)}"
     direction = "ingress"
@@ -81,7 +81,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule1_http_access_ipv4" {
 }
 
 # Allow HTTP from IPv6 net
-resource "openstack_networking_secgroup_rule_v2" "rule1_http_access_ipv6" {
+resource "openstack_networking_secgroup_rule_v2" "rule_http_access_ipv6" {
     region = "${var.region}"
     count = "${length(var.allow_http_from_v6)}"
     direction = "ingress"
@@ -94,7 +94,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule1_http_access_ipv6" {
 }
 
 # Allow MySQL from IPv4 net
-resource "openstack_networking_secgroup_rule_v2" "rule1_mysql_access_ipv4" {
+resource "openstack_networking_secgroup_rule_v2" "rule_mysql_access_ipv4" {
     region = "${var.region}"
     count = "${length(var.allow_mysql_from_v4)}"
     direction = "ingress"
@@ -107,7 +107,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule1_mysql_access_ipv4" {
 }
 
 # Allow MYSQL from IPv6 net
-resource "openstack_networking_secgroup_rule_v2" "rule1_mysql_access_ipv6" {
+resource "openstack_networking_secgroup_rule_v2" "rule_mysql_access_ipv6" {
     region = "${var.region}"
     count = "${length(var.allow_mysql_from_v6)}"
     direction = "ingress"
