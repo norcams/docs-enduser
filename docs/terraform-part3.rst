@@ -164,7 +164,7 @@ MySQL access:
 
 The resource definition for the HTTP access, as well as the first two
 resource definitions for MySQL access, follows the same logic as that
-of the SSH and ICMP rules. The last MySQL rule is different:
+of the SSH and ICMP rules. The last two MySQL rules are different:
 
 .. literalinclude:: downloads/tf-example3/secgroup.tf
    :caption: secgroup.tf
