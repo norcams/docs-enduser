@@ -70,7 +70,8 @@ Instead of specifying ``image_name`` as in `Part 1`_:
    :linenos:
    :lines: 5
 
-We use the ``image_id`` found using Openstack CLI above:
+We use the ``image_id`` for the "GOLD CentOS 7" image found using
+Openstack CLI above:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :caption: advanced.tf
