@@ -175,7 +175,7 @@ Here, we use rather advanced functionality for security groups in
 Openstack. We can allow IP addresses from other security groups
 (source groups) access by specifying ``remote_group_id`` rather than
 ``remote_ip_prefix``. It is possible to achieve the same using
-remote_ip_prefix, however it is less elegant [#f1]_.
+``remote_ip_prefix``, however it is less elegant [#f1]_.
 
 We'll circle back to :ref:`main-tf`:
 
