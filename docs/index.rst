@@ -26,6 +26,9 @@ Contents:
    console
    dns
    api
+   terraform-part1
+   terraform-part2
+   terraform-part3
    networking
    support
    known-issues
