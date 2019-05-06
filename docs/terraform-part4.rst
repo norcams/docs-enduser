@@ -48,6 +48,17 @@ For Debian and Ubuntu:
 
   # apt-get install ansible
 
+When using Ansible with UH-IaaS and instances created with Terraform,
+we'll often create and destroy instances multiple times. This depends
+on your workflow. It may be beneficial to add this into a file
+``~/.ansible.cfg`` to prevent Ansible to halt on unknown SSH host
+keys:
+
+.. code-block:: ini
+
+  [defaults]
+  host_key_checking = False
+
 
 Ansible inventory from Terraform state
 --------------------------------------
