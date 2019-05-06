@@ -14,7 +14,7 @@ Last changed: |date|
 .. _Part 2: terraform-part2.html
 .. _Part 3: terraform-part3.html
 
-.. IMPORTANT::
+.. WARNING::
    This document is under construction!
 
 This document builds on Terraform `Part 1`_, `Part 2`_ and `Part 3`_.
