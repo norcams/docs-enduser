@@ -51,8 +51,8 @@ For Debian and Ubuntu:
 When using Ansible with UH-IaaS and instances created with Terraform,
 we'll often create and destroy instances multiple times. This depends
 on your workflow. It may be beneficial to add the following
-configuration to your ``~/.ansible.cfg`` to prevent Ansible to halt on
-unknown SSH host keys:
+configuration to your ``~/.ansible.cfg`` to prevent Ansible from
+halting on unknown SSH host keys:
 
 .. code-block:: ini
 
