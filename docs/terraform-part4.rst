@@ -113,7 +113,7 @@ SSH user to connect as:
 .. literalinclude:: downloads/tf-example4/variables.tf
    :caption: variables.tf
    :linenos:
-   :emphasize-lines: 44-51
+   :lines: 44-51
 
 Next, we need to use those variables and add a metadata directive in
 the compute instance resource. The script **terraform.py** will use
@@ -123,14 +123,14 @@ servers (CentOS 7):
 .. literalinclude:: downloads/tf-example4/main.tf
    :caption: main.tf
    :linenos:
-   :emphasize-lines: 29-32
+   :lines: 29-32
 
 And for the database server (Ubuntu 18.04 LTS):
 
 .. literalinclude:: downloads/tf-example4/main.tf
    :caption: main.tf
    :linenos:
-   :emphasize-lines: 59-63
+   :lines: 59-63
 
 We have added this metadata:
 
