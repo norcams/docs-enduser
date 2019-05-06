@@ -59,38 +59,143 @@ To use the Python script we need to install and set it up:
 
 .. code-block:: console
 
-  $ git clone https://github.com/mantl/terraform.py
-  $ cd terraform.py
-  $ python setup.py build
-  $ python setup.py install --user
+  $ curl https://raw.githubusercontent.com/trondham/kubespray/terraform-py-ipv6-openstack/contrib/terraform/terraform.py -o ~/.local/bin/terraform.py
+  $ chmod a+x ~/.local/bin/terraform.py 
 
-This installs the Python script ``ati`` from terraform.py into
-``~/.local/bin`` (e.g. your home directory). Usually, this directory
-should be in your shell path. If it isn't, you can add it (for bash):
+.. NOTE::
+   This is from a fork of the kubespray repository. A pull request has
+   been created in order to get our changes into the upstream
+   repository.
+
+This installs the Python script ``terraform.py`` into ``~/.local/bin``
+(e.g. your home directory). Usually, this directory should be in your
+shell path. If it isn't, you can add it (for bash):
 
 .. code-block:: console
 
   export PATH=$PATH:~/.local/bin
 
-From your Terraform working directory, copy the wrapper script from
-the ``terraform.py`` directory that you cloned from github, and make
-it executable:
+In your Terraform working directory, create a directory called
+"inventory", and create a symbolic link "hosts" that points to the
+``terraform.py`` script:
 
 .. code-block:: console
 
-  $ cp /path/to/terraform.py/scripts/terraform_inventory.sh .
-  $ chmod a+x terraform_inventory.sh
+  $ mkdir inventory
+  $ ln -s ~/.local/bin/terraform.py inventory/hosts
 
 You can then run ansible from within your Terraform working directory
 to verify that dynamic inventory works:
 
 .. code-block:: console
 
-  $ ansible all -i terraform_inventory.sh --list-hosts
+  $ ansible all -i inventory --list-hosts
     hosts (5):
+      osl-db-0
       osl-web-0
       osl-web-3
       osl-web-2
       osl-web-1
-      osl-db-0
+
+This only lists the hosts and verifies that the dynamic inventory
+works. Having Ansible actually connect to the hosts requires
+additional configuration as described in the next section.
+
+
+Configuring Ansible connectivity
+--------------------------------
+
+In order for Ansible to function correctly we need to tell Ansible
+additional information about the instances. First, we add a map in
+``variables.tf`` to address the SSH user. Ansible needs to know which
+SSH user to connect as:
+
+.. literalinclude:: downloads/tf-example4/variables.tf
+   :caption: variables.tf
+   :linenos:
+   :emphasize-lines: 44-51
+
+Next, we need to use those variables and add a metadata directive in
+the compute instance resource. The script **terraform.py** will use
+this metadata to correctly create inventory for Ansible. For the web
+servers (CentOS 7):
+
+.. literalinclude:: downloads/tf-example4/main.tf
+   :caption: main.tf
+   :linenos:
+   :emphasize-lines: 29-32
+
+And for the database server (Ubuntu 18.04 LTS):
+
+.. literalinclude:: downloads/tf-example4/main.tf
+   :caption: main.tf
+   :linenos:
+   :emphasize-lines: 59-63
+
+We have added this metadata:
+
+* ``ssh_user``: Using the map variable created in variables.tf (see
+  above).
+
+* ``prefer_ipv6``: This tells **terraform.py** that we want Ansible to
+  use the IPv6 address of the instance. This is needed in our case as
+  we're using the IPv6 network type in UH-IaaS. When using the
+  dualStack network, this is usually not needed.
+
+* ``python_bin``: This is only used on the database server
+  (Ubuntu). Ansible needs a working Python binary to function, and in
+  Ubuntu's case there isn't a ``/usr/bin/python`` and Ansible needs to
+  be explicitly told which binary to use on the instance.
+
+With these in place, having applied the configuration with ``terraform
+apply``, we can run ansible and verify that it is able to reach the
+instances over the network:
+
+.. code-block:: console
+
+  $ ansible all -i inventory -m ping
+  osl-web-2 | SUCCESS => {
+      "changed": false, 
+      "ping": "pong"
+  }
+  osl-web-1 | SUCCESS => {
+      "changed": false, 
+      "ping": "pong"
+  }
+  osl-web-3 | SUCCESS => {
+      "changed": false, 
+      "ping": "pong"
+  }
+  osl-web-0 | SUCCESS => {
+      "changed": false, 
+      "ping": "pong"
+  }
+  osl-db-0 | SUCCESS => {
+      "changed": false, 
+      "ping": "pong"
+  }
+
+We can also run a command on the instances to verify that SSH
+connection is working:
+
+.. code-block:: console
+
+  $ ansible all -i inventory -m shell -a 'uname -sr'
+  osl-web-3 | CHANGED | rc=0 >>
+  Linux 3.10.0-957.10.1.el7.x86_64
+  
+  osl-web-0 | CHANGED | rc=0 >>
+  Linux 3.10.0-957.10.1.el7.x86_64
+  
+  osl-web-1 | CHANGED | rc=0 >>
+  Linux 3.10.0-957.10.1.el7.x86_64
+  
+  osl-web-2 | CHANGED | rc=0 >>
+  Linux 3.10.0-957.10.1.el7.x86_64
+  
+  osl-db-0 | CHANGED | rc=0 >>
+  Linux 4.15.0-47-generic
+
+We have verified that Ansible and dynamic inventory from Terraform
+state works, and are ready to proceed.
 
