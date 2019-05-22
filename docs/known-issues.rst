@@ -93,9 +93,9 @@ Missing network when provisioning from snapshot
 Debian 9
 ''''''''
 
-IPv6 is broken in an instance started from a snapshot, and this ccan also affect
-the original instance. If the resolver addresses is configured using their ipv6
-addresses, even ipv4 is affected. This issue appears regardless of which network
+IPv6 is broken in an instance started from a snapshot, and this can also affect
+the original instance. If the resolver addresses is configured using their IPv6
+addresses, even IPv4 is affected. This issue appears regardless of which network
 is selected for the instance. Here is a workaround:
 
 1. Log in to the instance as the **debian** user
@@ -116,6 +116,9 @@ fully functional networks.
 
 Fedora 30
 '''''''''
+IPv6 is broken in an instance started from a snapshot, and this can also affect
+the original instance. This issue appears regardless of which network
+is selected for the instance. Here is a workaround:
 
 1. Log in to the instance as the **fedora** user
 
