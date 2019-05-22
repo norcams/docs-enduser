@@ -114,6 +114,25 @@ You should now be able to create new machines based upon this snapshot and get
 fully functional networks.
 
 
+Fedora 30
+'''''''''
+
+1. Log in to the instance as the **fedora 30** user
+
+#. Remove the IPv6 dhclient leases file::
+
+     rm /var/lib/NetworkManager/dhclient6-*-eth0.lease
+
+#. Log out and shut down the system
+
+#. Create a snapshot
+
+#. The original instance might be restarted at this point
+
+You should now be able to create new machines based upon this snapshot and get
+fully functional networks.
+
+
 CentOS 7
 ''''''''
 
