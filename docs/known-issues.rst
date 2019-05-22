@@ -117,7 +117,7 @@ fully functional networks.
 Fedora 30
 '''''''''
 
-1. Log in to the instance as the **fedora 30** user
+1. Log in to the instance as the **fedora** user
 
 #. Remove the IPv6 dhclient leases file::
 
