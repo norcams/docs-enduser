@@ -284,6 +284,14 @@ The ``db.yaml`` also includes a handler for restarting MariaDB if we
 have done configuration changes which require a restart to take
 effect.
 
+The Ansible playbooks above would be run like this, from the Terraform
+workspace directory:
+
+.. code-block:: console
+
+  $ ansible-playbook -i inventory db.yaml
+  $ ansible-playbook -i inventory web.yaml
+
 
 Complete example
 ----------------
