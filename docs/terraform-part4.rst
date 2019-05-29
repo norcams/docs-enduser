@@ -231,10 +231,10 @@ Using Ansible
 
 .. IMPORTANT::
 
-   This section includes simple playbooks to get started with using
-   Ansible for configuring the OS and services. In order to make this
-   into a real service that is viable for production use, there is a
-   lot more to be done.
+   This section includes simple playbooks to show how Ansible can be
+   used for configuring the OS and services. In order to make this
+   into a real service for production use, a lot more work needs to be
+   done.
 
 I order to configure the web and database servers, we have created two
 playbooks. They are named ``web.yaml`` and ``db.yaml``,
@@ -277,8 +277,8 @@ In this playbook, we do the following:
 * Make sure that the database service is enabled and running.
 
 * Install the MySQL bindings for Python. This is needed if we want to
-  use Ansible to communicate with the database, e.g. for creating
-  databases.
+  use Ansible to communicate with the database server, e.g. for
+  creating databases.
 
 The ``db.yaml`` also includes a handler for restarting MariaDB if we
 have done configuration changes which require a restart to take
