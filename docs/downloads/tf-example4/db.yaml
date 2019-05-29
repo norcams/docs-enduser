@@ -1,0 +1,47 @@
+---
+- hosts: os_metadata_my_server_role=database
+  become: true
+
+  tasks:
+  - name: Create XFS filesystem on /dev/sdb
+    filesystem:
+      fstype: xfs
+      dev: /dev/sdb
+
+  - name: Mount volume
+    mount:
+      path: /var/lib/mysql
+      src: /dev/sdb
+      fstype: xfs
+      state: mounted
+
+  - name: Install MariaDB, also starts the service
+    apt:
+      name: mariadb-server
+
+  - name: Set MariaDB bind-address
+    ini_file:
+      path: /etc/mysql/mariadb.conf.d/90-server.cnf
+      section: mysqld
+      option: bind-address
+      value: "{{ ansible_default_ipv4.address }}"
+      backup: yes
+    notify:
+    - restart MariaDB
+
+  - name: Make sure MariaDB is running and enabled
+    systemd:
+      name: mariadb
+      state: started
+      enabled: yes
+
+  - name: Install PyMySQL, needed by Ansible MySQL module
+    apt:
+      name: python3-pymysql
+
+
+  handlers:
+  - name: restart MariaDB
+    systemd:
+      name: "mariadb"
+      state: restarted

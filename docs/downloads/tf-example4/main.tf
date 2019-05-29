@@ -29,6 +29,7 @@ resource "openstack_compute_instance_v2" "web_instance" {
     metadata {
         ssh_user = "${lookup(var.role_ssh_user, "web", "unknown")}"
         prefer_ipv6 = true
+        my_server_role = "web"
     }
 
     depends_on = [
@@ -60,6 +61,7 @@ resource "openstack_compute_instance_v2" "db_instance" {
         ssh_user = "${lookup(var.role_ssh_user, "db", "unknown")}"
         prefer_ipv6 = true
 	python_bin = "/usr/bin/python3"
+        my_server_role = "database"
     }
 
     depends_on = [

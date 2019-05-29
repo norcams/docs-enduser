@@ -1,0 +1,28 @@
+---
+- hosts: os_metadata_my_server_role=web
+  become: true
+
+  tasks:
+  - name: Install Apache
+    yum:
+      name: httpd
+
+  - name: Install php
+    yum:
+      name: php
+
+  - name: Install php-mysql
+    yum:
+      name: php-mysql
+
+  - name: Set httpd_can_network_connect_db SELinux boolean
+    seboolean:
+      name: httpd_can_network_connect_db
+      state: yes
+      persistent: yes
+
+  - name: Make sure Apache is running and enabled
+    systemd:
+      name: httpd
+      state: started
+      enabled: yes

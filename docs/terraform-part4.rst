@@ -30,6 +30,15 @@ web servers and the database server to make a real service.
 This is not an introduction to Ansible. It is assumed that the reader
 has some knowledge and experience in using Ansible.
 
+The files used in this document can be downloaded:
+
+* :download:`main.tf <downloads/tf-example4/main.tf>`
+* :download:`secgroup.tf <downloads/tf-example4/secgroup.tf>`
+* :download:`variables.tf <downloads/tf-example4/variables.tf>`
+* :download:`local.tfvars <downloads/tf-example4/local.tfvars>`
+* :download:`web.yaml <downloads/tf-example4/web.yaml>`
+* :download:`db.yaml <downloads/tf-example4/db.yaml>`
+
 
 Installing Ansible
 ------------------
@@ -137,14 +146,14 @@ servers (CentOS 7):
 .. literalinclude:: downloads/tf-example4/main.tf
    :caption: main.tf
    :linenos:
-   :lines: 29-32
+   :lines: 29-33
 
 And for the database server (Ubuntu 18.04 LTS):
 
 .. literalinclude:: downloads/tf-example4/main.tf
    :caption: main.tf
    :linenos:
-   :lines: 59-63
+   :lines: 59-64
 
 We have added this metadata:
 
@@ -160,6 +169,9 @@ We have added this metadata:
   (Ubuntu). Ansible needs a working Python binary to function, and in
   Ubuntu's case there isn't a ``/usr/bin/python`` and Ansible needs to
   be explicitly told which binary to use on the instance.
+
+* ``my_server_role``: We use this to control how to identify the web
+  servers and database servers in the Ansible inventory.
 
 With these in place, having applied the configuration with ``terraform
 apply``, we can run ansible and verify that it is able to reach the
@@ -213,3 +225,98 @@ connection is working:
 We have verified that Ansible and dynamic inventory from Terraform
 state works, and are ready to proceed.
 
+
+Using Ansible
+-------------
+
+.. IMPORTANT::
+
+   This section includes simple playbooks to get started with using
+   Ansible for configuring the OS and services. In order to make this
+   into a real service that is viable for production use, there is a
+   lot more to be done.
+
+I order to configure the web and database servers, we have created two
+playbooks. They are named ``web.yaml`` and ``db.yaml``,
+respectively. We'll take a look at ``web.yaml`` first:
+
+.. literalinclude:: downloads/tf-example4/web.yaml
+   :caption: web.yaml
+   :linenos:
+
+In this playbook, we do the following:
+
+* Install the Apache web server, PHP and the PHP MySQL bindings
+
+* Make sure that SELinux allows Apache to connect to the
+  database
+
+* Make sure that the web service is enabled and running.
+
+Next, lets take a look at ``db.yaml`` which we use to configure the
+database server:
+
+.. literalinclude:: downloads/tf-example4/db.yaml
+   :caption: db.yaml
+   :linenos:
+
+In this playbook, we do the following:
+
+* Create a filesystem on our volume, available as the ``/dev/sdb``
+  device, and mount it as ``/var/lib/mysql``
+
+* Install MariaDB (i.e. MySQL)
+
+* Set the MariaDB bind address, i.e. the IP address that we want the
+  database server to listen to. We use the internal, private IPv4
+  address for this. When using the IPv6 network in UH-IaaS, instances
+  also get a private IPv4 address. We can use this address for
+  communication between instances, which in our case will be
+  communication between the web servers and the database.
+
+* Make sure that the database service is enabled and running.
+
+* Install the MySQL bindings for Python. This is needed if we want to
+  use Ansible to communicate with the database, e.g. for creating
+  databases.
+
+The ``db.yaml`` also includes a handler for restarting MariaDB if we
+have done configuration changes which require a restart to take
+effect.
+
+
+Complete example
+----------------
+
+A complete listing of the example files used in this document is
+provided below.
+
+.. literalinclude:: downloads/tf-example3/main.tf
+   :caption: main.tf
+   :name: main-tf
+   :linenos:
+
+.. literalinclude:: downloads/tf-example3/secgroup.tf
+   :caption: secgroup.tf
+   :name: secgroup-tf
+   :linenos:
+
+.. literalinclude:: downloads/tf-example3/variables.tf
+   :caption: variables.tf
+   :name: variables-tf
+   :linenos:
+
+.. literalinclude:: downloads/tf-example3/local.tfvars
+   :caption: local.tfvars
+   :name: local-tfvars
+   :linenos:
+
+.. literalinclude:: downloads/tf-example4/web.yaml
+   :caption: web.yaml
+   :name: web-yaml
+   :linenos:
+
+.. literalinclude:: downloads/tf-example4/db.yaml
+   :caption: db.yaml
+   :name: db-yaml
+   :linenos:
