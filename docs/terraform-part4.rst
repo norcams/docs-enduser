@@ -291,22 +291,22 @@ Complete example
 A complete listing of the example files used in this document is
 provided below.
 
-.. literalinclude:: downloads/tf-example3/main.tf
+.. literalinclude:: downloads/tf-example4/main.tf
    :caption: main.tf
    :name: main-tf
    :linenos:
 
-.. literalinclude:: downloads/tf-example3/secgroup.tf
+.. literalinclude:: downloads/tf-example4/secgroup.tf
    :caption: secgroup.tf
    :name: secgroup-tf
    :linenos:
 
-.. literalinclude:: downloads/tf-example3/variables.tf
+.. literalinclude:: downloads/tf-example4/variables.tf
    :caption: variables.tf
    :name: variables-tf
    :linenos:
 
-.. literalinclude:: downloads/tf-example3/local.tfvars
+.. literalinclude:: downloads/tf-example4/local.tfvars
    :caption: local.tfvars
    :name: local-tfvars
    :linenos:
