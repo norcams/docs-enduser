@@ -153,7 +153,7 @@ And for the database server (Ubuntu 18.04 LTS):
 .. literalinclude:: downloads/tf-example4/main.tf
    :caption: main.tf
    :linenos:
-   :lines: 59-64
+   :lines: 60-65
 
 We have added this metadata:
 
