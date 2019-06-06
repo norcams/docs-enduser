@@ -14,9 +14,6 @@ Last changed: |date|
 .. _Part 2: terraform-part2.html
 .. _Part 3: terraform-part3.html
 
-.. WARNING::
-   This document is under construction!
-
 This document builds on Terraform `Part 1`_, `Part 2`_ and `Part 3`_.
 In `Part 3`_ we built an environment in UH-IaaS consisting of 4
 frontend web servers and 1 backend database server, as well as
