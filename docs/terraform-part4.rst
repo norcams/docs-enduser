@@ -79,13 +79,8 @@ To use the Python script we need to install and set it up:
 
 .. code-block:: console
 
-  $ curl https://raw.githubusercontent.com/trondham/kubespray/terraform-py-ipv6-openstack/contrib/terraform/terraform.py -o ~/.local/bin/terraform.py
+  $ curl https://raw.githubusercontent.com/kubernetes-sigs/kubespray/master/contrib/terraform/terraform.py -o ~/.local/bin/terraform.py
   $ chmod a+x ~/.local/bin/terraform.py 
-
-.. NOTE::
-   This is from a fork of the kubespray repository. A pull request has
-   been created in order to get our changes into the upstream
-   repository.
 
 This installs the Python script ``terraform.py`` into ``~/.local/bin``
 (e.g. your home directory). Usually, this directory should be in your
