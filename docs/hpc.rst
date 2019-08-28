@@ -109,12 +109,14 @@ The hardware used for HPC is listed below.
 For generic HPC workloads:
 
 * 4 x compute hosts with:
+
   - 2 x `AMD EPYC 7551 32-Core Processor`_
   - 512 GiB memory
 
 For CERN ATLAS workloads:
 
 * 10 x compute hosts with:
+
   - 2 x `AMD EPYC 7551 32-Core Processor`_
   - 512 GiB memory
 
