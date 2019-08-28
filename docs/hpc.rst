@@ -97,8 +97,8 @@ support channels as described in the `support page`_.
 
 Note that the nature of HPC workloads allows for no overcommit of CPU
 and memory resources. The HPC instances are consuming their CPU and
-memory even when idle, and as a result the HPC instances is much more
-expensive than normal workloads. **Please make sure to actually use
+memory even when idle, and as a result HPC instances are much more
+expensive than normal instances. **Please make sure to actually use
 the resources given to an instance** whenever the instance is
 running. Delete the instance when it's no longer needed.
 
