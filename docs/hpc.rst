@@ -44,8 +44,9 @@ infrastructure for HPC is different in both hardware and setup:
 +---------------------------------+---------------------------------+
 | HPC                             | Normal                          |
 +=================================+=================================+
-| AMD EPYC processors. Up to 64   | Intel CPUs of various           |
-| physical cores plus threads.    | generations.                    |
+| 2 AMD EPYC 32-core processors   | Various model and generation    |
+| per compute host. Up to 64      | Intel processors.               |
+| physical cores plus threads.    |                                 |
 +---------------------------------+---------------------------------+
 | No overcommit of CPU or memory. | Resources such as CPU and memory|
 |                                 | is overcommited, as workloads   |
@@ -81,3 +82,23 @@ subject to downtime due to normal maintenance.
 
 Flavors for HPC
 ===============
+
+We currently have the following flavors for use with HPC:
+
++------------------+--------------+---------+-------------------+
+| Flavor name      | Virtual CPUs | Memory  | NUMA architecture |
++==================+==============+=========+===================+
+| hpc.amd-epyc.8   | 8            | 30 GiB  | No                |
++------------------+--------------+---------+-------------------+
+| hpc.amd-epyc.16  | 16           | 60 GiB  | No                |
++------------------+--------------+---------+-------------------+
+| hpc.amd-epyc.32  | 32           | 120 GiB | Yes               |
++------------------+--------------+---------+-------------------+
+| hpc.amd-epyc.64  | 64           | 240 GiB | Yes               |
++------------------+--------------+---------+-------------------+
+
+Note that due to hardware constraints in the AMD EPYC CPU
+architecture, instances that use a flavor with more than 16 CPUs will
+have `Non-uniform memory access (NUMA)`_. The operating system and/or
+the application will need to take that into account.
+
