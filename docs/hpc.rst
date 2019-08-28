@@ -79,7 +79,7 @@ infrastructure for HPC is different in both hardware and setup:
 Because of the various steps taken to ensure consistency and as little
 overhead as possible for HPC workloads, live migration between hosts
 is not possible. Unlike normal instances, HPC instances will be
-subject to downtime due to normal maintenance.
+subject to downtime due to planned and unplanned maintenance.
 
 .. WARNING::
    Continous uptime can not be expected for HPC instances. Any
