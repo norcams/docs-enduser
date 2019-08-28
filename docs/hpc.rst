@@ -87,6 +87,21 @@ subject to downtime due to normal maintenance.
    downtime when the compute host is down for maintenance.
 
 
+Getting Access
+==============
+
+.. _support page: support.html
+
+Please contact us for access to the HPC infrastructure. Use the normal
+support channels as described in the `support page`_.
+
+Note that the nature of HPC workloads allows for no overcommit of CPU
+and memory resources. The HPC instances are consuming their CPU and
+memory even when idle, and as a result the HPC instances is much more
+expensive than normal workloads. **Please make sure to actually use
+the resources given to an instance** whenever the instance is
+running. Delete the instance when it's no longer needed.
+
 
 Flavors for HPC
 ===============
