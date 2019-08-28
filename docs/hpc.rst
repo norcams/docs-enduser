@@ -79,6 +79,12 @@ overhead as possible for HPC workloads, live migration between hosts
 is not possible. Unlike normal instances, HPC instances will be
 subject to downtime due to normal maintenance.
 
+.. WARNING::
+   Continous uptime can not be expected for HPC instances. Any
+   instances running on a particular compute host will experience
+   downtime when the compute host is down for maintenance.
+
+
 
 Flavors for HPC
 ===============
