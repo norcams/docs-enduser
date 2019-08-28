@@ -45,10 +45,8 @@ infrastructure for HPC is different in both hardware and setup:
 +---------------------------------+---------------------------------+
 | HPC                             | Normal                          |
 +=================================+=================================+
-| 2x `AMD EPYC 7551 32-Core       | Various model and generation    |
-| Processor`_                     | Intel processors.               |
-| per compute host. Up to 64      |                                 |
-| physical cores plus threads.    |                                 |
+| AMD EPYC processors. Details    | Various model and generation    |
+| are listed below.               | Intel processors.               |
 +---------------------------------+---------------------------------+
 | No overcommit of CPU or memory. | Resources such as CPU and memory|
 |                                 | are overcommitted, as workloads |
@@ -101,6 +99,25 @@ memory even when idle, and as a result HPC instances are much more
 expensive than normal instances. **Please make sure to actually use
 the resources given to an instance** whenever the instance is
 running. Delete the instance when it's no longer needed.
+
+
+Hardware
+========
+
+The hardware used for HPC is listed below.
+
+For generic HPC workloads:
+
+* 4 x compute hosts with:
+  - 2 x `AMD EPYC 7551 32-Core Processor`_
+  - 512 GiB memory
+
+For CERN ATLAS workloads:
+
+* 10 x compute hosts with:
+  - 2 x `AMD EPYC 7551 32-Core Processor`_
+  - 512 GiB memory
+
 
 
 Flavors for HPC
