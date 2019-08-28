@@ -8,6 +8,7 @@ Last changed: |date|
 .. contents::
 
 .. _High-performance computing (HPC): https://en.wikipedia.org/wiki/Supercomputer
+.. _Non-uniform memory access (NUMA): https://en.wikipedia.org/wiki/Non-uniform_memory_access
 
 This document describes the `High-performance computing (HPC)`_
 service offering in UH-IaaS.
@@ -58,7 +59,9 @@ infrastructure for HPC is different in both hardware and setup:
 | instances will use the same     |                                 |
 | cores.                          |                                 |
 +---------------------------------+---------------------------------+
-| NUMA awareness. The hypervisor  | No NUMA awareness.              |
+| `Non-uniform memory access      | No NUMA awareness.              |
+| (NUMA)`_ awareness. The         |                                 |
+| hypervisor                      |                                 |
 | makes sure that the allotted    |                                 |
 | resources for the instance are  |                                 |
 | all within as few NUMA nodes as |                                 |
@@ -76,3 +79,5 @@ is not possible. Unlike normal instances, HPC instances will be
 subject to downtime due to normal maintenance.
 
 
+Flavors for HPC
+===============
