@@ -49,7 +49,7 @@ infrastructure for HPC is different in both hardware and setup:
 | No overcommit of CPU or memory. | Resources such as CPU and memory|
 |                                 | is overcommited, as workloads   |
 |                                 | usually don't use more than a   |
-|                                 | fraction of the give resources. |
+|                                 | fraction of the given resources.|
 +---------------------------------+---------------------------------+
 | Dedicated CPU cores. The        | No dedicated CPU cores.         |
 | instance is given a number of   |                                 |
