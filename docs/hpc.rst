@@ -9,6 +9,7 @@ Last changed: |date|
 
 .. _High-performance computing (HPC): https://en.wikipedia.org/wiki/Supercomputer
 .. _Non-uniform memory access (NUMA): https://en.wikipedia.org/wiki/Non-uniform_memory_access
+.. _AMD EPYC 7551 32-Core Processor: https://www.amd.com/en/products/cpu/amd-epyc-7551
 
 This document describes the `High-performance computing (HPC)`_
 service offering in UH-IaaS.
@@ -44,8 +45,9 @@ infrastructure for HPC is different in both hardware and setup:
 +---------------------------------+---------------------------------+
 | HPC                             | Normal                          |
 +=================================+=================================+
-| 2 AMD EPYC 32-core processors   | Various model and generation    |
-| per compute host. Up to 64      | Intel processors.               |
+| 2x `AMD EPYC 7551 32-Core       | Various model and generation    |
+| Processor`_                     | Intel processors.               |
+| per compute host. Up to 64      |                                 |
 | physical cores plus threads.    |                                 |
 +---------------------------------+---------------------------------+
 | No overcommit of CPU or memory. | Resources such as CPU and memory|
