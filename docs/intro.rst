@@ -130,12 +130,12 @@ infrastructure, consumed as a service.
 OpenStack components
 ~~~~~~~~~~~~~~~~~~~~
 
-.. _Nova: http://www.openstack.org/software/releases/mitaka/components/nova
-.. _Cinder: http://www.openstack.org/software/releases/mitaka/components/cinder
-.. _Keystone: http://www.openstack.org/software/releases/mitaka/components/keystone
-.. _Glance: http://www.openstack.org/software/releases/mitaka/components/glance
-.. _Horizon: http://www.openstack.org/software/releases/mitaka/components/horizon
-.. _Neutron: http://www.openstack.org/software/releases/mitaka/components/neutron
+.. _Nova: http://www.openstack.org/software/releases/rocky/components/nova
+.. _Cinder: http://www.openstack.org/software/releases/rocky/components/cinder
+.. _Keystone: http://www.openstack.org/software/releases/rocky/components/keystone
+.. _Glance: http://www.openstack.org/software/releases/rocky/components/glance
+.. _Horizon: http://www.openstack.org/software/releases/rocky/components/horizon
+.. _Neutron: http://www.openstack.org/software/releases/rocky/components/neutron
 
 OpenStack is a large framework that consists of an increasingly
 growing number of components. The following components are installed
