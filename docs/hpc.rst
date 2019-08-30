@@ -130,13 +130,13 @@ We currently have the following flavors for use with HPC:
 +------------------+--------------+---------+-------------------+
 | Flavor name      | Virtual CPUs | Memory  | NUMA architecture |
 +==================+==============+=========+===================+
-| hpc.amd-epyc.8   | 8            | 30 GiB  | No                |
+| hpc.m1a.2xlarge  | 8            | 30 GiB  | No                |
 +------------------+--------------+---------+-------------------+
-| hpc.amd-epyc.16  | 16           | 60 GiB  | No                |
+| hpc.m1a.4xlarge  | 16           | 60 GiB  | No                |
 +------------------+--------------+---------+-------------------+
-| hpc.amd-epyc.32  | 32           | 120 GiB | Yes               |
+| hpc.m1a.8xlarge  | 32           | 120 GiB | Yes               |
 +------------------+--------------+---------+-------------------+
-| hpc.amd-epyc.64  | 64           | 240 GiB | Yes               |
+| hpc.m1a.16xlarge | 64           | 240 GiB | Yes               |
 +------------------+--------------+---------+-------------------+
 
 Note that due to hardware constraints in the AMD EPYC CPU
