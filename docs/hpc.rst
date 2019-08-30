@@ -75,10 +75,10 @@ infrastructure for HPC is different in both hardware and setup:
 +---------------------------------+---------------------------------+
 
 Because of the various steps taken to ensure consistency and as little
-overhead as possible for HPC workloads, live migration of instances
-between compute hosts is not possible. Unlike normal instances, HPC
-instances will be subject to downtime due to planned and unplanned
-maintenance.
+performance overhead as possible for HPC workloads, live migration of
+instances between compute hosts is not possible. Unlike normal
+instances, HPC instances will be subject to downtime due to planned
+and unplanned maintenance.
 
 .. WARNING::
    Continuous uptime can not be expected for HPC instances. Any
@@ -92,13 +92,13 @@ Getting Access
 .. _support page: support.html
 
 Please contact us for access to the HPC infrastructure. Use the normal
-support channels as described in the `support page`_.
+support channels as described on our `support page`_.
 
-Note that the nature of HPC workloads allows for no overcommit of CPU
+Note that the nature of HPC workloads does not allow overcommit of CPU
 and memory resources. The HPC instances are consuming their CPU and
-memory even when idle, and as a result HPC instances are much more
-expensive than normal instances. **Please make sure to actually use
-the resources given to an instance** whenever the instance is
+memory resources even when idle. As a result HPC instances are much
+more expensive than normal instances. **Please make sure to actually
+use the resources given to an instance** whenever the instance is
 running. Delete the instance when it's no longer needed.
 
 
@@ -109,14 +109,14 @@ The hardware used for HPC is listed below.
 
 For generic HPC workloads:
 
-* 4 x compute hosts with:
+* 4 x compute hosts (hypervisors) with:
 
   - 2 x `AMD EPYC 7551 32-Core Processor`_
   - 512 GiB memory
 
 For CERN ATLAS workloads:
 
-* 10 x compute hosts with:
+* 10 x compute hosts (hypervisors) with:
 
   - 2 x `AMD EPYC 7551 32-Core Processor`_
   - 512 GiB memory
@@ -142,6 +142,6 @@ We currently have the following flavors for use with HPC:
 
 Note that due to hardware constraints in the AMD EPYC CPU
 architecture, instances that use a flavor with more than 16 CPUs will
-have `Non-uniform memory access (NUMA)`_. The operating system and/or
-the application will need to take that into account.
+have `Non-uniform memory access (NUMA)`_ architecture. The operating
+system and/or the application may need to take that into account.
 
