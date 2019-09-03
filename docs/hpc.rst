@@ -17,7 +17,7 @@ service offering in UH-IaaS.
 .. IMPORTANT::
    As of August 2019, the HPC service in UH-IaaS is in a beta or pilot
    stage. The stability in this service may be lacking compared to the
-   standard UH-IaaS services.
+   standard UH-IaaS services. Flavors and policies may change.
 
 
 What's different
