@@ -15,9 +15,9 @@ This document describes the `High-performance computing (HPC)`_
 service offering in UH-IaaS.
 
 .. IMPORTANT::
-   As of August 2019, the HPC service in UH-IaaS is in a beta or pilot
-   stage. The stability in this service may be lacking compared to the
-   standard UH-IaaS services. Flavors and policies may change.
+   The HPC service in UH-IaaS is in a beta stage. The stability in
+   this service may be lacking compared to the standard UH-IaaS
+   services. Things such as flavors and policies may change.
 
 
 What's different
