@@ -21,7 +21,7 @@ service offering in UH-IaaS.
 
 
 What's different
-================
+----------------
 
 The HPC service offering in UH-IaaS differs from the normal services
 in a number of key ways. This is partly due to the fact that HPC
@@ -87,7 +87,7 @@ and unplanned maintenance.
 
 
 Getting Access
-==============
+--------------
 
 .. _support page: support.html
 
@@ -103,7 +103,7 @@ running. Delete the instance when it's no longer needed.
 
 
 Hardware
-========
+--------
 
 The hardware used for HPC is listed below.
 
@@ -124,7 +124,7 @@ For CERN ATLAS workloads:
 
 
 Flavors for HPC
-===============
+---------------
 
 We currently have the following flavors for use with HPC:
 
