@@ -30,6 +30,7 @@ End user guide for the UH-IaaS cloud
 .. toctree::
    :maxdepth: 1
 
+   hpc
    dns
    api
    terraform-part1
