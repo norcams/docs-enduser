@@ -141,8 +141,8 @@ For CERN ATLAS workloads:
 
 
 
-Flavors for HPC
----------------
+Flavors
+-------
 
 We currently have the following flavors for use with HPC:
 
