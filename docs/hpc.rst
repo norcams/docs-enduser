@@ -10,6 +10,8 @@ Last changed: |date|
 .. _High-performance computing (HPC): https://en.wikipedia.org/wiki/Supercomputer
 .. _Non-uniform memory access (NUMA): https://en.wikipedia.org/wiki/Non-uniform_memory_access
 .. _AMD EPYC 7551 32-Core Processor: https://www.amd.com/en/products/cpu/amd-epyc-7551
+.. _apply for an HPC project: http://request.uh-iaas.no/
+.. _support page: support.html
 
 This document describes the `High-performance computing (HPC)`_
 service offering in UH-IaaS.
@@ -89,10 +91,26 @@ and unplanned maintenance.
 Getting Access
 --------------
 
-.. _support page: support.html
+Please use the normal form to `apply for an HPC project`_, for access
+to the HPC infrastructure. If you have any questions, please use the
+normal support channels as described on our `support page`_.
 
-Please contact us for access to the HPC infrastructure. Use the normal
-support channels as described on our `support page`_.
+
+Policies
+--------
+
+The following are the preliminary policies that are in effect for
+access and use of the HPC infrastructure. The main purpose of the
+policies is to ensure that resources aren't wasted. The policies may
+change in the future:
+
+* We want "pure" HPC projects for easier resource control. To use the
+  HPC infrastructure, `apply for an HPC project`_.
+
+* HPC projects must have an end date.
+
+* The HPC resources must be used. Having instances running idle is not
+  acceptable in the HPC infrastructure.
 
 Note that the nature of HPC workloads does not allow overcommit of CPU
 and memory resources. The HPC instances are consuming their CPU and
