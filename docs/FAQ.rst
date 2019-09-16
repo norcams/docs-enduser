@@ -62,3 +62,22 @@ An example of an acknowledgement of having used UH-IaaS is:
   The computations were performed on the Norwegian Academic Community
   Cloud (UH-IaaS), using resources provided by the University of
   Bergen and the University of Oslo. http://www.uh-iaas.no/
+
+How to regenerate your public SSH key
+-------------------------------------
+
+If your public SSH keys have been mistakenly deleted or disappeared from the
+dashboard, and you haven't got local copies, it is trivial to regenerate and
+readd them.
+
+Run the following command in your terminal:
+
+.. code-block:: none
+
+  ssh-keygen -y -f <path to your private key>
+
+This will output the public key to stdout which may be stored in a new file or
+copied to the clipboard.
+
+To readd a key, go to the UH-IaaS Dashboard and click on on
+Key Pairs -> Import Public Key
