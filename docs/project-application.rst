@@ -10,7 +10,7 @@ You will be allocated a demo project the first time you logon . This
 project is personal and for testing purposes.  There is a limited
 quota for this demo project. If you need additional resources or a
 project in which you wish to collaborate with other users, please
-apply for a proper project using `this web form`_.
+apply for a standard project using `this web form`_.
 
 Demo projects use excess resources that are usually available under
 normal operation, however, if there is a shortage of resources please
@@ -20,15 +20,15 @@ projects without prior notice.
 Quotas are set by region. Projects that haven't been given a quota in
 their respective region will be automatically given a default quota.
 
-=================== =========== =========== 
+=================== =========== ===========
  Quota               Name        Default
 =================== =========== ===========
- Instances           instances    2         
- vCPU                cores        2        
- Memory              ram          2048 MB   
- Number of volumes   volumes      1       
- Volume size         gigabytes    20 GB     
- Volume snapshots    snapshots    3          
+ Instances           instances    2
+ vCPU                cores        2
+ Memory              ram          2048 MB
+ Number of volumes   volumes      1
+ Volume size         gigabytes    20 GB
+ Volume snapshots    snapshots    3
 =================== =========== ===========
 
 **Instances**
@@ -41,7 +41,7 @@ their respective region will be automatically given a default quota.
   The amount of memory availble to an instance.
 
 **Number of volumes**
-  In UH-Iaas, block storage is called volume. The number indicates how many 
+  In UH-Iaas, block storage is called volume. The number indicates how many
   volumes are available in a project.
 
 **Volume size**
@@ -51,10 +51,10 @@ their respective region will be automatically given a default quota.
   The total number of snapshots of all volumes in a project.
 
 
-Proper projects
+Standard projects
 ---------------
 
-You can apply for a proper project (i.e. not demo) by using `this
+You can apply for a standard project (i.e. not demo) by using `this
 web form`_. In this form, you need to give some information about
 the project. Most importantly, we separate between personal and shared
 projects:
