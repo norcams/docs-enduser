@@ -45,7 +45,7 @@ Our services
 .. _Service Level Agreement: sla.html
 
 * We will make the UH-IaaS services available to you in accordance
-  with our agreement with your participating educational organization. Subject to these Terms, 
+  with our agreement with your participating educational organization. Subject to these Terms,
   we grant you a non-exclusive, revocable license and right to:
 
   * Create and manage virtual machines within your quota limit.
@@ -55,7 +55,7 @@ Our services
     machines.
 
 * You may only use the services for non-commercial purposes, for
-  research purposes and educational purposes without charge.   
+  research purposes and educational purposes without charge.
 
 * If you want to make use of the services outside this description,
   such as for commercial purposes, please contact us.
@@ -77,7 +77,7 @@ Security
   images will be easily recognizable, as they contain the word "GOLD"
   to distinguish them from images uploaded by users.
 
-* Once you create a virtual machine from an image, the virtual machine 
+* Once you create a virtual machine from an image, the virtual machine
   becomes your responsibility. At a minimum, you should make sure that:
 
   * The operating system running on your virtual machine is updated
@@ -150,8 +150,7 @@ Privacy Policy
 
 * Instances (virtual machines)
 
-  We do not monitor the content of instances, but you should make sure that your activities are in accordance with your local IT policy.
-  You are responsible for all data you store on your own instances.
+  We do not monitor the content of instances, but may collect metrics (uptime, patch level and kernel version) for security reasons. You should make sure that your activities are in accordance with your local IT policy. You are responsible for all data you store on your own instances.
 
 * Termination
 
