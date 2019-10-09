@@ -213,3 +213,19 @@ Intance name
 ------------
 We recommend you to name your instances only with [a-zA-Z0-9]
 characters to avoid any maintenance issues.
+
+Security Groups caution
+-----------------------
+When creating security groups via the API (e.g. Terraform), be as explicit as
+possible when setting parameters. In one case we discovered that opening a port
+range for all IPs without explicitly setting 0.0.0.0/0 for the remote-ip
+parameter (which is default) opened all ports for all IPs. We routinely report
+bugs to Openstack developers, however, this is how to work around the problem
+for now.
+
+Security group rules created in the dashboard are not affected by this bug,
+however, make sure your CIDR notation is correct and make sense to avoid having
+Openstack correcting it by guessing what your intentions are. Use a CIDR
+calculator if you're unsure.
+
+Users are always advised to ensure their security group rules work as intended.
