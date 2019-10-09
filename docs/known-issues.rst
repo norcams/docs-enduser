@@ -228,4 +228,5 @@ however, make sure your CIDR notation is correct and make sense to avoid having
 Openstack correcting it by guessing what your intentions are. Use a CIDR
 calculator if you're unsure.
 
-Users are always advised to ensure their security group rules work as intended.
+Users are always advised to ensure their security group rules work as intended
+in regards to both IP and port filtering.
