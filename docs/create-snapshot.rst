@@ -12,7 +12,8 @@ You can create a snapshot and use it as the base for your new instances.
 
 Create a snapshot
 -----------------
-*NB!* Make sure that the instance is turned off, before creating a snapshot.
+.. NOTE::
+   Make sure that the instance is turned off, before creating a snapshot.
 
 In the dashboard, select **Instances** in the **Compute** tab:
 
@@ -72,7 +73,7 @@ Listing any existing servers:
     +--------------------------------------+--------------+--------+---------------------------------------+-----------------------+
     | ID                                   | Name         | Status | Networks                              | Image Name            |
     +--------------------------------------+--------------+--------+---------------------------------------+-----------------------+
-    | d281daef-e6b2-4dc5-979b-9c4fcec19b82 | DemoInstance | ACTIVE | IPv6=2000:200:2:2000::200a, 10.2.0.02 | GOLD Ubuntu 16.04 LTS |
+    | d281daef-e6b2-4dc5-979b-9c4fcec19b82 | DemoInstance | SHUTOFF| IPv6=2000:200:2:2000::200a, 10.2.0.02 | GOLD Ubuntu 16.04 LTS |
     +--------------------------------------+--------------+--------+---------------------------------------+-----------------------+
 
 Creating snapshot of an existing server:
