@@ -90,8 +90,8 @@ As we have updated flavors_, the users that have had access to the larger machin
 Missing network when provisioning from snapshot
 -----------------------------------------------
 
-Debian 9
-''''''''
+Debian 9, 10
+''''''''''''
 
 IPv6 is broken in an instance started from a snapshot, and this can also affect
 the original instance. If the resolver addresses is configured using their IPv6
