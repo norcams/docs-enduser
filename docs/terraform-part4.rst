@@ -312,6 +312,7 @@ A complete listing of the example files used in this document is
 provided below.
 
 .. literalinclude:: downloads/tf-example4/main.tf
+   :language: terraform
    :caption: main.tf
    :name: main-tf
    :linenos:
@@ -332,11 +333,13 @@ provided below.
    :linenos:
 
 .. literalinclude:: downloads/tf-example4/web.yaml
+   :language: yaml
    :caption: web.yaml
    :name: web-yaml
    :linenos:
 
 .. literalinclude:: downloads/tf-example4/db.yaml
+   :language: yaml
    :caption: db.yaml
    :name: db-yaml
    :linenos:
