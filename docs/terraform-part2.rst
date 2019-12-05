@@ -82,10 +82,10 @@ Openstack CLI above:
 Multiple instances
 ------------------
 
-Building on the :download:`basic.tf <downloads/tf-example2/basic.tf>` file
+Building on the :download:`basic.tf <downloads/tf-example1/basic.tf>` file
 discussed in `Part 1`_:
 
-.. literalinclude:: downloads/tf-example2/basic.tf
+.. literalinclude:: downloads/tf-example1/basic.tf
    :caption: basic.tf
    :name: basic-tf
    :linenos:
