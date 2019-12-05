@@ -14,7 +14,7 @@ DNS zone and DNS records in Openstack using Terraform_.
 
 The files used in this document can be downloaded:
 
-* :download:`zone <downloads/tf-example5/zone.tf>`
+* :download:`zone.tf <downloads/tf-example5/zone.tf>`
 * :download:`recordset.tf <downloads/tf-example5/recordset.tf>`
 
 
