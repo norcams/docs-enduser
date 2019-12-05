@@ -52,15 +52,18 @@ We find the correct ``image_id`` by using the Openstack CLI:
   +--------------------------------------+-----------------------------------+--------+
   | ID                                   | Name                              | Status |
   +--------------------------------------+-----------------------------------+--------+
-  | ea951bf5-9bda-4aef-af1a-0cecba3089fc | GOLD CentOS 6                     | active |
-  | 4756b700-9489-4d59-bfd6-24d3b8b4167b | GOLD CentOS 7                     | active |
-  | 108b6b0c-d88f-4683-9f44-3ca7329674dd | GOLD Debian 9                     | active |
-  | a15f6150-4ab3-409a-a5b4-3cb69bd7b409 | GOLD Fedora 28                    | active |
-  | be5bce21-3346-4bb9-bc22-3a780d77b4d3 | GOLD Ubuntu 16.04 LTS             | active |
-  | 974d7df1-d845-4bf0-a3c0-d95d85267d43 | GOLD Ubuntu 18.04 LTS             | active |
-  | b2d189c0-a5b4-4660-8007-555f34dcd4c4 | GOLD Windows Server 2016 Standard | active |
-  | b7047043-8d00-4ab5-8db5-8b2688d0d74b | GOLD Windows Server 2019 Core     | active |
-  | 72568f04-d909-4809-8b0a-279679c054de | GOLD Windows Server 2019 Standard | active |
+  | 90527faa-43bd-40b3-9292-c5901452055d | GOLD CentOS 6                     | active |
+  | 1a38633c-5fd1-4c01-b447-b1128ed3bb3f | GOLD CentOS 7                     | active |
+  | 9be728f1-dc74-4246-80cb-211dc027d18a | GOLD Debian 10                    | active |
+  | 0f400132-4469-409f-94fe-455131434ff2 | GOLD Debian 9                     | active |
+  | 8dc9ba4f-1334-48e5-87a1-b60adee8b9e4 | GOLD Fedora 30                    | active |
+  | c5428d6e-9611-4629-852a-2a54a98241fc | GOLD Fedora 31                    | active |
+  | 39ae12d9-e847-43ac-a56d-f8c5f0adec06 | GOLD Ubuntu 16.04 LTS             | active |
+  | 46884c15-fad5-49dd-b85c-5303cd41ab17 | GOLD Ubuntu 18.04 LTS             | active |
+  | 60e2d020-2b42-4e5f-a6b8-2fe8bf9a9aed | GOLD Ubuntu 19.04                 | active |
+  | 843456b8-805e-4b7f-aa8b-224c5c8318fa | GOLD Windows Server 2016 Standard | active |
+  | 79b1868e-8190-474b-9c52-41c0c758ad05 | GOLD Windows Server 2019 Core     | active |
+  | 88f10ed4-da1c-459e-89c0-4fbea8bed848 | GOLD Windows Server 2019 Standard | active |
   +--------------------------------------+-----------------------------------+--------+
 
 Instead of specifying ``image_name`` as in `Part 1`_:

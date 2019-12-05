@@ -31,7 +31,7 @@ The files used in this document can be downloaded:
 * :download:`main.tf <downloads/tf-example3/main.tf>`
 * :download:`secgroup.tf <downloads/tf-example3/secgroup.tf>`
 * :download:`variables.tf <downloads/tf-example3/variables.tf>`
-* :download:`local.tfvars <downloads/tf-example3/local.tfvars>`
+* :download:`terraform.tfvars <downloads/tf-example3/terraform.tfvars>`
 
 
 Variables file
@@ -47,7 +47,7 @@ contains all variables, with default values, used throughout the code:
 .. literalinclude:: downloads/tf-example3/variables.tf
    :caption: variables.tf
    :linenos:
-   :emphasize-lines: 2,9-14
+   :emphasize-lines: 2-3,22-50
 
 Notice that the **region** variable (highlighted) is empty and doesn't
 have a default value. For this reason, the region must always be
@@ -64,12 +64,14 @@ Terraform will ask for it interactively.
 
 Also note that the **allow_ssh_from_v6**, **allow_ssh_from_v4**
 etc. (highlighted) variables are empty lists. It is expected that we
-specify these in the ``local.tfvars`` file, explained in the next
+specify these in the ``terraform.tfvars`` file, explained in the next
 section.
 
 
 Local variables file
 --------------------
+
+.. _Terraform variables: https://learn.hashicorp.com/terraform/getting-started/variables.html
 
 Terraform supports specification of local variables that completes or
 overrides the variable set given in :ref:`variables-tf`. We can do
@@ -86,20 +88,25 @@ that takes one argument, a variables file:
 
   terraform -var-file <file>
 
-An example file :download:`local.tfvars <downloads/tf-example3/local.tfvars>` that
+An example file :download:`terraform.tfvars <downloads/tf-example3/terraform.tfvars>` that
 complements our :ref:`variables-tf` could look like this:
 
-.. literalinclude:: downloads/tf-example3/local.tfvars
-   :caption: local.tfvars
+.. literalinclude:: downloads/tf-example3/terraform.tfvars
+   :caption: terraform.tfvars
    :linenos:
 
 Here, we specify the region and the addresses to be used for the
-security group. We would use this file like this:
+security group. Since this file is named **terraform.tfvars** it will
+be automatically included when running terraform commands. If we were
+to name it as e.g. **production.tfvars**, we would need to specify
+which file to use on the command line, like this:
 
 .. code-block:: console
 
-  $ terraform plan -var-file local.tfvars
-  $ terraform apply -var-file local.tfvars
+  $ terraform plan -var-file production.tfvars
+  $ terraform apply -var-file production.tfvars
+
+Read more about variables here: `Terraform variables`_
 
 
 Using variables
@@ -111,17 +118,17 @@ using string, list (array) and map (hash) variables. In this example,
 we have divided our original one-file setup into 3 files, in addition
 to the local variables file:
 
-+------------------+-------------------------------------------------+
-| **main.tf**      |Our main file.                                   |
-+------------------+-------------------------------------------------+
-| **secgroup.tf**  |Since the security group definitions are rather  |
-|                  |verbose, we have separated these from the main   |
-|                  |file.                                            |
-+------------------+-------------------------------------------------+
-| **variables.tf** |Variable definitions with default values.        |
-+------------------+-------------------------------------------------+
-| **local.tfvars** |Local variables.                                 |
-+------------------+-------------------------------------------------+
++----------------------+-------------------------------------------------+
+| **main.tf**          |Our main file.                                   |
++----------------------+-------------------------------------------------+
+| **secgroup.tf**      |Since the security group definitions are rather  |
+|                      |verbose, we have separated these from the main   |
+|                      |file.                                            |
++----------------------+-------------------------------------------------+
+| **variables.tf**     |Variable definitions with default values.        |
++----------------------+-------------------------------------------------+
+| **terraform.tfvars** |Local variables.                                 |
++----------------------+-------------------------------------------------+
 
 We'll take a look at :ref:`main-tf`. The first part, containing the SSH
 key pair resource, is as before but using variables:
@@ -129,7 +136,7 @@ key pair resource, is as before but using variables:
 .. literalinclude:: downloads/tf-example3/main.tf
    :caption: main.tf
    :linenos:
-   :lines: 1-8
+   :lines: 1-9
 
 Next, we'll look at our security groups in :ref:`secgroup-tf`. We now
 have three of them:
@@ -152,7 +159,7 @@ variables:
 
 Notice that we now use implicit iteration over the number of entries
 listed in the "allow_from" variables, which are empty lists in
-:ref:`variables-tf` but are properly defined in :ref:`local-tfvars`.
+:ref:`variables-tf` but are properly defined in :ref:`terraform-tfvars`.
 
 Let's take a look at the security group rules defined for HTTP and
 MySQL access:
@@ -183,7 +190,7 @@ We'll circle back to :ref:`main-tf`:
 .. literalinclude:: downloads/tf-example3/main.tf
    :caption: main.tf
    :linenos:
-   :lines: 10-58
+   :lines: 11-59
 
 We now define two different instance resources. One for web servers
 and one for the database server. They use different values defined in
@@ -193,7 +200,7 @@ resource and attach this volume to the database server:
 .. literalinclude:: downloads/tf-example3/main.tf
    :caption: main.tf
    :linenos:
-   :lines: 60-
+   :lines: 61-
 
 
 Making changes
@@ -208,7 +215,7 @@ of web servers from 4 to 2, we would change this line in
 .. literalinclude:: downloads/tf-example3/variables.tf
    :caption: variables.tf
    :linenos:
-   :lines: 34-
+   :lines: 70-
    :emphasize-lines: 5
 
 After changing the count from **4** to **2** here (the highlighted
@@ -216,7 +223,7 @@ line), we can run ``terraform plan``:
 
 .. code-block:: console
 
-  $ terraform plan -var-file local.tfvars
+  $ terraform plan
   ...
   Terraform will perform the following actions:
   
