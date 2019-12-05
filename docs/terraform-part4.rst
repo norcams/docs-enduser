@@ -312,7 +312,6 @@ A complete listing of the example files used in this document is
 provided below.
 
 .. literalinclude:: downloads/tf-example4/main.tf
-   :language: terraform
    :caption: main.tf
    :name: main-tf
    :linenos:
