@@ -75,4 +75,3 @@ variable "role_count" {
     "db"  = 1
   }
 }
-
