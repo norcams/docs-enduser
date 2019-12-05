@@ -1,5 +1,5 @@
 # Region
-region = "osl"
+region = "bgo"
 
 # This is needed to access the instance over ssh
 allow_ssh_from_v6 = [
