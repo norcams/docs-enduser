@@ -65,7 +65,7 @@ records we specified:
   Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
 
 We can check that the authoritative name servers have our zone and
-records by querying the directly:
+records by querying one of them them directly:
 
 .. code-block:: console
 
@@ -79,7 +79,7 @@ records by querying the directly:
   test01.tralala.no has address 10.0.0.1
   test01.tralala.no has IPv6 address 2001:700:2:8200::226c
 
-As always, you can use **ansible destroy** to remove the created
+As always, you can use **terraform destroy** to remove the created
 resources:
 
 .. code-block:: console
