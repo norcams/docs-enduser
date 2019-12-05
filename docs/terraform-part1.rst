@@ -27,9 +27,9 @@ You need to download and install Terraform_ (example):
 
 .. code-block:: console
 
-  $ unzip ~/Downloads/terraform_0.11.13_linux_amd64.zip
+  $ unzip ~/Downloads/terraform_0.12.17_linux_amd64.zip
   $ ./terraform --version
-  Terraform v0.11.13
+  Terraform v0.12.17
 
 Install the ``terraform`` binary into ``~/.local/bin`` (e.g. your home
 directory):
@@ -152,7 +152,7 @@ directory should now contain only this file:
 
   $ cd ~/tf-project
   $ ls -a
-  ./  ../  basic.tf
+  .  ..  basic.tf
 
 Next we need to initialise Terraform:
 
@@ -160,9 +160,11 @@ Next we need to initialise Terraform:
 
   $ terraform init
   
+  Initializing the backend...
+  
   Initializing provider plugins...
-  - Checking for available provider plugins on https://releases.hashicorp.com...
-  - Downloading plugin for provider "openstack" (1.17.0)...
+  - Checking for available provider plugins...
+  - Downloading plugin for provider "openstack" (terraform-providers/openstack) 1.24.0...
   
   The following providers do not have any version constraints in configuration,
   so the latest version was installed.
@@ -172,7 +174,7 @@ Next we need to initialise Terraform:
   corresponding provider blocks in configuration, with the constraint strings
   suggested below.
   
-  * provider.openstack: version = "~> 1.17"
+  * provider.openstack: version = "~> 1.24"
   
   Terraform has been successfully initialized!
   
@@ -194,7 +196,6 @@ perform in a subsequent run:
   The refreshed state will be used to calculate this plan, but will not be
   persisted to local or remote state storage.
   
-  openstack_compute_instance_v2.basic: Refreshing state... (ID: 66c0720b-aa1e-462a-bc5c-1e93611b7824)
   
   ------------------------------------------------------------------------
   
@@ -204,35 +205,40 @@ perform in a subsequent run:
   
   Terraform will perform the following actions:
   
-    + openstack_compute_instance_v2.basic
-        id:                         <computed>
-        access_ip_v4:               <computed>
-        access_ip_v6:               <computed>
-        all_metadata.%:             <computed>
-        availability_zone:          <computed>
-        flavor_id:                  <computed>
-        flavor_name:                "m1.small"
-        force_delete:               "false"
-        image_id:                   <computed>
-        image_name:                 "GOLD CentOS 7"
-        key_pair:                   "mykey"
-        name:                       "test"
-        network.#:                  "1"
-        network.0.access_network:   "false"
-        network.0.fixed_ip_v4:      <computed>
-        network.0.fixed_ip_v6:      <computed>
-        network.0.floating_ip:      <computed>
-        network.0.mac:              <computed>
-        network.0.name:             "Ipv6"
-        network.0.port:             <computed>
-        network.0.uuid:             <computed>
-        power_state:                "active"
-        region:                     <computed>
-        security_groups.#:          "2"
-        security_groups.3814588639: "default"
-        security_groups.4058022150: "SSH and ICMP"
-        stop_before_destroy:        "false"
+    # openstack_compute_instance_v2.instance will be created
+    + resource "openstack_compute_instance_v2" "instance" {
+        + access_ip_v4        = (known after apply)
+        + access_ip_v6        = (known after apply)
+        + all_metadata        = (known after apply)
+        + all_tags            = (known after apply)
+        + availability_zone   = (known after apply)
+        + flavor_id           = (known after apply)
+        + flavor_name         = "m1.small"
+        + force_delete        = false
+        + id                  = (known after apply)
+        + image_id            = (known after apply)
+        + image_name          = "GOLD CentOS 7"
+        + key_pair            = "mykey"
+        + name                = "test"
+        + power_state         = "active"
+        + region              = (known after apply)
+        + security_groups     = [
+            + "SSH and ICMP",
+            + "default",
+          ]
+        + stop_before_destroy = false
   
+        + network {
+            + access_network = false
+            + fixed_ip_v4    = (known after apply)
+            + fixed_ip_v6    = (known after apply)
+            + floating_ip    = (known after apply)
+            + mac            = (known after apply)
+            + name           = "IPv6"
+            + port           = (known after apply)
+            + uuid           = (known after apply)
+          }
+      }
   
   Plan: 1 to add, 0 to change, 0 to destroy.
   
@@ -247,7 +253,6 @@ The next step will be to actually run Terraform:
 .. code-block:: console
 
   $ terraform apply
-  openstack_compute_instance_v2.basic: Refreshing state... (ID: 66c0720b-aa1e-462a-bc5c-1e93611b7824)
   
   An execution plan has been generated and is shown below.
   Resource actions are indicated with the following symbols:
@@ -255,35 +260,40 @@ The next step will be to actually run Terraform:
   
   Terraform will perform the following actions:
   
-    + openstack_compute_instance_v2.basic
-        id:                         <computed>
-        access_ip_v4:               <computed>
-        access_ip_v6:               <computed>
-        all_metadata.%:             <computed>
-        availability_zone:          <computed>
-        flavor_id:                  <computed>
-        flavor_name:                "m1.small"
-        force_delete:               "false"
-        image_id:                   <computed>
-        image_name:                 "GOLD CentOS 7"
-        key_pair:                   "mykey"
-        name:                       "test"
-        network.#:                  "1"
-        network.0.access_network:   "false"
-        network.0.fixed_ip_v4:      <computed>
-        network.0.fixed_ip_v6:      <computed>
-        network.0.floating_ip:      <computed>
-        network.0.mac:              <computed>
-        network.0.name:             "Ipv6"
-        network.0.port:             <computed>
-        network.0.uuid:             <computed>
-        power_state:                "active"
-        region:                     <computed>
-        security_groups.#:          "2"
-        security_groups.3814588639: "default"
-        security_groups.4058022150: "SSH and ICMP"
-        stop_before_destroy:        "false"
+    # openstack_compute_instance_v2.instance will be created
+    + resource "openstack_compute_instance_v2" "instance" {
+        + access_ip_v4        = (known after apply)
+        + access_ip_v6        = (known after apply)
+        + all_metadata        = (known after apply)
+        + all_tags            = (known after apply)
+        + availability_zone   = (known after apply)
+        + flavor_id           = (known after apply)
+        + flavor_name         = "m1.small"
+        + force_delete        = false
+        + id                  = (known after apply)
+        + image_id            = (known after apply)
+        + image_name          = "GOLD CentOS 7"
+        + key_pair            = "mykey"
+        + name                = "test"
+        + power_state         = "active"
+        + region              = (known after apply)
+        + security_groups     = [
+            + "SSH and ICMP",
+            + "default",
+          ]
+        + stop_before_destroy = false
   
+        + network {
+            + access_network = false
+            + fixed_ip_v4    = (known after apply)
+            + fixed_ip_v6    = (known after apply)
+            + floating_ip    = (known after apply)
+            + mac            = (known after apply)
+            + name           = "IPv6"
+            + port           = (known after apply)
+            + uuid           = (known after apply)
+          }
+      }
   
   Plan: 1 to add, 0 to change, 0 to destroy.
   
@@ -293,35 +303,10 @@ The next step will be to actually run Terraform:
   
     Enter a value: yes
   
-  openstack_compute_instance_v2.basic: Creating...
-    access_ip_v4:               "" => "<computed>"
-    access_ip_v6:               "" => "<computed>"
-    all_metadata.%:             "" => "<computed>"
-    availability_zone:          "" => "<computed>"
-    flavor_id:                  "" => "<computed>"
-    flavor_name:                "" => "m1.small"
-    force_delete:               "" => "false"
-    image_id:                   "" => "<computed>"
-    image_name:                 "" => "GOLD CentOS 7"
-    key_pair:                   "" => "mykey"
-    name:                       "" => "test"
-    network.#:                  "" => "1"
-    network.0.access_network:   "" => "false"
-    network.0.fixed_ip_v4:      "" => "<computed>"
-    network.0.fixed_ip_v6:      "" => "<computed>"
-    network.0.floating_ip:      "" => "<computed>"
-    network.0.mac:              "" => "<computed>"
-    network.0.name:             "" => "Ipv6"
-    network.0.port:             "" => "<computed>"
-    network.0.uuid:             "" => "<computed>"
-    power_state:                "" => "active"
-    region:                     "" => "<computed>"
-    security_groups.#:          "" => "2"
-    security_groups.3814588639: "" => "default"
-    security_groups.4058022150: "" => "SSH and ICMP"
-    stop_before_destroy:        "" => "false"
-  openstack_compute_instance_v2.basic: Still creating... (10s elapsed)
-  openstack_compute_instance_v2.basic: Creation complete after 18s (ID: e1df5188-fa7d-4752-8819-9a9b7e781141)
+  openstack_compute_instance_v2.instance: Creating...
+  openstack_compute_instance_v2.instance: Still creating... [10s elapsed]
+  openstack_compute_instance_v2.instance: Still creating... [20s elapsed]
+  openstack_compute_instance_v2.instance: Creation complete after 26s [id=fa854163-2440-43b2-9971-437ed490e386]
   
   Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
@@ -366,7 +351,7 @@ previously created:
 .. code-block:: console
 
   $ terraform destroy
-  openstack_compute_instance_v2.basic: Refreshing state... (ID: e1df5188-fa7d-4752-8819-9a9b7e781141)
+  openstack_compute_instance_v2.instance: Refreshing state... [id=fa854163-2440-43b2-9971-437ed490e386]
   
   An execution plan has been generated and is shown below.
   Resource actions are indicated with the following symbols:
@@ -374,8 +359,39 @@ previously created:
   
   Terraform will perform the following actions:
   
-    - openstack_compute_instance_v2.basic
+    # openstack_compute_instance_v2.instance will be destroyed
+    - resource "openstack_compute_instance_v2" "instance" {
+        - access_ip_v4        = "10.1.0.204" -> null
+        - access_ip_v6        = "[2001:700:2:8301::112d]" -> null
+        - all_metadata        = {} -> null
+        - all_tags            = [] -> null
+        - availability_zone   = "bgo-default-1" -> null
+        - flavor_id           = "b7d00d03-3bbc-44ab-88b4-0b6a20f9a1a8" -> null
+        - flavor_name         = "m1.small" -> null
+        - force_delete        = false -> null
+        - id                  = "fa854163-2440-43b2-9971-437ed490e386" -> null
+        - image_id            = "1a38633c-5fd1-4c01-b447-b1128ed3bb3f" -> null
+        - image_name          = "GOLD CentOS 7" -> null
+        - key_pair            = "mykey" -> null
+        - name                = "test" -> null
+        - power_state         = "active" -> null
+        - region              = "bgo" -> null
+        - security_groups     = [
+            - "SSH and ICMP",
+            - "default",
+          ] -> null
+        - stop_before_destroy = false -> null
+        - tags                = [] -> null
   
+        - network {
+            - access_network = false -> null
+            - fixed_ip_v4    = "10.1.0.204" -> null
+            - fixed_ip_v6    = "[2001:700:2:8301::112d]" -> null
+            - mac            = "fa:16:3e:9d:58:10" -> null
+            - name           = "IPv6" -> null
+            - uuid           = "339cb0e4-ca57-478f-ac46-200185b017fc" -> null
+          }
+      }
   
   Plan: 0 to add, 0 to change, 1 to destroy.
   
@@ -385,9 +401,9 @@ previously created:
   
     Enter a value: yes
   
-  openstack_compute_instance_v2.basic: Destroying... (ID: e1df5188-fa7d-4752-8819-9a9b7e781141)
-  openstack_compute_instance_v2.basic: Still destroying... (ID: e1df5188-fa7d-4752-8819-9a9b7e781141, 10s elapsed)
-  openstack_compute_instance_v2.basic: Destruction complete after 11s
+  openstack_compute_instance_v2.instance: Destroying... [id=fa854163-2440-43b2-9971-437ed490e386]
+  openstack_compute_instance_v2.instance: Still destroying... [id=fa854163-2440-43b2-9971-437ed490e386, 10s elapsed]
+  openstack_compute_instance_v2.instance: Destruction complete after 11s
   
   Destroy complete! Resources: 1 destroyed.
 
