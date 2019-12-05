@@ -37,6 +37,7 @@ End user guide for the UH-IaaS cloud
    terraform-part2
    terraform-part3
    terraform-part4
+   terraform-part5
 
 **Other:**
 
