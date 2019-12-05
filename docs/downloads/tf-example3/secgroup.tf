@@ -144,4 +144,3 @@ resource "openstack_networking_secgroup_rule_v2" "rule_mysql_from_web_access_ipv
   remote_group_id   = openstack_networking_secgroup_v2.instance_web_access.id
   security_group_id = openstack_networking_secgroup_v2.instance_db_access.id
 }
-

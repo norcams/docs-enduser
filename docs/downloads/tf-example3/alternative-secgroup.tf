@@ -35,4 +35,3 @@ resource "openstack_networking_secgroup_rule_v2" "rule2_mysql_access_ipv6" {
   security_group_id = openstack_networking_secgroup_v2.instance_db_access.id
   depends_on        = [openstack_compute_instance_v2.web_instance]
 }
-
