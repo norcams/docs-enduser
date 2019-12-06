@@ -9,8 +9,8 @@ Last changed: |date|
 
 .. _Terraform: https://www.terraform.io/
 
-This document gives an introductory documentation on how to create a
-DNS zone and DNS records in Openstack using Terraform_. 
+This document is an introduction on how to create a DNS zone and DNS
+records in Openstack using Terraform_.
 
 The files used in this document can be downloaded:
 
