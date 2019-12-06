@@ -39,11 +39,11 @@ Creating DNS records
 
 In this example we create 3 records in the "tralala.no" zone:
 
-#. An **A** record (IPv4) with a single IP address for
+#. An **A** record which poinst to a single IPv4 address for
    "test01.tralala.no"
-#. An **AAAA** record (IPv6) with a single IP address for
+#. An **AAAA** record which points to a single IPv6 address for
    "test01.tralala.no"
-#. A **CNAME** record (alias) which points to "test01.tralala.no"
+#. A **CNAME** record (alias) "www" which points to "test01.tralala.no"
 
 The record resources are specified in the :ref:`recordset-tf` file
 below:
