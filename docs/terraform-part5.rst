@@ -31,7 +31,8 @@ create a zone. In this example we create a zone "tralala.no":
    :linenos:
 
 This is all that is needed. You may add additional parameters, most
-commonly **TTL**.
+commonly **TTL**, if you need to set a TTL value other than the
+default (3600).
 
 Creating DNS records
 --------------------
