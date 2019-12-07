@@ -75,15 +75,11 @@ below:
    the resource declaration must end with a dot "**.**". Omitting the
    trailing dot will result in an error. This is correct:
 
-   .. code-block:: console
-
-     name = "app-01.google.com."
+   ``  name = "app-01.google.com."``
 
    This is incorrect and will not work:
 
-   .. code-block:: console
-
-     name = "app-01.google.com"
+   ``  name = "app-01.google.com"``
 
    This also applies to the records list in case of a CNAME, as show
    in the example above.
