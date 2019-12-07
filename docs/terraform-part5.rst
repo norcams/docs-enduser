@@ -30,13 +30,11 @@ create a zone.
    The DNS service expects the zone name to be a fully qualified
    domain name, which means that the name of the zone provided in the
    resource declaration must end with a dot "**.**". Omitting the
-   trailing dot will result in an error. This is correct:
+   trailing dot will result in an error.
 
-   ``name = "google.com."``
+   This is correct: ``name = "google.com."``
 
-   This is incorrect and will not work:
-
-   ``name = "google.com"``
+   This is incorrect: ``name = "google.com"``
    
 In this example we create a zone "tralala.no":
 
