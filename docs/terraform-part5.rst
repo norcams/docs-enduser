@@ -23,7 +23,14 @@ Creating a DNS zone
 
 It is quite easy to create a DNS zone using Terraform. Consider
 :ref:`zone-tf` below. It is a single resource declaration needed to
-create a zone. In this example we create a zone "tralala.no":
+create a zone.
+
+.. IMPORTANT::
+   The name of the zone provided in the resource declaration must end
+   with "**.**". I.e. `google.com.` not `google.com`. Omitting the
+   trailing dot will result in an error.
+
+In this example we create a zone "tralala.no":
 
 .. literalinclude:: downloads/tf-example5/zone.tf
    :caption: zone.tf
