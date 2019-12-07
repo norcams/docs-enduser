@@ -32,9 +32,8 @@ create a zone.
    resource declaration must end with a dot "**.**". Omitting the
    trailing dot will result in an error.
 
-   This is correct: ``name = "google.com."``
-
-   This is incorrect: ``name = "google.com"``
+   * This is correct: ``name = "google.com."``
+   * This is incorrect: ``name = "google.com"``
    
 In this example we create a zone "tralala.no":
 
