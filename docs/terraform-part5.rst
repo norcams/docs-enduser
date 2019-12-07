@@ -26,10 +26,21 @@ It is quite easy to create a DNS zone using Terraform. Consider
 create a zone.
 
 .. IMPORTANT::
-   The name of the zone provided in the resource declaration must end
-   with "**.**". I.e. `google.com.` not `google.com`. Omitting the
-   trailing dot will result in an error.
 
+   The name of the zone provided in the resource declaration must end
+   with "**.**". Omitting the trailing dot will result in an
+   error. This is correct:
+
+   .. code-block:: console
+
+     name = "google.com."
+
+   This is incorrect and will not work:
+
+   .. code-block:: console
+
+     name = "google.com"
+   
 In this example we create a zone "tralala.no":
 
 .. literalinclude:: downloads/tf-example5/zone.tf
