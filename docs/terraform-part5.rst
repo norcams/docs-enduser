@@ -27,9 +27,10 @@ create a zone.
 
 .. IMPORTANT::
 
-   The name of the zone provided in the resource declaration must end
-   with "**.**". Omitting the trailing dot will result in an
-   error. This is correct:
+   The DNS service expects the zone name to be a fully qualified
+   domain name, which means that the name of the zone provided in the
+   resource declaration must end with a dot "**.**". Omitting the
+   trailing dot will result in an error. This is correct:
 
    .. code-block:: console
 
