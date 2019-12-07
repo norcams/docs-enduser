@@ -32,11 +32,11 @@ create a zone.
    resource declaration must end with a dot "**.**". Omitting the
    trailing dot will result in an error. This is correct:
 
-   ``  name = "google.com."``
+   ``name = "google.com."``
 
    This is incorrect and will not work:
 
-   ``  name = "google.com"``
+   ``name = "google.com"``
    
 In this example we create a zone "tralala.no":
 
@@ -75,11 +75,11 @@ below:
    the resource declaration must end with a dot "**.**". Omitting the
    trailing dot will result in an error. This is correct:
 
-   ``  name = "app-01.google.com."``
+   ``name = "app-01.google.com."``
 
    This is incorrect and will not work:
 
-   ``  name = "app-01.google.com"``
+   ``name = "app-01.google.com"``
 
    This also applies to the records list in case of a CNAME, as show
    in the example above.
