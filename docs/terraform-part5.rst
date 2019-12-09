@@ -122,3 +122,66 @@ resources:
   ...
   Destroy complete! Resources: 4 destroyed.
 
+
+Dynamically add DNS records
+---------------------------
+
+The previous examples show how to add a zone and create records within
+that zone. What if the zone already exists, and how do we
+automatically add a DNS record for an instance when the instance is
+created? We'll answer those questions here.
+
+First, let's consider how to add records to an already existing
+zone. The problem here is that we need to know the ID of the zone. We
+can manually fetch the ID from the output of ``openstack zone list``
+and hard code the ID into our Terraform config, but there is a more
+dynamic and flexible way to do this. In order to fetch the needed
+metadata for our zone we use a ``data`` directive in Terraform:
+
+.. literalinclude:: downloads/tf-example5/dynamic.tf
+   :caption: dynamic.tf
+   :linenos:
+   :lines: 34-37
+
+In this example, we have a resource declaration for instances that
+creates an arbitrary number of instances. In our example, we create 2
+instances:
+
+.. literalinclude:: downloads/tf-example5/dynamic.tf
+   :caption: dynamic.tf
+   :linenos:
+   :lines: 13-32
+
+Finally, in order to create DNS records for our instances we need to
+reference the name and IP of the instances:
+
+.. literalinclude:: downloads/tf-example5/dynamic.tf
+   :caption: dynamic.tf
+   :linenos:
+   :lines: 39-
+
+In this example, we create both **A** (IPv4) and **AAAA** (IPv6)
+records for our instances, since we specified the "dualStack"
+network for the instance resources.
+
+
+Complete example
+----------------
+
+A complete listing of the example files used in this document is
+provided below.
+
+.. literalinclude:: downloads/tf-example5/zone.tf
+   :caption: zone.tf
+   :name: zone-tf
+   :linenos:
+
+.. literalinclude:: downloads/tf-example5/recordset.tf
+   :caption: recordset.tf
+   :name: recordset-tf
+   :linenos:
+
+.. literalinclude:: downloads/tf-example5/dynamic.tf
+   :caption: dynamic.tf
+   :name: dynamic-tf
+   :linenos:
