@@ -16,6 +16,7 @@ The files used in this document can be downloaded:
 
 * :download:`zone.tf <downloads/tf-example5/zone.tf>`
 * :download:`recordset.tf <downloads/tf-example5/recordset.tf>`
+* :download:`dynamic.tf <downloads/tf-example5/dynamic.tf>`
 
 
 Creating a DNS zone
