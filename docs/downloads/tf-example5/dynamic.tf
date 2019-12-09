@@ -31,7 +31,7 @@ resource "openstack_compute_instance_v2" "testserver" {
   }
 }
 
-# Find zone info if zone_name is set
+# Find zone info
 data "openstack_dns_zone_v2" "myzone" {
   name = "${var.zone_name}."
 }
