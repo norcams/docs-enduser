@@ -165,6 +165,39 @@ In this example, we create both **A** (IPv4) and **AAAA** (IPv6)
 records for our instances, since we specified the "dualStack"
 network for the instance resources.
 
+After running ``terraform apply`` we can use the CLI command
+``openstack recordset list`` to verify that the DNS records have been
+created:
+
+.. code-block:: console
+
+  $ openstack recordset list mytestzone.com. -c name -c type -c records
+  +----------------------------+-------+-------------------------------------------------------------+
+  | name                       | type  | records                                                     |
+  +----------------------------+-------+-------------------------------------------------------------+
+  | mytestzone.com.            | SOA   | ns2.uh-iaas.no. foo.bar.com. 1575885141 3519 600 86400 3600 |
+  | mytestzone.com.            | NS    | ns1.uh-iaas.no.                                             |
+  |                            |       | ns2.uh-iaas.no.                                             |
+  | bgo-test-1.mytestzone.com. | A     | 158.39.74.137                                               |
+  | bgo-test-0.mytestzone.com. | AAAA  | 2001:700:2:8300::21d3                                       |
+  | bgo-test-1.mytestzone.com. | AAAA  | 2001:700:2:8300::207e                                       |
+  | bgo-test-0.mytestzone.com. | A     | 158.39.77.244                                               |
+  +----------------------------+-------+-------------------------------------------------------------+
+
+And we can check that they exist in DNS by querying the authoritative
+name servers:
+
+.. code-block:: console
+
+  $ host bgo-test-1.mytestzone.com. ns1.uh-iaas.no
+  Using domain server:
+  Name: ns1.uh-iaas.no
+  Address: 158.37.63.251#53
+  Aliases: 
+  
+  bgo-test-1.mytestzone.com has address 158.39.74.137
+  bgo-test-1.mytestzone.com has IPv6 address 2001:700:2:8300::207e
+
 
 Complete example
 ----------------
