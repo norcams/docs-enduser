@@ -142,7 +142,7 @@ metadata for our zone we use a ``data`` directive in Terraform:
 .. literalinclude:: downloads/tf-example5/dynamic.tf
    :caption: dynamic.tf
    :linenos:
-   :lines: 34-37
+   :lines: 3-7,34-37
 
 In this example, we have a resource declaration for instances that
 creates an arbitrary number of instances. In our example, we create 2
