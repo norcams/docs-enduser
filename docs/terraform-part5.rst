@@ -41,7 +41,7 @@ create a zone.
 
    ``name = "google.com"``
    
-In this example we create a zone "tralala.no":
+In this example we create a zone "test.com":
 
 .. literalinclude:: downloads/tf-example5/zone.tf
    :caption: zone.tf
@@ -55,13 +55,13 @@ default (3600).
 Creating DNS records
 --------------------
 
-In this example we create 3 records in the "tralala.no" zone:
+In this example we create 3 records in the "test.com" zone:
 
 #. An **A** record which poinst to a single IPv4 address for
-   "test01.tralala.no"
+   "test01.test.com"
 #. An **AAAA** record which points to a single IPv6 address for
-   "test01.tralala.no"
-#. A **CNAME** record (alias) "www" which points to "test01.tralala.no"
+   "test01.test.com"
+#. A **CNAME** record (alias) "www" which points to "test01.test.com"
 
 The record resources are specified in the :ref:`recordset-tf` file
 below:
@@ -104,15 +104,15 @@ records by querying one of them them directly:
 
 .. code-block:: console
 
-  $ host www.tralala.no. ns1.uh-iaas.no
+  $ host www.test.com. ns1.uh-iaas.no
   Using domain server:
   Name: ns1.uh-iaas.no
   Address: 158.37.63.251#53
   Aliases: 
   
-  www.tralala.no is an alias for test01.tralala.no.
-  test01.tralala.no has address 10.0.0.1
-  test01.tralala.no has IPv6 address 2001:700:2:8200::226c
+  www.test.com is an alias for test01.test.com.
+  test01.test.com has address 10.0.0.1
+  test01.test.com has IPv6 address 2001:700:2:8200::226c
 
 As always, you can use **terraform destroy** to remove the created
 resources:
