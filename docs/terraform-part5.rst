@@ -154,12 +154,14 @@ instances:
    :lines: 13-32
 
 Finally, in order to create DNS records for our instances we need to
-reference the name and IP of the instances:
+reference the name and IP of the instances. Notice the usage of the
+data variable to reference the zone ID (highlighted):
 
 .. literalinclude:: downloads/tf-example5/dynamic.tf
    :caption: dynamic.tf
    :linenos:
    :lines: 39-
+   :emphasize-lines: 41,50
 
 In this example, we create both **A** (IPv4) and **AAAA** (IPv6)
 records for our instances, since we specified the "dualStack"
