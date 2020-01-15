@@ -58,6 +58,12 @@ instance, the snapshot will not be bootable. You can, however, turn off the inst
 create a volume snapshot of the bootdisk. Also, it is not possible to attach
 another volume to the instance. These constrains should be fixed in future upgrades.
 
+Maximum number of volume attachments to an instance
+---------------------------------------------------
+
+Currently a bug in the upstream software stack used in our service prevents more
+than six volume attachments to a single instance. When a user try to attach more volumes
+than six, the attempt will silently fail.
 
 Network availability
 --------------------
