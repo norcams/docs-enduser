@@ -40,15 +40,6 @@ For now, when uploading SSH keys through the dashboard, those keys are not acces
 from the API (and vice versa). Work around this issue by uploading the SSH
 keys both via dashboard and via the API.
 
-Limitations on distributed workloads
-------------------------------------
-
-Due to resource constraints, it is not possible to order distribution over
-more than two compute hosts in the same region. Trying to do so will result in a
-"No valid host" error message. A workaround is to distribute workloads over
-two regions. These constraints will be lifted as more hardware is deployed in
-the IaaS.
-
 Booting instance from a volume
 ------------------------------
 
