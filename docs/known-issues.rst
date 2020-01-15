@@ -63,7 +63,7 @@ Network availability
 --------------------
 
 To use the access web page you are required to use a computer at your educational
-institution.  Currently this usually implies the wired network only at the universitie
+institution.  Currently this usually implies the wired network only at the universities
 and colleges that are authorized for access.
 
 
