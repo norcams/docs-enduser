@@ -63,8 +63,8 @@ This finishes the initial login and provision procedure.
    The password for API access is generated and shown here. This
    is **the only time** that the API password is generated and shown
    to you. If you misplace or forget the API password and need another
-   one, it requires a support case and manual steps. Please remember
-   to store the password safely.
+   one, you have to reset it usimg the *Reset API password* link on the
+   Access login page. Alternatively contact our support.
 
 In order to continue to the dashboard, click ``Fortsett til UH-IaaS``.
 
