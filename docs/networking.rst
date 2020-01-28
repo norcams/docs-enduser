@@ -26,7 +26,7 @@ this model is that it is very stateful, so whenever something goes wrong,
 there's a lot of labor involved in fixing the system back to it's desired
 state. All this complexity also comes at the price of performance.
 
-In UH-IaaS we have chosen another, much simpler, model. This model is based
+In NREC we have chosen another, much simpler, model. This model is based
 on the project calico openstack neutron core plugin, which provides a pure
 Layer 3 model for the instance IP traffic. Our hypervisors are connected
 together with a higly redundant Layer 2 network utilizing the modern linux
@@ -47,7 +47,7 @@ Our chosen networking model provides a host of benefits:
 
 .. image:: images/network-model.png
    :align: center
-   :alt: UH-IaaS Networking Model
+   :alt: NREC Networking Model
 
 Simplicity
 ~~~~~~~~~~
@@ -90,7 +90,7 @@ deployment of container clusters. Container cluster networking itself is not
 trivial, but trying to deploy it on top of our networking model is a challenge.
 While it can be done, failover mechanisms would require a load balancer outside
 the IaaS infrastructure. Still, a single host deployment should be rather trivial.
-In short, we strongly encourage you to contact the UH-IaaS team if you run into
+In short, we strongly encourage you to contact the NREC team if you run into
 problems caused by the networking model. Often your problems can be solved in
 other ways than you originally envisioned.
 

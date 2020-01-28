@@ -7,7 +7,7 @@ Last changed: |date|
 
 .. contents::
 
-.. _access: https://access.uh-iaas.no
+.. _access: https://access.nrec.no
 
 You will get a password when you do the initial first login
 (see :doc:`login`). Please make sure you write this down for later
@@ -82,7 +82,7 @@ natively on some Linux distributions.
 Using the CLI tools
 ~~~~~~~~~~~~~~~~~~~
 
-.. _First time login: http://docs.uh-iaas.no/en/latest/login.html#first-time-login
+.. _First time login: http://docs.nrec.no/en/latest/login.html#first-time-login
 
 After you receive your password for API access you can use the OpenStack
 command line interface (OpenStack CLI) to test the access.
@@ -94,7 +94,7 @@ Create a :file:`keystone_rc.sh` file:
   export OS_USERNAME=<feide-id>
   export OS_PROJECT_NAME=<project>
   export OS_PASSWORD=<password>
-  export OS_AUTH_URL=https://api.uh-iaas.no:5000/v3
+  export OS_AUTH_URL=https://api.nrec.no:5000/v3
   export OS_IDENTITY_API_VERSION=3
   export OS_USER_DOMAIN_NAME=dataporten
   export OS_PROJECT_DOMAIN_NAME=dataporten

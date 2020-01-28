@@ -1,6 +1,6 @@
 .. |date| date::
 
-Terraform and UH-IaaS: Part I - Basics
+Terraform and NREC: Part I - Basics
 ======================================
 
 Last changed: |date|
@@ -51,7 +51,7 @@ You also need to have the `OpenStack CLI tools`_ installed.
 Basic Terraform usage
 ---------------------
 
-Here is a Terraform file that works with UH-IaaS, in its simplest
+Here is a Terraform file that works with NREC, in its simplest
 possible form:
 
 .. literalinclude:: downloads/tf-example1/basic.tf
@@ -65,7 +65,7 @@ create.
 
 .. WARNING::
    We are using ``image_name`` here. This is usually not a good idea,
-   unless for testing purposes. The "GOLD" images provided in UH-IaaS
+   unless for testing purposes. The "GOLD" images provided in NREC
    are renewed (e.g. replaced) each month, and Terraform uses the
    image ID in its state. If using Terraform as a oneshot utility to
    spin up instances, this isn't a problem. But if you rely on

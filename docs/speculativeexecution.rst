@@ -30,7 +30,7 @@ restrictions in order to gain read access to privileged memory that
 would otherwise be inaccessible. There are 3 known CVEs related to
 this issue in combination with Intel, AMD, and ARM architectures.
 
-With an infrastructure-as-a-service cloud like UH-IaaS, the customer
+With an infrastructure-as-a-service cloud like NREC, the customer
 is responsible for the security of the instances running in his/her
 project.  As the service provider, we will make available updated
 images in which these speculative execution issues are mitigated.
@@ -47,7 +47,7 @@ Updating your Instances
 -----------------------
 
 This paragraph describes in detail how to update any of the standard
-Linux distributions offered in UH-IaaS.
+Linux distributions offered in NREC.
 
 CentOS
 ~~~~~~

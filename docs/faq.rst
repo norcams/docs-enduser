@@ -49,19 +49,19 @@ of the instance, then edit and resize the snapshot and launch a new
 instance based on that.
 
 
-How to acknowledge the use of UH-IaaS
+How to acknowledge the use of NREC
 -------------------------------------
 
 If you have used our infrastructure services for computing or other
 needs, we appreciate if you include this in your acknowledgment.
 
-An example of an acknowledgement of having used UH-IaaS is:
+An example of an acknowledgement of having used NREC is:
 
 .. code-block:: none
 
   The computations were performed on the Norwegian Academic Community
-  Cloud (UH-IaaS), using resources provided by the University of
-  Bergen and the University of Oslo. http://www.uh-iaas.no/
+  Cloud (NREC), using resources provided by the University of
+  Bergen and the University of Oslo. http://www.nrec.no/
 
 How to regenerate your public SSH key
 -------------------------------------
@@ -79,5 +79,5 @@ Run the following command in your terminal:
 This will output the public key to stdout which may be stored in a new file or
 copied to the clipboard.
 
-To readd a key, go to the UH-IaaS Dashboard and click on on
+To readd a key, go to the NREC Dashboard and click on on
 Key Pairs -> Import Public Key

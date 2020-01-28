@@ -1,6 +1,6 @@
 .. |date| date::
 
-Terraform and UH-IaaS: Part III - Dynamics
+Terraform and NREC: Part III - Dynamics
 ==========================================
 
 Last changed: |date|
@@ -17,7 +17,7 @@ advanced functionality in Terraform_ such as output handling and local
 variables.
 
 The goal with this document is to show how Terraform can be used to
-set up a real environment on UH-IaaS. We will create:
+set up a real environment on NREC. We will create:
 
 * An SSH key pair
 * Four web servers running CentOS

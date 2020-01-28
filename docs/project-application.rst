@@ -4,7 +4,7 @@ Project application
 Demo projects
 -------------
 
-.. _this web form: https://request.uh-iaas.no
+.. _this web form: https://request.nrec.no
 
 You will be allocated a demo project the first time you logon . This
 project is personal and for testing purposes.  There is a limited
@@ -52,7 +52,7 @@ their respective region will be automatically given a default quota.
 
 
 Standard projects
----------------
+-----------------
 
 You can apply for a standard project (i.e. not demo) by using `this
 web form`_. In this form, you need to give some information about
@@ -66,6 +66,6 @@ projects:
 **Shared**
   Shared projects can have multiple users. Users can be added or
   removed at any time, but access control is done by contacting
-  UH-IaaS support. In order to add a user, the user must have logged
-  in to UH-IaaS at least once, else the user isn't known in the
+  NREC support. In order to add a user, the user must have logged
+  in to NREC at least once, else the user isn't known in the
   system.

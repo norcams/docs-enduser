@@ -10,22 +10,22 @@ Last changed: |date|
 .. _High-performance computing (HPC): https://en.wikipedia.org/wiki/Supercomputer
 .. _Non-uniform memory access (NUMA): https://en.wikipedia.org/wiki/Non-uniform_memory_access
 .. _AMD EPYC 7551 32-Core Processor: https://www.amd.com/en/products/cpu/amd-epyc-7551
-.. _apply for an HPC project: http://request.uh-iaas.no/
+.. _apply for an HPC project: http://request.nrec.no/
 .. _support page: support.html
 
 This document describes the `High-performance computing (HPC)`_
-service offering in UH-IaaS.
+service offering in NREC.
 
 .. IMPORTANT::
-   The HPC service in UH-IaaS is in a beta stage. The stability in
-   this service may be lacking compared to the standard UH-IaaS
+   The HPC service in NREC is in a beta stage. The stability in
+   this service may be lacking compared to the standard NREC
    services. Things such as flavors and policies may change.
 
 
 What's different
 ----------------
 
-The HPC service offering in UH-IaaS differs from the normal services
+The HPC service offering in NREC differs from the normal services
 in a number of key ways. This is partly due to the fact that HPC
 workloads differ from normal workloads:
 
@@ -41,7 +41,7 @@ workloads differ from normal workloads:
 * Continuous uptime is not as important for HPC workloads, as they
   tend to run for a limited time period.
 
-To satisfy the difference in requirements of HPC workloads the UH-IaaS
+To satisfy the difference in requirements of HPC workloads the NREC
 infrastructure for HPC is different in both hardware and setup:
 
 +---------------------------------+---------------------------------+

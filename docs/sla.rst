@@ -1,6 +1,6 @@
 .. |date| date::
 
-UH-IaaS Service Level Agreement (SLA)
+NREC Service Level Agreement (SLA)
 =====================================
 
 Last changed: |date|
@@ -9,19 +9,19 @@ Last changed: |date|
 
 .. IMPORTANT:: **About this document**
    This document outlines the service level agreement, and what you
-   should expect from the UH-IaaS infrastructure service.
+   should expect from the NREC infrastructure service.
 
 
 Availability
 ------------
 
-UH-IaaS services are guaranteed to be available and responsive 99.0%
+NREC services are guaranteed to be available and responsive 99.0%
 of the time.
 
 Defining unavailability
 -----------------------
 
-A UH-IaaS service will be considered unavailable when it is
+A NREC service will be considered unavailable when it is
 inaccessible during two or more consecutive 90-second intervals.
 
 Limitations

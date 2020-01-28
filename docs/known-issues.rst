@@ -27,7 +27,7 @@ operating system documentation.
 
 Console doesn't appear
 ----------------------
-.. _here: http://docs.uh-iaas.no/en/latest/powercycle.html
+.. _here: http://docs.nrec.no/en/latest/powercycle.html
 
 We've recently made some changes to the console which requires you to reboot
 your instance. Note that you'll have to power cycle from within Openstack, soft
@@ -69,17 +69,17 @@ No access after changed email address
 
 Sometimes a user's primary email address changes. This is an issue
 due to how Dataporten uses this email address as the user ID, and
-thus the user ID and demo/personal projects in UH-IaaS is the same as this
+thus the user ID and demo/personal projects in NREC is the same as this
 address. The issue might arise when users e.g. changes their status from
 student to employee or vice versa. If this situation applies, then please send
-an email to support@uh-iaas.no which includes your current and
+an email to support@nrec.no which includes your current and
 previous primary email addresses. You will then receive further
 instructions on how to proceed.
 
 
 Outdated size
 -------------
-.. _flavors: http://docs.uh-iaas.no/en/latest/changelog.html#id1
+.. _flavors: http://docs.nrec.no/en/latest/changelog.html#id1
 
 As we have updated flavors_, the users that have had access to the larger machines may now notice new size status "Outdated" on the Horizon dashboard. Those flavors are not available anymore, but it will not affect the running instances.
 
