@@ -3,12 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to NREC End User Documentation
+NREC – End User Documentation
 =========================================
 
 .. _IPv6 issues: http://docs.nrec.no/en/latest/fix-ipv6.html
 
-End user guide for the NREC cloud
+Norwegian Research and Education Cloud
 
 **Contents:**
 
