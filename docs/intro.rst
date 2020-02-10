@@ -17,6 +17,9 @@ Last changed: |date|
 .. _XML: https://en.wikipedia.org/wiki/XML
 .. _serialization: https://en.wikipedia.org/wiki/Serialization
 
+About
+-----
+
 The NREC cloud_ is based on OpenStack_, which is a large framework
 of software components used to deliver an Infrastructure-as-a-Service_
 consisting of compute, networking and storage resources.
@@ -25,6 +28,20 @@ This document is aimed at the end user. We'll borrow a lot from the
 `OpenStack End User Guide`_, including linking to this guide where
 appropriate.
 
+
+
+*NREC* is a collaboration project between the University of Bergen and
+the University of Oslo, with additional sponsorships from NeIC
+(Nordic e-Infrastructure Collaboration) and Uninett.
+We've been in production since 2016 and are currently providing cloud
+infrastructure for several high profile academic projects, including CERN's
+ALICE and ATLAS experiments. Our hardware is located exclusively on-premise,
+our services are developed locally and we are almost entirely based on Open
+Source Software and open standards, making us a more transparent alternative
+to commercial cloud providers.
+
+We are a community cloud aiming to provide a modern, flexible and secure IT
+infrastucture, tailored to the needs of the research and higher education sector.
 
 Who can use the NREC cloud?
 ------------------------------
