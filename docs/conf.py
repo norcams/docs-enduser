@@ -213,7 +213,7 @@ html_show_copyright = True
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'UH-IaaSenduserdocumentationdoc'
+htmlhelp_basename = 'NRECenduserdocumentationdoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -235,8 +235,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'UH-IaaSenduserdocumentation.tex', u'UH-IaaS end user documentation Documentation',
-     u'UH-IaaS team', 'manual'),
+    (master_doc, 'NRECenduserdocumentation.tex', u'NREC end user documentation Documentation',
+     u'NREC team', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -265,7 +265,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'uh-iaasenduserdocumentation', u'UH-IaaS end user documentation Documentation',
+    (master_doc, 'nrecenduserdocumentation', u'NREC end user documentation Documentation',
      [author], 1)
 ]
 
@@ -279,8 +279,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'UH-IaaSenduserdocumentation', u'UH-IaaS end user documentation Documentation',
-     author, 'UH-IaaSenduserdocumentation', 'One line description of project.',
+    (master_doc, 'NRECenduserdocumentation', u'NREC end user documentation Documentation',
+     author, 'NRECenduserdocumentation', 'One line description of project.',
      'Miscellaneous'),
 ]
 

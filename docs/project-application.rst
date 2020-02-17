@@ -41,7 +41,7 @@ their respective region will be automatically given a default quota.
   The amount of memory availble to an instance.
 
 **Number of volumes**
-  In UH-Iaas, block storage is called volume. The number indicates how many
+  In NREC, block storage is called volume. The number indicates how many
   volumes are available in a project.
 
 **Volume size**
