@@ -1,6 +1,6 @@
 .. |date| date::
 
-The UH-IaaS DNS service
+The NREC DNS service
 =======================
 
 Last changed: |date|
@@ -10,7 +10,7 @@ Last changed: |date|
 .. _this Wikipedia article: https://en.wikipedia.org/wiki/Domain_Name_System
 .. _Designate: https://docs.openstack.org/designate/latest/
 
-The UH-IaaS **DNS** (**Domain Name System**) service is based on an
+The NREC **DNS** (**Domain Name System**) service is based on an
 OpenStack component named Designate_. With this, you can create DNS
 zones (domain names) and DNS records within your zones. Read more
 about DNS in `this Wikipedia article`_.
@@ -19,7 +19,7 @@ about DNS in `this Wikipedia article`_.
 When to use the DNS service
 ---------------------------
 
-The UH-IaaS DNS service allows for the registration and management of
+The NREC DNS service allows for the registration and management of
 DNS zones using the OpenStack GUI, API and command line interface
 (CLI). Any zone can be registered and managed, providing it is using a
 legal top-level domain (TLD). You don't have to own the zone in
@@ -27,7 +27,7 @@ question, but registering and managing an unowned zone doesn't make
 sense unless for testing purposes. DNS is a global namespace, and in
 order to use this service properly, the global DNS namespace needs to
 know which name servers are authoritative for your zone. The following
-lists the requirements for using the UH-IaaS DNS service for
+lists the requirements for using the NREC DNS service for
 production purposes:
 
 #. You need to own a zone or have it delegated. There are a number of
@@ -36,27 +36,27 @@ production purposes:
 #. Instruct the DNS vendor, or the entity that is delegating this zone
    to you, that the authoritative DNS servers for the zone should be:
 
-   * **ns1.uh-iaas.no** (IPv4 address: ``158.37.63.251``, IPv6
+   * **ns1.nrec.no** (IPv4 address: ``158.37.63.251``, IPv6
      address: ``2001:700:2:82ff::251``)
 
-   * **ns2.uh-iaas.no** (IPv4 address: ``158.39.77.251``, IPv6
+   * **ns2.nrec.no** (IPv4 address: ``158.39.77.251``, IPv6
      address: ``2001:700:2:83ff::251``)
 
    You can verify that this change has been made by the vendor, by
    querying DNS (example)::
 
      $ host -t ns mytestzone.com
-     mytestzone.com name server ns1.uh-iaas.no.
-     mytestzone.com name server ns2.uh-iaas.no.
+     mytestzone.com name server ns1.nrec.no.
+     mytestzone.com name server ns2.nrec.no.
 
 When these requirements are in place, you can manage the zone and its
-records completely using the UH-IaaS DNS service.
+records completely using the NREC DNS service.
 
 Special case for UiO users
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 UiO has acquired the DNS zone **uiocloud.no**, and can delegate
-subzones to projects using UH-IaaS. In order to have a subzone
+subzones to projects using NREC. In order to have a subzone
 of **uiocloud.no** delegated, contact hostmaster@usit.uio.no
 
 
@@ -180,24 +180,24 @@ in the zones listing, and select **Record Sets**:
 Testing your records
 --------------------
 
-In order to test your record, you can query the UH-IaaS name servers,
-which are authoritative for all zones created via the UH-IaaS DNS
+In order to test your record, you can query the NREC name servers,
+which are authoritative for all zones created via the NREC DNS
 service. Example:
 
 .. code-block:: console
 
-  $ host test01.mytestzone.com ns1.uh-iaas.no
+  $ host test01.mytestzone.com ns1.nrec.no
   Using domain server:
-  Name: ns1.uh-iaas.no
+  Name: ns1.nrec.no
   Address: 2001:700:2:82ff::251#53
   Aliases: 
   
   test01.mytestzone.com has address 10.0.0.1
   test01.mytestzone.com has IPv6 address fd32:100:200:300::12
   
-  $ host www.mytestzone.com ns2.uh-iaas.no
+  $ host www.mytestzone.com ns2.nrec.no
   Using domain server:
-  Name: ns2.uh-iaas.no
+  Name: ns2.nrec.no
   Address: 2001:700:2:83ff::251#53
   Aliases: 
   
@@ -205,8 +205,8 @@ service. Example:
   test01.mytestzone.com has address 10.0.0.1
   test01.mytestzone.com has IPv6 address fd32:100:200:300::12
 
-You can test against either **ns1.uh-iaas.no** or **ns2.uh-iaas.no**,
-it doesn't matter. Both are authoritative name servers in the UH-IaaS
+You can test against either **ns1.nrec.no** or **ns2.nrec.no**,
+it doesn't matter. Both are authoritative name servers in the NREC
 infrastructure, and does not resolve other domains than they serve
 themselves.
 
@@ -388,9 +388,9 @@ Listing your DNS records for ``mytestzone.com``:
   +--------------------------------------+------------------------+-------+-------------------------------------------------------------+--------+--------+
   | id                                   | name                   | type  | records                                                     | status | action |
   +--------------------------------------+------------------------+-------+-------------------------------------------------------------+--------+--------+
-  | 2cddfc55-00d5-49fd-bd0d-ead0650efa19 | mytestzone.com.        | SOA   | ns2.uh-iaas.no. foo.bar.com. 1548168330 3519 600 86400 3600 | ACTIVE | NONE   |
-  | bc9a8f9e-73ad-4604-a292-0612629a51af | mytestzone.com.        | NS    | ns1.uh-iaas.no.                                             | ACTIVE | NONE   |
-  |                                      |                        |       | ns2.uh-iaas.no.                                             |        |        |
+  | 2cddfc55-00d5-49fd-bd0d-ead0650efa19 | mytestzone.com.        | SOA   | ns2.nrec.no. foo.bar.com. 1548168330 3519 600 86400 3600 | ACTIVE | NONE   |
+  | bc9a8f9e-73ad-4604-a292-0612629a51af | mytestzone.com.        | NS    | ns1.nrec.no.                                             | ACTIVE | NONE   |
+  |                                      |                        |       | ns2.nrec.no.                                             |        |        |
   | 6910a762-d1aa-4e48-b14e-d9c44ecb81a3 | test01.mytestzone.com. | A     | 10.0.0.1                                                    | ACTIVE | NONE   |
   | aead6644-b5e7-4f67-be23-f3ce3423c0e7 | test01.mytestzone.com. | AAAA  | fd32:100:200:300::12                                        | ACTIVE | NONE   |
   | da6708fd-4023-48a0-adb6-5c3373605e37 | www.mytestzone.com.    | CNAME | test01.mytestzone.com.                                      | ACTIVE | NONE   |

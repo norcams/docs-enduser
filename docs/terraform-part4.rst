@@ -1,6 +1,6 @@
 .. |date| date::
 
-Terraform and UH-IaaS: Part IV - Pairing with Ansible
+Terraform and NREC: Part IV - Pairing with Ansible
 =====================================================
 
 Last changed: |date|
@@ -15,7 +15,7 @@ Last changed: |date|
 .. _Part 3: terraform-part3.html
 
 This document builds on Terraform `Part 1`_, `Part 2`_ and `Part 3`_.
-In `Part 3`_ we built an environment in UH-IaaS consisting of 4
+In `Part 3`_ we built an environment in NREC consisting of 4
 frontend web servers and 1 backend database server, as well as
 security groups and an SSH key pair for access. However, we didn't do
 anything inside the operating systems of our instances to make them
@@ -55,7 +55,7 @@ For Debian and Ubuntu:
 
   # apt-get install ansible
 
-When using Ansible with UH-IaaS and instances created with Terraform,
+When using Ansible with NREC and instances created with Terraform,
 we'll often create and destroy instances multiple times. This depends
 on your workflow. It may be beneficial to add the following
 configuration to your ``~/.ansible.cfg`` to prevent Ansible from
@@ -73,7 +73,7 @@ Ansible inventory from Terraform state
 .. # $ curl https://raw.githubusercontent.com/kubernetes-sigs/kubespray/master/contrib/terraform/terraform.py -o ~/.local/bin/terraform.py
 
 Terraform maintains a state in the working directory, and is also able
-to update its local state against the real resources in UH-IaaS. The
+to update its local state against the real resources in NREC. The
 local state is stored in ``terraform.tfstate``, and we're using a
 Python script that reads this file and produces an Ansible inventory
 dynamically.
@@ -160,7 +160,7 @@ We have added this metadata:
 
 * ``prefer_ipv6``: This tells **terraform.py** that we want Ansible to
   use the IPv6 address of the instance. This is needed in our case as
-  we're using the IPv6 network type in UH-IaaS. When using the
+  we're using the IPv6 network type in NREC. When using the
   dualStack network, this is usually not needed.
 
 * ``python_bin``: This is only used on the database server
@@ -281,7 +281,7 @@ In this playbook, we do the following:
 
 * Set the MariaDB bind address, i.e. the IP address that we want the
   database server to listen to. We use the internal, private IPv4
-  address for this. When using the IPv6 network in UH-IaaS, instances
+  address for this. When using the IPv6 network in NREC, instances
   also get a private IPv4 address. We can use this address for
   communication between instances, which in our case will be
   communication between the web servers and the database.

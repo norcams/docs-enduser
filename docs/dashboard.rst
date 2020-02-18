@@ -83,7 +83,7 @@ Compute tab
 
 .. NOTE::
    Even though the *Floating IPs* tab is present under "Access &
-   Security", this feature is not used in the UH-IaaS cloud.
+   Security", this feature is not used in the NREC cloud.
 
 Identity tab
 ------------

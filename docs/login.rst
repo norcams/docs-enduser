@@ -25,7 +25,7 @@ by following the steps below.
 
 To provision yourself as a user, visit the following URL:
 
-  https://access.uh-iaas.no/
+  https://access.nrec.no/
 
 The following window will appear:
 
@@ -66,16 +66,16 @@ This finishes the initial login and provision procedure.
    one, you have to reset it usimg the *Reset API password* link on the
    Access login page. Alternatively contact our support.
 
-In order to continue to the dashboard, click ``Fortsett til UH-IaaS``.
+In order to continue to the dashboard, click ``Fortsett til NREC``.
 
 
 
 Subsequent logins
 -----------------
 
-To log in to the UH-IaaS dashboard, point your browser to:
+To log in to the NREC dashboard, point your browser to:
 
-  https://dashboard.uh-iaas.no/
+  https://dashboard.nrec.no/
 
 You'll be presented with the following:
 
@@ -102,7 +102,7 @@ then reach this page:
    :alt: Dataporten: login
 
 Type in your regular user name and password, and click "Sign up". You
-should then be redirected back to the UH-IaaS dashboard:
+should then be redirected back to the NREC dashboard:
 
 .. image:: images/dashboard-login-99.png
    :align: center

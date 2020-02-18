@@ -17,7 +17,10 @@ Last changed: |date|
 .. _XML: https://en.wikipedia.org/wiki/XML
 .. _serialization: https://en.wikipedia.org/wiki/Serialization
 
-The UH-IaaS cloud_ is based on OpenStack_, which is a large framework
+About
+-----
+
+The NREC cloud_ is based on OpenStack_, which is a large framework
 of software components used to deliver an Infrastructure-as-a-Service_
 consisting of compute, networking and storage resources.
 
@@ -26,7 +29,21 @@ This document is aimed at the end user. We'll borrow a lot from the
 appropriate.
 
 
-Who can use the UH-IaaS cloud?
+
+*NREC* is a collaboration project between the University of Bergen and
+the University of Oslo, with additional sponsorships from NeIC
+(Nordic e-Infrastructure Collaboration) and Uninett.
+We've been in production since 2016 and are currently providing cloud
+infrastructure for several high profile academic projects, including CERN's
+ALICE and ATLAS experiments. Our hardware is located exclusively on-premise,
+our services are developed locally and we are almost entirely based on Open
+Source Software and open standards, making us a more transparent alternative
+to commercial cloud providers.
+
+We are a community cloud aiming to provide a modern, flexible and secure IT
+infrastucture, tailored to the needs of the research and higher education sector.
+
+Who can use the NREC cloud?
 ------------------------------
 
 .. _Terms of Service: terms-of-service.html
@@ -43,7 +60,7 @@ Who can use the UH-IaaS cloud?
    with our `Terms of Service`_.
 
 All users at educational institutions that are allegeable for access
-can use the UH-IaaS cloud. All you need is an account any of these
+can use the NREC cloud. All you need is an account any of these
 universities or colleges.
 
 +--------------------------------------------------+---------------------------------+
@@ -65,7 +82,7 @@ mechanism and the service itself. This is explained in detail in
 `Logging in`_.
 
 
-What can you do with the UH-IaaS cloud?
+What can you do with the NREC cloud?
 ---------------------------------------
 
 As an OpenStack cloud end user, you can provision your own resources
@@ -107,7 +124,7 @@ layers:
    :align: center
    :alt: Public Domain, https://commons.wikimedia.org/w/index.php?curid=18327835
 
-The UH-IaaS cloud provides
+The NREC cloud provides
 
 * Self service via a web portal to create, manage and delete virtual
   machines.
@@ -139,7 +156,7 @@ OpenStack components
 
 OpenStack is a large framework that consists of an increasingly
 growing number of components. The following components are installed
-in the UH-IaaS cloud. Each of the components have a general
+in the NREC cloud. Each of the components have a general
 description and a code name. The latter is mostly used in development,
 but both terms are used interchangeably.
 

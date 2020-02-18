@@ -11,7 +11,7 @@ Last changed: |date|
 Setting up a keypair
 --------------------
 
-Virtual machines in UH-IaaS are accessed using SSH keypairs. There are
+Virtual machines in NREC are accessed using SSH keypairs. There are
 numerous ways to achieve this, depending on the OS on your local
 computer.
 
@@ -172,7 +172,7 @@ When finished with this tab, select the next, "Networks":
    :align: center
    :alt: Dashboard - Launch instance - Networks
 
-In UH-IaaS, there are two networks to choose from, "dualStack"
+In NREC, there are two networks to choose from, "dualStack"
 and "IPv6". Both networks provide a public IPv6 address, so the difference 
 lays in IPv4. "IPv6" provides a "private" IPv4 address (RFC 1918), which gives 
 the instance outbound IPv4 connectivity through NAT, while "dualStack" provides 
@@ -327,7 +327,7 @@ image vendor's documentation.
 Doing the same with CLI
 -----------------------
 
-.. _Installing the CLI tools: http://docs.uh-iaas.no/en/latest/api.html#openstack-command-line-interface-cli
+.. _Installing the CLI tools: http://docs.nrec.no/en/latest/api.html#openstack-command-line-interface-cli
 
 For information on how to install the *command line tools*, check the section
 `Installing the CLI tools`_.

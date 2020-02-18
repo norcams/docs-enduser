@@ -1,6 +1,6 @@
 .. |date| date::
 
-Terraform and UH-IaaS: Part II - Additional resources
+Terraform and NREC: Part II - Additional resources
 =====================================================
 
 Last changed: |date|
@@ -8,12 +8,12 @@ Last changed: |date|
 .. contents::
 
 .. _Terraform: https://www.terraform.io/
-.. _Terraform and UH-IaaS\: Part I - Basics: terraform-part1.html
+.. _Terraform and NREC\: Part I - Basics: terraform-part1.html
 .. _Part 1: terraform-part1.html
 
 This document describes how to create and manage several instances
 (virtual machines) using Terraform_. This document builds on
-`Terraform and UH-IaaS\: Part I - Basics`_. While part 1 relied on
+`Terraform and NREC\: Part I - Basics`_. While part 1 relied on
 preexisting resources such as SSH key pairs and security groups, in
 this example we create everything from scratch.
 
@@ -26,7 +26,7 @@ Image ID
 
 In `Part 1`_ we used ``image_name`` to specify our preferred
 image. This is usually not a good idea, unless for testing
-purposes. The "GOLD" images provided in UH-IaaS are renewed
+purposes. The "GOLD" images provided in NREC are renewed
 (e.g. replaced) each month, and Terraform uses the image ID in its
 state. If using Terraform as a oneshot utility to spin up instances,
 this isn't a problem. But if you rely on Terraform to maintain your

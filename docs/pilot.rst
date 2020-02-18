@@ -14,7 +14,7 @@ Last changed: |date|
 Who can use this service
 ------------------------
 
-The UH-IaaS service will, in its pilot phase be available to all users
+The NREC service will, in its pilot phase be available to all users
 at UiB and UiO. The compute and storage resources, as well as IP
 address pool available are limited, however. For this reason, we ask
 that testers exercise restraint, and terminate instances that are no
@@ -33,7 +33,7 @@ important that testers report bugs, missing documentation etc.
 Which data can you put here
 ---------------------------
 
-Only insensitive data can be stored in the UH-IaaS cloud during its
+Only insensitive data can be stored in the NREC cloud during its
 pilot phase.
 
 

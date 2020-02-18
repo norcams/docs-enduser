@@ -1,6 +1,6 @@
 .. |date| date::
 
-Terraform and UH-IaaS: Part V - DNS Management
+Terraform and NREC: Part V - DNS Management
 ==============================================
 
 Last changed: |date|
@@ -104,9 +104,9 @@ records by querying one of them them directly:
 
 .. code-block:: console
 
-  $ host www.test.com. ns1.uh-iaas.no
+  $ host www.test.com. ns1.nrec.no
   Using domain server:
-  Name: ns1.uh-iaas.no
+  Name: ns1.nrec.no
   Address: 158.37.63.251#53
   Aliases: 
   
@@ -177,9 +177,9 @@ created:
   +----------------------------+-------+-------------------------------------------------------------+
   | name                       | type  | records                                                     |
   +----------------------------+-------+-------------------------------------------------------------+
-  | mytestzone.com.            | SOA   | ns2.uh-iaas.no. foo.bar.com. 1575885141 3519 600 86400 3600 |
-  | mytestzone.com.            | NS    | ns1.uh-iaas.no.                                             |
-  |                            |       | ns2.uh-iaas.no.                                             |
+  | mytestzone.com.            | SOA   | ns2.nrec.no. foo.bar.com. 1575885141 3519 600 86400 3600 |
+  | mytestzone.com.            | NS    | ns1.nrec.no.                                             |
+  |                            |       | ns2.nrec.no.                                             |
   | bgo-test-1.mytestzone.com. | A     | 158.39.74.137                                               |
   | bgo-test-0.mytestzone.com. | AAAA  | 2001:700:2:8300::21d3                                       |
   | bgo-test-1.mytestzone.com. | AAAA  | 2001:700:2:8300::207e                                       |
@@ -191,9 +191,9 @@ name servers:
 
 .. code-block:: console
 
-  $ host bgo-test-1.mytestzone.com. ns1.uh-iaas.no
+  $ host bgo-test-1.mytestzone.com. ns1.nrec.no
   Using domain server:
-  Name: ns1.uh-iaas.no
+  Name: ns1.nrec.no
   Address: 158.37.63.251#53
   Aliases: 
   
