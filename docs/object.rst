@@ -20,7 +20,7 @@ to use the object storage for.
 Usage
 =====
 
-Our object storage support to different API:
+Our object storage support two different API:
 
 * Openstack swift
 * AWS S3
