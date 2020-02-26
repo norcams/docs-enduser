@@ -4,7 +4,7 @@ Object storage
 
 .. IMPORTANT::
    The object storage is only available as a pilot services. Do not use it
-   for important data.
+   for important data. It is also only available in BGO at the moment.
 
 .. contents::
 
