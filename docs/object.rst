@@ -41,6 +41,10 @@ be able to create containers (buckets) and upload and download files.
 s3cmd (s3)
 ----------
 
+.. WARNING::
+  Make sure you have :file:`export OS_INTERFACE=public` in your RC-file used
+  with openstack cli
+
 To use the S3 API you will first need to create ec2 credentials.
 With openstack cli (version 3.8+) run:
 

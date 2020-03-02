@@ -99,6 +99,7 @@ Create a :file:`keystone_rc.sh` file:
   export OS_USER_DOMAIN_NAME=dataporten
   export OS_PROJECT_DOMAIN_NAME=dataporten
   export OS_REGION_NAME=<region>
+  export OS_INTERFACE=public
   export OS_NO_CACHE=1
 
 The above is a template. Replace the following:
