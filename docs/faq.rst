@@ -59,7 +59,7 @@ An example of an acknowledgement of having used NREC is:
 
 .. code-block:: none
 
-  The computations were performed on the Norwegian Academic Community
+  The computations were performed on the Norwegian Research and Education
   Cloud (NREC), using resources provided by the University of
   Bergen and the University of Oslo. http://www.nrec.no/
 
