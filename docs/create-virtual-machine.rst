@@ -25,11 +25,11 @@ you don't already have one:
 
 .. code-block:: console
 
-  $ ssh-keygen 
+  $ ssh-keygen
   Generating public/private rsa key pair.
-  Enter file in which to save the key (/home/username/.ssh/id_rsa): 
-  Enter passphrase (empty for no passphrase): 
-  Enter same passphrase again: 
+  Enter file in which to save the key (/home/username/.ssh/id_rsa):
+  Enter passphrase (empty for no passphrase):
+  Enter same passphrase again:
   Your identification has been saved in /home/username/.ssh/id_rsa.
   Your public key has been saved in /home/username/.ssh/id_rsa.pub.
   The key fingerprint is:
@@ -139,9 +139,9 @@ In this window, enter the following values:
 
 **Instance Name**: Select a name for your new virtual machine
 
-**Availability Zone**: 
+**Availability Zone**:
 You can choose between `<region>-default-1` and `<region>-legacy-1`. `default` uses a centralized storage, which means that instances will not need to be rebooted while doing maintenance work. On the other hand, `legacy` uses a local storage, which will then require reboot in the case of maintenance work.
-   
+
 **Instance Count**: How many virtual machines to create (usually only 1)
 
 
@@ -173,16 +173,16 @@ When finished with this tab, select the next, "Networks":
    :alt: Dashboard - Launch instance - Networks
 
 In NREC, there are two networks to choose from, "dualStack"
-and "IPv6". Both networks provide a public IPv6 address, so the difference 
-lays in IPv4. "IPv6" provides a "private" IPv4 address (RFC 1918), which gives 
-the instance outbound IPv4 connectivity through NAT, while "dualStack" provides 
-a public IPv4 address as well. 
+and "IPv6". Both networks provide a public IPv6 address, so the difference
+lays in IPv4. "IPv6" provides a "private" IPv4 address (RFC 1918), which gives
+the instance outbound IPv4 connectivity through NAT, while "dualStack" provides
+a public IPv4 address as well.
 
-IPv6 is the future of internet IP addressing, but unfortunately, not all devices 
+IPv6 is the future of internet IP addressing, but unfortunately, not all devices
 support IPv6 yet. Please check your IPv6 connectivity before choosing "IPv6".
 
-You should also note that you only can choose either "dualStack" or "IPv6", choosing 
-both networks at the same time will result in networking issues. 
+You should also note that you only can choose either "dualStack" or "IPv6", choosing
+both networks at the same time will result in networking issues.
 
 When finished with this tab, select the "Security Groups" tab:
 
@@ -222,7 +222,7 @@ Allowing SSH and ICMP access
 In order to allow traffic to the virtual machine, you need to create a
 new security group which allows it, and attach that security group to
 the virtual machine. Alternatively, you can modify an existing rule
-such as "default". To create a new security group, go to the **Network** 
+such as "default". To create a new security group, go to the **Network**
 tab under **Project** and select "Security Groups":
 
 .. image:: images/dashboard-access-and-security-02.png
@@ -327,7 +327,7 @@ image vendor's documentation.
 Doing the same with CLI
 -----------------------
 
-.. _Installing the CLI tools: http://docs.nrec.no/en/latest/api.html#openstack-command-line-interface-cli
+.. _Installing the CLI tools: http://docs.nrec.no/api.html#openstack-command-line-interface-cli
 
 For information on how to install the *command line tools*, check the section
 `Installing the CLI tools`_.
@@ -337,9 +337,9 @@ For information on how to install the *command line tools*, check the section
    .. code-block:: console
 
      $ openstack server list
-     
+
      $ openstack keypair list
-     
+
      $ openstack security group list
      +--------------------------------------+---------+------------------------+----------------------------------+
      | ID                                   | Name    | Description            | Project                          |
@@ -401,7 +401,7 @@ For information on how to install the *command line tools*, check the section
      | remote_ip_prefix  | 0.0.0.0/0                            |
      | security_group_id | 0da85d7a-bd96-4d4d-a77b-e7e2d78c8d0a |
      +-------------------+--------------------------------------+
-     
+
      $ openstack security group rule create --src-ip 0.0.0.0/0 (for IPv4) or ::/0 (for IPv6) --protocol icmp --ingress SSH_and_ICMP
      +-------------------+--------------------------------------+
      | Field             | Value                                |
