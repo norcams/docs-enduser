@@ -99,6 +99,10 @@ Availability
   weeks. Downtime may require that running virtual machines are
   rebooted.
 
+* For dedicated hardware, there will be scheduled maintenance on the
+  second Tuesday of every month. Downtime will require that running
+  virtual machines are rebooted.
+
 * Whenever scheduled downtime affects running virtual machines, the
   owner of the virtual machines will be notified at least 5 days in
   advance.

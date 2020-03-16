@@ -87,6 +87,9 @@ and unplanned maintenance.
    instances running on a particular compute host will experience
    downtime when the compute host is down for maintenance.
 
+   Please note that, there will be scheduled maintenance on the
+   second Tuesday of every month.
+
 
 Getting Access
 --------------
