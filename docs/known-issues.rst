@@ -27,7 +27,7 @@ operating system documentation.
 
 Console doesn't appear
 ----------------------
-.. _here: http://docs.nrec.no/en/latest/powercycle.html
+.. _here: http://docs.nrec.no/powercycle.html
 
 We've recently made some changes to the console which requires you to reboot
 your instance. Note that you'll have to power cycle from within Openstack, soft
@@ -79,7 +79,7 @@ instructions on how to proceed.
 
 Outdated size
 -------------
-.. _flavors: http://docs.nrec.no/en/latest/changelog.html#id1
+.. _flavors: http://docs.nrec.no/changelog.html#id1
 
 As we have updated flavors_, the users that have had access to the larger machines may now notice new size status "Outdated" on the Horizon dashboard. Those flavors are not available anymore, but it will not affect the running instances.
 
