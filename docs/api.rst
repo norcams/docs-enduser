@@ -35,14 +35,14 @@ natively on some Linux distributions.
 
   .. code-block:: console
 
-    # dnf install python2-openstackclient
+    # dnf install python3-openstackclient
 
   In order to use the `DNS service`_ you also need the designate
   client package:
 
   .. code-block:: console
 
-    # dnf install python2-designateclient
+    # dnf install python3-designateclient
 
 
 **RHEL7 at UiO**
