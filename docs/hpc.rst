@@ -10,6 +10,7 @@ Last changed: |date|
 .. _High-performance computing (HPC): https://en.wikipedia.org/wiki/Supercomputer
 .. _Non-uniform memory access (NUMA): https://en.wikipedia.org/wiki/Non-uniform_memory_access
 .. _AMD EPYC 7551 32-Core Processor: https://www.amd.com/en/products/cpu/amd-epyc-7551
+.. _AMD EPYC 7552 48-Core Processor: https://www.amd.com/en/products/cpu/amd-epyc-7552
 .. _apply for an HPC project: http://request.nrec.no/
 .. _support page: support.html
 
@@ -140,6 +141,11 @@ For CERN ATLAS workloads:
 * 10 x compute hosts (hypervisors) with:
 
   - 2 x `AMD EPYC 7551 32-Core Processor`_
+  - 512 GiB memory
+
+* 12 x compute hosts (hypervisors) with:
+
+  - 2 x `AMD EPYC 7552 48-Core Processor`_
   - 512 GiB memory
 
 
