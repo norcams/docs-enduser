@@ -81,3 +81,13 @@ copied to the clipboard.
 
 To readd a key, go to the NREC Dashboard and click on on
 Key Pairs -> Import Public Key
+
+Project quotas vs. flavors
+--------------------------
+
+Quotas are operational limits. For example, the number of gigabytes allowed for
+each project can be controlled so that cloud resources are optimized.
+Using the Overview tab on Dashboard will show you the quotas for existing projects.
+
+Flavors define the compute, memory, and storage capacity of computing instances.
+It is the size of a virtual machine/instance that can be launched.
