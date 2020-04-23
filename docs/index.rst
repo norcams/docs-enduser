@@ -23,6 +23,7 @@ Norwegian Research and Education Cloud
    create-windows-machine
    manage-volumes
    create-snapshot
+   create-image
    console
 
 **Advanced topics:**
