@@ -126,9 +126,9 @@ Create a :file:`keystone_rc.sh` file:
 
 The above is a template. Replace the following:
 
-* Replace *<feide-id>* with your FEIDE identity, e.g. "ola.normann\@uio.no"
+* Replace *<feide-id>* with your FEIDE identity, e.g. "username\@uio.no"
 * Replace *<project>* with the project name,
-  e.g. "DEMO-ola.normann.uio.no"
+  e.g. "DEMO-username.uio.no"
 * Replace *<password>* with the API password that you got when first
   logging in. See `First time login`_
 * Replace *<region>* with either "osl" or "bgo", whichever you want to
