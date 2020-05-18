@@ -50,7 +50,7 @@ Norwegian Research and Education Cloud
    known-issues
    terms-of-service
    speculativeexecution
-   FAQ
+   faq
    changelog
 
 
