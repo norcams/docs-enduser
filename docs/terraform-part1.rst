@@ -27,9 +27,9 @@ You need to download and install Terraform_ (example):
 
 .. code-block:: console
 
-  $ unzip ~/Downloads/terraform_0.12.17_linux_amd64.zip
+  $ unzip ~/Downloads/terraform_0.12.26_linux_amd64.zip
   $ ./terraform --version
-  Terraform v0.12.17
+  Terraform v0.12.26
 
 Install the ``terraform`` binary into ``~/.local/bin`` (e.g. your home
 directory):

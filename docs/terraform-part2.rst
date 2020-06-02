@@ -21,65 +21,44 @@ The example file can be downloaded here: :download:`advanced.tf
 <downloads/tf-example2/advanced.tf>`.
 
 
-Image ID
---------
+Image Name
+----------
 
-In `Part 1`_ we used ``image_name`` to specify our preferred
-image. This is usually not a good idea, unless for testing
+In `Part 1`_ we used ``image_name`` to specify our preferred image. By
+itself this is usually not a good idea, unless for testing
 purposes. The "GOLD" images provided in NREC are renewed
 (e.g. replaced) each month, and Terraform uses the image ID in its
 state. If using Terraform as a oneshot utility to spin up instances,
-this isn't a problem. But if you rely on Terraform to maintain your
-virtual infrastructure over time, switching to ``image_id`` is
-encouraged.
+this isn't a problem.
 
 The consequence of using ``image_name`` to specify the image is that
-Terraform's own state becomes outdated. When using Terraform at a
-later time to make changes in the virtual infrastructure, it will
-destroy all running instances and create new ones, in order to comply
-with the configuration. This is probably not what you want. Running
-``terraform plan`` in this scenario would output:
+Terraform's own state becomes outdated when the NREC image is
+renamed. When using Terraform at a later time to make changes in the
+virtual infrastructure, it will destroy all running instances and
+create new ones, in order to comply with the configuration. This is
+probably not what you want. Running ``terraform plan`` in this
+scenario would output:
 
 .. code-block:: console
 
   image_name:     "Outdated (CentOS)" => "GOLD CentOS 7" (forces new resource)
 
-We find the correct ``image_id`` by using the Openstack CLI:
-
-.. code-block:: console
-
-  $ openstack image list --status active
-  +--------------------------------------+-----------------------------------+--------+
-  | ID                                   | Name                              | Status |
-  +--------------------------------------+-----------------------------------+--------+
-  | 90527faa-43bd-40b3-9292-c5901452055d | GOLD CentOS 6                     | active |
-  | 1a38633c-5fd1-4c01-b447-b1128ed3bb3f | GOLD CentOS 7                     | active |
-  | 9be728f1-dc74-4246-80cb-211dc027d18a | GOLD Debian 10                    | active |
-  | 0f400132-4469-409f-94fe-455131434ff2 | GOLD Debian 9                     | active |
-  | 8dc9ba4f-1334-48e5-87a1-b60adee8b9e4 | GOLD Fedora 30                    | active |
-  | c5428d6e-9611-4629-852a-2a54a98241fc | GOLD Fedora 31                    | active |
-  | 39ae12d9-e847-43ac-a56d-f8c5f0adec06 | GOLD Ubuntu 16.04 LTS             | active |
-  | 46884c15-fad5-49dd-b85c-5303cd41ab17 | GOLD Ubuntu 18.04 LTS             | active |
-  | 60e2d020-2b42-4e5f-a6b8-2fe8bf9a9aed | GOLD Ubuntu 19.04                 | active |
-  | 843456b8-805e-4b7f-aa8b-224c5c8318fa | GOLD Windows Server 2016 Standard | active |
-  | 79b1868e-8190-474b-9c52-41c0c758ad05 | GOLD Windows Server 2019 Core     | active |
-  | 88f10ed4-da1c-459e-89c0-4fbea8bed848 | GOLD Windows Server 2019 Standard | active |
-  +--------------------------------------+-----------------------------------+--------+
-
-Instead of specifying ``image_name`` as in `Part 1`_:
-
-.. literalinclude:: downloads/tf-example1/basic.tf
-   :caption: basic.tf
-   :linenos:
-   :lines: 5
-
-We use the ``image_id`` for the "GOLD CentOS 7" image found using
-Openstack CLI above:
+In order to combat this, we add the following
+code snippet to our ``openstack_compute_instance_v2`` resource:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :caption: advanced.tf
    :linenos:
-   :lines: 59
+   :lines: 69-71
+
+This makes Terraform ignore changes to the image name. Another
+approach would be to specify ``image_id`` instead of
+``image_name``. We find the correct ``image_id`` by using the
+Openstack CLI:
+
+.. code-block:: console
+
+  $ openstack image list --status active
 
 
 Multiple instances
@@ -221,14 +200,14 @@ well. In order to create a volume you will define the resource:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
-   :lines: 70-74
+   :lines: 73-77
 
 Here, we create a volume named "my-volume" with a size of 10 GB. We
 also want to attach the volume to one of our instances:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
-   :lines: 76-80
+   :lines: 79-83
 
 In this example, we choose to attach the volume to instance number 0,
 which is the instance named "test-0". We can inspect using Openstack

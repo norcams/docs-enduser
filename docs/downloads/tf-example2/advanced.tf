@@ -65,6 +65,10 @@ resource "openstack_compute_instance_v2" "instance" {
     network {
         name = "IPv6"
     }
+
+    lifecycle {
+        ignore_changes = [image_name]
+    }
 }
 
 # Volume
