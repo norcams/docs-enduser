@@ -144,14 +144,14 @@ servers (CentOS 7):
 .. literalinclude:: downloads/tf-example4/main.tf
    :caption: main.tf
    :linenos:
-   :lines: 30-34
+   :lines: 30-38
 
 And for the database server (Ubuntu 18.04 LTS):
 
 .. literalinclude:: downloads/tf-example4/main.tf
    :caption: main.tf
    :linenos:
-   :lines: 61-66
+   :lines: 65-74
 
 We have added this metadata:
 
