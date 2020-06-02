@@ -79,7 +79,7 @@ accomplish that by using the count when specifying the instance name:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
-   :lines: 1-2,55-68
+   :lines: 1-2,55-72
    :emphasize-lines: 5-6
 
 When running this file with ``terraform apply``, a total of 5
@@ -108,7 +108,7 @@ a resource block for a key pair:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
-   :lines: 3-8, 55-68
+   :lines: 3-8, 55-72
    :emphasize-lines: 14
 
 After running Terraform, we can verify that the key has been created:
@@ -134,7 +134,7 @@ on the fly for us to use:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
-   :lines: 9-68
+   :lines: 9-72
    :emphasize-lines: 55
 
 There is a lot of new stuff here:
@@ -200,14 +200,14 @@ well. In order to create a volume you will define the resource:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
-   :lines: 73-77
+   :lines: 74-78
 
 Here, we create a volume named "my-volume" with a size of 10 GB. We
 also want to attach the volume to one of our instances:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
-   :lines: 79-83
+   :lines: 80-84
 
 In this example, we choose to attach the volume to instance number 0,
 which is the instance named "test-0". We can inspect using Openstack
