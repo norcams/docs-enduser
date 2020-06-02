@@ -29,6 +29,10 @@ resource "openstack_compute_instance_v2" "testserver" {
   network {
     name = "dualStack"
   }
+
+  lifecycle {
+    ignore_changes = [image_name]
+  }
 }
 
 # Find zone info
