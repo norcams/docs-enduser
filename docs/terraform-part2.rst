@@ -24,6 +24,8 @@ The example file can be downloaded here: :download:`advanced.tf
 Image Name
 ----------
 
+.. _lifecycle meta-argument: https://www.terraform.io/docs/configuration/resources.html#lifecycle-lifecycle-customizations
+
 In `Part 1`_ we used ``image_name`` to specify our preferred image. By
 itself this is usually not a good idea, unless for testing
 purposes. The "GOLD" images provided in NREC are renewed
@@ -51,9 +53,9 @@ code snippet to our ``openstack_compute_instance_v2`` resource:
    :linenos:
    :lines: 69-71
 
-This makes Terraform ignore changes to the image name. Another
-approach would be to specify ``image_id`` instead of
-``image_name``. We find the correct ``image_id`` by using the
+This `lifecycle meta-argument`_ makes Terraform ignore changes to the
+image name. Another approach would be to specify ``image_id`` instead
+of ``image_name``. We find the correct ``image_id`` by using the
 Openstack CLI:
 
 .. code-block:: console
