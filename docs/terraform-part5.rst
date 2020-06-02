@@ -161,7 +161,7 @@ data variable to reference the zone ID (highlighted):
    :caption: dynamic.tf
    :linenos:
    :lines: 43-
-   :emphasize-lines: 45,54
+   :emphasize-lines: 3,12
 
 In this example, we create both **A** (IPv4) and **AAAA** (IPv6)
 records for our instances, since we specified the "dualStack"
