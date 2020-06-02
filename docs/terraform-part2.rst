@@ -230,6 +230,5 @@ A complete listing of the example file :download:`advanced.tf
 <downloads/tf-example2/advanced.tf>` used in this document is provided below.
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
-   :language: terraform
    :caption: advanced.tf
    :linenos:
