@@ -53,8 +53,8 @@ variable "allow_mysql_from_v4" {
 variable "role_image" {
   type = map(string)
   default = {
-    "web" = "1a38633c-5fd1-4c01-b447-b1128ed3bb3f" # GOLD CentOS 7
-    "db"  = "46884c15-fad5-49dd-b85c-5303cd41ab17" # GOLD Ubuntu 18.04 LTS
+    "web" = "GOLD CentOS 8"
+    "db"  = "GOLD Ubuntu 20.04 LTS"
   }
 }
 

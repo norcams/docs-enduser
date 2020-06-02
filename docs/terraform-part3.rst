@@ -190,7 +190,7 @@ We'll circle back to :ref:`main-tf`:
 .. literalinclude:: downloads/tf-example3/main.tf
    :caption: main.tf
    :linenos:
-   :lines: 11-59
+   :lines: 11-67
 
 We now define two different instance resources. One for web servers
 and one for the database server. They use different values defined in
@@ -200,7 +200,7 @@ resource and attach this volume to the database server:
 .. literalinclude:: downloads/tf-example3/main.tf
    :caption: main.tf
    :linenos:
-   :lines: 61-
+   :lines: 69-
 
 
 Making changes

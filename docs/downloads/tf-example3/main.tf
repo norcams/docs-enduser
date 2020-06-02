@@ -13,7 +13,7 @@ resource "openstack_compute_instance_v2" "web_instance" {
   region      = var.region
   count       = lookup(var.role_count, "web", 0)
   name        = "${var.region}-web-${count.index}"
-  image_id    = lookup(var.role_image, "web", "unknown")
+  image_name  = lookup(var.role_image, "web", "unknown")
   flavor_name = lookup(var.role_flavor, "web", "unknown")
 
   key_pair = "${terraform.workspace}-${var.name}"
@@ -27,6 +27,10 @@ resource "openstack_compute_instance_v2" "web_instance" {
     name = "IPv6"
   }
 
+  lifecycle {
+    ignore_changes = [image_name]
+  }
+
   depends_on = [
     openstack_networking_secgroup_v2.instance_ssh_access,
     openstack_networking_secgroup_v2.instance_web_access,
@@ -38,7 +42,7 @@ resource "openstack_compute_instance_v2" "db_instance" {
   region      = var.region
   count       = lookup(var.role_count, "db", 0)
   name        = "${var.region}-db-${count.index}"
-  image_id    = lookup(var.role_image, "db", "unknown")
+  image_name  = lookup(var.role_image, "db", "unknown")
   flavor_name = lookup(var.role_flavor, "db", "unknown")
 
   key_pair = "${terraform.workspace}-${var.name}"
@@ -50,6 +54,10 @@ resource "openstack_compute_instance_v2" "db_instance" {
 
   network {
     name = "IPv6"
+  }
+
+  lifecycle {
+    ignore_changes = [image_name]
   }
 
   depends_on = [
