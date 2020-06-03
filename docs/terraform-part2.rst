@@ -141,10 +141,10 @@ on the fly for us to use:
 
 There is a lot of new stuff here:
 
-#. Line 3-5 contains a resource for a security group. This is pretty
+#. Line 2-5 contains a resource for a security group. This is pretty
    straightforward and only contains a name and description
 
-#. Line 9-47 contains 4 security group rules. They are all ingress
+#. Line 8-45 contains 4 security group rules. They are all ingress
    rules (e.g. incoming traffic) and allows for SSH and ICMP from the
    UiO IPv4 and IPv6 networks.
 
