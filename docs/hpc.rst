@@ -167,6 +167,13 @@ We currently have the following flavors for use with HPC:
 | hpc.m1a.16xlarge | 64           | 240 GiB | Yes               |
 +------------------+--------------+---------+-------------------+
 
+
+.. IMPORTANT::
+   The therm vCPU refers to physical threads, which is two pr physical
+   CPU core. So, 64 vCPUs translates into 32 physical, multithreaded
+   real CPU cores.
+
+
 Note that due to hardware constraints in the AMD EPYC CPU
 architecture, instances that use a flavor with more than 16 CPUs will
 have `Non-uniform memory access (NUMA)`_. The operating system and/or
