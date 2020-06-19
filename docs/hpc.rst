@@ -175,7 +175,7 @@ We currently have the following flavors for use with HPC:
 
 
 Note that due to hardware constraints in the AMD EPYC CPU
-architecture, instances that use a flavor with more than 16 CPUs will
+architecture, instances that use a flavor with more than 16 vCPUs will
 have `Non-uniform memory access (NUMA)`_. The operating system and/or
 the application may need to take that into account.
 
