@@ -106,8 +106,8 @@ while maintaining the same IP addresses, amongst other metadata.
     $ openstack server rebuild --image <image> <server>
 
 
-Efficiently creating filsystems on large volumes
-------------------------------------------------
+Efficiently creating filesystems on large volumes
+-------------------------------------------------
 
 XFS/EXT4 formatting on a disk of large size (e.g. several TB) using
 mkfs will under normal circumstances take a long time. This is because
