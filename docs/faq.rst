@@ -106,6 +106,29 @@ while maintaining the same IP addresses, amongst other metadata.
     $ openstack server rebuild --image <image> <server>
 
 
+Efficiently creating filsystems on large volumes
+------------------------------------------------
+
+XFS/EXT4 formatting on a disk of large size (e.g. several TB) using
+mkfs will under normal circumstances take a long time. This is because
+mkfs discards (clears) all blocks in the format process. For normal
+disks, especially SSD drives, this is what you want. However, due to
+the nature of volumes in NREC discarding is not needed. In order to
+significantly speed up mkfs, run without discarding:
+
+For XFS::
+
+  mkfs.xfs -K /dev/<device>
+
+For EXT4::
+
+  mkfs.ext4 -E nodiscard /dev/<device>
+
+The time difference is huge for large volumes. Without discarding,
+mkfs takes a few seconds compared to several minutes (or hours) with
+discarding turned on.
+
+
 How to acknowledge the use of NREC
 ----------------------------------
 
