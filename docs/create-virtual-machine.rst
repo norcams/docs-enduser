@@ -384,7 +384,7 @@ For information on how to install the *command line tools*, check the section
 
    .. code-block:: console
 
-     $ openstack security group rule create --src-ip 0.0.0.0/0 (for IPv4) or ::/0 (for IPv6) --dst-port 22 --protocol tcp --ingress SSH_and_ICMP
+     $ openstack security group rule create --remote-ip 0.0.0.0/0 (for IPv4) or ::/0 (for IPv6) --dst-port 22 --protocol tcp --ingress SSH_and_ICMP
      +-------------------+--------------------------------------+
      | Field             | Value                                |
      +-------------------+--------------------------------------+
@@ -402,7 +402,7 @@ For information on how to install the *command line tools*, check the section
      | security_group_id | 0da85d7a-bd96-4d4d-a77b-e7e2d78c8d0a |
      +-------------------+--------------------------------------+
 
-     $ openstack security group rule create --src-ip 0.0.0.0/0 (for IPv4) or ::/0 (for IPv6) --protocol icmp --ingress SSH_and_ICMP
+     $ openstack security group rule create --remote-ip 0.0.0.0/0 (for IPv4) or ::/0 (for IPv6) --protocol icmp --ingress SSH_and_ICMP
      +-------------------+--------------------------------------+
      | Field             | Value                                |
      +-------------------+--------------------------------------+
