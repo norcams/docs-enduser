@@ -306,6 +306,9 @@ you (example with "test.pem" above):
   [fedora@test ~]# whoami
   root
 
+SSH username
+~~~~~~~~~~~~
+  
 Each image has its own default user, for which the SSH public key is
 added to it's SSH authorized_keys file. This varies with each image,
 at the discretion of the image vendor. The most common are:
