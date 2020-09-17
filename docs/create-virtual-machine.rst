@@ -310,15 +310,16 @@ Each image has its own default user, for which the SSH public key is
 added to it's SSH authorized_keys file. This varies with each image,
 at the discretion of the image vendor. The most common are:
 
-============== =========
+============== ===========
 Image          User
-============== =========
+============== ===========
 CentOS         centos
 Fedora         fedora
 Ubuntu         ubuntu
 Debian         debian
+RHEL           cloud-user
 CirrOS         cirros
-============== =========
+============== ===========
 
 This is a non-exhaustive list. For images not listed here, consult the
 image vendor's documentation.
