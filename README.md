@@ -1,2 +1,2 @@
 # docs-enduser
-UH-IaaS enduser documentation
+Enduser documentation for the NREC Community Cloud
