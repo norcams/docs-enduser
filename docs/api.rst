@@ -79,7 +79,7 @@ natively on some Linux distributions.
 
     .. code-block:: console
 
-      # yum install python-openstackclient
+      # yum install python2-openstackclient
 
   In order to use the `DNS service`_ you also need the designate
   client package:
@@ -94,7 +94,7 @@ natively on some Linux distributions.
 
     .. code-block:: console
 
-      # yum install python-designateclient
+      # yum install python2-designateclient
 
 
 **Other Linux, Apple MacOS and Microsoft Windows**
