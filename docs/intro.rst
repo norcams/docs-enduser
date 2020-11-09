@@ -51,9 +51,14 @@ Who can use the NREC cloud?
 
 .. _The Arctic University of Norway (UiT): https://www.uit.no/
 .. _Norwegian University of Life Sciences (NMBU): https://www.nmbu.no/
+.. _Norwegian University of Science and Technology (NTNU): https://www.ntnu.no
+.. _Sintef: https://www.sintef.no/
 .. _UNINETT: https://www.uninett.no/
 .. _University of Bergen (UiB): http://www.uib.no/
 .. _University of Oslo (UiO): http://www.uio.no/
+.. _Norwegian Veterinary Institute: https://www.vetinst.no/
+
+
 
 .. IMPORTANT::
    Before using this cloud service, you should familiarize yourself
@@ -63,19 +68,23 @@ All users at educational institutions that are allegeable for access
 can use the NREC cloud. All you need is an account any of these
 universities or colleges.
 
-+--------------------------------------------------+---------------------------------+
-| University / College / Organization              | Type of access                  |
-+==================================================+=================================+
-| `The Arctic University of Norway (UiT)`_         | Limited testing                 |
-+--------------------------------------------------+---------------------------------+
-| `Norwegian University of Life Sciences (NMBU)`_  | Limited testing                 |
-+--------------------------------------------------+---------------------------------+
-| `UNINETT`_                                       | Limited testing                 |
-+--------------------------------------------------+---------------------------------+
-| `University of Bergen (UiB)`_                    | Full Access                     |
-+--------------------------------------------------+---------------------------------+
-| `University of Oslo (UiO)`_                      | Full Access                     |
-+--------------------------------------------------+---------------------------------+
++----------------------------------------------------------+---------------------------------+
+| University / College / Organization                      | Type of access                  |
++==========================================================+=================================+
+| `The Arctic University of Norway (UiT)`_                 | Limited testing                 |
++----------------------------------------------------------+---------------------------------+
+| `Norwegian University of Life Sciences (NMBU)`_          | Limited testing                 |
++----------------------------------------------------------+---------------------------------+
+| `Norwegian University of Science and Technology (NTNU)`_ | Limited testing                 |
++----------------------------------------------------------+---------------------------------+
+| `UNINETT`_                                               | Limited testing                 |
++----------------------------------------------------------+---------------------------------+
+| `University of Bergen (UiB)`_                            | Full Access                     |
++----------------------------------------------------------+---------------------------------+
+| `University of Oslo (UiO)`_                              | Full Access                     |
++----------------------------------------------------------+---------------------------------+
+| `Norwegian Veterinary Institute`_                        | Limited testing                 |
++----------------------------------------------------------+---------------------------------+
 
 Before using the service, you must register with the authentication
 mechanism and the service itself. This is explained in detail in
@@ -274,4 +283,3 @@ be the following:
 
   # command
   Some command output
-
