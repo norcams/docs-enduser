@@ -23,7 +23,7 @@ Prerequisites
 
 .. _OpenStack CLI tools: api.html
 
-You need to download and install Terraform_ (example):
+You need to download and install Terraform_ version 0.12 (newer versions will not work without rewriting the code for 0.13 or newer)  (example):
 
 .. code-block:: console
 
