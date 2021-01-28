@@ -32,7 +32,7 @@ appropriate.
 
 *NREC* is a collaboration project between the University of Bergen and
 the University of Oslo, with additional sponsorships from NeIC
-(Nordic e-Infrastructure Collaboration) and Uninett.
+(Nordic e-Infrastructure Collaboration).
 We've been in production since 2016 and are currently providing cloud
 infrastructure for several high profile academic projects, including CERN's
 ALICE and ATLAS experiments. Our hardware is located exclusively on-premise,
