@@ -125,7 +125,7 @@ Availability
 * We reserve the right to terminate instances in your demo project
   after 90 days. When an instance terminates, the data on any instance
   store volumes and images associated with that instance will also be
-  deleted.
+  deleted. We will notify you by email in advance.
 
 Content
 -------
