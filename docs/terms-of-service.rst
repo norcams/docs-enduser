@@ -123,8 +123,9 @@ Availability
     services.
 
 * We reserve the right to terminate instances in your demo project
-  without notice, if a situation should arise in which we need the
-  compute resources elsewhere.
+  after 90 days. When an instance terminates, the data on any instance
+  store volumes and images associated with that instance will also be
+  deleted.
 
 Content
 -------
