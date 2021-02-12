@@ -1,5 +1,7 @@
 .. |date| date::
 
+.. _Create a Linux virtual machine: create-virtual-machine.html
+
 Create and manage snapshots
 ===========================
 
@@ -19,8 +21,8 @@ there are a couple of things to consider before creating the snapshot:
   before taking a snapshot of it.
 
 
-Create a snapshot
------------------
+Creating a snapshot
+-------------------
 
 Follow these steps to create a snapshot of an instance.
 
@@ -62,8 +64,55 @@ to enter part of the name of your image and it should appear:
    Image creation may take a long time. You may need to reload the
    browser page.
 
+Creating a snapshot with CLI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+#. First list our servers:
+
+   .. code-block:: console
+
+     $ openstack server list
+     +--------------------------------------+--------+--------+----------------------------------------+---------------+----------+
+     | ID                                   | Name   | Status | Networks                               | Image         | Flavor   |
+     +--------------------------------------+--------+--------+----------------------------------------+---------------+----------+
+     | fd35e22f-6519-46d5-95c1-01e80b02ca17 | test01 | ACTIVE | IPv6=2001:700:2:8201::1246, 10.2.2.105 | GOLD CentOS 8 | m1.small |
+     +--------------------------------------+--------+--------+----------------------------------------+---------------+----------+
+
+#. Shut off the server for which you want a snapshot (this can be
+   omitted at the risk of compromising the integrity of the OS within
+   the snapshot):
+
+   .. code-block:: console
+
+     $ openstack server stop fd35e22f-6519-46d5-95c1-01e80b02ca17
+
+#. Take a snapshot:
+
+   .. code-block:: console
+
+     $ openstack server image create --name test01-snapshot fd35e22f-6519-46d5-95c1-01e80b02ca17
+     (output omitted...)
+
+#. Turn on the server (optional):
+
+   .. code-block:: console
+
+     $ openstack server start fd35e22f-6519-46d5-95c1-01e80b02ca17
+
+#. List images to verify that your snapshot has been created
+   (optional):
    
+   .. code-block:: console
+
+     $ openstack image list --private
+     +--------------------------------------+-----------------+--------+
+     | ID                                   | Name            | Status |
+     +--------------------------------------+-----------------+--------+
+     | 6edb8ab8-df9b-4339-b5d0-9e33d9d36e5d | my-test-image   | active |
+     | 8fae2165-ef86-4e36-91a5-5caad9698aab | test01-snapshot | active |
+     +--------------------------------------+-----------------+--------+
+
+
 Downloading the snapshot
 ------------------------
 
@@ -118,6 +167,17 @@ under `Create a Linux virtual machine`_.
 The new instance contains now the expected customizations made earlier
 in your previous instance.
 
+Launch a snapshot with CLI
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This will be exactly as described in `Create a Linux virtual
+machine`_. Use your snapshot as the source for the instance:
+
+.. code-block:: console
+
+  $ openstack server create --image "test01-snapshot" --flavor m1.small \
+        --security-group SSH_and_ICMP --security-group default \
+        --key-name mykey --nic net-id=IPv6 myserver
 
 Deleting a snapshot
 -------------------
@@ -153,6 +213,27 @@ You should now get a confirmation that the snapshot is deleted:
    :align: center
    :alt: Dashboard - Delete Snapshot CONFIRMATION
 
+Deleting a snapshot with CLI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. List your private images:
+
+   .. code-block:: console
+
+     $ openstack image list --private
+     +--------------------------------------+-----------------+--------+
+     | ID                                   | Name            | Status |
+     +--------------------------------------+-----------------+--------+
+     | 6edb8ab8-df9b-4339-b5d0-9e33d9d36e5d | my-test-image   | active |
+     | 8fae2165-ef86-4e36-91a5-5caad9698aab | test01-snapshot | active |
+     +--------------------------------------+-----------------+--------+
+
+#. Delete the snapshot using the ID or name:
+
+   .. code-block:: console
+
+   $ openstack image delete 8fae2165-ef86-4e36-91a5-5caad9698aab
+
 
 Uploading a snapshot
 --------------------
@@ -187,63 +268,33 @@ tab:
    :align: center
    :alt: Dashboard - Compute -> Images
 
+Uploading a snapshot with CLI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-
-	    
-Doing the same with CLI
------------------------
-
-Listing any existing servers:
+If the purpose of uploading the snapshot is to move a workload or
+instance between projects, make sure that your shell environment
+variables are set correctly:
 
 .. code-block:: console
-     
-    $ openstack server list
-    +--------------------------------------+--------------+--------+---------------------------------------+-----------------------+
-    | ID                                   | Name         | Status | Networks                              | Image Name            |
-    +--------------------------------------+--------------+--------+---------------------------------------+-----------------------+
-    | d281daef-e6b2-4dc5-979b-9c4fcec19b82 | DemoInstance | SHUTOFF| IPv6=2000:200:2:2000::200a, 10.2.0.02 | GOLD Ubuntu 16.04 LTS |
-    +--------------------------------------+--------------+--------+---------------------------------------+-----------------------+
 
-Creating snapshot of an existing server:
+  $ env | egrep '(OS_REGION_NAME|OS_PROJECT_NAME)'
+  OS_REGION_NAME=osl
+  OS_PROJECT_NAME=DEMO-xxxxxxxx.uio.no
+
+Change these variables according to which project and region where you
+want to upload the snapshot, e.g.:
 
 .. code-block:: console
-     
-    $ openstack server image create --name DemoInstanceSnapshot DemoInstance  
-    +------------------+-----------------------------------------------------------------------------------------------------------------------+
-    | Field            | Value                                                                                                                 |
-    +------------------+-----------------------------------------------------------------------------------------------------------------------+
-    | checksum         | None                                                                                                                  |
-    | container_format | None                                                                                                                  |
-    | created_at       | 2017-12-20T10:00:23Z                                                                                                  |
-    | disk_format      | None                                                                                                                  |
-    | file             | /v2/images/f7495bf2-23c3-4b07-b0c4-6da26a0e6b81/file                                                                  |
-    | id               | f7495bf2-23c3-4b07-b0c4-6da26a0e6b81                                                                                  |
-    | min_disk         | 10                                                                                                                    |
-    | min_ram          | 768                                                                                                                   |
-    | name             | DemoInstanceSnapshot                                                                                                  |
-    | owner            | 1b123d89493123e7937123d91e912304                                                                                      |
-    | properties       | base_image_ref='de540652-bb5f-4827-8abc-6a17cfc37790', hw_disk_bus='scsi', hw_scsi_model='virtio-scsi',               |
-    |                  | image_type='snapshot', instance_uuid='d281daef-e6b2-4dc5-979b-9c4fcec19b82', locations='[]',                          |
-    |                  | user_id='57c5e7b739614845811d123227a6d596'                                                                            |
-    | protected        | False                                                                                                                 |
-    | schema           | /v2/schemas/image                                                                                                     |
-    | size             | None                                                                                                                  |
-    | status           | queued                                                                                                                |
-    | tags             |                                                                                                                       |
-    | updated_at       | 2017-12-20T10:00:23Z                                                                                                  |
-    | virtual_size     | None                                                                                                                  |
-    | visibility       | private                                                                                                               |
-    +------------------+-----------------------------------------------------------------------------------------------------------------------+
 
-Listing available images:
-  
+  $ export OS_PROJECT_NAME=PRIVATE-xxxxxxxx.uio.no
+
+You can then upload the image:
+
 .. code-block:: console
-     
-    $ openstack image list
-    +--------------------------------------+-----------------------------------+-------------+
-    | ID                                   | Name                              | Status      |
-    +--------------------------------------+-----------------------------------+-------------+
-    | 20cc80f4-1567-4082-ac6f-68c9ae2040ff | myInstanceSnapshot                | active      |
-    +--------------------------------------+-----------------------------------+-------------+
-   
+
+  $ openstack image create --file test01-snapshot.img --disk-format raw my-test-image
+
+You need to specify the file name, disk format and a name for the
+image. Other metadata for the image may be set with additional
+options, se the output of ``openstack image create --help`` for more
+information.
