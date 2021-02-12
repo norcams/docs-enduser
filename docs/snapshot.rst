@@ -62,9 +62,6 @@ to enter part of the name of your image and it should appear:
    Image creation may take a long time. You may need to reload the
    browser page.
 
-Doing the same with CLI
-~~~~~~~~~~~~~~~~~~~~~~~
-
 
    
 Downloading the snapshot
