@@ -232,7 +232,7 @@ Deleting a snapshot with CLI
 
    .. code-block:: console
 
-   $ openstack image delete 8fae2165-ef86-4e36-91a5-5caad9698aab
+     $ openstack image delete 8fae2165-ef86-4e36-91a5-5caad9698aab
 
 
 Uploading a snapshot
@@ -293,6 +293,7 @@ You can then upload the image:
 .. code-block:: console
 
   $ openstack image create --file test01-snapshot.img --disk-format raw my-test-image
+  (output omitted)
 
 You need to specify the file name, disk format and a name for the
 image. Other metadata for the image may be set with additional
