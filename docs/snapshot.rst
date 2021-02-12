@@ -149,9 +149,9 @@ In order to delete a snapshot that no longer need, follow these steps:
 
 You should now get a confirmation that the snapshot is deleted:
 
-   .. image:: images/snapshot-09.png
-      :align: center
-      :alt: Dashboard - Delete Snapshot CONFIRMATION
+.. image:: images/snapshot-09.png
+   :align: center
+   :alt: Dashboard - Delete Snapshot CONFIRMATION
 
 
 Uploading a snapshot
