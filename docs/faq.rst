@@ -169,8 +169,8 @@ follow these steps:
 
 #. Upload the snapshot to projectB: `Uploading a snapshot`_
 
-#. Use the snapshot in projectB to launch a new instance using your
-   snapshot as the source image: `Launching a snapshot`_
+#. Launch a new instance in projectB using your snapshot as the source
+   image: `Launching a snapshot`_
 
 #. Optionally delete the instance and snapshot in projectB if they
    aren't needed anymore.
