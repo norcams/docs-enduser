@@ -144,8 +144,8 @@ An example of an acknowledgement of having used NREC is:
   Bergen and the University of Oslo. http://www.nrec.no/
 
 
-Transferring an instance between project using snapshot
--------------------------------------------------------
+Transferring an instance between projects using snapshot
+--------------------------------------------------------
 
 .. _Creating a snapshot: snapshot.html#creating
 .. _Downloading a snapshot: snapshot.html#downloading
@@ -172,6 +172,9 @@ follow these steps:
 #. Use the snapshot in projectB to launch a new instance using your
    snapshot as the source image: `Launching a snapshot`_
 
+#. Optionally delete the instance and snapshot in projectB if they
+   aren't needed anymore.
+   
 These steps can be done without deleting the instance in projectA,
 i.e. you can verify that all is well in the new instance before
 deleting the old instance.
