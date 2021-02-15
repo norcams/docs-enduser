@@ -116,14 +116,14 @@ Creating a snapshot with CLI
 Downloading the snapshot
 ------------------------
 
-There could be good reasons to download the snapshot to a local
+There are valid reasons to download the snapshot to a local
 computer. One reason would be to have an off-site backup of the
 instance. Another is to upload the snapshot to another project in
 order to use it as a source image for instances in that project.
 
 Downloading a snapshot is not possible via the dashboard, it is only
 possible via the CLI or API. The steps needed to download the snapshot
-via CLI is detailed below.
+via CLI are detailed below.
 
 #. List images using the option ``--private``, thus excluding official
    NREC images:
