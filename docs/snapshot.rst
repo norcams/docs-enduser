@@ -239,7 +239,7 @@ Uploading
 ---------
 
 If you have previously downloaded a snapshot as described in
-`Downloading a snapshot`_, you can upload it to a different project or
+`Downloading`_, you can upload it to a different project or
 region. An snapshot is uploaded as an image. In order to upload the
 snapshot, navigate to **Images** and click on ``Create Image``:
 
