@@ -22,7 +22,7 @@ Norwegian Research and Education Cloud
    create-virtual-machine
    create-windows-machine
    manage-volumes
-   create-snapshot
+   snapshot
    create-image
    console
 
