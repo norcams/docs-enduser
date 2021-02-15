@@ -21,8 +21,8 @@ there are a couple of things to consider before creating the snapshot:
   before taking a snapshot of it.
 
 
-Creating a snapshot
--------------------
+Creating
+--------
 
 Follow these steps to create a snapshot of an instance.
 
@@ -64,8 +64,8 @@ to enter part of the name of your image and it should appear:
    Image creation may take a long time. You may need to reload the
    browser page.
 
-Creating a snapshot with CLI
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Creating via CLI
+~~~~~~~~~~~~~~~~
 
 #. First list our servers:
 
@@ -113,8 +113,8 @@ Creating a snapshot with CLI
      +--------------------------------------+-----------------+--------+
 
 
-Downloading the snapshot
-------------------------
+Downloading
+-----------
 
 There are valid reasons to download the snapshot to a local
 computer. One reason would be to have an off-site backup of the
@@ -147,8 +147,8 @@ via CLI are detailed below.
       -rw-r--r--. 1 user group 10G Feb 11 14:18 test01-snapshot.img
 
 
-Launch a snapshot
------------------
+Launching
+---------
 
 Follow the steps outlined in `Create a Linux virtual machine`_. The
 only difference is when choosing the image from which to launch the
@@ -167,8 +167,8 @@ under `Create a Linux virtual machine`_.
 The new instance contains now the expected customizations made earlier
 in your previous instance.
 
-Launch a snapshot with CLI
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Launching via CLI
+~~~~~~~~~~~~~~~~~
 
 This will be exactly as described in `Create a Linux virtual
 machine`_. Use your snapshot as the source for the instance:
@@ -179,8 +179,8 @@ machine`_. Use your snapshot as the source for the instance:
         --security-group SSH_and_ICMP --security-group default \
         --key-name mykey --nic net-id=IPv6 myserver
 
-Deleting a snapshot
--------------------
+Deleting
+--------
 
 .. NOTE::
    You can not delete a snapshot that is being used as a source image
@@ -213,8 +213,8 @@ You should now get a confirmation that the snapshot is deleted:
    :align: center
    :alt: Dashboard - Delete Snapshot CONFIRMATION
 
-Deleting a snapshot with CLI
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Deleting via CLI
+~~~~~~~~~~~~~~~~
 
 #. List your private images:
 
@@ -235,8 +235,8 @@ Deleting a snapshot with CLI
      $ openstack image delete 8fae2165-ef86-4e36-91a5-5caad9698aab
 
 
-Uploading a snapshot
---------------------
+Uploading
+---------
 
 If you have previously downloaded a snapshot as described in
 `Downloading a snapshot`_, you can upload it to a different project or
@@ -268,8 +268,8 @@ tab:
    :align: center
    :alt: Dashboard - Compute -> Images
 
-Uploading a snapshot with CLI
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Uploading via CLI
+~~~~~~~~~~~~~~~~~
 
 If the purpose of uploading the snapshot is to move a workload or
 instance between projects, make sure that your shell environment
