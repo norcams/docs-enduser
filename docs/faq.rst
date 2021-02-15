@@ -142,3 +142,47 @@ An example of an acknowledgement of having used NREC is:
   The computations were performed on the Norwegian Research and Education
   Cloud (NREC), using resources provided by the University of
   Bergen and the University of Oslo. http://www.nrec.no/
+
+
+Transferring an instance between project using snapshot
+-------------------------------------------------------
+
+.. _Creating a snapshot: snapshot.html#creating
+.. _Downloading a snapshot: snapshot.html#downloading
+.. _Uploading a snapshot: snapshot.html#uploading
+.. _Launching a snapshot: snapshot.html#launching
+
+While it isn't possible to "move" an instance between different
+projects without interruption, you can utilize the snapshot feature to
+transfer an instance from one project to another. Note that resources
+such as security groups and volumes are not transferred with the
+snapshot, and must be reconstructed in the new project.
+
+In order to transfer a snapshot between projectA and projectB, simply
+follow these steps:
+
+#. Take a snapshot of the instance in projectA as descibed here:
+   `Creating a snapshot`_
+
+#. Download the snapshot to a local computer: `Downloading a
+   snapshot`_
+
+#. Upload the snapshot to projectB: `Uploading a snapshot`_
+
+#. Use the snapshot in projectB to launch a new instance using your
+   snapshot as the source image: `Launching a snapshot`_
+
+These steps can be done without deleting the instance in projectA,
+i.e. you can verify that all is well in the new instance before
+deleting the old instance.
+
+Note that you can't reuse the IP addresses of the old instance when
+creating a new in projectB. The new instance will have a different set
+of IP addresses. Depending on the application, you may need to
+configure either the application itself, the clients, or both.
+
+.. TIP::
+   Since downloading a snapshot can only be done using the CLI, we
+   recommend doing the whole operation in the CLI rather than using
+   the dashboard.
+
