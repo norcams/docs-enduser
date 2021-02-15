@@ -158,7 +158,7 @@ transfer an instance from one project to another. Note that resources
 such as security groups and volumes are not transferred with the
 snapshot, and must be reconstructed in the new project.
 
-In order to transfer a snapshot between projectA and projectB, simply
+In order to transfer a workload between projectA and projectB, simply
 follow these steps:
 
 #. Take a snapshot of the instance in projectA as descibed here:
