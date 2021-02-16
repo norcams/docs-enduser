@@ -147,6 +147,72 @@ via CLI are detailed below.
       -rw-r--r--. 1 user group 10G Feb 11 14:18 test01-snapshot.img
 
 
+Uploading
+---------
+
+If you have previously downloaded a snapshot as described in
+`Downloading`_, you can upload it to a different project or
+region. An snapshot is uploaded as an image. In order to upload the
+snapshot, navigate to **Images** and click on ``Create Image``:
+
+.. image:: images/snapshot-10.png
+   :align: center
+   :alt: Dashboard - Compute -> Images -> create image
+
+In the window that appears, you have to specify a name for the image
+(here: "my-test-image"), select the file on your computer (here:
+"test01-snapshot.img") and select the image format. In our case, and
+for previously downloaded snapshots, the image format is "Raw":
+
+.. image:: images/snapshot-11.png
+   :align: center
+   :alt: Dashboard - Compute -> Images -> image details
+
+You can also set an optional description, and metadata info such as
+disk and memory requirements. Click on "Create Image" to proceed. Note
+that images and snapshots are large files and uploading may take a
+very long time.
+
+After the image has been uploaded, it will appear in the **Images**
+tab:
+
+.. image:: images/snapshot-12.png
+   :align: center
+   :alt: Dashboard - Compute -> Images
+
+Uploading via CLI
+~~~~~~~~~~~~~~~~~
+
+If the purpose of uploading the snapshot is to move a workload or
+instance between projects, make sure that your shell environment
+variables are set correctly:
+
+.. code-block:: console
+
+  $ env | egrep '(OS_REGION_NAME|OS_PROJECT_NAME)'
+  OS_REGION_NAME=osl
+  OS_PROJECT_NAME=DEMO-xxxxxxxx.uio.no
+
+Change these variables according to which project and region where you
+want to upload the snapshot, e.g.:
+
+.. code-block:: console
+
+  $ export OS_PROJECT_NAME=PRIVATE-xxxxxxxx.uio.no
+
+You can then upload the image:
+
+.. code-block:: console
+
+  $ openstack image create --file test01-snapshot.img --disk-format raw my-test-image
+  (output omitted)
+
+You need to specify the file name, disk format and a name for the
+image. Other metadata for the image may be set with additional
+options, se the output of ``openstack image create --help`` for more
+information.
+
+
 Launching
 ---------
 
@@ -234,68 +300,3 @@ Deleting via CLI
 
      $ openstack image delete 8fae2165-ef86-4e36-91a5-5caad9698aab
 
-
-Uploading
----------
-
-If you have previously downloaded a snapshot as described in
-`Downloading`_, you can upload it to a different project or
-region. An snapshot is uploaded as an image. In order to upload the
-snapshot, navigate to **Images** and click on ``Create Image``:
-
-.. image:: images/snapshot-10.png
-   :align: center
-   :alt: Dashboard - Compute -> Images -> create image
-
-In the window that appears, you have to specify a name for the image
-(here: "my-test-image"), select the file on your computer (here:
-"test01-snapshot.img") and select the image format. In our case, and
-for previously downloaded snapshots, the image format is "Raw":
-
-.. image:: images/snapshot-11.png
-   :align: center
-   :alt: Dashboard - Compute -> Images -> image details
-
-You can also set an optional description, and metadata info such as
-disk and memory requirements. Click on "Create Image" to proceed. Note
-that images and snapshots are large files and uploading may take a
-very long time.
-
-After the image has been uploaded, it will appear in the **Images**
-tab:
-
-.. image:: images/snapshot-12.png
-   :align: center
-   :alt: Dashboard - Compute -> Images
-
-Uploading via CLI
-~~~~~~~~~~~~~~~~~
-
-If the purpose of uploading the snapshot is to move a workload or
-instance between projects, make sure that your shell environment
-variables are set correctly:
-
-.. code-block:: console
-
-  $ env | egrep '(OS_REGION_NAME|OS_PROJECT_NAME)'
-  OS_REGION_NAME=osl
-  OS_PROJECT_NAME=DEMO-xxxxxxxx.uio.no
-
-Change these variables according to which project and region where you
-want to upload the snapshot, e.g.:
-
-.. code-block:: console
-
-  $ export OS_PROJECT_NAME=PRIVATE-xxxxxxxx.uio.no
-
-You can then upload the image:
-
-.. code-block:: console
-
-  $ openstack image create --file test01-snapshot.img --disk-format raw my-test-image
-  (output omitted)
-
-You need to specify the file name, disk format and a name for the
-image. Other metadata for the image may be set with additional
-options, se the output of ``openstack image create --help`` for more
-information.
