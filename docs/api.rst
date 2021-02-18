@@ -19,7 +19,7 @@ reset your password by clicking on "Reset API password" on access_ page.
 OpenStack Command Line Interface (CLI)
 --------------------------------------
 
-.. _Installing the Openstack command-line clients: http://docs.openstack.org/user-guide/common/cli-install-openstack-command-line-clients.html
+.. _OpenStackClient: https://docs.openstack.org/python-openstackclient/stein/
 
 Installing the CLI tools
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -28,7 +28,9 @@ Installing the CLI tools
 
 Before using the command line tools, they need to be installed. A
 relatively recent version of the command line tools are available
-natively on some Linux distributions.
+natively on some Linux distributions. There are also versins available for
+other operating systems like Apple OS X and Microsoft Windows. Please
+check documentation at OpenStack: `OpenStackClient`_ for more information.
 
 **Fedora Linux**
   Installing on Fedora is simple, using the native package manager:
@@ -95,10 +97,6 @@ natively on some Linux distributions.
     .. code-block:: console
 
       # yum install python2-designateclient
-
-
-**Other Linux, Apple MacOS and Microsoft Windows**
-  Follow this guide: `Installing the Openstack command-line clients`_
 
 
 Using the CLI tools
