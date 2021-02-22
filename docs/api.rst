@@ -1,7 +1,7 @@
 .. |date| date::
 
-OpenStack API
-=============
+OpenStack API and CLI (command line interface)
+==============================================
 
 Last changed: |date|
 
