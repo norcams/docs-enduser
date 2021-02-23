@@ -14,6 +14,7 @@ instance or detach a volume and attach it to another instance at any
 time. You can also create a snapshot from or delete a volume.
 
 There are different volume types, including
+
 * **mass-storage-default**: Storage backed by spinning hard drives,
   available to everybody and is the default type.
 * **rbd**: Legacy storage backed by spinning hard drives.
