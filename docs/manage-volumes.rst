@@ -13,6 +13,14 @@ enable persistent storage. You can attach a volume to a running
 instance or detach a volume and attach it to another instance at any
 time. You can also create a snapshot from or delete a volume.
 
+There are different volume types, including
+* **mass-storage-default**: Storage backed by spinning hard drives,
+  available to everybody and is the default type.
+* **rbd**: Legacy storage backed by spinning hard drives.
+* **mass-storage-ssd**: Fast storage backed by solid state drives.
+  This volume type is only available after access has been granted by
+  the NREC Team. In addition, some projects have access to more specialized storage.
+
 
 Create a volume
 ---------------
@@ -36,7 +44,8 @@ Fill in the form:
 * **Description**: An optional description
 * **Volume Source**: Either no source, i.e. an empty volume, or create
   a volume from an image
-* **Type**: You can leave this empty
+* **Type**: Normally you can use the default setting - change to the desired
+  type if you need SSD backed storage or have other special needs
 * **Size**: The size of the volume, in GB
 * **Availability Zone**: Choose "nova"
 
