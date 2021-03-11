@@ -53,10 +53,34 @@ Hardware
 --------
 
 There will be different types of hardware used in vGPU but this is the
-initial setup in BGO region:
+initial setup:
+
+**BGO:**
 
 * GPU: NVIDIA Tesla V100 PCIe 16GB (split between 4 instances)
 * CPU: Intel Xeon Gold 5215 CPU @ 2.50GHz
+
+**OSL:**
+
+* GPU: NVIDIA Tesla P40 PCIe 24GB (split between 4 instances)
+* CPU: Intel Xeon Gold 6226R CPU @ 2.90GHz
+
+
+Flavors
+-------
+
+We currently have the following flavors for use with vGPU:
+
++------------------+--------------+---------+
+| Flavor name      | Virtual CPUs | Memory  |
++==================+==============+=========+
+| vcpu.m1.large    | 2            |  8 GiB  |
++------------------+--------------+---------+
+| vcpu.m1.xlarge   | 4            | 16 GiB  |
++------------------+--------------+---------+
+| vcpu.m1.2xlarge  | 8            | 32 GiB  |
++------------------+--------------+---------+
+
 
 Known issues
 ------------
