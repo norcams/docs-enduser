@@ -143,6 +143,37 @@ Content
 * Content that needs to be persistent across reinstalls should be
   placed on volumes. The OS disks are ephemeral.
 
+Terms of use
+------------
+
+.. _email: mailto:support.uhiaas.no
+
+* Project Termination
+
+  Unless you specify an end date/termination date, standard and shared projects will have a 2-year lifespan
+  and a 90-day lifespan for demo projects from the start date.
+
+* Instance Termination
+
+  When an instance terminates, the data on any instance associated with that instance will also be deleted.
+
+* Protect Data
+
+  To help protect against data loss, make sure you have an offsite backup for your data regularly.
+  NREC doesn't offer onsite backup.
+
+* Security Alert
+
+  When abuse is reported, we will immediately shut down and lock your instance, and alert you so you can take the necessary remediation action.
+  We will work with you to detect and address suspicious and malicious activities from your instance.
+  If you do not take action to remediate the abuse event, we may suspend or terminate the instance.
+
+* Policy Violation
+
+  If you violate the NREC's policy, we may suspend or terminate your use of the services.
+  Policy voilation sush as Illegal, Harmful or Offensive Use, Security Violations, Network Abuse, Content Abuse.
+  If you become aware of any violation of this Policy, please send an e-mail to email_.
+
 Privacy Policy
 --------------
 
