@@ -143,32 +143,32 @@ Content
 * Content that needs to be persistent across reinstalls should be
   placed on volumes. The OS disks are ephemeral.
 
-Terms of use
-------------
+Terms and Conditions
+--------------------
 
 .. _email: mailto:support.uhiaas.no
 
-* Project Termination
+* Project Terminatioin:
 
   Unless you specify an end date/termination date, standard and shared projects will have a 2-year lifespan
   and a 90-day lifespan for demo projects from the start date.
 
-* Instance Termination
+* Instance Termination:
 
   When an instance terminates, the data on any instance associated with that instance will also be deleted.
 
-* Protect Data
+* Protect Data:
 
   To help protect against data loss, make sure you have an offsite backup for your data regularly.
   NREC doesn't offer onsite backup.
 
-* Security Alert
+* Security Alert:
 
   When abuse is reported, we will immediately shut down and lock your instance, and alert you so you can take the necessary remediation action.
   We will work with you to detect and address suspicious and malicious activities from your instance.
   If you do not take action to remediate the abuse event, we may suspend or terminate the instance.
 
-* Policy Violation
+* Policy Violation:
 
   If you violate the NREC's policy, we may suspend or terminate your use of the services.
   Policy voilation sush as Illegal, Harmful or Offensive Use, Security Violations, Network Abuse, Content Abuse.
@@ -179,23 +179,23 @@ Privacy Policy
 
 .. _email: mailto:support.uhiaas.no
 
-* Email
+* Email:
 
   Your NREC project is closely related to your email account. We collect your email address via Dataporten_ as we need this information for authentication and notification purposes. We keep your email in our database as long as you are an active user of our services.
   If you change your email, you are responsible for notifying us so that we can update it, otherwise, you may risk losing your project and data.
 
-* Instances (virtual machines)
+* Instances (virtual machines):
 
   We do not monitor the content of instances, but may collect metrics (uptime, patch level and kernel version) for security reasons. You should make sure that your activities are in accordance with your local IT policy. You are responsible for all data you store on your own instances.
 
-* Termination
+* Termination:
 
   When you are no longer registered as an active student or no longer working at any educational institutions, your project will be terminated and deleted from our system after 90 days without prior notice.
 
-* Withdrawal
+* Withdrawal:
 
   If you for any reasons want to stop using our services, you should notify us by sending an email_. We will then delete your project and all your data from our system. You are welcome to rejoin the NREC cloud whenever you want.
 
-* Cookies
+* Cookies:
 
   The cookies are only used for logging in and NREC related tasks. No data from these will ever be shared with any third parties.
