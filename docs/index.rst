@@ -22,7 +22,7 @@ Norwegian Research and Education Cloud
    create-virtual-machine
    create-windows-machine
    manage-volumes
-   snapshot
+   create-snapshot
    create-image
    console
 
@@ -31,9 +31,10 @@ Norwegian Research and Education Cloud
 .. toctree::
    :maxdepth: 1
 
-   hpc
    dns
    api
+   hpc
+   vgpu
    terraform-part1
    terraform-part2
    terraform-part3
