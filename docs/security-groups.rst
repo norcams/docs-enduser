@@ -432,7 +432,7 @@ We select "Security Group" as our **Remote** instead of CIDR, which is
 the default. We then select the "web" security group as the
 remote. The security group rules now contain this new rule:
 
-.. image:: images/security-groups-remote-03.png
+.. image:: images/security-groups-remote-04.png
    :align: center
    :alt: Database-web-server security group listing 2
 
