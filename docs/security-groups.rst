@@ -364,4 +364,115 @@ for inspection:
   | b7cab74e-d023-4504-b4f6-2e50e9e9a52f | icmp        | IPv4      | 129.240.12.7/32        |            | ingress   | None                  |
   +--------------------------------------+-------------+-----------+------------------------+------------+-----------+-----------------------+
 
-foo
+
+Remote Security Group
+---------------------
+
+While creating a security group rule, we have the option of using a
+security group as remote instead of a CIDR address. This can be
+particularly useful for internal communication between instances in
+the same project running different layers of an application. As
+instances are deleted and recreated, they will have a different set of
+IP addresses. Using CIDR addresses in this situation can present a
+maintenance challenge.
+
+We have already seen when we discussed the "default" security group
+above. If you're applying the "default" security group on all your
+instances anyway you don't need additional inter-instance
+communication rules. The "default" security group already allows any
+communication between instances on which it is applied. However, for
+extra security you may want to opt out of the "default" security group
+and specify a narrower window of communication between instances.
+
+The remote security group will work regardless it the hosts have a
+private IPv4 address (i.e. the "IPv6" network) or they have a public
+IPv4. There are a couple of limitations when using a security group as
+remote:
+
+* It only works between security groups in the same project
+* It only works within the same region
+
+Consider the following situation:
+
+.. image:: images/security-groups-remote-01.png
+   :align: center
+   :alt: Database-web-server hypothetical
+
+In this hypothetical scenario we have three web servers that uses two
+database servers as backend. In order to protect the infrastructure we
+want to restrict communication as follows:
+
+#. The web servers are exposed to the internet via port 443 (HTTPS)
+
+#. The database servers are not exposed on the internet at all
+
+#. There should be intercommunication between the database servers and
+   the web servers. The database servers should allow traffic over the
+   database port from the web servers and nothing else
+
+We can solve this problem by using a security group as remote. In our
+hypothetical scenario, we already have security groups for the
+database and web servers:
+
+.. image:: images/security-groups-remote-02.png
+   :align: center
+   :alt: Database-web-server security group listing
+
+The "database" security group is applied on the database servers, and
+the "web" security group is applied on the web servers. In order to
+allow the web servers to initiate a connection to the MySQL port on
+the database servers, we need to add a rule in the "database" security
+group, using the "web" security group as remote:
+
+.. image:: images/security-groups-remote-03.png
+   :align: center
+   :alt: Database-web-server security group new rule
+
+We select "Security Group" as our **Remote** instead of CIDR, which is
+the default. We then select the "web" security group as the
+remote. The security group rules now contain this new rule:
+
+.. image:: images/security-groups-remote-03.png
+   :align: center
+   :alt: Database-web-server security group listing 2
+
+Remote Security Group with CLI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+First, we list our security groups:
+
+.. code-block:: console
+
+  $ openstack security group list
+  +--------------------------------------+----------+------------------------+----------------------------------+------+
+  | ID                                   | Name     | Description            | Project                          | Tags |
+  +--------------------------------------+----------+------------------------+----------------------------------+------+
+  | 6698059e-c82b-4694-975c-55c47c8e0151 | database | database               | 24823ac5a6dd4d27966310600abce54d | []   |
+  | 6743c744-1a06-462e-82e6-85c9d0b2399f | default  | Default security group | 24823ac5a6dd4d27966310600abce54d | []   |
+  | ad67b1c0-32bd-44a9-919b-64195870e136 | web      | web                    | 24823ac5a6dd4d27966310600abce54d | []   |
+  +--------------------------------------+----------+------------------------+----------------------------------+------+
+
+We then add the new rule:
+
+.. code-block:: console
+
+  $ openstack security group rule create --ethertype IPv4 --protocol tcp --dst-port 3306 --remote-group web database
+  (...output omitted...)
+
+As before, you can use the security group name or ID with these
+commands. We list the contents of the "database" security group for
+verification:
+
+.. code-block:: console
+
+  $ openstack security group rule list --long database
+  +--------------------------------------+-------------+-----------+-----------+------------+-----------+--------------------------------------+
+  | ID                                   | IP Protocol | Ethertype | IP Range  | Port Range | Direction | Remote Security Group                |
+  +--------------------------------------+-------------+-----------+-----------+------------+-----------+--------------------------------------+
+  | 7c5ac04f-b1f9-4801-a6d2-ed2102a46b42 | None        | IPv6      | ::/0      |            | egress    | None                                 |
+  | 8148364c-93d5-4fdd-a5ac-04ec6d9215e4 | tcp         | IPv4      | 0.0.0.0/0 | 3306:3306  | ingress   | ad67b1c0-32bd-44a9-919b-64195870e136 |
+  | 961a5cc5-fe0b-4d31-9aad-826e5cbed232 | None        | IPv4      | 0.0.0.0/0 |            | egress    | None                                 |
+  +--------------------------------------+-------------+-----------+-----------+------------+-----------+--------------------------------------+
+
+
+
