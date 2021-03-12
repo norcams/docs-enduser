@@ -376,13 +376,14 @@ instances are deleted and recreated, they will have a different set of
 IP addresses. Using CIDR addresses in this situation can present a
 maintenance challenge.
 
-We have already seen when we discussed the "default" security group
-above. If you're applying the "default" security group on all your
-instances anyway you don't need additional inter-instance
-communication rules. The "default" security group already allows any
-communication between instances on which it is applied. However, for
-extra security you may want to opt out of the "default" security group
-and specify a narrower window of communication between instances.
+We have already seen use of remote security groups when we discussed
+the "default" security group above. If you're applying the "default"
+security group on all your instances anyway you don't need additional
+inter-instance communication rules. The "default" security group
+already allows any communication between instances on which it is
+applied. However, for extra security you may want to opt out of the
+"default" security group and specify a narrower window of
+communication between instances.
 
 The remote security group will work regardless it the hosts have a
 private IPv4 address (i.e. the "IPv6" network) or they have a public
