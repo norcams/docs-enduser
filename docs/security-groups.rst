@@ -141,8 +141,8 @@ Understanding CIDR notations
 ----------------------------
 
 For the gritty details about CIDR see `CIDR (Wikipedia)`_. In short,
-CIDR notation is a way to specify a set if consecutive IP addresses
-(i.e. an "IP block") in a standardized way. CIDR notation is a compact
+CIDR notation is a way to specify a set of consecutive IP addresses
+(i.e. an "IP block") in a standardized way, via a compact
 representation of an IP address and its associated network mask. In
 order to fully understand this a deep dive into IPv4 and IPv6 address
 masking using binary numbers is required. This is beyond the scope of
@@ -368,8 +368,8 @@ for inspection:
 Remote Security Group
 ---------------------
 
-While creating a security group rule, we have the option of using a
-security group as remote instead of a CIDR address. This can be
+When creating a security group rule we have the option of using a
+security group as remote, instead of a CIDR address. This can be
 particularly useful for internal communication between instances in
 the same project running different layers of an application. As
 instances are deleted and recreated, they will have a different set of
@@ -411,8 +411,8 @@ want to restrict communication as follows:
    the web servers. The database servers should allow traffic over the
    database port from the web servers and nothing else
 
-We can solve this problem by using a security group as remote. In our
-hypothetical scenario, we already have security groups for the
+We can solve the last problem by using a security group as remote. In
+our hypothetical scenario, we already have security groups for the
 database and web servers:
 
 .. image:: images/security-groups-remote-02.png
