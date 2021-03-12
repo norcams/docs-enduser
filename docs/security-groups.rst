@@ -150,36 +150,36 @@ this document. We will try to explain this more superficially. This is
 an example of a IPv4 blocks using CIDR:
 
 ======================  =====================================================================
-**192.168.0.0/16**      All 16,384 addresses from ``192.168.0.0`` through ``192.168.255.255``
-**192.168.100.0/24**    All 256 addresses from `192.168.100.0` through `192.168.100.255`
-**192.168.100.64/27**   All 32 addresses from `192.168.100.64` through `192.168.100.95`
-**192.168.100.200/32**  The single IPv4 address `192.168.100.200`
+``192.168.0.0/16``      All 16,384 addresses from ``192.168.0.0`` through ``192.168.255.255``
+``192.168.100.0/24``    All 256 addresses from ``192.168.100.0`` through ``192.168.100.255``
+``192.168.100.64/27``   All 32 addresses from ``192.168.100.64`` through ``192.168.100.95``
+``192.168.100.200/32``  The single IPv4 address ``192.168.100.200``
 ======================  =====================================================================
 
 The important thing to understand is that the last number designates
 the size of the block. The larger the number, the smaller the
 block. CIDR notation applies to IPv6 as well:
 
-=====================================  ==========================================================================================
-**2001:db8::/32**                      All addresses from `2001:db8:0:0:0:0:0:0` through `2001:db8:ffff:ffff:ffff:ffff:ffff:ffff`
-**2001:db8:aaaa::/56**                 All addresses from `2001:db8:a:0:0:0:0:0` through `2001:db8:a:00ff:ffff:ffff:ffff:ffff`
-**2001:db8:aaaa::/64**                 All addresses from `2001:db8:a:0:0:0:0:0` through `2001:db8:a:0:ffff:ffff:ffff:ffff`
-**2001:db8:aaaa:bbbb:cccc:dddd::/96**  All addresses from `2001:db8:a:b:c:d:0:0` through `2001:0db8:a:b:c:d:ffff:ffff`
-**2001:db8:a:b:c:d:e:100/128**         The single IPv6 address `2001:db8:a:b:c:d:e:100`
-=====================================  ==========================================================================================
+=====================================  ==============================================================================================
+``2001:db8::/32``                      All addresses from ``2001:db8:0:0:0:0:0:0`` through ``2001:db8:ffff:ffff:ffff:ffff:ffff:ffff``
+``2001:db8:aaaa::/56``                 All addresses from ``2001:db8:a:0:0:0:0:0`` through ``2001:db8:a:00ff:ffff:ffff:ffff:ffff``
+``2001:db8:aaaa::/64``                 All addresses from ``2001:db8:a:0:0:0:0:0`` through ``2001:db8:a:0:ffff:ffff:ffff:ffff``
+``2001:db8:aaaa:bbbb:cccc:dddd::/96``  All addresses from ``2001:db8:a:b:c:d:0:0`` through ``2001:0db8:a:b:c:d:ffff:ffff``
+``2001:db8:a:b:c:d:e:100/128``         The single IPv6 address ``2001:db8:a:b:c:d:e:100``
+=====================================  ==============================================================================================
 
 The actual number of IPv6 addresses that the ranges cotain is so large
 we have omitted them from this list.
 
 .. IMPORTANT::
    When you wish to specify a single IP address, be careful when using
-   CIDR notation. Use **/32** and **/128** for IPv4 and IPv6,
+   CIDR notation. Use ``/32`` and ``/128`` for IPv4 and IPv6,
    respectively, or just omit the mask and simply specify the IP
    address without a mask.
 
-   A mask of **/0** will be accepted by the system even if the IP
+   A mask of ``/0`` will be accepted by the system even if the IP
    address part is not what we would consider to be "correct". This
-   means that `129.240.12.7/0` will be interpreted as `0.0.0.0/0` for
+   means that ``129.240.12.7/0`` will be interpreted as ``0.0.0.0/0`` for
    IPv4. The same applies to IPv6.
 
 When unsure about what range of addresses that a CIDR notation
@@ -234,7 +234,7 @@ the page in which you will create and edit its rules:
    :alt: Create Security Group done
 
 In order to create a security group using the CLI, use the command
-`openstack security group create`:
+``openstack security group create``:
 
 .. code-block:: console
 
