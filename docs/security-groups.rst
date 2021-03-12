@@ -149,12 +149,12 @@ masking using binary numbers is required. This is beyond the scope of
 this document. We will try to explain this more superficially. This is
 an example of a IPv4 blocks using CIDR:
 
-======================  =================================================================
-**192.168.0.0/16**      All 16,384 addresses from `192.168.0.0` through `192.168.255.255`
+======================  =====================================================================
+**192.168.0.0/16**      All 16,384 addresses from ``192.168.0.0`` through ``192.168.255.255``
 **192.168.100.0/24**    All 256 addresses from `192.168.100.0` through `192.168.100.255`
 **192.168.100.64/27**   All 32 addresses from `192.168.100.64` through `192.168.100.95`
 **192.168.100.200/32**  The single IPv4 address `192.168.100.200`
-======================  =================================================================
+======================  =====================================================================
 
 The important thing to understand is that the last number designates
 the size of the block. The larger the number, the smaller the
