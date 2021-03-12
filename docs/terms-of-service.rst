@@ -148,31 +148,29 @@ Terms and Conditions
 
 .. _email: mailto:support.uhiaas.no
 
-* Project Terminatioin:
+* Project Termination:
 
-  Unless you specify an end date/termination date, standard and shared projects will have a 2-year lifespan
-  and a 90-day lifespan for demo projects from the start date.
+  | Unless you specify an end date/termination date, your project request will have a 2-year lifespan from the start date.
 
 * Instance Termination:
 
-  When an instance terminates, the data on any instance associated with that instance will also be deleted.
+  | Demo instances have a 90-day lifespan, standard and shared instances a 2-year lifespan from the start date.
+  | For the standard and shared project, when the end date is reached you will be notified of the possibility for an extension.
+  | When an instance terminates, the data on any instance associated with that instance will also be deleted.
 
 * Protect Data:
 
-  To help protect against data loss, make sure you have an offsite backup for your data regularly.
-  NREC doesn't offer onsite backup.
+  | To help protect against data loss, make sure you have an offsite backup for your data regularly.
+  | NREC doesn't offer onsite backup.
 
 * Security Alert:
 
-  When abuse is reported, we will immediately shut down and lock your instance, and alert you so you can take the necessary remediation action.
-  We will work with you to detect and address suspicious and malicious activities from your instance.
-  If you do not take action to remediate the abuse event, we may suspend or terminate the instance.
+  | When abuse is reported, we will immediately shut down and lock your instance, and alert you so you can take the necessary remediation action. We will work with you to detect and address suspicious and malicious activities from your instance.
+  | If you do not take action to remediate the abuse event, we may suspend or terminate the instance.
 
 * Policy Violation:
 
-  If you violate the NREC's policy, we may suspend or terminate your use of the services.
-  Policy voilation sush as Illegal, Harmful or Offensive Use, Security Violations, Network Abuse, Content Abuse.
-  If you become aware of any violation of this Policy, please send an e-mail to email_.
+  | If you violate the NREC's policy, we may suspend or terminate your use of the services. Policy violations such as illegal, harmful, or offensive use or content, security violations, and network abuse. If you become aware of any violation of this policy, please send an e-mail to email_.
 
 Privacy Policy
 --------------
@@ -181,21 +179,20 @@ Privacy Policy
 
 * Email:
 
-  Your NREC project is closely related to your email account. We collect your email address via Dataporten_ as we need this information for authentication and notification purposes. We keep your email in our database as long as you are an active user of our services.
-  If you change your email, you are responsible for notifying us so that we can update it, otherwise, you may risk losing your project and data.
+  | Your NREC project is closely related to your email account. We collect your email address via Dataporten_ as we need this information for authentication and notification purposes. We keep your email in our database as long as you are an active user of our services. If you change your email, you are responsible for notifying us so that we can update it, otherwise, you may risk losing your project and data.
 
 * Instances (virtual machines):
 
-  We do not monitor the content of instances, but may collect metrics (uptime, patch level and kernel version) for security reasons. You should make sure that your activities are in accordance with your local IT policy. You are responsible for all data you store on your own instances.
+  | We do not monitor the content of instances, but may collect metrics (uptime, patch level and kernel version) for security reasons. You should make sure that your activities are in accordance with your local IT policy. You are responsible for all data you store on your own instances.
 
 * Termination:
 
-  When you are no longer registered as an active student or no longer working at any educational institutions, your project will be terminated and deleted from our system after 90 days without prior notice.
+  | When you are no longer registered as an active student or no longer working at any educational institutions, your project will be terminated and deleted from our system after 90 days without prior notice.
 
 * Withdrawal:
 
-  If you for any reasons want to stop using our services, you should notify us by sending an email_. We will then delete your project and all your data from our system. You are welcome to rejoin the NREC cloud whenever you want.
+  | If you for any reasons want to stop using our services, you should notify us by sending an email_. We will then delete your project and all your data from our system. You are welcome to rejoin the NREC cloud whenever you want.
 
 * Cookies:
 
-  The cookies are only used for logging in and NREC related tasks. No data from these will ever be shared with any third parties.
+  | The cookies are only used for logging in and NREC related tasks. No data from these will ever be shared with any third parties.
