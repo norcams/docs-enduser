@@ -406,7 +406,7 @@ remote:
 
 Consider the following situation:
 
-.. image:: images/security-groups-remote-01.png
+.. figure:: images/security-groups-remote-01.png
    :align: center
    :alt: Database-web-server hypothetical
 
