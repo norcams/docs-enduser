@@ -123,7 +123,11 @@ In summary, the "default" security group does the following:
 
 In short, this security group allows the instances to communicate with
 hosts on the internet as long as it's initiated from the inside, and
-communicate freely with each other.
+communicate freely with each other:
+
+.. image:: images/security-groups-default-02.png
+   :align: center
+   :alt: Default security group
 
 Our recommendation regarding the "default" security group is:
 
