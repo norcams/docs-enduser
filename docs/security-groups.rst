@@ -41,7 +41,7 @@ closed. It is only by creating security groups and applying them that
 traffic is allowed to flow to and from the instances.
 
 
-The "default" security group
+The "default" Security Group
 ----------------------------
 
 A newly created project in NREC will have a security group called
@@ -78,7 +78,7 @@ As we can see, the "default" security group contains two **egress**
 (outgoing traffic) rules and two **ingress** rules (incoming
 traffic). We will discuss the egress rules first.
 
-Egress rules (outgoing traffic)
+Egress Rules (outgoing traffic)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The two egress rules do exactly the same, but one of them targets IPv4
@@ -93,7 +93,7 @@ protocol, port range and IP range, the CLI offers the same by having
 notations **0.0.0.0/0** and **::/0** for the IP range. More about
 using CIDR notations later.
 
-Ingress rules (incoming traffic)
+Ingress Rules (incoming traffic)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As we can see, the ingress rules opens up in the same way as the
@@ -261,7 +261,7 @@ are present in the "default" security group, i.e. all outgoing traffic
 is allowed. You may wish to edit or delete these two rules.
 
 
-Adding rules
+Adding Rules
 ------------
 
 In order to add security group rules, navigate to the security group
@@ -476,4 +476,110 @@ verification:
   +--------------------------------------+-------------+-----------+-----------+------------+-----------+--------------------------------------+
 
 
+Deleting Rules
+--------------
 
+To delete a security group rule using the dashboard, first navigate
+to **Project** -> **Network** -> **Security Groups** and click
+on **Manage Rules** for the security group in question.
+
+.. image:: images/security-groups-delete-rule-01.png
+   :align: center
+   :alt: Click on "Manage Rules"
+
+In the rules listing, click on **Delete Rule** for the rule you wish
+to delete:
+
+.. image:: images/security-groups-delete-rule-02.png
+   :align: center
+   :alt: Click on "Delete Rule"
+
+Optionally, you can mark the rule using the radio buttons to the left
+and click **Delete Rules**. This is faster if you want to delete
+several rules simultaneously.
+
+Deleting a security group rule using the CLI can be done like this:
+
+#. First we list the contents of the security group, in order to find
+   the ID of the rule we want to delete:
+
+   .. code-block:: console
+
+     $ openstack security group rule list --long database
+     +--------------------------------------+-------------+-----------+-----------+------------+-----------+--------------------------------------+
+     | ID                                   | IP Protocol | Ethertype | IP Range  | Port Range | Direction | Remote Security Group                |
+     +--------------------------------------+-------------+-----------+-----------+------------+-----------+--------------------------------------+
+     | 7c5ac04f-b1f9-4801-a6d2-ed2102a46b42 | None        | IPv6      | ::/0      |            | egress    | None                                 |
+     | 8148364c-93d5-4fdd-a5ac-04ec6d9215e4 | tcp         | IPv4      | 0.0.0.0/0 | 3306:3306  | ingress   | ad67b1c0-32bd-44a9-919b-64195870e136 |
+     | 961a5cc5-fe0b-4d31-9aad-826e5cbed232 | None        | IPv4      | 0.0.0.0/0 |            | egress    | None                                 |
+     +--------------------------------------+-------------+-----------+-----------+------------+-----------+--------------------------------------+
+
+#. Once we know the ID, we can delete the rule:
+
+   .. code-block:: console
+
+     $ openstack security group rule delete 8148364c-93d5-4fdd-a5ac-04ec6d9215e4
+
+#. Lastly, we list the rules again to verify that the rule was
+   deleted:
+
+   .. code-block:: console
+
+     $ openstack security group rule list --long database
+     +--------------------------------------+-------------+-----------+-----------+------------+-----------+-----------------------+
+     | ID                                   | IP Protocol | Ethertype | IP Range  | Port Range | Direction | Remote Security Group |
+     +--------------------------------------+-------------+-----------+-----------+------------+-----------+-----------------------+
+     | 7c5ac04f-b1f9-4801-a6d2-ed2102a46b42 | None        | IPv6      | ::/0      |            | egress    | None                  |
+     | 961a5cc5-fe0b-4d31-9aad-826e5cbed232 | None        | IPv4      | 0.0.0.0/0 |            | egress    | None                  |
+     +--------------------------------------+-------------+-----------+-----------+------------+-----------+-----------------------+
+
+
+Deleting a Security Group
+-------------------------
+
+To delete a security group using the dashboard, navigate
+to **Project** -> **Network** -> **Security Groups**. Use the menu on
+the right of the security group you want to delete an select **Delete
+Security Group**:
+
+.. image:: images/security-groups-delete-rule-02.png
+   :align: center
+   :alt: Click on "Delete Rule"
+
+Optionally, you can mask the security group using radio buttons to the
+left and click **Delete Security Groups**. This is faster if you want
+to delete several security groups simultaneously.
+
+To delete a security group using the CLI:
+
+#. We first list our security groups:
+
+   .. code-block:: console
+
+     $ openstack security group list
+     +--------------------------------------+----------+------------------------+----------------------------------+------+
+     | ID                                   | Name     | Description            | Project                          | Tags |
+     +--------------------------------------+----------+------------------------+----------------------------------+------+
+     | 6698059e-c82b-4694-975c-55c47c8e0151 | database | database               | 24823ac5a6dd4d27966310600abce54d | []   |
+     | 6743c744-1a06-462e-82e6-85c9d0b2399f | default  | Default security group | 24823ac5a6dd4d27966310600abce54d | []   |
+     | ad67b1c0-32bd-44a9-919b-64195870e136 | web      | web                    | 24823ac5a6dd4d27966310600abce54d | []   |
+     +--------------------------------------+----------+------------------------+----------------------------------+------+
+
+#. We then delete the security group, specifying it either by name or
+   ID:
+
+   .. code-block:: console
+
+     $ openstack security group delete 6698059e-c82b-4694-975c-55c47c8e0151
+
+#. Finally, we list the security groups again to verify:
+
+   .. code-block:: console
+
+     $ openstack security group list
+     +--------------------------------------+---------+------------------------+----------------------------------+------+
+     | ID                                   | Name    | Description            | Project                          | Tags |
+     +--------------------------------------+---------+------------------------+----------------------------------+------+
+     | 6743c744-1a06-462e-82e6-85c9d0b2399f | default | Default security group | 24823ac5a6dd4d27966310600abce54d | []   |
+     | ad67b1c0-32bd-44a9-919b-64195870e136 | web     | web                    | 24823ac5a6dd4d27966310600abce54d | []   |
+     +--------------------------------------+---------+------------------------+----------------------------------+------+
