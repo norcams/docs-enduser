@@ -354,15 +354,17 @@ For information on how to install the *command line tools*, check the section
    .. code-block:: console
 
      $ openstack server list
-
+     (...no output...)
+     
      $ openstack keypair list
-
+     (...no output...)
+     
      $ openstack security group list
-     +--------------------------------------+---------+------------------------+----------------------------------+
-     | ID                                   | Name    | Description            | Project                          |
-     +--------------------------------------+---------+------------------------+----------------------------------+
-     | 5c87d72e-2186-4878-94cd-27a784019988 | default | Default security group | dd21945e2e094a4dad277ed7846b3cf0 |
-     +--------------------------------------+---------+------------------------+----------------------------------+
+     +--------------------------------------+---------+------------------------+----------------------------------+------+
+     | ID                                   | Name    | Description            | Project                          | Tags |
+     +--------------------------------------+---------+------------------------+----------------------------------+------+
+     | 6743c744-1a06-462e-82e6-85c9d0b2399f | default | Default security group | 24823ac5a6dd4d27966310600abce54d | []   |
+     +--------------------------------------+---------+------------------------+----------------------------------+------+
 
    In this example, we have no servers and keypairs, and our copy of
    the default security group.
@@ -385,151 +387,113 @@ For information on how to install the *command line tools*, check the section
    .. code-block:: console
 
      $ openstack security group create --description "Allow incoming SSH and ICMP" SSH_and_ICMP
-     +-------------+---------------------------------------------------------------------------------+
-     | Field       | Value                                                                           |
-     +-------------+---------------------------------------------------------------------------------+
-     | description | Allow incoming SSH and ICMP                                                     |
-     | headers     |                                                                                 |
-     | id          | 0da85d7a-bd96-4d4d-a77b-e7e2d78c8d0a                                            |
-     | name        | SSH_and_ICMP                                                                    |
-     | project_id  | dd21945e2e094a4dad277ed7846b3cf0                                                |
-     | rules       | direction='egress', ethertype='IPv4', id='b04b0cfc-1f2e-44b5-acc2-7102d57fe941' |
-     |             | direction='egress', ethertype='IPv6', id='2d72e9f9-70c1-4c33-816c-83b5e3c649df' |
-     +-------------+---------------------------------------------------------------------------------+
+     (...output omitted...)
 
 #. Adding rules to the security group:
 
    .. code-block:: console
 
-     $ openstack security group rule create --remote-ip 0.0.0.0/0 (for IPv4) or ::/0 (for IPv6) --dst-port 22 --protocol tcp --ingress SSH_and_ICMP
-     +-------------------+--------------------------------------+
-     | Field             | Value                                |
-     +-------------------+--------------------------------------+
-     | description       |                                      |
-     | direction         | ingress                              |
-     | ethertype         | IPv4                                 |
-     | headers           |                                      |
-     | id                | 8c10f0a3-c284-4b92-a234-7ceda998d356 |
-     | port_range_max    | 22                                   |
-     | port_range_min    | 22                                   |
-     | project_id        | dd21945e2e094a4dad277ed7846b3cf0     |
-     | protocol          | tcp                                  |
-     | remote_group_id   | None                                 |
-     | remote_ip_prefix  | 0.0.0.0/0                            |
-     | security_group_id | 0da85d7a-bd96-4d4d-a77b-e7e2d78c8d0a |
-     +-------------------+--------------------------------------+
-
-     $ openstack security group rule create --remote-ip 0.0.0.0/0 (for IPv4) or ::/0 (for IPv6) --protocol icmp --ingress SSH_and_ICMP
-     +-------------------+--------------------------------------+
-     | Field             | Value                                |
-     +-------------------+--------------------------------------+
-     | description       |                                      |
-     | direction         | ingress                              |
-     | ethertype         | IPv4                                 |
-     | headers           |                                      |
-     | id                | d741564d-886d-4019-915d-b1eecb936100 |
-     | port_range_max    | None                                 |
-     | port_range_min    | None                                 |
-     | project_id        | dd21945e2e094a4dad277ed7846b3cf0     |
-     | protocol          | icmp                                 |
-     | remote_group_id   | None                                 |
-     | remote_ip_prefix  | 0.0.0.0/0                            |
-     | security_group_id | 0da85d7a-bd96-4d4d-a77b-e7e2d78c8d0a |
-     +-------------------+--------------------------------------+
+     $ openstack security group rule create --ethertype IPv6 --protocol ipv6-icmp --remote-ip 2001:700:100:12::7 SSH_and_ICMP
+     (...output omitted...)
+     
+     $ openstack security group rule create --ethertype IPv6 --protocol tcp --dst-port 22 --remote-ip 2001:700:100:12::7 SSH_and_ICMP
+     (...output omitted...)
 
 #. Listing available images:
 
    .. code-block:: console
 
-     $ openstack image list
-     +--------------------------------------+---------------------+-------------+
-     | ID                                   | Name                | Status      |
-     +--------------------------------------+---------------------+-------------+
-     | 2120eb31-09b6-4945-a904-7579ac579aed | Ubuntu server 16.04 | active      |
-     | cbd76177-c79b-490f-9a7f-59f9eed3412e | Debian Jessie 8     | active      |
-     | d175564a-156e-41c7-b2a3-fd8b018e9e11 | Outdated (Ubuntu)   | deactivated |
-     | 484e5754-f4f7-409c-8ba1-454e422816b4 | Outdated (Ubuntu)   | deactivated |
-     | fecf1f4d-e36d-44fe-94de-4eae707b40aa | Outdated (Ubuntu)   | deactivated |
-     | 6f24613b-4f98-4caa-9bc6-0294f4c67fac | Outdated (Ubuntu)   | deactivated |
-     | 1ae6303e-5d08-454e-94e6-083d05559998 | Fedora 24           | active      |
-     | ceb6ff80-24de-460a-9ecc-85f3283aa98e | Outdated (Debian)   | deactivated |
-     | d241a2b5-cd1d-4812-8d59-2ccfb1acbf88 | CentOS 7            | active      |
-     +--------------------------------------+---------------------+-------------+
+     $ openstack image list --status active
+     +--------------------------------------+-----------------------------------+--------+
+     | ID                                   | Name                              | Status |
+     +--------------------------------------+-----------------------------------+--------+
+     | c1becb87-ab4f-4988-862e-f5be219755be | GOLD CentOS 7                     | active |
+     | cc8bee9f-b8e5-48c3-bc76-ba173a75b503 | GOLD CentOS 8                     | active |
+     | 86a0859e-1746-460f-abf7-2f53fe572163 | GOLD Debian 10                    | active |
+     | 7ecf8f33-9686-4207-86dc-89cf1946128c | GOLD Debian 9                     | active |
+     | a7ab8139-638a-464a-8fad-e2796a87729e | GOLD Fedora 32                    | active |
+     | ac68185f-de0f-47fa-b260-c60cb1d31e68 | GOLD Ubuntu 18.04 LTS             | active |
+     | 10f180ac-fb3f-47ff-9b3a-00115de56848 | GOLD Ubuntu 20.04 LTS             | active |
+     | b2d189c0-a5b4-4660-8007-555f34dcd4c4 | GOLD Windows Server 2016 Standard | active |
+     | b7047043-8d00-4ab5-8db5-8b2688d0d74b | GOLD Windows Server 2019 Core     | active |
+     | 72568f04-d909-4809-8b0a-279679c054de | GOLD Windows Server 2019 Standard | active |
+     +--------------------------------------+-----------------------------------+--------+
 
 #. Listing available flavors:
 
    .. code-block:: console
 
      $ openstack flavor list
-     +--------------------------------------+------------+-------+------+-----------+-------+-----------+
-     | ID                                   | Name       |   RAM | Disk | Ephemeral | VCPUs | Is Public |
-     +--------------------------------------+------------+-------+------+-----------+-------+-----------+
-     | 1                                    | m1.tiny    |   512 |    1 |         0 |     1 | True      |
-     | 34532829-2bb7-42f6-aae1-9654908a521e | m1.large   |  8192 |   20 |         0 |     4 | True      |
-     | 47d7f445-db26-4f1d-bf58-e79de7394f97 | m1.medium  |  4096 |   20 |         0 |     2 | True      |
-     | 922bfed4-42e5-4baa-8ea4-9e164839ca41 | m1.windows |  8192 |   50 |         0 |     4 | True      |
-     | b128b802-3d12-401d-bf51-878122c0e908 | m1.small   |  2048 |   10 |         0 |     1 | True      |
-     | ff6e88a4-3da9-4cbe-9c5d-a47d51f9c37a | m1.xlarge  | 16384 |   20 |         0 |     8 | True      |
-     +--------------------------------------+------------+-------+------+-----------+-------+-----------+
+     +--------------------------------------+-----------+-------+------+-----------+-------+-----------+
+     | ID                                   | Name      |   RAM | Disk | Ephemeral | VCPUs | Is Public |
+     +--------------------------------------+-----------+-------+------+-----------+-------+-----------+
+     | 348dfae3-bf34-4286-8dd8-b700b25fc109 | m1.large  |  8192 |   20 |         0 |     2 | True      |
+     | 39351b5b-86db-4a12-bd68-dd5530de802d | m1.xlarge | 16384 |   20 |         0 |     4 | True      |
+     | 6877962f-41df-42b3-b955-f3a846bef179 | m1.tiny   |   512 |    2 |         0 |     1 | True      |
+     | b128b802-3d12-401d-bf51-878122c0e908 | m1.small  |  2048 |   10 |         0 |     1 | True      |
+     | c76cbbc9-df2d-4b8c-9587-b9b9bc232685 | m1.medium |  4096 |   20 |         0 |     1 | True      |
+     +--------------------------------------+-----------+-------+------+-----------+-------+-----------+
 
 #. Listing available networks:
 
    .. code-block:: console
 
-     $ openstack network list
-     +--------------------------------------+------------+--------------------------------------+
-     | ID                                   | Name       | Subnets                              |
-     +--------------------------------------+------------+--------------------------------------+
-     | c97fa886-592e-4ad1-a995-6d55651bed78 | osl-public | c4f1c0aa-6b02-4870-a743-3403d0740082 |
-     +--------------------------------------+------------+--------------------------------------+
+     $ openstack network list -c ID -c Name
+     +--------------------------------------+-----------+
+     | ID                                   | Name      |
+     +--------------------------------------+-----------+
+     | 62421b56-346d-4794-99b0-fc27fe4e700f | IPv6      |
+     | c97fa886-592e-4ad1-a995-6d55651bed78 | dualStack |
+     +--------------------------------------+-----------+
 
 #. Creating a server (instance):
 
    .. code-block:: console
 
-     $ openstack server create --image "Fedora 24" --flavor m1.small \
+     $ openstack server create --image "GOLD CentOS 8" --flavor m1.small \
            --security-group SSH_and_ICMP --security-group default \
-           --key-name mykey --nic net-id=osl-public myserver
-     +--------------------------------------+-----------------------------------------------------+
-     | Field                                | Value                                               |
-     +--------------------------------------+-----------------------------------------------------+
-     | OS-DCF:diskConfig                    | MANUAL                                              |
-     | OS-EXT-AZ:availability_zone          |                                                     |
-     | OS-EXT-STS:power_state               | NOSTATE                                             |
-     | OS-EXT-STS:task_state                | scheduling                                          |
-     | OS-EXT-STS:vm_state                  | building                                            |
-     | OS-SRV-USG:launched_at               | None                                                |
-     | OS-SRV-USG:terminated_at             | None                                                |
-     | accessIPv4                           |                                                     |
-     | accessIPv6                           |                                                     |
-     | addresses                            |                                                     |
-     | adminPass                            | P7QpJ7gQzdva                                        |
-     | config_drive                         |                                                     |
-     | created                              | 2016-11-14T12:12:07Z                                |
-     | flavor                               | m1.small (b128b802-3d12-401d-bf51-878122c0e908)     |
-     | hostId                               |                                                     |
-     | id                                   | 132c186a-03a2-4449-b8d0-04b85a37e21a                |
-     | image                                | Fedora 24 (1ae6303e-5d08-454e-94e6-083d05559998)    |
-     | key_name                             | mykey                                               |
-     | name                                 | myserver                                            |
-     | os-extended-volumes:volumes_attached | []                                                  |
-     | progress                             | 0                                                   |
-     | project_id                           | dd21945e2e094a4dad277ed7846b3cf0                    |
-     | properties                           |                                                     |
-     | security_groups                      | [{u'name': u'SSH_and_ICMP'}, {u'name': u'default'}] |
-     | status                               | BUILD                                               |
-     | updated                              | 2016-11-14T12:12:07Z                                |
-     | user_id                              | 6bb8dbcdc9b94fff89258094bc56a49f                    |
-     +--------------------------------------+-----------------------------------------------------+
+           --key-name mykey --nic net-id=IPv6 myserver
+     +-----------------------------+------------------------------------------------------+
+     | Field                       | Value                                                |
+     +-----------------------------+------------------------------------------------------+
+     | OS-DCF:diskConfig           | MANUAL                                               |
+     | OS-EXT-AZ:availability_zone | osl-default-1                                        |
+     | OS-EXT-STS:power_state      | NOSTATE                                              |
+     | OS-EXT-STS:task_state       | scheduling                                           |
+     | OS-EXT-STS:vm_state         | building                                             |
+     | OS-SRV-USG:launched_at      | None                                                 |
+     | OS-SRV-USG:terminated_at    | None                                                 |
+     | accessIPv4                  |                                                      |
+     | accessIPv6                  |                                                      |
+     | addresses                   |                                                      |
+     | adminPass                   | BHb84gEEks3F                                         |
+     | config_drive                |                                                      |
+     | created                     | 2021-03-15T13:28:06Z                                 |
+     | flavor                      | m1.small (b128b802-3d12-401d-bf51-878122c0e908)      |
+     | hostId                      |                                                      |
+     | id                          | 9fb1f289-81ae-4b6d-be52-995434ab9978                 |
+     | image                       | GOLD CentOS 8 (cc8bee9f-b8e5-48c3-bc76-ba173a75b503) |
+     | key_name                    | mykey                                                |
+     | name                        | myserver                                             |
+     | progress                    | 0                                                    |
+     | project_id                  | 24823ac5a6dd4d27966310600abce54d                     |
+     | properties                  |                                                      |
+     | security_groups             | name='00b69714-0378-46dc-bd3e-718a93b5188d'          |
+     |                             | name='6743c744-1a06-462e-82e6-85c9d0b2399f'          |
+     | status                      | BUILD                                                |
+     | updated                     | 2021-03-15T13:28:06Z                                 |
+     | user_id                     | 6bb8dbcdc9b94fff89258094bc56a49f                     |
+     | volumes_attached            |                                                      |
+     +-----------------------------+------------------------------------------------------+
 
 #. Listing servers:
 
    .. code-block:: console
 
      $ openstack server list
-     +--------------------------------------+----------+--------+-------------------------+------------+
-     | ID                                   | Name     | Status | Networks                | Image Name |
-     +--------------------------------------+----------+--------+-------------------------+------------+
-     | 132c186a-03a2-4449-b8d0-04b85a37e21a | myserver | ACTIVE | osl-public=158.37.63.62 | Fedora 24  |
-     +--------------------------------------+----------+--------+-------------------------+------------+
+     +--------------------------------------+----------+--------+----------------------------------------+---------------+----------+
+     | ID                                   | Name     | Status | Networks                               | Image         | Flavor   |
+     +--------------------------------------+----------+--------+----------------------------------------+---------------+----------+
+     | 9fb1f289-81ae-4b6d-be52-995434ab9978 | myserver | ACTIVE | IPv6=2001:700:2:8201::13f2, 10.2.2.104 | GOLD CentOS 8 | m1.small |
+     +--------------------------------------+----------+--------+----------------------------------------+---------------+----------+
 
