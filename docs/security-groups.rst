@@ -132,7 +132,7 @@ inside, and to communicate freely with each other:
    the outside is blocked, while outgoing traffic and all
    inter-instance traffic is allowed.
 
-Our recommendation regarding the "default" security group is:
+Our recommendations about the "default" security group are:
 
 * Don't change anything about this security group. Leave it intact
 
