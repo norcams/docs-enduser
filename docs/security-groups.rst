@@ -566,6 +566,59 @@ Deleting a security group rule using the CLI can be done like this:
      +--------------------------------------+-------------+-----------+-----------+------------+-----------+-----------------------+
 
 
+Deleting a Security Group
+-------------------------
+
+To delete a security group using the dashboard, navigate
+to **Project** -> **Network** -> **Security Groups**. Use the menu on
+the right of the security group you want to delete an select **Delete
+Security Group**:
+
+.. figure:: images/security-groups-delete-group-01.png
+   :align: center
+   :alt: Click on "Delete Rule"
+
+Optionally, you can mask the security group using radio buttons to the
+left and click **Delete Security Groups**. This is faster if you want
+to delete several security groups simultaneously.
+
+----------------------------------------------------------------------
+
+To delete a security group using the CLI:
+
+#. We first list our security groups:
+
+   .. code-block:: console
+
+     $ openstack security group list
+     +--------------------------------------+----------+------------------------+----------------------------------+------+
+     | ID                                   | Name     | Description            | Project                          | Tags |
+     +--------------------------------------+----------+------------------------+----------------------------------+------+
+     | 6698059e-c82b-4694-975c-55c47c8e0151 | database | database               | 24823ac5a6dd4d27966310600abce54d | []   |
+     | 6743c744-1a06-462e-82e6-85c9d0b2399f | default  | Default security group | 24823ac5a6dd4d27966310600abce54d | []   |
+     | ad67b1c0-32bd-44a9-919b-64195870e136 | web      | web                    | 24823ac5a6dd4d27966310600abce54d | []   |
+     +--------------------------------------+----------+------------------------+----------------------------------+------+
+
+#. We then delete the security group, specifying it either by name or
+   ID:
+
+   .. code-block:: console
+
+     $ openstack security group delete 6698059e-c82b-4694-975c-55c47c8e0151
+
+#. Finally, we list the security groups again to verify:
+
+   .. code-block:: console
+
+     $ openstack security group list
+     +--------------------------------------+---------+------------------------+----------------------------------+------+
+     | ID                                   | Name    | Description            | Project                          | Tags |
+     +--------------------------------------+---------+------------------------+----------------------------------+------+
+     | 6743c744-1a06-462e-82e6-85c9d0b2399f | default | Default security group | 24823ac5a6dd4d27966310600abce54d | []   |
+     | ad67b1c0-32bd-44a9-919b-64195870e136 | web     | web                    | 24823ac5a6dd4d27966310600abce54d | []   |
+     +--------------------------------------+---------+------------------------+----------------------------------+------+
+
+
 Apply or Remove Security Groups
 -------------------------------
 
@@ -646,56 +699,3 @@ removing the "SSH and ICMP" security group from the server "test":
 
 As with most Openstack commands, we can use either the ID or the name
 when specifying security groups and instances.
-
-
-Deleting a Security Group
--------------------------
-
-To delete a security group using the dashboard, navigate
-to **Project** -> **Network** -> **Security Groups**. Use the menu on
-the right of the security group you want to delete an select **Delete
-Security Group**:
-
-.. figure:: images/security-groups-delete-group-01.png
-   :align: center
-   :alt: Click on "Delete Rule"
-
-Optionally, you can mask the security group using radio buttons to the
-left and click **Delete Security Groups**. This is faster if you want
-to delete several security groups simultaneously.
-
-----------------------------------------------------------------------
-
-To delete a security group using the CLI:
-
-#. We first list our security groups:
-
-   .. code-block:: console
-
-     $ openstack security group list
-     +--------------------------------------+----------+------------------------+----------------------------------+------+
-     | ID                                   | Name     | Description            | Project                          | Tags |
-     +--------------------------------------+----------+------------------------+----------------------------------+------+
-     | 6698059e-c82b-4694-975c-55c47c8e0151 | database | database               | 24823ac5a6dd4d27966310600abce54d | []   |
-     | 6743c744-1a06-462e-82e6-85c9d0b2399f | default  | Default security group | 24823ac5a6dd4d27966310600abce54d | []   |
-     | ad67b1c0-32bd-44a9-919b-64195870e136 | web      | web                    | 24823ac5a6dd4d27966310600abce54d | []   |
-     +--------------------------------------+----------+------------------------+----------------------------------+------+
-
-#. We then delete the security group, specifying it either by name or
-   ID:
-
-   .. code-block:: console
-
-     $ openstack security group delete 6698059e-c82b-4694-975c-55c47c8e0151
-
-#. Finally, we list the security groups again to verify:
-
-   .. code-block:: console
-
-     $ openstack security group list
-     +--------------------------------------+---------+------------------------+----------------------------------+------+
-     | ID                                   | Name    | Description            | Project                          | Tags |
-     +--------------------------------------+---------+------------------------+----------------------------------+------+
-     | 6743c744-1a06-462e-82e6-85c9d0b2399f | default | Default security group | 24823ac5a6dd4d27966310600abce54d | []   |
-     | ad67b1c0-32bd-44a9-919b-64195870e136 | web     | web                    | 24823ac5a6dd4d27966310600abce54d | []   |
-     +--------------------------------------+---------+------------------------+----------------------------------+------+
