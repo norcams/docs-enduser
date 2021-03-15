@@ -219,11 +219,15 @@ it. By default, all network access is denied.
 Allowing SSH and ICMP access
 ----------------------------
 
+.. _Working with Security Groups: security-groups.html
+
+For more information about allowing access via security groups, visit
+`Working with Security Groups`_.
+
 In order to allow traffic to the virtual machine, you need to create a
 new security group which allows it, and attach that security group to
-the virtual machine. Alternatively, you can modify an existing rule
-such as "default". To create a new security group, go to the **Network**
-tab under **Project** and select "Security Groups":
+the virtual machine. To create a new security group, navigate to
+the **Project** -> **Network** -> **Security Groups**:
 
 .. image:: images/dashboard-access-and-security-02.png
    :align: center
@@ -236,13 +240,9 @@ Click on "Create Security Group":
    :alt: Dashboard - Create Security Group
 
 Fill in a name for the new security group, and optionally a
-description. Then click "Create Security Group":
-
-.. image:: images/dashboard-create-secgroup-02.png
-   :align: center
-   :alt: Dashboard - Create Security Group
-
-Next, click "Manage Rules" for the "SSH and ICMP" security group:
+description. Then click "Create Security Group". The dashboard will
+automatically navigate into where you are expected to manage the
+security group rules:
 
 .. image:: images/dashboard-create-secgroup-03.png
    :align: center
@@ -261,6 +261,11 @@ from the "Rule" drop-down menu, and the result should be:
 .. image:: images/dashboard-create-secgroup-05.png
    :align: center
    :alt: Dashboard - Create Security Group
+
+.. NOTE::
+   In this case we are adding ICMP and SSH from a single machine
+   (login.uio.no) via IPv6. You will have to repeat the process for
+   the IPv4 address if you want to open for IPv4 as well.
 
 Go back to the **Instances** tab under Compute, and use the drop-down
 menu to the right of your newly created virtual machine. Select "Edit
