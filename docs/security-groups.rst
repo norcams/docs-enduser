@@ -129,7 +129,7 @@ inside, and communicate freely with each other:
    :align: center
    :alt: Default security group
 
-   This figure represents how the "default" security group works, if
+   This figure shows how the "default" security group works, if
    applied to two instances in the same project. Incoming traffic from
    the outside is blocked, while outgoing traffic and all
    inter-instance traffic is allowed.
