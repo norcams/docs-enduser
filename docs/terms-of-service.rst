@@ -170,7 +170,7 @@ Terms and Conditions
 
 * Policy Violation:
 
-  | If you violate the NREC's policy, we may suspend or terminate your use of the services. Policy violations such as illegal, harmful, or offensive use or content, security violations, and network abuse. If you become aware of any violation of this policy, please send an e-mail to email_.
+  | If you violate the NREC's policy, we may suspend or terminate your use of the services. Policy violations such as illegal, harmful, or offensive use or content, security violations, and network abuse. If you become aware of any violation of this policy, please send an email_.
 
 Privacy Policy
 --------------
