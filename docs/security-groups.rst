@@ -509,6 +509,8 @@ Optionally, you can mark the rule using the radio buttons to the left
 and click **Delete Rules**. This is faster if you want to delete
 several rules simultaneously.
 
+----------------------------------------------------------------------
+
 Deleting a security group rule using the CLI can be done like this:
 
 #. First we list the contents of the security group, in order to find
