@@ -47,10 +47,10 @@ Norwegian Research and Education Cloud
 .. toctree::
    :maxdepth: 1
 
+   terms-of-service
    networking
    support
    known-issues
-   terms-of-service
    speculativeexecution
    faq
    changelog
