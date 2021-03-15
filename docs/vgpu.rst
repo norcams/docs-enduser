@@ -74,11 +74,11 @@ We currently have the following flavors for use with vGPU:
 +------------------+--------------+---------+
 | Flavor name      | Virtual CPUs | Memory  |
 +==================+==============+=========+
-| vcpu.m1.large    | 2            |  8 GiB  |
+| vgpu.m1.large    | 2            |  8 GiB  |
 +------------------+--------------+---------+
-| vcpu.m1.xlarge   | 4            | 16 GiB  |
+| vgpu.m1.xlarge   | 4            | 16 GiB  |
 +------------------+--------------+---------+
-| vcpu.m1.2xlarge  | 8            | 32 GiB  |
+| vgpu.m1.2xlarge  | 8            | 32 GiB  |
 +------------------+--------------+---------+
 
 
@@ -86,11 +86,14 @@ Known issues
 ------------
 
 * Drivers: you should use the official NREC vGPU images with preinstalled
-  drivers. These drivers should not be changed or updated without notification
-  from us. If you do not have access to these images, please
+  drivers. These drivers must not be changed or updated without instructions
+  from the NREC Team. Specifically; never install stock NVIDIA Drivers found
+  on the NVIDIA web page or those drivers found in the CUDA repositories.
+  Those drivers do not support vGPU and will break the vGPU functionality.
+  If you do not have access to the NREC vGPU images, please
   `contact support`_ and ask for access.
 
-* Starting more the one instance with vGPU might result in some of them
-  ending in an error state. This can be solved by deleting them and try
-  to starting again. We recommend only staring one at the time to avoid
-  this bug.
+* Starting more than one instance with vGPU at the same time might result
+  in some of them ending in an error state. This can be solved by deleting
+  them and try to starting again. We recommend only starting one at the
+  time to avoid this bug.
