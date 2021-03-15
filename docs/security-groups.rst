@@ -55,6 +55,8 @@ it. This security group contains four rules:
    :align: center
    :alt: Dashboard - Project -> Network -> Security Groups -> default
 
+----------------------------------------------------------------------
+
 In order to view the same using the CLI, issue these commands:
 
 .. code-block:: console
@@ -256,6 +258,8 @@ the page in which you will create and edit its rules:
    :align: center
    :alt: Create Security Group done
 
+----------------------------------------------------------------------
+
 In order to create a security group using the CLI, use the command
 ``openstack security group create``:
 
@@ -325,10 +329,10 @@ After creating the four rules, it should look like this:
    :align: center
    :alt: Security group rule listing
 
-Adding rules with CLI
-~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------------------------
 
-First we list our security groups:
+Creating security group rules can also be done using CLI. First we
+list our security groups:
 
 .. code-block:: console
 
@@ -448,10 +452,10 @@ remote. The security group rules now contains this new rule:
    :align: center
    :alt: Database-web-server security group listing 2
 
-Remote Security Group with CLI
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------------------------
 
-First, we list our security groups:
+Creating a security group rule that uses another security group as
+remote can also be done using CLI. First, we list our security groups:
 
 .. code-block:: console
 
@@ -562,6 +566,8 @@ Security Group**:
 Optionally, you can mask the security group using radio buttons to the
 left and click **Delete Security Groups**. This is faster if you want
 to delete several security groups simultaneously.
+
+----------------------------------------------------------------------
 
 To delete a security group using the CLI:
 
