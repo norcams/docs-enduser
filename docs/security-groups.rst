@@ -381,7 +381,7 @@ for inspection:
 
 
 Remote Security Group
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 When creating a security group rule we have the option of using a
 security group as remote, instead of a CIDR address. This can be
