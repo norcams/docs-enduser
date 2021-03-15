@@ -574,7 +574,7 @@ to **Project** -> **Network** -> **Security Groups**. Use the menu on
 the right of the security group you want to delete an select **Delete
 Security Group**:
 
-.. figure:: images/security-groups-delete-rule-02.png
+.. figure:: images/security-groups-delete-group-01.png
    :align: center
    :alt: Click on "Delete Rule"
 
