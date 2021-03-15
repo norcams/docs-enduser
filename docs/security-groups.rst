@@ -566,6 +566,82 @@ Deleting a security group rule using the CLI can be done like this:
      +--------------------------------------+-------------+-----------+-----------+------------+-----------+-----------------------+
 
 
+Apply or Remove Security Groups
+-------------------------------
+
+A security group is meaningless unless applied to one or more virtual
+machines (instances). In order to apply or remove security groups from
+an instance, navigate to **Project** -> **Compute** -> **Instances**,
+and select **Edit Security Groups** from the drop-down menu for the
+instance:
+
+.. figure:: images/dashboard-instance-edit-secgroup-01.png
+   :align: center
+   :alt: Dashboard - Edit Security Group
+
+Edit the security groups for the instance by adding or removing with
+the **+** and **-** buttons, and click **Save**.
+
+----------------------------------------------------------------------
+
+Adding and removing security groups from a server can also be done
+using the CLI. First, we list our servers and security groups:
+
+.. code-block:: console
+
+  $ openstack server list
+  +--------------------------------------+------+--------+----------------------------------------+---------------+----------+
+  | ID                                   | Name | Status | Networks                               | Image         | Flavor   |
+  +--------------------------------------+------+--------+----------------------------------------+---------------+----------+
+  | da187bf2-ff3d-43f4-8256-90482061fd04 | test | ACTIVE | IPv6=10.1.2.137, 2001:700:2:8301::1366 | GOLD CentOS 8 | m1.small |
+  +--------------------------------------+------+--------+----------------------------------------+---------------+----------+
+  
+  $ openstack security group list
+  +--------------------------------------+--------------+------------------------------+----------------------------------+------+
+  | ID                                   | Name         | Description                  | Project                          | Tags |
+  +--------------------------------------+--------------+------------------------------+----------------------------------+------+
+  | 2510a8ec-1d74-49a7-8422-c6034a876b13 | default      | Default security group       | 24823ac5a6dd4d27966310600abce54d | []   |
+  | 5471b535-b3e3-4ed7-96b0-885e71148537 | SSH and ICMP | Allows incoming SSH and ICMP | 24823ac5a6dd4d27966310600abce54d | []   |
+  +--------------------------------------+--------------+------------------------------+----------------------------------+------+
+
+We can see which security groups are applied to a server by inspecting
+the server using ``openstack server show``:
+
+.. code-block:: console
+
+  $ openstack server show test
+  ...
+  | security_groups             | name='default'                                           |
+  ...
+
+In this case only the "default" security group is applied. To apply
+our "SSH and ICMP" security group:
+
+.. code-block:: console
+
+  $ openstack server add security group test 'SSH and ICMP'
+
+We can then inspect the server again:
+
+.. code-block:: console
+
+  $ openstack server show test
+  ...
+  | security_groups             | name='default'                                           |
+  |                             | name='SSH and ICMP'                                      |
+  ...
+
+We can also remove a security group from a server. Here, we are
+removing the "SSH and ICMP" security group from the server "test":
+
+.. code-block:: console
+
+  $ openstack server remove security group test 'SSH and ICMP'
+
+As with most Openstack commands, we can use either the ID or the name
+when specifying security groups and instances.
+
+
 Deleting a Security Group
 -------------------------
 
