@@ -125,9 +125,14 @@ In short, this security group allows the instances to communicate with
 hosts on the internet as long as the traffic initiated from the
 inside, and communicate freely with each other:
 
-.. image:: images/security-groups-default-02.png
+.. figure:: images/security-groups-default-02.png
    :align: center
    :alt: Default security group
+
+   This figure represents how the "default" security group works, if
+   applied to two instances in the same project. Incoming traffic from
+   the outside is blocked, while outgoing traffic and all
+   inter-instance traffic is allowed.
 
 Our recommendation regarding the "default" security group is:
 
