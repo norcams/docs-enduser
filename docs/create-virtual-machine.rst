@@ -52,7 +52,7 @@ about that later. To import your existing keypair into OpenStack, go
 to the **Key Pairs** tab under **Project** and select "Key
 Pairs":
 
-.. image:: images/dashboard-access-and-security-01.png
+.. figure:: images/dashboard-access-and-security-01.png
    :align: center
    :alt: Dashboard - Access & Security
 
@@ -60,13 +60,13 @@ Click the button labeled "Import Key Pair". Give the keypair a name,
 and enter the contents of the **id_rsa.pub** file in the "Public Key"
 field:
 
-.. image:: images/dashboard-import-keypair-01.png
+.. figure:: images/dashboard-import-keypair-01.png
    :align: center
    :alt: Dashboard - Import an SSH keypair
 
 Click "Import Key Pair" and the key is saved:
 
-.. image:: images/dashboard-keypairs-01.png
+.. figure:: images/dashboard-keypairs-01.png
    :align: center
    :alt: Dashboard - View keypairs
 
@@ -78,20 +78,20 @@ You can let OpenStack create a keypair for you, if you don't wish to
 use an existing one. Go to the **Key Pairs** tab
 under **Project** and select "Key Pairs":
 
-.. image:: images/dashboard-access-and-security-03.png
+.. figure:: images/dashboard-access-and-security-03.png
    :align: center
    :alt: Dashboard - Access & Security
 
 Click on "Create Key Pair":
 
-.. image:: images/dashboard-create-keypair-01.png
+.. figure:: images/dashboard-create-keypair-01.png
    :align: center
    :alt: Dashboard - Create an SSH keypair
 
 Choose a name for you keypair and click "Create Key Pair". The newly
 created private key will be downloaded by the browser automatically:
 
-.. image:: images/dashboard-create-keypair-02.png
+.. figure:: images/dashboard-create-keypair-02.png
    :align: center
    :alt: Dashboard - Download created keypair
 
@@ -125,13 +125,13 @@ Once you have an SSH keypair defined, you can proceed with creating a
 virtual machine (instance). In the **Project** tab,
 select **Instances**:
 
-.. image:: images/dashboard-create-instance-01.png
+.. figure:: images/dashboard-create-instance-01.png
    :align: center
    :alt: Dashboard - Instances
 
 Click "Launch Instance". The following window will appear:
 
-.. image:: images/dashboard-create-instance-02.png
+.. figure:: images/dashboard-create-instance-02.png
    :align: center
    :alt: Dashboard - Launch instance
 
@@ -147,7 +147,7 @@ You can choose between `<region>-default-1` and `<region>-legacy-1`. `default` u
 
 When finished with this tab, select the next, "Source":
 
-.. image:: images/dashboard-create-instance-06.png
+.. figure:: images/dashboard-create-instance-06.png
    :align: center
    :alt: Dashboard - Launch instance - Source
 
@@ -158,7 +158,7 @@ images. In our example, we have selected "Fedora 24".
 
 When finished with this tab, select the next, "Flavor":
 
-.. image:: images/dashboard-create-instance-07.png
+.. figure:: images/dashboard-create-instance-07.png
    :align: center
    :alt: Dashboard - Launch instance - Flavor
 
@@ -168,7 +168,7 @@ the "Small" flavor, which is just enough to run our Fedora instance.
 
 When finished with this tab, select the next, "Networks":
 
-.. image:: images/dashboard-create-instance-08.png
+.. figure:: images/dashboard-create-instance-08.png
    :align: center
    :alt: Dashboard - Launch instance - Networks
 
@@ -186,7 +186,7 @@ both networks at the same time will result in networking issues.
 
 When finished with this tab, select the "Security Groups" tab:
 
-.. image:: images/dashboard-create-instance-10.png
+.. figure:: images/dashboard-create-instance-10.png
    :align: center
    :alt: Dashboard - Launch instance - Security Groups
 
@@ -197,7 +197,7 @@ the section `Allowing SSH and ICMP access`_ below.
 
 When finished with this tab, select the "Key Pairs" tab:
 
-.. image:: images/dashboard-create-instance-09.png
+.. figure:: images/dashboard-create-instance-09.png
    :align: center
    :alt: Dashboard - Launch instance - Key Pairs
 
@@ -206,7 +206,7 @@ machine.
 
 When satisfied, clik "Launch" to create your virtual machine.
 
-.. image:: images/dashboard-create-instance-11.png
+.. figure:: images/dashboard-create-instance-11.png
    :align: center
    :alt: Dashboard - Launch instance - finished
 
@@ -229,13 +229,13 @@ new security group which allows it, and attach that security group to
 the virtual machine. To create a new security group, navigate to
 the **Project** -> **Network** -> **Security Groups**:
 
-.. image:: images/dashboard-access-and-security-02.png
+.. figure:: images/dashboard-access-and-security-02.png
    :align: center
    :alt: Dashboard - Access & Security
 
 Click on **Create Security Group**:
 
-.. image:: images/dashboard-create-secgroup-01.png
+.. figure:: images/dashboard-create-secgroup-01.png
    :align: center
    :alt: Dashboard - Create Security Group
 
@@ -244,13 +244,13 @@ description. Then click **Create Security Group**. The dashboard will
 automatically navigate into where you are expected to manage the
 security group rules:
 
-.. image:: images/dashboard-create-secgroup-03.png
+.. figure:: images/dashboard-create-secgroup-03.png
    :align: center
    :alt: Dashboard - Create Security Group
 
 You want to add a couple of rules. Click "Add Rule":
 
-.. image:: images/dashboard-create-secgroup-04.png
+.. figure:: images/dashboard-create-secgroup-04.png
    :align: center
    :alt: Dashboard - Create Security Group
 
@@ -258,7 +258,7 @@ Select "ALL ICMP" from the drop-down menu under "Rule". Leave the rest
 at its default and click **Add**. Repeat the process and select "SSH"
 from the "Rule" drop-down menu, and the result should be:
 
-.. image:: images/dashboard-create-secgroup-05.png
+.. figure:: images/dashboard-create-secgroup-05.png
    :align: center
    :alt: Dashboard - Create Security Group
 
@@ -271,13 +271,13 @@ Navigate to **Compute** -> **Instances**, and use the drop-down menu
 to the right of your newly created virtual machine. Select **Edit
 Security Groups**:
 
-.. image:: images/dashboard-instance-edit-secgroup-01.png
+.. figure:: images/dashboard-instance-edit-secgroup-01.png
    :align: center
    :alt: Dashboard - Edit Security Group
 
 The following will appear:
 
-.. image:: images/dashboard-instance-edit-secgroup-02.png
+.. figure:: images/dashboard-instance-edit-secgroup-02.png
    :align: center
    :alt: Dashboard - Edit Security Group
 
