@@ -579,8 +579,14 @@ instance:
    :align: center
    :alt: Dashboard - Edit Security Group
 
+The following dialog window will appear:
+
+.. figure:: images/dashboard-instance-edit-secgroup-02.png
+   :align: center
+   :alt: Dashboard - Edit Security Group
+
 Edit the security groups for the instance by adding or removing with
-the **+** and **-** buttons, and click **Save**.
+the **+** and **-** buttons, and click **Save**:
 
 ----------------------------------------------------------------------
 
