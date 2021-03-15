@@ -120,8 +120,8 @@ In summary, the "default" security group does the following:
   project, if they also have the "default" security group applied.
 
 In short, this security group allows the instances to communicate with
-hosts on the internet as long as the traffic initiated from the
-inside, and communicate freely with each other:
+hosts on the internet as long as the traffic is initiated from the
+inside, and to communicate freely with each other:
 
 .. figure:: images/security-groups-default-02.png
    :align: center
