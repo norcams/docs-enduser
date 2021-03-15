@@ -12,10 +12,6 @@ Last changed: |date|
 .. _CIDR Calculator IPv6: https://www.vultr.com/resources/subnet-calculator-ipv6/
 .. _CIDR Calculator IPv4: https://www.vultr.com/resources/subnet-calculator/
 
-.. WARNING::
-   **WARNING WARNING WARNING** This document is under construction and
-   may contain errors.
-
 Security groups is an essential tool to understand in order for you to
 ensure the security and integrity of your instances, as well as making
 your application work correctly and as intended. This document
