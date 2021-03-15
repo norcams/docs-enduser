@@ -118,8 +118,8 @@ In summary, the "default" security group does the following:
   and communicate with any host on the internet, on any port using any
   protocol
 
-* All incoming traffic is allowed from instances that has the
-  "default" security group applied.
+* All incoming traffic is allowed from other instances within the same
+  project, if they also have the "default" security group applied.
 
 In short, this security group allows the instances to communicate with
 hosts on the internet as long as the traffic initiated from the
