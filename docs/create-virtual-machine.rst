@@ -233,14 +233,14 @@ the **Project** -> **Network** -> **Security Groups**:
    :align: center
    :alt: Dashboard - Access & Security
 
-Click on "Create Security Group":
+Click on **Create Security Group**:
 
 .. image:: images/dashboard-create-secgroup-01.png
    :align: center
    :alt: Dashboard - Create Security Group
 
 Fill in a name for the new security group, and optionally a
-description. Then click "Create Security Group". The dashboard will
+description. Then click **Create Security Group**. The dashboard will
 automatically navigate into where you are expected to manage the
 security group rules:
 
@@ -255,7 +255,7 @@ You want to add a couple of rules. Click "Add Rule":
    :alt: Dashboard - Create Security Group
 
 Select "ALL ICMP" from the drop-down menu under "Rule". Leave the rest
-at its default and click "Add". Repeat the process and select "SSH"
+at its default and click **Add**. Repeat the process and select "SSH"
 from the "Rule" drop-down menu, and the result should be:
 
 .. image:: images/dashboard-create-secgroup-05.png
@@ -267,9 +267,9 @@ from the "Rule" drop-down menu, and the result should be:
    (login.uio.no) via IPv6. You will have to repeat the process for
    the IPv4 address if you want to open for IPv4 as well.
 
-Go back to the **Instances** tab under Compute, and use the drop-down
-menu to the right of your newly created virtual machine. Select "Edit
-Security Groups":
+Navigate to **Compute** -> **Instances**, and use the drop-down menu
+to the right of your newly created virtual machine. Select **Edit
+Security Groups**:
 
 .. image:: images/dashboard-instance-edit-secgroup-01.png
    :align: center
@@ -281,7 +281,7 @@ The following will appear:
    :align: center
    :alt: Dashboard - Edit Security Group
 
-Add the "SSH and ICMP" security group and click "Save".
+Add the "SSH and ICMP" security group and click **Save**.
 
 
 Accessing the virtual machine
@@ -292,11 +292,16 @@ reachable from the Internet:
 
 .. code-block:: console
 
-  $ ping 158.39.77.101
-  PING 158.39.77.101 (158.39.77.101) 56(84) bytes of data.
-  64 bytes from 158.39.77.101: icmp_seq=1 ttl=55 time=6.15 ms
-  64 bytes from 158.39.77.101: icmp_seq=2 ttl=55 time=6.05 ms
-  64 bytes from 158.39.77.101: icmp_seq=3 ttl=55 time=6.01 ms
+  $ ping6 2001:700:2:8301::1366
+  PING 2001:700:2:8301::1366(2001:700:2:8301::1366) 56 data bytes
+  64 bytes from 2001:700:2:8301::1366: icmp_seq=1 ttl=55 time=6.12 ms
+  64 bytes from 2001:700:2:8301::1366: icmp_seq=2 ttl=55 time=5.96 ms
+  64 bytes from 2001:700:2:8301::1366: icmp_seq=3 ttl=55 time=6.57 ms
+  64 bytes from 2001:700:2:8301::1366: icmp_seq=4 ttl=55 time=6.01 ms
+  ^C
+  --- 2001:700:2:8301::1366 ping statistics ---
+  4 packets transmitted, 4 received, 0% packet loss, time 3002ms
+  rtt min/avg/max/mdev = 5.965/6.170/6.570/0.244 ms
 
 You can log in to the virtual machine using the SSH key assigned to
 the virtual machine. In case you let OpenStack create the keypair for
@@ -304,11 +309,14 @@ you (example with "test.pem" above):
 
 .. code-block:: console
 
-  $ ssh -i test.pem fedora@158.39.77.101
-  [fedora@test ~]$ uname -sr
-  Linux 4.5.5-300.fc24.x86_64
-  [fedora@test ~]$ sudo -i
-  [fedora@test ~]# whoami
+  $ ssh -i test.pem centos@2001:700:2:8301::1366
+  
+  [centos@test ~]$ uname -sr
+  Linux 4.18.0-240.10.1.el8_3.x86_64
+  
+  [centos@test ~]$ sudo -i
+  
+  [root@test ~]# whoami
   root
 
 SSH username
