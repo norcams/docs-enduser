@@ -47,7 +47,7 @@ group cannot be deleted. To find it in the dashboard GUI, navigate
 to **Project** -> **Network** -> **Security Groups** and click on
 it. This security group contains four rules:
 
-.. image:: images/security-groups-default.png
+.. figure:: images/security-groups-default.png
    :align: center
    :alt: Dashboard - Project -> Network -> Security Groups -> default
 
@@ -254,14 +254,14 @@ Creating a Security Group
 In order to create a new security group using the dashboard, navigate
 to **Project** -> **Network** -> **Security Groups**:
 
-.. image:: images/security-groups-create-01.png
+.. figure:: images/security-groups-create-01.png
    :align: center
    :alt: Dashboard - Project -> Network -> Security Groups
 
 Click on **Create Security Group** and the following dialog window
 appears:
 
-.. image:: images/security-groups-create-02.png
+.. figure:: images/security-groups-create-02.png
    :align: center
    :alt: Create Security Group
 
@@ -269,7 +269,7 @@ You have to give the new security group a name, and optionally a
 description. After creating the security group, you are redirected to
 the page in which you will create and edit its rules:
 
-.. image:: images/security-groups-create-03.png
+.. figure:: images/security-groups-create-03.png
    :align: center
    :alt: Create Security Group done
 
@@ -297,7 +297,7 @@ Adding Rules
 In order to add security group rules, navigate to the security group
 that you wish to edit and click **Add Rule**:
 
-.. image:: images/security-groups-add-rule-01.png
+.. figure:: images/security-groups-add-rule-01.png
    :align: center
    :alt: Add security group rule
 
@@ -324,7 +324,7 @@ and **Remote** as "Ingress" and "CIDR", respectively. In the **CIDR**
 field, we enter the IPv4 address of login.uio.no, which we found
 above:
 
-.. image:: images/security-groups-add-rule-02.png
+.. figure:: images/security-groups-add-rule-02.png
    :align: center
    :alt: Add ICMP/IPv4 security group rule
 
@@ -334,13 +334,13 @@ the IPv6 address in the **CIDR** field.
 For the SSH rules, we repeat the steps for ICMP, except choosing "SSH"
 in the **Rule** drop-down menu:
 
-.. image:: images/security-groups-add-rule-03.png
+.. figure:: images/security-groups-add-rule-03.png
    :align: center
    :alt: Add SSH/IPv6 security group rule
 
 After creating the four rules, it should look like this:
 
-.. image:: images/security-groups-add-rule-04.png
+.. figure:: images/security-groups-add-rule-04.png
    :align: center
    :alt: Security group rule listing
 
@@ -445,7 +445,7 @@ We can solve the last problem by using a security group as remote. In
 our hypothetical scenario, we already have security groups for the
 database and web servers:
 
-.. image:: images/security-groups-remote-02.png
+.. figure:: images/security-groups-remote-02.png
    :align: center
    :alt: Database-web-server security group listing
 
@@ -455,7 +455,7 @@ allow the web servers to initiate a connection to the MySQL port on
 the database servers, we need to add a rule in the "database" security
 group, using the "web" security group as remote:
 
-.. image:: images/security-groups-remote-03.png
+.. figure:: images/security-groups-remote-03.png
    :align: center
    :alt: Database-web-server security group new rule
 
@@ -463,7 +463,7 @@ We select "Security Group" as our **Remote** instead of CIDR, which is
 the default. We then select the "web" security group as the
 remote. The security group rules now contains this new rule:
 
-.. image:: images/security-groups-remote-04.png
+.. figure:: images/security-groups-remote-04.png
    :align: center
    :alt: Database-web-server security group listing 2
 
@@ -513,14 +513,14 @@ To delete a security group rule using the dashboard, first navigate
 to **Project** -> **Network** -> **Security Groups** and click
 on **Manage Rules** for the security group in question.
 
-.. image:: images/security-groups-delete-rule-01.png
+.. figure:: images/security-groups-delete-rule-01.png
    :align: center
    :alt: Click on "Manage Rules"
 
 In the rules listing, click on **Delete Rule** for the rule you wish
 to delete:
 
-.. image:: images/security-groups-delete-rule-02.png
+.. figure:: images/security-groups-delete-rule-02.png
    :align: center
    :alt: Click on "Delete Rule"
 
@@ -574,7 +574,7 @@ to **Project** -> **Network** -> **Security Groups**. Use the menu on
 the right of the security group you want to delete an select **Delete
 Security Group**:
 
-.. image:: images/security-groups-delete-rule-02.png
+.. figure:: images/security-groups-delete-rule-02.png
    :align: center
    :alt: Click on "Delete Rule"
 
