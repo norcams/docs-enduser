@@ -57,12 +57,12 @@ initial setup:
 
 **BGO:**
 
-* GPU: NVIDIA Tesla V100 PCIe 16GB (split between 4 instances)
+* GPU: NVIDIA Tesla V100 PCIe 16GB (each split between 4 instances)
 * CPU: Intel Xeon Gold 5215 CPU @ 2.50GHz
 
 **OSL:**
 
-* GPU: NVIDIA Tesla P40 PCIe 24GB (split between 4 instances)
+* GPU: NVIDIA Tesla P40 PCIe 24GB (each split between 4 instances)
 * CPU: Intel Xeon Gold 6226R CPU @ 2.90GHz
 
 Flavors
@@ -156,7 +156,7 @@ and test one of the samples. For CentOS 7 we install the compiler with yum:
 
   $ yum install gcc-c++
 
-The final test is to actually compile som code and run it.
+The final test is to actually compile some code and run it.
 
 .. code-block:: console
 
