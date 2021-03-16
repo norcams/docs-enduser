@@ -128,7 +128,7 @@ protected:
   $ chmod 0600 nrec.pem
 
 In order to use the downloaded private key, use the **-i** option to
-ssh, like this (example for "test.pem" above):
+ssh, like this (example for "nrec.pem" above):
 
 .. code-block:: console
 
@@ -327,11 +327,11 @@ reachable from the Internet:
 
 You can log in to the virtual machine using the SSH key assigned to
 the virtual machine. In case you let OpenStack create the keypair for
-you (example with "test.pem" above):
+you (example with "nrec.pem" above):
 
 .. code-block:: console
 
-  $ ssh -i test.pem centos@2001:700:2:8301::1366
+  $ ssh -i nrec.pem centos@2001:700:2:8301::1366
   
   [centos@test ~]$ uname -sr
   Linux 4.18.0-240.10.1.el8_3.x86_64
