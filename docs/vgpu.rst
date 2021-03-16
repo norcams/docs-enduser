@@ -80,6 +80,25 @@ We currently have the following flavors for use with vGPU:
 | vgpu.m1.2xlarge  | 8            | 32 GiB  |
 +------------------+--------------+---------+
 
+Prebuild images
+---------------
+
+The NREC Team provides prebuild images with the vGPU driver already installed. We
+strongly recommend using these, as vGPU drivers not publicly available. These
+images become available to your project when you are granted access to the vGPU
+resources.
+
++------------------+-----------------------+
+| Distribution     | Image name            |
++==================+=======================+
+| Ubuntu 20.04 LTS | vGPU Ubuntu 20.04 LTS |
++------------------+-----------------------+
+| CentOS 7.x       | vGPU CentOS 7         |
++------------------+-----------------------+
+| CentOS 8.x       | vGPU CentOS 8         |
++------------------+-----------------------+
+
+
 vGPU type
 ---------
 
