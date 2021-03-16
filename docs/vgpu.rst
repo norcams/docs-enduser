@@ -2,7 +2,7 @@
 (BETA) Virtual GPU Accelerated instance (vGPU)
 ==============================================
 
-Last changed: 2021-03-21
+Last changed: 2021-03-15
 
 .. WARNING::
   This document is a work in progress. More information to come.
@@ -65,7 +65,6 @@ initial setup:
 * GPU: NVIDIA Tesla P40 PCIe 24GB (split between 4 instances)
 * CPU: Intel Xeon Gold 6226R CPU @ 2.90GHz
 
-
 Flavors
 -------
 
@@ -80,6 +79,96 @@ We currently have the following flavors for use with vGPU:
 +------------------+--------------+---------+
 | vgpu.m1.2xlarge  | 8            | 32 GiB  |
 +------------------+--------------+---------+
+
+vGPU type
+---------
+
+Only the vGPU Compute Server type is available, so vGPU for graphics acceleration
+and visualization is not available.
+
+
+Testing basic vGPU funtionality
+-------------------------------
+
+When you login to your newly created vGPU instance, you can verify that the
+vGPU device is present:
+
+.. code-block:: console
+
+  $ sudo lspci | grep -i nvidia
+  05:00.0 3D controller: NVIDIA Corporation GV100GL [Tesla V100 PCIe 16GB] (rev a1)
+
+From this output it seems like you have got the whole PCIe card. However, running
+the vGPU software reveals that you have only got a partition of the card:
+
+.. code-block:: console
+
+  $ nvidia-smi 
+  +-----------------------------------------------------------------------------+
+  | NVIDIA-SMI 450.89       Driver Version: 450.89       CUDA Version: 11.0     |
+  |-------------------------------+----------------------+----------------------+
+  | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+  | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+  |                               |                      |               MIG M. |
+  |===============================+======================+======================|
+  |   0  GRID V100-4C        On   | 00000000:05:00.0 Off |                    0 |
+  | N/A   N/A    P0    N/A /  N/A |    304MiB /  4096MiB |      0%      Default |
+  |                               |                      |                  N/A |
+  +-------------------------------+----------------------+----------------------+
+                                                                                 
+  +-----------------------------------------------------------------------------+
+  | Processes:                                                                  |
+  |  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+  |        ID   ID                                                   Usage      |
+  |=============================================================================|
+  |  No running processes found                                                 |
+  +-----------------------------------------------------------------------------+
+
+Now that we have verified that the vGPU is available and ready for use, we
+are ready to install software that can utilize the accelerator. Only the drivers
+are preinstalled in the NREC provided images.
+
+
+Installation of CUDA libraries
+------------------------------
+
+.. WARNING::
+   Do not use the package repositories provided by NVIDIA to install CUDA libraries.
+   The dependency chain in these repositories forces the installation of generic
+   NVIDIA display drivers witch removes the vGPU drivers provided by the NREC Team.
+   Only install drivers and driver updates provided by the NREC Team.
+
+Now head over to the download page on the NVIDIA website and select Drivers->All NVIDIA
+Drivers. Search for Linux 64-bit drivers in the "Data Center / Tesla" product type.
+Download and install the package installing only the CUDA libraries, excluding the driver,
+but including samples for this example:
+
+.. code-block:: console
+
+  $ curl -O https://developer.download.nvidia.com/compute/cuda/11.2.2/local_installers/cuda_11.2.2_460.32.03_linux.run
+  $ chmod +x cuda_11.2.2_460.32.03_linux.run
+  $ sudo ./cuda_11.2.2_460.32.03_linux.run --silent --no-drm --samples --toolkit
+
+After a while the installation is finished. Next step is to install a compiler
+and test one of the samples. For CentOS 7 we install the compiler with yum:
+
+.. code-block:: console
+
+  $ yum install gcc-c++
+
+The final test is to actually compile som code and run it.
+
+.. code-block:: console
+
+  $ cd /usr/local/cuda/samples/0_Simple/simpleAWBarrier
+  $ make
+  $ ./simpleAWBarrier 
+  ./simpleAWBarrier starting...
+  GPU Device 0: "Volta" with compute capability 7.0
+  
+  Launching normVecByDotProductAWBarrier kernel with numBlocks = 160 blockSize = 640
+  Result = PASSED
+  ./simpleAWBarrier completed, returned OK
 
 
 Known issues
