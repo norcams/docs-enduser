@@ -2,7 +2,7 @@
 (BETA) Virtual GPU Accelerated instance (vGPU)
 ==============================================
 
-Last changed: 2021-03-15
+Last changed: 2021-03-16
 
 .. WARNING::
   This document is a work in progress. More information to come.
@@ -84,7 +84,7 @@ Prebuild images
 ---------------
 
 The NREC Team provides prebuild images with the vGPU driver already installed. We
-strongly recommend using these, as vGPU drivers not publicly available. These
+strongly recommend using these, as vGPU drivers are not publicly available. These
 images become available to your project when you are granted access to the vGPU
 resources.
 
