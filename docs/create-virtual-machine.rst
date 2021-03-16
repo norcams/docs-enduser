@@ -7,6 +7,9 @@ Last changed: |date|
 
 .. contents::
 
+.. _Security Groups: security-groups.html
+.. _the default security group: security-groups.html#the-default-security-group
+
 .. _setting-up-keypair:
 Setting up a keypair
 --------------------
@@ -144,14 +147,14 @@ Create a virtual machine
 ------------------------
 
 Once you have an SSH keypair defined, you can proceed with creating a
-virtual machine (instance). In the **Project** tab,
-select **Instances**:
+virtual machine (instance). Navigate to **Project** -> **Compute**
+-> **Instances**:
 
 .. figure:: images/dashboard-create-instance-01.png
    :align: center
    :alt: Dashboard - Instances
 
-Click "Launch Instance". The following window will appear:
+Click **Launch Instance**. The following window will appear:
 
 .. figure:: images/dashboard-create-instance-02.png
    :align: center
@@ -159,15 +162,15 @@ Click "Launch Instance". The following window will appear:
 
 In this window, enter the following values:
 
-**Instance Name**: Select a name for your new virtual machine
+* **Instance Name**: Select a name for your new virtual machine
 
-**Availability Zone**:
-You can choose between `<region>-default-1` and `<region>-legacy-1`. `default` uses a centralized storage, which means that instances will not need to be rebooted while doing maintenance work. On the other hand, `legacy` uses a local storage, which will then require reboot in the case of maintenance work.
+* **Description**: Optionally set a description
+  
+* **Availability Zone**: Leave this at its default value
 
-**Instance Count**: How many virtual machines to create (usually only 1)
+* **Instance Count**: How many virtual machines to create (usually only 1)
 
-
-When finished with this tab, select the next, "Source":
+When finished with this tab, select the next, **Source**:
 
 .. figure:: images/dashboard-create-instance-06.png
    :align: center
@@ -176,9 +179,9 @@ When finished with this tab, select the next, "Source":
 **Select Boot Source** should be left at "Image", which is the
 default. In this case, the virtual machine will boot from a standard
 cloud image. When selecting this option, you can choose from a list of
-images. In our example, we have selected "Fedora 24".
+images. In our example, we have selected "GOLD CentOS 8".
 
-When finished with this tab, select the next, "Flavor":
+When finished with this tab, select the next, **Flavor**:
 
 .. figure:: images/dashboard-create-instance-07.png
    :align: center
@@ -186,7 +189,7 @@ When finished with this tab, select the next, "Flavor":
 
 This is where you select the flavor for the virtual machine, i.e. a
 pre-defined set of compute resources. In our example, we've selected
-the "Small" flavor, which is just enough to run our Fedora instance.
+the "Small" flavor, which is just enough to run our CentOS instance.
 
 When finished with this tab, select the next, "Networks":
 
@@ -194,17 +197,23 @@ When finished with this tab, select the next, "Networks":
    :align: center
    :alt: Dashboard - Launch instance - Networks
 
-In NREC, there are two networks to choose from, "dualStack"
-and "IPv6". Both networks provide a public IPv6 address, so the difference
-lays in IPv4. "IPv6" provides a "private" IPv4 address (RFC 1918), which gives
-the instance outbound IPv4 connectivity through NAT, while "dualStack" provides
-a public IPv4 address as well.
+In NREC, there are two networks to choose from, "dualStack" and
+"IPv6". Both networks provide a public IPv6 address, so the difference
+lays in IPv4.
 
-IPv6 is the future of internet IP addressing, but unfortunately, not all devices
-support IPv6 yet. Please check your IPv6 connectivity before choosing "IPv6".
+* **IPv6** provides a "private" IPv4 address (RFC 1918), which gives
+  the instance outbound IPv4 connectivity through NAT
 
-You should also note that you only can choose either "dualStack" or "IPv6", choosing
-both networks at the same time will result in networking issues.
+* **dualStack** provides a public IPv4 address and a public IPv6
+  address.
+
+IPv6 is the future of internet IP addressing, but unfortunately, not
+all devices support IPv6 yet. Please check your IPv6 connectivity
+before choosing "IPv6".
+
+You should also note that you only can choose either "dualStack" or
+"IPv6", choosing both networks at the same time will result in
+networking issues.
 
 When finished with this tab, select the "Security Groups" tab:
 
@@ -212,19 +221,22 @@ When finished with this tab, select the "Security Groups" tab:
    :align: center
    :alt: Dashboard - Launch instance - Security Groups
 
-Here, select any "Security Groups" you want to add to the virtual
-machine. In our example, we haven't created any security groups yet,
-and select only the "Default" security group. For more info, see
-the section `Allowing SSH and ICMP access`_ below.
+Here, select any `Security Groups`_ (i.e. IP filters) you want to add
+to the virtual machine. `The default security group`_ is already
+selected, and in our example we have another that we have created
+before. Choose which security groups should be applied to the
+instance. This can be also be edited at a later time. For more info,
+see the section `Allowing SSH and ICMP access`_ below.
 
-When finished with this tab, select the "Key Pairs" tab:
+When finished with this tab, select the **Key Pairs** tab:
 
 .. figure:: images/dashboard-create-instance-09.png
    :align: center
    :alt: Dashboard - Launch instance - Key Pairs
 
 Here, choose which SSH keypair you want to assign to this virtual
-machine.
+machine. Adding SSH public key to the instance is only done during
+instance creation and cannot be changed later.
 
 When satisfied, clik "Launch" to create your virtual machine.
 
@@ -232,10 +244,7 @@ When satisfied, clik "Launch" to create your virtual machine.
    :align: center
    :alt: Dashboard - Launch instance - finished
 
-After a few moments, the virtual machine is up and running. If you
-chose a public IPv4 address the virtual machine is accessible from the
-Internet, but you need to manage security groups in order to reach
-it. By default, all network access is denied.
+After a few moments, the virtual machine is up and running.
 
 
 Allowing SSH and ICMP access
@@ -348,16 +357,16 @@ Each image has its own default user, for which the SSH public key is
 added to its SSH authorized_keys file. This varies with each image,
 at the discretion of the image vendor. The most common are:
 
-============== ===========
+============== ==============
 Image          User
-============== ===========
-CentOS         centos
-Fedora         fedora
-Ubuntu         ubuntu
-Debian         debian
-RHEL           cloud-user
-CirrOS         cirros
-============== ===========
+============== ==============
+**CentOS**     ``centos``
+**Fedora**     ``fedora``
+**Ubuntu**     ``ubuntu``
+**Debian**     ``debian``
+**RHEL**       ``cloud-user``
+**CirrOS**     ``cirros``
+============== ==============
 
 This is a non-exhaustive list. For images not listed here, consult the
 image vendor's documentation.
