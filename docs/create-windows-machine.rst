@@ -26,7 +26,7 @@ Last changed: |date|
 
 
 Supported Windows versions
-==========================
+--------------------------
 
 The NREC platform supports Windows Server 2019 Standard Edition only. If you
 need other variants like the Core Edition, please let us know.
