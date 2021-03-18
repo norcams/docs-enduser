@@ -25,6 +25,13 @@ Last changed: |date|
    in the OSL region, and the Windows instances there will run unactivated.
 
 
+Supported Windows versions
+==========================
+
+The NREC platform supports Windows Server 2019 Standard Edition only. If you
+need other variants like the Core Edition, please let us know.
+
+
 Setting up a keypair
 --------------------
 
@@ -150,6 +157,14 @@ to the entire Internet, granting global access. Click "Add".
    has the ports for RDP and SSH (on Windows Server 2019 and later) open, but you still
    have to create the proper security groups and associate them with the instance in order
    to consume the services.
+
+.. WARNING::
+   In the wake of recent security conserns about the RDP protocol we have been
+   forced to limit the internal Windows Firewall to only allow connections from
+   the campus networks of the universities of Bergen and Oslo. If you are not situated
+   on one of the campuses' network, you will have to use a VPN service. Specificially,
+   we have modified the rules "Remote Desktop - User Mode (TCP-In)" and "Remote
+   Desktop - User Mode (UDP-In)".
 
 If the instance is ready, we can now assign our new rule to the virtual machine.
 Click on your instance in "Instances" tab, then select "Edit Security Groups":
