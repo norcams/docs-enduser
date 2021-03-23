@@ -158,6 +158,9 @@ masking using binary numbers is required. This is beyond the scope of
 this document. We will try to explain this more superficially. This is
 an example of a IPv4 blocks using CIDR:
 
+**0.0.0.0/0**
+  All IPv4 addresses in the known universe
+
 **192.168.0.0/16**
   All 16,384 addresses from ``192.168.0.0`` through ``192.168.255.255``
 
@@ -173,6 +176,9 @@ an example of a IPv4 blocks using CIDR:
 The important thing to understand is that the last number designates
 the size of the block. The larger the number, the smaller the
 block. CIDR notation applies to IPv6 as well:
+
+**::/0**
+  All IPv6 addresses in the known universe
 
 **2001:db8::/32**
   All addresses from ``2001:db8:0:0:0:0:0:0`` through ``2001:db8:ffff:ffff:ffff:ffff:ffff:ffff``
