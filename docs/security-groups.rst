@@ -236,7 +236,7 @@ creating security group rules.
 
 IP ranges in NREC may change as more blocks are added. You can list
 the NREC subnets (CIDR addresses) with this command, which is region
-specific (here: OSL):
+specific. Example for the OSL region:
 
 .. code-block:: console
 
