@@ -57,12 +57,12 @@ initial setup:
 
 **BGO:**
 
-* GPU: NVIDIA Tesla V100 PCIe 16GB (each split between 4 instances)
+* GPU: NVIDIA Tesla V100 PCIe 16GB (each split between 2 instances)
 * CPU: Intel Xeon Gold 5215 CPU @ 2.50GHz
 
 **OSL:**
 
-* GPU: NVIDIA Tesla P40 PCIe 24GB (each split between 4 instances)
+* GPU: NVIDIA Tesla P40 PCIe 24GB (each split between 3 instances)
 * CPU: Intel Xeon Gold 6226R CPU @ 2.90GHz
 
 Flavors
