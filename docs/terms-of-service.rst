@@ -16,13 +16,14 @@ Signing up
 ----------
 
 .. _Dataporten: https://www.uninett.no/en/
-.. _here: https://access.nrec.no/
+.. _access.nrec.no: https://access.nrec.no/
 
-* In order to use the NREC infrastructure service, you first need to
-  provision yourself here_.
+* In order to use the NREC infrastructure service, you must have
+  a valid user account at an educational institution in Norway that
+  has signed up for using NREC.
 
-* You must have a valid user account at an educational institution
-  in Norway that has signed up for using NREC.
+* To get access to NREC, you need to provision yourself access.nrec.no_
+  for the first time.
 
 * You must provide your username, a valid email address, and any
   other information requested in order to complete the signup
@@ -32,12 +33,14 @@ Signing up
   Make sure to note the password.
 
 * Please carefully guard the security of your account and monitor use
-  of your API password. You are responsible for all use of the services
+  of your API password.
+
+* You are responsible for all use of the services
   under your account, whether or not authorized, including any use of
   your API password.
 
 * When you first log in, you are granted with a demo project. This
-  project is personal and only for testing purposes.
+  project is personal and only ment for testing purposes.
 
 Our services
 ------------
@@ -45,8 +48,9 @@ Our services
 .. _Service Level Agreement: sla.html
 
 * We will make the NREC services available to you in accordance
-  with our agreement with your participating educational organization. Subject to these Terms,
-  we grant you a non-exclusive, revocable license and right to:
+  with our agreement with your participating educational organization.
+  Subject to these Terms, we grant you a non-exclusive, revocable
+  license and right to:
 
   * Create and manage virtual machines within your quota limit.
   * Create and manage firewalls and SSH keys for use with your
@@ -57,17 +61,17 @@ Our services
 * You may only use the services for non-commercial purposes, for
   research purposes and educational purposes without charge.
 
-* If you want to make use of the services outside this description,
-  such as for commercial purposes, please contact us.
+* If you want to make use of the services for commercial purposes,
+  please contact us.
 
-* If you need more resources (number of virtual machines, storage
-  etc.) than your quota allows, please contact us.
+* If you need to extend your resources (number of virtual machines,
+  storage, etc.) than your quota allows, please contact us.
 
 * If you want to use NREC for critical services, or services that
   require high availability, please contact us.
 
-* Please make sure to free up resources that you no longer use or
-  need, such as terminating obsolete virtual machines.
+* Make sure to free up resources that you no longer use or need,
+  such as terminating obsolete virtual machines.
 
 Security
 --------
