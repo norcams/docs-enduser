@@ -32,7 +32,7 @@ correct ssh public key when creating the instance:
 
 #. Specify this public key when creating the instance
 
-#. SSH to the instance using the corresponding private key
+#. Connect via SSH to the instance using the corresponding private key
 
 We will go through these steps in more detail.
 
@@ -40,9 +40,21 @@ We will go through these steps in more detail.
 Setting up a keypair
 --------------------
 
+There are two methods for creating an ssh key pair in NREC. To create
+an ssh key pair you should either
 
-Importing an existing key
-~~~~~~~~~~~~~~~~~~~~~~~~~
+* `Importing an existing key (RECOMMENDED)`_
+
+**OR**
+
+* `Letting OpenStack create a keypair`_
+
+Most users should choose to create an ssh key pair on their client
+machine, and upload the public key to NREC.
+
+
+Importing an existing key (RECOMMENDED)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is the recommended approach.
 
@@ -149,6 +161,13 @@ protected:
 .. code-block:: console
 
   $ chmod 0600 nrec.pem
+
+
+Connecting to the instance
+--------------------------
+
+
+
 
 In order to use the downloaded private key, use the **-i** option to
 ssh, like this (example for "nrec.pem" above):
