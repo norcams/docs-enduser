@@ -1,0 +1,151 @@
+.. |date| date::
+
+Using SSH
+=========
+
+.. WARNING::
+   This document is under development.
+
+Last changed: |date|
+
+.. contents::
+
+.. _Security Groups: security-groups.html
+.. _the default security group: security-groups.html#the-default-security-group
+
+Virtual machines in NREC are accessed using SSH keypairs. There are
+numerous ways to achieve this, depending on the OS on your local
+computer. The preferred method is to create an SSH key pair on your
+local computer (or use an already existing one), and upload the public
+key into NREC.
+
+.. figure:: images/ssh.png
+   :align: center
+   :alt: SSH illustration
+
+
+
+Setting up a keypair
+--------------------
+
+
+Importing an existing key
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This is the recommended approach.
+
+If the local computer is Linux, any BSD variant such as FreeBSD, MacOS
+or Windows 10, the easiest way is to create a keypair locally if you
+don't already have one, using the command ``ssh-keygen`` (on Windows
+it's called ``ssh-keygen.exe``):
+
+.. code-block:: console
+
+  $ cd ~
+  $ ssh-keygen -b 4096 -t rsa -f .ssh/nrec
+  Generating public/private rsa key pair.
+  Enter passphrase (empty for no passphrase): 
+  Enter same passphrase again: 
+  Your identification has been saved in /home/username/.ssh/nrec
+  Your public key has been saved in /home/username/.ssh/nrec.pub
+  The key fingerprint is:
+  SHA256:VoocD4z2ek4FpjB7UrX2CNo5yu3PdvLS1T7jOUAIgCk username@localhost.localdomain
+  The key's randomart image is:
+  +---[RSA 4096]----+
+  |   o...          |
+  |E o  +..         |
+  | .o = O. ..      |
+  |   O O O.o.      |
+  |  + * = S. .     |
+  | . = o o  o .    |
+  |  o o o. . o     |
+  |   . =+ o   =.   |
+  |    .o+=.  .o+   |
+  +----[SHA256]-----+
+
+Before running ssh-keygen we're making sure that the current working
+directory is our home directory. In this case we are creating a
+keypair of type RSA and 4096 bits long, which should provide
+sufficient security. We specify the output filename **.ssh/nrec**. The
+files created in your home directory are
+
+**.ssh/nrec**
+  This is the *private key*. It should be kept safe.
+
+**.ssh/nrec.pub**
+  This is the *public key*. It can be used to authenticate holders of
+  the private key.
+
+To import your existing public key into NREC, navigate to **Project**
+-> **Compute** -> **Key Pairs**:
+
+.. figure:: images/dashboard-access-and-security-01.png
+   :align: center
+   :alt: Project -> Compute -> Key Pairs
+
+Click on **Import Key Pair**. In the dialog that appears, fill out the
+following:
+
+* **Key Pair Name**: Give the key pair a proper name, so you remember
+  what it is and where it can be accessed from (here: "homeoffice")
+
+* **Key Type**: Choose "SSH Key" from the drop-down menu
+
+* Either use **Choose File** and find the **.ssh/nrec.pub** file, or
+  cut & paste the contents of **.ssh/nrec.pub** into the "Public Key"
+  field
+
+.. figure:: images/dashboard-import-keypair-01.png
+   :align: center
+   :alt: Dashboard - Import an SSH keypair
+
+Click "Import Key Pair" and the key is saved:
+
+.. figure:: images/dashboard-keypairs-01.png
+   :align: center
+   :alt: Dashboard - View keypairs
+
+
+Letting OpenStack create a keypair
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can let OpenStack create a keypair for you, if you don't wish to
+create one locally or use an existing one. Navigate to **Project**
+-> **Compute** -> **Key Pairs**:
+
+.. figure:: images/dashboard-access-and-security-03.png
+   :align: center
+   :alt: Dashboard - Access & Security
+
+Click on **Create Key Pair**:
+
+.. figure:: images/dashboard-create-keypair-01.png
+   :align: center
+   :alt: Dashboard - Create an SSH keypair
+
+Choose a name for you key pair (here: "nrec"), select "SSH Key" from
+the **Key Type** drop-down menu, and click **Create Key Pair**. The newly
+created private key will be downloaded by the browser automatically as
+**<name>.pem** (here: "nrec.pem").
+
+The name of the downloaded file is based on the name you provided
+earlier. In this example the file is called "nrec.pem" as "nrec" was
+provided as the keypair name. Remember to restrict the access to the
+private key, as SSH will refuse to use unless it's properly
+protected:
+
+.. code-block:: console
+
+  $ chmod 0600 nrec.pem
+
+In order to use the downloaded private key, use the **-i** option to
+ssh, like this (example for "nrec.pem" above):
+
+.. code-block:: console
+
+  $ ssh -i nrec.pem -l <username> <virtual-machine>
+
+Replace "<virtual-machine>" with the name or IP of the virtual machine
+that this keypair is assigned to, and "<username>" with the username
+for which the SSH key is added to authorized_keys. For more info, see
+`Accessing the virtual machine`_.

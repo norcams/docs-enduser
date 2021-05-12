@@ -10,7 +10,6 @@ Last changed: |date|
 .. _Security Groups: security-groups.html
 .. _the default security group: security-groups.html#the-default-security-group
 
-.. _setting-up-keypair:
 Setting up a keypair
 --------------------
 
