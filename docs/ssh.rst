@@ -129,6 +129,36 @@ Click "Import Key Pair" and the key is saved:
    :align: center
    :alt: Dashboard - View keypairs
 
+---------------------------------------------------------------------
+	 
+Uploading an existing public key via CLI is done with this command::
+
+  openstack keypair create --public-key <file> <name>
+
+Example:
+
+.. code-block:: console
+
+  $ openstack keypair create --public-key ~/.ssh/nrec.pub nrec
+  +-------------+-------------------------------------------------+
+  | Field       | Value                                           |
+  +-------------+-------------------------------------------------+
+  | fingerprint | e2:2e:26:7f:5d:98:9e:8f:5e:fd:c7:d5:d0:6b:44:e7 |
+  | name        | nrec                                            |
+  | user_id     | 6bb8dacdc9b94fff89258094bc56a49f                |
+  +-------------+-------------------------------------------------+
+
+You can then list your keys:
+
+.. code-block:: console
+
+  $ openstack keypair list
+  +-------+-------------------------------------------------+
+  | Name  | Fingerprint                                     |
+  +-------+-------------------------------------------------+
+  | nrec  | e2:2e:26:7f:5d:98:9e:8f:5e:fd:c7:d5:d0:6b:44:e7 |
+  +-------+-------------------------------------------------+
+
 
 Letting OpenStack create a keypair
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -155,6 +185,49 @@ created private key will be downloaded by the browser automatically as
 The name of the downloaded file is based on the name you provided
 earlier. In this example the file is called "nrec.pem" as "nrec" was
 provided as the keypair name. Remember to restrict the access to the
+private key, as SSH will refuse to use unless it's properly
+protected:
+
+.. code-block:: console
+
+  $ chmod 0600 nrec.pem
+
+---------------------------------------------------------------------
+	 
+Using the CLI, you can have Openstack create a new key pair for you
+using this command::
+
+  openstack keypair create --private-key <file> <name>
+
+Where **<file>** is the name of the file in which the private key will
+be saved. If this option is omitted the contents of the private key
+will be printed on the console.
+  
+Example:
+
+.. code-block:: console
+
+  $ openstack keypair create --private-key nrec.pem nrec
+  +-------------+-------------------------------------------------+
+  | Field       | Value                                           |
+  +-------------+-------------------------------------------------+
+  | fingerprint | 9d:b5:68:c9:d4:53:ab:73:95:f7:85:a2:74:a8:41:9e |
+  | name        | bar                                             |
+  | user_id     | 6bb8dbcdc9b94fff89258094bc56a49f                |
+  +-------------+-------------------------------------------------+
+
+You can then list your keys:
+
+.. code-block:: console
+
+  $ openstack keypair list
+  +-------+-------------------------------------------------+
+  | Name  | Fingerprint                                     |
+  +-------+-------------------------------------------------+
+  | nrec  | e2:2e:26:7f:5d:98:9e:8f:5e:fd:c7:d5:d0:6b:44:e7 |
+  +-------+-------------------------------------------------+
+
+Remember to restrict the access to the
 private key, as SSH will refuse to use unless it's properly
 protected:
 
