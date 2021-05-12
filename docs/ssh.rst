@@ -13,7 +13,7 @@ Last changed: |date|
 .. _Security Groups: security-groups.html
 .. _the default security group: security-groups.html#the-default-security-group
 
-Virtual machines in NREC are accessed using SSH keypairs. There are
+Virtual machines in NREC are accessed using SSH key pairs. There are
 numerous ways to achieve this, depending on the OS on your local
 computer. The preferred method is to create an SSH key pair on your
 local computer (or use an already existing one), and upload the public
@@ -37,29 +37,31 @@ correct ssh public key when creating the instance:
 We will go through these steps in more detail.
 
 
-Setting up a keypair
---------------------
+Creating a key pair
+-------------------
 
 There are two methods for creating an ssh key pair in NREC. To create
 an ssh key pair you should either
 
-* `Importing an existing key (RECOMMENDED)`_
+* **RECOMMENDED** `Importing an existing public key`_: With this
+  method you upload an existing public key into NREC
 
 **OR**
 
-* `Letting OpenStack create a keypair`_
+* `Letting OpenStack create a key pair`_: Here, NREC will create a new
+  key pair and let you download the private key into a file
 
 Most users should choose to create an ssh key pair on their client
 machine, and upload the public key to NREC.
 
 
-Importing an existing key (RECOMMENDED)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Importing an existing public key
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is the recommended approach.
 
 If the local computer is Linux, any BSD variant such as FreeBSD, MacOS
-or Windows 10, the easiest way is to create a keypair locally if you
+or Windows 10, the easiest way is to create a key pair locally if you
 don't already have one, using the command ``ssh-keygen`` (on Windows
 it's called ``ssh-keygen.exe``):
 
@@ -89,7 +91,7 @@ it's called ``ssh-keygen.exe``):
 
 Before running ssh-keygen we're making sure that the current working
 directory is our home directory. In this case we are creating a
-keypair of type RSA and 4096 bits long, which should provide
+key pair of type RSA and 4096 bits long, which should provide
 sufficient security. We specify the output filename **.ssh/nrec**. The
 files created in your home directory are
 
@@ -121,13 +123,13 @@ following:
 
 .. figure:: images/dashboard-import-keypair-01.png
    :align: center
-   :alt: Dashboard - Import an SSH keypair
+   :alt: Dashboard - Import an SSH key pair
 
 Click "Import Key Pair" and the key is saved:
 
 .. figure:: images/dashboard-keypairs-01.png
    :align: center
-   :alt: Dashboard - View keypairs
+   :alt: Dashboard - View key pairs
 
 ---------------------------------------------------------------------
 	 
@@ -160,10 +162,10 @@ You can then list your keys:
   +-------+-------------------------------------------------+
 
 
-Letting OpenStack create a keypair
+Letting OpenStack create a key pair
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can let OpenStack create a keypair for you, if you don't wish to
+You can let OpenStack create a key pair for you, if you don't wish to
 create one locally or use an existing one. Navigate to **Project**
 -> **Compute** -> **Key Pairs**:
 
@@ -175,7 +177,7 @@ Click on **Create Key Pair**:
 
 .. figure:: images/dashboard-create-keypair-01.png
    :align: center
-   :alt: Dashboard - Create an SSH keypair
+   :alt: Dashboard - Create an SSH key pair
 
 Choose a name for you key pair (here: "nrec"), select "SSH Key" from
 the **Key Type** drop-down menu, and click **Create Key Pair**. The newly
@@ -184,7 +186,7 @@ created private key will be downloaded by the browser automatically as
 
 The name of the downloaded file is based on the name you provided
 earlier. In this example the file is called "nrec.pem" as "nrec" was
-provided as the keypair name. Remember to restrict the access to the
+provided as the key pair name. Remember to restrict the access to the
 private key, as SSH will refuse to use unless it's properly
 protected:
 
