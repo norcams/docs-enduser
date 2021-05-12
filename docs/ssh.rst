@@ -166,17 +166,61 @@ protected:
 Connecting to the instance
 --------------------------
 
+.. _Working with Security Groups: security-groups.html
 
+.. IMPORTANT::
+   Connecting to the instance requires that port 22 (the SSH port) is
+   allowed through the firewall. For more information, see `Working
+   with Security Groups`_
 
+After creating an instance you will use the ssh key pair to connect to
+it. During the instance creation, NREC has added the public key into
+the **~/.ssh/authorized_keys** for the proper user. The username
+varies with the Linux distribution at the discretion of the
+vendor. The most common are:
 
-In order to use the downloaded private key, use the **-i** option to
-ssh, like this (example for "nrec.pem" above):
+============== ==============
+Image          User
+============== ==============
+**CentOS**     ``centos``
+**Fedora**     ``fedora``
+**Ubuntu**     ``ubuntu``
+**Debian**     ``debian``
+**RHEL**       ``cloud-user``
+**CirrOS**     ``cirros``
+============== ==============
+
+This is a non-exhaustive list. For images not listed here, consult the
+image vendor's documentation.
+
+To connect via ssh, we specify the private key file, the username and
+the IP address of the instance:
 
 .. code-block:: console
 
-  $ ssh -i nrec.pem -l <username> <virtual-machine>
+  $ ssh -i <keyfile> <username>@<ip-address>
 
-Replace "<virtual-machine>" with the name or IP of the virtual machine
-that this keypair is assigned to, and "<username>" with the username
-for which the SSH key is added to authorized_keys. For more info, see
-`Accessing the virtual machine`_.
+If the keyfile is the default, created using ssh-keygen and using
+the default filename, you can omit the **-i <keyfile>**
+option. Example for a CentOS instance, using a key called "nrec"
+created with ssh-keygen:
+
+.. code-block:: console
+
+  $ ssh -i ~/.ssh/nrec -l centos@2001:700:2:8201::13d0
+
+In order to use the downloaded private key, you must specify the
+private key file, like this (example for "nrec.pem" above):
+
+.. code-block:: console
+
+  $ ssh -i nrec.pem <username>@<ip-address>
+
+After successfully connecting to the instance. You can then
+use **sudo** to gain root access:
+
+.. code-block:: console
+
+  [centos@testvm ~]$ sudo -i
+  [root@testvm ~]# whoami
+  root
