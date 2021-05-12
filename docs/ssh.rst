@@ -224,3 +224,25 @@ use **sudo** to gain root access:
   [centos@testvm ~]$ sudo -i
   [root@testvm ~]# whoami
   root
+
+
+Caveats and limitations
+-----------------------
+
+There are a few caveats and limitations that you should be aware of
+when using creating and using SSH key pairs in NREC:
+
+* The dashboard does not support some modern SSH ciphers. This is why
+  we're using RSA in the examples, it's good enough and we know it
+  works. The CLI does not have this limitation.
+
+* An SSH key pair in NREC follows the user-project-region
+  combination. This differs from most attributes that does not have
+  the user aspect. Due to the API/CLI user being a different user
+  (albeit with the same username) as the GUI user, keys created in GUI
+  are not visible in API/CLI, and vice versa.
+
+* It is possible to create an SSH key pair within the process of
+  creating an instance. This doesn't work properly. For best results,
+  create the ssh key pair before creating the instance, as described
+  in this document.
