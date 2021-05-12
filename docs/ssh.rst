@@ -207,7 +207,7 @@ created with ssh-keygen:
 
 .. code-block:: console
 
-  $ ssh -i ~/.ssh/nrec -l centos@2001:700:2:8201::13d0
+  $ ssh -i ~/.ssh/nrec centos@2001:700:2:8201::13d0
 
 In order to use the downloaded private key, you must specify the
 private key file, like this (example for "nrec.pem" above):
