@@ -227,9 +227,8 @@ You can then list your keys:
   | nrec  | 9d:b5:68:c9:d4:53:ab:73:95:f7:85:a2:74:a8:41:9e |
   +-------+-------------------------------------------------+
 
-Remember to restrict the access to the
-private key, as SSH will refuse to use unless it's properly
-protected:
+Remember to restrict the access to the private key, as SSH will refuse
+to use unless it's properly protected:
 
 .. code-block:: console
 
