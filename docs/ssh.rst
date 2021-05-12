@@ -23,6 +23,18 @@ key into NREC.
    :align: center
    :alt: SSH illustration
 
+In order to access an instance in NREC, you need to specify the
+correct ssh public key when creating the instance:
+
+#. Create an SSH key pair (or use an existing one)
+
+#. Upload the public key to NREC and give it a proper name
+
+#. Specify this public key when creating the instance
+
+#. SSH to the instance using the corresponding private key
+
+We will go through these steps in more detail.
 
 
 Setting up a keypair
