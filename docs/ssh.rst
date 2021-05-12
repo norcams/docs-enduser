@@ -30,7 +30,7 @@ correct ssh public key when creating the instance:
 
 #. Upload the public key to NREC and give it a proper name
 
-#. Specify this public key when creating the instance
+#. Specify this key by its name when creating the instance
 
 #. Connect via SSH to the instance using the corresponding private key
 
