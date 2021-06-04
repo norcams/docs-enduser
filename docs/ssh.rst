@@ -3,9 +3,6 @@
 Using SSH
 =========
 
-.. WARNING::
-   This document is under development.
-
 Last changed: |date|
 
 .. contents::

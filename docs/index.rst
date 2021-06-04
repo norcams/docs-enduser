@@ -21,6 +21,7 @@ Norwegian Research and Education Cloud
    dashboard
    create-virtual-machine
    create-windows-machine
+   ssh
    security-groups
    manage-volumes
    create-snapshot
