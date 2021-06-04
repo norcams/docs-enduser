@@ -43,7 +43,7 @@ Creating a key pair
 There are two methods for creating an ssh key pair in NREC. To create
 an ssh key pair you should either
 
-* **RECOMMENDED** `Importing an existing public key`_: With this
+* `Importing an existing public key`_ **RECOMMENDED**: With this
   method you upload an existing public key into NREC
 
 **OR**
