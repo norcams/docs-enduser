@@ -7,6 +7,23 @@ Last changed: |date|
 
 .. contents::
 
+CentOS 8 downstream end-of-life December 31, 2021
+-------------------------------------------------
+
+A policy change from the CentOS team changed the end-of-life date from 2029 to
+the end of 2021, instead shifting focus to the CentOS Stream distribution. The
+difference being that Stream is an upstream release for RedHat Enterprise Linux (RHEL),
+as opposed to a downstream distribution as it has been hitherto. The Stream
+distribution will release packages one minor release ahead of RedHat Enterprise Linux,
+and for some this represents a stability consern. This has prompted a community
+response in the form of two new downstream RHEL distributions, Alma Linux and Rocky
+Linux. The former is yet to release a cloud image that the NREC Team can base our
+image building process on, and the latter is still to reach final release. Our
+recommendation for now is to use CentOS 8. Later on it will be trivial to convert
+CentOS 8 to either Alma, Rocky or CentOS 8 Stream, and the NREC team will provide
+information on how to proceed in due time. 
+
+
 API access
 ----------
 
