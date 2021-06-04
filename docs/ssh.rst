@@ -300,6 +300,51 @@ use **sudo** to gain root access:
   root
 
 
+Deleting key pairs
+------------------
+
+In order to delete a key pair in the GUI, navigate to **Project**
+-> **Compute** -> **Key Pairs**. In the list of key pairs use
+the **Delete Key Pair** button to delete the key, or select keys and
+use the **Delete Key Pairs** button on the top right:
+
+.. figure:: images/ssh-delete-keypair-01.png
+   :align: center
+   :alt: Dashboard - Delete key pairs
+
+Once a key pair is deleted, it is no longer accessible for use when
+provisioning new instances. Deleting a key pair will not affect
+running instances that uses that key pair.
+
+---------------------------------------------------------------------
+
+Deleting a key pair using the CLI is done with this command::
+
+  openstack keypair delete [-h] <key> [<key> ...]
+
+First we list our key pairs (this can be omitted if you know the name
+of the key pair you want to delete):
+
+.. code-block:: console
+
+  $ openstack keypair list
+  +-------+-------------------------------------------------+
+  | Name  | Fingerprint                                     |
+  +-------+-------------------------------------------------+
+  | bar   | 9d:b5:68:c9:d5:53:ab:73:95:f7:85:a2:74:a8:41:9e |
+  | foo   | 34:3c:b0:40:02:fa:2f:e4:6c:da:9f:7a:3b:44:23:34 |
+  | mykey | e2:2e:26:df:5d:98:9e:8f:5e:fd:c7:d5:d0:6b:44:e7 |
+  +-------+-------------------------------------------------+
+
+Then we delete the key pair:
+
+.. code-block:: console
+
+  $ openstack keypair delete foo
+
+You may specify more than one key pair to this command.
+
+
 Caveats and limitations
 -----------------------
 
