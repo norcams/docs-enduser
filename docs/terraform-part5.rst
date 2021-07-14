@@ -47,6 +47,7 @@ In this example we create a zone "test.com":
    :caption: zone.tf
    :name: zone-tf
    :linenos:
+   :lines: 16-
 
 This is all that is needed. You may add additional parameters, most
 commonly **TTL**, if you need to set a TTL value other than the

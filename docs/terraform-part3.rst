@@ -136,7 +136,7 @@ key pair resource, is as before but using variables:
 .. literalinclude:: downloads/tf-example3/main.tf
    :caption: main.tf
    :linenos:
-   :lines: 1-21
+   :lines: 16-21
 
 Next, we'll look at our security groups in :ref:`secgroup-tf`. We now
 have three of them:
