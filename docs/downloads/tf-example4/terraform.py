@@ -223,8 +223,8 @@ def packet_device(resource, tfvars=None):
         'provider': 'packet',
     }
 
-    if raw_attrs['operating_system'] == 'coreos_stable':
-        # For CoreOS set the ssh_user to core
+    if raw_attrs['operating_system'] == 'flatcar_stable':
+        # For Flatcar set the ssh_user to core
         attrs.update({'ansible_ssh_user': 'core'})
 
     # add groups based on attrs
@@ -289,7 +289,7 @@ def openstack_host(resource, module_name):
         attrs['private_ipv4'] = raw_attrs['network.0.fixed_ip_v4']
 
     try:
-        if 'metadata.prefer_ipv6' in raw_attrs and raw_attrs['metadata.prefer_ipv6'] == "true":
+        if 'metadata.prefer_ipv6' in raw_attrs and raw_attrs['metadata.prefer_ipv6'] == "1":
             attrs.update({
                 'ansible_ssh_host': re.sub("[\[\]]", "", raw_attrs['access_ip_v6']),
                 'publicly_routable': True,
@@ -319,21 +319,15 @@ def openstack_host(resource, module_name):
 
     # attrs specific to Mantl
     attrs.update({
-        'consul_dc': _clean_dc(attrs['metadata'].get('dc', module_name)),
-        'role': attrs['metadata'].get('role', 'none'),
-        'ansible_python_interpreter': attrs['metadata'].get('python_bin','python')
+        'role': attrs['metadata'].get('role', 'none')
     })
 
     # add groups based on attrs
-    groups.append('os_image=' + attrs['image']['name'])
-    groups.append('os_flavor=' + attrs['flavor']['name'])
+    groups.append('os_image=' + str(attrs['image']['id']))
+    groups.append('os_flavor=' + str(attrs['flavor']['name']))
     groups.extend('os_metadata_%s=%s' % item
                   for item in list(attrs['metadata'].items()))
-    groups.append('os_region=' + attrs['region'])
-
-    # groups specific to Mantl
-    groups.append('role=' + attrs['metadata'].get('role', 'none'))
-    groups.append('dc=' + attrs['consul_dc'])
+    groups.append('os_region=' + str(attrs['region']))
 
     # groups specific to kubespray
     for group in attrs['metadata'].get('kubespray_groups', "").split(","):
@@ -346,7 +340,7 @@ def iter_host_ips(hosts, ips):
     '''Update hosts that have an entry in the floating IP list'''
     for host in hosts:
         host_id = host[1]['id']
-        use_access_ip = host[1]['metadata']['use_access_ip']
+
         if host_id in ips:
             ip = ips[host_id]
 
@@ -357,8 +351,9 @@ def iter_host_ips(hosts, ips):
                 'ansible_ssh_host': ip,
             })
 
-            if use_access_ip == "0":
+        if 'use_access_ip' in host[1]['metadata'] and host[1]['metadata']['use_access_ip'] == "0":
                 host[1].pop('access_ip')
+
         yield host
 
 

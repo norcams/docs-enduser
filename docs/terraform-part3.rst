@@ -136,7 +136,7 @@ key pair resource, is as before but using variables:
 .. literalinclude:: downloads/tf-example3/main.tf
    :caption: main.tf
    :linenos:
-   :lines: 1-9
+   :lines: 1-21
 
 Next, we'll look at our security groups in :ref:`secgroup-tf`. We now
 have three of them:
@@ -190,7 +190,7 @@ We'll circle back to :ref:`main-tf`:
 .. literalinclude:: downloads/tf-example3/main.tf
    :caption: main.tf
    :linenos:
-   :lines: 11-67
+   :lines: 23-79
 
 We now define two different instance resources. One for web servers
 and one for the database server. They use different values defined in
@@ -200,7 +200,7 @@ resource and attach this volume to the database server:
 .. literalinclude:: downloads/tf-example3/main.tf
    :caption: main.tf
    :linenos:
-   :lines: 69-
+   :lines: 81-
 
 
 Making changes
@@ -225,13 +225,6 @@ line), we can run ``terraform plan``:
 
   $ terraform plan
   ...
-  Terraform will perform the following actions:
-  
-    - openstack_compute_instance_v2.web_instance[2]
-  
-    - openstack_compute_instance_v2.web_instance[3]
-    
-  
   Plan: 0 to add, 0 to change, 2 to destroy.
   ...
 

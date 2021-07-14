@@ -53,8 +53,8 @@ variable "allow_mysql_from_v4" {
 variable "role_image" {
   type = map(string)
   default = {
-    "web" = "GOLD CentOS 7"
-    "db"  = "GOLD Ubuntu 18.04 LTS"
+    "web" = "GOLD CentOS 8"
+    "db"  = "GOLD Ubuntu 21.04 LTS"
   }
 }
 

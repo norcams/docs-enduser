@@ -142,7 +142,7 @@ metadata for our zone we use a ``data`` directive in Terraform:
 .. literalinclude:: downloads/tf-example5/dynamic.tf
    :caption: dynamic.tf
    :linenos:
-   :lines: 3-7,38-41
+   :lines: 16-19,51-54
 
 In this example, we have a resource declaration for instances that
 creates an arbitrary number of instances. In our example, we create 2
@@ -151,7 +151,7 @@ instances:
 .. literalinclude:: downloads/tf-example5/dynamic.tf
    :caption: dynamic.tf
    :linenos:
-   :lines: 13-36
+   :lines: 26-49
 
 Finally, in order to create DNS records for our instances we need to
 reference the name and IP of the instances. Notice the usage of the
@@ -160,7 +160,7 @@ data variable to reference the zone ID (highlighted):
 .. literalinclude:: downloads/tf-example5/dynamic.tf
    :caption: dynamic.tf
    :linenos:
-   :lines: 43-
+   :lines: 56-
    :emphasize-lines: 3,12
 
 In this example, we create both **A** (IPv4) and **AAAA** (IPv6)
@@ -177,9 +177,9 @@ created:
   +----------------------------+-------+-------------------------------------------------------------+
   | name                       | type  | records                                                     |
   +----------------------------+-------+-------------------------------------------------------------+
-  | mytestzone.com.            | SOA   | ns2.nrec.no. foo.bar.com. 1575885141 3519 600 86400 3600 |
-  | mytestzone.com.            | NS    | ns1.nrec.no.                                             |
-  |                            |       | ns2.nrec.no.                                             |
+  | mytestzone.com.            | SOA   | ns2.nrec.no. foo.bar.com. 1575885141 3519 600 86400 3600    |
+  | mytestzone.com.            | NS    | ns1.nrec.no.                                                |
+  |                            |       | ns2.nrec.no.                                                |
   | bgo-test-1.mytestzone.com. | A     | 158.39.74.137                                               |
   | bgo-test-0.mytestzone.com. | AAAA  | 2001:700:2:8300::21d3                                       |
   | bgo-test-1.mytestzone.com. | AAAA  | 2001:700:2:8300::207e                                       |

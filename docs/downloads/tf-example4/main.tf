@@ -1,5 +1,17 @@
-provider "openstack" {
+# Define required providers
+terraform {
+  required_version = ">= 1.0"
+  required_providers {
+    openstack = {
+      source  = "terraform-provider-openstack/openstack"
+    }
+  }
 }
+
+# Configure the OpenStack Provider
+# Empty means using environment variables "OS_*". More info:
+# https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest/docs
+provider "openstack" {}
 
 # SSH key
 resource "openstack_compute_keypair_v2" "keypair" {
@@ -29,7 +41,7 @@ resource "openstack_compute_instance_v2" "web_instance" {
 
   metadata = {
     ssh_user       = lookup(var.role_ssh_user, "web", "unknown")
-    prefer_ipv6    = true
+    prefer_ipv6    = 1
     my_server_role = "web"
   }
 
@@ -64,7 +76,7 @@ resource "openstack_compute_instance_v2" "db_instance" {
 
   metadata = {
     ssh_user       = lookup(var.role_ssh_user, "db", "unknown")
-    prefer_ipv6    = true
+    prefer_ipv6    = 1
     python_bin     = "/usr/bin/python3"
     my_server_role = "database"
   }

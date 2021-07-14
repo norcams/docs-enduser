@@ -43,7 +43,7 @@ scenario would output:
 
 .. code-block:: console
 
-  image_name:     "Outdated (CentOS)" => "GOLD CentOS 7" (forces new resource)
+  image_name:     "Outdated (CentOS 8)" => "GOLD CentOS 8" (forces new resource)
 
 In order to combat this, we add the following
 code snippet to our ``openstack_compute_instance_v2`` resource:
@@ -51,7 +51,7 @@ code snippet to our ``openstack_compute_instance_v2`` resource:
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :caption: advanced.tf
    :linenos:
-   :lines: 69-71
+   :lines: 82-84
 
 This `lifecycle meta-argument`_ makes Terraform ignore changes to the
 image name. Another approach would be to specify ``image_id`` instead
@@ -81,24 +81,24 @@ accomplish that by using the count when specifying the instance name:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
-   :lines: 1-2,55-72
-   :emphasize-lines: 5-6
+   :lines: 1-15,68-85
+   :emphasize-lines: 18-19
 
 When running this file with ``terraform apply``, a total of 5
 instances are created, as expected:
 
 .. code-block:: console
 
-  $ openstack server list -c Name -c Networks -c Image -c Flavor
-  +--------+---------------------------------------+---------------+----------+
-  | Name   | Networks                              | Image         | Flavor   |
-  +--------+---------------------------------------+---------------+----------+
-  | test-4 | IPv6=2001:700:2:8201::1033, 10.2.0.51 | GOLD CentOS 7 | m1.small |
-  | test-0 | IPv6=2001:700:2:8201::1029, 10.2.0.68 | GOLD CentOS 7 | m1.small |
-  | test-2 | IPv6=2001:700:2:8201::1009, 10.2.0.62 | GOLD CentOS 7 | m1.small |
-  | test-3 | IPv6=2001:700:2:8201::1027, 10.2.0.36 | GOLD CentOS 7 | m1.small |
-  | test-1 | IPv6=2001:700:2:8201::101a, 10.2.0.21 | GOLD CentOS 7 | m1.small |
-  +--------+---------------------------------------+---------------+----------+
+  $ openstack server list
+  +--------------------------------------+--------+--------+----------------------------------------+---------------+----------+
+  | ID                                   | Name   | Status | Networks                               | Image         | Flavor   |
+  +--------------------------------------+--------+--------+----------------------------------------+---------------+----------+
+  | 1f5381bd-2fd3-4152-85c2-1c18d628831c | test-3 | ACTIVE | IPv6=2001:700:2:8201::1055, 10.2.0.89  | GOLD CentOS 8 | m1.small |
+  | 3b0ea0d4-4af5-4963-8e95-4fce12cdaa04 | test-1 | ACTIVE | IPv6=2001:700:2:8201::1421, 10.2.0.97  | GOLD CentOS 8 | m1.small |
+  | 83740a1d-b5db-412e-bf73-815a00a5fd8e | test-0 | ACTIVE | IPv6=2001:700:2:8201::1400, 10.2.1.156 | GOLD CentOS 8 | m1.small |
+  | 87d92714-c375-489f-abe8-887491dfc0af | test-4 | ACTIVE | IPv6=2001:700:2:8201::149b, 10.2.1.172 | GOLD CentOS 8 | m1.small |
+  | 3b80d3a2-8883-41ea-9d36-7dc9db874f26 | test-2 | ACTIVE | IPv6=2001:700:2:8201::13af, 10.2.3.110 | GOLD CentOS 8 | m1.small |
+  +--------------------------------------+--------+--------+----------------------------------------+---------------+----------+
 
 
 Key pairs
@@ -110,7 +110,7 @@ a resource block for a key pair:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
-   :lines: 3-8, 55-72
+   :lines: 16-21, 68-85
    :emphasize-lines: 14
 
 After running Terraform, we can verify that the key has been created:
@@ -126,7 +126,6 @@ After running Terraform, we can verify that the key has been created:
   +------------------+-------------------------------------------------+
 
 
-
 Security groups
 ---------------
 
@@ -136,7 +135,7 @@ on the fly for us to use:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
-   :lines: 9-72
+   :lines: 22-85
    :emphasize-lines: 55
 
 There is a lot of new stuff here:
@@ -160,38 +159,30 @@ Terraform file:
 .. code-block:: console
 
   $ openstack security group list -c Name -c Description
-  +--------------+-------------------------------------------------+
-  | Name         | Description                                     |
-  +--------------+-------------------------------------------------+
-  | RDP          |                                                 |
-  | ssh-and-icmp | Security group for allowing SSH and ICMP access |
-  | SSH and ICMP |                                                 |
-  | default      | Default security group                          |
-  +--------------+-------------------------------------------------+
+  +--------------------------------+--------------------------------------+
+  | Name                           | Description                          |
+  +--------------------------------+--------------------------------------+
+  | uio-ssh-icmp                   | Allow SSH and ICMP access from UiO   |
+  | SSH and ICMP from login.uio.no | Allow ssh and ping from login.uio.no |
+  | default                        | Default security group               |
+  +--------------------------------+--------------------------------------+
 
-We can also inspect the security group ``ssh-and-icmp`` that we
+We can also inspect the security group ``uio-ssh-icmp`` that we
 created, to verify that the specified rules are present:
 
 .. code-block:: console
 
-  $ openstack security group show ssh-and-icmp
-  +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-  | Field           | Value                                                                                                                                                                                                                                                  |
-  +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-  | created_at      | 2019-04-24T12:24:35Z                                                                                                                                                                                                                                   |
-  | description     | Security group for allowing SSH and ICMP access                                                                                                                                                                                                        |
-  | id              | 43863c7f-d105-47a5-afe2-22d74f7a4623                                                                                                                                                                                                                   |
-  | name            | ssh-and-icmp                                                                                                                                                                                                                                           |
-  | project_id      | b56e80c7c777419585b13ebafe024330                                                                                                                                                                                                                       |
-  | revision_number | 6                                                                                                                                                                                                                                                      |
-  | rules           | created_at='2019-04-24T12:24:35Z', direction='egress', ethertype='IPv6', id='53bfef03-fea6-4504-a996-69c12f5c00bd', updated_at='2019-04-24T12:24:35Z'                                                                                                  |
-  |                 | created_at='2019-04-24T12:24:35Z', direction='egress', ethertype='IPv4', id='7565bdf1-827a-4736-ba1c-dab822037c4b', updated_at='2019-04-24T12:24:35Z'                                                                                                  |
-  |                 | created_at='2019-04-24T12:24:36Z', direction='ingress', ethertype='IPv4', id='93458178-15b1-4ae5-bee0-225ae56aeeef', port_range_max='22', port_range_min='22', protocol='tcp', remote_ip_prefix='129.240.0.0/16', updated_at='2019-04-24T12:24:36Z'    |
-  |                 | created_at='2019-04-24T12:24:36Z', direction='ingress', ethertype='IPv4', id='9d1724ae-c375-4b64-98ec-43d0f6b58383', protocol='icmp', remote_ip_prefix='129.240.0.0/16', updated_at='2019-04-24T12:24:36Z'                                             |
-  |                 | created_at='2019-04-24T12:24:36Z', direction='ingress', ethertype='IPv6', id='b0d110ad-8e43-4493-a178-a3ef56854c20', protocol='icmp', remote_ip_prefix='2001:700:100::/40', updated_at='2019-04-24T12:24:36Z'                                          |
-  |                 | created_at='2019-04-24T12:24:37Z', direction='ingress', ethertype='IPv6', id='e7131d6e-9a56-43ca-819d-bd3428013b44', port_range_max='22', port_range_min='22', protocol='tcp', remote_ip_prefix='2001:700:100::/40', updated_at='2019-04-24T12:24:37Z' |
-  | updated_at      | 2019-04-24T12:24:37Z                                                                                                                                                                                                                                   |
-  +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  $ openstack security group rule list --long uio-ssh-icmp
+  +--------------------------------------+-------------+-------------------+------------+-----------+-----------+-----------------------+
+  | ID                                   | IP Protocol | IP Range          | Port Range | Direction | Ethertype | Remote Security Group |
+  +--------------------------------------+-------------+-------------------+------------+-----------+-----------+-----------------------+
+  | 391b4869-e900-44d8-9b7e-77318b9484ba | ipv6-icmp   | 2001:700:100::/41 |            | ingress   | IPv6      | None                  |
+  | 6f06e10a-99d8-4e3b-9dd3-6b20ff43aa28 | tcp         | 2001:700:100::/41 | 22:22      | ingress   | IPv6      | None                  |
+  | 88e6d5cf-1479-45a7-aa3f-8921ef84b939 | None        | None              |            | egress    | IPv4      | None                  |
+  | 98827cd8-7461-42c1-af8d-209813a15507 | icmp        | 129.240.0.0/16    |            | ingress   | IPv4      | None                  |
+  | 9c37c84c-e06c-4a0f-8f8e-24799210ec99 | tcp         | 129.240.0.0/16    | 22:22      | ingress   | IPv4      | None                  |
+  | bf54f0b2-844e-41a7-8f90-a11fb2c808c0 | None        | None              |            | egress    | IPv6      | None                  |
+  +--------------------------------------+-------------+-------------------+------------+-----------+-----------+-----------------------+
 
 
 Volumes
@@ -202,14 +193,14 @@ well. In order to create a volume you will define the resource:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
-   :lines: 74-78
+   :lines: 87-91
 
 Here, we create a volume named "my-volume" with a size of 10 GB. We
 also want to attach the volume to one of our instances:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
-   :lines: 80-84
+   :lines: 93-97
 
 In this example, we choose to attach the volume to instance number 0,
 which is the instance named "test-0". We can inspect using Openstack
@@ -218,11 +209,11 @@ CLI:
 .. code-block:: console
 
   $ openstack volume list
-  +--------------------------------------+-----------+--------+------+---------------------------------+
-  | ID                                   | Name      | Status | Size | Attached to                     |
-  +--------------------------------------+-----------+--------+------+---------------------------------+
-  | b75b654e-bd74-4796-9405-27ca2e056e96 | my-volume | in-use |   10 | Attached to test-0 on /dev/sdb  |
-  +--------------------------------------+-----------+--------+------+---------------------------------+
+  +--------------------------------------+--------------+-----------+------+---------------------------------+
+  | ID                                   | Name         | Status    | Size | Attached to                     |
+  +--------------------------------------+--------------+-----------+------+---------------------------------+
+  | b5240613-404d-4b85-a28b-8ad32f8b0652 | my-volume    | in-use    |   10 | Attached to test-0 on /dev/sdb  |
+  +--------------------------------------+--------------+-----------+------+---------------------------------+
 
 
 Complete example
