@@ -45,5 +45,5 @@ not, you should choose **IPv6**.
 
 The IPv4 address space is very limited compared to IPv6. This applies
 both globally and to NREC. We have a limited number of IPv4 addresses,
-and NREC users are urged to choose the **IPv6** if a public IPv4
-address is not strictly needed.
+and NREC users are urged to choose the **IPv6** network unless a
+public IPv4 address is strictly needed.
