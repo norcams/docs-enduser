@@ -206,7 +206,7 @@ we have omitted them from this list.
 
    A mask of ``/0`` will be accepted by the system even if the IP
    address part is not what we would consider to be "correct". This
-   means that ``129.240.12.7/0`` will be interpreted as ``0.0.0.0/0`` for
+   means that ``129.240.12.61/0`` will be interpreted as ``0.0.0.0/0`` for
    IPv4. The same applies to IPv6.
 
 When unsure about what range of addresses that a CIDR notation
@@ -313,9 +313,9 @@ login.uio.no:
 .. code-block:: console
 
   $ host login.uio.no
-  login.uio.no is an alias for sauron.uio.no.
-  sauron.uio.no has address 129.240.12.7
-  sauron.uio.no has IPv6 address 2001:700:100:12::7
+  login.uio.no is an alias for smaug.uio.no.
+  smaug.uio.no has address 129.240.12.61
+  smaug.uio.no has IPv6 address 2001:700:100:12::61
 
 We need to add 4 rules:
 
@@ -371,16 +371,16 @@ we're opting to use the ID. Adding the rules:
 
 .. code-block:: console
 
-  $ openstack security group rule create --ethertype IPv4 --protocol icmp --remote-ip 129.240.12.7 5157dbad-f96b-4921-b9ba-520b5e2ce995
+  $ openstack security group rule create --ethertype IPv4 --protocol icmp --remote-ip 129.240.12.61 5157dbad-f96b-4921-b9ba-520b5e2ce995
   (...output omitted...)
   
-  $ openstack security group rule create --ethertype IPv6 --protocol ipv6-icmp --remote-ip 2001:700:100:12::7 5157dbad-f96b-4921-b9ba-520b5e2ce995
+  $ openstack security group rule create --ethertype IPv6 --protocol ipv6-icmp --remote-ip 2001:700:100:12::61 5157dbad-f96b-4921-b9ba-520b5e2ce995
   (...output omitted...)
 
-  $ openstack security group rule create --ethertype IPv4 --protocol tcp --dst-port 22 --remote-ip 129.240.12.7 5157dbad-f96b-4921-b9ba-520b5e2ce995
+  $ openstack security group rule create --ethertype IPv4 --protocol tcp --dst-port 22 --remote-ip 129.240.12.61 5157dbad-f96b-4921-b9ba-520b5e2ce995
   (...output omitted...)
   
-  $ openstack security group rule create --ethertype IPv6 --protocol tcp --dst-port 22 --remote-ip 2001:700:100:12::7 5157dbad-f96b-4921-b9ba-520b5e2ce995
+  $ openstack security group rule create --ethertype IPv6 --protocol tcp --dst-port 22 --remote-ip 2001:700:100:12::61 5157dbad-f96b-4921-b9ba-520b5e2ce995
   (...output omitted...)
 
 After creating the rules, we can list all rules in the security group
@@ -389,16 +389,16 @@ for inspection:
 .. code-block:: console
 
   $ openstack security group rule list --long 5157dbad-f96b-4921-b9ba-520b5e2ce995
-  +--------------------------------------+-------------+-----------+------------------------+------------+-----------+-----------------------+
-  | ID                                   | IP Protocol | Ethertype | IP Range               | Port Range | Direction | Remote Security Group |
-  +--------------------------------------+-------------+-----------+------------------------+------------+-----------+-----------------------+
-  | 1cae9fa2-d8e3-4a65-bd7e-e61f43f71a3f | ipv6-icmp   | IPv6      | 2001:700:100:12::7/128 |            | ingress   | None                  |
-  | 4fd75388-8561-4b94-ba39-b689d3b3dbd0 | None        | IPv6      | ::/0                   |            | egress    | None                  |
-  | 5b536357-c390-4056-9c50-59bc116546bd | None        | IPv4      | 0.0.0.0/0              |            | egress    | None                  |
-  | 6dddba09-c782-4971-84f5-e09de159c6b4 | tcp         | IPv6      | 2001:700:100:12::7/128 | 22:22      | ingress   | None                  |
-  | b7895523-aadc-4756-b8b9-2eab8091ce96 | tcp         | IPv4      | 129.240.12.7/32        | 22:22      | ingress   | None                  |
-  | b7cab74e-d023-4504-b4f6-2e50e9e9a52f | icmp        | IPv4      | 129.240.12.7/32        |            | ingress   | None                  |
-  +--------------------------------------+-------------+-----------+------------------------+------------+-----------+-----------------------+
+  +--------------------------------------+-------------+-----------+-------------------------+------------+-----------+-----------------------+
+  | ID                                   | IP Protocol | Ethertype | IP Range                | Port Range | Direction | Remote Security Group |
+  +--------------------------------------+-------------+-----------+-------------------------+------------+-----------+-----------------------+
+  | 1cae9fa2-d8e3-4a65-bd7e-e61f43f71a3f | ipv6-icmp   | IPv6      | 2001:700:100:12::61/128 |            | ingress   | None                  |
+  | 4fd75388-8561-4b94-ba39-b689d3b3dbd0 | None        | IPv6      | ::/0                    |            | egress    | None                  |
+  | 5b536357-c390-4056-9c50-59bc116546bd | None        | IPv4      | 0.0.0.0/0               |            | egress    | None                  |
+  | 6dddba09-c782-4971-84f5-e09de159c6b4 | tcp         | IPv6      | 2001:700:100:12::61/128 | 22:22      | ingress   | None                  |
+  | b7895523-aadc-4756-b8b9-2eab8091ce96 | tcp         | IPv4      | 129.240.12.61/32        | 22:22      | ingress   | None                  |
+  | b7cab74e-d023-4504-b4f6-2e50e9e9a52f | icmp        | IPv4      | 129.240.12.61/32        |            | ingress   | None                  |
+  +--------------------------------------+-------------+-----------+-------------------------+------------+-----------+-----------------------+
 
 
 Remote Security Group
