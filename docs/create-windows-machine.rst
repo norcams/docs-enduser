@@ -5,6 +5,8 @@ Create a Windows virtual machine
 
 Last changed: |date|
 
+.. _IPv6 or dualStack: networking.html#ipv6-or-dualstack
+
 .. contents::
 
 .. IMPORTANT::
