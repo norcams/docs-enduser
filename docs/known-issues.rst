@@ -228,6 +228,7 @@ Instance name
 We recommend you to name your instances only with [a-zA-Z0-9]
 characters to avoid any maintenance issues.
 
+
 Security Groups caution
 -----------------------
 When creating security groups via the API (e.g. Terraform), be as explicit as
@@ -244,3 +245,26 @@ calculator if you're unsure.
 
 Users are always advised to ensure their security group rules work as intended
 in regards to both IP and port filtering.
+
+
+Can choose both IPv6 and dualStack
+----------------------------------
+
+.. _IPv6 or dualStack: networking.html#ipv6-or-dualstack
+
+It is possible, when creating an instance, to select more than one
+network on a single host. As described in `IPv6 or dualStack`_ you
+should only select one network.
+
+If an instance has more than one network enabled, it will most likely
+not work correctly. In order to fix this issue, do the following:
+
+#. Shut down the instance
+
+#. In the GUI, select **Detach Interface** and select the network you
+   wish to remove
+
+#. Start the instance
+
+It may take a few minutes for the instance to become available with
+the fixed networking setup.
