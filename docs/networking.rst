@@ -7,6 +7,68 @@ Last changed: |date|
 
 .. contents::
 
+.. _private network: https://en.wikipedia.org/wiki/Private_network
+.. _NAT: https://en.wikipedia.org/wiki/Network_address_translation
+
+IPv6 or dualStack
+-----------------
+
+When creating an instance, you need to choose a network. There are two
+networks to choose from:
+
+**IPv6**
+  This network provides a public IPv6 address and a private IPv4
+  address. The IPv4 address can still be used for communication
+  between instances in NREC, but is not accessible from the outside,
+  i.e. from the internet. The instance can use its private IPv4
+  address to communicate with the outside, via local NAT.
+
+**dualStack**
+  This network provides a public IPv6 address and a public IPv4
+  address. Both are accessible from the internet.
+
+Both network are technically dualstack, i.e. the instance will get
+both an IPv4 and an IPv6 address. The only difference is the IPv4
+address, which for the **IPv6** network will be a `RFC1918 private
+network`_ address.
+
+When creating an instance, you should only choose only one
+network. Never choose both. While it is technically possible to choose
+more than one, it is unnecessary and redundant, and our images will
+most likely not work properly with two networks.
+
+
+Which to choose
+~~~~~~~~~~~~~~~
+
+As explained above, the only difference between the two networks is
+the IPv4 address. If you need to communicate with your instance via
+IPv4 from the outside of NREC, you should choose **dualStack**. If
+not, you should choose **IPv6**.
+
+Note that when using the **IPv6** network, the instance can still
+communicate with the outside using its private IPv4 via NAT_. However,
+the NAT_ infrastructure in NREC does not scale to vast amounts of
+traffic. If your instance needs to download huge amounts of data via
+IPv4 you should still choose **dualStack** to get a dedicated IPv4
+link. This is not an issue for normal maintenance tasks such as apt or
+yum operations.
+
+The IPv4 address space is very limited compared to IPv6. This applies
+both globally and to NREC. We have a limited number of IPv4 addresses,
+and NREC users are urged to choose the **IPv6** network unless a
+public IPv4 address is strictly needed.
+
+In summary:
+
+* If your instance needs to be reachable via IPv4 from the internet,
+  choose **dualStack**
+
+* If your instance needs to download huge amounts of data via IPv4,
+  choose **dualStack**
+
+* For all else, choose **IPv6**
+
 
 Background
 ----------
