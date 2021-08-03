@@ -12,6 +12,7 @@ Last changed: |date|
 .. _Using SSH: ssh.html
 .. _Creating a key pair: ssh.html#creating-a-key-pair
 .. _Connecting to the instance: ssh.html#connecting-to-the-instance
+.. _IPv6 or dualStack: networking.html#ipv6-or-dualstack
 
 
 SSH key pair
@@ -86,8 +87,6 @@ lays in IPv4.
 
 * **dualStack** provides a public IPv4 address and a public IPv6
   address.
-
-.. _IPv6 or dualStack: networking.html#ipv6-or-dualstack
 
 For more information, see `IPv6 or dualStack`_.
 
