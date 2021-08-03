@@ -87,13 +87,19 @@ lays in IPv4.
 * **dualStack** provides a public IPv4 address and a public IPv6
   address.
 
-IPv6 is the future of internet IP addressing, but unfortunately, not
-all devices support IPv6 yet. Please check your IPv6 connectivity
-before choosing "IPv6".
+.. _IPv6 or dualStack: networking.html#ipv6-or-dualstack
 
-You should also note that you only can choose either "dualStack" or
-"IPv6", choosing both networks at the same time will result in
-networking issues.
+For more information, see `IPv6 or dualStack`_.
+
+.. NOTE::
+   **Only one network!**
+
+   The instance will not work correctly if more than one network is
+   applied. Only choose one of **IPv6** or **dualStack**.
+
+   If unsure, choose **IPv6**. Our IPv4 address space is very
+   limited. Login hosts at UiO and UiB have IPv6 configured, and can
+   be used to manage your instances via IPv6.
 
 When finished with this tab, select the "Security Groups" tab:
 
