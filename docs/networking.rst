@@ -41,6 +41,12 @@ most likely not work properly with two networks.
 Which to choose
 ~~~~~~~~~~~~~~~
 
+.. WARNING::
+   **Only one network!**
+
+   The instance will not work correctly if more than one network is
+   applied. Only choose one of **IPv6** or **dualStack**.
+
 As explained above, the only difference between the two networks is
 the IPv4 address. If you need to communicate with your instance via
 IPv4 from the outside of NREC, you should choose **dualStack**. If
@@ -68,6 +74,11 @@ In summary:
   choose **dualStack**
 
 * For all else, choose **IPv6**
+
+.. IMPORTANT::
+   If unsure, choose **IPv6**. Our IPv4 address space is very
+   limited. Login hosts at UiO and UiB have IPv6 configured, and can
+   be used to manage your instances via IPv6.
 
 
 Background
