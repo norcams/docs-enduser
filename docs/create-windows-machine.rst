@@ -94,13 +94,27 @@ When finished with this tab, select the next, "Networks":
    :align: center
    :alt: Dashboard - Launch instance - Networks
 
-In the NREC cloud, there are two networks to choose from, "dualStack"
-and "IPv6". Both networks provides a public IPv6 address, so the difference
-lays in IPv4. "dualStack" provides a public IPv4 address as well, while
-"IPv6" provides a "private" IPv4 address (rfc 1918) which gives the
-instance outbound IPv4 connectivity through NAT. IPv6 is the future
-of internet addressing, but unfortunately not all computers are
-IPv6 enabled as yet. Check your IPv6 connectivity before choosing "IPv6".
+In NREC, there are two networks to choose from, "dualStack" and
+"IPv6". Both networks provide a public IPv6 address, so the difference
+lays in IPv4.
+
+* **IPv6** provides a "private" IPv4 address (RFC 1918), which gives
+  the instance outbound IPv4 connectivity through NAT
+
+* **dualStack** provides a public IPv4 address and a public IPv6
+  address.
+
+For more information, see `IPv6 or dualStack`_.
+
+.. NOTE::
+   **Only one network!**
+
+   The instance will not work correctly if more than one network is
+   applied. Only choose one of **IPv6** or **dualStack**.
+
+   If unsure, choose **IPv6**. Our IPv4 address space is very
+   limited. Login hosts at UiO and UiB have IPv6 configured, and can
+   be used to manage your instances via IPv6.
 
 When finished with this tab, you can optionally add security groups. In
 our example, we skip this stage (we will create and add security group later)
