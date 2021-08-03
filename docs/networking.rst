@@ -29,7 +29,7 @@ networks to choose from:
 
 Both network are technically dualstack, i.e. the instance will get
 both an IPv4 and an IPv6 address. The only difference is the IPv4
-address, which for the **IPv6** network will be a `RFC1918 private
+address, which for the **IPv6** network will be a RFC1918 `private
 network`_ address.
 
 When creating an instance, you should only choose only one
