@@ -26,6 +26,11 @@ Last changed: |date|
    be activated. However, for licensing reasons, this will not as yet happen
    in the OSL region, and the Windows instances there will run unactivated.
 
+.. WARNING::
+   If you want to create a snapshot of a windows instance as a base for new
+   instances, you must run sysprep.exe in order for any instances launched from
+   the snapshot to work.
+
 
 Supported Windows versions
 --------------------------
