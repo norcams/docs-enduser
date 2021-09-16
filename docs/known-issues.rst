@@ -21,7 +21,7 @@ Linux. The former is yet to release a cloud image that the NREC Team can base ou
 image building process on, and the latter is still to reach final release. Our
 recommendation for now is to use CentOS 8. Later on it will be trivial to convert
 CentOS 8 to either Alma, Rocky or CentOS 8 Stream, and the NREC team will provide
-information on how to proceed in due time. 
+information on how to proceed in due time.
 
 
 API access
@@ -268,3 +268,12 @@ not work correctly. In order to fix this issue, do the following:
 
 It may take a few minutes for the instance to become available with
 the fixed networking setup.
+
+
+GOLD image may vary between regions
+-----------------------------------
+
+As our GOLD images are built separately for each region, and not necessarily on
+the same day, the base upstream image may be altered between the builds. Thus
+there may be some differencies between instances started at the same time in our
+two regions, even though they may seem to be started from the same GOLD image.
