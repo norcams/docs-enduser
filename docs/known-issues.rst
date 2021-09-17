@@ -128,28 +128,6 @@ You should now be able to create new machines based upon this snapshot and get
 fully functional networks.
 
 
-Fedora 30
-'''''''''
-IPv6 is broken in an instance started from a snapshot, and this can also affect
-the original instance. This issue appears regardless of which network
-is selected for the instance. Here is a workaround:
-
-1. Log in to the instance as the **fedora** user
-
-#. Remove the IPv6 dhclient leases file::
-
-     rm /var/lib/NetworkManager/dhclient6-*-eth0.lease
-
-#. Log out and shut down the system
-
-#. Create a snapshot
-
-#. The original instance might be restarted at this point
-
-You should now be able to create new machines based upon this snapshot and get
-fully functional networks.
-
-
 CentOS 7
 ''''''''
 
