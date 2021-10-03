@@ -43,9 +43,9 @@ The "default" Security Group
 A newly created project in NREC will have a security group called
 "default". This security group is unique for this project, and all
 project will have a security group called "default". This security
-group cannot be deleted. To find it in the dashboard GUI, navigate
-to **Project** -> **Network** -> **Security Groups** and click on
-it. This security group contains four rules:
+group cannot be deleted. To find it in the dashboard GUI, navigate to
+:menuselection:`Project --> Network --> Security Groups` and click
+on it. This security group contains four rules:
 
 .. figure:: images/security-groups-default.png
    :align: center
