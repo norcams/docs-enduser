@@ -323,7 +323,7 @@ address via login.uio.no:
 
 .. code-block:: console
 
-  [user@home ~]$ ssh -J uiouser@login.uio.no ubuntu@2001:700:2:8301::1265
+  $ ssh -J uiouser@login.uio.no ubuntu@2001:700:2:8301::1265
   uiouser@login.uio.no's password: 
 
 You don't need IPv6 on the client host for this to work! We're using
@@ -352,7 +352,7 @@ line:
 
 .. code-block:: console
 
-  [user@home ~]$ ssh ubuntu@2001:700:2:8301::1265
+  $ ssh ubuntu@2001:700:2:8301::1265
   uiouser@login.uio.no's password: 
   ubuntu@2001:700:2:8301::1265: Permission denied (publickey).
 
