@@ -330,13 +330,17 @@ You don't need IPv6 on the client host for this to work! We're using
 login.uio.no as an IPv4-to-IPv6 proxy.
 
 There is a way to avoid having to specify ``-J <username>@<proxy>``
-every time. For this we need to create an ssh config file::
+every time. For this we need to create an ssh config file:
+
+.. code-block:: none
 
   touch ~/.ssh/config
   chmod 0600 ~/.ssh/config
 
 The commands above creates an empty file with the correct
-permissions. You can edit this file and add::
+permissions. You can edit this file and add:
+
+.. code-block:: none
 
   Host 2001:700:2:8200:* 2001:700:2:8201:* 2001:700:2:8301:* 2001:700:2:8300:*
       ProxyJump <username>@<proxy>
@@ -355,7 +359,9 @@ line:
 But what about the SSH key. You still need to provide the ssh key if
 it's not the default, as the example above shows. You may give the key
 on command line as described above, or you can specify the key in the
-config::
+config:
+
+.. code-block:: none
 
   Host 2001:700:2:8200:* 2001:700:2:8201:* 2001:700:2:8301:* 2001:700:2:8300:*
       ProxyJump uiouser@login.uio.no
@@ -363,11 +369,15 @@ config::
 
 Then it works. But we can enhance the experience even further by using
 session multiplexing. We first add a directory under ``~/.ssh``, which
-will hold our multiplexing sockets::
+will hold our multiplexing sockets:
+
+.. code-block:: none
 
   mkdir -m 0700 .ssh/controlmaster
 
-Then we add the following config for login.uio.no::
+Then we add the following config for login.uio.no:
+
+.. code-block:: none
 
   Host login.uio.no
       User uiouser
@@ -381,7 +391,9 @@ use the same channel to the proxy host and not require
 authentication. It will also be much faster. Other SSH commands, such
 as scp, will also use this multiplexed session.
 
-Our final ``~/.ssh/config``::
+Our final ``~/.ssh/config``:
+
+.. code-block:: none
 
   Host 2001:700:2:8200:* 2001:700:2:8201:* 2001:700:2:8301:* 2001:700:2:8300:*
       ProxyJump uiouser@login.uio.no
