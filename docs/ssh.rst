@@ -297,6 +297,106 @@ use **sudo** to gain root access:
   root
 
 
+Connecting through a proxy
+--------------------------
+
+Using security groups, you should attempt to limit the access to the
+instance as much as possible. This also applies to SSH access. We
+encourage the use of login hosts such as login.uio.no and login.uib.no
+to access your instances in NREC.
+
+We also encourage users to choose the «IPv6» network rather than
+«dualStack», if possible. With the «IPv6» network you need to connect
+to your instance from a host that has IPv6 (such as the login hosts
+mentioned above).
+
+Working with your instance from a login host, rather than your
+personal computer, can sometimes be cumbersome and make a less
+efficient workflow. It is possible to use a "jump host", such as
+login.uio.no and login.uib.no, as proxy when connecting to the
+instance::
+
+  ssh -J <username>@<proxyhost> <image-username>@<nrec-instance>
+
+Example, if I were to connect to an Ubuntu instance using its IPv6
+address via login.uio.no ::
+
+.. code-block:: console
+
+  [user@home ~]$ ssh -J uiouser@login.uio.no ubuntu@2001:700:2:8301::1265
+  uiouser@login.uio.no's password: 
+
+You don't need IPv6 on the client host for this to work! We're using
+login.uio.no as an IPv4-to-IPv6 proxy.
+
+There is a way to avoid having to specify ``-J <username>@<proxy>``
+every time. For this we need to create an ssh config file::
+
+  touch ~/.ssh/config
+  chmod 0600 ~/.ssh/config
+
+The commands above creates an empty file with the correct
+permissions. You can edit this file and add::
+
+  Host 2001:700:2:8200:* 2001:700:2:8201:* 2001:700:2:8301:* 2001:700:2:8300:*
+      ProxyJump <username>@<proxy>
+
+Replace ``<proxy>`` with the name or IP of the proxy host, and
+``<username>`` with your username at the proxy host. With this config
+in place, you don't need to specify the jump proxy on the command
+line:
+
+.. code-block:: console
+
+  [user@home ~]$ ssh ubuntu@2001:700:2:8301::1265
+  uiouser@login.uio.no's password: 
+  ubuntu@2001:700:2:8301::1265: Permission denied (publickey).
+
+But what about the SSH key. You still need to provide the ssh key if
+it's not the default, as the example above shows. You may give the key
+on command line as described above, or you can specify the key in the
+config::
+
+  Host 2001:700:2:8200:* 2001:700:2:8201:* 2001:700:2:8301:* 2001:700:2:8300:*
+      ProxyJump uiouser@login.uio.no
+      IdentityFile ~/.ssh/id_rsa_nrec
+
+Then it works. But we can enhance the experience even further by using
+session multiplexing. We first add a directory under ``~/.ssh``, which
+will hold our multiplexing sockets::
+
+  mkdir -m 0700 .ssh/controlmaster
+
+Then we add the following config for login.uio.no::
+
+  Host login.uio.no
+      User uiouser
+      ControlPath ~/.ssh/controlmasters/%r@%h:%p
+      ControlMaster auto
+      ControlPersist 10m
+
+With this multiplexing config in place, we will have to authenticate
+to login.uio.no the first time, while any subsequent connections will
+use the same channel to the proxy host and not require
+authentication. It will also be much faster. Other SSH commands, such
+as scp, will also use this multiplexed session.
+
+Our final ``~/.ssh/config``::
+
+  Host 2001:700:2:8200:* 2001:700:2:8201:* 2001:700:2:8301:* 2001:700:2:8300:*
+      ProxyJump uiouser@login.uio.no
+      IdentityFile ~/.ssh/id_rsa_nrec
+  
+  Host login.uio.no
+      User uiouser
+      ControlPath ~/.ssh/controlmasters/%r@%h:%p
+      ControlMaster auto
+      ControlPersist 10m
+
+Obviously, you should replace the username, proxy hostname and
+identity file to work in your environment.
+
+
 Deleting key pairs
 ------------------
 
