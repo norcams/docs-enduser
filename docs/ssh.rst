@@ -319,7 +319,7 @@ instance::
   ssh -J <username>@<proxyhost> <image-username>@<nrec-instance>
 
 Example, if I were to connect to an Ubuntu instance using its IPv6
-address via login.uio.no ::
+address via login.uio.no:
 
 .. code-block:: console
 
