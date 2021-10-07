@@ -250,16 +250,19 @@ the **~/.ssh/authorized_keys** for the proper user. The username
 varies with the Linux distribution at the discretion of the
 vendor. The most common are:
 
-============== ==============
-Image          User
-============== ==============
-**CentOS**     ``centos``
-**Fedora**     ``fedora``
-**Ubuntu**     ``ubuntu``
-**Debian**     ``debian``
-**RHEL**       ``cloud-user``
-**CirrOS**     ``cirros``
-============== ==============
+================= ==============
+Image             User
+================= ==============
+**CentOS**        ``centos``
+**CentOS Stream** ``centos``
+**Rocky Linux**   ``rocky``
+**Alma Linux**    ``almalinux``
+**Fedora**        ``fedora``
+**Ubuntu**        ``ubuntu``
+**Debian**        ``debian``
+**RHEL**          ``cloud-user``
+**CirrOS**        ``cirros``
+================= ==============
 
 This is a non-exhaustive list. For images not listed here, consult the
 image vendor's documentation.
