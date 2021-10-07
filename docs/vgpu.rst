@@ -164,30 +164,29 @@ but including samples for this example:
 
 .. code-block:: console
 
-  $ curl -O https://developer.download.nvidia.com/compute/cuda/11.2.2/local_installers/cuda_11.2.2_460.32.03_linux.run
-  $ chmod +x cuda_11.2.2_460.32.03_linux.run
-  $ sudo ./cuda_11.2.2_460.32.03_linux.run --silent --no-drm --samples --toolkit
+  $ curl -O https://developer.download.nvidia.com/compute/cuda/11.4.2/local_installers/cuda_11.4.2_470.57.02_linux.run
+  $ chmod +x cuda_11.4.2_470.57.02_linux.run
+  $ sudo ./cuda_11.4.2_470.57.02_linux.run --silent --no-drm --samples --toolkit
 
 After a while the installation is finished. Next step is to install a compiler
-and test one of the samples. For CentOS 7 we install the compiler with yum:
+and test one of the samples. For CentOS 8 we install the compiler with yum:
 
 .. code-block:: console
 
-  $ yum install gcc-c++
+  $ dnf install -y gcc-c++
 
 The final test is to actually compile some code and run it.
 
 .. code-block:: console
 
-  $ cd /usr/local/cuda/samples/0_Simple/simpleAWBarrier
+  $ cd /usr/local/cuda/samples/0_Simple/simpleAtomicIntrinsics
   $ make
-  $ ./simpleAWBarrier 
-  ./simpleAWBarrier starting...
-  GPU Device 0: "Volta" with compute capability 7.0
+  $ ./simpleAtomicIntrinsics 
+  simpleAtomicIntrinsics starting...
+  GPU Device 0: "Pascal" with compute capability 6.1
   
-  Launching normVecByDotProductAWBarrier kernel with numBlocks = 160 blockSize = 640
-  Result = PASSED
-  ./simpleAWBarrier completed, returned OK
+  Processing time: 136.742996 (ms)
+  simpleAtomicIntrinsics completed, returned OK
 
 
 Known issues
