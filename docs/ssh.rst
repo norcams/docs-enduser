@@ -376,7 +376,7 @@ will hold our multiplexing sockets:
 
 .. code-block:: console
 
-  $ mkdir -m 0700 .ssh/controlmasters
+  $ mkdir -m 0700 ~/.ssh/controlmasters
 
 Then we add the following config for login.uio.no:
 
