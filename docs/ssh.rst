@@ -332,10 +332,10 @@ login.uio.no as an IPv4-to-IPv6 proxy.
 There is a way to avoid having to specify ``-J <username>@<proxy>``
 every time. For this we need to create an ssh config file:
 
-.. code-block:: none
+.. code-block:: console
 
-  touch ~/.ssh/config
-  chmod 0600 ~/.ssh/config
+  $ touch ~/.ssh/config
+  $ chmod 0600 ~/.ssh/config
 
 The commands above creates an empty file with the correct
 permissions. You can edit this file and add:
@@ -371,9 +371,9 @@ Then it works. But we can enhance the experience even further by using
 session multiplexing. We first add a directory under ``~/.ssh``, which
 will hold our multiplexing sockets:
 
-.. code-block:: none
+.. code-block:: console
 
-  mkdir -m 0700 .ssh/controlmaster
+  $ mkdir -m 0700 .ssh/controlmaster
 
 Then we add the following config for login.uio.no:
 
