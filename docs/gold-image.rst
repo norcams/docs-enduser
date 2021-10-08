@@ -30,7 +30,7 @@ GOLD image                     Family   Default user name  End of Life    Notes
 **Ubuntu 20.04 LTS**           Debian   ``ubuntu``         April, 2025    
 **Ubuntu 21.04**               Debian   ``ubuntu``         Dec, 2022      
 **Windows Server 2019 Std**    Windows  ``Admin``          Jan, 2024      Activation in BGO only
-============================== ======== =================  ============== =======================
+============================== ======== ================== ============== =======================
 
 ``*``) "Downstream RHEL" means that this is a binary compatible distribution build on Redhat Enterprise Linux
 (RHEL), trailing the release closely. "Upstream RHEL" means that this distribution is *ahead* of RHEL, so
