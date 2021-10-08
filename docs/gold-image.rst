@@ -1,5 +1,8 @@
 .. |date| date::
 
+.. role:: strike
+    :class: strike
+
 NREC GOLD images
 ================
 
@@ -18,7 +21,7 @@ GOLD image                     Family   Default user name  End of Life    Notes
 ============================== ======== ================== ============== =======================
 **Alma Linux 8**               RedHat   ``almalinux``      May, 2029      Downstream RHEL``*``
 **CentOS 7**                   RedHat   ``centos``         May, 2024      Downstream RHEL``*``
-**CentOS 8**                   RedHat   ``centos``         **Dec, 2021**  Downstream RHEL``*``
+:strike:`CentOS 8`             RedHat   ``centos``         **Dec, 2021**  Downstream RHEL``*``
 **CentOS Stream 8**            RedHat   ``centos``         May, 2024      Upstream RHEL``*``
 **Debian 9**                   Debian   ``debian``         June, 2022     "Stretch" release
 **Debian 10**                  Debian   ``debian``         June, 2024     "Buster" release
