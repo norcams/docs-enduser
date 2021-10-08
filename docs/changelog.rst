@@ -2,8 +2,17 @@
 Changelog
 =========
 
-All major changes to UH-IaaS will be listed on this page.
+All major changes to NREC will be listed on this page.
 
+
+2021-10-08
+==========
+
+The GOLD CentOS 8 image is now retired due to the distributions imminent end of
+life. We have replaced CentOS 8 with three new GOLD images for "CentOS 8 Stream",
+"Rocky Linux 8" and "Alma Linux 8". The former is an upstream el8 distribution,
+the last two are el8 downstream distributions modelled after the original CentOS 8
+distribution.
 
 2019-02-26
 ==========
