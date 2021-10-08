@@ -17,12 +17,14 @@ as opposed to a downstream distribution as it has been hitherto. The Stream
 distribution will release packages one minor release ahead of RedHat Enterprise Linux,
 and for some this represents a stability consern. This has prompted a community
 response in the form of two new downstream RHEL distributions, Alma Linux and Rocky
-Linux. The former is yet to release a cloud image that the NREC Team can base our
-image building process on, and the latter is still to reach final release. Our
-recommendation for now is to use CentOS 8. Later on it will be trivial to convert
-CentOS 8 to either Alma, Rocky or CentOS 8 Stream, and the NREC team will provide
-information on how to proceed in due time.
+Linux.
 
+The NREC Team now provides GOLD images for Alma Linux, Rocky Linux, and CentOS Stream 8.
+Existing CentOS 8 instances can easily be converted to either mentioned distributions,
+or you can create new instances. The NREC team will provide more information on how to
+proceed in due time when CentOS 8 reaches end of life.
+
+Please refer to :doc:`gold-image` for more information on available GOLD images.
 
 API access
 ----------
