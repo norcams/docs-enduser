@@ -25,6 +25,7 @@ Norwegian Research and Education Cloud
    security-groups
    manage-volumes
    create-snapshot
+   gold-image
    create-image
    console
 
