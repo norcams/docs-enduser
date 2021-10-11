@@ -359,7 +359,8 @@ permissions. You can edit this file and add:
       ProxyJump <username>@<proxy>
 
 Replace ``<proxy>`` with the name or IP of the proxy host, and
-``<username>`` with your username at the proxy host. With this config
+``<username>`` with your username at the proxy host. This configures
+ssh to use the proxy with all IPv6 addresses in NREC. With this config
 in place, you don't need to specify the jump proxy on the command
 line:
 
