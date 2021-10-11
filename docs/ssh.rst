@@ -304,6 +304,15 @@ use **sudo** to gain root access:
 Connecting through a proxy
 --------------------------
 
+In this paragraph we will show how to
+
+* Use a jump host (also known as bastion host) as a IPv4-to-IPv6
+  proxy, and as a general access point for mobile devices such as
+  laptops
+
+* How to set up SSH multiplexing when using av proxy host, for a
+  better workflow when connecting to NREC instances
+
 Using security groups, you should attempt to limit the access to the
 instance as much as possible. This also applies to SSH access. We
 encourage the use of login hosts such as login.uio.no and login.uib.no
@@ -360,7 +369,7 @@ line:
   uiouser@login.uio.no's password: 
   ubuntu@2001:700:2:8301::1265: Permission denied (publickey).
 
-But what about the SSH key. You still need to provide the ssh key if
+But what about the SSH key? You still need to provide the ssh key if
 it's not the default, as the example above shows. You may give the key
 on command line as described above, or you can specify the key in the
 config:
