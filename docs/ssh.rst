@@ -310,7 +310,7 @@ In this paragraph we will show how to
   proxy, and as a general access point for mobile devices such as
   laptops
 
-* How to set up SSH multiplexing when using av proxy host, for a
+* How to set up SSH multiplexing when using a jump proxy, for a
   better workflow when connecting to NREC instances
 
 Using security groups, you should attempt to limit the access to the
