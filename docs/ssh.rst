@@ -306,9 +306,9 @@ Connecting through a proxy
 
 In this paragraph we will show how to
 
-* Use a jump host (also known as bastion host) as a IPv4-to-IPv6
-  proxy, and as a general access point for mobile devices such as
-  laptops
+* Use a jump host (also known as bastion host) as an IPv4-to-IPv6
+  proxy, and as a general access point that is particularly useful
+  when on mobile devices such as laptops
 
 * How to set up SSH multiplexing when using a jump proxy, for a
   better workflow when connecting to NREC instances
