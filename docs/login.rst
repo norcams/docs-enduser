@@ -19,9 +19,8 @@ First time login
    normal login procedure, skip this step and go directly to
    `Subsequent logins`_.
 
-In order to successfully log in, you first need to provision yourself
-as a user with an appropriate group and project. This is accomplished
-by following the steps below.
+For first-time login, you need to provision yourself as a user with
+an appropriate group and project. Do this by following the steps below.
 
 To provision yourself as a user, visit the following URL:
 
@@ -35,23 +34,20 @@ The following window will appear:
 
 Click ``Sign up``:
 
-.. image:: images/access-02.png
-   :align: center
-   :alt: Access
-
 Here, you need to select your login provider. You should find your
-university or college in the list. Simply select it and the following
-appears:
+university or college in the list. 
 
-.. image:: images/access-03.png
+.. image:: images/access-02.png
    :align: center
    :alt: Access
 
 In order to use this service, and to authenticate using `Dataporten`_,
 you need to accept that the service stores some information about
-you. Click ``Yes, I accept`` to continue.
+you.
 
-.. image:: images/access-05.png
+The password for API access is generated and shown here. 
+
+.. image:: images/access-03.png
    :align: center
    :alt: Access
 
@@ -60,13 +56,12 @@ This finishes the initial login and provision procedure.
 .. IMPORTANT::
    **Copy and save the API password**
 
-   The password for API access is generated and shown here. This
-   is **the only time** that the API password is generated and shown
+   This is **the only time** that the API password is generated and shown
    to you. If you misplace or forget the API password and need another
    one, you have to reset it usimg the *Reset API password* link on the
    Access login page. Alternatively contact our support.
 
-In order to continue to the dashboard, click ``Fortsett til NREC``.
+In order to continue to the dashboard, click ``Continue to NREC``.
 
 
 
@@ -94,17 +89,11 @@ be redirected to this page:
    :align: center
    :alt: Dataporten: choose institution
 
-Select the correct educational institution, by clicking on it. You'll
-then reach this page:
+Select the correct educational institution, by clicking on it, and log in.
 
-.. image:: images/dashboard-login-03.png
-   :align: center
-   :alt: Dataporten: login
+You should then be redirected back to the NREC dashboard:
 
-Type in your regular user name and password, and click "Sign up". You
-should then be redirected back to the NREC dashboard:
-
-.. image:: images/dashboard-login-99.png
+.. image:: images/dashboard-login-overview.png
    :align: center
    :alt: Log in finished
 
