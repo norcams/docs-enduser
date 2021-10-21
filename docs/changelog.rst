@@ -5,6 +5,15 @@ Changelog
 All major changes to NREC will be listed on this page.
 
 
+2021-10-21
+==========
+
+The vGPU service is reinstalled with NVIDIA software version 13. New GOLD images
+with Ubuntu 20.04 and Alma Linux 8 with the vGPU software are available. Also,
+vGPU compute in the OSL region is now available. CentOS 7 and CentOS 8 for vGPU
+are retired from the NREC infrastructure.
+
+
 2021-10-08
 ==========
 
