@@ -2,7 +2,7 @@
 (BETA) Virtual GPU Accelerated instance (vGPU)
 ==============================================
 
-Last changed: 2021-03-16
+Last changed: 2021-10-21
 
 .. WARNING::
   This document is a work in progress. More information to come.
@@ -62,7 +62,7 @@ initial setup:
 
 **OSL:**
 
-* GPU: NVIDIA Tesla P40 PCIe 24GB (each split between 3 instances)
+* GPU: NVIDIA Tesla P40 PCIe 24GB (each split between 4 instances)
 * CPU: Intel Xeon Gold 6226R CPU @ 2.90GHz
 
 Flavors
@@ -93,9 +93,7 @@ resources.
 +==================+=======================+
 | Ubuntu 20.04 LTS | vGPU Ubuntu 20.04 LTS |
 +------------------+-----------------------+
-| CentOS 7.x       | vGPU CentOS 7         |
-+------------------+-----------------------+
-| CentOS 8.x       | vGPU CentOS 8         |
+| Alma Linux 8.x   | vGPU Alma Linux 8     |
 +------------------+-----------------------+
 
 
@@ -123,25 +121,25 @@ the vGPU software reveals that you have only got a partition of the card:
 .. code-block:: console
 
   $ nvidia-smi 
-  +-----------------------------------------------------------------------------+
-  | NVIDIA-SMI 450.89       Driver Version: 450.89       CUDA Version: 11.0     |
-  |-------------------------------+----------------------+----------------------+
-  | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-  | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-  |                               |                      |               MIG M. |
-  |===============================+======================+======================|
-  |   0  GRID V100-4C        On   | 00000000:05:00.0 Off |                    0 |
-  | N/A   N/A    P0    N/A /  N/A |    304MiB /  4096MiB |      0%      Default |
-  |                               |                      |                  N/A |
-  +-------------------------------+----------------------+----------------------+
-                                                                                 
-  +-----------------------------------------------------------------------------+
-  | Processes:                                                                  |
-  |  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
-  |        ID   ID                                                   Usage      |
-  |=============================================================================|
-  |  No running processes found                                                 |
-  +-----------------------------------------------------------------------------+
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.63.01    Driver Version: 470.63.01    CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GRID V100-8C        On   | 00000000:05:00.0 Off |                    0 |
+| N/A   N/A    P0    N/A /  N/A |    592MiB /  8192MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
 
 Now that we have verified that the vGPU is available and ready for use, we
 are ready to install software that can utilize the accelerator. Only the drivers
@@ -169,7 +167,7 @@ but including samples for this example:
   $ sudo ./cuda_11.4.2_470.57.02_linux.run --silent --no-drm --samples --toolkit
 
 After a while the installation is finished. Next step is to install a compiler
-and test one of the samples. For CentOS 8 we install the compiler with yum:
+and test one of the samples. For Alma Linux 8 we install the compiler with yum:
 
 .. code-block:: console
 
