@@ -104,6 +104,15 @@ Only the vGPU Compute Server type is available, so vGPU for graphics acceleratio
 and visualization is not available.
 
 
+vGPU software product version
+-----------------------------
+
+The current version of the NVIDIA Grid Software is 13 (driver 470 series). When
+the product version in the NREC infrastructure is upgraded, an upgrade of the
+software in the running instances may be required. We will provide information
+on how to upgrade running instances when necessary.
+
+
 Testing basic vGPU funtionality
 -------------------------------
 
