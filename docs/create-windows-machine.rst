@@ -71,7 +71,7 @@ you should keep in mind when considering running Windows in NREC:
   finished. Be patient if you want to start a SSH session to your
   Windows instance.
 
-* If you want to create a snapshot of a windows instance as a base for
+* If you want to create a snapshot of a Windows instance as a base for
   new instances, you must ``run sysprep.exe`` in order for any
   instances launched from the snapshot to work.
 
