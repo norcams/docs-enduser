@@ -39,7 +39,7 @@ Caveats and Limitations
 NREC as a platform is mostly tuned towards running Linux VMs. That
 does not mean that Windows VMs won't work, or that they run less
 effectively. But Windows specific services that you may find in
-large commercial clouds, such as Microsoft Azure and Amazon AWS, don't
+large commercial clouds, like Microsoft Azure and Amazon AWS, don't
 exist in NREC. The following is a list of caveats and limitations that
 you should keep in mind when considering running Windows in NREC:
 
