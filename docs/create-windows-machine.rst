@@ -36,18 +36,21 @@ Caveats and Limitations
 
 .. _Virtual Desktop Infrastructure (VDI) at UiO: https://www.uio.no/english/services/it/computer/vdi/
 
-NREC as a platform is mostly tuned towards running Linux VMs. That
-does not mean that Windows VMs won't work, or that they run less
-effectively. But Windows specific services that you may find in
-large commercial clouds, like Microsoft Azure and Amazon AWS, don't
-exist in NREC. The following is a list of caveats and limitations that
-you should keep in mind when considering running Windows in NREC:
+NREC as a platform does not offer Windows specific services that you
+may find in large commercial clouds, like Microsoft Azure and Amazon
+AWS. There are a few things to consider when running Windows in NREC,
+compared to e.g. Linux, mostly due to the need for graphical console
+and the fact that Windows is a commercial product that needs licensing
+to work securely over time.
 
-* NREC does not license its hypervisors for running Windows. Microsoft
-  offers updates for unlicensed Windows hosts for a short period of
-  time. If your Windows instance should exist for longer than that,
-  you will need to supply your own license for it in order to receive
-  updates.
+The following is a list of caveats and limitations that you should
+keep in mind when considering running Windows in NREC:
+
+* NREC does not (mostly) license its hypervisors for running
+  Windows. Microsoft offers updates for unlicensed Windows hosts for a
+  short period of time. If your Windows instance should exist for
+  longer than that, you will need to supply your own license for it in
+  order to receive updates.
 
   There is an exception for UiB users, who may get access to
   the **win** flavor. Instances of this flavor will run on licensed
