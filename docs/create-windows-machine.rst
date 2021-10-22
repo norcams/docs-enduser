@@ -9,34 +9,82 @@ Last changed: |date|
 
 .. contents::
 
-.. IMPORTANT::
-   Because of Windows' rather steep resource demands, a demo
-   project will have insufficient disk quota to launch windows
-   instances. In other words, you will need another project with
-   higher quotas in order to run Windows. Ask for access to the "win" flavor.
+.. # .. IMPORTANT::
+.. #    Because of Windows' rather steep resource demands, a demo
+.. #    project will have insufficient disk quota to launch windows
+.. #    instances. In other words, you will need another project with
+.. #    higher quotas in order to run Windows. Ask for access to the "win" flavor.
+.. # 
+.. # .. TIP::
+.. #    Starting with Windows Server 2019, a SSH server is automatically configured
+.. #    and started in your Windows Instance. It takes some time from the instance
+.. #    appears configured until it is actually finished. Be patient if you want
+.. #    to start a SSH session to your Windows instance.
+.. # 
+.. # .. NOTE::
+.. #    When launching Windows instances in the BGO region, these will automatically
+.. #    be activated. However, for licensing reasons, this will not as yet happen
+.. #    in the OSL region, and the Windows instances there will run unactivated.
+.. # 
+.. # .. WARNING::
+.. #    If you want to create a snapshot of a windows instance as a base for new
+.. #    instances, you must run sysprep.exe in order for any instances launched from
+.. #    the snapshot to work.
 
-.. TIP::
-   Starting with Windows Server 2019, a SSH server is automatically configured
-   and started in your Windows Instance. It takes some time from the instance
-   appears configured until it is actually finished. Be patient if you want
-   to start a SSH session to your Windows instance.
+Caveats and Limitations
+-----------------------
 
-.. NOTE::
-   When launching Windows instances in the BGO region, these will automatically
-   be activated. However, for licensing reasons, this will not as yet happen
-   in the OSL region, and the Windows instances there will run unactivated.
+.. _Virtual Desktop Infrastructure (VDI) at UiO: https://www.uio.no/english/services/it/computer/vdi/
 
-.. WARNING::
-   If you want to create a snapshot of a windows instance as a base for new
-   instances, you must run sysprep.exe in order for any instances launched from
-   the snapshot to work.
+NREC as a platform is mostly tuned towards running Linux VMs. That
+does not mean that Windows VMs won't work, or that they run less
+effectively. But Windows specific services that you may find in
+large commercial clouds, such as Microsoft Azure and Amazon AWS, don't
+exist in NREC. The following is a list of caveats and limitations that
+you should keep in mind when considering running Windows in NREC:
 
+* NREC does not license its hypervisors for running Windows. Microsoft
+  offers updates for unlicensed Windows hosts for a short period of
+  time. If your Windows instance should exist for longer than that,
+  you will need to supply your own license for it in order to receive
+  updates.
 
-Supported Windows versions
---------------------------
+  There is an exception for UiB users, who may get access to
+  the **win** flavor. Instances of this flavor will run on licensed
+  hypervisors in the BGO region.
 
-The NREC platform supports Windows Server 2019 Standard Edition only. If you
-need other variants like the Core Edition, please let us know.
+* NREC offers basic VNC for remote console access. This is a simple
+  service that does not provide advanced remote display functions. You
+  should set up remote access via RDP, which is superior to the NREC
+  console. For even more advanced remote display functions such as GPU
+  acceleration, consider `Virtual Desktop Infrastructure (VDI) at
+  UiO`_
+
+* Because of Windows' rather steep resource demands, a demo project
+  will have insufficient disk quota to launch windows instances. You
+  will need another project with higher quotas in order to run
+  Windows. Ask for access to the **d1** or **win** flavors.
+
+* Starting with Windows Server 2019, a SSH server is automatically
+  configured and started in your Windows Instance. It takes some time
+  from the instance appears configured until it is actually
+  finished. Be patient if you want to start a SSH session to your
+  Windows instance.
+
+* If you want to create a snapshot of a windows instance as a base for
+  new instances, you must ``run sysprep.exe`` in order for any
+  instances launched from the snapshot to work.
+
+* The NREC platform supports Windows Server 2019 Standard Edition
+  only. If you need other variants like the Core Edition, please let
+  us know.
+
+.. # 
+.. # Supported Windows versions
+.. # --------------------------
+.. # 
+.. # The NREC platform supports Windows Server 2019 Standard Edition only. If you
+.. # need other variants like the Core Edition, please let us know.
 
 
 Setting up a keypair
