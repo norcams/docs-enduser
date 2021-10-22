@@ -72,7 +72,7 @@ you should keep in mind when considering running Windows in NREC:
   Windows instance.
 
 * If you want to create a snapshot of a Windows instance as a base for
-  new instances, you must ``run sysprep.exe`` in order for any
+  new instances, you must run ``sysprep.exe`` in order for any
   instances launched from the snapshot to work.
 
 * The NREC platform supports Windows Server 2019 Standard Edition
