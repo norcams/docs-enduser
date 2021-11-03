@@ -24,10 +24,10 @@ relying on ssh keys for authentication.
 Console limitations
 -------------------
 
-The web based console offered in the dashboard is to be considered as a last
-resort, and is not suited for any kind of productional use. Instead, we
-recommend that you use standard remote protocols for accessing the instances.
-depending on the operating system running on your instance.
+The web-based console offered in the dashboard is the last resort to be considered
+and is not suited for any productional use. Instead, we recommend that you use
+standard remote protocols for accessing the instances depending on the operating
+system running on your instance.
 
 
 Example remote protocols
@@ -73,7 +73,7 @@ may consider for accessing your instances:
 |                                 |the server is exclusivly Windows based.          |
 +---------------------------------+-------------------------------------------------+
 
-Please note that all the above mentioned protocols requires you to modify or create
-security groups. In addition, linux based cloud images will not have a graphical
+Please note that all the above-mentioned protocols require you to modify or create
+security groups. In addition, Linux-based cloud images will not have a graphical
 console installed by default. If you want to use a graphical console, you need to
 install the appropriate packages.
