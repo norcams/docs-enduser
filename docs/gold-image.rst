@@ -32,8 +32,8 @@ GOLD image                     Family   Default user name  Boot FW  End of Life 
 **Debian 10**                  Debian   ``debian``         BIOS     June, 2024     "Buster" release
 **Debian 11**                  Debian   ``debian``         UEFI     June, 2026     "Bullseye" release
 **Fedora 34**                  RedHat   ``fedora``         BIOS     May, 2022      
-**UiO Managed RHEL 7**         RedHat   ``cloud-user``     BIOS     June 2024      UiO users only
-**UiO Managed RHEL 8**         RedHat   ``cloud-user``     BIOS     May, 2029      UiO users only
+**UiO Managed RHEL 7**         RedHat   ``cloud-user``     BIOS     June 2024      UiO projects only
+**UiO Managed RHEL 8**         RedHat   ``cloud-user``     BIOS     May, 2029      UiO projects only
 **Rocky Linux 8**              RedHat   ``rocky``          BIOS     May, 2029      Downstream RHEL *
 **Ubuntu 18.04 LTS**           Debian   ``ubuntu``         BIOS     April, 2023    
 **Ubuntu 20.04 LTS**           Debian   ``ubuntu``         BIOS     April, 2025    
