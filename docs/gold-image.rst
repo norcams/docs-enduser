@@ -44,7 +44,7 @@ GOLD image                     Family   Default user name  Boot FW  End of Life 
 .. rubric:: Footnotes
 
 .. [1] "Downstream RHEL" means that this is a binary compatible distribution build on Redhat Enterprise Linux
-(RHEL), trailing the release closely. "Upstream RHEL" means that this distribution is *ahead* of RHEL, so
-if RHEL is in 8.4 release, the Stream release will be somewhere near the future 8.5 RHEL release.
+       (RHEL), trailing the release closely. "Upstream RHEL" means that this distribution is *ahead* of RHEL, so
+       if RHEL is in 8.4 release, the Stream release will be somewhere near the future 8.5 RHEL release.
 
 .. [2] FIXME
