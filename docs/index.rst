@@ -53,6 +53,7 @@ Norwegian Research and Education Cloud
    networking
    support
    known-issues
+   troubleshoot
    speculativeexecution
    faq
    changelog
