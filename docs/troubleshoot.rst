@@ -22,7 +22,7 @@ But you need to do some "hacks" to do so if you didn't set/change a users passwo
 
 
 Possible solution (workaround [1]_)
------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Got to console, press the "Send ctrlAltDel" button then activate the console window and interrupt the boot by pressing an arrow key for example. Choose a boot entry and press :kbd:`e` for edit.
 Depending on which OS is in use you can edit the boot loader in the console and boot to single user by adding single to the end of the line that start with linux on ubuntu, on centos you have to remove all ``console=ttys`` besides the ``tty0`` and add ``rd.break enforcing=0`` at the end of the line starting with linux16. 
@@ -59,6 +59,10 @@ E.g
 The authorized_keys file is located in :file:`/home/username/.ssh/authorized_keys`
 Now you should be able to login using ssh with the new key(s).
 
+.. NOTE::
+   If you are experiencing problem with booting up and you have attached
+   volumes(s), try dettach them first then run rescue agian. 
+
 
 ----------
 
@@ -66,7 +70,11 @@ Rescue instance
 ---------------
 .. _rescue mode: https://docs.openstack.org/nova/latest/user/rescue.html
 
-You can find official documentation on how to put your instance(s) in `rescue mode`_, 
+
+Here is a quick runddown on how it is done using the dashboard.
+
+For more information, take a look at the Openstack documentation on `rescue mode`_
+
 
 .. NOTE::
    Setting a password when activating rescue mode dose not work.
