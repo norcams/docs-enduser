@@ -37,6 +37,7 @@ Norwegian Research and Education Cloud
    dns
    api
    hpc
+   shpc
    vgpu
    terraform-part1
    terraform-part2

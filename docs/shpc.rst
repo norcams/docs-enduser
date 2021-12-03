@@ -22,7 +22,7 @@ What's different
 
 The sHPC service offering in NREC differs slightly from the normal
 services. The purpose is to offer flavors for compute or memory hungry
-workloads and isolate them from hogging resources in the normal
+workloads and isolate them from impacting workloads in the normal
 services.
 
 * sHPC workloads are still sharing resources in the same way as in
