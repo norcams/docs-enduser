@@ -7,8 +7,6 @@ Last changed: |date|
 
 .. contents::
 
-.. _AMD EPYC 7551 32-Core Processor: https://www.amd.com/en/products/cpu/amd-epyc-7551
-.. _AMD EPYC 7552 48-Core Processor: https://www.amd.com/en/products/cpu/amd-epyc-7552
 .. _apply for a project: http://request.nrec.no/
 .. _support page: support.html
 
@@ -34,7 +32,7 @@ services.
   dedicated resources. This leads to better resource utilization for
   the NREC infrastructure.
 
-* The sHPC service has two flavor sets weighted for compute and
+* The sHPC service has three flavor sets weighted for compute and
   memory intensive workloads respectively. Read more about the available
   flavors belov.
 
@@ -68,9 +66,11 @@ instances compared to normal instances:
 Getting Access
 --------------
 
-Please use the normal form to `apply for a project`_, and check the
-box to gain access to the sHPC flavors. If you have any questions,
-please use the normal support channels as described on our `support page`_.
+Please use the normal form to `apply for a project`_ and apply for a
+shared project, then check the box "Need access to shared HPC" in
+order to gain access to the sHPC flavors. If you already have a shared
+project, please use the normal support channels as described on our
+`support page`_ in order to apply for access.
 
 
 Flavors
@@ -87,6 +87,7 @@ The sHPC flavors are divided into three categories:
 +-------------------+-------------------------------------+
 | shpc.r1a          | Memory intensive worklads           |
 +-------------------+-------------------------------------+
+
 
 We currently have the following flavors for use with sHPC:
 
