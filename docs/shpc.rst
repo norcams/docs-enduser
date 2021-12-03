@@ -102,11 +102,11 @@ We currently have the following flavors for use with sHPC:
 +-------------------+--------------+---------+-----------------+
 | shpc.c1a.2xlarge  | 8            | 16 GiB  | by default      |
 +-------------------+--------------+---------+-----------------+
-| shpc.c1a.4xlarge  | 16           | 16 GiB  | by default      |
+| shpc.c1a.4xlarge  | 16           | 32 GiB  | by default      |
 +-------------------+--------------+---------+-----------------+
-| shpc.c1a.8xlarge  | 32           | 16 GiB  | by default      |
+| shpc.c1a.8xlarge  | 32           | 64 GiB  | by default      |
 +-------------------+--------------+---------+-----------------+
-| shpc.c1a.16xlarge | 64           | 16 GiB  | by default      |
+| shpc.c1a.16xlarge | 64           | 128 GiB | by default      |
 +-------------------+--------------+---------+-----------------+
 | shpc.r1a.xlarge   | 4            | 32 GiB  | by request only |
 +-------------------+--------------+---------+-----------------+
