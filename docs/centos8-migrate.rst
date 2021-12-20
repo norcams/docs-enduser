@@ -61,9 +61,9 @@ Migrate from CentOS 8 to AlmaLinux 8
 
   $ sudo ./almalinux-deploy.sh
 
-  This step will take some time while it validate that your system is ready
-  for migration, uninstall some CentOS specific repositories and packets, enables
-  AlmaLinux and upgrades the system to level with current state.
+This step will take some time while it validate that your system is ready
+for migration, uninstall some CentOS specific repositories and packets, enables
+AlmaLinux and upgrades the system to level with current state.
 
 4. Reboot:
 
@@ -90,7 +90,7 @@ Rocky Linux
   bug-for-bug compatible with Red Hat Enterprise Linux®. It is under intensive
   development by the community.
 
-**Rocky Linux** is, as AlmaLinux is, designed as a direct replacement for CentOS as it has been up
+**Rocky Linux** is, as AlmaLinux, designed as a direct replacement for CentOS as it has been up
 until now.
 
 
@@ -102,7 +102,6 @@ Migrate from CentOS 8 to Rocky Linux 8
 .. code-block:: console
 
   $ curl https://raw.githubusercontent.com/rocky-linux/rocky-tools/main/migrate2rocky/migrate2rocky.sh -o migrate2rocky.sh
-
 
 2. Set executable bit:
 
@@ -116,8 +115,8 @@ Migrate from CentOS 8 to Rocky Linux 8
 
   $ sudo ./migrate2rocky.sh -r
 
-  This step will take some time while validating, removing and
-  installing/updating packages and repositories.
+This step will take some time while validating, removing and
+installing/updating packages and repositories.
 
 4. Reboot:
 
@@ -140,10 +139,9 @@ CentOS Stream 8
 :Official website: https://www.centos.org/
 :EOL (CentOS Stream 8): May, 2024
 :Official blurb:
-  CentOS Stream, on the other hand, is the upstream, public development branch
-  for RHEL. Specifically, CentOS Stream 8 is the upstream for the next minor
-  release of RHEL 8, CentOS Stream 9 for the next minor release of RHEL 9, and so
-  on.
+  CentOS Stream is the upstream, public development branch for RHEL. Specifically,
+  CentOS Stream 8 is the upstream for the next minor release of RHEL 8, CentOS
+  Stream 9 for the next minor release of RHEL 9, and so on.
 
 **CentOS Stream** differs from the other distributions mentioned previously, as
 it is an ``upstream`` release! It sits between *Fedora* (which is released using
@@ -184,7 +182,7 @@ Migrate from CentOS 8 to CentOS Stream 8
 
   $ sudo dnf distro-sync
 
-  Answer 'Y' if prompted.
+Answer 'Y' if prompted.
 
 6. Reboot:
 
