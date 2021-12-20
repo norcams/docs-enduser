@@ -18,7 +18,7 @@ relevant important security fixes etc. To help those users in this, we have
 compiled this list of possible migration strategies.
 
 
-.. Important:
+.. Important::
    NREC does not take any responsibility for any loss or corruption following
    these guidelines! This documentation are just presented as a servide to our
    users, and we recommend reading up on the issue yourself before attempting
@@ -75,7 +75,7 @@ AlmaLinux and upgrades the system to level with current state.
 That's it! Enjoy a supported version of AlmaLinux!
 
 
-.. Important:
+.. Warning::
    As always when downloading scripts/code from Internet: Please review the
    script before executing it! Validate that is not doing anything malicious!
 
@@ -128,7 +128,7 @@ installing/updating packages and repositories.
 That's it! Enjoy a supported version of Rocky Linux!
 
 
-.. Important:
+.. Warning::
    As always when downloading scripts/code from Internet: Please review the
    script before executing it! Validate that is not doing anything malicious!
 
