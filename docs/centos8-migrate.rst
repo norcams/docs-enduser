@@ -133,8 +133,8 @@ That's it! Enjoy a supported version of Rocky Linux!
    script before executing it! Validate that is not doing anything malicious!
 
 
-CentOS Stream 8
----------------
+CentOS Stream
+-------------
 
 :Official website: https://www.centos.org/
 :EOL (CentOS Stream 8): May, 2024
