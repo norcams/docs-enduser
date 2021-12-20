@@ -190,3 +190,6 @@ Answer 'Y' if prompted.
 
   $ sudo reboot
 
+
+That's it! Enjoy a supported version of DentOS Stream!
+
