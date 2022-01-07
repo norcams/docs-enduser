@@ -20,7 +20,7 @@ compiled this list of possible migration strategies.
 
 .. Important::
    NREC does not take any responsibility for any loss or corruption following
-   these guidelines! This documentation are just presented as a servide to our
+   these guidelines! This documentation is just presented as a service to our
    users, and we recommend reading up on the issue yourself before attempting
    any migration.
 
@@ -191,5 +191,5 @@ Answer 'Y' if prompted.
   $ sudo reboot
 
 
-That's it! Enjoy a supported version of DentOS Stream!
+That's it! Enjoy a supported version of CentOS Stream!
 
