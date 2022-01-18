@@ -189,3 +189,23 @@ configure either the application itself, the clients, or both.
    recommend doing the whole operation in the CLI rather than using
    the dashboard.
 
+
+Does NREC block any incoming network traffic?
+---------------------------------------------
+
+Yes, incoming traffic to certain ports is dropped:
+
++-----+--------+----------+--------------------------------------------+
+|Port |Protocol|Service   |Reason                                      |
++=====+========+==========+============================================+
+|23   |TCP,UDP |telnet    |Telnet is an unencrypted remote login       |
+|     |        |          |service that should never be used. Use an   |
+|     |        |          |encrypted service such as SSH instead       |
++-----+--------+----------+--------------------------------------------+
+|111  |TCP,UDP |portmapper|The portmapper protocol is mostly used for  |
+|     |        |          |NFS versions 2 and 3. It is vulnerable to   |
+|     |        |          |DDoS attacks and should not be exposed to   |
+|     |        |          |the internet                                |
++-----+--------+----------+--------------------------------------------+
+
+This is done to protect our users and their services on NREC.
