@@ -3,7 +3,7 @@
 NREC Terms of Service
 ========================
 
-Last changed: |date|
+Last changed: 2022-01-18
 
 .. contents::
 
