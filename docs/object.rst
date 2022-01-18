@@ -14,7 +14,7 @@ Access
 ======
 
 To gain access to the object storage pilot service please send an email to
-support@uh-iaas.no and tell us the name of the project and what you want
+support@nrec.no and tell us the name of the project and what you want
 to use the object storage for.
 
 Usage
@@ -60,8 +60,8 @@ Install s3cmd and create a config file :file:`~.s3cfg`
 
   [default]
   access_key = <access_key>
-  host_base = object.api.bgo.uh-iaas.no:8080
-  host_bucket = object.api.bgo.uh-iaas.no:8080
+  host_base = object.api.bgo.nrec.no:8080
+  host_bucket = object.api.bgo.nrec.no:8080
   secret_key = <secret_key>
 
 See s3tool_ for more information
@@ -81,4 +81,4 @@ Example:
 
 .. code-block:: console
 
-  https://object.api.bgo.uh-iaas.no:8080/3eae4805dcd6450fb98651f5a9dc9ded:raytest/2018-11-13-raspbian-stretch-lite.img
+  https://object.api.bgo.nrec.no:8080/3eae4805dcd6450fb98651f5a9dc9ded:raytest/2018-11-13-raspbian-stretch-lite.img

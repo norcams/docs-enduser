@@ -91,7 +91,7 @@ due to how Dataporten uses this email address as the user ID, and
 thus the user ID and demo/personal projects in NREC is the same as this
 address. The issue might arise when users e.g. changes their status from
 student to employee or vice versa. If this situation applies, then please send
-an email to support@uh-iaas.no which includes your current and
+an email to support@nrec.no which includes your current and
 previous primary email addresses. You will then receive further
 instructions on how to proceed.
 
