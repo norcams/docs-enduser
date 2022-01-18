@@ -169,8 +169,17 @@ Terms and Conditions
 
 * Security Alert:
 
-  | When abuse is reported, we will immediately shut down and lock your instance, and alert you so you can take the necessary remediation action. We will work with you to detect and address suspicious and malicious activities from your instance.
-  | If you do not take action to remediate the abuse event, we may suspend or terminate the instance.
+  When abuse is reported, we will immediately shut down and lock your
+  instance, and alert you so you can take the necessary remediation
+  action. We will work with you to detect and address suspicious and
+  malicious activities from your instance.  If you do not take action
+  to remediate the abuse event, we may suspend or terminate the
+  instance.
+
+  If a vulnerability is detected in your services running on NREC, we
+  will perform a risk assessment. In cases where the risk is
+  considered to be high, we will immediately shut down and lock the
+  instance.
 
 * Policy Violation:
 
