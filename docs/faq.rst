@@ -195,17 +195,32 @@ Does NREC block any incoming network traffic?
 
 Yes, incoming traffic to certain ports is dropped:
 
-+-----+--------+----------+--------------------------------------------+
-|Port |Protocol|Service   |Reason                                      |
-+=====+========+==========+============================================+
-|23   |TCP,UDP |telnet    |Telnet is an unencrypted remote login       |
-|     |        |          |service that should never be used. Use an   |
-|     |        |          |encrypted service such as SSH instead       |
-+-----+--------+----------+--------------------------------------------+
-|111  |TCP,UDP |portmapper|The portmapper protocol is mostly used for  |
-|     |        |          |NFS versions 2 and 3. It is vulnerable to   |
-|     |        |          |DDoS attacks and should not be exposed to   |
-|     |        |          |the internet                                |
-+-----+--------+----------+--------------------------------------------+
++-----+--------+------------+--------------------------------------------+
+|Port |Protocol|Service     |Reason                                      |
++=====+========+============+============================================+
+|23   |TCP, UDP|telnet      |Telnet is an unencrypted remote login       |
+|     |        |            |service that should never be used. Use an   |
+|     |        |            |encrypted service such as SSH instead       |
++-----+--------+------------+--------------------------------------------+
+|111  |TCP, UDP|portmapper  |The portmapper protocol is mostly used for  |
+|     |        |            |NFS versions 2 and 3. It is vulnerable to   |
+|     |        |            |DDoS attacks and should not be exposed to   |
+|     |        |            |the internet                                |
++-----+--------+------------+--------------------------------------------+
+|139  |TCP, UDP|netbios-ssn |This port is used for SMB/CIFS              |
+|     |        |            |services. Exposing SMB from NREC to the     |
+|     |        |            |outside presents a wealth of security       |
+|     |        |            |concerns                                    |
++-----+--------+------------+--------------------------------------------+
+|445  |TCP, UDP|microsoft-ds|This port is used for SMB/CIFS              |
+|     |        |            |services. Exposing SMB from NREC to the     |
+|     |        |            |outside presents a wealth of security       |
+|     |        |            |concerns                                    |
++-----+--------+------------+--------------------------------------------+
+|2049 |TCP,    |nfs         |Exposing NFS from NREC to the outside       |
+|     |UDP,    |            |presents a lot of security concerns         |
+|     |SCTP    |            |                                            |
+|     |        |            |                                            |
++-----+--------+------------+--------------------------------------------+
 
 This is done to protect our users and their services on NREC.
