@@ -104,6 +104,10 @@ instances are created, as expected:
 Key pairs
 ---------
 
+In the previous examples, we relied on the key pair already existing
+in NREC. If we don't already have a key pair in NREC, or we wish to
+use another one, we can use Terraform to manage this part.
+
 We can have Terraform automatically create a key pair for us, instead
 of relying on a preexisting key pair. This is accomplished by creating
 a resource block for a key pair:
@@ -113,7 +117,9 @@ a resource block for a key pair:
    :lines: 16-21, 68-85
    :emphasize-lines: 14
 
-After running Terraform, we can verify that the key has been created:
+The public key file must exist on disk with the given path, Terraform
+will not create it for us. After running Terraform, we can verify that
+the key has been created:
 
 .. code-block:: console
 
