@@ -10,9 +10,10 @@ Last changed: 2022-04-04
 .. IMPORTANT:: **This page is under construction. The end date policy
 	       is not yet live**
 
-All NREC projects shall have an end date. This document outlines what
-happens before a project reaches its end date, when a project reaches
-its end date, and after the end date.
+All NREC projects shall have an end date, which defines its lifetime
+as an active project. This document outlines what happens **before** a
+project reaches its end date, **when** a project reaches its end date, and
+**after** the end date.
 
 .. figure:: images/project-lifecycle.drawio.png
    :align: center
@@ -67,12 +68,13 @@ End Date Extension
 ------------------
 
 A project's end date can be extended at any time. The maximum allowed
-end date is two years from today. Extending the end date is an
-administrative task and must be performed by the NREC team. To extend
-the end date for a project, please contact NREC support by sending an
-email to
+lifetime for a project is two years from today. Extending the lifetime
+is an administrative task and must be performed by the NREC team. To
+change the end date for a project, please contact NREC support by
+sending an email to
 
 * support@nrec.no
 
-In normal circumstances, end date extension is granted without
-question. Do not hesitate to ask for an extension if needed.
+In normal circumstances, end date extension is merely a formality and
+is granted without question. Do not hesitate to ask for an extension
+if needed.
