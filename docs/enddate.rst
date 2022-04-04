@@ -27,13 +27,13 @@ for other users.
 
 Policy
 ------
-	 
-Before a project reaches its end date, the admin of the project, as
-well as the contact if it exists, will be notified by email. When a
-project reaches end date, it is put into quarantine for 90 days before
-it is deleted. When a project is deleted, all of its resources
-(instances, volumes, snapshots etc.) and all data contained within
-those resources are also deleted forever. There are no backups.
+
+Before a project reaches its end date, the administrator of the
+project, as well as the contact if it exists, will be notified by
+email. When a project reaches end date, it is put into quarantine for
+90 days before it is deleted. When a project is deleted, all of its
+resources (instances, volumes, snapshots etc.) and all data contained
+within those resources are also deleted forever. There are no backups.
 
 Detailed description of the policy:
 
