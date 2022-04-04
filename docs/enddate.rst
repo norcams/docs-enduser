@@ -10,11 +10,19 @@ Last changed: 2022-04-04
 .. IMPORTANT:: **This page is under construction. The end date policy
 	       is not yet live**
 
-All NREC projects shall have an end date, which defines its lifetime
-as an active project. This document outlines what happens **before** a
-project reaches its end date, **when** a project reaches its end date, and
-**after** the end date.
+All NREC projects have a life span determined by the date of the
+creation and the end date. This document outlines what
+happens to a project
 
+* **before** it reaches its end date
+* **when** it reaches its end date
+* **after** the end date
+
+The figure below is a graphical representation of the life cycle of a
+project. The project is created and enters normal operation. At the
+end of its lifetime it enters quarantine status for 90 days and is
+then deleted.
+  
 .. figure:: images/project-lifecycle.drawio.png
    :align: center
    :alt: Project Lifecycle
@@ -38,32 +46,32 @@ within those resources are deleted forever. There are no backups.
 
 Detailed description of the policy:
 
-* **60 days before end date**: An email is sent to the project admin (and
+#. **60 days before end date**: An email is sent to the project admin (and
+   contact, if it exists) warning about pending end date
+
+#. **30 days before end date**: An email is sent to the project admin (and
+   contact, if it exists) warning about pending end date
+
+#. **14 days before end date**: An email is sent to the project admin (and
   contact, if it exists) warning about pending end date
 
-* **30 days before end date**: An email is sent to the project admin (and
-  contact, if it exists) warning about pending end date
+#. **At end date**: The project is put into quarantine. The following
+   happens to a project that enters quarantine:
 
-* **14 days before end date**: An email is sent to the project admin (and
-  contact, if it exists) warning about pending end date
-
-* **At end date**: The project is put into quarantine. The following
-  happens to a project that enters quarantine:
-
-  - All instances are shut off
-  - The project is disabled. Disabled projects can not be interacted
-    with, and they are not visible in the dashboard
-  - The project is tagged as being in quarantine
+   - All instances are shut off
+   - The project is disabled. Disabled projects can not be interacted
+     with, and they are not visible in the dashboard
+   - The project is tagged as being in quarantine
   
-* **30 days after entering quarantine**: An email is sent to the
-  project admin (and contact, if it exists) warning about pending
-  deletion
+#. **30 days after entering quarantine**: An email is sent to the
+   project admin (and contact, if it exists) warning about pending
+   deletion
 
-* **60 days after entering quarantine**: An email is sent to the
-  project admin (and contact, if it exists) warning about pending
-  deletion
+#. **60 days after entering quarantine**: An email is sent to the
+   project admin (and contact, if it exists) warning about pending
+   deletion
 
-* **90 days after entering quarantine**: The project is deleted
+#. **90 days after entering quarantine**: The project is deleted
 
 This process may be interrupted at any time. See `End Date Extension`_
 below. If a project is enabled from quarantine, the project's
