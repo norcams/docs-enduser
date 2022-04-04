@@ -50,7 +50,7 @@ Detailed description of the policy:
   happens to a project that enters quarantine:
 
   - All instances are shut off
-  - The project are disabled. Disabled projects can not be interacted
+  - The project is disabled. Disabled projects can not be interacted
     with, and they are not visible in the dashboard
   - The project is tagged as being in quarantine
   
