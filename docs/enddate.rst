@@ -37,16 +37,16 @@ within those resources are also deleted forever. There are no backups.
 
 Detailed description of the policy:
 
-* 60 days before end date, an email is sent to the project admin (and
+* **60 days before end date**: An email is sent to the project admin (and
   contact, if it exists) warning about pending end date
 
-* 30 days before end date, an email is sent to the project admin (and
+* **30 days before end date**: An email is sent to the project admin (and
   contact, if it exists) warning about pending end date
 
-* 14 days before end date, an email is sent to the project admin (and
+* **14 days before end date**: An email is sent to the project admin (and
   contact, if it exists) warning about pending end date
 
-* At end date, the project is put into quarantine. The following
+* **At end date**: The project is put into quarantine. The following
   happens to a project that enters quarantine:
 
   - All instances are shut off
@@ -54,13 +54,13 @@ Detailed description of the policy:
     with, and they are not visible in the dashboard
   - The project is tagged as being in quarantine
   
-* 30 days after entering quarantine, an email is sent to the project admin (and
+* **30 days after entering quarantine**: An email is sent to the project admin (and
   contact, if it exists) warning about pending deletion
 
-* 60 days after entering quarantine, an email is sent to the project admin (and
+* **60 days after entering quarantine**: An email is sent to the project admin (and
   contact, if it exists) warning about pending deletion
 
-* 90 days after entering quarantine, the project is deleted
+* **90 days after entering quarantine**: The project is deleted
 
 
 End Date Extension
