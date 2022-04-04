@@ -32,9 +32,10 @@ Policy
 Before a project reaches its end date, the administrator of the
 project, as well as the contact if it exists, will be notified by
 email. When a project reaches end date, it is put into quarantine for
-90 days before it is deleted. When a project is deleted, all of its
-resources (instances, volumes, snapshots etc.) and all data contained
-within those resources are also deleted forever. There are no backups.
+90 days before it is deleted. When a project is deleted after 90 days,
+all of its resources (instances, volumes, snapshots etc.) and all data
+contained within those resources are deleted forever. There are no
+backups.
 
 Detailed description of the policy:
 
@@ -55,14 +56,18 @@ Detailed description of the policy:
     with, and they are not visible in the dashboard
   - The project is tagged as being in quarantine
   
-* **30 days after entering quarantine**: An email is sent to the project admin (and
-  contact, if it exists) warning about pending deletion
+* **30 days after entering quarantine**: An email is sent to the
+  project admin (and contact, if it exists) warning about pending
+  deletion
 
-* **60 days after entering quarantine**: An email is sent to the project admin (and
-  contact, if it exists) warning about pending deletion
+* **60 days after entering quarantine**: An email is sent to the
+  project admin (and contact, if it exists) warning about pending
+  deletion
 
 * **90 days after entering quarantine**: The project is deleted
 
+This process may be interrupted at any time. See `End Date Extension`_
+below.
 
 End Date Extension
 ------------------
