@@ -47,13 +47,13 @@ within those resources are deleted forever. There are no backups.
 Detailed description of the policy:
 
 #. **60 days before end date**: An email is sent to the project admin (and
-   contact, if it exists) warning about pending end date
+   contact, if it exists) warning about pending quarantine
 
 #. **30 days before end date**: An email is sent to the project admin (and
-   contact, if it exists) warning about pending end date
+   contact, if it exists) warning about pending quarantine
 
 #. **14 days before end date**: An email is sent to the project admin (and
-  contact, if it exists) warning about pending end date
+   contact, if it exists) warning about pending quarantine
 
 #. **At end date**: The project is put into quarantine. The following
    happens to a project that enters quarantine:
