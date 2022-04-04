@@ -19,11 +19,11 @@ project reaches its end date, **when** a project reaches its end date, and
    :align: center
    :alt: Project Lifecycle
 
-The main motivation for having and enforcing and end date for
-projects, is to make sure that projects are deleted when they are no
-longer in use. This mitigates security issues that would otherwise
-arise as the result of unmaintained instances, and frees up resources
-for other users.
+The main motivation for enforcing a limited life span for projects is
+to make sure that projects are deleted when they are no longer in
+use. This mitigates security issues that would otherwise arise as the
+result of unmaintained instances (servers), and frees up resources for
+other users.
 
 
 Policy
@@ -32,10 +32,9 @@ Policy
 Before a project reaches its end date, the administrator of the
 project, as well as the contact if it exists, will be notified by
 email. When a project reaches end date, it is put into quarantine for
-90 days before it is deleted. When a project is deleted after 90 days,
-all of its resources (instances, volumes, snapshots etc.) and all data
-contained within those resources are deleted forever. There are no
-backups.
+90 days and then deleted. When a project is deleted, all of its
+resources (instances, volumes, snapshots etc.) and all data contained
+within those resources are deleted forever. There are no backups.
 
 Detailed description of the policy:
 
@@ -67,7 +66,10 @@ Detailed description of the policy:
 * **90 days after entering quarantine**: The project is deleted
 
 This process may be interrupted at any time. See `End Date Extension`_
-below.
+below. If a project is enabled from quarantine, the project's
+administrator and members are responsible for activating instances
+that were shut off when the project entered quarantine.
+
 
 End Date Extension
 ------------------
