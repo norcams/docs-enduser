@@ -3,7 +3,7 @@
 End Date Policy
 ===============
 
-Last changed: 2022-04-04
+Last changed: 2022-04-20
 
 .. contents::
 
@@ -52,7 +52,7 @@ Detailed description of the policy:
 #. **30 days before end date**: An email is sent to the project admin (and
    contact, if it exists) warning about pending quarantine
 
-#. **14 days before end date**: An email is sent to the project admin (and
+#. **7 days before end date**: An email is sent to the project admin (and
    contact, if it exists) warning about pending quarantine
 
 #. **At end date**: The project is put into quarantine. The following
