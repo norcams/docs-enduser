@@ -51,8 +51,9 @@ Norwegian Research and Education Cloud
    :maxdepth: 1
 
    terms-of-service
-   networking
    support
+   acl
+   networking
    known-issues
    troubleshoot
    speculativeexecution
