@@ -22,33 +22,33 @@ Completely blocked ports
 
 The following ports are completely blocked:
 
-+-----+--------+------------+--------------------------------------------+
-|Port |Protocol|Service     |Comment                                     |
-+=====+========+============+============================================+
-|23   |All     |telnet      |Telnet is an unencrypted remote login       |
-|     |        |            |service that should never be used. Use an   |
-|     |        |            |encrypted service such as SSH instead       |
-+-----+--------+------------+--------------------------------------------+
-|111  |All     |portmapper  |The portmapper protocol is mostly used for  |
-|     |        |            |NFS versions 2 and 3. It is vulnerable to   |
-|     |        |            |DDoS attacks and should not be exposed to   |
-|     |        |            |the internet                                |
-+-----+--------+------------+--------------------------------------------+
-|139  |All     |netbios-ssn |This port is used for SMB/CIFS              |
-|     |        |            |services. Exposing SMB from NREC to the     |
-|     |        |            |outside presents a wealth of security       |
-|     |        |            |concerns                                    |
-+-----+--------+------------+--------------------------------------------+
-|445  |All     |microsoft-ds|This port is used for SMB/CIFS              |
-|     |        |            |services. Exposing SMB from NREC to the     |
-|     |        |            |outside presents a wealth of security       |
-|     |        |            |concerns                                    |
-+-----+--------+------------+--------------------------------------------+
-|2049 |All     |nfs         |Exposing NFS from NREC to the outside       |
-|     |        |            |presents a lot of security concerns         |
-|     |        |            |                                            |
-|     |        |            |                                            |
-+-----+--------+------------+--------------------------------------------+
++--------+--------+------------+--------------------------------------------+
+|Port    |Protocol|Service     |Comment                                     |
++========+========+============+============================================+
+|``23``  |All     |telnet      |Telnet is an unencrypted remote login       |
+|        |        |            |service that should never be used. Use an   |
+|        |        |            |encrypted service such as SSH instead       |
++--------+--------+------------+--------------------------------------------+
+|``111`` |All     |portmapper  |The portmapper protocol is mostly used for  |
+|        |        |            |NFS versions 2 and 3. It is vulnerable to   |
+|        |        |            |DDoS attacks and should not be exposed to   |
+|        |        |            |the internet                                |
++--------+--------+------------+--------------------------------------------+
+|``139`` |All     |netbios-ssn |This port is used for SMB/CIFS              |
+|        |        |            |services. Exposing SMB from NREC to the     |
+|        |        |            |outside presents a wealth of security       |
+|        |        |            |concerns                                    |
++--------+--------+------------+--------------------------------------------+
+|``445`` |All     |microsoft-ds|This port is used for SMB/CIFS              |
+|        |        |            |services. Exposing SMB from NREC to the     |
+|        |        |            |outside presents a wealth of security       |
+|        |        |            |concerns                                    |
++--------+--------+------------+--------------------------------------------+
+|``2049``|All     |nfs         |Exposing NFS from NREC to the outside       |
+|        |        |            |presents a lot of security concerns         |
+|        |        |            |                                            |
+|        |        |            |                                            |
++--------+--------+------------+--------------------------------------------+
 
 
 Allowed only from Norwegian Universities and Colleges
