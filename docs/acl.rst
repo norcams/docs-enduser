@@ -55,7 +55,7 @@ Allowed only from Norwegian Universities and Colleges
 -----------------------------------------------------
 
 .. NOTE::
-   This will be in effect from July 1, 2022.
+   This will be in effect from June 30, 2022.
 
 The following ports are blocked, except from Norwegian universities
 and colleges.
