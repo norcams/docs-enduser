@@ -17,7 +17,7 @@ addresses belonging to Norwegian universities and colleges are
 allowed, and blocked from anywhere else.
 
 
-Completely blocked ports
+Completely Blocked Ports
 ------------------------
 
 The following ports are completely blocked:
