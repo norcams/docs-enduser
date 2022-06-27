@@ -97,7 +97,7 @@ and colleges.
 +--------+--------+--------------+--------------------------------------------+
 |``8080``|All     |"Configuration|Port used by various web services           |
 |        |        |Port"         |(e.g. Tomcat) for configuration and admin   |
-|        |        |              |access. Should not be open the the whole    |
+|        |        |              |access. Should not be open to the whole     |
 |        |        |              |internet                                    |
 +--------+--------+--------------+--------------------------------------------+
 
