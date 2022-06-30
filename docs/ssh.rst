@@ -255,7 +255,7 @@ Image                User
 ==================== ==============
 **CentOS 7**         ``centos``
 **CentOS Stream 8**  ``centos``
-**CentOS Stream 9**  ``cloud-user``
+**CentOS Stream 9**  ``centos``
 **Rocky Linux**      ``rocky``
 **Alma Linux**       ``almalinux``
 **Fedora**           ``fedora``
