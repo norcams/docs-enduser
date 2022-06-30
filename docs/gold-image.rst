@@ -19,7 +19,7 @@ The NREC Team provides prebuild images for user consumption. We try to include
 popular Linux distributions as well as Windows images with an up to date
 patch level and basic features needed for working in the cloud.
 
-Current GOLD images:
+**Current GOLD images:**
 
 ============================== ======== ================== ======== ==================== =======================
 GOLD image                     Family   Default user name  Boot FW  End of Life          Notes
@@ -41,16 +41,16 @@ GOLD image                     Family   Default user name  Boot FW  End of Life 
 **Windows Server 2019 Std**    Windows  ``Admin``          BIOS     Janary, 2024         Activation in BGO only
 ============================== ======== ================== ======== ==================== =======================
 
-Retired GOLD images:
+**Retired GOLD images:**
 
 ============================== ======== ================== ======== ==================== =======================
 GOLD image                     Family   Default user name  Boot FW  End of Life          Notes
 ============================== ======== ================== ======== ==================== =======================
-|ss| CentOS 8 |se|             RedHat   ``centos``         BIOS     Dec, 2021            Downstream RHEL * |se|
-|ss| Fedora 34 |se|            RedHat   ``fedora``         BIOS     |ss| May, 2022 |se|
+|ss| CentOS 8 |se|             RedHat   ``centos``         BIOS     Dec, 2021            Downstream RHEL *
+|ss| Fedora 34 |se|            RedHat   ``fedora``         BIOS     May, 2022
 |ss| Fedora 35 |se|            RedHat   ``fedora``         BIOS     November, 2022
-|ss| Ubuntu 21.04 |se|         Debian   ``ubuntu``         BIOS     |ss| Dec, 2021 |se|
-|ss| Ubuntu 21.10              Debian   ``ubuntu``         BIOS     July, 2022 |se|
+|ss| Ubuntu 21.04 |se|         Debian   ``ubuntu``         BIOS     Dec, 2021
+|ss| Ubuntu 21.10 |se|         Debian   ``ubuntu``         BIOS     July, 2022
 ============================== ======== ================== ======== ==================== =======================
 
 
