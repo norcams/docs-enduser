@@ -238,6 +238,7 @@ Connecting to the instance
 --------------------------
 
 .. _Working with Security Groups: security-groups.html
+.. _NREC GOLD images: gold-image.html
 
 .. IMPORTANT::
    Connecting to the instance requires that port 22 (the SSH port) is
@@ -263,8 +264,9 @@ Image                User
 **Windows Server**   ``Admin``
 ==================== ==============
 
-This is a non-exhaustive list. For images not listed here, consult the
-image vendor's documentation.
+This is a non-exhaustive list. For all gold images, see `NREC GOLD
+images`_. For images not listed here, consult the image vendor's
+documentation.
 
 To connect via ssh, we specify the private key file, the username and
 the IP address of the instance:
