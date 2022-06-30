@@ -253,16 +253,13 @@ vendor. The most common are:
 ==================== ==============
 Image                User
 ==================== ==============
-**CentOS 7**         ``centos``
-**CentOS Stream 8**  ``centos``
-**CentOS Stream 9**  ``centos``
+**CentOS (Stream)**  ``centos``
 **Rocky Linux**      ``rocky``
 **Alma Linux**       ``almalinux``
 **Fedora**           ``fedora``
 **Ubuntu**           ``ubuntu``
 **Debian**           ``debian``
 **RHEL**             ``cloud-user``
-**CirrOS**           ``cirros``
 **Windows Server**   ``Admin``
 ==================== ==============
 
