@@ -15,7 +15,7 @@ Last changed: |date|
 
 .. contents::
 
-The NREC Team provides prebuild images for user consumption. We try to include
+The NREC Team provides prebuilt images for user consumption. We try to include
 popular Linux distributions as well as Windows images with an up to date
 patch level and basic features needed for working in the cloud.
 
@@ -28,7 +28,6 @@ GOLD image                     Family   Default user name  Boot FW  End of Life 
 **CentOS 7**                   RedHat   ``centos``         BIOS     May, 2024            Downstream RHEL *
 **CentOS Stream 8**            RedHat   ``centos``         BIOS     May, 2024            Upstream RHEL *
 **CentOS Stream 9**            RedHat   ``centos`` **      BIOS     *unknown*            Upstream RHEL *
-**Debian 9**                   Debian   ``debian``         BIOS     June, 2022           "Stretch" release
 **Debian 10**                  Debian   ``debian``         BIOS     June, 2024           "Buster" release
 **Debian 11**                  Debian   ``debian``         UEFI     June, 2026           "Bullseye" release
 **Fedora 36**                  RedHat   ``fedora``         BIOS     June, 2023
@@ -51,6 +50,7 @@ GOLD image                     Family   Default user name  Boot FW  End of Life 
 |ss| Fedora 35 |se|            RedHat   ``fedora``         BIOS     November, 2022
 |ss| Ubuntu 21.04 |se|         Debian   ``ubuntu``         BIOS     Dec, 2021
 |ss| Ubuntu 21.10 |se|         Debian   ``ubuntu``         BIOS     July, 2022
+|ss| Debian 9 |se|             Debian   ``debian``         BIOS     June, 2022           "Stretch" release
 ============================== ======== ================== ======== ==================== =======================
 
 
