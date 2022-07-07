@@ -54,52 +54,65 @@ The following ports are completely blocked:
 Allowed only from Norwegian Universities and Colleges
 -----------------------------------------------------
 
-.. NOTE::
-   This will be in effect from June 30, 2022.
-
 The following ports are blocked, except from Norwegian universities
 and colleges.
 
-+--------+--------+--------------+--------------------------------------------+
-|Port    |Protocol|Service       |Comment                                     |
-+========+========+==============+============================================+
-|``53``  |All     |Domain Name   |There are very few reasons why one would    |
-|        |        |Service (DNS) |want to run DNS servers in NREC. An         |
-|        |        |              |incorrectly configured DNS service could    |
-|        |        |              |disrupt other services running on NREC      |
-+--------+--------+--------------+--------------------------------------------+
-|``123`` |All     |Network Time  |There are very few reasons why one would    |
-|        |        |Protocol (NTP)|want to run NTP servers in NREC. An         |
-|        |        |              |incorrectly configured NTP service could    |
-|        |        |              |disrupt other services running on NREC      |
-+--------+--------+--------------+--------------------------------------------+
-|``1186``|All     |MySQL         |Database ports should never be open on the  |
-|        |        |Cluster       |internet                                    |
-+--------+--------+--------------+--------------------------------------------+
-|``1433``|All     |Microsoft     |Database ports should never be open on the  |
-|        |        |SQL Server    |internet                                    |
-+--------+--------+--------------+--------------------------------------------+
-|``1434``|All     |Microsoft     |Database ports should never be open on the  |
-|        |        |SQL Monitor   |internet                                    |
-+--------+--------+--------------+--------------------------------------------+
-|``3128``|All     |Squid Web     |An exposed Squid service is a security      |
-|        |        |Proxy         |concern and should not exist in NREC        |
-+--------+--------+--------------+--------------------------------------------+
-|``3306``|All     |MySQL         |Database ports should never be open on the  |
-|        |        |              |internet                                    |
-+--------+--------+--------------+--------------------------------------------+
-|``5432``|All     |PostgreSQL    |Database ports should never be open on the  |
-|        |        |              |internet                                    |
-+--------+--------+--------------+--------------------------------------------+
-|``5900``|All     |VNC           |Port used for VNC, which is easy to set up  |
-|        |        |              |wrong and should noe be exposed on the      |
-|        |        |              |internet                                    |
-+--------+--------+--------------+--------------------------------------------+
-|``8080``|All     |"Configuration|Port used by various web services           |
-|        |        |Port"         |(e.g. Tomcat) for configuration and admin   |
-|        |        |              |access. Should not be open to the whole     |
-|        |        |              |internet                                    |
-+--------+--------+--------------+--------------------------------------------+
++---------+--------+--------------+--------------------------------------------+
+|Port     |Protocol|Service       |Comment                                     |
++=========+========+==============+============================================+
+|``53``   |All     |Domain Name   |There are very few reasons why one would    |
+|         |        |Service (DNS) |want to run DNS servers in NREC. An         |
+|         |        |              |incorrectly configured DNS service could    |
+|         |        |              |disrupt other services running on NREC      |
++---------+--------+--------------+--------------------------------------------+
+|``123``  |All     |Network Time  |There are very few reasons why one would    |
+|         |        |Protocol (NTP)|want to run NTP servers in NREC. An         |
+|         |        |              |incorrectly configured NTP service could    |
+|         |        |              |disrupt other services running on NREC      |
++---------+--------+--------------+--------------------------------------------+
+|``1186`` |All     |MySQL         |Database ports should never be open on the  |
+|         |        |Cluster       |internet                                    |
++---------+--------+--------------+--------------------------------------------+
+|``1433`` |All     |Microsoft     |Database ports should never be open on the  |
+|         |        |SQL Server    |internet                                    |
++---------+--------+--------------+--------------------------------------------+
+|``1434`` |All     |Microsoft     |Database ports should never be open on the  |
+|         |        |SQL Monitor   |internet                                    |
++---------+--------+--------------+--------------------------------------------+
+|``3128`` |All     |Squid Web     |An exposed Squid service is a security      |
+|         |        |Proxy         |concern and should not exist in NREC        |
++---------+--------+--------------+--------------------------------------------+
+|``3306`` |All     |MySQL         |Database ports should never be open on the  |
+|         |        |              |internet                                    |
++---------+--------+--------------+--------------------------------------------+
+|``5432`` |All     |PostgreSQL    |Database ports should never be open on the  |
+|         |        |              |internet                                    |
++---------+--------+--------------+--------------------------------------------+
+|``5900`` |All     |VNC           |Port used for VNC, which is easy to set up  |
+|         |        |              |wrong and should not be exposed on the      |
+|         |        |              |internet                                    |
++---------+--------+--------------+--------------------------------------------+
+|``6379`` |TCP     |Redis noSQL   |Database ports should never be open on the  |
+|         |        |database      |internet                                    |
++---------+--------+--------------+--------------------------------------------+
+|``8080`` |All     |"Configuration|Port used by various web services           |
+|         |        |Port"         |(e.g. Tomcat) for configuration and admin   |
+|         |        |              |access. Should not be open to the whole     |
+|         |        |              |internet                                    |
++---------+--------+--------------+--------------------------------------------+
+|``8443`` |All     |"Configuration|Port used by various web services for       |
+|         |        |Port"         |configuration and admin access. Should not  |
+|         |        |              |be open to the whole internet               |
+|         |        |              |                                            |
++---------+--------+--------------+--------------------------------------------+
+|``9200`` |TCP     |Elastisearch  |The default port used by Elasticsearch for  |
+|         |        |              |requests                                    |
+|         |        |              |                                            |
+|         |        |              |                                            |
++---------+--------+--------------+--------------------------------------------+
+|``27017``|TCP     |MongoDB noSQL |Database ports should never be open on the  |
+|         |        |database      |internet                                    |
++---------+--------+--------------+--------------------------------------------+
 
 The following ports will be added to the list above in August 2022:
 
