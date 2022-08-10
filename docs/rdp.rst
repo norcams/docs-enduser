@@ -33,9 +33,9 @@ Refer to `Working with Security Groups`_ for an in-depth explanation
 about security groups and how to create them. In order to allow Remote
 Desktop, choose "RDP" as the Rule and apply a proper CIDR address:
 
-.. figure:: images/rdp-security-groups-01.png
+.. figure:: images/rdp-security-group-01.png
    :align: center
-   :alt: Allow the RDP protocol
+   :alt: Allow the RDP protocol with security group
 
 Here, we allow RDP only from ``2001:700:100:8040::5``, which is the
 IPv6 address of rds-portal.uio.no.
