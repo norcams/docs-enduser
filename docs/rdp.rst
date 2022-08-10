@@ -97,13 +97,13 @@ the following command:
 
 The following options are used:
 
-* **/cert:ignore**: We ask that it ignores the unverifiable
+* ``/cert:ignore``: We ask that it ignores the unverifiable
   certificate
-* **/size:1280x1024**: The size of the window. Specify whatever size
-  you want, or use **/f** instead for fullscreen
-* **/kbd:Norwegian**: Specifies Norwegian keyboard layout
-* **/u:Admin**: The username, usually "Admin"
-* **/v:[2001:700:2:8200::25c4]**: The IP address of the Windows
+* ``/size:1280x1024``: The size of the window. Specify whatever size
+  you want, or use ``/f`` instead for fullscreen
+* ``/kbd:Norwegian``: Specifies Norwegian keyboard layout
+* ``/u:Admin``: The username, usually "Admin"
+* ``/v:[2001:700:2:8200::25c4]``: The IP address of the Windows
   instance. For IPv6 as shown here, the address must be enclosed in
   brackets
 
