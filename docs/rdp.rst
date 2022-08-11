@@ -111,5 +111,106 @@ The following options are used:
 Via RDP Gateway (UiO)
 ---------------------
 
-*Coming soon*
+There are two reasons why you may want to use an RDP gateway:
+
+#. You are connecting from outside of a network belonging to a
+   Norwegian university or college; and/or
+
+#. Your client only has IPv4, and you need to connect to the instance
+   via IPv6
+
+The RPD gateway can be used as an IPv4-to-IPv6 proxy.
+
+Windows
+~~~~~~~
+
+From your Windows client, open the **Remote Desktop Connection** app
+and type in the IP address or hostname of your NREC Windows instance:
+
+.. figure:: images/rdp-windows-01.png
+   :align: center
+   :alt: Windows Remote Desktop Connection (1)
+
+Click on **Show Options** and type the username (usually "Admin"):
+
+.. figure:: images/rdp-windows-02.png
+   :align: center
+   :alt: Windows Remote Desktop Connection (2)
+
+Click on th **Advanced** pane to open the advanced menu:
+
+.. figure:: images/rdp-windows-gw-01.png
+   :align: center
+   :alt: Windows Remote Desktop Connection via GW (1)
+
+Under "Connect from anywhere", click on **Settings...** and the
+following will appear:
+
+.. figure:: images/rdp-windows-gw-02.png
+   :align: center
+   :alt: Windows Remote Desktop Connection via GW (2)
+
+Select "Use these RD Gateway server settings" and fill in the hostname
+``rds-portal.uio.no``. You may need to uncheck "Bypass RD Gateway
+server for local addresses" to make sure that it will use the RD
+gateway. Click on **OK** to proceed, and you will be asked to provide
+the credentials to connect to the RD gateway:
+
+.. figure:: images/rdp-windows-gw-03.png
+   :align: center
+   :alt: Windows Remote Desktop Connection via GW (3)
+
+You need to provide the domain and username as ``uio\username`` as the
+image shows. Replace "username" with your actual UiO username. The
+password is your regular UiO password. Click **OK** to proceed, and
+the next thing you need to provide is the passord for the account
+selected for the NREC instance:
+
+.. figure:: images/rdp-windows-03.png
+   :align: center
+   :alt: Windows Remote Desktop Connection (3)
+
+Usually, you will then get a complaint about the certificate being
+unverified. This is normal for NREC Windows instances and can be
+ignored:
+
+.. figure:: images/rdp-windows-04.png
+   :align: center
+   :alt: Windows Remote Desktop Connection (4)
+
+Click **Yes** and you will then connect to the instance via remote
+desktop, using ``rds-portal.uio.no`` as an RD gateway.
+
+
+Linux
+~~~~~
+
+As for direct connection, we will use xfreerdp to connect. You just
+need a three extra options to connect through an RD gateway:
+
+.. code-block:: console
+
+  xfreerdp /cert:ignore /size:1280x1024 /kbd:Norwegian /u:Admin /v:[2001:700:2:8200::25c4] /g:rds-portal.uio.no /gu:username /gt:rpc
+
+The following options are exactly as before:
+
+* ``/cert:ignore``: We ask that it ignores the unverifiable
+  certificate
+* ``/size:1280x1024``: The size of the window. Specify whatever size
+  you want, or use ``/f`` instead for fullscreen
+* ``/kbd:Norwegian``: Specifies Norwegian keyboard layout
+* ``/u:Admin``: The username, usually "Admin"
+* ``/v:[2001:700:2:8200::25c4]``: The IP address of the Windows
+  instance. For IPv6 as shown here, the address must be enclosed in
+  brackets
+
+The following options are required to use ``rds-porta.uio.no`` as RD
+gateway:
+
+* ``/g:rds-portal.uio.no``: Specifies the hostname of the RD gateway
+* ``/gu:username``: The username for connecting to the RD
+  gateway. This should be your regular UiO username
+* ``/gt:rpc``: The gateway transport type
+
+
 
