@@ -208,7 +208,7 @@ The following options are exactly as before:
   instance. For IPv6 as shown here, the address must be enclosed in
   brackets
 
-The following options are required to use ``rds-portal.uio.no`` as RD
+The following options are added to use ``rds-portal.uio.no`` as RD
 gateway:
 
 * ``/g:rds-portal.uio.no``: Specifies the hostname of the RD gateway
