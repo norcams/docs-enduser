@@ -113,6 +113,8 @@ The following options are used:
 Via RDP Gateway (UiO)
 ---------------------
 
+..NOTE:: This is only applicable for UiO users
+
 There are two reasons why you may want to use an RDP gateway:
 
 #. You are connecting from outside of a network belonging to a
