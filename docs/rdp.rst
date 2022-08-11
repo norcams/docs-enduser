@@ -38,7 +38,9 @@ Desktop, choose "RDP" as the Rule and apply a proper CIDR address:
    :alt: Allow the RDP protocol with security group
 
 Here, we allow RDP only from ``2001:700:100:8040::5``, which is the
-IPv6 address of rds-portal.uio.no.
+IPv6 address of rds-portal.uio.no. Depending on your usecase, you may
+want something else here. You may also want to allow incoming traffic
+via IPv4, the example shows only IPv6.
 
 
 Direct Connection
