@@ -141,7 +141,7 @@ Click on **Show Options** and type the username (usually "Admin"):
    :align: center
    :alt: Windows Remote Desktop Connection (2)
 
-Click on th **Advanced** pane to open the advanced menu:
+Click on the **Advanced** pane to open the advanced menu:
 
 .. figure:: images/rdp-windows-gw-01.png
    :align: center
