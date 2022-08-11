@@ -17,7 +17,7 @@ There are two ways to reach the Windows instance using RDP:
 * **Directly**: You establish an direct connection between your client
   computer and the NREC Windows server
 
-* **Via an RDP Gateway**: You utilize an RDP Gateway as a proxy
+* **Via an RD Gateway**: You utilize an RD Gateway as a proxy
   between your client and the NREC Windows server
 
 Using an RDP gateway is will be necessary if connecting from outside
@@ -110,8 +110,8 @@ The following options are used:
   brackets
 
 
-Via RDP Gateway (UiO)
----------------------
+Via RD Gateway (UiO)
+--------------------
 
 .. NOTE:: This is only applicable for UiO users
 
