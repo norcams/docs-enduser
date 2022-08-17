@@ -2,7 +2,7 @@
 (BETA) Virtual GPU Accelerated instance (vGPU)
 ==============================================
 
-Last changed: 2021-10-21
+Last changed: 2022-08-17
 
 .. WARNING::
   This document is a work in progress. More information to come.
@@ -39,8 +39,6 @@ change in the future:
 
 * We want "pure" vGPU projects for easier resource control. To use the
   vGPU infrastructure, `apply for an vGPU project`_.
-
-* vGPU projects must have an end date.
 
 * The vGPU resources must be used. Having instances running idle is not
   acceptable in the vGPU infrastructure.

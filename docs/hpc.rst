@@ -3,7 +3,7 @@
 (BETA) High-Performance Computing (HPC)
 =======================================
 
-Last changed: |date|
+Last changed: 2022-08-17
 
 .. contents::
 
@@ -110,8 +110,6 @@ change in the future:
 
 * We want "pure" HPC projects for easier resource control. To use the
   HPC infrastructure, `apply for an HPC project`_.
-
-* HPC projects must have an end date.
 
 * The HPC resources must be used. Having instances running idle is not
   acceptable in the HPC infrastructure.

@@ -13,9 +13,6 @@ Last changed: |date|
 This document describes the shared High-performance computing (sHPC)
 service offering in NREC.
 
-.. NOTE::
-   The sHPC service is available in the BGO region only.
-
 
 What's different
 ----------------
@@ -78,15 +75,15 @@ Flavors
 
 The sHPC flavors are divided into three categories:
 
-+-------------------+-------------------------------------+
-| Flavor type       | Main purpose                        |
-+===================+=====================================+
-| shpc.m1a          | Balanced workloads                  |
-+-------------------+-------------------------------------+
-| shpc.c1a          | Compute intensive workloads         |
-+-------------------+-------------------------------------+
-| shpc.r1a          | Memory intensive worklads           |
-+-------------------+-------------------------------------+
++-------------------+------------------------------------+-------------------------------------+
+| Flavor type       |Available in Region                 | Main purpose                        |
++===================+====================================+=====================================+
+| shpc.m1a          |BGO, OSL                            | Balanced workloads                  |
++-------------------+------------------------------------+-------------------------------------+
+| shpc.c1a          |BGO, OSL                            | Compute intensive workloads         |
++-------------------+------------------------------------+-------------------------------------+
+| shpc.r1a          |BGO                                 | Memory intensive worklads           |
++-------------------+------------------------------------+-------------------------------------+
 
 
 We currently have the following flavors for use with sHPC:

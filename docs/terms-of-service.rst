@@ -3,7 +3,7 @@
 NREC Terms of Service
 ========================
 
-Last changed: 2022-01-18
+Last changed: 2022-08-17
 
 .. contents::
 
@@ -154,18 +154,22 @@ Terms and Conditions
 
 * Project Termination:
 
-  | Unless you specify an end date/termination date, your project request will have a 2-year lifespan from the start date.
+  Unless you specify an expiration date, your project request will
+  have a 2-year lifespan from the start date.
 
 * Instance Termination:
 
-  | Demo instances have a 90-day lifespan, standard and shared instances a 2-year lifespan from the start date.
-  | For the standard and shared project, when the end date is reached you will be notified of the possibility for an extension.
-  | When an instance terminates, the data on any instance associated with that instance will also be deleted.
+  Demo instances have a 90-day lifespan, standard and shared instances
+  a 2-year lifespan from the start date. For the standard and
+  shared project, when the expiration date is reached you will be
+  notified of the possibility for an extension. When an instance
+  terminates, the data on any instance associated with that instance
+  will also be deleted.
 
 * Protect Data:
 
-  | To help protect against data loss, make sure you have an offsite backup for your data regularly.
-  | NREC doesn't offer onsite backup.
+  To help protect against data loss, make sure you have an offsite
+  backup for your data regularly. NREC doesn't offer onsite backup.
 
 * Security Alert:
 
@@ -183,7 +187,11 @@ Terms and Conditions
 
 * Policy Violation:
 
-  | If you violate the NREC's policy, we may suspend or terminate your use of the services. Policy violations such as illegal, harmful, or offensive use or content, security violations, and network abuse. If you become aware of any violation of this policy, please send an email_.
+  If you violate the NREC's policy, we may suspend or terminate your
+  use of the services. Policy violations such as illegal, harmful, or
+  offensive use or content, security violations, and network abuse. If
+  you become aware of any violation of this policy, please send an
+  email_.
 
 Privacy Policy
 --------------
