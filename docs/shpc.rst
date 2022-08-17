@@ -13,9 +13,6 @@ Last changed: |date|
 This document describes the shared High-performance computing (sHPC)
 service offering in NREC.
 
-.. NOTE::
-   The sHPC service is available in the BGO region only.
-
 
 What's different
 ----------------
