@@ -113,7 +113,7 @@ The disk optimized flavors are identical to their «m1a» and «c1a»
 counterparts, except for the OS disk size. The disk optimized flavors
 are only available by request.
 
-We currently have the following flavors for use with sHPC:
+Detailed information about the sHPC flavors:
 
 +---------------------+------------+-------+---------------+
 | Flavor Name         |Virtual CPUs|Memory | Access        |
