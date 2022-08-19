@@ -75,49 +75,74 @@ Flavors
 
 The sHPC flavors are divided into three categories:
 
-+-------------------+------------------------------------+-------------------------------------+
-| Flavor type       |Available in Region                 | Main purpose                        |
-+===================+====================================+=====================================+
-| shpc.m1a          |BGO, OSL                            | Balanced workloads                  |
-+-------------------+------------------------------------+-------------------------------------+
-| shpc.c1a          |BGO, OSL                            | Compute intensive workloads         |
-+-------------------+------------------------------------+-------------------------------------+
-| shpc.r1a          |BGO                                 | Memory intensive worklads           |
-+-------------------+------------------------------------+-------------------------------------+
++------------+-------------------+---------------------------+
+|Flavor Type |Available in Region|Main Purpose               |
++============+===================+===========================+
+|``shpc.m1a``|BGO, OSL           |Balanced workloads         |
++------------+-------------------+---------------------------+
+|``shpc.c1a``|BGO, OSL           |Compute intensive workloads|
++------------+-------------------+---------------------------+
+|``shpc.r1a``|BGO                |Memory intensive worklads  |
++------------+-------------------+---------------------------+
 
+In addition, we have the following disk optimized flavor sets. These
+are only available in the OSL region, and uses very fast local NVMe
+storage on the hypervisor:
+
++--------------+---------+---------------------------+
+|Flavor Type   |Disk Size|Main Purpose               |
++==============+=========+===========================+
+|``shpc.m1ad1``|200 GB   |Balanced workloads         |
++--------------+---------+---------------------------+
+|``shpc.m1ad2``|500 GB   |Balanced workloads         |
++--------------+---------+---------------------------+
+|``shpc.m1ad3``|1000 GB  |Balanced workloads         |
++--------------+---------+---------------------------+
+|``shpc.m1ad4``|2000 GB  |Balanced workloads         |
++--------------+---------+---------------------------+
+|``shpc.c1ad1``|200 GB   |Compute intensive workloads|
++--------------+---------+---------------------------+
+|``shpc.c1ad2``|500 GB   |Compute intensive workloads|
++--------------+---------+---------------------------+
+|``shpc.c1ad3``|1000 GB  |Compute intensive workloads|
++--------------+---------+---------------------------+
+|``shpc.c1ad4``|2000 GB  |Compute intensive workloads|
++--------------+---------+---------------------------+
+
+The disk optimized flavors are identical to their «m1a» and «c1a»
+counterparts, except for the OS disk size. The disk optimized flavors
+are only available by request.
 
 We currently have the following flavors for use with sHPC:
 
-+-------------------+--------------+---------+-----------------+
-| Flavor name       | Virtual CPUs | Memory  | Access          |
-+===================+==============+=========+=================+
-| shpc.m1a.2xlarge  | 8            | 32 GiB  | by default      |
-+-------------------+--------------+---------+-----------------+
-| shpc.m1a.4xlarge  | 16           | 64 GiB  | by default      |
-+-------------------+--------------+---------+-----------------+
-| shpc.m1a.8xlarge  | 32           | 128 GiB | by default      |
-+-------------------+--------------+---------+-----------------+
-| shpc.c1a.2xlarge  | 8            | 16 GiB  | by default      |
-+-------------------+--------------+---------+-----------------+
-| shpc.c1a.4xlarge  | 16           | 32 GiB  | by default      |
-+-------------------+--------------+---------+-----------------+
-| shpc.c1a.8xlarge  | 32           | 64 GiB  | by default      |
-+-------------------+--------------+---------+-----------------+
-| shpc.c1a.16xlarge | 64           | 128 GiB | by default      |
-+-------------------+--------------+---------+-----------------+
-| shpc.r1a.xlarge   | 4            | 32 GiB  | by request only |
-+-------------------+--------------+---------+-----------------+
-| shpc.r1a.2xlarge  | 8            | 64 GiB  | by request only |
-+-------------------+--------------+---------+-----------------+
-| shpc.r1a.4xlarge  | 16           | 128 GiB | by request only |
-+-------------------+--------------+---------+-----------------+
-| shpc.r1a.8xlarge  | 32           | 256 GiB | by request only |
-+-------------------+--------------+---------+-----------------+
-| shpc.r1a.12xlarge | 48           | 384 GiB | by request only |
-+-------------------+--------------+---------+-----------------+
++---------------------+------------+-------+---------------+
+| Flavor Name         |Virtual CPUs|Memory | Access        |
++=====================+============+=======+===============+
+|``shpc.m1a.2xlarge`` | 8          |32 GiB | by default    |
++---------------------+------------+-------+---------------+
+|``shpc.m1a.4xlarge`` | 16         |64 GiB | by default    |
++---------------------+------------+-------+---------------+
+|``shpc.m1a.8xlarge`` | 32         |128 GiB| by default    |
++---------------------+------------+-------+---------------+
+|``shpc.c1a.2xlarge`` | 8          |16 GiB | by default    |
++---------------------+------------+-------+---------------+
+|``shpc.c1a.4xlarge`` | 16         |32 GiB | by default    |
++---------------------+------------+-------+---------------+
+|``shpc.c1a.8xlarge`` | 32         |64 GiB | by default    |
++---------------------+------------+-------+---------------+
+|``shpc.c1a.16xlarge``| 64         |128 GiB| by default    |
++---------------------+------------+-------+---------------+
+|``shpc.r1a.xlarge``  | 4          |32 GiB |by request only|
++---------------------+------------+-------+---------------+
+|``shpc.r1a.2xlarge`` | 8          |64 GiB |by request only|
++---------------------+------------+-------+---------------+
+|``shpc.r1a.4xlarge`` | 16         |128 GiB|by request only|
++---------------------+------------+-------+---------------+
+|``shpc.r1a.8xlarge`` | 32         |256 GiB|by request only|
++---------------------+------------+-------+---------------+
+|``shpc.r1a.12xlarge``| 48         |384 GiB|by request only|
++---------------------+------------+-------+---------------+
 
-
-.. IMPORTANT::
-   The therm vCPU refers to physical threads, which is two pr physical
-   CPU core. So, 64 vCPUs translates into 32 physical, multithreaded
-   real CPU cores.
+The therm vCPU refers to physical threads, which is two pr physical
+CPU core. So, 64 vCPUs translates into 32 physical, multithreaded real
+CPU cores.
