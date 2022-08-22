@@ -51,6 +51,7 @@ Norwegian Research and Education Cloud
    :maxdepth: 1
 
    terms-of-service
+   project-lifecycle
    support
    acl
    networking

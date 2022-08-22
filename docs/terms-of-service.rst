@@ -200,20 +200,37 @@ Privacy Policy
 
 * Email:
 
-  | Your NREC project is closely related to your email account. We collect your email address via Dataporten_ as we need this information for authentication and notification purposes. We keep your email in our database as long as you are an active user of our services. If you change your email, you are responsible for notifying us so that we can update it, otherwise, you may risk losing your project and data.
+  Your NREC project is closely related to your email account. We
+  collect your email address via Dataporten_ as we need this
+  information for authentication and notification purposes. We keep
+  your email in our database as long as you are an active user of our
+  services. If you change your email, you are responsible for
+  notifying us so that we can update it, otherwise, you may risk
+  losing your project and data.
 
 * Instances (virtual machines):
 
-  | We do not monitor the content of instances, but may collect metrics (uptime, patch level and kernel version) for security reasons. You should make sure that your activities are in accordance with your local IT policy. You are responsible for all data you store on your own instances.
+  We do not monitor the content of instances, but may collect metrics
+  (uptime, patch level and kernel version) for security reasons. You
+  should make sure that your activities are in accordance with your
+  local IT policy. You are responsible for all data you store on your
+  own instances.
 
 * Termination:
 
-  | When you are no longer registered as an active student or no longer working at any educational institutions, your project will be terminated and deleted from our system after 90 days without prior notice.
+  When you are no longer registered as an active student or no longer
+  working at any educational institutions, your project will be
+  terminated and deleted from our system after 90 days without prior
+  notice.
 
 * Withdrawal:
 
-  | If you for any reasons want to stop using our services, you should notify us by sending an email_. We will then delete your project and all your data from our system. You are welcome to rejoin the NREC cloud whenever you want.
+  If you for any reasons want to stop using our services, you should
+  notify us by sending an email_. We will then delete your project and
+  all your data from our system. You are welcome to rejoin the NREC
+  cloud whenever you want.
 
 * Cookies:
 
-  | The cookies are only used for logging in and NREC related tasks. No data from these will ever be shared with any third parties.
+  The cookies are only used for logging in and NREC related tasks. No
+  data from these will ever be shared with any third parties.
