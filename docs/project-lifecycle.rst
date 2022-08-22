@@ -3,12 +3,9 @@
 Project Lifecycle
 =================
 
-Last changed: 2022-08-17
+Last changed: 2022-08-22
 
 .. contents::
-
-.. IMPORTANT:: **This page is under construction. The lifecycle policy
-	       is not yet live**
 
 All NREC projects have a life span determined by the date of the
 creation and the expiration date, sometimes referred to as "end
