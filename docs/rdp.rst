@@ -89,6 +89,13 @@ desktop.
 Linux
 ~~~~~
 
+.. IMPORTANT::
+   Due to the frequent changes to the RDP protocol, free software and
+   Linux distributions struggle to keep up with the changes
+   implemented by Microsoft. For this reason, RDP clients on Linux are
+   "unstable" and may not work properly. Using RDP from Windows is a
+   much safer bet.
+
 In order to connect from Linux, you need to use xfreerdp or similar
 software. For xfreerdp, we will connect to the same host as above with
 the following command:
@@ -188,6 +195,13 @@ desktop, using ``rds-portal.uio.no`` as an RD gateway.
 
 Linux
 ~~~~~
+
+.. IMPORTANT::
+   Due to the frequent changes to the RDP protocol, free software and
+   Linux distributions struggle to keep up with the changes
+   implemented by Microsoft. For this reason, RDP clients on Linux are
+   "unstable" and may not work properly. Using RDP from Windows is a
+   much safer bet.
 
 As for direct connection, we will use xfreerdp to connect. You just
 need a three extra options to connect through an RD gateway:
