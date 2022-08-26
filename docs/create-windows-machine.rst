@@ -256,15 +256,19 @@ Optionally, you can also add a rule for ICMP access, so that you can ping the
 instance. This is described in the previous chapter, "Create a Linux virtual machine"
 
 
-Retrieve Admin password
------------------------
+Retrive Admin password
+----------------------
 
-.. IMPORTANT::
-   The local "Administrator" account is disabled by the system a short while after
-   your instance is spawned. "Admin" is the only account available for logon.
+.. TIP:: See below for how to set the Admin password instead of
+	 retrieving it
 
-We are now almost ready to log on to our new Windows virtual machine, but first
-we must retrieve a password. Select "Retrieve Password" from the drop down menu:
+The local "Administrator" account is disabled by the system a short
+while after your instance is spawned. "Admin" is the only account
+available for logon.
+
+We are now almost ready to log on to our new Windows virtual machine,
+but first we must retrieve a password.Select "Retrieve Password" from
+the drop down menu:
 
 .. image:: images/dashboard-create-windows-10.png
    :align: center
@@ -313,6 +317,35 @@ When you click "Decrypt Password", the password will be shown in the "Password" 
 .. IMPORTANT::
    If you have a password protected private key, you **must** use the nova command line
    client, as this feature is unavailable in the dashboard.
+
+Set Admin Password
+------------------
+
+It is not necessary to retrieve the password as described above. If
+you wish to set the password for the "Admin" account instead, you may
+do so via SSH. To set the password via SSH, use the following command:
+
+.. code-block:: console
+
+   ssh -l Admin -i <ssh-key> <ip-address> net user Admin <password>
+
+In the command above, replace:
+
+* `<ssh-key>` should be the private part of the ssh key used when
+  creating the Windows instance, e.g. "winkey.pem"
+* `<ip-address>` is the IPv6 or IPv4 address of the instance
+* `<password>` is the new password
+
+In the example below, we use **pwmake** to generate a password, and
+proceed to set the new password for the Admin account:
+
+.. code-block:: console
+
+   $ pwmake 96
+   iDyS+UqePIwoqOhariK0m
+
+   $ ssh -l Admin -i ~/.ssh/winkey.pem 2001:700:2:8201::2a3c net user Admin 'iDyS+UqePIwoqOhariK0m'
+   The command completed successfully.
 
 
 Launch Remote Desktop
