@@ -331,10 +331,10 @@ do so via SSH. To set the password via SSH, use the following command:
 
 In the command above, replace:
 
-* `<ssh-key>` should be the private part of the ssh key used when
+* ``<ssh-key>`` should be the private part of the ssh key used when
   creating the Windows instance, e.g. "winkey.pem"
-* `<ip-address>` is the IPv6 or IPv4 address of the instance
-* `<password>` is the new password
+* ``<ip-address>`` is the IPv6 or IPv4 address of the instance
+* ``<password>`` is the new password
 
 In the example below, we use **pwmake** to generate a password, and
 proceed to set the new password for the Admin account:
