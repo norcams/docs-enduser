@@ -66,14 +66,36 @@ region, or if the project recipient does not have enough quota to
 accept the volume request.
 
 
-Resizing an instance
---------------------
+Default OpenStack features disabled in NREC
+-------------------------------------------
 
-Resizing an instance is not an available option in the dropdown menu
-for now. If you try to resize an instance via API, you will get an
-``HTTP 403 Forbidden`` error. As a workaround, you can create a snapshot
-of the instance, then edit and resize the snapshot and launch a new
-instance based on that.
+Some features which are *ON* by default in generic OpenStack, are for
+various reasons disabled in NREC. The affected features are listed in the table
+below.
+
+.. list-table:: Disabled OpenStack Features
+   :header-rows: 1
+
+   * - Feature
+     - Description
+     - Comment
+   * - Publicize Image
+     - Make image public
+     -
+   * - Reboot
+     - Reboot instance
+     - Workaround: Shut down and start instance
+   * - Resize Image
+     - Make size of instance larger
+     - This is disabled in Dashboard (Web GUI).
+       Workaround: Use CLI
+   * - Suspend
+     - Suspend Image and store state on disk
+     - Workaround: Pause instance
+   * - Shelve
+     - Stop instance and free resources whilst retaining state (incl. IP addresses)
+     - Workaround: Create snapshot. IP addresses are not retained, though.
+
 
 How to regenerate your public SSH key
 -------------------------------------
@@ -174,7 +196,7 @@ follow these steps:
 
 #. Optionally delete the instance and snapshot in projectB if they
    aren't needed anymore.
-   
+
 These steps can be done without deleting the instance in projectA,
 i.e. you can verify that all is well in the new instance before
 deleting the old instance.
