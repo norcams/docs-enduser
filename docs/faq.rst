@@ -79,13 +79,10 @@ below.
    * - Feature
      - Description
      - Comment
-   * - Publicize Image
-     - Make image public
-     -
    * - Reboot
      - Reboot instance
      - Workaround: Shut down and start instance
-   * - Resize Image
+   * - Resize Instance
      - Make size of instance larger
      - This is disabled in Dashboard (Web GUI).
        Workaround: Use CLI
