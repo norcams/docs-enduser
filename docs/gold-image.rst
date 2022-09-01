@@ -39,7 +39,7 @@ GOLD image                     Family   Default user name  Boot FW  End of Life 
 **Rocky Linux 9**              RedHat   ``rocky``          UEFI     May, 2032            Downstream RHEL *
 **Ubuntu 18.04 LTS**           Debian   ``ubuntu``         BIOS     April, 2023
 **Ubuntu 20.04 LTS**           Debian   ``ubuntu``         BIOS     April, 2025
-**Ubuntu 22.04 LTS**           Debian   ``ubuntu``         UEFI     April, 2032
+**Ubuntu 22.04 LTS**           Debian   ``ubuntu``         UEFI     April, 2027
 **Windows Server 2019 Std**    Windows  ``Admin``          BIOS     Janary, 2024         Activation in BGO only
 ============================== ======== ================== ======== ==================== =======================
 
