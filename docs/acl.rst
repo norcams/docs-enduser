@@ -60,6 +60,11 @@ and colleges.
 +---------+--------+--------------+--------------------------------------------+
 |Port     |Protocol|Service       |Comment                                     |
 +=========+========+==============+============================================+
+|``25``   |All     |SMTP          |Port used by mail servers. If not managed   |
+|         |        |              |with great care, mail servers are easily    |
+|         |        |              |exploited                                   |
+|         |        |              |                                            |
++---------+--------+--------------+--------------------------------------------+
 |``53``   |All     |Domain Name   |There are very few reasons why one would    |
 |         |        |Service (DNS) |want to run DNS servers in NREC. An         |
 |         |        |              |incorrectly configured DNS service could    |
@@ -84,6 +89,10 @@ and colleges.
 +---------+--------+--------------+--------------------------------------------+
 |``3306`` |All     |MySQL         |Database ports should never be open on the  |
 |         |        |              |internet                                    |
++---------+--------+--------------+--------------------------------------------+
+|``3389`` |All     |RDP           |Port used to grant graphical login access to|
+|         |        |              |Windows servers. Easily exploitable if the  |
+|         |        |              |server is not patched aggressively          |
 +---------+--------+--------------+--------------------------------------------+
 |``5432`` |All     |PostgreSQL    |Database ports should never be open on the  |
 |         |        |              |internet                                    |
@@ -113,17 +122,3 @@ and colleges.
 |``27017``|TCP     |MongoDB noSQL |Database ports should never be open on the  |
 |         |        |database      |internet                                    |
 +---------+--------+--------------+--------------------------------------------+
-
-The following ports will be added to the list above in August 2022:
-
-+--------+--------+--------------+--------------------------------------------+
-|Port    |Protocol|Service       |Comment                                     |
-+========+========+==============+============================================+
-|``25``  |All     |SMTP          |Port used by mail servers. If not managed   |
-|        |        |              |with great care, mail servers are easily    |
-|        |        |              |exploited                                   |
-+--------+--------+--------------+--------------------------------------------+
-|``3389``|All     |RDP           |Port used to grant graphical login access to|
-|        |        |              |Windows servers. Easily exploitable if the  |
-|        |        |              |server is not patched aggressively          |
-+--------+--------+--------------+--------------------------------------------+
