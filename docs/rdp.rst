@@ -33,7 +33,7 @@ Refer to `Working with Security Groups`_ for an in-depth explanation
 about security groups and how to create them. In order to allow Remote
 Desktop, choose "RDP" as the Rule and apply a proper CIDR address:
 
-.. figure:: images/rdp-security-group-01.png
+. figure:: images/rdp-security-group-01.png
    :align: center
    :alt: Allow the RDP protocol with security group
 
@@ -116,6 +116,16 @@ The following options are used:
   instance. For IPv6 as shown here, the address must be enclosed in
   brackets
 
+Connect from outside campus nettwork
+-----------------------
+
+If you are outside campus network you have diffrent options to connect to RDP depding on if you are UiO affiliated or UiB.
+
+Via VPN (UiB)
+-------------
+
+To connect to RDP outside of campus network then use UiB VPN. Informasjon on how to connect to VPN you can find here `UiB VPN <https://hjelp.uib.no/tas/public/ssp/content/detail/knowledgeitem?unid=f9ee5227-0e70-4df0-ade3-736273ce1623>`_.
+Or you can contact local IT support for assistance using hjelp.uib.no. 
 
 Via RD Gateway (UiO)
 --------------------
