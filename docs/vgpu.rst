@@ -60,7 +60,7 @@ initial setup:
 
 **OSL:**
 
-* GPU: NVIDIA Tesla P40 PCIe 24GB (each split between 4 instances)
+* GPU: NVIDIA Tesla P40 PCIe 24GB (each split between 2 instances)
 * CPU: Intel Xeon Gold 6226R CPU @ 2.90GHz
 
 Flavors
@@ -68,15 +68,20 @@ Flavors
 
 We currently have the following flavors for use with vGPU:
 
-+------------------+--------------+---------+
-| Flavor name      | Virtual CPUs | Memory  |
-+==================+==============+=========+
-| vgpu.m1.large    | 2            |  8 GiB  |
-+------------------+--------------+---------+
-| vgpu.m1.xlarge   | 4            | 16 GiB  |
-+------------------+--------------+---------+
-| vgpu.m1.2xlarge  | 8            | 32 GiB  |
-+------------------+--------------+---------+
++------------------+--------------+---------+----------+----------+
+| Flavor name      | Virtual CPUs |Memory   |Virtual   | Virtual  |
+|                  |              |         |GPU (BGO) |   GPU    |
+|                  |              |         |          |  (OSL)   |
++==================+==============+=========+==========+==========+
+| vgpu.m1.large    | 2            |8 GiB    |V100 8    | P40 12   |
+|                  |              |         |GiB       |   GiB    |
++------------------+--------------+---------+----------+----------+
+| vgpu.m1.xlarge   | 4            |16 GiB   |V100 8    | P40 12   |
+|                  |              |         |GiB       |   GiB    |
++------------------+--------------+---------+----------+----------+
+| vgpu.m1.2xlarge  | 8            |32 GiB   |V100 8    | P40 12   |
+|                  |              |         |GiB       |   GiB    |
++------------------+--------------+---------+----------+----------+
 
 Prebuilt images
 ---------------
