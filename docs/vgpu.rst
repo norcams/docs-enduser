@@ -169,9 +169,9 @@ but including samples for this example:
 
 .. code-block:: console
 
-  $ curl -O https://developer.download.nvidia.com/compute/cuda/11.4.2/local_installers/cuda_11.4.2_470.57.02_linux.run
-  $ chmod +x cuda_11.4.2_470.57.02_linux.run
-  $ sudo ./cuda_11.4.2_470.57.02_linux.run --silent --no-drm --samples --toolkit
+  $ curl -O https://developer.download.nvidia.com/compute/cuda/11.4.4/local_installers/cuda_11.4.4_470.82.01_linux.run
+  $ chmod +x cuda_11.4.4_470.82.01_linux.run
+  $ sudo ./cuda_11.4.4_470.82.01_linux.run --silent --no-drm --samples --toolkit
 
 After a while the installation is finished. Next step is to install a compiler
 and test one of the samples. For Alma Linux 8 we install the compiler with yum:
