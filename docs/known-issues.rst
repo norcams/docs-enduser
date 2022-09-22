@@ -257,3 +257,14 @@ As our GOLD images are built separately for each region, and not necessarily on
 the same day, the base upstream image may be altered between the builds. Thus
 there may be some differencies between instances started at the same time in our
 two regions, even though they may seem to be started from the same GOLD image.
+
+
+Rebuild of instances disabled
+-----------------------------
+
+Due to a bug, rebuilding instances may, depending on the path going between
+images, render the new instance in a broken state. The instance, when in this
+state, cannot be deleted by the user but must be handled by the NREC support
+team. Because of this, the 'rebuild' feature is disabled until we have found a
+satisfactory soulution.
+
