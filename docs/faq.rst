@@ -92,6 +92,9 @@ below.
    * - Shelve
      - Stop instance and free resources whilst retaining state (incl. IP addresses)
      - Workaround: Create snapshot. IP addresses are not retained, though.
+   * - Rebuild
+     - Rebuild instance, possibly with another image than originally, keeping IP address
+     - No workaround! Must delete and build new, with new IP address. This will be fixed.
 
 
 How to regenerate your public SSH key
