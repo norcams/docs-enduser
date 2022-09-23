@@ -1,9 +1,21 @@
 .. |date| date::
 
-(BETA) High-Performance Computing (HPC)
-=======================================
+(DISCONTINUED) High-Performance Computing (HPC)
+===============================================
 
-Last changed: 2022-08-17
+Last changed: 2022-09-23
+
+.. _Shared HPC: shpc.html
+
+.. IMPORTANT::
+   **The dedicated HPC service will be disconcontinued in 2023**
+
+   The dedicated HPC service was designed for users that need to
+   utilize the processors and memory close to 100% over time. During
+   the beta stage of this service it has become clear that the `Shared
+   HPC`_ service is better tailored to the users' workloads. This
+   service will therefore be discontinued in 2023, and users are
+   encouraged to migrate to the `Shared HPC`_ service.
 
 .. contents::
 
