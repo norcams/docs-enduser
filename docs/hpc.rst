@@ -7,7 +7,7 @@ Last changed: 2022-09-23
 
 .. _Shared HPC: shpc.html
 
-.. IMPORTANT::
+.. WARNING::
    **The dedicated HPC service will be disconcontinued in 2023**
 
    The dedicated HPC service was designed for users that need to
