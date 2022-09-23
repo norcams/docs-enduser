@@ -29,10 +29,10 @@ Last changed: 2022-09-23
 This document describes the `High-performance computing (HPC)`_
 service offering in NREC.
 
-.. IMPORTANT::
-   The HPC service in NREC is in a beta stage. The stability in
-   this service may be lacking compared to the standard NREC
-   services. Things such as flavors and policies may change.
+.. # .. IMPORTANT::
+.. #    The HPC service in NREC is in a beta stage. The stability in
+.. #    this service may be lacking compared to the standard NREC
+.. #   services. Things such as flavors and policies may change.
 
 
 What's different
