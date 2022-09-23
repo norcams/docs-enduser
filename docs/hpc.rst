@@ -17,6 +17,8 @@ Last changed: 2022-09-23
    service will therefore be discontinued in 2023, and users are
    encouraged to migrate to the `Shared HPC`_ service.
 
+   Tentative end date for the dedicated HPC service is **June 1, 2023**
+
 .. contents::
 
 .. _High-performance computing (HPC): https://en.wikipedia.org/wiki/Supercomputer
