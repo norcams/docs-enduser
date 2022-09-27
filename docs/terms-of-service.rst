@@ -12,6 +12,8 @@ Last changed: 2022-08-17
    and what we expect from you in return. We've tried to keep the
    legalese to a minimum.
 
+.. _email: support@nrec.no
+
 Signing up
 ----------
 
@@ -150,7 +152,6 @@ Content
 Terms and Conditions
 --------------------
 
-.. _email: support@nrec.no
 .. _Project Lifecycle: project-lifecycle.html
 
 * Project Termination:
@@ -205,8 +206,6 @@ Terms and Conditions
 
 Privacy Policy
 --------------
-
-.. _email: mailto:support.uhiaas.no
 
 * Email:
 
