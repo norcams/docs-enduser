@@ -150,7 +150,7 @@ Content
 Terms and Conditions
 --------------------
 
-.. _email: mailto:support@nrec.no
+.. _email: support@nrec.no
 .. _Project Lifecycle: project-lifecycle.html
 
 * Project Termination:
