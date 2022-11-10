@@ -12,6 +12,8 @@ Last changed: 2022-08-17
    and what we expect from you in return. We've tried to keep the
    legalese to a minimum.
 
+.. _email: support@nrec.no
+
 Signing up
 ----------
 
@@ -150,21 +152,30 @@ Content
 Terms and Conditions
 --------------------
 
-.. _email: mailto:support.uhiaas.no
+.. _Project Lifecycle: project-lifecycle.html
 
 * Project Termination:
 
-  Unless you specify an expiration date, your project request will
-  have a 2-year lifespan from the start date.
+  Excluding DEMO projects, all projects have an expiration date (also
+  referred to as "enddate"). When a projects reaches its expiration
+  date, it will enter quarantine status, in which the project is
+  inaccessible. After 90 days in quarantine, the project is
+  deleted. Contact us by email_ in order to extend the lifetime of a
+  project beyond its current expiration date. Further details are
+  available here:
+
+  `Project Lifecycle`_
 
 * Instance Termination:
 
-  Demo instances have a 90-day lifespan, standard and shared instances
-  a 2-year lifespan from the start date. For the standard and
-  shared project, when the expiration date is reached you will be
-  notified of the possibility for an extension. When an instance
-  terminates, the data on any instance associated with that instance
-  will also be deleted.
+  Instances created in DEMO projects have a 90-day lifespan. Instances
+  created in other projects follow the lifecycle of the project as
+  described here:
+
+  `Project Lifecycle`_
+
+  When an instance terminates, any data on the instance disk are
+  deleted.
 
 * Protect Data:
 
@@ -195,8 +206,6 @@ Terms and Conditions
 
 Privacy Policy
 --------------
-
-.. _email: mailto:support.uhiaas.no
 
 * Email:
 
