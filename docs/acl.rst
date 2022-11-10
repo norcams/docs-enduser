@@ -57,6 +57,13 @@ Allowed only from Norwegian Universities and Colleges
 The following ports are blocked, except from Norwegian universities
 and colleges.
 
+.. # +---------+--------+--------------+--------------------------------------------+
+.. # |``123``  |All     |Network Time  |There are very few reasons why one would    |
+.. # |         |        |Protocol (NTP)|want to run NTP servers in NREC. An         |
+.. # |         |        |              |incorrectly configured NTP service could    |
+.. # |         |        |              |disrupt other services running on NREC      |
+
+
 +---------+--------+--------------+--------------------------------------------+
 |Port     |Protocol|Service       |Comment                                     |
 +=========+========+==============+============================================+
@@ -68,11 +75,6 @@ and colleges.
 |``53``   |All     |Domain Name   |There are very few reasons why one would    |
 |         |        |Service (DNS) |want to run DNS servers in NREC. An         |
 |         |        |              |incorrectly configured DNS service could    |
-|         |        |              |disrupt other services running on NREC      |
-+---------+--------+--------------+--------------------------------------------+
-|``123``  |All     |Network Time  |There are very few reasons why one would    |
-|         |        |Protocol (NTP)|want to run NTP servers in NREC. An         |
-|         |        |              |incorrectly configured NTP service could    |
 |         |        |              |disrupt other services running on NREC      |
 +---------+--------+--------------+--------------------------------------------+
 |``1186`` |All     |MySQL         |Database ports should never be open on the  |
