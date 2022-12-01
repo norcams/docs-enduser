@@ -47,9 +47,15 @@ check documentation at OpenStack: `OpenStackClient`_ for more information.
     # dnf install python3-designateclient
 
 
-**RHEL7 or RHEL8 at UiO**
-  In order to install the CLI tools on RHEL7 or RHEL8, you need to enable the
+**RHEL at UiO**
+  In order to install the CLI tools on RHEL, you need to enable the
   proper repository using **subscription-manager**:
+
+  * For RHEL9:
+
+    .. code-block:: console
+
+      # subscription-manager repos --enable=openstack-17-tools-for-rhel-9-x86_64-rpms
 
   * For RHEL8:
 
@@ -71,7 +77,7 @@ check documentation at OpenStack: `OpenStackClient`_ for more information.
 
   Then, install the CLI tools using yum:
 
-  * For RHEL8:
+  * For RHEL8 and RHEL9:
 
     .. code-block:: console
 
@@ -86,7 +92,7 @@ check documentation at OpenStack: `OpenStackClient`_ for more information.
   In order to use the `DNS service`_ you also need the designate
   client package:
 
-  * For RHEL8:
+  * For RHEL8 and RHEL9:
 
     .. code-block:: console
 
