@@ -27,7 +27,7 @@ GOLD image                     Family   Default user name  Boot FW  End of Life 
 **Alma Linux 8**               RedHat   ``almalinux``      UEFI     May, 2029            Downstream RHEL *
 **Alma Linux 9**               RedHat   ``almalinux``      UEFI     May, 2032            Downstream RHEL *
 **CentOS 7**                   RedHat   ``centos``         BIOS     May, 2024            Downstream RHEL *
-**CentOS Stream 8**            RedHat   ``cloud-user`` *** BIOS     May, 2024            Upstream RHEL *
+**CentOS Stream 8**            RedHat   ``cloud-user`` \*** BIOS     May, 2024            Upstream RHEL *
 **CentOS Stream 9**            RedHat   ``cloud-user`` **  BIOS     *unknown*            Upstream RHEL *
 **Debian 10**                  Debian   ``debian``         BIOS     June, 2024           "Buster" release
 **Debian 11**                  Debian   ``debian``         UEFI     June, 2026           "Bullseye" release
