@@ -21,27 +21,27 @@ patch level and basic features needed for working in the cloud.
 
 **Current GOLD images:**
 
-============================== ======== ==================  ======== ==================== =======================
-GOLD image                     Family   Default user name   Boot FW  End of Life          Notes
-============================== ======== ==================  ======== ==================== =======================
-**Alma Linux 8**               RedHat   ``almalinux``       UEFI     May, 2029            Downstream RHEL *
-**Alma Linux 9**               RedHat   ``almalinux``       UEFI     May, 2032            Downstream RHEL *
-**CentOS 7**                   RedHat   ``centos``          BIOS     May, 2024            Downstream RHEL *
-**CentOS Stream 8**            RedHat   ``cloud-user`` \*** BIOS     May, 2024            Upstream RHEL *
-**CentOS Stream 9**            RedHat   ``cloud-user`` **   BIOS     *unknown*            Upstream RHEL *
-**Debian 10**                  Debian   ``debian``          BIOS     June, 2024           "Buster" release
-**Debian 11**                  Debian   ``debian``          UEFI     June, 2026           "Bullseye" release
-**Fedora 36**                  RedHat   ``fedora``          BIOS     June, 2023
-**UiO Managed RHEL 7**         RedHat   ``cloud-user``      BIOS     June 2024            UiO projects only
-**UiO Managed RHEL 8**         RedHat   ``cloud-user``      BIOS     May, 2029            UiO projects only
-**UiO Managed RHEL 9**         RedHat   ``cloud-user``      UEFI     May, 2032            UiO projects only
-**Rocky Linux 8**              RedHat   ``rocky``           BIOS     May, 2029            Downstream RHEL *
-**Rocky Linux 9**              RedHat   ``rocky``           UEFI     May, 2032            Downstream RHEL *
-**Ubuntu 18.04 LTS**           Debian   ``ubuntu``          BIOS     April, 2023
-**Ubuntu 20.04 LTS**           Debian   ``ubuntu``          BIOS     April, 2025
-**Ubuntu 22.04 LTS**           Debian   ``ubuntu``          UEFI     April, 2027
-**Windows Server 2019 Std**    Windows  ``Admin``           BIOS     Janary, 2024         Activation in BGO only
-============================== ======== ==================  ======== ==================== =======================
+============================== ======== ===================== ======== ==================== =======================
+GOLD image                     Family   Default user name     Boot FW  End of Life          Notes
+============================== ======== ===================== ======== ==================== =======================
+**Alma Linux 8**               RedHat   ``almalinux``         UEFI     May, 2029            Downstream RHEL *
+**Alma Linux 9**               RedHat   ``almalinux``         UEFI     May, 2032            Downstream RHEL *
+**CentOS 7**                   RedHat   ``centos``            BIOS     May, 2024            Downstream RHEL *
+**CentOS Stream 8**            RedHat   ``cloud-user`` \*\*\* BIOS     May, 2024            Upstream RHEL *
+**CentOS Stream 9**            RedHat   ``cloud-user`` **     BIOS     *unknown*            Upstream RHEL *
+**Debian 10**                  Debian   ``debian``            BIOS     June, 2024           "Buster" release
+**Debian 11**                  Debian   ``debian``            UEFI     June, 2026           "Bullseye" release
+**Fedora 36**                  RedHat   ``fedora``            BIOS     June, 2023
+**UiO Managed RHEL 7**         RedHat   ``cloud-user``        BIOS     June 2024            UiO projects only
+**UiO Managed RHEL 8**         RedHat   ``cloud-user``        BIOS     May, 2029            UiO projects only
+**UiO Managed RHEL 9**         RedHat   ``cloud-user``        UEFI     May, 2032            UiO projects only
+**Rocky Linux 8**              RedHat   ``rocky``             BIOS     May, 2029            Downstream RHEL *
+**Rocky Linux 9**              RedHat   ``rocky``             UEFI     May, 2032            Downstream RHEL *
+**Ubuntu 18.04 LTS**           Debian   ``ubuntu``            BIOS     April, 2023
+**Ubuntu 20.04 LTS**           Debian   ``ubuntu``            BIOS     April, 2025
+**Ubuntu 22.04 LTS**           Debian   ``ubuntu``            UEFI     April, 2027
+**Windows Server 2019 Std**    Windows  ``Admin``             BIOS     Janary, 2024         Activation in BGO only
+============================== ======== ===================== ======== ==================== =======================
 
 **Retired GOLD images:**
 
