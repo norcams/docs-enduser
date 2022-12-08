@@ -195,8 +195,8 @@ The final test is to actually compile some code and run it.
   simpleAtomicIntrinsics completed, returned OK
 
 
-Upgrading the infratructure
----------------------------
+Upgrading the instance drivers
+------------------------------
 
 The drivers of the hypervisor (the physical host containing the GPU cards the
 instances utilizes) and those of the instances themselves, must correspond. Thus
