@@ -208,8 +208,9 @@ instances must be updated as well. When this is the case, the users of any such
 affected instance are notified and referred to this section for instructions on
 how to perform this action.
 
-Detailed instructions will be posted here in due course. Be aware that the steps
-should not be performed until  *after* the maintenance window has passed!
+.. NOTE::
+   Detailed instructions will be posted here in due course. Be aware that the steps
+   should not be performed until  *after* the maintenance window has passed!
 
 
 Known issues
