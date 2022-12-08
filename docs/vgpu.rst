@@ -128,7 +128,7 @@ the vGPU software reveals that you have only got a partition of the card:
 
 .. code-block:: console
 
-  $ nvidia-smi 
+  $ nvidia-smi
   +-----------------------------------------------------------------------------+
   | NVIDIA-SMI 470.63.01    Driver Version: 470.63.01    CUDA Version: 11.4     |
   |-------------------------------+----------------------+----------------------+
@@ -140,7 +140,7 @@ the vGPU software reveals that you have only got a partition of the card:
   | N/A   N/A    P0    N/A /  N/A |    592MiB /  8192MiB |      0%      Default |
   |                               |                      |                  N/A |
   +-------------------------------+----------------------+----------------------+
-                                                                                 
+
   +-----------------------------------------------------------------------------+
   | Processes:                                                                  |
   |  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
@@ -187,12 +187,29 @@ The final test is to actually compile some code and run it.
 
   $ cd /usr/local/cuda/samples/0_Simple/simpleAtomicIntrinsics
   $ make
-  $ ./simpleAtomicIntrinsics 
+  $ ./simpleAtomicIntrinsics
   simpleAtomicIntrinsics starting...
   GPU Device 0: "Pascal" with compute capability 6.1
-  
+
   Processing time: 136.742996 (ms)
   simpleAtomicIntrinsics completed, returned OK
+
+
+Upgrading the infratructure
+---------------------------
+
+The drivers of the hypervisor (the physical host containing the GPU cards the
+instances utilizes) and those of the instances themselves, must correspond. Thus
+the instances must have new drivers installed whenever the host is upgraded. We
+attempt to minimize the number of such occurences, but for instance new kernels
+might require updated drivers from the hardware vendor. All our GOLD offerings
+have the up-to-date and correct version pre-installed, but any existing
+instances must be updated as well. When this is the case, the users of any such
+affected instance are notified and referred to this section for instructions on
+how to perform this action.
+
+Detailed instructions will be posted here in due course. Be aware that the steps
+should not be performed until  *after* the maintenance window has passed!
 
 
 Known issues
