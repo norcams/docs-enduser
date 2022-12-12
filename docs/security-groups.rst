@@ -238,19 +238,17 @@ In addition, the login services at UiO and UiB is also useful to know
 when create security group rules:
 
 **UiO login hosts**
-  IPv4:
-  
-  * ``129.240.114.32/28``
-  * ``129.240.114.48/28``
+  * IPv4:
+    - ``129.240.114.32/28``
+    - ``129.240.114.48/28``
 
-  IPv6:
-  
-  * ``2001:700:100:8070::/64``
-  * ``2001:700:100:8071::/64``
+  * IPv6:
+    - ``2001:700:100:8070::/64``
+    - ``2001:700:100:8071::/64``
 
 **UiB login hosts**
-  IPv4: ``129.177.13.204``
-  IPv6: ``2001:700:200:13::204/128``
+  * IPv4: ``129.177.13.204``
+  * IPv6: ``2001:700:200:13::204/128``
 
 IP ranges in NREC may change as more blocks are added. You can list
 the NREC subnets (CIDR addresses) with this command, which is region
