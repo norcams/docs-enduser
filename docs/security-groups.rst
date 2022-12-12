@@ -373,7 +373,7 @@ the IPv6 CIDR addresses in the **CIDR** field:
 
 For the SSH rules, we repeat the steps for ICMP, except choosing "SSH"
 in the **Rule** drop-down menu (example for the first Ipv4 CIDR
-addresses):
+address):
 
 .. figure:: images/security-groups-add-rule-03.png
    :align: center
