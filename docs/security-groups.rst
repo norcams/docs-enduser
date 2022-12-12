@@ -235,7 +235,7 @@ creating security group rules.
 +----------------------------+-------------+------------------------------+
 
 In addition, the login services at UiO and UiB is also useful to know
-when create security group rules:
+when creating security group rules:
 
 **UiO login hosts**
   * IPv4:
