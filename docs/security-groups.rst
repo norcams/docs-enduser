@@ -222,17 +222,27 @@ Useful CIDR addresses
 Below is a list of CIDR addresses that you may find useful when
 creating security group rules.
 
-+-----------------------+-------------+------------------------------+
-| CIDR                  | IP Protocol | Comment                      |
-+=======================+=============+==============================+
-| ``129.240.0.0/16``    | IPv4        | UiO network                  |
-+-----------------------+-------------+------------------------------+
-| ``2001:700:100::/41`` | IPv6        | UiO network                  |
-+-----------------------+-------------+------------------------------+
-| ``129.177.0.0/16``    | IPv4        | UiB network                  |
-+-----------------------+-------------+------------------------------+
-| ``2001:700:200::/48`` | IPv6        | UiB network                  |
-+-----------------------+-------------+------------------------------+
++----------------------------+-------------+------------------------------+
+| CIDR                       | IP Protocol | Comment                      |
++============================+=============+==============================+
+| ``129.240.0.0/16``         | IPv4        | Entire UiO network           |
++----------------------------+-------------+------------------------------+
+| ``2001:700:100::/41``      | IPv6        | Entire UiO network           |
++----------------------------+-------------+------------------------------+
+| ``129.177.0.0/16``         | IPv4        | Entire UiB network           |
++----------------------------+-------------+------------------------------+
+| ``2001:700:200::/48``      | IPv6        | Entire UiB network           |
++----------------------------+-------------+------------------------------+
+| ``129.240.114.32/28``      | IPv4        | UiO login service            |
+| ``129.240.114.48/28``      |             |                              |
++----------------------------+-------------+------------------------------+
+|``2001:700:100:8070::/64``  | IPv6        | UiO login service            |
+|``2001:700:100:8071::/64``  |             |                              |
++----------------------------+-------------+------------------------------+
+|  ``129.177.13.204/32``     | IPv4        | UiB login service            |
++----------------------------+-------------+------------------------------+
+|``2001:700:200:13::204/128``| IPv6        | UiB login service            |
++----------------------------+-------------+------------------------------+
 
 IP ranges in NREC may change as more blocks are added. You can list
 the NREC subnets (CIDR addresses) with this command, which is region
@@ -286,7 +296,7 @@ In order to create a security group using the CLI, use the command
 
 .. code-block:: console
 
-  $ openstack security group create --description 'Allow ssh and ping from login.uio.no' 'SSH and ICMP from login.uio.no'
+  $ openstack security group create --description 'Allows ssh and ping from login hosts at UiO' 'SSH and ICMP from UiO login hosts'
   (...output omitted...)
 
 As in the dashboard, the description is optional.
@@ -313,38 +323,63 @@ login.uio.no:
 .. code-block:: console
 
   $ host login.uio.no
-  login.uio.no is an alias for smaug.uio.no.
-  smaug.uio.no has address 129.240.12.61
-  smaug.uio.no has IPv6 address 2001:700:100:12::61
+  login.uio.no is an alias for login-2fa-azure.uio.no.
+  login-2fa-azure.uio.no has address 129.240.114.36
+  login-2fa-azure.uio.no has address 129.240.114.52
+  login-2fa-azure.uio.no has IPv6 address 2001:700:100:8070::36
+  login-2fa-azure.uio.no has IPv6 address 2001:700:100:8071::52
 
-We need to add 4 rules:
+As we can see, login.uio.no is actually two hosts. In order to future
+proof our security group wrt. changes to the login sercice, we should
+allow traffic from these subnets that are specifically used for login
+hosts at UiO:
 
-* ICMP over IPv4
-* ICMP over IPv6
-* SSH over IPv4
-* SSH over IPv6
+* ``129.240.114.32/28`` / ``2001:700:100:8070::/64``
+* ``129.240.114.48/28`` / ``2001:700:100:8071::/64``
+  
+We want to add rules that allow:
+
+* ICMP over IPv4 from ``129.240.114.32/28`` and ``129.240.114.48/28``
+* ICMP over IPv6 from ``2001:700:100:8070::/64`` and ``2001:700:100:8071::/64``
+* SSH over IPv4 from ``129.240.114.32/28`` and ``129.240.114.48/28``
+* SSH over IPv6 from ``2001:700:100:8070::/64`` and ``2001:700:100:8071::/64``
 
 We start with ICMP over IPv4. We select **All ICMP** for the rule,
 omit the optional description, and leave the **Direction**
 and **Remote** as "Ingress" and "CIDR", respectively. In the **CIDR**
-field, we enter the IPv4 address of login.uio.no, which we found
-above:
+field, we enter the first IPv4 CIDR address (``129.240.114.32/28``)
+for login hosts as mentioned above:
 
 .. figure:: images/security-groups-add-rule-02.png
    :align: center
-   :alt: Add ICMP/IPv4 security group rule
+   :alt: Add first ICMP/IPv4 security group rule
 
-For the ICMP over IPv6 rule, we do exactly the same except entering
-the IPv6 address in the **CIDR** field.
+And the same for the second CIDR address (``129.240.114.48/28``):
+
+.. figure:: images/security-groups-add-rule-02b.png
+   :align: center
+   :alt: Add second ICMP/IPv4 security group rule
+
+For the ICMP over IPv6 rules, we do exactly the same except entering
+the IPv6 CIDR addresses in the **CIDR** field:
+
+.. figure:: images/security-groups-add-rule-02c.png
+   :align: center
+   :alt: Add first ICMP/IPv6 security group rule
+
+.. figure:: images/security-groups-add-rule-02d.png
+   :align: center
+   :alt: Add second ICMP/IPv6 security group rule
 
 For the SSH rules, we repeat the steps for ICMP, except choosing "SSH"
-in the **Rule** drop-down menu:
+in the **Rule** drop-down menu (example for the first Ipv4 CIDR
+addresses):
 
 .. figure:: images/security-groups-add-rule-03.png
    :align: center
    :alt: Add SSH/IPv6 security group rule
 
-After creating the four rules, it should look like this:
+After creating all rules, it should look like this:
 
 .. figure:: images/security-groups-add-rule-04.png
    :align: center
@@ -358,47 +393,63 @@ list our security groups:
 .. code-block:: console
 
   $ openstack security group list
-  +--------------------------------------+--------------------------------+--------------------------------------+----------------------------------+------+
-  | ID                                   | Name                           | Description                          | Project                          | Tags |
-  +--------------------------------------+--------------------------------+--------------------------------------+----------------------------------+------+
-  | 5157dbad-f96b-4921-b9ba-520b5e2ce995 | SSH and ICMP from login.uio.no | Allow ssh and ping from login.uio.no | 24823ac5a6dd4d27966310600abce54d | []   |
-  | 6743c744-1a06-462e-82e6-85c9d0b2399f | default                        | Default security group               | 24823ac5a6dd4d27966310600abce54d | []   |
-  +--------------------------------------+--------------------------------+--------------------------------------+----------------------------------+------+
+  +--------------------------------------+-----------------------------------+---------------------------------------------+----------------------------------+------+
+  | ID                                   | Name                              | Description                                 | Project                          | Tags |
+  +--------------------------------------+-----------------------------------+---------------------------------------------+----------------------------------+------+
+  | 502bd0d6-91ab-4772-8fab-4ec1275372cf | SSH and ICMP from UiO login hosts | Allows ssh and ping from login hosts at UiO | e55fe3f025894c62a100713e92193e64 | []   |
+  | 5e3a9975-667b-46b7-9fdc-629ae8d09368 | default                           | Default security group                      | e55fe3f025894c62a100713e92193e64 | []   |
+  +--------------------------------------+-----------------------------------+---------------------------------------------+----------------------------------+------+
 
 When specifying the security group we can use either the ID or the
 name of the security group. Since the name in our case contains spaces
-we're opting to use the ID. Adding the rules:
+we're opting to use the ID. Adding the rules (omitting output):
 
 .. code-block:: console
 
-  $ openstack security group rule create --ethertype IPv4 --protocol icmp --remote-ip 129.240.12.61 5157dbad-f96b-4921-b9ba-520b5e2ce995
-  (...output omitted...)
-  
-  $ openstack security group rule create --ethertype IPv6 --protocol ipv6-icmp --remote-ip 2001:700:100:12::61 5157dbad-f96b-4921-b9ba-520b5e2ce995
-  (...output omitted...)
+  $ openstack security group rule create --ethertype IPv4 --protocol icmp \
+      --remote-ip 129.240.114.32/28 502bd0d6-91ab-4772-8fab-4ec1275372cf
 
-  $ openstack security group rule create --ethertype IPv4 --protocol tcp --dst-port 22 --remote-ip 129.240.12.61 5157dbad-f96b-4921-b9ba-520b5e2ce995
-  (...output omitted...)
+  $ openstack security group rule create --ethertype IPv4 --protocol icmp \
+      --remote-ip 129.240.114.48/28 502bd0d6-91ab-4772-8fab-4ec1275372cf
+
+  $ openstack security group rule create --ethertype IPv6 --protocol ipv6-icmp \
+      --remote-ip 2001:700:100:8070::/64 502bd0d6-91ab-4772-8fab-4ec1275372cf
+
+  $ openstack security group rule create --ethertype IPv6 --protocol ipv6-icmp \
+      --remote-ip 2001:700:100:8071::/64 502bd0d6-91ab-4772-8fab-4ec1275372cf
+
+  $ openstack security group rule create --ethertype IPv4 --protocol tcp --dst-port 22 \
+      --remote-ip 129.240.114.32/28 502bd0d6-91ab-4772-8fab-4ec1275372cf
   
-  $ openstack security group rule create --ethertype IPv6 --protocol tcp --dst-port 22 --remote-ip 2001:700:100:12::61 5157dbad-f96b-4921-b9ba-520b5e2ce995
-  (...output omitted...)
+  $ openstack security group rule create --ethertype IPv4 --protocol tcp --dst-port 22 \
+      --remote-ip 129.240.114.48/28 502bd0d6-91ab-4772-8fab-4ec1275372cf
+
+  $ openstack security group rule create --ethertype IPv6 --protocol tcp --dst-port 22 \
+      --remote-ip 2001:700:100:8070::/64 502bd0d6-91ab-4772-8fab-4ec1275372cf
+
+  $ openstack security group rule create --ethertype IPv6 --protocol tcp --dst-port 22 \
+      --remote-ip 2001:700:100:8071::/64 502bd0d6-91ab-4772-8fab-4ec1275372cf
 
 After creating the rules, we can list all rules in the security group
 for inspection:
 
 .. code-block:: console
 
-  $ openstack security group rule list --long 5157dbad-f96b-4921-b9ba-520b5e2ce995
-  +--------------------------------------+-------------+-----------+-------------------------+------------+-----------+-----------------------+
-  | ID                                   | IP Protocol | Ethertype | IP Range                | Port Range | Direction | Remote Security Group |
-  +--------------------------------------+-------------+-----------+-------------------------+------------+-----------+-----------------------+
-  | 1cae9fa2-d8e3-4a65-bd7e-e61f43f71a3f | ipv6-icmp   | IPv6      | 2001:700:100:12::61/128 |            | ingress   | None                  |
-  | 4fd75388-8561-4b94-ba39-b689d3b3dbd0 | None        | IPv6      | ::/0                    |            | egress    | None                  |
-  | 5b536357-c390-4056-9c50-59bc116546bd | None        | IPv4      | 0.0.0.0/0               |            | egress    | None                  |
-  | 6dddba09-c782-4971-84f5-e09de159c6b4 | tcp         | IPv6      | 2001:700:100:12::61/128 | 22:22      | ingress   | None                  |
-  | b7895523-aadc-4756-b8b9-2eab8091ce96 | tcp         | IPv4      | 129.240.12.61/32        | 22:22      | ingress   | None                  |
-  | b7cab74e-d023-4504-b4f6-2e50e9e9a52f | icmp        | IPv4      | 129.240.12.61/32        |            | ingress   | None                  |
-  +--------------------------------------+-------------+-----------+-------------------------+------------+-----------+-----------------------+
+  $ openstack security group rule list 502bd0d6-91ab-4772-8fab-4ec1275372cf
+  +--------------------------------------+-------------+-----------+------------------------+------------+-----------+-----------------------+----------------------+
+  | ID                                   | IP Protocol | Ethertype | IP Range               | Port Range | Direction | Remote Security Group | Remote Address Group |
+  +--------------------------------------+-------------+-----------+------------------------+------------+-----------+-----------------------+----------------------+
+  | 11698bdf-6fcd-45e3-b69d-d08811dbdce9 | tcp         | IPv6      | 2001:700:100:8070::/64 | 22:22      | ingress   | None                  | None                 |
+  | 24b8ab82-c596-4a59-bb8e-3733626ce6a3 | ipv6-icmp   | IPv6      | 2001:700:100:8070::/64 |            | ingress   | None                  | None                 |
+  | 28f5795b-012a-4be6-909a-70ff6ee3fb0e | ipv6-icmp   | IPv6      | 2001:700:100:8071::/64 |            | ingress   | None                  | None                 |
+  | 38fa042b-f865-42fe-8604-664439a062fb | icmp        | IPv4      | 129.240.114.32/28      |            | ingress   | None                  | None                 |
+  | 767edc46-65d0-47cd-9ac5-8e72a1305cc5 | tcp         | IPv4      | 129.240.114.48/28      | 22:22      | ingress   | None                  | None                 |
+  | ac765beb-9d4b-415a-b449-64ba9036b74d | tcp         | IPv4      | 129.240.114.32/28      | 22:22      | ingress   | None                  | None                 |
+  | bd4d4340-d014-4e2d-82f3-680a521ce16d | None        | IPv6      | ::/0                   |            | egress    | None                  | None                 |
+  | c697fb13-c555-4a54-ab98-a6440dfc799a | tcp         | IPv6      | 2001:700:100:8071::/64 | 22:22      | ingress   | None                  | None                 |
+  | dba5f73d-a7ec-4452-aec9-07b9f8b82373 | icmp        | IPv4      | 129.240.114.48/28      |            | ingress   | None                  | None                 |
+  | df890224-2b36-4ad9-a298-699b99d21036 | None        | IPv4      | 0.0.0.0/0              |            | egress    | None                  | None                 |
+  +--------------------------------------+-------------+-----------+------------------------+------------+-----------+-----------------------+----------------------+
 
 
 Remote Security Group
