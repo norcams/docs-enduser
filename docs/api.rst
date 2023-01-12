@@ -162,3 +162,57 @@ run openstack commands:
   +--------------------------------------+------+--------+----------------------+------------+
 
 Read more about the OpenStack CLI at http://docs.openstack.org/cli-reference/
+
+Secure password alternatives
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+If you do not want to enter your clear text password into a file, even when
+secured as described above, there is the alternative of using the operating
+systems keychain where available. The different OS', distributions and releases
+implements a wide variety of keychains and tools. It is impossible to accurately
+describe the necessary steps for all of those, so this is mainly left as an
+excersise for our users. But below is two examples, and maybe one of these will
+fit, or is close enough to enable you to set this up in your environment.
+
+
+Mac OS
+''''''
+
+Run this command:
+
+.. code-block:: console
+
+  $ security add-generic-password -U -a ${USER} -D "environment variable" -s NREC_OPENSTACK_API_KEY -w “secret"
+
+... and then replace the `OS_PASSWORD` line in the *keystone_rc.sh* file (line 3
+in the template above) with:
+
+.. code-block:: bash
+
+  export OS_PASSWORD=$(security find-generic-password -w -a ${USER} -D "environment variable" -s NREC_OPENSTACK_API_KEY)
+
+
+Linux
+'''''
+
+Install ``libsecret``/``libsecret-tools`` or whichever package provides the
+`secret-tool` command.
+
+Run this command:
+
+.. code-block:: console
+
+  $ secret-tool store --label="NREC_OPENSTACK_API_KEY" password NREC_OPENSTACK_API_KEY
+
+... and then replace the `OS_PASSWORD` line in the *keystone_rc.sh* file (line 3
+in the template above) with:
+
+.. code-block:: bash
+
+  export OS_PASSWORD=$(secret-tool lookup NREC_OPENSTACK_API_KEY)
+
+
+.. NOTE::
+   This is just examples and may not be exactly correct in your specific
+   environment. But it ought to be precise enough to enable you to get the
+   specifics suitable for your environment.
