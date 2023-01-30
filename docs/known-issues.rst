@@ -30,7 +30,7 @@ After running the command, you should see that the vGPU is licensed::
           License Status                    : Licensed (Expiry: 2023-1-31 11:32:22 GMT)
 
 Note that this is only needed for existing instances. New GOLD images
-released February 2023 will come preconfigured for new licenses.
+issued February 1 2023 will come preconfigured with new licenses.
 
 
 CentOS 8 downstream end-of-life December 31, 2021
