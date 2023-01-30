@@ -1,11 +1,37 @@
-.. |date| date::
-
 Known Issues
 ============
 
-Last changed: |date|
-
 .. contents::
+
+(Jan 2023) New vGPU licenses in OSL
+-----------------------------------
+
+New NVIDIA Compute licenses have been issued in the OSL region. We are
+transitioning to a new licensing setup as the previous scheme will be
+end of life in July 2023. The old licenses are expired. New licensing
+implies new license servers with slightly different configuration, and
+the configuration resides in the instances. In order to use the new
+licenses in OSL, issue the following command from the instance::
+
+  sudo curl https://download.iaas.uio.no/nrec/nrec-resources/files/nvidia-vgpu/jan-2023-osl-fix.sh | bash
+
+Note that this URL is only accessible from NREC IP ranges. You should
+always be vary of piping stuff from URLs directly into bash as
+root. In order to just display what would be done when running the
+command above, run the command without piping to bash, i.e.::
+
+  curl https://download.iaas.uio.no/nrec/nrec-resources/files/nvidia-vgpu/jan-2023-osl-fix.sh
+
+After running the command, you should see that the vGPU is licensed::
+
+  # nvidia-smi -q | grep -A2 'vGPU Software Licensed Product'
+      vGPU Software Licensed Product
+          Product Name                      : NVIDIA Virtual Compute Server
+          License Status                    : Licensed (Expiry: 2023-1-31 11:32:22 GMT)
+
+Note that this is only needed for existing instances. New GOLD images
+released February 2023 will come preconfigured for new licenses.
+
 
 CentOS 8 downstream end-of-life December 31, 2021
 -------------------------------------------------
