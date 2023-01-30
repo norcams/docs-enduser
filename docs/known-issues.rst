@@ -24,7 +24,7 @@ command above, run the command without piping to bash, i.e.::
 
 After running the command, you should see that the vGPU is licensed::
 
-  # nvidia-smi -q | grep -A2 'vGPU Software Licensed Product'
+  $ nvidia-smi -q | grep -A2 'vGPU Software Licensed Product'
       vGPU Software Licensed Product
           Product Name                      : NVIDIA Virtual Compute Server
           License Status                    : Licensed (Expiry: 2023-1-31 11:32:22 GMT)
