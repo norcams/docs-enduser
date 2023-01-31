@@ -254,7 +254,7 @@ vendor. The most common are:
 ==================== ==============
 Image                User
 ==================== ==============
-**CentOS (Stream)**  ``centos``
+**CentOS (Stream)**  ``cloud-user``
 **Rocky Linux**      ``rocky``
 **Alma Linux**       ``almalinux``
 **Fedora**           ``fedora``
