@@ -13,19 +13,19 @@ Lost access to instance
 
 There can be multiple reasons for losing access to an instance.
 
-- Lost SSH key 
+- Lost SSH key
 - Disk trouble e.g. wrong mount path (`Rescue instance`_)
 - Problems with NIC/network (`Rescue instance`_)
 
 Don't fret, there is maybe a way (workaround) to fix this by accsessing the console/terminal.
-But you need to do some "hacks" to do so if you didn't set/change a users password. 
+But you need to do some "hacks" to do so if you didn't set/change a users password.
 
 
 Possible solution (workaround [1]_)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Got to console, press the "Send ctrlAltDel" button then activate the console window and interrupt the boot by pressing an arrow key for example. Choose a boot entry and press :kbd:`e` for edit.
-Depending on which OS is in use you can edit the boot loader in the console and boot to single user by adding single to the end of the line that start with linux on ubuntu, on centos you have to remove all ``console=ttys`` besides the ``tty0`` and add ``rd.break enforcing=0`` at the end of the line starting with linux16. 
+Depending on which OS is in use you can edit the boot loader in the console and boot to single user by adding single to the end of the line that start with linux on ubuntu, on centos you have to remove all ``console=ttys`` besides the ``tty0`` and add ``rd.break enforcing=0`` at the end of the line starting with linux16.
 There a several exampels and documentation on how to start your Linux server/instance in singel mode (root access) which you can find by searching the web. On centos you have to be fast to interrupt the normal boot.
 Depending on if you are using Ubuntu or Centos you should now have a console and logged in as root. The keyboard layout is probably en_US.UTF8 which means you have to figure out what keys on your keyboard represent :kbd:`=`, :kbd:`/`, :kbd:`-` and :kbd:`:` etc.
 
@@ -61,7 +61,7 @@ Now you should be able to login using ssh with the new key(s).
 
 .. NOTE::
    If you are experiencing problem with booting up and you have attached
-   volumes(s), try dettach them first then run rescue agian. 
+   volumes(s), try dettach them first then run rescue agian.
 
 
 ----------
@@ -96,7 +96,7 @@ Using the dashboard
    :align: center
    :alt: Start rescue mode form dashboard
 
-If you need to edit `security groups`_ then edit instance and then select "Security Groups". 
+If you need to edit `security groups`_ then edit instance and then select "Security Groups".
 
 .. image:: images/rescue-instance-04.png
    :align: center
@@ -105,6 +105,20 @@ If you need to edit `security groups`_ then edit instance and then select "Secur
 .. image:: images/rescue-instance-05.png
    :align: center
    :alt: Unrescue instance form dashboard
+
+.. NOTE::
+   THIS IS RELATED to LINUX!
+
+   If you do not select a specific image (or specify the same as the instance
+   originally used, which in effect is the same), the two (pseudo)disks may end
+   up with the same UUID. For some distributions this may cause the instance to
+   mount its root filesystem from the damaged disk. The upshot is that any SSH
+   connections will seemingly connect to the broken instance, and the rescue
+   attempt is thus moot.
+
+   The workaround is to explicitly specify an image for the rescue attempt, and
+   select any other image than the one used for setting up the instance in the
+   first place.
 
 
 .. [1] Since setting a password when rescuing an instance do not work.
