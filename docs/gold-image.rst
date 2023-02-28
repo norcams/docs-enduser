@@ -61,8 +61,8 @@ GOLD image                     Family   Default user name  Boot FW  End of Life 
 .. [#f1] "Downstream RHEL" means that this is a binary compatible
    distribution build on Redhat Enterprise Linux (RHEL), trailing the
    release closely. "Upstream RHEL" means that this distribution
-   is *ahead* of RHEL, so if RHEL is in 8.*n* release, the Stream
-   release will be somewhere near the future 8.*n+1* RHEL release.
+   is *ahead* of RHEL, so if RHEL is in 8.n release, the Stream
+   release will be somewhere near the future 8.n+1 RHEL release.
 
 .. [#f2] GOLD images for CentOS Stream 9 released in the period
    between July 1, 2022 and November 1, 2022 had their default
