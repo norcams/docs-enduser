@@ -44,6 +44,7 @@ Norwegian Research and Education Cloud
    terraform-part3
    terraform-part4
    terraform-part5
+   snapshot
 
 **Other:**
 
