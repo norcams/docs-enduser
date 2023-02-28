@@ -24,19 +24,19 @@ Currently available GOLD images in NREC:
 ============================== ======== ===================== ======== ==================== =======================
 GOLD image                     Family   Default user name     Boot FW  End of Life          Notes
 ============================== ======== ===================== ======== ==================== =======================
-**Alma Linux 8**               Red Hat  ``almalinux``         UEFI     May, 2029            Downstream RHEL [#f1]_
-**Alma Linux 9**               Red Hat  ``almalinux``         UEFI     May, 2032            Downstream RHEL [#f1]_
-**CentOS 7**                   Red Hat  ``centos``            BIOS     May, 2024            Downstream RHEL [#f1]_
-**CentOS Stream 8**            Red Hat  ``cloud-user`` [#f3]_ BIOS     May, 2024            Upstream RHEL [#f1]_
-**CentOS Stream 9**            Red Hat  ``cloud-user`` [#f2]_ BIOS     *unknown*            Upstream RHEL [#f1]_
+**Alma Linux 8**               RedHat   ``almalinux``         UEFI     May, 2029            Downstream RHEL [#f1]_
+**Alma Linux 9**               RedHat   ``almalinux``         UEFI     May, 2032            Downstream RHEL [#f1]_
+**CentOS 7**                   RedHat   ``centos``            BIOS     May, 2024            Downstream RHEL [#f1]_
+**CentOS Stream 8**            RedHat   ``cloud-user`` [#f3]_ BIOS     May, 2024            Upstream RHEL [#f1]_
+**CentOS Stream 9**            RedHat   ``cloud-user`` [#f2]_ BIOS     *unknown*            Upstream RHEL [#f1]_
 **Debian 10**                  Debian   ``debian``            BIOS     June, 2024           "Buster" release
 **Debian 11**                  Debian   ``debian``            UEFI     June, 2026           "Bullseye" release
-**Fedora 37**                  Red Hat  ``fedora``            UEFI     July, 2024
-**UiO Managed RHEL 7**         Red Hat  ``cloud-user``        BIOS     June 2024            UiO projects only
-**UiO Managed RHEL 8**         Red Hat  ``cloud-user``        BIOS     May, 2029            UiO projects only
-**UiO Managed RHEL 9**         Red Hat  ``cloud-user``        UEFI     May, 2032            UiO projects only
-**Rocky Linux 8**              Red Hat  ``rocky``             BIOS     May, 2029            Downstream RHEL [#f1]_
-**Rocky Linux 9**              Red Hat  ``rocky``             UEFI     May, 2032            Downstream RHEL [#f1]_
+**Fedora 37**                  RedHat   ``fedora``            UEFI     July, 2024
+**UiO Managed RHEL 7**         RedHat   ``cloud-user``        BIOS     June 2024            UiO projects only
+**UiO Managed RHEL 8**         RedHat   ``cloud-user``        BIOS     May, 2029            UiO projects only
+**UiO Managed RHEL 9**         RedHat   ``cloud-user``        UEFI     May, 2032            UiO projects only
+**Rocky Linux 8**              RedHat   ``rocky``             BIOS     May, 2029            Downstream RHEL [#f1]_
+**Rocky Linux 9**              RedHat   ``rocky``             UEFI     May, 2032            Downstream RHEL [#f1]_
 **Ubuntu 20.04 LTS**           Debian   ``ubuntu``            BIOS     April, 2025
 **Ubuntu 22.04 LTS**           Debian   ``ubuntu``            UEFI     April, 2027
 **Windows Server 2019 Std**    Windows  ``Admin``             BIOS     Janary, 2024         Activation in BGO only
@@ -48,8 +48,8 @@ users. These images have the correct GPU driver preinstalled:
 ============================== ======== ===================== ======== ==================== =======================
 GOLD image                     Family   Default user name     Boot FW  End of Life          Notes
 ============================== ======== ===================== ======== ==================== =======================
-**vGPU Alma Linux 8**          Red Hat  ``almalinux``         UEFI     May, 2029            Downstream RHEL [#f1]_
-**vGPU Alma Linux 9**          Red Hat  ``almalinux``         UEFI     May, 2032            Downstream RHEL [#f1]_
+**vGPU Alma Linux 8**          RedHat   ``almalinux``         UEFI     May, 2029            Downstream RHEL [#f1]_
+**vGPU Alma Linux 9**          RedHat   ``almalinux``         UEFI     May, 2032            Downstream RHEL [#f1]_
 **vGPU Ubuntu 20.04 LTS**      Debian   ``ubuntu``            BIOS     April, 2025
 **vGPU Ubuntu 22.04 LTS**      Debian   ``ubuntu``            UEFI     April, 2027
 ============================== ======== ===================== ======== ==================== =======================
@@ -76,10 +76,10 @@ The following GOLD images are retired and no longer available:
 ============================== ======== ================== ======== ==================== =======================
 GOLD image                     Family   Default user name  Boot FW  End of Life          Notes
 ============================== ======== ================== ======== ==================== =======================
-|ss| CentOS 8 |se|             Red Hat  ``centos``         BIOS     Dec, 2021            Downstream RHEL
-|ss| Fedora 34 |se|            Red Hat  ``fedora``         BIOS     May, 2022
-|ss| Fedora 35 |se|            Red Hat  ``fedora``         BIOS     November, 2022
-|ss| Fedora 36 |se|            Red Hat  ``fedora``         BIOS     June, 2023
+|ss| CentOS 8 |se|             RedHat   ``centos``         BIOS     Dec, 2021            Downstream RHEL
+|ss| Fedora 34 |se|            RedHat   ``fedora``         BIOS     May, 2022
+|ss| Fedora 35 |se|            RedHat   ``fedora``         BIOS     November, 2022
+|ss| Fedora 36 |se|            RedHat   ``fedora``         BIOS     June, 2023
 |ss| Ubuntu 18.04 LTS |se|     Debian   ``ubuntu``         BIOS     April, 2023
 |ss| Ubuntu 21.04 |se|         Debian   ``ubuntu``         BIOS     Dec, 2021
 |ss| Ubuntu 21.10 |se|         Debian   ``ubuntu``         BIOS     July, 2022
