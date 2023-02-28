@@ -1,5 +1,3 @@
-.. |date| date::
-
 .. |ss| raw:: html
 
    <strike>
@@ -11,15 +9,17 @@
 NREC GOLD images
 ================
 
-Last changed: |date|
-
 .. contents::
 
 The NREC Team provides prebuilt images for user consumption. We try to include
 popular Linux distributions as well as Windows images with an up to date
 patch level and basic features needed for working in the cloud.
 
-**Current GOLD images:**
+
+Current GOLD images
+-------------------
+
+Currently available GOLD images in NREC:
 
 ============================== ======== ===================== ======== ==================== =======================
 GOLD image                     Family   Default user name     Boot FW  End of Life          Notes
@@ -42,21 +42,17 @@ GOLD image                     Family   Default user name     Boot FW  End of Li
 **Windows Server 2019 Std**    Windows  ``Admin``             BIOS     Janary, 2024         Activation in BGO only
 ============================== ======== ===================== ======== ==================== =======================
 
-**Retired GOLD images:**
+In addition, the following GOLD images are available to GPU
+users. These images have the correct GPU driver preinstalled:
 
-============================== ======== ================== ======== ==================== =======================
-GOLD image                     Family   Default user name  Boot FW  End of Life          Notes
-============================== ======== ================== ======== ==================== =======================
-|ss| CentOS 8 |se|             RedHat   ``centos``         BIOS     Dec, 2021            Downstream RHEL *
-|ss| Fedora 34 |se|            RedHat   ``fedora``         BIOS     May, 2022
-|ss| Fedora 35 |se|            RedHat   ``fedora``         BIOS     November, 2022
-|ss| Fedora 36 |se|            RedHat   ``fedora``         BIOS     June, 2023
-|ss| Ubuntu 18.04 LTS |se|     Debian   ``ubuntu``         BIOS     April, 2023
-|ss| Ubuntu 21.04 |se|         Debian   ``ubuntu``         BIOS     Dec, 2021
-|ss| Ubuntu 21.10 |se|         Debian   ``ubuntu``         BIOS     July, 2022
-|ss| Debian 9 |se|             Debian   ``debian``         BIOS     June, 2022           "Stretch" release
-============================== ======== ================== ======== ==================== =======================
-
+============================== ======== ===================== ======== ==================== =======================
+GOLD image                     Family   Default user name     Boot FW  End of Life          Notes
+============================== ======== ===================== ======== ==================== =======================
+**vGPU Alma Linux 8**          RedHat   ``almalinux``         UEFI     May, 2029            Downstream RHEL [#f1]_
+**vGPU Alma Linux 9**          RedHat   ``almalinux``         UEFI     May, 2032            Downstream RHEL [#f1]_
+**vGPU Ubuntu 20.04 LTS**      Debian   ``ubuntu``            BIOS     April, 2025
+**vGPU Ubuntu 22.04 LTS**      Debian   ``ubuntu``            UEFI     April, 2027
+============================== ======== ===================== ======== ==================== =======================
 
 .. [#f1] "Downstream RHEL" means that this is a binary compatible
    distribution build on Redhat Enterprise Linux (RHEL), trailing the
@@ -70,6 +66,25 @@ GOLD image                     Family   Default user name  Boot FW  End of Life 
 
 .. [#f3] GOLD images for CentOS Stream 8 released before December 1,
    2022 had their default username set to "centos".
+
+
+Retired GOLD images
+-------------------
+
+The following GOLD images are retired and no longer available:
+
+============================== ======== ================== ======== ==================== =======================
+GOLD image                     Family   Default user name  Boot FW  End of Life          Notes
+============================== ======== ================== ======== ==================== =======================
+|ss| CentOS 8 |se|             RedHat   ``centos``         BIOS     Dec, 2021            Downstream RHEL
+|ss| Fedora 34 |se|            RedHat   ``fedora``         BIOS     May, 2022
+|ss| Fedora 35 |se|            RedHat   ``fedora``         BIOS     November, 2022
+|ss| Fedora 36 |se|            RedHat   ``fedora``         BIOS     June, 2023
+|ss| Ubuntu 18.04 LTS |se|     Debian   ``ubuntu``         BIOS     April, 2023
+|ss| Ubuntu 21.04 |se|         Debian   ``ubuntu``         BIOS     Dec, 2021
+|ss| Ubuntu 21.10 |se|         Debian   ``ubuntu``         BIOS     July, 2022
+|ss| Debian 9 |se|             Debian   ``debian``         BIOS     June, 2022           "Stretch" release
+============================== ======== ================== ======== ==================== =======================
 
 
 UiO Managed
