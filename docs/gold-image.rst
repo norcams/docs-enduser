@@ -31,7 +31,7 @@ GOLD image                     Family   Default user name     Boot FW  End of Li
 **CentOS Stream 9**            RedHat   ``cloud-user`` [#f2]_ BIOS     *unknown*            Upstream RHEL [#f1]_
 **Debian 10**                  Debian   ``debian``            BIOS     June, 2024           "Buster" release
 **Debian 11**                  Debian   ``debian``            UEFI     June, 2026           "Bullseye" release
-**Fedora 37**                  RedHat   ``fedora``            UEFI     July, 2024
+**Fedora 37**                  RedHat   ``fedora``            UEFI     December, 2023
 **UiO Managed RHEL 7**         RedHat   ``cloud-user``        BIOS     June 2024            UiO projects only
 **UiO Managed RHEL 8**         RedHat   ``cloud-user``        BIOS     May, 2029            UiO projects only
 **UiO Managed RHEL 9**         RedHat   ``cloud-user``        UEFI     May, 2032            UiO projects only
