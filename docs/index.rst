@@ -26,7 +26,7 @@ Norwegian Research and Education Cloud
    manage-volumes
    create-snapshot
    gold-image
-   create-image
+   snapshot
    console
 
 **Advanced topics:**
@@ -44,7 +44,6 @@ Norwegian Research and Education Cloud
    terraform-part3
    terraform-part4
    terraform-part5
-   snapshot
 
 **Other:**
 
