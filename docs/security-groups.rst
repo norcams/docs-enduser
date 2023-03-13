@@ -195,7 +195,7 @@ block. CIDR notation applies to IPv6 as well:
 **2001:db8:a:b:c:d:e:100/128**
   The single IPv6 address ``2001:db8:a:b:c:d:e:100``
 
-The actual number of IPv6 addresses that the ranges cotain is so large
+The actual number of IPv6 addresses that the ranges contain is so large
 we have omitted them from this list.
 
 .. IMPORTANT::
