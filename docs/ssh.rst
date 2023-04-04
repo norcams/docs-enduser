@@ -423,6 +423,226 @@ Obviously, you should replace the username, proxy hostname and
 identity file to work in your environment.
 
 
+Transferring data
+-----------------
+
+At some point you may want to transfer data to or from your instance,
+and SSH is a good tool for that as well. You can still use proxy host
+(manually or via configuration) as described above. For ease and
+simplicity we'll divide into to different scenarios: Transferring a
+single file, and transferring a directory recursively.
+
+Transferring single file via SCP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When using SCP to transfer a file, use the syntax below. We provide
+examples with and without advanced options.
+
+From instance to local machine::
+
+  scp <username>@<ip-address>:<file> <target-directory>
+
+Examples:
+
+#. Simple example with IPv4:
+
+   .. code-block:: console
+
+      $ scp ubuntu\@258.37.63.217:/data/results.dat ~/thesis/
+
+#. Simple example with IPv6 (notice brackets ``[]`` around IP address):
+
+   .. code-block:: console
+
+      $ scp ubuntu\@[3001:700:2:8200::268f]:/data/results.dat ~/thesis/
+
+#. Advanced example using proxy host and specifying key, with IPv6:
+
+   .. code-block:: console
+
+      $ scp -i ~/.ssh/id_rsa_nrec -J uiouser\@login.uio.no ubuntu\@[3001:700:2:8200::268f]:/data/results.dat ~/thesis/
+
+From local machine to instance::
+
+  scp <file> <username>@<ip-address>:<target-directory>
+
+Examples:
+
+#. Simple example with IPv4:
+
+   .. code-block:: console
+
+      $ scp ~/thesis/analysis.dat ubuntu\@258.37.63.217:/data/
+
+#. Simple example with IPv6 (notice brackets ``[]`` around IP address):
+
+   .. code-block:: console
+
+      $ scp ~/thesis/analysis.dat ubuntu\@[3001:700:2:8200::268f]:/data/
+
+#. Advanced example using proxy host and specifying key, with IPv6:
+
+   .. code-block:: console
+
+      $ scp -i ~/.ssh/id_rsa_nrec -J uiouser\@login.uio.no ~/thesis/analysis.dat ubuntu\@[3001:700:2:8200::268f]:/data/
+
+Transferring single file via SFTP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+With SFTP you can access the instance remotely and it behaves like an
+FTP server. You can for the most part use familiar FTP
+commands. Unlike with SCP, we connect to the server and have an open
+session which we can use to transfer files to and from the local
+machine, until we close the session. To open a session::
+
+  sftp <username>@<ip-address>
+
+This will open an SFTP session starting at the home directory of the
+user. You can also specify a directory::
+
+  sftp <username>@<ip-address>:<directory>
+
+Examples:
+
+#. Simple example with IPv4:
+
+   .. code-block:: console
+
+      $ sftp ubuntu\@258.37.63.217
+
+#. Simple example with IPv6 (notice brackets ``[]`` around IP address):
+
+   .. code-block:: console
+
+      $ sftp ubuntu\@[3001:700:2:8200::268f]
+
+#. Advanced example using proxy host and specifying key, with IPv6,
+   and also specifying remote directory:
+
+   .. code-block:: console
+
+      $ sftp -i ~/.ssh/id_rsa_nrec -J uiouser\@login.uio.no ubuntu\@[3001:700:2:8200::268f]:/data
+
+Once you have opened an SFTP session, you can use common FTP
+commands. The most used are:
+
+* **get remote-path [local-path]** : Retrieve the remote-path and
+  store it on the local machine.  If the local path name is not
+  specified, it is given the same name it has on the remote machine.
+
+* **put local-path [remote-path]** : Upload local-path and store it on
+  the remote machine.  If the remote path name is not specified, it is
+  given the same name it has on the local machine.
+
+* **lpwd** : Print local working directory
+
+* **pwd** : Display remote working directory
+
+* **lls [path]** : Display local directory listing of either path or
+  current directory if path is not specified.
+
+* **ls [path]** : Display a remote directory listing of either path or
+  the current directory if path is not specified
+
+* **lcd [path]** : Change local directory to path.  If path is not
+  specified, then change directory to the local user's home directory
+
+* **cd [path]** : Change remote directory to path.  If path is not
+  specified, then change directory to the one the session started in.
+
+These are only the commands most commonly used. Refer to the manual
+page of sftp for the rest, as well as more advanced usage of these
+commands::
+
+  man sftp
+
+Transferring directory recursively via RSYNC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Whenever you want to transfer an entire directory including its
+contents to or from your instance, rsync is a good tool for the
+job. If you're not relying on proxy hosts or other exotic SSH options
+to make this work, you can use rsync very much like scp:
+
+Rsync a directory to your instance from the local machine::
+
+  rsync -av <source-dir> <username>@<ip-address>:<target-dir>
+
+And vice versa::
+
+  rsync -av <username>@<ip-address>:<source-dir> <target-dir>
+
+We use the options ``-a`` for archive mode, that makes sure that
+everything (permissions, owner etc.) is kept and the copy is as exact
+as possible. The option ``-v`` triggers verbose mode and can be
+omitted without altering the functionality.
+
+Examples:
+
+#. From local machine to instance using IPv4:
+
+   .. code-block:: console
+
+      $ rsync -av /tmp/analysis ubuntu\@258.37.63.217:/data/
+
+   And using IPv6:
+
+   .. code-block:: console
+
+      $ rsync -av /tmp/analysis ubuntu\@[2001:700:2:8200::268f]:/data/
+
+#. From instance to local machine using IPv4:
+
+   .. code-block:: console
+
+      $ rsync -av ubuntu\@258.37.63.217:/data/results ~/thesis/
+
+   And using IPv6:
+
+   .. code-block:: console
+
+      $ rsync -av ubuntu\@[2001:700:2:8200::268f]:/data/results ~/thesis/
+
+If you rely on SSH proxy hosts to connect to the instance, you will
+need to also use the option ``-e`` to specify the remote shell to
+use. In our case, we want to use ssh with options for specifying the
+key and proxy host.
+
+Rsync a directory to your instance from the local machine::
+
+  rsync -av -e 'ssh -i <keyfile> -J <username>@<proxy-host>' <source-dir> <username>@<ip-address>:<target-dir>
+
+And vice versa::
+
+  rsync -av -e 'ssh -i <keyfile> -J <username>@<proxy-host>' <username>@<ip-address>:<source-dir> <target-dir>
+
+Examples:
+
+#. From local machine to instance using IPv4:
+
+   .. code-block:: console
+
+      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser\@login.uio.no' /tmp/analysis ubuntu\@258.37.63.217:/data/
+
+   And using IPv6:
+
+   .. code-block:: console
+
+      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser\@login.uio.no' /tmp/analysis ubuntu\@[2001:700:2:8200::268f]:/data/
+
+#. From instance to local machine using IPv4:
+
+   .. code-block:: console
+
+      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser\@login.uio.no' ubuntu\@258.37.63.217:/data/results ~/thesis/
+
+   And using IPv6:
+
+   .. code-block:: console
+
+      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser\@login.uio.no' ubuntu\@[2001:700:2:8200::268f]:/data/results ~/thesis/
+
+
 Deleting key pairs
 ------------------
 
