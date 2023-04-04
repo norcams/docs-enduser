@@ -589,7 +589,7 @@ Examples:
 
    .. code-block:: console
 
-      $ rsync -av /tmp/analysis ubuntu@[2001:700:2:8200::268f]:/data/
+      $ rsync -av /tmp/analysis ubuntu@[3001:700:2:8200::268f]:/data/
 
 #. From instance to local machine using IPv4:
 
@@ -601,7 +601,7 @@ Examples:
 
    .. code-block:: console
 
-      $ rsync -av ubuntu@[2001:700:2:8200::268f]:/data/results ~/thesis/
+      $ rsync -av ubuntu@[3001:700:2:8200::268f]:/data/results ~/thesis/
 
 If you rely on SSH proxy hosts to connect to the instance, you will
 need to also use the option ``-e`` to specify the remote shell to
@@ -628,7 +628,7 @@ Examples:
 
    .. code-block:: console
 
-      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser@login.uio.no' /tmp/analysis ubuntu@[2001:700:2:8200::268f]:/data/
+      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser@login.uio.no' /tmp/analysis ubuntu@[3001:700:2:8200::268f]:/data/
 
 #. From instance to local machine using IPv4:
 
@@ -640,7 +640,7 @@ Examples:
 
    .. code-block:: console
 
-      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser@login.uio.no' ubuntu@[2001:700:2:8200::268f]:/data/results ~/thesis/
+      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser@login.uio.no' ubuntu@[3001:700:2:8200::268f]:/data/results ~/thesis/
 
 
 Deleting key pairs
