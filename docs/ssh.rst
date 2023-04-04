@@ -448,19 +448,19 @@ Examples:
 
    .. code-block:: console
 
-      $ scp ubuntu\@258.37.63.217:/data/results.dat ~/thesis/
+      $ scp ubuntu@258.37.63.217:/data/results.dat ~/thesis/
 
 #. Simple example with IPv6 (notice brackets ``[]`` around IP address):
 
    .. code-block:: console
 
-      $ scp ubuntu\@[3001:700:2:8200::268f]:/data/results.dat ~/thesis/
+      $ scp ubuntu@[3001:700:2:8200::268f]:/data/results.dat ~/thesis/
 
 #. Advanced example using proxy host and specifying key, with IPv6:
 
    .. code-block:: console
 
-      $ scp -i ~/.ssh/id_rsa_nrec -J uiouser\@login.uio.no ubuntu\@[3001:700:2:8200::268f]:/data/results.dat ~/thesis/
+      $ scp -i ~/.ssh/id_rsa_nrec -J uiouser@login.uio.no ubuntu@[3001:700:2:8200::268f]:/data/results.dat ~/thesis/
 
 From local machine to instance::
 
@@ -472,19 +472,19 @@ Examples:
 
    .. code-block:: console
 
-      $ scp ~/thesis/analysis.dat ubuntu\@258.37.63.217:/data/
+      $ scp ~/thesis/analysis.dat ubuntu@258.37.63.217:/data/
 
 #. Simple example with IPv6 (notice brackets ``[]`` around IP address):
 
    .. code-block:: console
 
-      $ scp ~/thesis/analysis.dat ubuntu\@[3001:700:2:8200::268f]:/data/
+      $ scp ~/thesis/analysis.dat ubuntu@[3001:700:2:8200::268f]:/data/
 
 #. Advanced example using proxy host and specifying key, with IPv6:
 
    .. code-block:: console
 
-      $ scp -i ~/.ssh/id_rsa_nrec -J uiouser\@login.uio.no ~/thesis/analysis.dat ubuntu\@[3001:700:2:8200::268f]:/data/
+      $ scp -i ~/.ssh/id_rsa_nrec -J uiouser@login.uio.no ~/thesis/analysis.dat ubuntu@[3001:700:2:8200::268f]:/data/
 
 Transferring single file via SFTP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -508,20 +508,20 @@ Examples:
 
    .. code-block:: console
 
-      $ sftp ubuntu\@258.37.63.217
+      $ sftp ubuntu@258.37.63.217
 
 #. Simple example with IPv6 (notice brackets ``[]`` around IP address):
 
    .. code-block:: console
 
-      $ sftp ubuntu\@[3001:700:2:8200::268f]
+      $ sftp ubuntu@[3001:700:2:8200::268f]
 
 #. Advanced example using proxy host and specifying key, with IPv6,
    and also specifying remote directory:
 
    .. code-block:: console
 
-      $ sftp -i ~/.ssh/id_rsa_nrec -J uiouser\@login.uio.no ubuntu\@[3001:700:2:8200::268f]:/data
+      $ sftp -i ~/.ssh/id_rsa_nrec -J uiouser@login.uio.no ubuntu@[3001:700:2:8200::268f]:/data
 
 Once you have opened an SFTP session, you can use common FTP
 commands. The most used are:
@@ -583,25 +583,25 @@ Examples:
 
    .. code-block:: console
 
-      $ rsync -av /tmp/analysis ubuntu\@258.37.63.217:/data/
+      $ rsync -av /tmp/analysis ubuntu@258.37.63.217:/data/
 
    And using IPv6:
 
    .. code-block:: console
 
-      $ rsync -av /tmp/analysis ubuntu\@[2001:700:2:8200::268f]:/data/
+      $ rsync -av /tmp/analysis ubuntu@[2001:700:2:8200::268f]:/data/
 
 #. From instance to local machine using IPv4:
 
    .. code-block:: console
 
-      $ rsync -av ubuntu\@258.37.63.217:/data/results ~/thesis/
+      $ rsync -av ubuntu@258.37.63.217:/data/results ~/thesis/
 
    And using IPv6:
 
    .. code-block:: console
 
-      $ rsync -av ubuntu\@[2001:700:2:8200::268f]:/data/results ~/thesis/
+      $ rsync -av ubuntu@[2001:700:2:8200::268f]:/data/results ~/thesis/
 
 If you rely on SSH proxy hosts to connect to the instance, you will
 need to also use the option ``-e`` to specify the remote shell to
@@ -622,25 +622,25 @@ Examples:
 
    .. code-block:: console
 
-      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser\@login.uio.no' /tmp/analysis ubuntu\@258.37.63.217:/data/
+      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser@login.uio.no' /tmp/analysis ubuntu@258.37.63.217:/data/
 
    And using IPv6:
 
    .. code-block:: console
 
-      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser\@login.uio.no' /tmp/analysis ubuntu\@[2001:700:2:8200::268f]:/data/
+      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser@login.uio.no' /tmp/analysis ubuntu@[2001:700:2:8200::268f]:/data/
 
 #. From instance to local machine using IPv4:
 
    .. code-block:: console
 
-      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser\@login.uio.no' ubuntu\@258.37.63.217:/data/results ~/thesis/
+      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser@login.uio.no' ubuntu@258.37.63.217:/data/results ~/thesis/
 
    And using IPv6:
 
    .. code-block:: console
 
-      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser\@login.uio.no' ubuntu\@[2001:700:2:8200::268f]:/data/results ~/thesis/
+      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser@login.uio.no' ubuntu@[2001:700:2:8200::268f]:/data/results ~/thesis/
 
 
 Deleting key pairs
