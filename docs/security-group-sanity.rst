@@ -40,6 +40,10 @@ The following general considerations governs the check:
   groups, or the combination of security groups that comprise the
   firewall in front of an instance
 
+* Only rules that are member of a security groups that are applied to
+  actual instances, are checked. Unused security group rules are
+  ignored
+
 * The IP address ranges of UiO and UiB are whitelisted. As long as the
   IP address and netmask decribes a subset of these ranges, the rule
   is ignored
