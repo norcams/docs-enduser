@@ -94,4 +94,4 @@ maximum number of ports one should open for a specific netmask:
 
 * For netmask between ``16`` and ``32`` (IPv4) or ``64`` and ``128``,
   the number of ports that is considered safe is calculated by the
-  formula :math:`\frac{ \sum_{t=0}^{N}f(t,k) }{N}` 2^(mask - 16) (IPv4) or 2^((mask - 16)/4) (IPv6) 
+  formula :math:`2^(mask - 16)` (IPv4) or :math:`2^(\frac{(mask - 16)}{4})` (IPv6) 
