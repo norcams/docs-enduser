@@ -99,3 +99,32 @@ maximum number of ports one should open for a specific netmask:
 * For netmask between ``16`` and ``32`` (IPv4) or ``64`` and ``128``,
   the number of ports that is considered safe is calculated by the
   formula :math:`2^{mask - 16}` (IPv4) or :math:`2^{\frac{mask - 64}{4}}` (IPv6) 
+
+
+How to Fix?
+-----------
+
+.. _Deleting Rules: security-groups.html#deleting-rules
+.. _Adding Rules: security-groups.html#adding-rules
+.. _Understanding CIDR Notations: security-groups.html#understanding-cidr-notations
+
+Chances are that you are visiting this documentation page because you
+have received an email from us. The first thing you need to know is
+that security group rules are immutable and can't be edited. Your only
+option is to delete the problematic rule, and create a new rule (or
+several rules) to replace it.
+
+1. Follow the guide on how to delete a security group rule: `Deleting
+   Rules`_. Make a note about the details of the rule you are
+   deleting, in case you want to replace it. The email also contains
+   these details.
+
+2. Follow the guid on how to create security group rules: `Adding
+   Rules`_. Bear in mind to use a CIDR_ with a correct netmask (see
+   `Understanding CIDR Notations`_), and be as conservative as
+   possible when opening ports to CIDR_ addresses. See the `Port
+   Limit`_ section above for details.
+
+When the problemtic rule has been deleted you will no longer receive
+alerts about that rule. You may receive alerts about the new rules
+that replace it, if we find that those are problematic.
