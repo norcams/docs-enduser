@@ -97,8 +97,9 @@ maximum number of ports one should open for a specific netmask:
   ports
 
 * For netmask between ``16`` and ``32`` (IPv4) or ``64`` and ``128``,
-  the number of ports that is considered safe is calculated by the
-  formula :math:`2^{mask - 16}` (IPv4) or :math:`2^{\frac{mask - 64}{4}}` (IPv6) 
+  the number of ports that is considered safe for a given netmask is
+  calculated by the formula :math:`2^{mask - 16}` (IPv4) or
+  :math:`2^{\frac{mask - 64}{4}}` (IPv6)
 
 
 How to Fix?
