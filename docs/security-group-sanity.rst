@@ -124,7 +124,7 @@ several rules) to replace it.
    Rules`_. Bear in mind to use a CIDR_ with a correct netmask (see
    `Understanding CIDR Notations`_), and be as conservative as
    possible when opening ports to CIDR_ addresses. See the `Port
-   Limit`_ section above for details.
+   Limits`_ section above for details.
 
 When the problemtic rule has been deleted you will no longer receive
 alerts about that rule. You may receive alerts about the new rules
