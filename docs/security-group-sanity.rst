@@ -77,7 +77,7 @@ same as ``129.240.0.0/16``. Here the user probably meant
 
 These are IPv4 examples. The same applies to IPv6. For example, the
 CIDR_ address ``2001:700:100:8070::36/0`` is valid, but the netmask
-``0`` negates the entire IP address and this CIDR is then exactly the
+``0`` negates the entire IP address and this CIDR_ is then exactly the
 same as ``::/0``, the entire internet.
 
 If you get an alert about wrong netmask, the email will also describe
@@ -96,10 +96,10 @@ maximum number of ports one should open for a specific netmask:
 * For netmask ``32`` (IPv4) or ``128`` (IPv6), you may open all 65536
   ports
 
-* For netmask between ``16`` and ``32`` (IPv4) or ``64`` and ``128``,
-  the number of ports that is considered safe for a given netmask :math:`m` is
-  calculated by the formula :math:`2^{m - 16}` (IPv4) or
-  :math:`2^{\frac{m - 64}{4}}` (IPv6)
+* For netmasks between ``16`` and ``32`` (IPv4) or ``64`` and ``128``
+  (IPv6), the number of ports that is considered safe for a given
+  netmask :math:`m` is calculated by the formula :math:`2^{m - 16}`
+  (IPv4) or :math:`2^{\frac{m - 64}{4}}` (IPv6)
 
 
 How to Fix?
