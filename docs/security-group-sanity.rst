@@ -80,7 +80,7 @@ CIDR_ address ``2001:700:100:8070::36/0`` is valid, but the netmask
 ``0`` negates the entire IP address and this CIDR_ is then exactly the
 same as ``::/0``, the entire internet.
 
-If you get an alert about wrong netmask, the email will also describe
+If you get an alert about wrong netmask, the email will also contain
 the minimal netmask that makes sense.
 
 
@@ -120,7 +120,7 @@ several rules) to replace it.
    deleting, in case you want to replace it. The email also contains
    these details.
 
-2. Follow the guid on how to create security group rules: `Adding
+2. Follow the guide on how to create security group rules: `Adding
    Rules`_. Bear in mind to use a CIDR_ with a correct netmask (see
    `Understanding CIDR Notations`_), and be as conservative as
    possible when opening ports to CIDR_ addresses. See the `Port
