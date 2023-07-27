@@ -81,8 +81,8 @@ CIDR_ address ``2001:700:100:8070::36/0`` is valid, but the subnet mask
 same as ``::/0``, the entire internet.
 
 If you get an alert about wrong subnet mask, the email will also
-contain the minimum subnet mask that makes sense. Bear in mind that
-this is the *minimum* subnet mask. It should be this number or higher.
+contain the minimum subnet mask that makes sense. Note that this is
+the **minimum** subnet mask. It should be this number or higher.
 
 
 Port Limits
