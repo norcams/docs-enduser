@@ -22,7 +22,7 @@ security group rules are checked.
 Each security group rule is checked every day. This check is automatic
 and looks for simple mistakes by the user:
 
-* Wrong netmask for the given IP address
+* Wrong IP and subnet mask combination
 * The rule opens too many ports to too many IP addresses
 
 If the check finds a discrepancy, an email is sent to the project
@@ -58,48 +58,52 @@ The following general considerations governs the check:
   that use a security group as target are ignored
 
 
-Wrong Netmask
--------------
+Wrong Subnet Mask
+-----------------
 
-The system accepts what we consider to be a «wrong» netmask. For
-example, the system accepts ``129.240.114.36/0`` as a valid CIDR_
-address. However, this is identical to ``0.0.0.0/0`` as a netmask of
-``0`` negates the IP address in its entirety. This is an extreme
-example, in which the user probably wanted to give access to a single
-host but ended up giving access to the entire internet. The correct
-CIDR_ address that describes a single host in this case would be
-``129.240.114.36/32``.
+The system accepts what we consider to be a «wrong» subnet mask and IP
+combination. For example, the system accepts ``129.240.114.36/0`` as a
+valid CIDR_ address. However, this is identical to ``0.0.0.0/0`` as a
+subnet mask of ``0`` negates the IP address in its entirety. This is an
+extreme example, in which the user probably wanted to give access to a
+single host but ended up giving access to the entire internet. The
+correct CIDR_ address that describes a single host in this case would
+be ``129.240.114.36/32``.
 
-A less extreme example would be ``129.240.114.0/16``. The netmask of
-``16`` is too low number, and this CIDR_ address is effectively the
+A less extreme example would be ``129.240.114.0/16``. The subnet mask
+of ``16`` is too low number, and this CIDR_ address is effectively the
 same as ``129.240.0.0/16``. Here the user probably meant
 ``129.240.114.0/24`` or similar.
 
 These are IPv4 examples. The same applies to IPv6. For example, the
-CIDR_ address ``2001:700:100:8070::36/0`` is valid, but the netmask
+CIDR_ address ``2001:700:100:8070::36/0`` is valid, but the subnet mask
 ``0`` negates the entire IP address and this CIDR_ is then exactly the
 same as ``::/0``, the entire internet.
 
 If you get an alert about wrong netmask, the email will also contain
-the minimal netmask that makes sense.
+the minimum subnet mask that makes sense.
 
 
 Port Limits
 -----------
 
 The NREC team has created a set of port limits, which describes the
-maximum number of ports one should open for a specific netmask:
+maximum number of ports one should open for a specific subnet mask:
 
-* For netmasks ``0`` through ``16`` (IPv4) or ``0`` through ``64``
+* For subnet masks ``0`` through ``16`` (IPv4) or ``0`` through ``64``
   (IPv6), only a single port is considered safe
 
-* For netmask ``32`` (IPv4) or ``128`` (IPv6), you may open all 65536
-  ports
+* For subnet mask ``32`` (IPv4) or ``128`` (IPv6), you may open all
+  65536 ports
 
-* For netmasks between ``16`` and ``32`` (IPv4) or ``64`` and ``128``
-  (IPv6), the number of ports that is considered safe for a given
-  netmask :math:`m` is calculated by the formula :math:`2^{m - 16}`
-  (IPv4) or :math:`2^{\frac{m - 64}{4}}` (IPv6)
+* For subnet masks between ``16`` and ``32`` (IPv4) or ``64`` and
+  ``128`` (IPv6), the number of ports that is considered safe for a
+  given subnet mask :math:`m` is calculated by the formula
+  :math:`2^{m - 16}` (IPv4) or :math:`2^{\frac{m - 64}{4}}` (IPv6)
+
+We recommend that you stay within these limits to ensure that your
+instances are safe. Always try to open just enough and not more than
+you need.
 
 
 How to Fix?
@@ -121,8 +125,8 @@ several rules) to replace it.
    these details.
 
 2. Follow the guide on how to create security group rules: `Adding
-   Rules`_. Bear in mind to use a CIDR_ with a correct netmask (see
-   `Understanding CIDR Notations`_), and be as conservative as
+   Rules`_. Bear in mind to use a CIDR_ with a correct subnet mask
+   (see `Understanding CIDR Notations`_), and be as conservative as
    possible when opening ports to CIDR_ addresses. See the `Port
    Limits`_ section above for details.
 
