@@ -51,7 +51,7 @@ The following general considerations governs the check:
 * Ports 22 (ssh), 80 (http) and 443 (https) are whitelisted. Any rule
   that opens to one of these three ports is ignored
 
-* The ICMP protocol is whitelisted. Rules that opens for ICMP are
+* The ICMP protocol is whitelisted. Rules that open for ICMP are
   ignored
 
 * Only ingress rules (incoming traffic) are checked. Egress rules
