@@ -22,7 +22,7 @@ security group rules are checked.
 Each security group rule is checked every day. This check is automatic
 and looks for simple mistakes by the user:
 
-* Wrong IP and subnet mask combination
+* Wrong IP address and subnet mask combination
 * The rule opens too many ports to too many IP addresses
 
 If the check finds a discrepancy, an email is sent to the project
