@@ -131,6 +131,6 @@ several rules) to replace it.
    possible when opening ports to CIDR_ addresses. See the `Port
    Limits`_ section above for details.
 
-When the problemtic rule has been deleted you will no longer receive
+When the problematic rule has been deleted you will no longer receive
 alerts about that rule. You may receive alerts about the new rules
 that replace it, if we find that those are problematic.
