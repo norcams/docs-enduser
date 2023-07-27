@@ -45,8 +45,8 @@ The following general considerations governs the check:
   ignored
 
 * The IP address ranges of UiO and UiB are whitelisted. As long as the
-  IP address and netmask decribes a subset of these ranges, the rule
-  is ignored
+  IP address and subnet mask decribes a subset of these ranges, the
+  rule is ignored
 
 * Ports 22 (ssh), 80 (http) and 443 (https) are whitelisted. Any rule
   that opens to one of these three ports is ignored
