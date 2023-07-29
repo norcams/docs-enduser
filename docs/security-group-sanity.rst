@@ -17,7 +17,7 @@ security group is applied.
 Creating security group rules can be easy or difficult, depending on
 one's understanding of networking and firewalls. Regardless, it's easy
 to make mistakes and open up more than intended. For this reason,
-security group rules are checked.
+security group rules are checked periodically.
 
 Each security group rule is checked every day. This check is automatic
 and looks for simple mistakes by the user:
@@ -40,7 +40,7 @@ The following general considerations governs the check:
   groups, or the combination of security groups that comprise the
   firewall in front of an instance
 
-* Only rules that are member of a security groups that are applied to
+* Only rules that are member of a security group that is applied to
   actual instances, are checked. Unused security group rules are
   ignored
 
@@ -64,14 +64,14 @@ The following general considerations governs the check:
 Wrong Subnet Mask
 -----------------
 
-The system accepts what we consider to be a «wrong» subnet mask and IP
+The system accepts what we consider to be a wrong subnet mask and IP
 combination. For example, the system accepts ``129.240.114.36/0`` as a
 valid CIDR_ address. However, this is identical to ``0.0.0.0/0`` as a
-subnet mask of ``0`` negates the IP address in its entirety. This is an
-extreme example, in which the user probably wanted to give access to a
-single host but ended up giving access to the entire internet. The
-correct CIDR_ address that describes a single host in this case would
-be ``129.240.114.36/32``.
+subnet mask of ``0`` negates the IP address in its entirety. This is
+an extreme example, in which the user probably wanted to give access
+to a single host but ended up giving access to the entire
+internet. The correct CIDR_ address that describes a single host in
+this case would be ``129.240.114.36/32``.
 
 A less extreme example would be ``129.240.114.0/16``. The subnet mask
 of ``16`` is too low number, and this CIDR_ address is effectively the
