@@ -98,7 +98,7 @@ maximum number of ports one should open for a specific subnet mask:
   (IPv6), only a single port is considered safe
 
 * For subnet mask ``32`` (IPv4) or ``128`` (IPv6), you may open all
-  65536 ports
+  65535 ports
 
 * For subnet masks between ``16`` and ``32`` (IPv4) or ``64`` and
   ``128`` (IPv6), the number of ports that is considered safe for a
