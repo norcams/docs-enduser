@@ -22,23 +22,23 @@ following:
 
 This quota can be extended (price per year):
 
-* Memory per 1 GB: NOK 400
-* CPU per 1 core (vcpu): NOK 600
-* Per virtual machine: NOK 500
-* HDD Volume Storage per 1000 GB: NOK 800
-* SSD Volume storage per 100 GB: NOK 800
+* Memory per 1 GB: 400
+* CPU per 1 core (vcpu): 600
+* Per virtual machine: 500
+* HDD Volume Storage per 1000 GB: 800
+* SSD Volume storage per 100 GB: 800
 
 tabell:
 
 ===============================  ===========
-Memory per 1 GB:                 NOK 400
-CPU per 1 core (vcpu):           NOK 600
-Per virtual machine:             NOK 500
-HDD Volume Storage per 1000 GB:  NOK 800
-SSD Volume storage per 100 GB:   NOK 800
+Memory per 1 GB:                 400
+CPU per 1 core (vcpu):           600
+Per virtual machine:             500
+HDD Volume Storage per 1000 GB:  800
+SSD Volume storage per 100 GB:   800
 ===============================  ===========
   
-All prices are excluding sales tax.
+All prices are in NOK excluding sales tax.
 
 
 Other Sectors
