@@ -15,10 +15,10 @@ provides access for the entire organization, including demo projects
 for all users, and a starting quote for non-demo projects with the
 following:
 
-* Memory: 96 GB
-* CPU Cores: 24
-* Virtual Machines: 10
-* HDD Volume Storage: 1000 GB
+* Memory: **96 GiB**
+* CPU Cores: **24**
+* Virtual Machines: **10**
+* HDD Volume Storage: **1000 GB**
 
 This quota can be extended (price per year):
 
@@ -31,7 +31,7 @@ This quota can be extended (price per year):
 tabell:
 
 ===============================  ===========
-Memory per 1 GB:                 400
+Memory per 1 GiB:                400
 CPU per 1 core (vcpu):           600
 Per virtual machine:             500
 HDD Volume Storage per 1000 GB:  800
