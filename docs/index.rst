@@ -53,6 +53,7 @@ Norwegian Research and Education Cloud
    terms-of-service
    project-lifecycle
    support
+   pricing
    acl
    networking
    known-issues
