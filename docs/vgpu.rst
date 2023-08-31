@@ -110,7 +110,7 @@ and visualization is not available.
 vGPU software product version
 -----------------------------
 
-The current version of the NVIDIA Grid Software is 13 (driver 470 series). When
+The current version of the NVIDIA Grid Software is 15 (driver 525 series). When
 the product version in the NREC infrastructure is upgraded, an upgrade of the
 software in the running instances may be required. We will provide information
 on how to upgrade running instances when necessary.
@@ -167,6 +167,19 @@ Installation of CUDA libraries
    NVIDIA display drivers witch removes the vGPU drivers provided by the NREC Team.
    Only install drivers and driver updates provided by the NREC Team.
 
+.. NOTE::
+   The CUDA library installation require a huge amount of space in addition to
+   the instalaltion file itself. If you have a root disk of 20 GB, you will
+   probably run into a full file system during the process. We recommend that
+   you create a volume of at least 20 GB, create a filesystem on it and mount it
+   temporarily somewhere, where you downlaod the file and perform the
+   installation.
+   This volume can be removed afterwards.
+
+   NREC is considering creating vGPU flavors with a large root disk due to this
+   issue.
+
+
 Now head over to the download page on the NVIDIA website and select Drivers->All NVIDIA
 Drivers. Search for Linux 64-bit drivers in the "Data Center / Tesla" product type.
 Download and install the package installing only the CUDA libraries, excluding the driver,
@@ -174,9 +187,9 @@ but including samples for this example:
 
 .. code-block:: console
 
-  $ curl -O https://developer.download.nvidia.com/compute/cuda/11.4.4/local_installers/cuda_11.4.4_470.82.01_linux.run
-  $ chmod +x cuda_11.4.4_470.82.01_linux.run
-  $ sudo ./cuda_11.4.4_470.82.01_linux.run --silent --no-drm --samples --toolkit
+  $ curl -O https://developer.download.nvidia.com/compute/cuda/12.2.2/local_installers/cuda_12.2.2_535.104.05_linux.run
+  $ chmod +x cuda_12.2.2_535.104.05_linux.run
+  $ sudo ./cuda_12.2.2_535.104.05_linux.run --silent --no-drm --samples --toolkit
 
 After a while the installation is finished. Next step is to install a compiler
 and test one of the samples. For Alma Linux 8 we install the compiler with yum:
@@ -185,19 +198,19 @@ and test one of the samples. For Alma Linux 8 we install the compiler with yum:
 
   $ dnf install -y gcc-c++
 
-The final test is to actually compile some code and run it.
+In Ubuntu we use apt-get:
+
+.. code-block:: console
+  $ apt-get install 'g++'
+
+Finally run some provided demo applications to verify the system.
 
 .. code-block:: console
 
-  $ cd /usr/local/cuda/samples/0_Simple/simpleAtomicIntrinsics
-  $ make
-  $ ./simpleAtomicIntrinsics
-  simpleAtomicIntrinsics starting...
-  GPU Device 0: "Pascal" with compute capability 6.1
+  $ /usr/local/cuda/extras/demo_suite/deviceQuery
+  $ /usr/local/cuda/extras/demo_suite/bandwidthTest
 
-  Processing time: 136.742996 (ms)
-  simpleAtomicIntrinsics completed, returned OK
-
+The commands should both produce output showing it find a GPU device.
 
 Upgrading the instance drivers
 ------------------------------
@@ -241,13 +254,13 @@ this work.
 
   # Find the newest installed kernel
   KERNELVERSION=$(sudo grubby --default-kernel | sed 's|/boot/vmlinuz-||')
-  
+
   # Get latest NVIDIA GRID package and build with dkms
   cd /tmp
   curl -O https://download.iaas.uio.no/nrec/nrec-resources/files/nvidia-vgpu/linux-grid-latest
   chmod +x linux-grid-latest
   sudo ./linux-grid-latest --dkms --no-drm -n -s -k $KERNELVERSION
-  
+
   # Clean up
   rm -f ./linux-grid-latest
 
