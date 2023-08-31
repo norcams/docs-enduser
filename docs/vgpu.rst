@@ -201,6 +201,7 @@ and test one of the samples. For Alma Linux 8 we install the compiler with yum:
 In Ubuntu we use apt-get:
 
 .. code-block:: console
+
   $ apt-get install 'g++'
 
 Finally run some provided demo applications to verify the system.
