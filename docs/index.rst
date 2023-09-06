@@ -52,6 +52,7 @@ Norwegian Research and Education Cloud
 
    terms-of-service
    project-lifecycle
+   security-group-sanity
    support
    pricing
    acl
