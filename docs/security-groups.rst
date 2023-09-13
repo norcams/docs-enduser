@@ -249,8 +249,8 @@ when creating security group rules:
     - ``2001:700:100:8071::/64``
 
 **UiB login hosts**
-  * IPv4: ``129.177.13.204``
-  * IPv6: ``2001:700:200:13::204``
+  * IPv4: ``129.177.13.204/32``
+  * IPv6: ``2001:700:200:13::204/128``
 
 IP ranges in NREC may change as more blocks are added. You can list
 the NREC subnets (CIDR addresses) with this command, which is region
