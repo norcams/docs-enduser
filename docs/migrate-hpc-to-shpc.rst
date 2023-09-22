@@ -9,11 +9,11 @@ Overall, this is what you should do:
 Detailed procedure:
 
 #. If you have attached volumes to the HPC instance, make sure that
-   they are not in `/etc/fstab`. Comment out the volumes by editing
+   they are not in ``/etc/fstab``. Comment out the volumes by editing
    the file
 
 #. Shut off the instance, either by logging in to it and giving the
-   command `poweroff`, or by selecting «Shut Off instance» in the GUI
+   command ``poweroff``, or by selecting «Shut Off instance» in the GUI
 
 #. Take a snapshot of the instance while it is powered off (confirmed
    by the instance status being «Shut Down), by selecting «Create
@@ -29,7 +29,7 @@ Detailed procedure:
 
 #. If you have volumes attached to the old HPC instance, detach the
    volumes from it and attach to the new sHPC instance. If you
-   commented out lines in `/etc/fstab` prior to taking the snapshot,
+   commented out lines in ``/etc/fstab`` prior to taking the snapshot,
    comment the lines in again
 
 #. After you have verified that everything works with the new
