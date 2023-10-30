@@ -192,6 +192,12 @@ working:
   nrec_peer1 BGP        ---        up     2023-10-26    Established   
   nrec_peer2 BGP        ---        up     2023-10-26    Established
 
+.. WARNING::
+  If running BFD, you *must* create a security group that opens the necessary
+  UDP ports for BFD to work, reachable from the NREC network infrastructure
+  loopback addresses (the addresses you are peering against). Open UDP port
+  range 4784-4785 (in this example) 10.255.255.0/30.
+
 You should also check more details pr protocol, for example
 
 .. code-block:: console
