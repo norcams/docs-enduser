@@ -196,7 +196,7 @@ working:
   If running BFD, you *must* create a security group that opens the necessary
   UDP ports for BFD to work, reachable from the NREC network infrastructure
   loopback addresses (the addresses you are peering against). Open UDP port
-  range 4784-4785 (in this example) 10.255.255.0/30.
+  range 4784-4785 for remote IPs (in this example) 10.255.255.0/30.
 
 You should also check more details pr protocol, for example
 
@@ -217,15 +217,15 @@ directly to the loopback interface, which may be the easiest method.
 
 .. code-block:: console
 
-  ip addr add 192.168.0.16/32 dev lo
-  ip -6 addr add fda4:5ff2:8477:1755::0/128 dev lo
+  # ip addr add 192.168.0.16/32 dev lo
+  # ip -6 addr add fda4:5ff2:8477:1755::0/128 dev lo
 
 The advertisements happen as soon as there are routes to the IP addresses.
 
 .. code-block:: console
 
-  ip route add 192.168.0.16/32 dev lo
-  ip -6 route add fda4:5ff2:8477:1755::0/128 dev lo
+  # ip route add 192.168.0.16/32 dev lo
+  # ip -6 route add fda4:5ff2:8477:1755::0/128 dev lo
 
 Likevise, the advertisements will stop as soon as you delete the routes.
 In our example, we can check which prefixes we are announcing with
