@@ -58,6 +58,7 @@ IPv4 endpoints for BGP peering       Yes       10.255.255.1
 `IPv4 prefix(es) you may announce`_  No        192.168.0.16/31
 `IPv6 prefix(es) you may announce`_  No        fda4:5ff2:8477:1755::/127
 Whether BFD_ will be enabled         No        Yes or No
+==================================== ========= ================================
 
 After launching one or more instances attached to "Elastic IP" OpenStack network,
 you are ready to advertise anycast addresses.
