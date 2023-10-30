@@ -82,11 +82,13 @@ Installing Bird is trivial as it is available in most linux distributions
 releases it can be installed with
 
 .. code-block:: console
+
   # sudo apt-get install -y bird2
 
 A working bird configuration (/etc/bird.conf) could look like this:
 
 .. code-block:: console
+
   router id 10.0.240.156; # This instance's IPv4 address
   
   filter export_bgp_v4 {
@@ -178,6 +180,7 @@ After starting the bird daemon, you can check if the desired connections are
 working:
 
 .. code-block:: console
+
   # birdcl show protocol
   BIRD 2.14 ready.
   Name       Proto      Table      State  Since         Info
@@ -192,6 +195,7 @@ working:
 You should also check more details pr protocol, for example
 
 .. code-block:: console
+
   # birdcl show bfd sessions
   BIRD 2.14 ready.
   bfd1:
@@ -206,12 +210,14 @@ interface can be of the dummy interface type, or you can assign the IP address
 directly to the loopback interface, which may be the easiest method.
 
 .. code-block:: console
+
   ip addr add 192.168.0.16/32 dev lo
   ip -6 addr add fda4:5ff2:8477:1755::0/128 dev lo
 
 The advertisements happen as soon as there are routes to the IP addresses.
 
 .. code-block:: console
+
   ip route add 192.168.0.16/32 dev lo
   ip -6 route add fda4:5ff2:8477:1755::0/128 dev lo
 
@@ -219,6 +225,7 @@ Likevise, the advertisements will stop as soon as you delete the routes.
 In our example, we can check which prefixes we are announcing with
 
 .. code-block:: console
+
   # birdcl show route export nrec_peer1 # (or nrec_peer2)
   BIRD 2.14 ready.
   Table master4:
