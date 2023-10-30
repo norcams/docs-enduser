@@ -54,7 +54,7 @@ Parameter                            Mandatory Example
 A `4 Byte Private AS Number`_        Yes       4164939142
 An AS Number for the NREC peers      Yes       65535
 `MD5 password for BGP peering`_      Yes       b1ecd7f662e6ff6ce03ab33626f92cfe
-IPv4 endpoints for BGP peering       Yes       10.255.255.1
+IPv4 endpoints for BGP peering       Yes       10.255.255.1, 10.255.255.2
 `IPv4 prefix(es) you may announce`_  No        192.168.0.16/31
 `IPv6 prefix(es) you may announce`_  No        fda4:5ff2:8477:1755::/127
 Whether BFD_ will be enabled         No        Yes or No
