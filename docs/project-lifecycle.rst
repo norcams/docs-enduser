@@ -3,7 +3,7 @@
 Project Lifecycle
 =================
 
-Last changed: 2022-08-22
+Last changed: 2023-11-14
 
 .. contents::
 
@@ -76,6 +76,18 @@ Extension`_ below. If a project is enabled from quarantine, the
 project's administrator and members are responsible for activating
 instances that were shut off when the project entered quarantine.
 
+Mailing lists
+-------------
+
+If you share responsibilities in administering a project, we recommend creating a mailing list and include this list in the 'Optional contact' field when applying for a project. All E-mails added to this list at any time will then be included in all correspondences with support@nrec.no.
+
+For UiO-users, the instructions for creating a mailing list may be the following:
+
+1. Login at https://sympa.uio.no/ and select the sub domain that you belong to
+2. Select "Opprett liste" and fill out the fields, where the following fields may be
+  - List type: Hotline mailing list
+  - Audience: Forskningsgrupper
+  - Registrer listens formål: Liste med ansatte og eksterne, knyttet til UiO sitt formål, der eksterne kan være upersonlige adresser. Listen er eid av en eller flere ansatte.
 
 Expiration Date Extension
 -------------------------
