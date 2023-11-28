@@ -248,7 +248,7 @@ you can install this extension via the package manager:
 
     # yum install python-designateclient
 
-* For RHEL8, CentOS8 and Fedora:
+* For Fedora and RHEL, Alma Linux, Rocky Linux and CentOS Stream 8.x and later:
 
   .. code-block:: console
 
@@ -396,9 +396,9 @@ Listing your DNS records for ``mytestzone.com``:
   +--------------------------------------+------------------------+-------+-------------------------------------------------------------+--------+--------+
   | id                                   | name                   | type  | records                                                     | status | action |
   +--------------------------------------+------------------------+-------+-------------------------------------------------------------+--------+--------+
-  | 2cddfc55-00d5-49fd-bd0d-ead0650efa19 | mytestzone.com.        | SOA   | ns2.nrec.no. foo.bar.com. 1548168330 3519 600 86400 3600 | ACTIVE | NONE   |
-  | bc9a8f9e-73ad-4604-a292-0612629a51af | mytestzone.com.        | NS    | ns1.nrec.no.                                             | ACTIVE | NONE   |
-  |                                      |                        |       | ns2.nrec.no.                                             |        |        |
+  | 2cddfc55-00d5-49fd-bd0d-ead0650efa19 | mytestzone.com.        | SOA   | ns2.nrec.no. foo.bar.com. 1548168330 3519 600 86400 3600 | ACTIVE | NONE   |  
+  | bc9a8f9e-73ad-4604-a292-0612629a51af | mytestzone.com.        | NS    | ns1.nrec.no.                                             | ACTIVE | NONE   |  
+  |                                      |                        |       | ns2.nrec.no.                                             |        |        |  
   | 6910a762-d1aa-4e48-b14e-d9c44ecb81a3 | test01.mytestzone.com. | A     | 10.0.0.1                                                    | ACTIVE | NONE   |
   | aead6644-b5e7-4f67-be23-f3ce3423c0e7 | test01.mytestzone.com. | AAAA  | fd32:100:200:300::12                                        | ACTIVE | NONE   |
   | da6708fd-4023-48a0-adb6-5c3373605e37 | www.mytestzone.com.    | CNAME | test01.mytestzone.com.                                      | ACTIVE | NONE   |
