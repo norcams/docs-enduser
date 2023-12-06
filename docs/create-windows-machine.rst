@@ -78,7 +78,7 @@ keep in mind when considering running Windows in NREC:
   new instances, you must run ``sysprep.exe`` in order for any
   instances launched from the snapshot to work.
 
-* The NREC platform supports Windows Server 2019 Standard Edition
+* The NREC platform supports Windows Server Standard Edition
   only. If you need other variants like the Core Edition, please let
   us know.
 
@@ -226,17 +226,17 @@ to the entire Internet, granting global access. Click "Add".
 .. IMPORTANT::
    Unlike linux instances, the Windows instances have both an internal "Windows
    Firewall" and external security groups. By default the internal "Windows Firewall"
-   has the ports for RDP and SSH (on Windows Server 2019 and later) open, but you still
+   has the ports for SSH (on Windows Server 2019 and later) open, but you still
    have to create the proper security groups and associate them with the instance in order
    to consume the services.
 
 .. WARNING::
    In the wake of recent security conserns about the RDP protocol we have been
    forced to limit the internal Windows Firewall to only allow connections from
-   the campus networks of the universities of Bergen and Oslo. If you are not situated
-   on one of the campuses' network, you will have to use a VPN service. Specificially,
-   we have modified the rules "Remote Desktop - User Mode (TCP-In)" and "Remote
-   Desktop - User Mode (UDP-In)".
+   the campus networks of the universities of Bergen and Oslo (for IPv4 and IPv6).
+   If you are not situated on one of the campuses' network, you will have to use
+   a VPN service. Specificially, we have modified the rules "Remote Desktop -
+   User Mode (TCP-In)" and "Remote Desktop - User Mode (UDP-In)".
 
 If the instance is ready, we can now assign our new rule to the virtual machine.
 Click on your instance in "Instances" tab, then select "Edit Security Groups":
@@ -356,7 +356,7 @@ client:
 
    .. code-block:: console
 
-     $ rdesktop -g 1280x1024 -k no -u Admin -p ceq26oGb2xw8RQR3Gcdn 158.37.63.197
+     $ xfreerdp /w:1280 /h:1024 /kbd:Norwegian /u:Admin /p:ceq26oGb2xw8RQR3Gcdn /v:158.37.63.197
 
 This will create a session with a fixed size (the "-g" option), and Norwegian keyboard layout
 with the user "Admin", which is an account that is automatically created in the virtual
