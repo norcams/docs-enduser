@@ -16,10 +16,10 @@ Last changed: |date|
 .. #    higher quotas in order to run Windows. Ask for access to the "win" flavor.
 .. # 
 .. # .. TIP::
-.. #    Starting with Windows Server 2019, a SSH server is automatically configured
+.. #    Starting with Windows Server 2019, an SSH server is automatically configured
 .. #    and started in your Windows Instance. It takes some time from the instance
 .. #    appears configured until it is actually finished. Be patient if you want
-.. #    to start a SSH session to your Windows instance.
+.. #    to start an SSH session to your Windows instance.
 .. # 
 .. # .. NOTE::
 .. #    When launching Windows instances in the BGO region, these will automatically
@@ -68,10 +68,10 @@ keep in mind when considering running Windows in NREC:
   will need another project with higher quotas in order to run
   Windows. Ask for access to the **d1** or **win** flavors.
 
-* Starting with Windows Server 2019, a SSH server is automatically
+* Starting with Windows Server 2019, an SSH server is automatically
   configured and started in your Windows Instance. It takes some time
   from the instance appears configured until it is actually
-  finished. Be patient if you want to start a SSH session to your
+  finished. Be patient if you want to start an SSH session to your
   Windows instance.
 
 * If you want to create a snapshot of a Windows instance as a base for
@@ -94,10 +94,10 @@ Setting up a keypair
 --------------------
 
 For Windows instances SSH keys may be used to retreive a random generated
-password, or, for Windows Server 2019 or newer, to create a SSH session
-to the instance. Either way you will need a SSH keypair to go with your
+password, or, for Windows Server 2019 or newer, to create an SSH session
+to the instance. Either way you will need an SSH keypair to go with your
 Windows instance. Refer to :doc:`create-virtual-machine` for more information
-on how to create a SSH keypair.
+on how to create an SSH keypair.
 
 
 Create a virtual machine
@@ -183,10 +183,10 @@ Select the "Key Pair" tab:
    :align: center
    :alt: Dashboard - Launch instance - Key Pair
 
-Here, choose a SSH keypair you want to assign to this virtual
-machine for password retrieval. In this example, we have created a new SSH
-key pair, and we have downloaded the .pem-file to our local computer, naming
-the private key ``windowskey.pem``.
+Here, choose an SSH keypair you want to assign to this virtual
+machine for password retrieval and SSH login. In this example, we have created
+a new SSH key pair, and we have downloaded the .pem-file to our local computer,
+naming the private key ``windowskey.pem``.
 
 Optionally, you may specify a one shot configuration to be executed when
 the instance starts for the first time. In this example we want to execute a
@@ -205,7 +205,7 @@ Allowing RDP access
 .. _Working with Security Groups: security-groups.html
 
 .. TIP::
-   Starting with Windows Server 2019, a SSH server is automatically configured
+   Starting with Windows Server 2019, an SSH server is automatically configured
    and started in your Windows Instance. You will have to create a security group
    that opens for port 22 in order to access the service. Unlike on linux instances,
    the username is "Admin". When you ssh into your Windows instance, you will
