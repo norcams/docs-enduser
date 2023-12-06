@@ -40,7 +40,8 @@ GOLD image                     Family   Default user name     Boot FW  End of Li
 **Rocky Linux 9**              RedHat   ``rocky``             UEFI     May, 2032            Downstream RHEL [#f1]_
 **Ubuntu 20.04 LTS**           Debian   ``ubuntu``            BIOS     April, 2025
 **Ubuntu 22.04 LTS**           Debian   ``ubuntu``            UEFI     April, 2027
-**Windows Server 2019 Std**    Windows  ``Admin``             BIOS     Janary, 2024         Activation in BGO only
+**Windows Server 2019 Std**    Windows  ``Admin``             UEFI     Janary, 2024         Activation in BGO only
+**Windows Server 2022 Std**    Windows  ``Admin``             UEFI     Janary, 2026         Activation in BGO only
 ============================== ======== ===================== ======== ==================== =======================
 
 In addition, the following GOLD images are available to GPU
