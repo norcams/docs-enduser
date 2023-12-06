@@ -334,7 +334,8 @@ Set Admin Password
 
 It is not necessary to retrieve the password as described above. If
 you wish to set the password for the "Admin" account instead, you may
-do so via SSH. To set the password via SSH, use the following command:
+do so via SSH (provided you created a security group that opens for
+SSH access). To set the password via SSH, use the following command:
 
 .. code-block:: console
 
