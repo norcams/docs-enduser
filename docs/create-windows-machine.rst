@@ -80,7 +80,7 @@ keep in mind when considering running Windows in NREC:
 
 * The NREC platform supports Windows Server Standard Edition
   only. If you need other variants like the Core Edition, please let
-  us know.
+  us know. For supported windows versions, see :doc:`gold-image`
 
 .. # 
 .. # Supported Windows versions
@@ -132,7 +132,7 @@ When finished with this tab, select the next, "Source":
 **Select Boot Source** should be left at "Image", which is the
 default. In this case, the virtual machine will boot from a standard
 cloud image. When selecting this option, you can choose from a list of
-images. In our example, we have selected "GOLD Windows Server 2016 Standard".
+images. In our example, we have selected "GOLD Windows Server 2022 Standard".
 
 When finished with this tab, select the next, "Flavor":
 
@@ -142,7 +142,7 @@ When finished with this tab, select the next, "Flavor":
 
 This is where you select the flavor for the virtual machine, i.e. a
 pre-defined set of compute resources. In our example, we've selected
-the "win.small" flavor, which is just enough to run our Windows instance. By
+the "win.medium" flavor, which is enough to run our Windows instance. By
 default, you don't have access to this flavor. Ask in your project request, or
 post a support case.
 
@@ -184,14 +184,25 @@ Select the "Key Pair" tab:
    :alt: Dashboard - Launch instance - Key Pair
 
 Here, choose a SSH keypair you want to assign to this virtual
-machine for password retrieval. In this example, we have created a new
-key pair, and we have downloaded the .pem-file to our local computer.
+machine for password retrieval. In this example, we have created a new SSH
+key pair, and we have downloaded the .pem-file to our local computer, naming
+the private key ``windowskey.pem``.
+
+Optionally, you may specify a one shot configuration to be executed when
+the instance starts for the first time. In this example we want to execute a
+simple powershell script.
+
+.. image:: images/dashboard-create-windows-05-conf.png
+   :align: center
+   :alt: Dashboard - Launch instance - Customization script
 
 When satisfied, clik "Launch Instance" to create your virtual machine.
 
 
 Allowing RDP access
 -------------------
+
+.. _Working with Security Groups: security-groups.html
 
 .. TIP::
    Starting with Windows Server 2019, a SSH server is automatically configured
@@ -219,9 +230,9 @@ Group". Click "Manage Rules" on your newly created security group, then
    :alt: Dashboard - Access and Security - Add Rule
 
 "RDP" is pre-defined in the system, so select that from the menu. In this
-example we limit access to a CIDR mask corresponding to the campus network for
-The University of Bergen. If you instead enter 0.0.0.0/0 or ::/0, that will translate
-to the entire Internet, granting global access. Click "Add".
+example we limit access to an IPv4 CIDR mask corresponding to the campus network for
+The University of Bergen. Click "Add". Please refer to `Working with Security Groups`_
+for more information on this important topic.
 
 .. IMPORTANT::
    Unlike linux instances, the Windows instances have both an internal "Windows
@@ -297,17 +308,17 @@ When you click "Decrypt Password", the password will be shown in the "Password" 
    .. code-block:: console
 
      $ openstack server list 
-     +--------------------------------------+-----------------+--------+----------------------+-----------------------------------+
-     | ID                                   | Name            | Status | Networks             | Image Name                        |
-     +--------------------------------------+-----------------+--------+----------------------+-----------------------------------+
-     | e88b1380-65a5-4975-9338-7213d8df47f2 | windows-machine | ACTIVE | public=158.37.63.197 | GOLD Windows Server 2016 Standard |
-     +--------------------------------------+-----------------+--------+----------------------+-----------------------------------+
+     +--------------------------------------+------------------+--------+----------------------+-----------------------------------+
+     | ID                                   | Name             | Status | Networks             | Image Name                        |
+     +--------------------------------------+------------------+--------+----------------------+-----------------------------------+
+     | e88b1380-65a5-4975-9338-7213d8df47f2 | windows-instance | ACTIVE | public=158.37.63.197 | GOLD Windows Server 2022 Standard |
+     +--------------------------------------+------------------+--------+----------------------+-----------------------------------+
    
    Now you can use the name or ID to retrieve your password:
 
    .. code-block:: console
 
-     $ nova get-password e88b1380-65a5-4975-9338-7213d8df47f2 /home/user/winkey.pem
+     $ nova get-password e88b1380-65a5-4975-9338-7213d8df47f2 /home/user/windowskey.pem
      ceq26oGb2xw8RQR3Gcdn
 
    If your private key is password protected, you will be asked for the password. If
@@ -332,7 +343,7 @@ do so via SSH. To set the password via SSH, use the following command:
 In the command above, replace:
 
 * ``<ssh-key>`` should be the private part of the ssh key used when
-  creating the Windows instance, e.g. "winkey.pem"
+  creating the Windows instance, e.g. "windowskey.pem"
 * ``<ip-address>`` is the IPv6 or IPv4 address of the instance
 * ``<password>`` is the new password
 
@@ -344,7 +355,7 @@ proceed to set the new password for the Admin account:
    $ pwmake 96
    iDyS+UqePIwoqOhariK0m
 
-   $ ssh -l Admin -i ~/.ssh/winkey.pem 2001:700:2:8201::2a3c net user Admin 'iDyS+UqePIwoqOhariK0m'
+   $ ssh -l Admin -i ~/.ssh/windowskey.pem 2001:700:2:8201::2a3c net user Admin 'iDyS+UqePIwoqOhariK0m'
    The command completed successfully.
 
 
