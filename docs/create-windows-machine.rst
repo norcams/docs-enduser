@@ -370,9 +370,9 @@ client:
 
      $ xfreerdp /w:1280 /h:1024 /kbd:Norwegian /u:Admin /p:ceq26oGb2xw8RQR3Gcdn /v:158.37.63.197
 
-This will create a session with a fixed size (the "-g" option), and Norwegian keyboard layout
-with the user "Admin", which is an account that is automatically created in the virtual
-machine. From a windows machine, you can launch "Remote Desktop Connection":
+This will create a session with a fixed size (the "/w:" and "/h:" options), and Norwegian
+keyboard layout with the user "Admin", which is an account that is automatically created
+in the virtual machine. From a windows machine, you can launch "Remote Desktop Connection":
 
 .. image:: images/dashboard-create-windows-12.png
    :align: center
