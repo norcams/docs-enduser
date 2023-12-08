@@ -3,8 +3,9 @@ Object storage
 ==============
 
 .. IMPORTANT::
-   The object storage is only available as a pilot service. Do not use it
-   for important data. The service is available in the BGO and OSL regions.
+   The object storage is only available as a **PILOT SERVICE**. Do not
+   use it for important data. The service is available in the BGO and
+   OSL regions.
 
 .. WARNING::
    At this point in time, due to physical constraints on the backing
@@ -18,21 +19,23 @@ Object storage
 
 .. _s3tool: https://s3tools.org/usage
 .. _aws cli: https://docs.aws.amazon.com/cli/
+.. _OpenStack Swift: https://docs.openstack.org/swift/latest/
+.. _Amazon S3: https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html
 
 Access
 ======
 
 To gain access to the object storage pilot service please send an email to
-support@nrec.no and tell us the name of the project and what you want
-to use the object storage for.
+support@nrec.no and tell us the name of the project that should have
+access to object storage.
 
 Usage
 =====
 
 Our object storage support two different API:
 
-* Openstack swift
-* AWS S3
+* `OpenStack swift`_
+* `Amazon S3`_
 
 The endpoint URLs are
 
@@ -56,6 +59,13 @@ Openstack cli (swift)
 
 You will need to install the python swiftclient for openstack. You will then
 be able to create containers (buckets) and upload and download files.
+
+* For Fedora and RHEL, Alma Linux, Rocky Linux and CentOS Stream 8.x and later:
+
+  .. code-block:: console
+
+    # yum install python3-swiftclient
+
 
 s3cmd (s3)
 ----------
