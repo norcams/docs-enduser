@@ -1,5 +1,5 @@
 ==============
-Object storage
+Object Storage
 ==============
 
 .. IMPORTANT::
