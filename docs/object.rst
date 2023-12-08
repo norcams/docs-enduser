@@ -111,9 +111,9 @@ AWS CLI (S3)
 `AWS CLI`_ can be installed on Fedora and RHEL, Alma Linux, Rocky
 Linux and CentOS Stream 8.x and later with EPEL_ enabled:
 
-  .. code-block:: console
+.. code-block:: console
 
-    # yum install awscli
+  # yum install awscli
 
 You need to create EC2 credentials, as described for the s3cmd usage. Configuration
 of the `AWS CLI`_ may be performed in several ways. A simple method is to use
