@@ -109,7 +109,7 @@ AWS CLI (S3)
 ------------
 
 `AWS CLI`_ can be installed on Fedora and RHEL, Alma Linux, Rocky
-  Linux and CentOS Stream 8.x and later with EPEL_ enabled:
+Linux and CentOS Stream 8.x and later with EPEL_ enabled:
 
   .. code-block:: console
 
