@@ -141,7 +141,7 @@ Example:
 
 .. code-block:: console
 
-  https://object.api.bgo.nrec.no:8080/3eae4805dcd6450fb98651f5a9dc9ded:raytest/2018-11-13-raspbian-stretch-lite.img
+  https://object.api.bgo.nrec.no:8080/<project-id>:<bucket>/<object>
 
 Object Locking (S3)
 ===================
