@@ -123,7 +123,7 @@ environment variables:
 
   export AWS_ACCESS_KEY_ID=<access_key>
   export AWS_SECRET_ACCESS_KEY=<secret_key>
-  export AWS_ENDPOINT_URL=https://object.api.bgo.nrec.no:8080
+  export AWS_ENDPOINT_URL=https://object.api.<region>.nrec.no:8080
 
 See `AWS CLI`_ for more information.
 
