@@ -39,6 +39,8 @@ Simply replace ``bgo`` with ``osl`` in order to choose another region.
 When using this configuration, you need to create the bucket before
 running terraform init, for example
 
+.. code-block:: console
+
   $ s3cmd mb s3://bgo-nrec-terraformstate
 
 If you use a terraform version older than 1.6, use the following
