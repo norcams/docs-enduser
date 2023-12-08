@@ -18,7 +18,7 @@ Object storage
 .. contents::
 
 .. _s3tool: https://s3tools.org/usage
-.. _aws cli: https://docs.aws.amazon.com/cli/
+.. _AWS CLI: https://docs.aws.amazon.com/cli/
 .. _OpenStack Swift: https://docs.openstack.org/swift/latest/
 .. _Amazon S3: https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html
 
@@ -32,9 +32,9 @@ access to object storage.
 Usage
 =====
 
-Our object storage support two different API:
+Our object storage support two different APIs:
 
-* `OpenStack swift`_
+* `OpenStack Swift`_
 * `Amazon S3`_
 
 The endpoint URLs are
@@ -47,14 +47,14 @@ The endpoint URLs are
 for the BGO and OSL regions respectively.
 
 
-Dashboard (swift)
+Dashboard (Swift)
 -----------------
 
 This is a simple web GUI where you can create containers (buckets) and upload
 and download files.
 
 
-Openstack cli (swift)
+Openstack CLI (Swift)
 ---------------------
 
 You will need to install the python swiftclient for openstack. You will then
@@ -67,14 +67,14 @@ be able to create containers (buckets) and upload and download files.
     # yum install python3-swiftclient
 
 
-s3cmd (s3)
+s3cmd (S3)
 ----------
 
 .. WARNING::
   Make sure you have :file:`export OS_INTERFACE=public` in your RC-file used
   with openstack cli
 
-To use the S3 API you will first need to create ec2 credentials.
+To use the S3 API you will first need to create EC2 credentials.
 With openstack cli (version 3.8+) run:
 
 .. code-block:: console
@@ -95,11 +95,11 @@ Install s3cmd and create a config file :file:`~.s3cfg`
 
 See s3tool_ for more information
 
-aws cli (s3)
+AWS CLI (s3)
 ------------
 
-You need to create ec2 credentials, as described for the s3cmd usage. Configuration
-of the aws cli may be performed in several ways. A simple method is to use
+You need to create EC2 credentials, as described for the s3cmd usage. Configuration
+of the `AWS CLI`_ may be performed in several ways. A simple method is to use
 environment variables:
 
 .. code-block:: bash
@@ -108,7 +108,7 @@ environment variables:
   export AWS_SECRET_ACCESS_KEY=<secret_key>
   export AWS_ENDPOINT_URL=https://object.api.bgo.nrec.no:8080
 
-See `aws cli`_ for more information.
+See `AWS CLI`_ for more information.
 
 Public access (s3)
 ==================
@@ -131,7 +131,7 @@ Object locking (s3)
 
 Using the S3 object lock mechanism, you can use object lock concepts like retention
 period, legal hold, and bucket configuration to implement Write-Once-Read_Many (WORM)
-functionality. In the following example we will use aws cli to create a bucket and
+functionality. In the following example we will use `AWS CLI`_ to create a bucket and
 configure object locking for new objects put there.
 
 .. IMPORTANT::
@@ -192,7 +192,7 @@ Now upload another object, using the same key:
       "VersionId": "ynk5tyro6BufAQaKfPA0yg3vY6lKAh6"
   }
 
-List the object versions from det bucket:
+List the object versions from the bucket:
 
 .. code-block:: console
 
