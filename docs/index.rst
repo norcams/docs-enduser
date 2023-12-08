@@ -28,6 +28,7 @@ Norwegian Research and Education Cloud
    gold-image
    snapshot
    console
+   object
 
 **Advanced topics:**
 
@@ -44,6 +45,7 @@ Norwegian Research and Education Cloud
    terraform-part3
    terraform-part4
    terraform-part5
+   terraform-part6
 
 **Other:**
 
