@@ -95,7 +95,7 @@ Install s3cmd and create a config file :file:`~.s3cfg`
 
 See s3tool_ for more information
 
-AWS CLI (s3)
+AWS CLI (S3)
 ------------
 
 You need to create EC2 credentials, as described for the s3cmd usage. Configuration
@@ -110,7 +110,7 @@ environment variables:
 
 See `AWS CLI`_ for more information.
 
-Public access (s3)
+Public Access (S3)
 ==================
 
 To access a public object you will first set public ACL. The URL to access it
@@ -126,7 +126,7 @@ Example:
 
   https://object.api.bgo.nrec.no:8080/3eae4805dcd6450fb98651f5a9dc9ded:raytest/2018-11-13-raspbian-stretch-lite.img
 
-Object locking (s3)
+Object Locking (s3)
 ===================
 
 Using the S3 object lock mechanism, you can use object lock concepts like retention
