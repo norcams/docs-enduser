@@ -17,10 +17,11 @@ Object Storage
 
 .. contents::
 
-.. _s3tool: https://s3tools.org/usage
+.. _Amazon S3 Tools: https://s3tools.org/usage
 .. _AWS CLI: https://docs.aws.amazon.com/cli/
 .. _OpenStack Swift: https://docs.openstack.org/swift/latest/
 .. _Amazon S3: https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html
+.. _EPEL: https://docs.fedoraproject.org/en-US/epel/
 
 Access
 ======
@@ -67,8 +68,8 @@ be able to create containers (buckets) and upload and download files.
     # yum install python3-swiftclient
 
 
-s3cmd (S3)
-----------
+Amazon S3 Tools: s3cmd (S3)
+---------------------------
 
 .. WARNING::
   Make sure you have :file:`export OS_INTERFACE=public` in your RC-file used
@@ -83,7 +84,16 @@ With openstack cli (version 3.8+) run:
   openstack ec2 credentials list
   openstack ec2 credentials show <id>
 
-Install s3cmd and create a config file :file:`~.s3cfg`
+Install s3cmd:
+
+* For Fedora and RHEL, Alma Linux, Rocky Linux and CentOS Stream 8.x
+  and later with EPEL_ enabled:
+
+  .. code-block:: console
+
+    # yum install s3cmd
+
+and create a config file :file:`~.s3cfg`
 
 .. code-block:: bash
 
@@ -93,7 +103,7 @@ Install s3cmd and create a config file :file:`~.s3cfg`
   host_bucket = object.api.bgo.nrec.no:8080
   secret_key = <secret_key>
 
-See s3tool_ for more information
+See `Amazon S3 Tools`_ for more information
 
 AWS CLI (S3)
 ------------
