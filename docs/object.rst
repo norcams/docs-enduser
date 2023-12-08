@@ -108,6 +108,13 @@ See `Amazon S3 Tools`_ for more information
 AWS CLI (S3)
 ------------
 
+`AWS CLI`_ can be installed on Fedora and RHEL, Alma Linux, Rocky
+  Linux and CentOS Stream 8.x and later with EPEL_ enabled:
+
+  .. code-block:: console
+
+    # yum install awscli
+
 You need to create EC2 credentials, as described for the s3cmd usage. Configuration
 of the `AWS CLI`_ may be performed in several ways. A simple method is to use
 environment variables:
@@ -136,7 +143,7 @@ Example:
 
   https://object.api.bgo.nrec.no:8080/3eae4805dcd6450fb98651f5a9dc9ded:raytest/2018-11-13-raspbian-stretch-lite.img
 
-Object Locking (s3)
+Object Locking (S3)
 ===================
 
 Using the S3 object lock mechanism, you can use object lock concepts like retention
