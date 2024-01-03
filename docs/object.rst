@@ -93,7 +93,7 @@ Install s3cmd:
 
     # yum install s3cmd
 
-and create a config file :file:`~.s3cfg`
+and create a config file :file:`~/.s3cfg`
 
 .. code-block:: bash
 
