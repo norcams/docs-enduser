@@ -43,7 +43,7 @@ to commercial cloud providers.
 We are a community cloud aiming to provide a modern, flexible and secure IT
 infrastucture, tailored to the needs of the research and higher education sector.
 
-Who can use the NREC cloud?
+Who can use the NREC?
 ------------------------------
 
 .. _Terms of Service: terms-of-service.html
@@ -64,9 +64,9 @@ Who can use the NREC cloud?
    Before using this cloud service, you should familiarize yourself
    with our `Terms of Service`_.
 
-All users at educational institutions that are allegeable for access
-can use the NREC cloud. All you need is an account any of these
-universities or colleges.
+The following educational institutions are allegeable for using NREC
+for free in private and shared projects, within reasonable resource constraints.
+The requirement is that you have a Feide account from any of these universities or colleges.
 
 +----------------------------------------------------------+---------------------------------+
 | University / College / Organization                      | Type of access                  |
