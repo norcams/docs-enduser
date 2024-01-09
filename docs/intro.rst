@@ -43,7 +43,7 @@ to commercial cloud providers.
 We are a community cloud aiming to provide a modern, flexible and secure IT
 infrastucture, tailored to the needs of the research and higher education sector.
 
-Who can use the NREC?
+Who can use NREC?
 ------------------------------
 
 .. _Terms of Service: terms-of-service.html
@@ -91,7 +91,7 @@ mechanism and the service itself. This is explained in detail in
 `Logging in`_.
 
 
-What can you do with the NREC cloud?
+What can you do with NREC?
 ---------------------------------------
 
 As an OpenStack cloud end user, you can provision your own resources
@@ -165,7 +165,7 @@ OpenStack components
 
 OpenStack is a large framework that consists of an increasingly
 growing number of components. The following components are installed
-in the NREC cloud. Each of the components have a general
+in NREC. Each of the components have a general
 description and a code name. The latter is mostly used in development,
 but both terms are used interchangeably.
 
