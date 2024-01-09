@@ -64,9 +64,9 @@ Who can use NREC?
    Before using this cloud service, you should familiarize yourself
    with our `Terms of Service`_.
 
-The following educational institutions are allegeable for using NREC
-for free in private and shared projects, within reasonable resource constraints.
+The following educational institutions are allegeable for using NREC.
 The requirement is that you have a Feide account from any of these universities or colleges.
+NREC is free for UiB and UiO. This includes both private and shared projects.
 
 +----------------------------------------------------------+---------------------------------+
 | University / College / Organization                      | Type of access                  |
