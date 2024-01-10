@@ -124,6 +124,10 @@ We recommend that you stay within these limits to ensure that your
 instances are safe. Always try to open just enough and not more than
 you need.
 
+Note that we can whitelist security group rules that violate these
+limits, if you feel that it should be OK in your case. If that applies
+to you, contact us at support@nrec.no
+
 
 How to Fix?
 -----------
