@@ -92,18 +92,33 @@ Port Limits
 -----------
 
 The NREC team has created a set of port limits, which describes the
-maximum number of ports one should open for a specific subnet mask:
+maximum number of ports one should open for a specific subnet
+mask. These limits are different for IPv4 and IPv6:
 
-* For subnet masks ``0`` through ``16`` (IPv4) or ``0`` through ``32``
-  (IPv6), only a single port is considered safe
+**IPv4**
+  * For subnet masks ``0`` through ``16``, only a single port is
+    considered safe
 
-* For subnet mask ``32`` (IPv4) or ``64`` through ``128`` (IPv6), you
-  may open all 65535 ports
+  * For subnet mask ``32`` you may open all 65535 ports
 
-* For subnet masks between ``16`` and ``32`` (IPv4) or ``32`` and
-  ``64`` (IPv6), the number of ports that is considered safe for a
-  given subnet mask :math:`m` is calculated by the formula
-  :math:`2^{m - 16}` (IPv4) or :math:`2^{\frac{m - 32}{2}}` (IPv6)
+  * For subnet masks between ``16`` and ``32``, the number of ports
+    that is considered safe for a given subnet mask :math:`m` is
+    calculated by the formula:
+
+    :math:`2^{m - 16}`
+
+**IPv6**
+  * For subnet masks ``0`` through ``32``, only a single port is
+    considered safe
+
+  * For subnet masks ``64`` through ``128`` you may open all 65535
+    ports
+
+  * For subnet masks between ``32`` and ``64``, the number of ports
+    that is considered safe for a given subnet mask :math:`m` is
+    calculated by the formula:
+
+    :math:`2^{\frac{m - 32}{2}}`
 
 We recommend that you stay within these limits to ensure that your
 instances are safe. Always try to open just enough and not more than
