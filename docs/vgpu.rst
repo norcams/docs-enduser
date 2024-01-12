@@ -72,11 +72,11 @@ We currently have the following flavors for use with vGPU:
 |Flavor name       |Virtual CPUs  |Disk     |Memory   |Virtual   |Virtual   |
 |                  |              |         |         |GPU (BGO) |GPU (OSL) |
 +==================+==============+=========+=========+==========+==========+
-|vgpu.m1.large     |2             |20 GB    |8 GiB    |V100 8 GiB|P40 12 GiB|
+|vgpu.m1.large     |2             |50 GB    |8 GiB    |V100 8 GiB|P40 12 GiB|
 +------------------+--------------+---------+---------+----------+----------+
-|vgpu.m1.xlarge    |4             |20 GB    |16 GiB   |V100 8 GiB|P40 12 GiB|
+|vgpu.m1.xlarge    |4             |50 GB    |16 GiB   |V100 8 GiB|P40 12 GiB|
 +------------------+--------------+---------+---------+----------+----------+
-|vgpu.m1.2xlarge   |8             |20 GB    |32 GiB   |V100 8 GiB|P40 12 GiB|
+|vgpu.m1.2xlarge   |8             |50 GB    |32 GiB   |V100 8 GiB|P40 12 GiB|
 +------------------+--------------+---------+---------+----------+----------+
 
 Prebuilt images
