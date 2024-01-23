@@ -82,7 +82,7 @@ The sHPC flavors are divided into three categories:
 +------------+-------------------+---------------------------+
 |``shpc.c1a``|BGO, OSL           |Compute intensive workloads|
 +------------+-------------------+---------------------------+
-|``shpc.r1a``|BGO                |Memory intensive worklads  |
+|``shpc.r1a``|BGO, OSL           |Memory intensive worklads  |
 +------------+-------------------+---------------------------+
 
 In addition, we have the following disk optimized flavor sets. These
