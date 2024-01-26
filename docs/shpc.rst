@@ -86,7 +86,7 @@ The sHPC flavors are divided into three categories:
 +------------+-------------------+---------------------------+
 
 In addition, we have the following disk optimized flavor sets. These
-are only available in the OSL region, and uses very fast local NVMe
+are only available in the OSL region, and uses local NVMe or SSD
 storage on the hypervisor:
 
 +--------------+---------+---------------------------+
