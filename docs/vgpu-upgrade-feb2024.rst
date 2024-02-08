@@ -48,8 +48,8 @@ and run a command. We will outline the process here.
      rm /tmp/NVIDIA-Linux-x86_64-535.154.05-grid.run
 
 #. Verify that the driver works by running **nvidia-smi**. The output
-   should look like the example below (it may vary slightly between
-   the OSL and BGO regions):
+   should look like the example below (it varies slightly between the
+   OSL and BGO regions):
 
    .. code-block:: console
 
