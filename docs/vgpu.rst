@@ -4,15 +4,13 @@
 
 Last changed: 2024-02-08
 
-.. _vGPU Upgrade February 2024: vgpu-upgrade-feb2024.html
-
 .. IMPORTANT::
    **vGPU infrastructure upgrade Thursday 15, 2024**
 
    The vGPU hypervisors will be upgraded with new NVIDIA vGPU drivers
    and software. After this upgrade, it will be necessary to update
-   the drivers in running instances. More details here: `vGPU Upgrade
-   February 2024`_.
+   the drivers in running instances. See `Upgrading the instance
+   drivers`_ for how to upgrade the driver.
    
 
 .. WARNING::
@@ -277,6 +275,33 @@ this work.
   rm -f ./linux-grid-latest
 
 After running the shell snippet you may need to reboot the instance.
+
+Verify that the driver works by running **nvidia-smi**. The output
+should look like the example below (it varies slightly between the OSL
+and BGO regions):
+
+.. code-block:: console
+
+  $ nvidia-smi
+  +---------------------------------------------------------------------------------------+
+  | NVIDIA-SMI 535.154.05             Driver Version: 535.154.05   CUDA Version: 12.2     |
+  |-----------------------------------------+----------------------+----------------------+
+  | GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+  | Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+  |                                         |                      |               MIG M. |
+  |=========================================+======================+======================|
+  |   0  GRID P40-12A                   On  | 00000000:05:00.0 Off |                  N/A |
+  | N/A   N/A    P8              N/A /  N/A |      0MiB / 12288MiB |      0%   Prohibited |
+  |                                         |                      |             Disabled |
+  +-----------------------------------------+----------------------+----------------------+
+                                                                                           
+  +---------------------------------------------------------------------------------------+
+  | Processes:                                                                            |
+  |  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+  |        ID   ID                                                             Usage      |
+  |=======================================================================================|
+  |  No running processes found                                                           |
+  +---------------------------------------------------------------------------------------+
 
 
 Known issues
