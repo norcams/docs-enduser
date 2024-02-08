@@ -2,7 +2,18 @@
 (BETA) Virtual GPU Accelerated instance (vGPU)
 ==============================================
 
-Last changed: 2023-08-31
+Last changed: 2024-02-08
+
+.. _vGPU Upgrade February 2024: vgpu-upgrade-feb2024.html
+
+.. IMPORTANT::
+   **vGPU infrastructure upgrade Thursday 15, 2024**
+
+   The vGPU hypervisors will be upgraded with new NVIDIA vGPU drivers
+   and software. After this upgrade, it will be necessary to update
+   the drivers in running instances. More details here: `vGPU Upgrade
+   February 2024`_.
+   
 
 .. WARNING::
   This document is a work in progress. More information to come.
