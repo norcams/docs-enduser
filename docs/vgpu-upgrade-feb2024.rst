@@ -16,7 +16,7 @@ branch R535) which is a long term support (LTS) release and is
 supported until July 2026.
 
 The driver version on the hypervisors and the instances must match for
-vGPU to function. Therefore, as the NREC team upgrades the
+vGPU to function. After the NREC team has finished upgrading the
 hypervisors, it will be necessary for the users to upgrade the driver
 in their instances.
 
