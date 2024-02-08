@@ -78,3 +78,4 @@ and run a command. We will outline the process here.
 
      reboot
 
+Note that CUDA will also be upgraded from version 12.0 to 12.2.
