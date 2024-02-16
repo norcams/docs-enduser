@@ -241,35 +241,13 @@ version. Below are shell script snippets for Ubuntu and AlmaLinux,
 which you can simply cut and paste and run in your instance to make
 this work.
 
-**For Ubuntu:**
-
 .. code-block:: bash
-
-  # Find the newest installed kernel
-  KERNELINSTALLED=$(dpkg --list | grep linux-image | grep -v meta-package | sort -V -r | head -n 1 | cut -d' ' -f3)
-  KERNELVERSION=${KERNELINSTALLED##linux-image-}
 
   # Get latest NVIDIA GRID package and build with dkms
   cd /tmp
   curl -O https://download.iaas.uio.no/nrec/nrec-resources/files/nvidia-vgpu/linux-grid-latest
   chmod +x linux-grid-latest
-  sudo ./linux-grid-latest --dkms --no-drm -n -s -k $KERNELVERSION
-
-  # Clean up
-  rm -f ./linux-grid-latest
-
-**For AlmaLinux:**
-
-.. code-block:: bash
-
-  # Find the newest installed kernel
-  KERNELVERSION=$(sudo grubby --default-kernel | sed 's|/boot/vmlinuz-||')
-
-  # Get latest NVIDIA GRID package and build with dkms
-  cd /tmp
-  curl -O https://download.iaas.uio.no/nrec/nrec-resources/files/nvidia-vgpu/linux-grid-latest
-  chmod +x linux-grid-latest
-  sudo ./linux-grid-latest --dkms --no-drm -n -s -k $KERNELVERSION
+  sudo ./linux-grid-latest --dkms --no-drm -n -s
 
   # Clean up
   rm -f ./linux-grid-latest
