@@ -268,8 +268,8 @@ and BGO regions):
   | Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
   |                                         |                      |               MIG M. |
   |=========================================+======================+======================|
-  |   0  GRID P40-12A                   On  | 00000000:05:00.0 Off |                  N/A |
-  | N/A   N/A    P8              N/A /  N/A |      0MiB / 12288MiB |      0%   Prohibited |
+  |   0  GRID P40-12Q                   On  | 00000000:05:00.0 Off |                  N/A |
+  | N/A   N/A    P8              N/A /  N/A |   2318MiB / 12288MiB |      0%      Default |
   |                                         |                      |             Disabled |
   +-----------------------------------------+----------------------+----------------------+
                                                                                            
@@ -278,7 +278,7 @@ and BGO regions):
   |  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
   |        ID   ID                                                             Usage      |
   |=======================================================================================|
-  |  No running processes found                                                           |
+  |    0   N/A  N/A      1104      C   python3                                    2318MiB |
   +---------------------------------------------------------------------------------------+
 
 
