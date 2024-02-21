@@ -46,7 +46,7 @@ resource "openstack_compute_instance_v2" "web_instance" {
   }
 
   lifecycle {
-    ignore_changes = [image_name]
+    ignore_changes = [image_name,image_id]
   }
 
   depends_on = [
@@ -82,7 +82,7 @@ resource "openstack_compute_instance_v2" "db_instance" {
   }
 
   lifecycle {
-    ignore_changes = [image_name]
+    ignore_changes = [image_name,image_id]
   }
 
   depends_on = [

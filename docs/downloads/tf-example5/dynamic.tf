@@ -44,7 +44,7 @@ resource "openstack_compute_instance_v2" "testserver" {
   }
 
   lifecycle {
-    ignore_changes = [image_name]
+    ignore_changes = [image_name,image_id]
   }
 }
 

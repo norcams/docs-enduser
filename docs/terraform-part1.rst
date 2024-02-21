@@ -67,13 +67,13 @@ create.
 
 .. WARNING::
    We are using ``image_name`` here. This is usually not a good idea,
-   unless for testing purposes. The "GOLD" images provided in NREC
-   are renewed (e.g. replaced) each month, and Terraform uses the
-   image ID in its state. If using Terraform as a oneshot utility to
-   spin up instances, this isn't a problem. But if you rely on
-   Terraform to maintain your virtual infrastructure over time,
-   switching to ``image_id`` is encouraged. An example using
-   ``image_id`` is provided in `Part 2`_.
+   unless we also instruct Terraform to ignore changes to the image
+   name and ID. The "GOLD" images provided in NREC are renewed
+   (e.g. replaced) each month, and Terraform uses the image ID in its
+   state. If using Terraform as a oneshot utility to spin up
+   instances, this isn't a problem. But if you rely on Terraform to
+   maintain your virtual infrastructure over time, you need to make
+   Terraform ignore these changes. More info in `Part 2`_.
 
 The instance isn't very usable unless you also provide an SSH key pair
 and a security group that allows access via SSH to the instance. We'll
