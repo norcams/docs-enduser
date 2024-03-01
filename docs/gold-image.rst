@@ -76,8 +76,8 @@ The following GOLD images are retired and no longer available:
 GOLD image                     Family   Default user name  Boot FW  End of Life          Notes
 ============================== ======== ================== ======== ==================== =======================
 |ss| CentOS 7 |se|             RedHat   ``centos``         BIOS     May, 2024            Downstream RHEL [#f1]_
-|ss| CentOS Stream 8 |se|      RedHat   ``centos`` [#f3]_  BIOS     May, 2024            Upstream RHEL [#f1]_
 |ss| CentOS 8 |se|             RedHat   ``centos``         BIOS     Dec, 2021            Downstream RHEL [#f1]_
+|ss| CentOS Stream 8 |se|      RedHat   ``centos`` [#f3]_  BIOS     May, 2024            Upstream RHEL [#f1]_
 |ss| Fedora 34 |se|            RedHat   ``fedora``         BIOS     May, 2022
 |ss| Fedora 35 |se|            RedHat   ``fedora``         BIOS     November, 2022
 |ss| Fedora 36 |se|            RedHat   ``fedora``         BIOS     June, 2023
