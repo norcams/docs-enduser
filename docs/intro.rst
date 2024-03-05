@@ -48,6 +48,7 @@ Who can use NREC?
 
 .. _Terms of Service: terms-of-service.html
 .. _Logging in: login.html
+.. _Pricing: pricing.rst
 
 .. _The Arctic University of Norway (UiT): https://www.uit.no/
 .. _Norwegian University of Life Sciences (NMBU): https://www.nmbu.no/
@@ -67,6 +68,7 @@ Who can use NREC?
 The following educational institutions are allegeable for using NREC.
 The requirement is that you have a Feide account from any of these universities or colleges.
 NREC is free for UiB and UiO. This includes both private and shared projects.
+Other institutions follow a pricing scheme according to `Pricing`_.
 
 +----------------------------------------------------------+---------------------------------+
 | University / College / Organization                      | Type of access                  |
