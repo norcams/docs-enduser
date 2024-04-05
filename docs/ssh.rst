@@ -52,10 +52,10 @@ Most users should choose to create an ssh key pair on their client
 machine, and upload the public key to NREC.
 
 
-Importing an existing public key
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Importing an existing public key (recommended)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This is the recommended approach.
+**This is the recommended approach!**
 
 If the local computer is Linux, any BSD variant such as FreeBSD, MacOS
 or Windows 10, the easiest way is to create a key pair locally if you
@@ -65,37 +65,36 @@ it's called ``ssh-keygen.exe``):
 .. code-block:: console
 
   $ cd ~
-  $ ssh-keygen -b 4096 -t rsa -f .ssh/nrec
-  Generating public/private rsa key pair.
+  $ ssh-keygen -C "NREC keypair 2024-04-05" -a 100 -t ed25519 -f .ssh/id_ed25519_nrec
+  Generating public/private ed25519 key pair.
   Enter passphrase (empty for no passphrase): 
   Enter same passphrase again: 
-  Your identification has been saved in /home/username/.ssh/nrec
-  Your public key has been saved in /home/username/.ssh/nrec.pub
+  Your identification has been saved in .ssh/id_ed25519_nrec
+  Your public key has been saved in .ssh/id_ed25519_nrec.pub
   The key fingerprint is:
-  SHA256:VoocD4z2ek4FpjB7UrX2CNo5yu3PdvLS1T7jOUAIgCk username@localhost.localdomain
+  SHA256:bB/SoBMwTIXgWzgCfnRXy1i22rcgw5sZm49ouqwTuE0 NREC keypair 2024-04-05
   The key's randomart image is:
-  +---[RSA 4096]----+
-  |   o...          |
-  |E o  +..         |
-  | .o = O. ..      |
-  |   O O O.o.      |
-  |  + * = S. .     |
-  | . = o o  o .    |
-  |  o o o. . o     |
-  |   . =+ o   =.   |
-  |    .o+=.  .o+   |
+  +--[ED25519 256]--+
+  |. .=++...+       |
+  |o...+o. = o      |
+  |..+.. ...+       |
+  | ..+  .+oo       |
+  |. .   o*Soo.     |
+  |..E    oXoo..    |
+  | +.    *  ..     |
+  |..o  .. o        |
+  | .o++. . .       |
   +----[SHA256]-----+
 
 Before running ssh-keygen we're making sure that the current working
-directory is our home directory. In this case we are creating a
-key pair of type RSA and 4096 bits long, which should provide
-sufficient security. We specify the output filename **.ssh/nrec**. The
-files created in your home directory are
+directory is our home directory. In this case we are creating a key
+pair of type ed25519, which it recommended. We specify the output
+filename **.ssh/id_ed25519_nrec**. The files created in your home directory are
 
-**.ssh/nrec**
+**.ssh/id_ed25519_nrec**
   This is the *private key*. It should be kept safe.
 
-**.ssh/nrec.pub**
+**.ssh/id_ed25519_nrec.pub**
   This is the *public key*. It can be used to authenticate holders of
   the private key.
 
@@ -114,8 +113,8 @@ following:
 
 * **Key Type**: Choose "SSH Key" from the drop-down menu
 
-* Either use **Choose File** and find the **.ssh/nrec.pub** file, or
-  cut & paste the contents of **.ssh/nrec.pub** into the "Public Key"
+* Either use **Choose File** and find the **.ssh/id_ed25519_nrec.pub** file, or
+  cut & paste the contents of **.ssh/id_ed25519_nrec.pub** into the "Public Key"
   field
 
 .. figure:: images/dashboard-import-keypair-01.png
@@ -138,12 +137,12 @@ Example:
 
 .. code-block:: console
 
-  $ openstack keypair create --public-key ~/.ssh/nrec.pub nrec
+  $ openstack keypair create --public-key ~/.ssh/id_ed25519_nrec.pub homeoffice
   +-------------+-------------------------------------------------+
   | Field       | Value                                           |
   +-------------+-------------------------------------------------+
   | fingerprint | e2:2e:26:7f:5d:98:9e:8f:5e:fd:c7:d5:d0:6b:44:e7 |
-  | name        | nrec                                            |
+  | name        | homeoffice                                      |
   | user_id     | 6bb8dacdc9b94fff89258094bc56a49f                |
   +-------------+-------------------------------------------------+
 
@@ -152,11 +151,11 @@ You can then list your keys:
 .. code-block:: console
 
   $ openstack keypair list
-  +-------+-------------------------------------------------+
-  | Name  | Fingerprint                                     |
-  +-------+-------------------------------------------------+
-  | nrec  | e2:2e:26:7f:5d:98:9e:8f:5e:fd:c7:d5:d0:6b:44:e7 |
-  +-------+-------------------------------------------------+
+  +----------+-------------------------------------------------+
+  | Name     | Fingerprint                                     |
+  +----------+-------------------------------------------------+
+  |homeoffice| e2:2e:26:7f:5d:98:9e:8f:5e:fd:c7:d5:d0:6b:44:e7 |
+  +----------+-------------------------------------------------+
 
 
 Letting OpenStack create a key pair
@@ -282,7 +281,7 @@ created with ssh-keygen:
 
 .. code-block:: console
 
-  $ ssh -i ~/.ssh/nrec centos@2001:700:2:8201::13d0
+  $ ssh -i ~/.ssh/id_ed25519_nrec centos@2001:700:2:8201::13d0
 
 In order to use the downloaded private key, you must specify the
 private key file, like this (example for "nrec.pem" above):
@@ -379,7 +378,7 @@ config:
 
   Host 2001:700:2:8200:* 2001:700:2:8201:* 2001:700:2:8301:* 2001:700:2:8300:*
       ProxyJump uiouser@login.uio.no
-      IdentityFile ~/.ssh/id_rsa_nrec
+      IdentityFile ~/.ssh/id_ed25519_nrec
 
 Then it works. But we can enhance the experience even further by using
 session multiplexing. We first add a directory under ``~/.ssh``, which
@@ -411,7 +410,7 @@ Our final ``~/.ssh/config``:
 
   Host 2001:700:2:8200:* 2001:700:2:8201:* 2001:700:2:8301:* 2001:700:2:8300:*
       ProxyJump uiouser@login.uio.no
-      IdentityFile ~/.ssh/id_rsa_nrec
+      IdentityFile ~/.ssh/id_ed25519_nrec
   
   Host login.uio.no
       User uiouser
@@ -460,7 +459,7 @@ Examples:
 
    .. code-block:: console
 
-      $ scp -i ~/.ssh/id_rsa_nrec -J uiouser@login.uio.no ubuntu@[3001:700:2:8200::268f]:/data/results.dat ~/thesis/
+      $ scp -i ~/.ssh/id_ed25519_nrec -J uiouser@login.uio.no ubuntu@[3001:700:2:8200::268f]:/data/results.dat ~/thesis/
 
 From local machine to instance::
 
@@ -484,7 +483,7 @@ Examples:
 
    .. code-block:: console
 
-      $ scp -i ~/.ssh/id_rsa_nrec -J uiouser@login.uio.no ~/thesis/analysis.dat ubuntu@[3001:700:2:8200::268f]:/data/
+      $ scp -i ~/.ssh/id_ed25519_nrec -J uiouser@login.uio.no ~/thesis/analysis.dat ubuntu@[3001:700:2:8200::268f]:/data/
 
 Transferring single file via SFTP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -521,7 +520,7 @@ Examples:
 
    .. code-block:: console
 
-      $ sftp -i ~/.ssh/id_rsa_nrec -J uiouser@login.uio.no ubuntu@[3001:700:2:8200::268f]:/data
+      $ sftp -i ~/.ssh/id_ed25519_nrec -J uiouser@login.uio.no ubuntu@[3001:700:2:8200::268f]:/data
 
 Once you have opened an SFTP session, you can use common FTP
 commands. The most used are:
@@ -622,25 +621,25 @@ Examples:
 
    .. code-block:: console
 
-      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser@login.uio.no' /tmp/analysis ubuntu@258.37.63.217:/data/
+      $ rsync -av -e 'ssh -i ~/.ssh/id_ed25519_nrec -J uiouser@login.uio.no' /tmp/analysis ubuntu@258.37.63.217:/data/
 
    And using IPv6:
 
    .. code-block:: console
 
-      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser@login.uio.no' /tmp/analysis ubuntu@[3001:700:2:8200::268f]:/data/
+      $ rsync -av -e 'ssh -i ~/.ssh/id_ed25519_nrec -J uiouser@login.uio.no' /tmp/analysis ubuntu@[3001:700:2:8200::268f]:/data/
 
 #. From instance to local machine using IPv4:
 
    .. code-block:: console
 
-      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser@login.uio.no' ubuntu@258.37.63.217:/data/results ~/thesis/
+      $ rsync -av -e 'ssh -i ~/.ssh/id_ed25519_nrec -J uiouser@login.uio.no' ubuntu@258.37.63.217:/data/results ~/thesis/
 
    And using IPv6:
 
    .. code-block:: console
 
-      $ rsync -av -e 'ssh -i ~/.ssh/id_rsa_nrec -J uiouser@login.uio.no' ubuntu@[3001:700:2:8200::268f]:/data/results ~/thesis/
+      $ rsync -av -e 'ssh -i ~/.ssh/id_ed25519_nrec -J uiouser@login.uio.no' ubuntu@[3001:700:2:8200::268f]:/data/results ~/thesis/
 
 
 Deleting key pairs
@@ -693,10 +692,6 @@ Caveats and limitations
 
 There are a few caveats and limitations that you should be aware of
 when using creating and using SSH key pairs in NREC:
-
-* The dashboard does not support some modern SSH ciphers. This is why
-  we're using RSA in the examples, it's good enough and we know it
-  works. The CLI does not have this limitation.
 
 * An SSH key pair in NREC follows the user-project-region
   combination. This differs from most attributes that does not have
