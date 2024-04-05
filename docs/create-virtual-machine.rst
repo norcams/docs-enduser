@@ -256,7 +256,7 @@ For information on how to install the *command line tools*, check the section
 
    .. code-block:: console
 
-     $ openstack keypair create --public-key ~/.ssh/id_rsa.pub mykey
+     $ openstack keypair create --public-key ~/.ssh/id_ed25519.pub mykey
      +-------------+-------------------------------------------------+
      | Field       | Value                                           |
      +-------------+-------------------------------------------------+
