@@ -124,8 +124,17 @@ environment variables:
   export AWS_ACCESS_KEY_ID=<access_key>
   export AWS_SECRET_ACCESS_KEY=<secret_key>
   export AWS_ENDPOINT_URL=https://object.api.<region>.nrec.no:8080
+  export AWS_DEFAULT_REGION=None
 
 See `AWS CLI`_ for more information.
+
+.. NOTE::
+  `AWS_ENDPOINT_URL` was introduced in AWS_CLI 2.13 (2023) and may not be available in the version supplied from the OS aws cli package.
+  The endpoint url can be set by supplying it as a parameter:
+
+.. code block:: console
+
+  aws --endpoint-url $AWS_ENDPOINT_URL command...
 
 Public Access (S3)
 ==================
