@@ -132,7 +132,7 @@ See `AWS CLI`_ for more information.
   `AWS_ENDPOINT_URL` was introduced in AWS_CLI 2.13 (2023) and may not be available in the version supplied from the OS aws cli package.
   The endpoint url can be set by supplying it as a parameter:
 
-.. code block:: console
+.. code-block:: console
 
   aws --endpoint-url $AWS_ENDPOINT_URL command...
 
