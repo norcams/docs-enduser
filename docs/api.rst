@@ -110,6 +110,7 @@ Using the CLI tools
 
 .. _first logging in: http://docs.nrec.no/login.html#first-time-login
 .. _access.nrec.no: https://access.nrec.no/
+.. _FEIDE identity: https://minside.dataporten.no
 
 After you receive your password for API access you can use the OpenStack
 command line interface (OpenStack CLI) to test the access.
@@ -131,7 +132,7 @@ Create a :file:`keystone_rc.sh` file:
 
 The above is a template. Replace the following:
 
-* Replace *<feide-id>* with your FEIDE identity, e.g. "username\@uio.no"
+* Replace *<feide-id>* with your `FEIDE identity`_, e.g. "username\@uio.no".
 * Replace *<project>* with the project name,
   e.g. "DEMO-username.uio.no"
 * Replace *<password>* with the API password that you got when `first
