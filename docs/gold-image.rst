@@ -30,12 +30,14 @@ GOLD image                     Family   Default user name     Boot FW  End of Li
 **Debian 11**                  Debian   ``debian``            UEFI     June, 2026           "Bullseye" release
 **Debian 12**                  Debian   ``debian``            UEFI     June, 2028           "Bookworm" release
 **Fedora 39**                  RedHat   ``fedora``            UEFI     Dec, 2024
+**Fedora 40**                  RedHat   ``fedora``            UEFI     May, 2025
 **UiO Managed RHEL 8**         RedHat   ``cloud-user``        BIOS     May, 2029            UiO projects only
 **UiO Managed RHEL 9**         RedHat   ``cloud-user``        UEFI     May, 2032            UiO projects only
 **Rocky Linux 8**              RedHat   ``rocky``             BIOS     May, 2029            Downstream RHEL [#f1]_
 **Rocky Linux 9**              RedHat   ``rocky``             UEFI     May, 2032            Downstream RHEL [#f1]_
-**Ubuntu 20.04 LTS**           Debian   ``ubuntu``            BIOS     April, 2025
-**Ubuntu 22.04 LTS**           Debian   ``ubuntu``            UEFI     April, 2027
+**Ubuntu 20.04 LTS**           Debian   ``ubuntu``            BIOS     April, 2025          "Focal Fossa"
+**Ubuntu 22.04 LTS**           Debian   ``ubuntu``            UEFI     April, 2027          "Jammy Jellyfish"
+**Ubuntu 24.04 LTS**           Debian   ``ubuntu``            UEFI     April, 2029          "Noble Numbat"
 **Windows Server 2019 Std**    Windows  ``Admin``             UEFI     January, 2029        Licensed in BGO only
 **Windows Server 2022 Std**    Windows  ``Admin``             UEFI     October, 2031        Licensed in BGO only
 ============================== ======== ===================== ======== ==================== =======================
@@ -48,8 +50,9 @@ GOLD image                     Family   Default user name     Boot FW  End of Li
 ============================== ======== ===================== ======== ==================== =======================
 **vGPU Alma Linux 8**          RedHat   ``almalinux``         UEFI     May, 2029            Downstream RHEL [#f1]_
 **vGPU Alma Linux 9**          RedHat   ``almalinux``         UEFI     May, 2032            Downstream RHEL [#f1]_
-**vGPU Ubuntu 20.04 LTS**      Debian   ``ubuntu``            BIOS     April, 2025
-**vGPU Ubuntu 22.04 LTS**      Debian   ``ubuntu``            UEFI     April, 2027
+**vGPU Ubuntu 20.04 LTS**      Debian   ``ubuntu``            BIOS     April, 2025          "Focal Fossa"
+**vGPU Ubuntu 22.04 LTS**      Debian   ``ubuntu``            UEFI     April, 2027          "Jammy Jellyfish"
+**vGPU Ubuntu 24.04 LTS**      Debian   ``ubuntu``            UEFI     April, 2029          "Noble Numbat"
 ============================== ======== ===================== ======== ==================== =======================
 
 .. [#f1] "Downstream RHEL" means that this is a binary compatible

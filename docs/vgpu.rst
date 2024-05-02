@@ -2,10 +2,10 @@
 (BETA) Virtual GPU Accelerated instance (vGPU)
 ==============================================
 
-Last changed: 2024-02-08
+Last changed: 2024-05-02
 
 .. IMPORTANT::
-   **vGPU infrastructure upgrade Thursday 15, 2024**
+   **vGPU infrastructure upgrade Thursday, February 15, 2024**
 
    The vGPU hypervisors will be upgraded with new NVIDIA vGPU drivers
    and software. After this upgrade, it will be necessary to update
@@ -102,6 +102,8 @@ resources.
 | Ubuntu 20.04 LTS | vGPU Ubuntu 20.04 LTS |
 +------------------+-----------------------+
 | Ubuntu 22.04 LTS | vGPU Ubuntu 22.04 LTS |
++------------------+-----------------------+
+| Ubuntu 24.04 LTS | vGPU Ubuntu 24.04 LTS |
 +------------------+-----------------------+
 | Alma Linux 8.x   | vGPU Alma Linux 8     |
 +------------------+-----------------------+
