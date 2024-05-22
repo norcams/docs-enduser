@@ -59,7 +59,7 @@ E.g
 The authorized_keys file is located in :file:`/home/username/.ssh/authorized_keys`
 Now you should be able to login using ssh with the new key(s).
 
-.. NOTE::
+.. sidebar::
    If you are experiencing problem with booting up and you have attached
    volumes(s), try dettach them first then run rescue agian.
 
@@ -128,7 +128,9 @@ Not able to SSH to Debian instance created from uploaded snapshot image
 Description
 ~~~~~~~~~~~
 
-I created an instance based on a Debian image that I downloaded before. The image was created from a snapshot of a Debian instance. I am not able to SSH to the new instance.
+I created an instance based on a Debian image that I downloaded
+before. The image was created from a snapshot of a Debian instance. I
+am not able to SSH to the new instance.
 
 Possible solution
 ~~~~~~~~~~~~~~~~~
@@ -176,7 +178,7 @@ needs to be set are specified in our image repository [#f2]_ under
 'debian12'::'properties' and is a subset of the properties seen with
 the ``openstack image show`` command above.
 
-.. code-block:: console
+.. code-block:: none
 
   $ while read line; do k=$(echo $line | cut -d ' ' -f 1); v=$(echo $line | cut -d ' ' -f 2); cmd="openstack image set --property $k=$v <image ID>"; eval $cmd; done <<< 'hw_disk_bus scsi
        hw_scsi_model virtio-scsi
