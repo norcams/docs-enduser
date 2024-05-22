@@ -32,7 +32,7 @@ Here are three ways to set the password for the user root on a Linux instance:
 
   .. code-block:: console
 
-     nova set-password <server ID>
+     nova set-password <instance ID>
 
 - Customization script (dashboard)
 
