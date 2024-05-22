@@ -117,7 +117,7 @@ The following options are used:
   brackets
 
 Connect from outside campus nettwork
------------------------
+------------------------------------
 
 If you are outside campus network you have diffrent options to connect to RDP depding on if you are UiO affiliated or UiB.
 
@@ -239,6 +239,3 @@ gateway:
 * ``/gu:username``: The username for connecting to the RD
   gateway. This should be your regular UiO username
 * ``/gt:rpc``: The gateway transport type
-
-
-

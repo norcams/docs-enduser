@@ -230,7 +230,7 @@ using the API, for example via the command line (CLI):
 * `Deleting a zone in CLI`_
 
 Instance name
-------------
+-------------
 We recommend you to name your instances only with [a-zA-Z0-9]
 characters to avoid any maintenance issues.
 
@@ -253,8 +253,10 @@ Users are always advised to ensure their security group rules work as intended
 in regards to both IP and port filtering.
 
 Security Groups rule description
------------------------
-It is not possbile to add description to a security group rule due to a bug. This will hoepfully be fixed in future upgrades. 
+--------------------------------
+
+It is not possbile to add description to a security group rule due to
+a bug. This will hoepfully be fixed in future upgrades.
 
 Can choose both IPv6 and dualStack
 ----------------------------------

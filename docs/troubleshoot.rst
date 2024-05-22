@@ -8,7 +8,7 @@ Last changed: |date|
 .. contents::
 
 Lost access to instance
--------------------------------------------------
+-----------------------
 .. _lostaccess:
 
 There can be multiple reasons for losing access to an instance.
@@ -21,8 +21,8 @@ Don't fret, there is maybe a way (workaround) to fix this by accsessing the cons
 But you need to do some "hacks" to do so if you didn't set/change a users password.
 
 
-Possible solution (workaround [1]_)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Possible solution (workaround [#f1]_)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Got to console, press the "Send ctrlAltDel" button then activate the console window and interrupt the boot by pressing an arrow key for example. Choose a boot entry and press :kbd:`e` for edit.
 Depending on which OS is in use you can edit the boot loader in the console and boot to single user by adding single to the end of the line that start with linux on ubuntu, on centos you have to remove all ``console=ttys`` besides the ``tty0`` and add ``rd.break enforcing=0`` at the end of the line starting with linux16.
@@ -130,29 +130,42 @@ Possible solution
 When an image snapshot is downloaded from a project;
 
 .. code-block:: console
-openstack image save --file <image name>.img <image ID>
+
+  openstack image save --file <image name>.img <image ID>
 
 it does not save its' properties from OpenStack. 
 
-These image properties can be seen using the OpenStack API. They are only set for pre-existing images and snapshots in a project;
+These image properties can be seen using the OpenStack API. They are
+only set for pre-existing images and snapshots in a project;
 
 .. code-block:: console
-openstack image show <image ID> -c properties -f yaml
 
-Unfortunately, when a new instance is created based on the .img file, these properties are not set. For Debian instances, lack of these properties imposes hardware change that leads to a different naming of the network interface card (NIC). Since the old NIC name is specified in existing network configuration files, the newly created instance will not receive a network connection.
+  openstack image show <image ID> -c properties -f yaml
 
-The solution is to set the correct properties of the uploaded image. Specifically, for a Debian 12 instance, the properties that needs to be set are specified in our image repository [2] under 'debian12'::'properties' and is a subset of the properties seen with the openstack command above.
+Unfortunately, when a new instance is created based on the .img file,
+these properties are not set. For Debian instances, lack of these
+properties imposes hardware change that leads to a different naming of
+the network interface card (NIC). Since the old NIC name is specified
+in existing network configuration files, the newly created instance
+will not receive a network connection.
+
+The solution is to set the correct properties of the uploaded
+image. Specifically, for a Debian 12 instance, the properties that
+needs to be set are specified in our image repository [#f2]_ under
+'debian12'::'properties' and is a subset of the properties seen with
+the openstack command above.
 
 .. code-block:: console
-while read line; do k=$(echo $line | cut -d ' ' -f 1); v=$(echo $line | cut -d ' ' -f 2); cmd="openstack image set --property $k=$v <uploaded image ID>"; eval $cmd; done <<< 'hw_disk_bus scsi
-hw_scsi_model virtio-scsi
-hw_rng_model virtio
-hw_qemu_guest_agent yes
-hw_machine_type q35
-hw_firmware_type uefi
-hw_vif_multiqueue_enabled yes
-os_require_quiesce yes
-os_type linux'
 
-.. [1] Since setting a password when rescuing an instance do not work.
-.. [2] https://github.com/norcams/himlarcli/blob/master/config/images/default.yaml
+  $ while read line; do k=$(echo $line | cut -d ' ' -f 1); v=$(echo $line | cut -d ' ' -f 2); cmd="openstack image set --property $k=$v <uploaded image ID>"; eval $cmd; done <<< 'hw_disk_bus scsi
+  hw_scsi_model virtio-scsi
+  hw_rng_model virtio
+  hw_qemu_guest_agent yes
+  hw_machine_type q35
+  hw_firmware_type uefi
+  hw_vif_multiqueue_enabled yes
+  os_require_quiesce yes
+  os_type linux'
+
+.. [#f1] Since setting a password when rescuing an instance do not work.
+.. [#f2] https://github.com/norcams/himlarcli/blob/master/config/images/default.yaml

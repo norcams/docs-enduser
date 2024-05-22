@@ -93,7 +93,7 @@ Select the correct educational institution, by clicking on it, and log in.
 
 You should then be redirected back to the NREC dashboard:
 
-.. image:: images/dashboard-login-overview.png
+.. image:: images/dashboard-login-99.png
    :align: center
    :alt: Log in finished
 

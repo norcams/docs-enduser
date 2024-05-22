@@ -160,7 +160,7 @@ You can then list your keys:
 
 
 Letting OpenStack create a key pair
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can let OpenStack create a key pair for you, if you don't wish to
 create one locally or use an existing one. Navigate to **Project**
