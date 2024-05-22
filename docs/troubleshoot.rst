@@ -120,5 +120,39 @@ If you need to edit `security groups`_ then edit instance and then select "Secur
    select any other image than the one used for setting up the instance in the
    first place.
 
+I created an instance based on a Debian image snapshot that I downloaded before. I am not able to SSH to the new instance
+-------------------------------------------------------------------------------------------------------------------------
+.. _debianimagenetwork:
+
+Possible solution
+~~~~~~~~~~~~~~~~~
+
+When an image snapshot is downloaded from a project;
+
+.. code-block:: console
+openstack image save --file <image name>.img <image ID>
+
+it does not save its' properties from OpenStack. 
+
+These image properties can be seen using the OpenStack API. They are only set for pre-existing images and snapshots in a project;
+
+.. code-block:: console
+openstack image show <image ID> -c properties -f yaml
+
+Unfortunately, when a new instance is created based on the .img file, these properties are not set. For Debian instances, lack of these properties imposes hardware change that leads to a different naming of the network interface card (NIC). Since the old NIC name is specified in existing network configuration files, the newly created instance will not receive a network connection.
+
+The solution is to set the correct properties of the uploaded image. Specifically, for a Debian 12 instance, the properties that needs to be set are specified in our image repository [2] under 'debian12'::'properties' and is a subset of the properties seen with the openstack command above.
+
+.. code-block:: console
+while read line; do k=$(echo $line | cut -d ' ' -f 1); v=$(echo $line | cut -d ' ' -f 2); cmd="openstack image set --property $k=$v <uploaded image ID>"; eval $cmd; done <<< 'hw_disk_bus scsi
+hw_scsi_model virtio-scsi
+hw_rng_model virtio
+hw_qemu_guest_agent yes
+hw_machine_type q35
+hw_firmware_type uefi
+hw_vif_multiqueue_enabled yes
+os_require_quiesce yes
+os_type linux'
 
 .. [1] Since setting a password when rescuing an instance do not work.
+.. [2] https://github.com/norcams/himlarcli/blob/master/config/images/default.yaml
