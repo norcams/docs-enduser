@@ -188,8 +188,10 @@ the ``openstack image show`` command above.
        os_require_quiesce yes
        os_type linux'
 
+----------------------------------------------------------------------
 
 .. rubric:: Footnotes
 
 .. [#f1] Since setting a password when rescuing an instance do not work.
+
 .. [#f2] https://github.com/norcams/himlarcli/blob/master/config/images/default.yaml
