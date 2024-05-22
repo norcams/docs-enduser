@@ -14,33 +14,42 @@ Here are three ways to set the password for the user root on a Linux instance:
 
 * item 1: passwd
 
-If you are able to SSH to the instance, set the root password using sudo passwd:
-.. code-block:: console
-sudo passwd root
+  If you are able to SSH to the instance, set the root password using sudo passwd:
+
+  .. code-block:: console
+
+     sudo passwd root
 
 * item 2: API user
 
-As long as the instance has network and running qemu-guest-agent.service, the root password can be set using OpenStack API
+  As long as the instance has network and running qemu-guest-agent.service, the root password can be set using OpenStack API
 
-.. code-block:: console
-openstack server set --password <instance ID>
+  .. code-block:: console
 
-or
+     openstack server set --password <instance ID>
 
-.. code-block:: console
-nova set-password <server ID>
+  or
+
+  .. code-block:: console
+
+     nova set-password <server ID>
 
 * item 3: Customization script (dashboard)
 
-Set root password during provisioning of a new instance by customization script (cloud-init). This is useful if launching a new instance based on uploaded image shapshot lead to network problems, and you would like root login at the console for troubleshooting. The example is for Debian:
+  Set root password during provisioning of a new instance by
+  customization script (cloud-init). This is useful if launching a new
+  instance based on uploaded image shapshot lead to network problems,
+  and you would like root login at the console for
+  troubleshooting. The example is for Debian:
 
-.. code-block:: console
-#cloud-config
-chpasswd:
-	list: |
-		cloud-user:debian
-		root:rootpassword123
-	expire: False
+  .. code-block:: console
+
+     #cloud-config
+     chpasswd:
+          list: |
+                  cloud-user:debian
+                  root:rootpassword123
+          expire: False
 
 Project quotas vs. flavors
 --------------------------
