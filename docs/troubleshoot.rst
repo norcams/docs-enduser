@@ -139,10 +139,10 @@ When an image snapshot is downloaded from a project;
 
   openstack image save --file <image name>.img <image ID>
 
-it does not save its' properties from OpenStack. 
+it does not save its properties from OpenStack. 
 
 These image properties can be seen using the OpenStack API. They are
-only set for pre-existing images and snapshots in a project;
+only set for pre-existing images and snapshots in a project:
 
 .. code-block:: console
 
@@ -156,14 +156,29 @@ in existing network configuration files, the newly created instance
 will not receive a network connection.
 
 The solution is to set the correct properties of the uploaded
-image. Specifically, for a Debian 12 instance, the properties that
-needs to be set are specified in our image repository [#f2]_ under
-'debian12'::'properties' and is a subset of the properties seen with
-the openstack command above.
+image. The properties that need to be set in order for the image to
+perform optimally can be found in our image repository [#f2]_. Look
+for the gold image that best matches your image, and set each property
+with the following command:
 
 .. code-block:: console
 
-  $ while read line; do k=$(echo $line | cut -d ' ' -f 1); v=$(echo $line | cut -d ' ' -f 2); cmd="openstack image set --property $k=$v <uploaded image ID>"; eval $cmd; done <<< 'hw_disk_bus scsi
+  openstack image set --property <name>=<value> <image ID>
+
+Example:
+
+.. code-block:: console
+
+  openstack image set --property hw_machine_type=q35 <image ID>
+
+Specifically, for a Debian 12 instance, the properties that
+needs to be set are specified in our image repository [#f2]_ under
+'debian12'::'properties' and is a subset of the properties seen with
+the ``openstack image show`` command above.
+
+.. code-block:: console
+
+  $ while read line; do k=$(echo $line | cut -d ' ' -f 1); v=$(echo $line | cut -d ' ' -f 2); cmd="openstack image set --property $k=$v <image ID>"; eval $cmd; done <<< 'hw_disk_bus scsi
        hw_scsi_model virtio-scsi
        hw_rng_model virtio
        hw_qemu_guest_agent yes
