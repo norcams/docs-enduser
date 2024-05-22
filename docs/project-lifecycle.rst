@@ -3,7 +3,7 @@
 Project Lifecycle
 =================
 
-Last changed: 2023-11-14
+Last changed: 2024-05-22
 
 .. contents::
 
@@ -81,13 +81,10 @@ Mailing lists
 
 If you share responsibilities in administering a project, we recommend creating a mailing list and include this list in the 'Optional contact' field when applying for a project. All E-mails added to this list at any time will then be included in all correspondences with support@nrec.no.
 
-For UiO-users, the instructions for creating a mailing list may be the following:
-
-1. Login at https://sympa.uio.no/ and select the sub domain that you belong to
-2. Select "Opprett liste" and fill out the fields, where the following fields may be
-  - List type: Hotline mailing list
-  - Audience: Forskningsgrupper
-  - Registrer listens formål: Liste med ansatte og eksterne, knyttet til UiO sitt formål, der eksterne kan være upersonlige adresser. Listen er eid av en eller flere ansatte.
+For UiO-users, the instructions for creating a mailing list can be found here: https://www.uio.no/tjenester/it/e-post-kalender/e-postlister/hjelp/administrere/nyliste.html. We recommend choosing the following options when creating a mailing list for use in the contact field on your UiO NREC project:
+- List type: Hotline mailing list
+- Audience: Forskningsgrupper
+- Registrer listens formål: Liste med ansatte og eksterne, knyttet til UiO sitt formål, der eksterne kan være upersonlige adresser. Listen er eid av en eller flere ansatte.
 
 Expiration Date Extension
 -------------------------
