@@ -124,7 +124,7 @@ html_theme = 'bootstrap'
 # documentation.
 # https://github.com/ryan-roemer/sphinx-bootstrap-theme#customization
 html_theme_options = {
-    'bootswatch_theme':  "spacelab",
+    'bootswatch_theme':  "cosmo",
     'bootstrap_version': "3",
     'navbar_site_name':  "Documentation",
     'navbar_links': [
