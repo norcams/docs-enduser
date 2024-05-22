@@ -126,9 +126,9 @@ html_theme = 'bootstrap'
 html_theme_options = {
     'bootswatch_theme':  "spacelab",
     'bootstrap_version': "3",
-    'navbar_site_name':  "NREC",
+    'navbar_site_name':  "Documentation",
     'navbar_links': [
-        ("Dashboard", "https://dashboard.nrec.no/"),
+        ("Dashboard", "https://dashboard.nrec.no/", True),
         ("Sign Up", "https://access.nrec.no/", True),
     ],
 }
