@@ -59,7 +59,7 @@ E.g
 The authorized_keys file is located in :file:`/home/username/.ssh/authorized_keys`
 Now you should be able to login using ssh with the new key(s).
 
-.. sidebar::
+.. NOTE::
    If you are experiencing problem with booting up and you have attached
    volumes(s), try dettach them first then run rescue agian.
 
