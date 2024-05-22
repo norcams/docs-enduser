@@ -81,7 +81,7 @@ For more information, take a look at the Openstack documentation on `rescue mode
    If you lost access to the SSH key take a look at lostaccess_
 
 Using the dashboard
-*******************
+~~~~~~~~~~~~~~~~~~~
 .. _security groups: https://docs.nrec.no/security-groups.html#id3
 
 .. image:: images/rescue-instance-01.png
