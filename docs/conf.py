@@ -124,8 +124,13 @@ html_theme = 'bootstrap'
 # documentation.
 # https://github.com/ryan-roemer/sphinx-bootstrap-theme#customization
 html_theme_options = {
-    'bootswatch_theme': "yeti",
+    'bootswatch_theme':  "spacelab",
     'bootstrap_version': "3",
+    'navbar_site_name':  "NREC",
+    'navbar_links': [
+        ("Dashboard", "https://dashboard.nrec.no/"),
+        ("Sign Up", "https://access.nrec.no/", True),
+    ],
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
