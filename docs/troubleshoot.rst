@@ -164,14 +164,17 @@ the openstack command above.
 .. code-block:: console
 
   $ while read line; do k=$(echo $line | cut -d ' ' -f 1); v=$(echo $line | cut -d ' ' -f 2); cmd="openstack image set --property $k=$v <uploaded image ID>"; eval $cmd; done <<< 'hw_disk_bus scsi
-  hw_scsi_model virtio-scsi
-  hw_rng_model virtio
-  hw_qemu_guest_agent yes
-  hw_machine_type q35
-  hw_firmware_type uefi
-  hw_vif_multiqueue_enabled yes
-  os_require_quiesce yes
-  os_type linux'
+       hw_scsi_model virtio-scsi
+       hw_rng_model virtio
+       hw_qemu_guest_agent yes
+       hw_machine_type q35
+       hw_firmware_type uefi
+       hw_vif_multiqueue_enabled yes
+       os_require_quiesce yes
+       os_type linux'
+
+
+.. rubric:: Footnotes
 
 .. [#f1] Since setting a password when rescuing an instance do not work.
 .. [#f2] https://github.com/norcams/himlarcli/blob/master/config/images/default.yaml

@@ -157,13 +157,11 @@ copied to the clipboard.
 To readd a key, go to the NREC Dashboard and click on on
 Key Pairs -> Import Public Key
 
-.. only:: comment
-   How to rebuild an instance, but preserve the IP addresses
-   ---------------------------------------------------------
+.. TIP::
+   **How to rebuild an instance, but preserve the IP addresses**
 
    By using openstack rebuild function, you can start an instance from a new image
    while maintaining the same IP addresses, amongst other metadata.
-
 
    .. code-block:: console
 
