@@ -254,9 +254,9 @@ provided below.
    :name: variables-tf
    :linenos:
 
-.. literalinclude:: downloads/tf-example3/local.tfvars
-   :caption: local.tfvars
-   :name: local-tfvars
+.. literalinclude:: downloads/tf-example3/terraform.tfvars
+   :caption: terraform.tfvars
+   :name: terraform-tfvars
    :linenos:
 
 .. rubric:: Footnotes

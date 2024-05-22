@@ -318,32 +318,32 @@ provided below.
 
 .. literalinclude:: downloads/tf-example4/main.tf
    :caption: main.tf
-   :name: main-tf
+   :name: part4-main-tf
    :linenos:
 
 .. literalinclude:: downloads/tf-example4/secgroup.tf
    :caption: secgroup.tf
-   :name: secgroup-tf
+   :name: part4-secgroup-tf
    :linenos:
 
 .. literalinclude:: downloads/tf-example4/variables.tf
    :caption: variables.tf
-   :name: variables-tf
+   :name: part4-variables-tf
    :linenos:
 
 .. literalinclude:: downloads/tf-example4/terraform.tfvars
    :caption: terraform.tfvars
-   :name: terraform-tfvars
+   :name: part4-terraform-tfvars
    :linenos:
 
 .. literalinclude:: downloads/tf-example4/web.yaml
    :language: yaml
-   :caption: web.yaml
+   :caption: part4-web.yaml
    :name: web-yaml
    :linenos:
 
 .. literalinclude:: downloads/tf-example4/db.yaml
    :language: yaml
-   :caption: db.yaml
+   :caption: part4-db.yaml
    :name: db-yaml
    :linenos:

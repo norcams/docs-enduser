@@ -210,15 +210,15 @@ provided below.
 
 .. literalinclude:: downloads/tf-example5/zone.tf
    :caption: zone.tf
-   :name: zone-tf
+   :name: part5-zone-tf
    :linenos:
 
 .. literalinclude:: downloads/tf-example5/recordset.tf
    :caption: recordset.tf
-   :name: recordset-tf
+   :name: part5-recordset-tf
    :linenos:
 
 .. literalinclude:: downloads/tf-example5/dynamic.tf
    :caption: dynamic.tf
-   :name: dynamic-tf
+   :name: part5-dynamic-tf
    :linenos:

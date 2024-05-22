@@ -71,7 +71,7 @@ discussed in `Part 1`_:
 
 .. literalinclude:: downloads/tf-example1/basic.tf
    :caption: basic.tf
-   :name: basic-tf
+   :name: part1-basic-tf
    :linenos:
 
 This file provisions a single instance. We can add a ``count``
