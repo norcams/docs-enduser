@@ -124,7 +124,7 @@ html_theme = 'bootstrap'
 # documentation.
 # https://github.com/ryan-roemer/sphinx-bootstrap-theme#customization
 html_theme_options = {
-    'bootswatch_theme': "lumen",
+    'bootswatch_theme': "yeti",
     'bootstrap_version': "3",
 }
 
