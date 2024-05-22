@@ -12,7 +12,7 @@ How do I set the root password for my Linux instance?
 
 Here are three ways to set the password for the user root on a Linux instance:
 
-* item 1: passwd
+- passwd
 
   If you are able to SSH to the instance, set the root password using sudo passwd:
 
@@ -20,7 +20,7 @@ Here are three ways to set the password for the user root on a Linux instance:
 
      sudo passwd root
 
-* item 2: API user
+- API user
 
   As long as the instance has network and running qemu-guest-agent.service, the root password can be set using OpenStack API
 
@@ -34,7 +34,7 @@ Here are three ways to set the password for the user root on a Linux instance:
 
      nova set-password <server ID>
 
-* item 3: Customization script (dashboard)
+- Customization script (dashboard)
 
   Set root password during provisioning of a new instance by
   customization script (cloud-init). This is useful if launching a new

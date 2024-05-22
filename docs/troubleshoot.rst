@@ -120,9 +120,15 @@ If you need to edit `security groups`_ then edit instance and then select "Secur
    select any other image than the one used for setting up the instance in the
    first place.
 
-I created an instance based on a Debian image snapshot that I downloaded before. I am not able to SSH to the new instance
--------------------------------------------------------------------------------------------------------------------------
+
+Not able to SSH to Debian instance created from uploaded snapshot image
+-----------------------------------------------------------------------
 .. _debianimagenetwork:
+
+Description
+~~~~~~~~~~~
+
+I created an instance based on a Debian image that I downloaded before. The image was created from a snapshot of a Debian instance. I am not able to SSH to the new instance.
 
 Possible solution
 ~~~~~~~~~~~~~~~~~
