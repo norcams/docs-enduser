@@ -79,7 +79,7 @@ instances that were shut off when the project entered quarantine.
 Mailing lists
 -------------
 
-If you share responsibilities in administering a project, we recommend creating a mailing list and include this list in the 'Optional contact' field when applying for a project. All E-mails added to this list at any time will then be included in all correspondences with support@nrec.no.
+If you share responsibilities in administering a project, we recommend creating a mailing list and include this list in the 'Optional contact' field when applying for a project. The list will then be used for automatic E-mails from support@nrec.no, such as project changes, maintenance and security issues.
 
 For UiO-users, the instructions for creating a mailing list can be found here: https://www.uio.no/tjenester/it/e-post-kalender/e-postlister/hjelp/administrere/nyliste.html. We recommend choosing the following options when creating a mailing list for use in the contact field on your UiO NREC project:
 - List type: Hotline mailing list
