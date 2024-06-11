@@ -106,11 +106,17 @@ If you need to edit `security groups`_ then edit instance and then select "Secur
    :align: center
    :alt: Unrescue instance form dashboard
 
-.. NOTE::
-   THIS IS RELATED to LINUX!
+To SSH to the rescued instance, you may need to delete the key-fingerprint to the original instance
 
-   If you do not select a specific image (or specify the same as the instance
-   originally used, which in effect is the same), the two (pseudo)disks may end
+ssh-keygen -f ~/.ssh/known_hosts -R <INSTANCE-IP>'
+
+You should then be able to SSH into the rescued image using the default username, as listed in https://docs.nrec.no/gold-image.html#id14
+
+.. NOTE::
+   (Linux) Volume UUID with different images
+
+   If you do not select the same GOLD image as the one the instance
+   originally used, the two (pseudo)disks may end
    up with the same UUID. For some distributions this may cause the instance to
    mount its root filesystem from the damaged disk. The upshot is that any SSH
    connections will seemingly connect to the broken instance, and the rescue
