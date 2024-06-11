@@ -110,7 +110,7 @@ To SSH to the rescued instance, you may need to delete the key-fingerprint to th
 
 ssh-keygen -f ~/.ssh/known_hosts -R <INSTANCE-IP>'
 
-You should then be able to SSH into the rescued image using the default username, as listed in https://docs.nrec.no/gold-image.html#id14
+You should then be able to SSH into the rescued instance using the default username, as listed in https://docs.nrec.no/gold-image.html#id14
 
 .. NOTE::
    (Linux) Volume UUID with different images
