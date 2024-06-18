@@ -179,7 +179,7 @@ Doing the same with CLI
      +--------------------------------------+--------------+-----------+------+-------------+
      | a7234dda-a97a-44c3-aa93-9b2952fd2bcf | mytestvolume | available |   10 |             |
      +--------------------------------------+--------------+-----------+------+-------------+
-     
+
      $ openstack server list
      +--------------------------------------+----------+--------+----------------------+------------+
      | ID                                   | Name     | Status | Networks             | Image Name |
@@ -223,7 +223,7 @@ Doing the same with CLI
 
   .. Important::
      Do NOT perform the next step unless this is the very first time you use this volume, and there are NO filesystem on it.
-     If you have any data on it whatsoever, skip the 'mkfs' commands!
+     If you have any data on it whatsoever, skip the 'mkfs' commands! Otherwise you will experience data loss!
 
   .. code-block:: console
 
