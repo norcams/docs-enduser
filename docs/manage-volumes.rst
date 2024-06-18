@@ -221,6 +221,12 @@ Doing the same with CLI
      `-vda1 253:1    0 1011.9M  0 part /
      vdb    253:16   0     10G  0 disk
 
+  .. Important::
+     Do NOT perform the next step unless this is the very first time you use this volume, and there are NO filesystem on it.
+     If you have any data on it whatsoever, skip the 'mkfs' commands!
+
+  .. code-block:: console
+
      If there are not any file systems, you need to create one:
      # mkfs.ext4 /dev/vdb
      [...]
