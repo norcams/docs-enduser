@@ -42,8 +42,8 @@ The endpoint URLs are
 
 .. code-block:: console
 
-  https://object.api.bgo.nrec.no:8080
-  https://object.api.osl.nrec.no:8080
+  https://object.api.bgo.nrec.no
+  https://object.api.osl.nrec.no
 
 for the BGO and OSL regions respectively.
 
@@ -99,8 +99,8 @@ and create a config file :file:`~/.s3cfg`
 
   [default]
   access_key = <access_key>
-  host_base = object.api.bgo.nrec.no:8080
-  host_bucket = object.api.bgo.nrec.no:8080
+  host_base = object.api.bgo.nrec.no
+  host_bucket = object.api.bgo.nrec.no
   secret_key = <secret_key>
 
 See `Amazon S3 Tools`_ for more information
@@ -123,7 +123,7 @@ environment variables:
 
   export AWS_ACCESS_KEY_ID=<access_key>
   export AWS_SECRET_ACCESS_KEY=<secret_key>
-  export AWS_ENDPOINT_URL=https://object.api.<region>.nrec.no:8080
+  export AWS_ENDPOINT_URL=https://object.api.<region>.nrec.no
   export AWS_DEFAULT_REGION=None
 
 See `AWS CLI`_ for more information.
@@ -150,7 +150,7 @@ Example:
 
 .. code-block:: console
 
-  https://object.api.bgo.nrec.no:8080/<project-id>:<bucket>/<object>
+  https://object.api.bgo.nrec.no/<project-id>:<bucket>/<object>
 
 Object Locking (S3)
 ===================
