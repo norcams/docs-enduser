@@ -103,3 +103,8 @@ the "UiO Managed" images. An instance created from any of these images
 will instantly be automatically managed by the IT department at
 UiO. This includes CFEngine configuration management, monitoring and
 everything else.
+
+Automatic updates
+-----------------
+
+Automatic updates are enabled for all GOLD images. This involves automatic download and update of packages. The specific configuration depends on the Linux distribution and Windows version. For Linux distributions in the RedHat family, it involves enabling and starting a systemd timer, which regurarly calls a systemd service that reads from a dnf configuration file, while for distributions in the Debian family, the same effect is achieved with unattended-upgrades and apt configuration. For Windows, the configuration varies.
