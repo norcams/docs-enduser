@@ -24,9 +24,8 @@ Norwegian Research and Education Cloud
    ssh
    security-groups
    manage-volumes
-   create-snapshot
-   gold-image
    snapshot
+   gold-image
    console
    object
 

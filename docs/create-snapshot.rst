@@ -1,5 +1,7 @@
 .. |date| date::
 
+FIXME [2024-07-04]: This guide is replaced by snapshot.rst and should no longer be referenced.
+
 Create and manage snapshots
 ===========================
 

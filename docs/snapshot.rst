@@ -21,10 +21,13 @@ there are a couple of things to consider before creating the snapshot:
   before taking a snapshot of it.
 
 
-Creating
---------
+Create
+------
 
 Follow these steps to create a snapshot of an instance.
+
+Dashboard
+~~~~~~~~~
 
 #. In the dashboard, select **Instances** in the **Compute** tab:
 
@@ -64,10 +67,10 @@ to enter part of the name of your image and it should appear:
    Image creation may take a long time. You may need to reload the
    browser page.
 
-Creating via CLI
-~~~~~~~~~~~~~~~~
+CLI
+~~~
 
-#. First list our servers:
+#. First list your instances (servers):
 
    .. code-block:: console
 
@@ -113,8 +116,8 @@ Creating via CLI
      +--------------------------------------+-----------------+--------+
 
 
-Downloading
------------
+Download
+--------
 
 There are valid reasons to download the snapshot to a local
 computer. One reason would be to have an off-site backup of the
@@ -124,6 +127,9 @@ order to use it as a source image for instances in that project.
 Downloading a snapshot is not possible via the dashboard, it is only
 possible via the CLI or API. The steps needed to download the snapshot
 via CLI are detailed below.
+
+CLI
+~~~
 
 #. List images using the option ``--private``, thus excluding official
    NREC images:
@@ -147,13 +153,17 @@ via CLI are detailed below.
       -rw-r--r--. 1 user group 10G Feb 11 14:18 test01-snapshot.img
 
 
-Uploading
----------
+Upload
+------
 
 If you have previously downloaded a snapshot as described in
 `Downloading`_, you can upload it to a different project or
-region. An snapshot is uploaded as an image. In order to upload the
-snapshot, navigate to **Images** and click on ``Create Image``:
+region. An snapshot is uploaded as an image.
+
+Dashboard
+~~~~~~~~~
+
+In order to upload a snapshot, navigate to **Images** and click on ``Create Image``:
 
 .. image:: images/snapshot-10.png
    :align: center
@@ -180,27 +190,28 @@ tab:
    :align: center
    :alt: Dashboard - Compute -> Images
 
-Uploading via CLI
-~~~~~~~~~~~~~~~~~
+CLI
+~~~
 
-If the purpose of uploading the snapshot is to move a workload or
-instance between projects, make sure that your shell environment
-variables are set correctly:
+.. NOTE::
+   If the purpose of uploading the snapshot is to move a workload or
+   instance between projects, make sure that your shell environment
+   variables are set correctly:
 
-.. code-block:: console
+   .. code-block:: console
 
-  $ env | egrep '(OS_REGION_NAME|OS_PROJECT_NAME)'
-  OS_REGION_NAME=osl
-  OS_PROJECT_NAME=DEMO-xxxxxxxx.uio.no
+      $ env | egrep '(OS_REGION_NAME|OS_PROJECT_NAME)'
+      OS_REGION_NAME=osl
+      OS_PROJECT_NAME=DEMO-xxxxxxxx.uio.no
 
-Change these variables according to which project and region where you
-want to upload the snapshot, e.g.:
+   Change these variables according to which project and region where you
+   want to upload the snapshot, e.g.:
 
-.. code-block:: console
+   .. code-block:: console
 
-  $ export OS_PROJECT_NAME=PRIVATE-xxxxxxxx.uio.no
+      $ export OS_PROJECT_NAME=PRIVATE-xxxxxxxx.uio.no
 
-You can then upload the image:
+Upload the image with:
 
 .. code-block:: console
 
@@ -213,8 +224,24 @@ options, se the output of ``openstack image create --help`` for more
 information.
 
 
-Launching
----------
+Launch
+------
+
+Dashboard: Directly from snapshot image
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Select *Images* in the *Compute* tab:
+
+.. image:: images/create-snapshot-05.png
+   :align: center
+   :alt: Dashboard - Launch Snapshot
+
+Choose the snapshot, and click on ``Launch``, and further steps are described under *create virtual machine*.
+
+The new instance contains now the expected customizations made earlier in your previous instance. 
+
+Dashboard: By creating instance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Follow the steps outlined in `Create a Linux virtual machine`_. The
 only difference is when choosing the image from which to launch the
@@ -233,8 +260,8 @@ under `Create a Linux virtual machine`_.
 The new instance contains now the expected customizations made earlier
 in your previous instance.
 
-Launching via CLI
-~~~~~~~~~~~~~~~~~
+CLI
+~~~
 
 This will be exactly as described in `Create a Linux virtual
 machine`_. Use your snapshot as the source for the instance:
@@ -245,8 +272,8 @@ machine`_. Use your snapshot as the source for the instance:
         --security-group SSH_and_ICMP --security-group default \
         --key-name mykey --nic net-id=IPv6 myserver
 
-Deleting
---------
+Delete
+------
 
 .. NOTE::
    You can not delete a snapshot that is being used as a source image
@@ -258,6 +285,9 @@ Deleting
       :alt: Dashboard - Delete Snapshot ERROR
 
 In order to delete a snapshot that no longer need, follow these steps:
+
+Dashboard
+~~~~~~~~~
 
 #. Navigate to the **Images** tab under **Compute**. The image list
    will be long, use the search field to enter part of the name of
@@ -279,8 +309,8 @@ You should now get a confirmation that the snapshot is deleted:
    :align: center
    :alt: Dashboard - Delete Snapshot CONFIRMATION
 
-Deleting via CLI
-~~~~~~~~~~~~~~~~
+CLI
+~~~
 
 #. List your private images:
 
