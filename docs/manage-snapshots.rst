@@ -1,6 +1,9 @@
 .. |date| date::
 
 .. _Create a Linux virtual machine: create-virtual-machine.html
+.. _Upload and manage images: create-images.html
+.. _troubleshooting: troubleshoot.html
+.. _Frequently Asked Questions (FAQ): faq.html
 
 Create and manage snapshots
 ===========================
@@ -159,6 +162,9 @@ Upload
 If you have previously downloaded a snapshot as described in
 `Downloading`_, you can upload it to a different project or
 region. An snapshot is uploaded as an image.
+
+.. NOTE::
+   The uploaded snapshot image will not have the same properties as the original image prior to snapshot and download. This may cause problems. One such problem is changed network interface card name for Debian instance. To solve this problem, you need to manually set the original properties to the uploaded snapshot image, as described in `troubleshooting`_. General useful image properties are described in `Upload and manage images`_. Please also check out `Frequently Asked Questions (FAQ)`_.
 
 Dashboard
 ~~~~~~~~~
