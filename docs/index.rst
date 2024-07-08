@@ -27,6 +27,7 @@ Norwegian Research and Education Cloud
    nrec-gold-images
    create-images
    manage-snapshots
+   nrec-flavors
    console
    object
 
