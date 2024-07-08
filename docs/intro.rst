@@ -240,7 +240,8 @@ Glossary
 
 **Snapshot**
   A snapshot provides a copy of a currently running VM or volume which
-  can be stored into an external service such as Glance.
+  can be stored into an external service such as Glance. A snapshot of a VM is an image.
+  To make this distinction, the guide may refer to a snapshot of a VM as a snapshot image.
 
 Conventions
 -----------
