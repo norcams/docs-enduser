@@ -11,11 +11,16 @@ NREC flavors
 
 The NREC Team provides many different flavors depending on use case and pricing. They generally follow the project type. The naming follows broadly:
 
-- m*: General purpose
-- c*: CPU intensive
-- d*: Disk intensive
-- r* RAM intensive
-- win*: Windows; CPU and disk intensive
+- *m*: General purpose
+- *c*: CPU intensive
+- *d*: Disk intensive
+- *r* RAM intensive
+- win*: Disk intensive, Windows
+
+You can see which flavors are available in your project in the Dasboard when creating an instance: Instances -> Lanuch Instance -> Flavor * , or using the CLI (here, sorted by RAM):
+
+.. code-block:: console
+   openstack flavor list --all --sort-column RAM
 
 Personal
 --------
