@@ -48,7 +48,7 @@ Who can use NREC?
 
 .. _Terms of Service: terms-of-service.html
 .. _Logging in: login.html
-.. _Pricing: pricing.rst
+.. _Pricing: pricing.html
 
 .. _The Arctic University of Norway (UiT): https://www.uit.no/
 .. _Norwegian University of Life Sciences (NMBU): https://www.nmbu.no/
