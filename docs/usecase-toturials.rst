@@ -17,7 +17,8 @@ addresses of the instance. This toturial demonstrates how to change the network
 interface from dualStack to IPv6.
 
 .. TIP::
-   **Set root password**
+   **Set root password!**
+
    It is a good idea to set the root password prior to doing any network changes.
    The instance can then be accessed using the "Console" view in the dashboard.
 
