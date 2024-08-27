@@ -22,6 +22,7 @@ In the Dashboard:
 
 .. figure:: images/uc-if-1.png
    :align: center
+   figwidth: image
 
    Figure 1: Drop-down menu of the running instance (in Compute -> Instances). The first three options are shown. We will use all three options in this toturial.
  
@@ -29,6 +30,7 @@ In the Dashboard:
 
 .. figure:: images/uc-if-2.png
    :align: center
+   figwidth: image
 
    Figure 2: Selecting existing network to detach.
  
@@ -38,6 +40,7 @@ In the Dashboard:
 
 .. figure:: images/uc-if-3.png
    :align: center
+   figwidth: image
 
    Figure 3: Selecting new network to attach.
  
@@ -51,6 +54,7 @@ In the Dashboard:
 
 .. figure:: images/uc-if-4.png
    :align: center
+   figwidth: image
 
    Figure 4: Adding security group for SSH access.
  
