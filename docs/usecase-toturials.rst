@@ -16,6 +16,11 @@ available networks in the dashboard. Changing network interface will change the 
 addresses of the instance. This toturial demonstrates how to change the network
 interface from dualStack to IPv6.
 
+.. TIP::
+   **Set root password**
+   It is a good idea to set the root password prior to doing any network changes.
+   The instance can then be accessed using the "Console" view in the dashboard.
+
 In the Dashboard:
 
 1. In the drop-down menu of your running instance, select "Detach Interface" (Figure 1).
