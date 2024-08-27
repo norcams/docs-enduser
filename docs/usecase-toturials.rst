@@ -17,7 +17,7 @@ change the network interface type from dualStack to IPv6.
 
 In the Dashboard:
 
-1. In the drop-down menu of your running instance, select "Attach Interface" (Figure 1).
+1. In the drop-down menu of your running instance, select "Detach Interface" (Figure 1).
 
 .. image:: images/uc-if-1.png
    :align: center
