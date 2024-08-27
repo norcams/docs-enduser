@@ -63,6 +63,7 @@ Norwegian Research and Education Cloud
    troubleshoot
    speculativeexecution
    faq
+   usecase-toturials
    changelog
 
 

@@ -1,0 +1,51 @@
+.. |date| date::
+
+Use case toturials
+==================
+
+Last changed: |date|
+
+.. contents::
+
+Changing network interface for a running instance
+-------------------------------------------------
+
+It is possible to change the network interface type (i.e., from dualStack to IPv6)
+without rebooting or rebuilding your VM instance. This is possible between all
+available networks in the dashboard. This toturial demonstrates how to
+change the network interface type from dualStack to IPv6.
+
+In the Dashboard:
+
+1. In the drop-down menu of your running instance, select "Attach Interface" (Figure 1).
+
+.. image:: images/uc-if-1.png
+   :align: center
+   :alt: Figure 1: Drop-down menu of the running instance (in Compute -> Instances). The first three options are shown. We will use all three options in this toturial.
+ 
+2. Select the network to detach under "Port". In Figure 2, a dualStack network configuration that is currently used by the running VM instance, is selected for detachment.
+
+.. image:: images/uc-if-2.png
+   :align: center
+   :alt: Figure 2: Selecting existing network to detach.
+ 
+3. In the drop-down menu of your running instance, select "Attach Interface" (Figure 1).
+
+4. Select the new (suggested) network to attach. In Figure 3, a new IPv6 network is selected.
+
+.. image:: images/uc-if-3.png
+   :align: center
+   :alt: Figure 3: Selecting new network to attach.
+ 
+.. TIP::
+   **Automatic removal of security groups**
+
+   Note that all security groups that used the network that you detached were removed
+   from the instance as a result of detaching the interface. Because of this, you need to
+   re-add the affected security group(s). In the drop-down menu of the running instance (Figure 1), select "Edit Instance". In this toturial, a security group for SSH access
+   is re-added as shown in Figure 4.
+
+.. image:: images/uc-if-4.png
+   :align: center
+   :alt: Figure 4: Adding security group for SSH access.
+ 
