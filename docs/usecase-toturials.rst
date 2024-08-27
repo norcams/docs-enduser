@@ -22,12 +22,14 @@ In the Dashboard:
 
 .. figure:: images/uc-if-1.png
    :align: center
+
    Figure 1: Drop-down menu of the running instance (in Compute -> Instances). The first three options are shown. We will use all three options in this toturial.
  
 2. Select the network to detach under "Port". In Figure 2, a dualStack network configuration that is currently used by the running VM instance, is selected for detachment.
 
 .. figure:: images/uc-if-2.png
    :align: center
+
    Figure 2: Selecting existing network to detach.
  
 3. In the drop-down menu of your running instance, select "Attach Interface" (Figure 1).
@@ -36,6 +38,7 @@ In the Dashboard:
 
 .. figure:: images/uc-if-3.png
    :align: center
+
    Figure 3: Selecting new network to attach.
  
 .. TIP::
@@ -48,5 +51,6 @@ In the Dashboard:
 
 .. figure:: images/uc-if-4.png
    :align: center
+
    Figure 4: Adding security group for SSH access.
  
