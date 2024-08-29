@@ -209,10 +209,10 @@ An example of an acknowledgement of having used NREC is:
 Transferring an instance between projects using snapshot
 --------------------------------------------------------
 
-.. _Creating a snapshot: snapshot.html#creating
-.. _Downloading a snapshot: snapshot.html#downloading
-.. _Uploading a snapshot: snapshot.html#uploading
-.. _Launching a snapshot: snapshot.html#launching
+.. _Creating a snapshot: manage-snapshots.html#create
+.. _Downloading a snapshot: manage-snapshots.html#download
+.. _Uploading a snapshot: manage-snapshots.html#upload
+.. _Launching a snapshot: manage-snapshots.html#launch
 
 While it isn't possible to "move" an instance between different
 projects without interruption, you can utilize the snapshot feature to
