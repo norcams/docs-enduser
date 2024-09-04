@@ -164,3 +164,100 @@ Shared account:
 
 A shared user group1 may be created with password, and the password can be shared within the group. All members of the group should then be able to login to the VM using user group1 and shared password simultaneously. Shared accounts may also be accomplished by sharing the full (private+public) SSH key and possibly OTP app. However, this use case would go against introducing these increased security measures in the first place.
 
+Lightweight Linux remote desktop environment
+--------------------------------------------
+
+This is a tutorial on how you may setup a minimal graphical desktop environment (DE) in your linux VM, and access it remotely using the Remote Desktop Protocol (RDP) over a Secure Shell (SSH) tunnel.
+
+- LXDE: Lightweight X Desktop Environment
+- xrdp, a VDI server using the Remote Desktop Protocol (RDP) protocol, and that starts isolated X sessions
+- Web browser (firefox)
+- File browser (pcmanfm)
+- File de-compress/compress tool (xarchiver)
+- Text processor (mousepad)
+- Terminal emulator (lxterminal)
+- Decent theme (shimmer themes).
+
+Abbreviations:
+
+RDP: Remote Desktop Protocol, SSH: Secure Shell, GUI: Graphical User Interface, VDI: Virtual Desktop Infrastructure, DE: Desktop Environment
+
+.. Note::
+
+   The specific steps required for GUI to your linux VM instance depend heavily on the software and distribution. The steps in this toturial are likely to change in the future. The last edit was 2024-09-04.
+
+1. Launch a new linux VM instance
+
+  - Image: GOLD Ubuntu 24.04 LTS
+  - Flavor: m1.medium (4 GB RAM, 20 GB OS disk)
+  - Network: IPv6
+  - Add a security group that allows SSH to the instance for IPv6
+  - Add your SSH key
+
+  In this, toturial the instance is named ``vdi``
+
+2. SSH login with TCP tunnel for RDP connection
+
+   .. code-block:: console
+
+      ssh ubuntu@<IPv6 address> -L 45000:localhost:3389
+
+   where we choose a high numbered port that we want to use to access our DE on ``localhost`` on our local machine.
+
+3. Set password for the cloud user (will be asked with VDI login)
+
+   .. code-block:: console
+
+      sudo passwd ubuntu
+
+4. Install software
+
+   .. code-block:: console
+      
+      sudo apt update -y && sudo apt install -y xrdp openbox-lxde-session lxappearance lxterminal xarchiver mousepad shimmer-themes firefox
+
+5. First VDI login
+
+   Use a RDP Client to connect to ``localhost:45000``. The client to use on Windows is the built-in Windows Remote Desktop. A good Linux client is Remmina.
+
+   You will be asked to login as user ubuntu with the password you set previously.
+
+5. Necessary fixes
+
+   - Fix lxpanel bug for Ubuntu 24.04 LTS [#f1]_ [#f2]_
+
+     ``Right click on (the visible part of the) panel -> Panel Settings -> Panel Applets, select Desktop Pager, then click Remove``
+
+   - Set decent theme
+
+     ``Preferences -> Customize Look and Feel, select Greybird-dark -> Apply -> Close``
+
+     ``Preferences -> Openbox Configuration Manager, select Numix -> Close``
+
+     ``Right click on panel -> Panel Settings -> Appearance, under Background, select System theme -> Close``
+
+   - Disable screensaver to avoid unwanted CPU consumption
+
+     ``Preferences -> XScreenSaver Settings -> Mode: Disable Screen Saver -> Close``
+
+   - (Windows only) Fix Windows Remote Desktop specific issues [#f3]_
+
+     Enable shared clipboard as well as drive redirection in Windows Remote Desktop client (to ``thinclient_drives`` mount): Make sure Windows Remote Desktop client is configured properly by unchecking Printers and Smart cards. Select the drive(s) to redirect, as well as Clipboard, then save the profile.
+
+6. Finish
+
+   This toturial used the Remmina RDP client with custom screen resolution set to 1920x1080 (Figure 5).
+
+   .. figure:: images/uc-vdi-1.png
+      :align: center
+      :figwidth: image
+
+      Figure 5: Screenshot of the virtual DE with the GUI tools installed in this toturial.
+ 
+.. rubric:: Footnotes
+
+.. [#f1] https://askubuntu.com/questions/1518705/lxde-panel-gets-cut-off-on-ubuntu-24-04
+   
+.. [#f2] https://sourceforge.net/p/lxde/bugs/968/
+
+.. [#f3] https://github.com/neutrinolabs/xrdp/issues/308
