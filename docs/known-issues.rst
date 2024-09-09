@@ -229,6 +229,14 @@ using the API, for example via the command line (CLI):
 * `Deleting records in CLI`_
 * `Deleting a zone in CLI`_
 
+
+Web GUI does not list all records or zones if more than 20 is defines
+---------------------------------------------------------------------
+There is a bug in our version of OpenStack Horizon (the Web GUI) where it does
+not list more than 20 records or zones. No indication of this is present.
+Workaround: Use CLI.
+
+
 Instance name
 -------------
 We recommend you to name your instances only with [a-zA-Z0-9]

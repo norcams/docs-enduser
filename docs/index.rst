@@ -24,9 +24,9 @@ Norwegian Research and Education Cloud
    ssh
    security-groups
    manage-volumes
-   create-snapshot
-   gold-image
-   snapshot
+   nrec-gold-images
+   create-images
+   manage-snapshots
    console
    object
 
@@ -63,6 +63,7 @@ Norwegian Research and Education Cloud
    troubleshoot
    speculativeexecution
    faq
+   usecase-toturials
    changelog
 
 

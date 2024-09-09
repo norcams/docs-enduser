@@ -7,6 +7,90 @@ Last changed: |date|
 
 .. contents::
 
+No connection initially after the instance is set up and started
+----------------------------------------------------------------
+
+Sometimes whan a new instance is created it is not possible to get a connection
+to it, neither using `ssh` nor `ping` (icmp). Especially the very first time one
+is trying out the NREC service, some parts may be confusing. Here are a couple
+of steps one might use to try to remedy the situation and/or get a better
+understanding of the basic network concepts.
+
+
+Private IPv4 / Instance using the 'IPv6' network
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When one defines the new instance, there is a choice between several networks:
+*IPv6* and *dualStack*. The names are not strictly accurate, and the differences
+can be described thus:
+
++--------------+-------------------------+---------------+
+| Network name |  IPv4                   | IPv6          |
++==============+=========================+===============+
+| IPv6         | Private IPv4 address    | Public IPv6   |
+|              | in the 10.0.0.0/8 range |               |
++--------------+-------------------------+---------------+
+| dualStack    | Public IPv4             | Public IPv6   |
++--------------+-------------------------+---------------+
+
+As can be seen from this table, both cases yields both an IPv4 and an IPv6
+address. But note that the IPv4 address assigned in the `IPv6` case is a *private* address (so
+called *RFC1918 address*) which is not reachable from outside the project!
+If the instance is using the `IPv6` network, then you **must** use IPv6 to get
+to it! The IPv4 address is NOT reachable from your own machine. If you try
+accessing your new instance on an address starting with '10', then this is the
+reason for not getting any response.
+
+**Solution**: Use its IPv6 address for connection
+
+
+No connection using IPv6
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Your instance is always assigned an IPv6 address. If you try to get a conenction to the
+instance using this address, and you get *No route to host* or otherwise no
+response, then verify that you have a proper IPv6 address on the system you
+connect from.
+
+.. Note::
+   If the only IPv6 address you have is something which starts with `fe80` - and no other
+   IPv6 address, then you just have the so called *link-local* address. This is
+   NOT a public IPv6 one, and usually this address is not suitable for
+   traffic to anything beyond your local network.
+
+**Solution**: Check your assigned IPv6 address, and if none assigned or just
+assigned a `link-local`, then either go through a IPv6 enabled host ( like
+*login.uib.no* or *login.uio.no* ) or switch to IPv4 (and then make sure your instance
+is using `dualStack`, as descibed in the previous section).
+
+
+Still no connection
+~~~~~~~~~~~~~~~~~~~
+
+Every instance is implicitly attached a firewall, which by default only let
+traffic from instances in the same project through. All traffic from the outside
+is blocked! To connect to your instance, whether through `ssh`, `ping` (icmp),
+`RDP` or something else; your instance firewall must be configured to let it
+pass. If you are sure you have the addressing right (using public addresses for
+the instance and have everything set up properly on the local side), then it may
+be an idea to have a look at the firewall - or *Security groups*, as it is
+called.
+
+.. Note::
+   In the context of security rules, the *Remote* address is seen from the view
+   point of the instance, not your location.
+   When you add rules, make sure the *Remote* address entered is the address(es)
+   of the system *you are coming from*. If you are going through a jumphost,
+   then it is the address of the latter which should be entered.
+
+**Solution**: Make sure the rules in your security group are appropriate. If
+unsure if it is the remote address in the rules which blocks you, a temporary
+fix is to use `0.0.0.0/0` (for IPv4) or `::0/0` (for IPv6) to open up the
+specific protocol for the whole Internet. But please make sure to tighten this
+up when your debugging session is over!
+
+
+
 Lost access to instance
 -----------------------
 .. _lostaccess:
@@ -106,11 +190,17 @@ If you need to edit `security groups`_ then edit instance and then select "Secur
    :align: center
    :alt: Unrescue instance form dashboard
 
-.. NOTE::
-   THIS IS RELATED to LINUX!
+To SSH to the rescued instance, you may need to delete the key-fingerprint to the original instance
 
-   If you do not select a specific image (or specify the same as the instance
-   originally used, which in effect is the same), the two (pseudo)disks may end
+ssh-keygen -f ~/.ssh/known_hosts -R <INSTANCE-IP>'
+
+You should then be able to SSH into the rescued instance using the default username, as listed in https://docs.nrec.no/gold-image.html#id14
+
+.. NOTE::
+   (Linux) Volume UUID with different images
+
+   If you do not select the same GOLD image as the one the instance
+   originally used, the two (pseudo)disks may end
    up with the same UUID. For some distributions this may cause the instance to
    mount its root filesystem from the damaged disk. The upshot is that any SSH
    connections will seemingly connect to the broken instance, and the rescue
@@ -141,7 +231,7 @@ When an image snapshot is downloaded from a project;
 
   openstack image save --file <image name>.img <image ID>
 
-it does not save its properties from OpenStack. 
+it does not save its properties from OpenStack.
 
 These image properties can be seen using the OpenStack API. They are
 only set for pre-existing images and snapshots in a project:

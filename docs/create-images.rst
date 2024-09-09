@@ -7,7 +7,7 @@ Last changed: |date|
 
 .. contents::
 
-You can create an image and use it as the base for your instances.
+Instead of using our GOLD images, you may create an image directly by uploading your own cloud image in raw or QCOW2 format. This may be used as the base for your instances.
 
 Upload an image
 ---------------
