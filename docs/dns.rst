@@ -239,14 +239,8 @@ Installing the CLI extension
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to use the command line interface to work with the DNS
-service, you need to install the extension. On RHEL/CentOS and Fedora,
-you can install this extension via the package manager:
-
-* For RHEL7 and CentOS7:
-
-  .. code-block:: console
-
-    # yum install python-designateclient
+service, you need to install the extension. On RHEL/CentOS/etc. and
+Fedora, you can install this extension via the package manager:
 
 * For Fedora and RHEL, Alma Linux, Rocky Linux and CentOS Stream 8.x and later:
 
