@@ -204,6 +204,14 @@ RDP: Remote Desktop Protocol, SSH: Secure Shell, GUI: Graphical User Interface, 
 
    where we choose a high numbered port that we want to use to access our DE on ``localhost`` on our local machine.
 
+   If you are on a IPv4 only network such as eduroam, you can connect through ``login.uio.no`` or ``login.uib.no``, e.g., for UiO users
+
+   .. code-block:: console
+
+      ssh -J <username>@login.uio.no ubuntu@<IPv6 address> -L 45000:localhost:3389
+
+   where <username> is your UiO username. This requires that your SSH key is installed on the login host.
+
 3. Set password for the cloud user (will be asked with VDI login)
 
    .. code-block:: console
