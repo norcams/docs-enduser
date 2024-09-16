@@ -238,7 +238,7 @@ Connecting to the instance
 --------------------------
 
 .. _Working with Security Groups: security-groups.html
-.. _NREC GOLD images: gold-image.html
+.. _NREC GOLD images: nrec-gold-images.html
 
 .. IMPORTANT::
    Connecting to the instance requires that port 22 (the SSH port) is
@@ -247,12 +247,12 @@ Connecting to the instance
 
 After creating an instance you will use the ssh key pair to connect to
 it. During the instance creation, NREC has added the public key into
-the **~/.ssh/authorized_keys** for the proper user. The username
+the **~/.ssh/authorized_keys** for the proper user. The default user name
 varies with the Linux distribution at the discretion of the
 vendor. The most common are:
 
 ==================== ==============
-Image                User
+Image                Default user name
 ==================== ==============
 **CentOS Stream**    ``cloud-user``
 **Rocky Linux**      ``rocky``
