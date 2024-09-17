@@ -37,7 +37,7 @@ The files used in this document can be downloaded:
 * :download:`web.yaml <downloads/tf-example4/web.yaml>`
 * :download:`db.yaml <downloads/tf-example4/db.yaml>`
 
-The examples in this document has been tested and verified
+The examples in this document have been tested and verified
 with **Terraform version 1.9.5**::
 
   Terraform v1.9.5

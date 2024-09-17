@@ -31,7 +31,7 @@ The files used in this document can be downloaded:
 * :download:`variables.tf <downloads/tf-example3/variables.tf>`
 * :download:`terraform.tfvars <downloads/tf-example3/terraform.tfvars>`
 
-The examples in this document has been tested and verified
+The examples in this document have been tested and verified
 with **Terraform version 1.9.5**::
 
   Terraform v1.9.5

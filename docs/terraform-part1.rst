@@ -16,7 +16,7 @@ shows how to use Terraform in its simplest and most basic form.
 The example file can be downloaded here: :download:`basic.tf
 <downloads/tf-example1/basic.tf>`.
 
-The examples in this document has been tested and verified
+The examples in this document have been tested and verified
 with **Terraform version 1.9.5**::
 
   Terraform v1.9.5

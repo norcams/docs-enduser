@@ -15,7 +15,7 @@ The files used in this document can be downloaded:
 * :download:`static.tf <downloads/tf-example5/static.tf>`
 * :download:`dynamic.tf <downloads/tf-example5/dynamic.tf>`
 
-The examples in this document has been tested and verified
+The examples in this document have been tested and verified
 with **Terraform version 1.9.5**::
 
   Terraform v1.9.5
