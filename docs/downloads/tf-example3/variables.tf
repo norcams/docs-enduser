@@ -7,7 +7,7 @@ variable "name" {
 }
 
 variable "ssh_public_key" {
-  default = "~/.ssh/id_rsa.pub"
+  default = "~/.ssh/id_ed25519.pub"
 }
 
 variable "network" {
@@ -53,8 +53,8 @@ variable "allow_mysql_from_v4" {
 variable "role_image" {
   type = map(string)
   default = {
-    "web" = "GOLD CentOS 8"
-    "db"  = "GOLD Ubuntu 21.04 LTS"
+    "web" = "GOLD Alma Linux 9"
+    "db"  = "GOLD Ubuntu 24.04 LTS"
   }
 }
 

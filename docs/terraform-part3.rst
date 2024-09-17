@@ -1,9 +1,7 @@
-.. |date| date::
-
 Terraform and NREC: Part III - Dynamics
 ==========================================
 
-Last changed: |date|
+Last changed: 2024-09-17
 
 .. contents::
 
@@ -20,8 +18,8 @@ The goal with this document is to show how Terraform can be used to
 set up a real environment on NREC. We will create:
 
 * An SSH key pair
-* Four web servers running CentOS
-* One database server running Ubuntu
+* Four web servers running Alma Linux 9
+* One database server running Ubuntu 24.04
 * A volume that is attached to the database server
 * Security groups that allow access to the different servers, as well
   as allowing the web servers to access the database server
@@ -33,6 +31,12 @@ The files used in this document can be downloaded:
 * :download:`variables.tf <downloads/tf-example3/variables.tf>`
 * :download:`terraform.tfvars <downloads/tf-example3/terraform.tfvars>`
 
+The examples in this document has been tested and verified
+with **Terraform version 1.9.5**::
+
+  Terraform v1.9.5
+  on linux_amd64
+  + provider registry.terraform.io/terraform-provider-openstack/openstack v2.1.0
 
 Variables file
 --------------
