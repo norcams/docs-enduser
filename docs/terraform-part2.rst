@@ -1,9 +1,7 @@
-.. |date| date::
-
 Terraform and NREC: Part II - Additional resources
 =====================================================
 
-Last changed: |date|
+Last changed: 2024-09-17
 
 .. contents::
 
@@ -20,6 +18,12 @@ this example we create everything from scratch.
 The example file can be downloaded here: :download:`advanced.tf
 <downloads/tf-example2/advanced.tf>`.
 
+The examples in this document has been tested and verified
+with **Terraform version 1.9.5**::
+
+  Terraform v1.9.5
+  on linux_amd64
+  + provider registry.terraform.io/terraform-provider-openstack/openstack v2.1.0
 
 Image Name
 ----------
@@ -43,7 +47,7 @@ scenario would output:
 
 .. code-block:: console
 
-  image_name:     "Outdated (CentOS 8)" => "GOLD CentOS 8" (forces new resource)
+  image_name:     "Outdated (Alma Linux 9)" => "GOLD Alma Linux 9" (forces new resource)
 
 In order to combat this, we add the following
 code snippet to our ``openstack_compute_instance_v2`` resource:
@@ -51,7 +55,7 @@ code snippet to our ``openstack_compute_instance_v2`` resource:
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :caption: advanced.tf
    :linenos:
-   :lines: 82-84
+   :lines: 88-90
 
 This `lifecycle meta-argument`_ makes Terraform ignore changes to the
 image name. Another approach would be to specify ``image_id`` instead
@@ -81,8 +85,8 @@ accomplish that by using the count when specifying the instance name:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
-   :lines: 1-15,68-85
-   :emphasize-lines: 18-19
+   :lines: 1-15,72-91
+   :emphasize-lines: 20-21
 
 When running this file with ``terraform apply``, a total of 5
 instances are created, as expected:
@@ -90,15 +94,15 @@ instances are created, as expected:
 .. code-block:: console
 
   $ openstack server list
-  +--------------------------------------+--------+--------+----------------------------------------+---------------+----------+
-  | ID                                   | Name   | Status | Networks                               | Image         | Flavor   |
-  +--------------------------------------+--------+--------+----------------------------------------+---------------+----------+
-  | 1f5381bd-2fd3-4152-85c2-1c18d628831c | test-3 | ACTIVE | IPv6=2001:700:2:8201::1055, 10.2.0.89  | GOLD CentOS 8 | m1.small |
-  | 3b0ea0d4-4af5-4963-8e95-4fce12cdaa04 | test-1 | ACTIVE | IPv6=2001:700:2:8201::1421, 10.2.0.97  | GOLD CentOS 8 | m1.small |
-  | 83740a1d-b5db-412e-bf73-815a00a5fd8e | test-0 | ACTIVE | IPv6=2001:700:2:8201::1400, 10.2.1.156 | GOLD CentOS 8 | m1.small |
-  | 87d92714-c375-489f-abe8-887491dfc0af | test-4 | ACTIVE | IPv6=2001:700:2:8201::149b, 10.2.1.172 | GOLD CentOS 8 | m1.small |
-  | 3b80d3a2-8883-41ea-9d36-7dc9db874f26 | test-2 | ACTIVE | IPv6=2001:700:2:8201::13af, 10.2.3.110 | GOLD CentOS 8 | m1.small |
-  +--------------------------------------+--------+--------+----------------------------------------+---------------+----------+
+  +--------------------------------------+--------+--------+----------------------------------------+-------------------+----------+
+  | ID                                   | Name   | Status | Networks                               | Image             | Flavor   |
+  +--------------------------------------+--------+--------+----------------------------------------+-------------------+----------+
+  | 73c746ca-98a9-46f7-9bfd-22e334fe3cb1 | test-1 | ACTIVE | IPv6=10.2.1.4, 2001:700:2:8201::15be   | GOLD Alma Linux 9 | m1.small |
+  | 243af083-4ff8-4212-8449-b4d977fed61c | test-3 | ACTIVE | IPv6=10.2.1.191, 2001:700:2:8201::121e | GOLD Alma Linux 9 | m1.small |
+  | b138d167-7158-4838-96d7-7b18083c1294 | test-0 | ACTIVE | IPv6=10.2.2.135, 2001:700:2:8201::1204 | GOLD Alma Linux 9 | m1.small |
+  | b65042e0-1692-4d3b-86f6-a308770b6c4f | test-2 | ACTIVE | IPv6=10.2.0.163, 2001:700:2:8201::1691 | GOLD Alma Linux 9 | m1.small |
+  | db8e0326-cf16-491a-b9cb-973d6ae1cfff | test-4 | ACTIVE | IPv6=10.2.1.199, 2001:700:2:8201::107c | GOLD Alma Linux 9 | m1.small |
+  +--------------------------------------+--------+--------+----------------------------------------+-------------------+----------+
 
 
 Key pairs
@@ -114,8 +118,8 @@ a resource block for a key pair:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
-   :lines: 16-21, 68-85
-   :emphasize-lines: 14
+   :lines: 16-23, 72-91
+   :emphasize-lines: 16
 
 The public key file must exist on disk with the given path, Terraform
 will not create it for us. After running Terraform, we can verify that
@@ -141,8 +145,8 @@ on the fly for us to use:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
-   :lines: 22-85
-   :emphasize-lines: 55
+   :lines: 24-91
+   :emphasize-lines: 59
 
 There is a lot of new stuff here:
 
@@ -165,13 +169,13 @@ Terraform file:
 .. code-block:: console
 
   $ openstack security group list -c Name -c Description
-  +--------------------------------+--------------------------------------+
-  | Name                           | Description                          |
-  +--------------------------------+--------------------------------------+
-  | uio-ssh-icmp                   | Allow SSH and ICMP access from UiO   |
-  | SSH and ICMP from login.uio.no | Allow ssh and ping from login.uio.no |
-  | default                        | Default security group               |
-  +--------------------------------+--------------------------------------+
+  +-------------------+------------------------------------+
+  | Name              | Description                        |
+  +-------------------+------------------------------------+
+  | ssh_icmp_from_uio | Allows ssh and ping from all UiO   |
+  | default           | Default security group             |
+  | uio-ssh-icmp      | Allow SSH and ICMP access from UiO |
+  +-------------------+------------------------------------+
 
 We can also inspect the security group ``uio-ssh-icmp`` that we
 created, to verify that the specified rules are present:
@@ -199,14 +203,14 @@ well. In order to create a volume you will define the resource:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
-   :lines: 87-91
+   :lines: 96-99
 
 Here, we create a volume named "my-volume" with a size of 10 GB. We
 also want to attach the volume to one of our instances:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
-   :lines: 93-97
+   :lines: 102-105
 
 In this example, we choose to attach the volume to instance number 0,
 which is the instance named "test-0". We can inspect using Openstack

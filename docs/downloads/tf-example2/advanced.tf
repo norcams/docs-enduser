@@ -13,13 +13,17 @@ terraform {
 # https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest/docs
 provider "openstack" {}
 
+#---------------------------------------------------------------------
 # SSH key
+#---------------------------------------------------------------------
 resource "openstack_compute_keypair_v2" "my-terraform-key" {
   name = "my-terraform-key"
-  public_key = file("~/.ssh/id_rsa.pub")
+  public_key = file("~/.ssh/id_ed25519.pub")
 }
 
-# Security group
+#---------------------------------------------------------------------
+# Security groups
+#---------------------------------------------------------------------
 resource "openstack_networking_secgroup_v2" "instance_access" {
   name = "uio-ssh-icmp"
   description = "Allow SSH and ICMP access from UiO"
@@ -65,11 +69,13 @@ resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv6" {
   security_group_id = openstack_networking_secgroup_v2.instance_access.id
 }
 
+#---------------------------------------------------------------------
 # Instances
+#---------------------------------------------------------------------
 resource "openstack_compute_instance_v2" "instance" {
   count = 5
   name = "test-${count.index}"
-  image_name = "GOLD CentOS 8"
+  image_name = "GOLD Alma Linux 9"
   flavor_name = "m1.small"
 
   key_pair = "my-terraform-key"
@@ -84,8 +90,10 @@ resource "openstack_compute_instance_v2" "instance" {
   }
 }
 
-# Volume
-resource "openstack_blockstorage_volume_v2" "volume" {
+#---------------------------------------------------------------------
+# Volumes
+#---------------------------------------------------------------------
+resource "openstack_blockstorage_volume_v3" "volume" {
   name = "my-volume"
   size = "10"
 }
@@ -93,5 +101,5 @@ resource "openstack_blockstorage_volume_v2" "volume" {
 # Attach volume
 resource "openstack_compute_volume_attach_v2" "volumes" {
   instance_id = openstack_compute_instance_v2.instance.0.id
-  volume_id   = openstack_blockstorage_volume_v2.volume.id
+  volume_id   = openstack_blockstorage_volume_v3.volume.id
 }
