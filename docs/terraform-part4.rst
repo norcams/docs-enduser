@@ -78,17 +78,17 @@ halting on unknown SSH host keys:
 Installing Terraform Plugin for Ansible
 ---------------------------------------
 
-Ansible has a Terraform plugin that reads information from the
+Ansible has a Terraform collection that reads information from the
 Terraform state file ``terraform.tfstate``. This needs to be installed
 for this to work. Run the following command to install it::
 
   ansible-galaxy collection install cloud.terraform
 
-On Linux, this installs the Terraform plugin under::
+On Linux, this installs the Terraform collection under::
 
   ~/.ansible/collections/ansible_collections
 
-You can verify the Terraform plugin like this:
+You can verify the Terraform collection like this:
   
   .. code-block:: console
 
@@ -99,7 +99,7 @@ You can verify the Terraform plugin like this:
 Ansible Information in Terraform State
 --------------------------------------
 
-The Terraform plugin for Ansible expects certain data in the Terraform
+The Terraform collection for Ansible expects certain data in the Terraform
 state. We will provide this by adding some extra statements to our
 Terraform ``main.tf`` file. First we need to add the Ansible plugin:
 
@@ -144,6 +144,11 @@ directory, i.e. where you ``terraform.tfstate`` is located.
 
 Testing Ansible
 ---------------
+
+.. NOTE::
+   When using the ``cloud.terraform`` collection with an unsupported
+   version of Ansible, we get a warning as seen in the examples
+   below. It still works in our case (RHEL9).
 
 With the ``terraform.yaml`` file in place, we can run ansible to test
 and verify that it is able to reach the instances over the network:
