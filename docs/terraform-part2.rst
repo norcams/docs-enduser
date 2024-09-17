@@ -119,7 +119,7 @@ a resource block for a key pair:
 .. literalinclude:: downloads/tf-example2/advanced.tf
    :linenos:
    :lines: 16-23, 72-91
-   :emphasize-lines: 16
+   :emphasize-lines: 18
 
 The public key file must exist on disk with the given path, Terraform
 will not create it for us. After running Terraform, we can verify that
@@ -150,10 +150,10 @@ on the fly for us to use:
 
 There is a lot of new stuff here:
 
-#. Line 2-5 contains a resource for a security group. This is pretty
+#. Line 4-7 contains a resource for a security group. This is pretty
    straightforward and only contains a name and description
 
-#. Line 8-45 contains 4 security group rules. They are all ingress
+#. Line 10-47 contains 4 security group rules. They are all ingress
    rules (e.g. incoming traffic) and allows for SSH and ICMP from the
    UiO IPv4 and IPv6 networks.
 
