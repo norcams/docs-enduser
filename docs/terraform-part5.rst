@@ -27,7 +27,7 @@ Creating a DNS zone
 -------------------
 
 It is quite easy to create a DNS zone using Terraform. Consider
-:ref:`static-tf` below. It is a single resource declaration needed to
+:ref:`part5-static-tf` below. It is a single resource declaration needed to
 create a zone.
 
 .. IMPORTANT::
@@ -68,7 +68,7 @@ In this example we create 3 records in the "test.com" zone:
    "test01.test.com"
 #. A **CNAME** record (alias) "www" which points to "test01.test.com"
 
-The record resources are specified in the :ref:`recordset-tf` file
+The record resources are specified in the :ref:`part5-static-tf` file
 below:
 
 .. literalinclude:: downloads/tf-example5/static.tf
