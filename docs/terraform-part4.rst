@@ -342,12 +342,12 @@ provided below.
 
 .. literalinclude:: downloads/tf-example4/web.yaml
    :language: yaml
-   :caption: part4-web.yaml
-   :name: web-yaml
+   :caption: web.yaml
+   :name: part4-web.yaml
    :linenos:
 
 .. literalinclude:: downloads/tf-example4/db.yaml
    :language: yaml
-   :caption: part4-db.yaml
-   :name: db-yaml
+   :caption: db.yaml
+   :name: part4-db.yaml
    :linenos:
