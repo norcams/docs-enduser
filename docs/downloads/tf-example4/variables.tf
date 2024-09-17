@@ -18,11 +18,6 @@ variable "volume_size" {
   default = 20
 }
 
-variable "metadata" {
-  type    = list(string)
-  default = []
-}
-
 # Security group defaults
 variable "allow_ssh_from_v6" {
   type    = list(string)
