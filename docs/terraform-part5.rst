@@ -14,8 +14,7 @@ records in Openstack using Terraform_.
 
 The files used in this document can be downloaded:
 
-* :download:`zone.tf <downloads/tf-example5/zone.tf>`
-* :download:`recordset.tf <downloads/tf-example5/recordset.tf>`
+* :download:`static.tf <downloads/tf-example5/static.tf>`
 * :download:`dynamic.tf <downloads/tf-example5/dynamic.tf>`
 
 
@@ -23,7 +22,7 @@ Creating a DNS zone
 -------------------
 
 It is quite easy to create a DNS zone using Terraform. Consider
-:ref:`zone-tf` below. It is a single resource declaration needed to
+:ref:`static-tf` below. It is a single resource declaration needed to
 create a zone.
 
 .. IMPORTANT::
@@ -43,11 +42,11 @@ create a zone.
    
 In this example we create a zone "test.com":
 
-.. literalinclude:: downloads/tf-example5/zone.tf
-   :caption: zone.tf
-   :name: zone-tf
+.. literalinclude:: downloads/tf-example5/static.tf
+   :caption: static.tf
+   :name: static-tf
    :linenos:
-   :lines: 16-
+   :lines: 16-21
 
 This is all that is needed. You may add additional parameters, most
 commonly **TTL**, if you need to set a TTL value other than the
@@ -67,10 +66,11 @@ In this example we create 3 records in the "test.com" zone:
 The record resources are specified in the :ref:`recordset-tf` file
 below:
 
-.. literalinclude:: downloads/tf-example5/recordset.tf
-   :caption: recordset.tf
-   :name: recordset-tf
+.. literalinclude:: downloads/tf-example5/static.tf
+   :caption: static.tf
+   :name: static-tf
    :linenos:
+   :lines: 23-
 
 .. IMPORTANT::
 
@@ -208,14 +208,9 @@ Complete example
 A complete listing of the example files used in this document is
 provided below.
 
-.. literalinclude:: downloads/tf-example5/zone.tf
-   :caption: zone.tf
-   :name: part5-zone-tf
-   :linenos:
-
-.. literalinclude:: downloads/tf-example5/recordset.tf
-   :caption: recordset.tf
-   :name: part5-recordset-tf
+.. literalinclude:: downloads/tf-example5/static.tf
+   :caption: static.tf
+   :name: part5-static-tf
    :linenos:
 
 .. literalinclude:: downloads/tf-example5/dynamic.tf

@@ -33,7 +33,7 @@ resource "openstack_compute_instance_v2" "testserver" {
   region      = var.region
   count       = var.node_count
   name        = "${var.region}-test-${count.index}"
-  image_name  = "GOLD CentOS 8"
+  image_name  = "GOLD Alma Linux 9"
   flavor_name = "m1.small"
 
   key_pair = "mykey"
@@ -48,9 +48,9 @@ resource "openstack_compute_instance_v2" "testserver" {
   }
 }
 
-# Find zone info
+# Create a zone
 data "openstack_dns_zone_v2" "myzone" {
-  name = "${var.zone_name}."
+  name        = "${var.zone_name}."
 }
 
 # Create records for A (IPv4)
@@ -68,5 +68,5 @@ resource "openstack_dns_recordset_v2" "aaaa_record" {
   count       = var.node_count
   name        = "${openstack_compute_instance_v2.testserver[count.index].name}.${var.zone_name}."
   type        = "AAAA"
-  records     = [ "${openstack_compute_instance_v2.testserver[count.index].access_ip_v6}" ] 
+  records     = [ trim(openstack_compute_instance_v2.testserver[count.index].access_ip_v6, "[]") ] 
 }
