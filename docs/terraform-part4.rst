@@ -5,12 +5,6 @@ Terraform and NREC: Part IV - Pairing with Ansible
 
 Last changed: |date|
 
-.. IMPORTANT::
-   **NB! Does not work!** Changes to Terraform and Ansible has
-   rendered this documentation obsolete. We will review and update as
-   soon as possible.
-
-
 .. contents::
 
 .. _Terraform: https://www.terraform.io/
@@ -35,13 +29,21 @@ has some knowledge and experience in using Ansible.
 
 The files used in this document can be downloaded:
 
-* :download:`terraform.py <downloads/tf-example4/terraform.py>`
 * :download:`main.tf <downloads/tf-example4/main.tf>`
 * :download:`secgroup.tf <downloads/tf-example4/secgroup.tf>`
 * :download:`variables.tf <downloads/tf-example4/variables.tf>`
 * :download:`terraform.tfvars <downloads/tf-example4/terraform.tfvars>`
+* :download:`terraform.yaml <downloads/tf-example4/terraform.yaml>`
 * :download:`web.yaml <downloads/tf-example4/web.yaml>`
 * :download:`db.yaml <downloads/tf-example4/db.yaml>`
+
+The examples in this document has been tested and verified
+with **Terraform version 1.9.5**::
+
+  Terraform v1.9.5
+  on linux_amd64
+  + provider registry.terraform.io/ansible/ansible v1.3.0
+  + provider registry.terraform.io/terraform-provider-openstack/openstack v2.1.0
 
 
 Installing Ansible
@@ -49,7 +51,7 @@ Installing Ansible
 
 Ansible is available in most Linux distributions. If possible, use the
 Ansible version availble from the distribution. For Fedora, and for
-RHEL or CentOS with EPEL enabled, simply install using yum:
+RHEL or equivalent with EPEL enabled, simply install using yum:
 
 .. code-block:: console
 
@@ -73,148 +75,148 @@ halting on unknown SSH host keys:
   host_key_checking = False
 
 
-Ansible inventory from Terraform state
---------------------------------------
+Installing Terraform Plugin for Ansible
+---------------------------------------
 
-.. # $ curl https://raw.githubusercontent.com/kubernetes-sigs/kubespray/master/contrib/terraform/terraform.py -o ~/.local/bin/terraform.py
+Ansible has a Terraform plugin that reads information from the
+Terraform state file ``terraform.tfstate``. This needs to be installed
+for this to work. Run the following command to install it::
 
-Terraform maintains a state in the working directory, and is also able
-to update its local state against the real resources in NREC. The
-local state is stored in ``terraform.tfstate``, and we're using a
-Python script that reads this file and produces an Ansible inventory
-dynamically.
+  ansible-galaxy collection install cloud.terraform
 
-To use the Python script we need to install and set it up:
+On Linux, this installs the Terraform plugin under::
 
-* Download :download:`terraform.py <downloads/tf-example4/terraform.py>`
-* Put it in ``~/.local/bin`` and make sure it is executable:
+  ~/.ansible/collections/ansible_collections
 
+You can verify the Terraform plugin like this:
+  
   .. code-block:: console
 
-    $ mv ~/Downloads/terraform.py ~/.local/bin/
-    $ chmod a+x ~/.local/bin/terraform.py 
-
-This installs the Python script ``terraform.py`` into ``~/.local/bin``
-(e.g. your home directory). Usually, this directory should be in your
-shell path. If it isn't, you can add it (for bash):
-
-.. code-block:: console
-
-  export PATH=$PATH:~/.local/bin
-
-In your Terraform working directory, create a directory called
-"inventory", and create a symbolic link "hosts" that points to the
-``terraform.py`` script:
-
-.. code-block:: console
-
-  $ mkdir inventory
-  $ ln -s ~/.local/bin/terraform.py inventory/hosts
-
-You can then run ansible from within your Terraform working directory
-to verify that dynamic inventory works:
-
-.. code-block:: console
-
-  $ ansible all -i inventory --list-hosts
-    hosts (5):
-      bgo-db-0
-      bgo-web-0
-      bgo-web-1
-      bgo-web-2
-      bgo-web-3
-
-This only lists the hosts and verifies that the dynamic inventory
-works. Having Ansible actually connect to the hosts requires
-additional configuration as described in the next section.
+  $ ansible-galaxy collection list | grep terraform
+  cloud.terraform 3.0.0
 
 
-Configuring Ansible connectivity
---------------------------------
+Ansible Information in Terraform State
+--------------------------------------
 
-In order for Ansible to function correctly we need to tell Ansible
-additional information about the instances. First, we add a map in
-``variables.tf`` to address the SSH user. Ansible needs to know which
-SSH user to connect as:
-
-.. literalinclude:: downloads/tf-example4/variables.tf
-   :caption: variables.tf
-   :linenos:
-   :lines: 84-91
-
-Next, we need to use those variables and add a metadata directive in
-the compute instance resource. The script **terraform.py** will use
-this metadata to correctly create inventory for Ansible. For the web
-servers (CentOS 8):
+The Terraform plugin for Ansible expects certain data in the Terraform
+state. We will provide this by adding some extra statements to our
+Terraform ``main.tf`` file. First we need to add the Ansible plugin:
 
 .. literalinclude:: downloads/tf-example4/main.tf
    :caption: main.tf
    :linenos:
-   :lines: 42-46
+   :lines: 1-13
+   :emphasize-lines: 8-11
 
-And for the database server (Ubuntu 21.04 LTS):
+Running **terraform init** will then add the Ansible plugin along with
+the Openstack plugin.
+
+Next, we need to add statements that tells Ansible the relevant
+details of our hosts. We define our web and database hosts, as well as
+groups that contain these hosts:
 
 .. literalinclude:: downloads/tf-example4/main.tf
    :caption: main.tf
    :linenos:
-   :lines: 77-82
+   :lines: 97-
 
-We have added this metadata:
+Note the use of the ``trim()`` function for the ``ansible_host``
+variable. This is needed when using the IPv6 address.
 
-* ``ssh_user``: Using the map variable created in variables.tf (see
-  above).
 
-* ``prefer_ipv6``: This tells **terraform.py** that we want Ansible to
-  use the IPv6 address of the instance. This is needed in our case as
-  we're using the IPv6 network type in NREC. When using the
-  dualStack network, this is usually not needed.
+Ansible Inventory File
+----------------------
 
-* ``python_bin``: This is only used on the database server
-  (Ubuntu). Ansible needs a working Python binary to function, and in
-  Ubuntu's case there isn't a ``/usr/bin/python`` and Ansible needs to
-  be explicitly told which binary to use on the instance.
+The whole point is that the inventory should be generated dynamically
+based on the Terraform state. But we need to tell Ansible where to
+locate what it needs. For this we create an inventory file that we
+call "terraform.yaml":
 
-* ``my_server_role``: We use this to control how to identify the web
-  servers and database servers in the Ansible inventory.
+.. literalinclude:: downloads/tf-example4/terraform.yaml
+   :caption: terraform.yaml
+   :linenos:
+   :emphasize-lines: 2
 
-With these in place, having applied the configuration with ``terraform
-apply``, we can run **terraform.py** to view our inventory:
+You will need to edit this file and set the full path to the Terraform
+directory, i.e. where you ``terraform.tfstate`` is located.
 
-.. code-block:: console
 
-  $ terraform.py --root . --hostfile
-  ## begin hosts generated by terraform.py ##
-  2001:700:2:8301::113b	bgo-db-0
-  2001:700:2:8301::113f	bgo-web-0
-  2001:700:2:8301::100a	bgo-web-1
-  2001:700:2:8301::100b	bgo-web-2
-  2001:700:2:8301::1129	bgo-web-3
-  ## end hosts generated by terraform.py ##
+Testing Ansible
+---------------
 
-And we run ansible to verify that it is able to reach the instances
-over the network:
+With the ``terraform.yaml`` file in place, we can run ansible to test
+and verify that it is able to reach the instances over the network:
+
+First, we'll see that our inventory is correct:
 
 .. code-block:: console
 
-  $ ansible all -i inventory -m ping
-  bgo-web-3 | SUCCESS => {
-      "changed": false, 
+  $ ansible-inventory -i terraform.yaml --graph --vars
+  [WARNING]: Collection cloud.terraform does not support Ansible version 2.14.14
+  @all:
+    |--@ungrouped:
+    |--@db:
+    |  |--@osl_db:
+    |  |  |--osl-db-0
+    |  |  |  |--{ansible_host = 2001:700:2:8201::10cf}
+    |  |  |  |--{ansible_user = ubuntu}
+    |  |--{ansible_user = ubuntu}
+    |--@web:
+    |  |--@osl_web:
+    |  |  |--osl-web-0
+    |  |  |  |--{ansible_host = 2001:700:2:8201::11ae}
+    |  |  |  |--{ansible_user = almalinux}
+    |  |  |--osl-web-1
+    |  |  |  |--{ansible_host = 2001:700:2:8201::1414}
+    |  |  |  |--{ansible_user = almalinux}
+    |  |  |--osl-web-2
+    |  |  |  |--{ansible_host = 2001:700:2:8201::1236}
+    |  |  |  |--{ansible_user = almalinux}
+    |  |  |--osl-web-3
+    |  |  |  |--{ansible_host = 2001:700:2:8201::111d}
+    |  |  |  |--{ansible_user = almalinux}
+    |  |--{ansible_user = almalinux}
+
+Next, we'll ping the instances using Ansible:
+    
+.. code-block:: console
+
+  $ ansible -i terraform.yaml all -m ping
+  [WARNING]: Collection cloud.terraform does not support Ansible version 2.14.14
+  osl-web-2 | SUCCESS => {
+      "ansible_facts": {
+          "discovered_interpreter_python": "/usr/bin/python3"
+      },
+      "changed": false,
       "ping": "pong"
   }
-  bgo-web-1 | SUCCESS => {
-      "changed": false, 
+  osl-web-1 | SUCCESS => {
+      "ansible_facts": {
+          "discovered_interpreter_python": "/usr/bin/python3"
+      },
+      "changed": false,
       "ping": "pong"
   }
-  bgo-db-0 | SUCCESS => {
-      "changed": false, 
+  osl-web-3 | SUCCESS => {
+      "ansible_facts": {
+          "discovered_interpreter_python": "/usr/bin/python3"
+      },
+      "changed": false,
       "ping": "pong"
   }
-  bgo-web-2 | SUCCESS => {
-      "changed": false, 
+  osl-web-0 | SUCCESS => {
+      "ansible_facts": {
+          "discovered_interpreter_python": "/usr/bin/python3"
+      },
+      "changed": false,
       "ping": "pong"
   }
-  bgo-web-0 | SUCCESS => {
-      "changed": false, 
+  osl-db-0 | SUCCESS => {
+      "ansible_facts": {
+          "discovered_interpreter_python": "/usr/bin/python3"
+      },
+      "changed": false,
       "ping": "pong"
   }
 
@@ -223,21 +225,18 @@ connection is working:
 
 .. code-block:: console
 
-  $ ansible all -i inventory -m shell -a 'uname -sr'
-  bgo-web-3 | CHANGED | rc=0 >>
-  Linux 3.10.0-1062.4.3.el7.x86_64
-  
-  bgo-web-1 | CHANGED | rc=0 >>
-  Linux 3.10.0-1062.4.3.el7.x86_64
-  
-  bgo-web-2 | CHANGED | rc=0 >>
-  Linux 3.10.0-1062.4.3.el7.x86_64
-  
-  bgo-web-0 | CHANGED | rc=0 >>
-  Linux 3.10.0-1062.4.3.el7.x86_64
-  
-  bgo-db-0 | CHANGED | rc=0 >>
-  Linux 4.15.0-70-generic
+  $ ansible -i terraform.yaml all -m shell -a 'uname -sr'
+  [WARNING]: Collection cloud.terraform does not support Ansible version 2.14.14
+  osl-db-0 | CHANGED | rc=0 >>
+  Linux 6.8.0-41-generic
+  osl-web-0 | CHANGED | rc=0 >>
+  Linux 5.14.0-427.31.1.el9_4.x86_64
+  osl-web-2 | CHANGED | rc=0 >>
+  Linux 5.14.0-427.31.1.el9_4.x86_64
+  osl-web-1 | CHANGED | rc=0 >>
+  Linux 5.14.0-427.31.1.el9_4.x86_64
+  osl-web-3 | CHANGED | rc=0 >>
+  Linux 5.14.0-427.31.1.el9_4.x86_64
 
 We have verified that Ansible and dynamic inventory from Terraform
 state works, and are ready to proceed.
@@ -306,8 +305,8 @@ workspace directory:
 
 .. code-block:: console
 
-  $ ansible-playbook -i inventory db.yaml
-  $ ansible-playbook -i inventory web.yaml
+  $ ansible-playbook -i terraform.yaml db.yaml
+  $ ansible-playbook -i terraform.yaml web.yaml
 
 
 Complete example

@@ -62,7 +62,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv6" {
   count             = length(var.allow_ssh_from_v6)
   direction         = "ingress"
   ethertype         = "IPv6"
-  protocol          = "icmp"
+  protocol          = "ipv6-icmp"
   remote_ip_prefix  = var.allow_ssh_from_v6[count.index]
   security_group_id = openstack_networking_secgroup_v2.instance_ssh_access.id
 }
