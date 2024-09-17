@@ -1,9 +1,7 @@
-.. |date| date::
-
 Terraform and NREC: Part V - DNS Management
 ==============================================
 
-Last changed: |date|
+Last changed: 2024-09-17
 
 .. contents::
 
@@ -16,6 +14,13 @@ The files used in this document can be downloaded:
 
 * :download:`static.tf <downloads/tf-example5/static.tf>`
 * :download:`dynamic.tf <downloads/tf-example5/dynamic.tf>`
+
+The examples in this document has been tested and verified
+with **Terraform version 1.9.5**::
+
+  Terraform v1.9.5
+  on linux_amd64
+  + provider registry.terraform.io/terraform-provider-openstack/openstack v2.1.0
 
 
 Creating a DNS zone
