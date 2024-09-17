@@ -29,11 +29,11 @@ has some knowledge and experience in using Ansible.
 
 The files used in this document can be downloaded:
 
+* :download:`terraform.yaml <downloads/tf-example4/terraform.yaml>`
 * :download:`main.tf <downloads/tf-example4/main.tf>`
 * :download:`secgroup.tf <downloads/tf-example4/secgroup.tf>`
 * :download:`variables.tf <downloads/tf-example4/variables.tf>`
 * :download:`terraform.tfvars <downloads/tf-example4/terraform.tfvars>`
-* :download:`terraform.yaml <downloads/tf-example4/terraform.yaml>`
 * :download:`web.yaml <downloads/tf-example4/web.yaml>`
 * :download:`db.yaml <downloads/tf-example4/db.yaml>`
 
@@ -314,6 +314,11 @@ Complete example
 
 A complete listing of the example files used in this document is
 provided below.
+
+.. literalinclude:: downloads/tf-example4/terraform.yaml
+   :caption: terraform.yaml
+   :name: part4-ansible-inventory
+   :linenos:
 
 .. literalinclude:: downloads/tf-example4/main.tf
    :caption: main.tf
