@@ -26,9 +26,9 @@ with **Terraform version 1.9.5**::
 Creating a DNS zone
 -------------------
 
-It is quite easy to create a DNS zone using Terraform. Consider
-:ref:`part5-static-tf` below. It is a single resource declaration needed to
-create a zone.
+It is quite easy to create a DNS zone using Terraform. Consider the
+part of :ref:`part5-static-tf` below. It is a single resource
+declaration needed to create a zone.
 
 .. IMPORTANT::
 
