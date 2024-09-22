@@ -18,7 +18,7 @@ up an arbitrary number of Windows Server instances. The idea is that
 each student is given their own pre-configured instance with a set of
 credentials.
 
-.. WARNING: This document is under development and may contain errors
+.. WARNING:: This document is under development and may contain errors
 
 
 Overview
@@ -113,8 +113,8 @@ Create student instances
 This next step uses Terraform_ to create a number of instances for
 students. First, create an empty directory and cd into it, e.g.::
 
-  mkdir ~/myproject
-  cd ~/myproject
+  mkdir ~/in9999-h2024
+  cd ~/in9999-h2024
 
 Copy the following files info this directory:
 
@@ -123,8 +123,10 @@ Copy the following files info this directory:
 * :download:`variables.tf <downloads/usecase01/variables.tf>`
 * :download:`terraform.tfvars <downloads/usecase01/terraform.tfvars>`
 
-Edit these files to suit your needs. You should most likely want a lot
-of changes in ``variables.tf`` and ``terraform.tfvars``.
+These files are from `Terraform and NREC\: Part IV - Pairing with
+Ansible`_, but with adjustments for this usecase. Edit these files to
+suit your needs. You should most likely want a lot of changes in
+``variables.tf`` and ``terraform.tfvars``.
 
 Run **terraform init**::
 
@@ -177,18 +179,17 @@ located in the same directory as the playbook. Example contents::
   in9999-h2024-lab-2,2001:700:2:8201::1485,labuser,sGecTMBp0u11x0.OpEGn
 
 
-Adding more instances
----------------------
+Adding or removing instances
+----------------------------
 
-If we want to add more instances, all we need to do is to increase the
-number in ``variables.cf``::
+In order to to increase or decrease the number of instances, change
+the number in ``variables.tf``:
 
-  variable "role_count" {
-    type = map(string)
-    default = {
-      "students" = <new number>
-    }
-  }
+.. literalinclude:: downloads/usecase01/variables.tf
+   :caption: variables.tf
+   :linenos:
+   :lines: 65-70
+   :emphasize-lines: 5
 
 Then run::
 
@@ -199,5 +200,45 @@ Create users with::
   
   ansible-playbook -i terraform.yaml add-labuser.yaml
 
-The credentials for new hosts will be added to the ``labusers.csv``
-file.
+The credentials file ``labusers.csv`` will be updated to reflect the
+changes. Note that the passwords are randomly generated but
+idempotent, thus changing the number of instances will not change
+passwords for existing instances.
+
+
+File listing
+------------
+
+A complete listing of the example files used in this document is
+provided below.
+
+.. literalinclude:: downloads/usecase01/terraform.yaml
+   :caption: terraform.yaml
+   :name: usecase01-ansible-inventory
+   :linenos:
+
+.. literalinclude:: downloads/usecase01/main.tf
+   :caption: main.tf
+   :name: usecase01-main-tf
+   :linenos:
+
+.. literalinclude:: downloads/usecase01/secgroup.tf
+   :caption: secgroup.tf
+   :name: usecase01-secgroup-tf
+   :linenos:
+
+.. literalinclude:: downloads/usecase01/variables.tf
+   :caption: variables.tf
+   :name: usecase01-variables-tf
+   :linenos:
+
+.. literalinclude:: downloads/usecase01/terraform.tfvars
+   :caption: terraform.tfvars
+   :name: usecase01-terraform-tfvars
+   :linenos:
+
+.. literalinclude:: downloads/usecase01/add-labuser.yaml
+   :language: yaml
+   :caption: add-labuser.yaml
+   :name: usecase01-add-labuser.yaml
+   :linenos:
