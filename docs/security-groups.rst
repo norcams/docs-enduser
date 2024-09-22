@@ -257,7 +257,7 @@ creating security group rules.
 +============================+=============+==============================+
 | ``129.240.0.0/16``         | IPv4        | Entire UiO network           |
 +----------------------------+-------------+------------------------------+
-| ``2001:700:100::/41``      | IPv6        | Entire UiO network           |
+| ``2001:700:100::/48``      | IPv6        | Entire UiO network [#f1]_    |
 +----------------------------+-------------+------------------------------+
 | ``129.177.0.0/16``         | IPv4        | Entire UiB network           |
 +----------------------------+-------------+------------------------------+
@@ -283,23 +283,31 @@ when creating security group rules:
   * IPv6: ``2001:700:200:13::204/128``
 
 IP ranges in NREC may change as more blocks are added. You can list
-the NREC subnets (CIDR addresses) with this command, which is region
-specific. Example for the OSL region:
+the NREC subnets (CIDR addresses) with these commands, that shows the
+subnets in the **IPv6** and **dualStack** networks. This is region
+specific, example is for the OSL region:
 
 .. code-block:: console
 
-  $ openstack subnet list -c Name -c Subnet
+  $ openstack subnet list --network IPv6 -c Name -c Subnet
   +---------------+----------------------+
   | Name          | Subnet               |
   +---------------+----------------------+
-  | public2_IPv4  | 158.39.75.0/24       |
-  | public2_IPv6  | 2001:700:2:8200::/64 |
   | public1_IPv6  | 2001:700:2:8201::/64 |
   | private1_IPv4 | 10.2.0.0/22          |
-  | public1_IPv4  | 158.37.63.0/24       |
-  | public4_IPv4  | 158.39.48.0/24       |
-  | public5_IPv4  | 158.39.200.0/24      |
   +---------------+----------------------+
+  
+  $ openstack subnet list --network dualStack -c Name -c Subnet
+  +--------------+----------------------+
+  | Name         | Subnet               |
+  +--------------+----------------------+
+  | public2_IPv4 | 158.39.75.0/24       |
+  | public6_IPv4 | 158.37.66.0/24       |
+  | public2_IPv6 | 2001:700:2:8200::/64 |
+  | public1_IPv4 | 158.37.63.0/24       |
+  | public4_IPv4 | 158.39.48.0/24       |
+  | public5_IPv4 | 158.39.200.0/24      |
+  +--------------+----------------------+
 
 
 Creating a Security Group
@@ -794,3 +802,12 @@ removing the "SSH and ICMP" security group from the server "test":
 
 As with most Openstack commands, we can use either the ID or the name
 when specifying security groups and instances.
+
+
+.. rubric:: Footnotes
+
+.. [#f1] In reality ``2001:700:100::/40`` is the entire address range
+	 delegated to UiO. While ``2001:700:100::/41`` is loosely
+	 defined as the UiO network, the range in use is
+	 ``2001:700:100::/48``. In most cases, ``2001:700:100::/48``
+	 is correct.

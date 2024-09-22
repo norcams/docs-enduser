@@ -1,9 +1,7 @@
-.. |date| date::
-
 Terraform and NREC: Part IV - Pairing with Ansible
 =====================================================
 
-Last changed: |date|
+Last changed: 2024-09-17
 
 .. contents::
 

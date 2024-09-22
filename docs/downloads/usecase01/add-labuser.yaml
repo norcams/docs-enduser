@@ -1,0 +1,66 @@
+- hosts: "{{ myhosts | default('all') }}"
+  gather_facts: no
+
+  vars:
+    csvfile: "{{ playbook_dir }}/labusers.csv"
+
+  tasks:
+    - name: Create random but idempotent password
+      ansible.builtin.set_fact:
+        password: "{{ lookup('ansible.builtin.password', '/dev/null',
+                              seed=inventory_hostname+ansible_host,
+                              chars=['ascii_letters', 'digits', '().@%!-_']) }}"
+
+    - name: Ensure lab user is present
+      ansible.windows.win_user:
+        name: "{{ myusername }}"
+        password: "{{ password }}"
+        state: present
+        groups:
+          - Users
+          - Administrators
+          - Remote Desktop Users
+      register: labuser
+
+    - name: Print credentials if new/changed
+      ansible.builtin.debug:
+        msg: "NEW credential: {{ myusername }}:{{ password }}"
+      when: labuser.changed
+
+    - name: Create temporary directory
+      ansible.builtin.tempfile:
+        state: directory
+        suffix: build
+      register: tmpdir
+      delegate_to: localhost
+      run_once: true
+    
+    - name: Create CSV header
+      lineinfile:
+        line: "HOST,IPADDR,USERNAME,PASSWORD"
+        path: "{{ tmpdir.path }}/000.csv"
+        create: yes
+      delegate_to: localhost
+      run_once: true
+
+    - name: Save credentials in individual files
+      lineinfile:
+        line: "{{ inventory_hostname }},{{ ansible_host }},{{ myusername }},{{ password }}"
+        path: "{{ tmpdir.path }}/{{ inventory_hostname }}.csv"
+        create: yes
+      delegate_to: localhost
+
+    - name: Assemble CSV file from fragments
+      ansible.builtin.assemble:
+        src: "{{ tmpdir.path }}"
+        dest: "{{ csvfile }}"
+      delegate_to: localhost
+      run_once: true
+
+    - name: Remove temporary dir
+      ansible.builtin.file:
+        path: "{{ tmpdir.path }}"
+        state: absent
+      when: tmpdir.path is defined
+      delegate_to: localhost
+      run_once: true
