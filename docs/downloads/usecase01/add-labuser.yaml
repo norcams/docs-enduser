@@ -30,13 +30,12 @@
     - name: Create temporary directory
       ansible.builtin.tempfile:
         state: directory
-        suffix: build
       register: tmpdir
       delegate_to: localhost
       run_once: true
     
     - name: Create CSV header
-      lineinfile:
+      ansible.builtin.lineinfile:
         line: "HOST,IPADDR,USERNAME,PASSWORD"
         path: "{{ tmpdir.path }}/000.csv"
         create: yes
@@ -44,7 +43,7 @@
       run_once: true
 
     - name: Save credentials in individual files
-      lineinfile:
+      ansible.builtin.lineinfile:
         line: "{{ inventory_hostname }},{{ ansible_host }},{{ myusername }},{{ password }}"
         path: "{{ tmpdir.path }}/{{ inventory_hostname }}.csv"
         create: yes
