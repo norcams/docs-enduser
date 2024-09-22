@@ -188,7 +188,7 @@ the number in ``variables.tf``:
 .. literalinclude:: downloads/usecase01/variables.tf
    :caption: variables.tf
    :linenos:
-   :lines: 65-70
+   :lines: 64-70
    :emphasize-lines: 5
 
 Then run::
