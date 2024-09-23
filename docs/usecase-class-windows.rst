@@ -100,7 +100,7 @@ Step by step example
    time, at least 10 minutes
 
    .. image:: images/usecase01-master.png
-     :align: center
+     :align: left
      :alt: Master instance
 
    When the instance responds to SSH logins, you can proceed:
@@ -136,21 +136,18 @@ Step by step example
      $ xfreerdp /cert:ignore /d:workgroup /u:Admin /p:0T9uzBckWHloDVLL8QqX /v:[2001:700:2:8201::13a7] /h:1050 /w:1400
 
    .. image:: images/usecase01-master-rdp.png
-     :align: center
+     :align: left
      :alt: RDP to master instance
 
 #. Install software and make any changes as required. For the purposes
    of this demontration, we install Visual Studio Code
 
    .. image:: images/usecase01-master-install-vscode.png
-     :align: center
+     :align: left
      :alt: Master instance VSCode installation
 
-#. Reboot the instance
-
-   .. image:: images/usecase01-master-reboot.png
-     :align: center
-     :alt: Master instance reboot
+#. Reboot the instance. This is required before running sysprep and
+   proceeding with creating a snapshot.
 
 
 Take a snapshot
