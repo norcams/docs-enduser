@@ -19,7 +19,7 @@ Norwegian Research and Education Cloud
    project-application
    login
    dashboard
-   create-virtual-machine
+   create-linux-machine
    create-windows-machine
    ssh
    security-groups
