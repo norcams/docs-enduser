@@ -68,8 +68,8 @@ For this step, consult the documentation available here:
 
 * `Create a Windows virtual machine`_
 
-Step by step guide
-~~~~~~~~~~~~~~~~~~
+Step by step example
+~~~~~~~~~~~~~~~~~~~~
 
 #. If you haven't already, create an SSH key of type RSA in PEM
    format:
@@ -100,8 +100,8 @@ Step by step guide
    time, at least 10 minutes
 
    .. image:: images/usecase01-master.png
-   :align: center
-   :alt: Master instance
+     :align: center
+     :alt: Master instance
 
    When the instance responds to SSH logins, you can proceed:
 
@@ -112,8 +112,7 @@ Step by step guide
      Microsoft Windows [Version 10.0.20348.2655]
      (c) Microsoft Corporation. All rights reserved.
      
-     admin\@IN9999-MASTER C:\\Users\\Admin>
-
+     admin@IN9999-MASTER C:\Users\Admin>
 
 #. Retrieve the Admin password. This can be done with GUI by selecting
    the **Retrieve Password** action, or by using the **nova** CLI
@@ -137,21 +136,21 @@ Step by step guide
      $ xfreerdp /cert:ignore /d:workgroup /u:Admin /p:0T9uzBckWHloDVLL8QqX /v:[2001:700:2:8201::13a7] /h:1050 /w:1400
 
    .. image:: images/usecase01-master-rdp.png
-   :align: center
-   :alt: RDP to master instance
+     :align: center
+     :alt: RDP to master instance
 
 #. Install software and make any changes as required. For the purposes
    of this demontration, we install Visual Studio Code
 
    .. image:: images/usecase01-master-install-vscode.png
-   :align: center
-   :alt: Master instance VSCode installation
+     :align: center
+     :alt: Master instance VSCode installation
 
 #. Reboot the instance
 
    .. image:: images/usecase01-master-reboot.png
-   :align: center
-   :alt: Master instance reboot
+     :align: center
+     :alt: Master instance reboot
 
 
 Take a snapshot
@@ -163,52 +162,52 @@ The procedure for creating a snapshot is described here:
 
 * `Creating a snapshot image`_
 
-Step by step guide
-~~~~~~~~~~~~~~~~~~
+Step by step example
+~~~~~~~~~~~~~~~~~~~~
 
 #. Log into the master instance again:
 
    .. code-block:: console
 
-     $ **ssh 2001:700:2:8201::13a7 -l Admin -i ~/.ssh/winkey**
+     $ ssh 2001:700:2:8201::13a7 -l Admin -i ~/.ssh/winkey
      ...
      Microsoft Windows [Version 10.0.20348.2655]
      (c) Microsoft Corporation. All rights reserved.
      
-     admin\@IN9999-MASTER C:\\Users\\Admin>
+     admin@IN9999-MASTER C:\Users\Admin>
 
 #. Run Powershell:
 
    .. code-block:: console
 
-     admin\@IN9999-MASTER C:\\Users\\Admin> **powershell**
+     admin@IN9999-MASTER C:\Users\Admin>powershell
      Windows PowerShell
      Copyright (C) Microsoft Corporation. All rights reserved.
      
      Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
      
-     PS C:\\Users\\Admin> 
+     PS C:\Users\Admin> 
 
 #. Run Sysprep with the proper arguments:
 
    .. code-block:: console
 
-     PS C:\\Users\\Admin> **$unattendedXmlPath = "c:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml"**
-     PS C:\\Users\\Admin> **ipconfig /release6 ; c:\windows\system32\sysprep\Sysprep /generalize /oobe /shutdown /unattend:"$unattendedXmlPath"**
+     PS C:\Users\Admin> $unattendedXmlPath = "c:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml"
+     PS C:\Users\Admin> ipconfig /release6 ; c:\windows\system32\sysprep\Sysprep /generalize /oobe /shutdown /unattend:"$unattendedXmlPath"
 
    This will take a few minutes. Proceed when the instance is properly
    shut down:
 
    .. code-block:: console
 
-     $ **openstack server show in9999-master -c status -f value**
+     $ openstack server show in9999-master -c status -f value
      ACTIVE
 
 #. Make a snapshot of the image
 
    .. image:: images/usecase01-master-snapshot.png
-   :align: center
-   :alt: Master instance snapshot
+     :align: center
+     :alt: Master instance snapshot
 
 
 Create student instances
