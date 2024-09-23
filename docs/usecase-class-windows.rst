@@ -68,31 +68,90 @@ For this step, consult the documentation available here:
 
 * `Create a Windows virtual machine`_
 
-In our case, the master instance is named "master". Make sure to
-create and apply security groups that allow connecting to the master
-instance using SSH and RDP.
+Step by step guide
+~~~~~~~~~~~~~~~~~~
 
-In order to configure the master Windows instance, we first log in
-using SSH::
+#. If you haven't already, create an SSH key of type RSA in PEM
+   format:
 
-  ssh -l Admin <IP-address>
+   .. code-block:: console
 
-We then set a new password for the Admin user::
+     $ ssh-keygen -t rsa -b 4096 -m PEM -a 100 -f ~/.ssh/winkey
 
-  Microsoft Windows [Version 10.0.20348.2655]
-  (c) Microsoft Corporation. All rights reserved.
-  
-  admin@MASTER C:\Users\Admin>net user Admin <new-password>
-  The command completed successfully.
+   In order to utilize the key to retrieve the admin password, the key
+   must be RSA and in PEM format. Also, if you would like to retrieve
+   the password in the GUI, the key cannot have a passphrase.
 
-FIXME: Doesn't survive reboot!
+#. Import the public key ``~/.ssh/winkey.pub`` into openstack
 
-Next, we log into the master instance via GUI, either via RDP or via
-the console in the NREC dashboard.
+#. Create a Windows instance. In this demo, we have chosen:
 
-Then, install software and make any changes as required.
+   - Name: in9999-master
+   - Image: GOLD Windows Server 2022 Standard
+   - Flavor: d1.medium
+   - Network: IPv6
+   - Security Groups: default ++
+   - Key Pair: winkey (created above)
 
-Finally in this step, reboot the instance.
+   You should add security groups that allow SSH and RDP from your
+   current IP address.
+
+#. Wait for the instance to be ready. With Windows it takes a long
+   time, at least 10 minutes
+
+   .. image:: images/usecase01-master.png
+   :align: center
+   :alt: Master instance
+
+   When the instance responds to SSH logins, you can proceed:
+
+   .. code-block:: console
+
+     $ ssh 2001:700:2:8201::13a7 -l Admin -i ~/.ssh/winkey
+     ...
+     Microsoft Windows [Version 10.0.20348.2655]
+     (c) Microsoft Corporation. All rights reserved.
+     
+     admin\@IN9999-MASTER C:\\Users\\Admin>
+
+
+#. Retrieve the Admin password. This can be done with GUI by selecting
+   the **Retrieve Password** action, or by using the **nova** CLI
+   tool:
+
+   .. code-block:: console
+
+     $ openstack server show in9999-master -c id -f value
+     c318ce46-845f-4254-8955-3ae910de8835
+
+     $ nova get-password c318ce46-845f-4254-8955-3ae910de8835 ~/.ssh/winkey
+     nova CLI is deprecated and will be a removed in a future release
+     0T9uzBckWHloDVLL8QqX
+
+#. Log into the master Windows instance using RDP. There are a number
+   of ways to do this, depending on you OS and preference. In our
+   case, we connect using xfreerdp:
+
+   .. code-block:: console
+
+     $ xfreerdp /cert:ignore /d:workgroup /u:Admin /p:0T9uzBckWHloDVLL8QqX /v:[2001:700:2:8201::13a7] /h:1050 /w:1400
+
+   .. image:: images/usecase01-master-rdp.png
+   :align: center
+   :alt: RDP to master instance
+
+#. Install software and make any changes as required. For the purposes
+   of this demontration, we install Visual Studio Code
+
+   .. image:: images/usecase01-master-install-vscode.png
+   :align: center
+   :alt: Master instance VSCode installation
+
+#. Reboot the instance
+
+   .. image:: images/usecase01-master-reboot.png
+   :align: center
+   :alt: Master instance reboot
 
 
 Take a snapshot
@@ -104,7 +163,52 @@ The procedure for creating a snapshot is described here:
 
 * `Creating a snapshot image`_
 
-We will name the snapshot "master-snap-01".
+Step by step guide
+~~~~~~~~~~~~~~~~~~
+
+#. Log into the master instance again:
+
+   .. code-block:: console
+
+     $ **ssh 2001:700:2:8201::13a7 -l Admin -i ~/.ssh/winkey**
+     ...
+     Microsoft Windows [Version 10.0.20348.2655]
+     (c) Microsoft Corporation. All rights reserved.
+     
+     admin\@IN9999-MASTER C:\\Users\\Admin>
+
+#. Run Powershell:
+
+   .. code-block:: console
+
+     admin\@IN9999-MASTER C:\\Users\\Admin> **powershell**
+     Windows PowerShell
+     Copyright (C) Microsoft Corporation. All rights reserved.
+     
+     Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+     
+     PS C:\\Users\\Admin> 
+
+#. Run Sysprep with the proper arguments:
+
+   .. code-block:: console
+
+     PS C:\\Users\\Admin> **$unattendedXmlPath = "c:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml"**
+     PS C:\\Users\\Admin> **ipconfig /release6 ; c:\windows\system32\sysprep\Sysprep /generalize /oobe /shutdown /unattend:"$unattendedXmlPath"**
+
+   This will take a few minutes. Proceed when the instance is properly
+   shut down:
+
+   .. code-block:: console
+
+     $ **openstack server show in9999-master -c status -f value**
+     ACTIVE
+
+#. Make a snapshot of the image
+
+   .. image:: images/usecase01-master-snapshot.png
+   :align: center
+   :alt: Master instance snapshot
 
 
 Create student instances
