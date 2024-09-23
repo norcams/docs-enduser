@@ -367,9 +367,9 @@ Launch Remote Desktop
 When you have retrieved the password, you are ready to log on. For example, from a linux
 client:
 
-   .. code-block:: console
+.. code-block:: console
 
-     $ xfreerdp /w:1280 /h:1024 /kbd:Norwegian /u:Admin /p:ceq26oGb2xw8RQR3Gcdn /v:158.37.63.197
+  $ xfreerdp /cert:ignore /w:1280 /h:1024 /kbd:Norwegian /u:Admin /p:ceq26oGb2xw8RQR3Gcdn /v:158.37.63.197
 
 This will create a session with a fixed size (the "/w:" and "/h:" options), and Norwegian
 keyboard layout with the user "Admin", which is an account that is automatically created
@@ -402,11 +402,9 @@ your snapshot as a base image for new instances:
 
 * To circumvent an IPv6 bug, and to rearm Cloud Init to initialize on the
   next boot, run ``sysprep.exe`` in the following manner (in the elevated
-  powershell):
+  powershell)::
 
-.. code-block:: console
-
-   $unattendedXmlPath = "c:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml" ; ipconfig /release6 ; c:\windows\system32\sysprep\Sysprep /generalize /oobe /shutdown /unattend:"$unattendedXmlPath"
+    $unattendedXmlPath = "c:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml" ; ipconfig /release6 ; c:\windows\system32\sysprep\Sysprep /generalize /oobe /shutdown /unattend:"$unattendedXmlPath"
 
 If you have connected to your Windows instance over the IPv6 protocol, your connection will
 now be broken. Sysprep should do it's job regardless, and after a while the windows instance
