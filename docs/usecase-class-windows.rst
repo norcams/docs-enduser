@@ -86,12 +86,12 @@ Step by step example
 
 #. Create a Windows instance. In this demo, we have chosen:
 
-   - Name: in9999-master
-   - Image: GOLD Windows Server 2022 Standard
-   - Flavor: d1.medium
-   - Network: IPv6
-   - Security Groups: default ++
-   - Key Pair: winkey (created above)
+   - Name: ``in9999-master``
+   - Image: ``GOLD Windows Server 2022 Standard``
+   - Flavor: ``d1.medium``
+   - Network: ``IPv6``
+   - Security Groups: ``default`` and others
+   - Key Pair: ``winkey`` (created above)
 
    You should add security groups that allow SSH and RDP from your
    current IP address.
