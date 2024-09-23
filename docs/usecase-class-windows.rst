@@ -162,35 +162,17 @@ The procedure for creating a snapshot is described here:
 Step by step example
 ~~~~~~~~~~~~~~~~~~~~
 
-#. Log into the master instance again:
+#. Log into the master instance again via RDP:
 
-   .. code-block:: console
+#. Run Powershell as administrator:
 
-     $ ssh 2001:700:2:8201::13a7 -l Admin -i ~/.ssh/winkey
-     ...
-     Microsoft Windows [Version 10.0.20348.2655]
-     (c) Microsoft Corporation. All rights reserved.
-     
-     admin@IN9999-MASTER C:\Users\Admin>
+   .. image:: images/usecase01-master-powershell.png
+     :align: center
+     :alt: Run powershell as administrator
 
-#. Run Powershell:
+#. In the elevated Powershell, run Sysprep with the proper arguments::
 
-   .. code-block:: console
-
-     admin@IN9999-MASTER C:\Users\Admin>powershell
-     Windows PowerShell
-     Copyright (C) Microsoft Corporation. All rights reserved.
-     
-     Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
-     
-     PS C:\Users\Admin> 
-
-#. Run Sysprep with the proper arguments:
-
-   .. code-block:: console
-
-     PS C:\Users\Admin> $unattendedXmlPath = "c:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml"
-     PS C:\Users\Admin> ipconfig /release6 ; c:\windows\system32\sysprep\Sysprep /generalize /oobe /shutdown /unattend:"$unattendedXmlPath"
+     $unattendedXmlPath = "c:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml" ; ipconfig /release6 ; c:\windows\system32\sysprep\Sysprep /generalize /oobe /shutdown /unattend:"$unattendedXmlPath"
 
    This will take a few minutes. Proceed when the instance is properly
    shut down:
@@ -198,13 +180,21 @@ Step by step example
    .. code-block:: console
 
      $ openstack server show in9999-master -c status -f value
-     ACTIVE
+     SHUTOFF
 
 #. Make a snapshot of the image
 
-   .. image:: images/usecase01-master-snapshot.png
+   .. image:: images/usecase01-master-snapshot1.png
      :align: center
-     :alt: Master instance snapshot
+     :alt: Master instance snapshot (1)
+
+   We name the snapshot «master-snap-01»:
+
+   .. image:: images/usecase01-master-snapshot2.png
+     :align: center
+     :alt: Master instance snapshot (2)
+
+We are now ready to proceed with creating student instances.
 
 
 Create student instances
