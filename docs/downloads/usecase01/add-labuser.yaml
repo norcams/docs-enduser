@@ -3,6 +3,7 @@
 
   vars:
     csvfile: "{{ playbook_dir }}/labusers.csv"
+    username: "labuser"
 
   tasks:
     - name: Create random but idempotent password
@@ -13,7 +14,7 @@
 
     - name: Ensure lab user is present
       ansible.windows.win_user:
-        name: "{{ myusername }}"
+        name: "{{ username }}"
         password: "{{ password }}"
         state: present
         groups:
@@ -24,7 +25,7 @@
 
     - name: Print credentials if new/changed
       ansible.builtin.debug:
-        msg: "NEW credential: {{ myusername }}:{{ password }}"
+        msg: "NEW credential: {{ username }}:{{ password }}"
       when: labuser.changed
 
     - name: Create temporary directory
@@ -44,7 +45,7 @@
 
     - name: Save credentials in individual files
       ansible.builtin.lineinfile:
-        line: "{{ inventory_hostname }},{{ ansible_host }},{{ myusername }},{{ password }}"
+        line: "{{ inventory_hostname }},{{ ansible_host }},{{ username }},{{ password }}"
         path: "{{ tmpdir.path }}/{{ inventory_hostname }}.csv"
         create: yes
       delegate_to: localhost

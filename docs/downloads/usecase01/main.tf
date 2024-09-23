@@ -58,7 +58,6 @@ resource "ansible_host" "student_instance" {
 
   variables = {
     ansible_host = trim(openstack_compute_instance_v2.student_instance[count.index].access_ip_v6, "[]")
-    myusername = "labuser"
   }
 }
 
