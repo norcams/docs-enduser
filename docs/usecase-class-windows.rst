@@ -109,7 +109,7 @@ Step by step example
 
      $ ssh 2001:700:2:8201::13a7 -l Admin -i ~/.ssh/winkey
      
-   .. code-block:: msdos
+   .. code-block:: doscon
 
      Microsoft Windows [Version 10.0.20348.2655]
      (c) Microsoft Corporation. All rights reserved.
