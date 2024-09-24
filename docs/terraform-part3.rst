@@ -245,6 +245,7 @@ Applying this with ``terraform apply`` will then destroy two of the
 web servers. Similarly, if we were to increase the web server count
 from **4** to **5**, Terraform would add a new web server.
 
+----------------------------------------------------------------------
 
 Complete example
 ----------------

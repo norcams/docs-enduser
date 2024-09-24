@@ -48,6 +48,7 @@ declaration needed to create a zone.
 In this example we create a zone "test.com":
 
 .. literalinclude:: downloads/tf-example5/static.tf
+   :language: terraform
    :caption: static.tf
    :name: static-tf
    :linenos:
@@ -72,6 +73,7 @@ The record resources are specified in the :ref:`part5-static-tf` file
 below:
 
 .. literalinclude:: downloads/tf-example5/static.tf
+   :language: terraform
    :caption: static.tf
    :name: static-tf
    :linenos:
@@ -146,6 +148,7 @@ dynamic and flexible way to do this. In order to fetch the needed
 metadata for our zone we use a ``data`` directive in Terraform:
 
 .. literalinclude:: downloads/tf-example5/dynamic.tf
+   :language: terraform
    :caption: dynamic.tf
    :linenos:
    :lines: 16-19,51-54
@@ -155,6 +158,7 @@ creates an arbitrary number of instances. In our example, we create 2
 instances:
 
 .. literalinclude:: downloads/tf-example5/dynamic.tf
+   :language: terraform
    :caption: dynamic.tf
    :linenos:
    :lines: 26-49
@@ -164,6 +168,7 @@ reference the name and IP of the instances. Notice the usage of the
 data variable to reference the zone ID (highlighted):
 
 .. literalinclude:: downloads/tf-example5/dynamic.tf
+   :language: terraform
    :caption: dynamic.tf
    :linenos:
    :lines: 56-
@@ -206,6 +211,7 @@ name servers:
   bgo-test-1.mytestzone.com has address 158.39.74.137
   bgo-test-1.mytestzone.com has IPv6 address 2001:700:2:8300::207e
 
+----------------------------------------------------------------------
 
 Complete example
 ----------------
@@ -214,11 +220,13 @@ A complete listing of the example files used in this document is
 provided below.
 
 .. literalinclude:: downloads/tf-example5/static.tf
+   :language: terraform
    :caption: static.tf
    :name: part5-static-tf
    :linenos:
 
 .. literalinclude:: downloads/tf-example5/dynamic.tf
+   :language: terraform
    :caption: dynamic.tf
    :name: part5-dynamic-tf
    :linenos:
