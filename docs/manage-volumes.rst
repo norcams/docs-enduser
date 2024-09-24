@@ -124,10 +124,11 @@ If there are not any file systems in the block device, you need to create one. W
 .. code-block:: console
 
    # mkfs.ext4 /dev/vdb
-   [...]
+   (...output omitted...)
 
    Create a folder and mount the volume on it:
-   # mkdir /persistent01 && mount /dev/vdb /persistent01
+   # mkdir /persistent01
+   # mount /dev/vdb /persistent01
 
    Check the amount of disk space available on the file system:
    # df -h /persistent01
@@ -147,7 +148,7 @@ fstab may be set up differently depending on Linux distribution and software use
 to get an idea of the recommended configuration. Here, we manually add the following line to ``/etc/fstab``
 to ensure a mount that is persistent through reboots:
 
-.. code-block:: console
+.. code-block:: unixconfig
 
    UUID=ca81b002-1037-4698-a0a6-03f6dd4702b0       /persistent01   ext4    defaults        0 2
 
