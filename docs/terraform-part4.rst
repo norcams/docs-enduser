@@ -311,6 +311,7 @@ workspace directory:
   $ ansible-playbook -i terraform.yaml db.yaml
   $ ansible-playbook -i terraform.yaml web.yaml
 
+--------------------------------------------------------------------
 
 Complete example
 ----------------
