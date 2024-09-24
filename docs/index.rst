@@ -46,6 +46,7 @@ Norwegian Research and Education Cloud
    terraform-part4
    terraform-part5
    terraform-part6
+   usecase-class-windows
 
 **Other:**
 
