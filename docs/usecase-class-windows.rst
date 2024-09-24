@@ -130,7 +130,7 @@ Step by step example
      0T9uzBckWHloDVLL8QqX
 
 #. Log into the master Windows instance using RDP. There are a number
-   of ways to do this, depending on you OS and preference. In our
+   of ways to do this, depending on your OS and preference. In our
    case, we connect using xfreerdp:
 
    .. code-block:: console
