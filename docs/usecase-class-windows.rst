@@ -179,7 +179,7 @@ Step by step example
    This will take a few minutes. Proceed when the instance is properly
    shut down:
 
-   .. code-block:: shell-session
+   .. code-block:: console
 
      $ openstack server show in9999-master -c status -f value
      SHUTOFF
@@ -205,7 +205,7 @@ Create student instances
 This next step uses Terraform_ to create a number of instances for
 students. First, create an empty directory and cd into it, e.g.:
 
-.. code-block:: shell-session
+.. code-block:: console
 
   $ mkdir ~/in9999-h2024
   $ cd ~/in9999-h2024
