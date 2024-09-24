@@ -1,9 +1,7 @@
-.. |date| date::
-
 The NREC DNS service
 =======================
 
-Last changed: |date|
+Last changed: 2024-09-24
 
 .. contents::
 
@@ -36,11 +34,13 @@ production purposes:
 #. Instruct the DNS vendor, or the entity that is delegating this zone
    to you, that the authoritative DNS servers for the zone should be:
 
-   * **ns1.nrec.no** (IPv4 address: ``158.37.63.251``, IPv6
-     address: ``2001:700:2:82ff::251``)
-
-   * **ns2.nrec.no** (IPv4 address: ``158.39.77.251``, IPv6
-     address: ``2001:700:2:83ff::251``)
+   +-----------------+-------------------+--------------------------+
+   | DNS Server      | IPv4 address      | IPv6 address             |
+   +=================+===================+==========================+
+   | **ns1.nrec.no** | ``158.37.63.251`` | ``2001:700:2:82ff::251`` |
+   +-----------------+-------------------+--------------------------+
+   | **ns2.nrec.no** | ``158.39.77.251`` | ``2001:700:2:83ff::251`` |
+   +-----------------+-------------------+--------------------------+
 
    You can verify that this change has been made by the vendor, by
    querying DNS (example):
