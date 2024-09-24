@@ -32,7 +32,9 @@ The files used in this document can be downloaded:
 * :download:`terraform.tfvars <downloads/tf-example3/terraform.tfvars>`
 
 The examples in this document have been tested and verified
-with **Terraform version 1.9.5**::
+with **Terraform version 1.9.5**:
+
+.. code-block:: none
 
   Terraform v1.9.5
   on linux_amd64

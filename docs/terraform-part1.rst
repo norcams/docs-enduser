@@ -17,7 +17,9 @@ The example file can be downloaded here: :download:`basic.tf
 <downloads/tf-example1/basic.tf>`.
 
 The examples in this document have been tested and verified
-with **Terraform version 1.9.5**::
+with **Terraform version 1.9.5**:
+
+.. code-block:: none
 
   Terraform v1.9.5
   on linux_amd64

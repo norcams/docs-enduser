@@ -19,7 +19,9 @@ The example file can be downloaded here: :download:`advanced.tf
 <downloads/tf-example2/advanced.tf>`.
 
 The examples in this document have been tested and verified
-with **Terraform version 1.9.5**::
+with **Terraform version 1.9.5**:
+
+.. code-block:: none
 
   Terraform v1.9.5
   on linux_amd64
