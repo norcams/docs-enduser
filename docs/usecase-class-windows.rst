@@ -1,7 +1,7 @@
 Usecase: CS Course with individual Windows instances for students
 =================================================================
 
-Last changed: 2024-09-22
+Last changed: 2024-09-24
 
 .. contents::
 
@@ -201,10 +201,12 @@ Create student instances
 ------------------------
 
 This next step uses Terraform_ to create a number of instances for
-students. First, create an empty directory and cd into it, e.g.::
+students. First, create an empty directory and cd into it, e.g.:
 
-  mkdir ~/in9999-h2024
-  cd ~/in9999-h2024
+.. code-block:: console
+
+  $ mkdir ~/in9999-h2024
+  $ cd ~/in9999-h2024
 
 Copy the following files info this directory:
 
@@ -218,7 +220,9 @@ Ansible`_, but with adjustments for this usecase. Edit these files to
 suit your needs. You should most likely want a lot of changes in
 ``variables.tf`` and ``terraform.tfvars``.
 
-Run **terraform init**::
+Run **terraform init**:
+
+.. code-block:: console
 
   $ terraform init
   ...
@@ -226,18 +230,37 @@ Run **terraform init**::
 
 Run **terraform plan**::
 
+.. code-block:: console
+
   $ terraform plan
   ...
   Plan: 29 to add, 0 to change, 0 to destroy.
 
 Fix any errors from the plan command, then run **terraform apply**::
 
+.. code-block:: console
+
   $ terraform apply
   ...
   Apply complete! Resources: 29 added, 0 changed, 0 destroyed.
 
 The instances are now created, we are ready to make the final
-configuration with Ansible_.
+configuration with Ansible_. The end result is:
+
+.. code-block:: console
+
+  $ openstack server list --name in9999 --sort-column Name -c Name -c Status -c Image
+  +--------------------+---------+-----------------------------------+
+  | Name               | Status  | Image                             |
+  +--------------------+---------+-----------------------------------+
+  | in9999-h2024-lab-0 | ACTIVE  | master-snap-01                    |
+  | in9999-h2024-lab-1 | ACTIVE  | master-snap-01                    |
+  | in9999-h2024-lab-2 | ACTIVE  | master-snap-01                    |
+  | in9999-h2024-lab-3 | ACTIVE  | master-snap-01                    |
+  | in9999-h2024-lab-4 | ACTIVE  | master-snap-01                    |
+  | in9999-master      | SHUTOFF | GOLD Windows Server 2022 Standard |
+  +--------------------+---------+-----------------------------------+
+
 
 
 Configure student instances
@@ -252,16 +275,44 @@ files:
 Edit these files as necessary. At minimum you need to edit the
 ``terraform.yaml`` file.
 
-Test that ansible works::
+Test that ansible works:
+
+.. code-block:: console
 
   $ ansible -i terraform.yaml all -m win_ping
+  [WARNING]: Collection cloud.terraform does not support Ansible version 2.14.14
+  [WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
+  in9999-h2024-lab-1 | SUCCESS => {
+      "changed": false,
+      "ping": "pong"
+  }
+  in9999-h2024-lab-0 | SUCCESS => {
+      "changed": false,
+      "ping": "pong"
+  }
+  in9999-h2024-lab-2 | SUCCESS => {
+      "changed": false,
+      "ping": "pong"
+  }
+  in9999-h2024-lab-4 | SUCCESS => {
+      "changed": false,
+      "ping": "pong"
+  }
+  in9999-h2024-lab-3 | SUCCESS => {
+      "changed": false,
+      "ping": "pong"
+  }
 
 Run the ``add-labuser.yaml`` playbook::
+
+.. code-block:: console
 
   $ ansible-playbook -i terraform.yaml add-labuser.yaml
 
 The credentials are saved in a file called ``labusers.csv``, which is
-located in the same directory as the playbook. Example contents::
+located in the same directory as the playbook. Example contents:
+
+.. code-block:: csv
 
   HOST,IPADDR,USERNAME,PASSWORD
   in9999-h2024-lab-0,2001:700:2:8201::100e,labuser,Msho!nLKCCo)yIAvB$UC
@@ -286,7 +337,7 @@ Then run::
   terraform plan
   terraform apply
 
-Create users with::
+Create users as before with::
   
   ansible-playbook -i terraform.yaml add-labuser.yaml
 
