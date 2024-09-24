@@ -353,7 +353,7 @@ every time. For this we need to create an ssh config file:
 The commands above creates an empty file with the correct
 permissions. You can edit this file and add:
 
-.. code-block:: none
+.. code-block:: ssh-config
 
   Host 2001:700:2:8200:* 2001:700:2:8201:* 2001:700:2:8301:* 2001:700:2:8300:*
       ProxyJump <username>@<proxy>
