@@ -228,7 +228,7 @@ Run **terraform init**:
   ...
   Terraform has been successfully initialized!
 
-Run **terraform plan**::
+Run **terraform plan**:
 
 .. code-block:: console
 
@@ -236,7 +236,7 @@ Run **terraform plan**::
   ...
   Plan: 29 to add, 0 to change, 0 to destroy.
 
-Fix any errors from the plan command, then run **terraform apply**::
+Fix any errors from the plan command, then run **terraform apply**:
 
 .. code-block:: console
 
