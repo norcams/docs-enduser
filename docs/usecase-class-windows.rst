@@ -295,6 +295,7 @@ changes. Note that the passwords are randomly generated but
 idempotent, thus changing the number of instances will not change
 passwords for existing instances.
 
+-------------------------------------------------------------------------
 
 File listing
 ------------
