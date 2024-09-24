@@ -102,6 +102,7 @@ state. We will provide this by adding some extra statements to our
 Terraform ``main.tf`` file. First we need to add the Ansible plugin:
 
 .. literalinclude:: downloads/tf-example4/main.tf
+   :language: terraform
    :caption: main.tf
    :linenos:
    :lines: 1-13
@@ -115,6 +116,7 @@ details of our hosts. We define our web and database hosts, as well as
 groups that contain these hosts:
 
 .. literalinclude:: downloads/tf-example4/main.tf
+   :language: terraform
    :caption: main.tf
    :linenos:
    :lines: 97-
@@ -132,6 +134,7 @@ locate what it needs. For this we create an inventory file that we
 call "terraform.yaml":
 
 .. literalinclude:: downloads/tf-example4/terraform.yaml
+   :language: yaml
    :caption: terraform.yaml
    :linenos:
    :emphasize-lines: 2
@@ -260,6 +263,7 @@ playbooks. They are named ``web.yaml`` and ``db.yaml``,
 respectively. We'll take a look at ``web.yaml`` first:
 
 .. literalinclude:: downloads/tf-example4/web.yaml
+   :language: yaml
    :caption: web.yaml
    :linenos:
 
@@ -276,6 +280,7 @@ Next, lets take a look at ``db.yaml`` which we use to configure the
 database server:
 
 .. literalinclude:: downloads/tf-example4/db.yaml
+   :language: yaml
    :caption: db.yaml
    :linenos:
 
@@ -320,21 +325,25 @@ A complete listing of the example files used in this document is
 provided below.
 
 .. literalinclude:: downloads/tf-example4/terraform.yaml
+   :language: yaml
    :caption: terraform.yaml
    :name: part4-ansible-inventory
    :linenos:
 
 .. literalinclude:: downloads/tf-example4/main.tf
+   :language: terraform
    :caption: main.tf
    :name: part4-main-tf
    :linenos:
 
 .. literalinclude:: downloads/tf-example4/secgroup.tf
+   :language: terraform
    :caption: secgroup.tf
    :name: part4-secgroup-tf
    :linenos:
 
 .. literalinclude:: downloads/tf-example4/variables.tf
+   :language: terraform
    :caption: variables.tf
    :name: part4-variables-tf
    :linenos:

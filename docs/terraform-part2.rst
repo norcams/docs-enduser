@@ -53,6 +53,7 @@ In order to combat this, we add the following
 code snippet to our ``openstack_compute_instance_v2`` resource:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
+   :language: terraform
    :caption: advanced.tf
    :linenos:
    :lines: 88-90
@@ -74,6 +75,7 @@ Building on the :download:`basic.tf <downloads/tf-example1/basic.tf>` file
 discussed in `Part 1`_:
 
 .. literalinclude:: downloads/tf-example1/basic.tf
+   :language: terraform
    :caption: basic.tf
    :name: part1-basic-tf
    :linenos:
@@ -84,6 +86,7 @@ should also make sure that the instances have unique names, and we
 accomplish that by using the count when specifying the instance name:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
+   :language: terraform
    :linenos:
    :lines: 1-15,72-91
    :emphasize-lines: 20-21
@@ -117,6 +120,7 @@ of relying on a preexisting key pair. This is accomplished by creating
 a resource block for a key pair:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
+   :language: terraform
    :linenos:
    :lines: 16-23, 72-91
    :emphasize-lines: 18
@@ -144,6 +148,7 @@ provisioning instances. We can use Terraform to create security groups
 on the fly for us to use:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
+   :language: terraform
    :linenos:
    :lines: 24-91
    :emphasize-lines: 59
@@ -202,6 +207,7 @@ Creating volumes is often required, and Terraform can do that as
 well. In order to create a volume you will define the resource:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
+   :language: terraform
    :linenos:
    :lines: 96-99
 
@@ -209,6 +215,7 @@ Here, we create a volume named "my-volume" with a size of 10 GB. We
 also want to attach the volume to one of our instances:
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
+   :language: terraform
    :linenos:
    :lines: 102-105
 
@@ -233,5 +240,6 @@ A complete listing of the example file :download:`advanced.tf
 <downloads/tf-example2/advanced.tf>` used in this document is provided below.
 
 .. literalinclude:: downloads/tf-example2/advanced.tf
+   :language: terraform
    :caption: advanced.tf
    :linenos:

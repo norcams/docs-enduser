@@ -48,6 +48,7 @@ Here is a Terraform file that works with NREC, in its simplest
 possible form:
 
 .. literalinclude:: downloads/tf-example1/basic.tf
+   :language: terraform
    :caption: basic.tf (minimal)
    :linenos:
    :lines: 1-21,25-
@@ -103,6 +104,7 @@ Having established which key pairs and security groups we wish to use,
 we can add those to our Terraform file:
 
 .. literalinclude:: downloads/tf-example1/basic.tf
+   :language: terraform
    :caption: basic.tf
    :name: basic-tf
    :linenos:
