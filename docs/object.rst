@@ -40,7 +40,7 @@ Our object storage support two different APIs:
 
 The endpoint URLs are
 
-.. code-block:: console
+.. code-block:: none
 
   https://object.api.bgo.nrec.no
   https://object.api.osl.nrec.no
@@ -78,7 +78,7 @@ Amazon S3 Tools: s3cmd (S3)
 To use the S3 API you will first need to create EC2 credentials.
 With openstack cli (version 3.8+) run:
 
-.. code-block:: console
+.. code-block:: none
 
   openstack ec2 credentials create
   openstack ec2 credentials list
@@ -95,7 +95,7 @@ Install s3cmd:
 
 and create a config file :file:`~/.s3cfg`
 
-.. code-block:: bash
+.. code-block:: ini
 
   [default]
   access_key = <access_key>
@@ -132,7 +132,7 @@ See `AWS CLI`_ for more information.
   `AWS_ENDPOINT_URL` was introduced in AWS_CLI 2.13 (2023) and may not be available in the version supplied from the OS aws cli package.
   The endpoint url can be set by supplying it as a parameter:
 
-.. code-block:: console
+.. code-block:: none
 
   aws --endpoint-url $AWS_ENDPOINT_URL command...
 
@@ -142,7 +142,7 @@ Public Access (S3)
 To access a public object you will first set public ACL. The URL to access it
 will be on the form:
 
-.. code-block:: console
+.. code-block:: none
 
   <endpoint>/<project_id>:<bucket>/<path-to-object>
 
@@ -170,7 +170,7 @@ First, create a bucket and enable object locking for the new bucket.
 
 .. code-block:: console
 
-  aws s3api create-bucket --bucket myimportantbackup --object-lock-enabled-for-bucket
+  $ aws s3api create-bucket --bucket myimportantbackup --object-lock-enabled-for-bucket
 
 Set a retention period for the bucket. In this example, we set a 30 days retention
 period. This will be the default for new objects put into this bucket.
