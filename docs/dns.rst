@@ -43,7 +43,9 @@ production purposes:
      address: ``2001:700:2:83ff::251``)
 
    You can verify that this change has been made by the vendor, by
-   querying DNS (example)::
+   querying DNS (example):
+
+   .. code-block:: console
 
      $ host -t ns mytestzone.com
      mytestzone.com name server ns1.nrec.no.
