@@ -204,23 +204,19 @@ The important thing to understand is that the last number designates
 the size of the block. The larger the number, the smaller the
 block. CIDR notation applies to IPv6 as well:
 
-**::/0**
-  All IPv6 addresses in the known universe
-
-**2001:db8::/32**
-  All addresses from ``2001:db8:0:0:0:0:0:0`` through ``2001:db8:ffff:ffff:ffff:ffff:ffff:ffff``
-
-**2001:db8:aaaa::/56**
-  All addresses from ``2001:db8:a:0:0:0:0:0`` through ``2001:db8:a:00ff:ffff:ffff:ffff:ffff``
-
-**2001:db8:aaaa::/64**
-  All addresses from ``2001:db8:a:0:0:0:0:0`` through ``2001:db8:a:0:ffff:ffff:ffff:ffff``
-
-**2001:db8:aaaa:bbbb:cccc:dddd::/96**
-  All addresses from ``2001:db8:a:b:c:d:0:0`` through ``2001:0db8:a:b:c:d:ffff:ffff``
-
-**2001:db8:a:b:c:d:e:100/128**
-  The single IPv6 address ``2001:db8:a:b:c:d:e:100``
++---------------------------------------+------------------------------------------------------------------------------------------------+
+| **::/0**                              | All IPv6 addresses in the known universe                                                       |
++---------------------------------------+------------------------------------------------------------------------------------------------+
+| **2001:db8::/32**                     | All addresses from ``2001:db8:0:0:0:0:0:0`` through ``2001:db8:ffff:ffff:ffff:ffff:ffff:ffff`` |
++---------------------------------------+------------------------------------------------------------------------------------------------+
+| **2001:db8:aaaa::/56**                | All addresses from ``2001:db8:a:0:0:0:0:0`` through ``2001:db8:a:00ff:ffff:ffff:ffff:ffff``    |
++---------------------------------------+------------------------------------------------------------------------------------------------+
+| **2001:db8:aaaa::/64**                | All addresses from ``2001:db8:a:0:0:0:0:0`` through ``2001:db8:a:0:ffff:ffff:ffff:ffff``       |
++---------------------------------------+------------------------------------------------------------------------------------------------+
+| **2001:db8:aaaa:bbbb:cccc:dddd::/96** | All addresses from ``2001:db8:a:b:c:d:0:0`` through ``2001:0db8:a:b:c:d:ffff:ffff``            |
++---------------------------------------+------------------------------------------------------------------------------------------------+
+| **2001:db8:a:b:c:d:e:100/128**        | The single IPv6 address ``2001:db8:a:b:c:d:e:100``                                             |
++---------------------------------------+------------------------------------------------------------------------------------------------+
 
 The actual number of IPv6 addresses that the ranges contain is so large
 we have omitted them from this list.
