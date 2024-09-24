@@ -768,10 +768,12 @@ the server using ``openstack server show``:
 
 .. code-block:: console
 
-  $ openstack server show test
-  ...
-  | security_groups             | name='default'                                           |
-  ...
+  $ openstack server show test -c security_groups
+  +-----------------+----------------+
+  | Field           | Value          |
+  +-----------------+----------------+
+  | security_groups | name='default' |
+  +-----------------+----------------+
 
 In this case only the "default" security group is applied. To apply
 our "SSH and ICMP" security group:
@@ -784,11 +786,13 @@ We can then inspect the server again:
 
 .. code-block:: console
 
-  $ openstack server show test
-  ...
-  | security_groups             | name='default'                                           |
-  |                             | name='SSH and ICMP'                                      |
-  ...
+  $ openstack server show test -c security_groups
+  +-----------------+---------------------+
+  | Field           | Value               |
+  +-----------------+---------------------+
+  | security_groups | name='default'      |
+  |                 | name='SSH and ICMP' |
+  +-----------------+---------------------+
 
 We can also remove a security group from a server. Here, we are
 removing the "SSH and ICMP" security group from the server "test":
