@@ -355,26 +355,31 @@ A complete listing of the example files used in this document is
 provided below.
 
 .. literalinclude:: downloads/usecase01/terraform.yaml
+   :language: yaml
    :caption: terraform.yaml
    :name: usecase01-ansible-inventory
    :linenos:
 
 .. literalinclude:: downloads/usecase01/main.tf
+   :language: terraform
    :caption: main.tf
    :name: usecase01-main-tf
    :linenos:
 
 .. literalinclude:: downloads/usecase01/secgroup.tf
+   :language: terraform
    :caption: secgroup.tf
    :name: usecase01-secgroup-tf
    :linenos:
 
 .. literalinclude:: downloads/usecase01/variables.tf
+   :language: terraform
    :caption: variables.tf
    :name: usecase01-variables-tf
    :linenos:
 
 .. literalinclude:: downloads/usecase01/terraform.tfvars
+   :language: terraform
    :caption: terraform.tfvars
    :name: usecase01-terraform-tfvars
    :linenos:
