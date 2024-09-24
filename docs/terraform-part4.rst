@@ -88,7 +88,7 @@ On Linux, this installs the Terraform collection under::
 
 You can verify the Terraform collection like this:
   
-  .. code-block:: console
+.. code-block:: console
 
   $ ansible-galaxy collection list | grep terraform
   cloud.terraform 3.0.0
