@@ -108,7 +108,9 @@ Step by step example
    .. code-block:: console
 
      $ ssh 2001:700:2:8201::13a7 -l Admin -i ~/.ssh/winkey
-     ...
+     
+   .. code-block:: msdos
+
      Microsoft Windows [Version 10.0.20348.2655]
      (c) Microsoft Corporation. All rights reserved.
      
@@ -227,7 +229,7 @@ Run **terraform init**:
 .. code-block:: console
 
   $ terraform init
-  ...
+  (...output omitted...)
   Terraform has been successfully initialized!
 
 Run **terraform plan**:
@@ -235,7 +237,7 @@ Run **terraform plan**:
 .. code-block:: console
 
   $ terraform plan
-  ...
+  (...output omitted...)
   Plan: 29 to add, 0 to change, 0 to destroy.
 
 Fix any errors from the plan command, then run **terraform apply**:
@@ -243,7 +245,7 @@ Fix any errors from the plan command, then run **terraform apply**:
 .. code-block:: console
 
   $ terraform apply
-  ...
+  (...output omitted...)
   Apply complete! Resources: 29 added, 0 changed, 0 destroyed.
 
 The instances are now created, we are ready to make the final
@@ -310,6 +312,7 @@ Run the ``add-labuser.yaml`` playbook:
 .. code-block:: console
 
   $ ansible-playbook -i terraform.yaml add-labuser.yaml
+  (...output omitted...)
 
 The credentials are saved in a file called ``labusers.csv``, which is
 located in the same directory as the playbook. Example contents:
