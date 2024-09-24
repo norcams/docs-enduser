@@ -170,9 +170,11 @@ Step by step example
      :align: center
      :alt: Run powershell as administrator
 
-#. In the elevated Powershell, run Sysprep with the proper arguments::
+#. In the elevated Powershell, run Sysprep with the proper arguments:
 
-     $unattendedXmlPath = "c:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml" ; ipconfig /release6 ; c:\windows\system32\sysprep\Sysprep /generalize /oobe /shutdown /unattend:"$unattendedXmlPath"
+   .. code-block:: pwsh-session
+
+     PS C:\Users\Admin> $unattendedXmlPath = "c:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml" ; ipconfig /release6 ; c:\windows\system32\sysprep\Sysprep /generalize /oobe /shutdown /unattend:"$unattendedXmlPath"
 
    This will take a few minutes. Proceed when the instance is properly
    shut down:
@@ -312,7 +314,7 @@ Run the ``add-labuser.yaml`` playbook:
 The credentials are saved in a file called ``labusers.csv``, which is
 located in the same directory as the playbook. Example contents:
 
-.. code-block:: csv
+.. code-block::
 
   HOST,IPADDR,USERNAME,PASSWORD
   in9999-h2024-lab-0,2001:700:2:8201::100e,labuser,Msho!nLKCCo)yIAvB$UC
@@ -380,7 +382,6 @@ provided below.
    :linenos:
 
 .. literalinclude:: downloads/usecase01/terraform.tfvars
-   :language: terraform
    :caption: terraform.tfvars
    :name: usecase01-terraform-tfvars
    :linenos:
