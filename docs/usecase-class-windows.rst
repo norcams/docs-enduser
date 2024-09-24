@@ -303,7 +303,7 @@ Test that ansible works:
       "ping": "pong"
   }
 
-Run the ``add-labuser.yaml`` playbook::
+Run the ``add-labuser.yaml`` playbook:
 
 .. code-block:: console
 
@@ -327,6 +327,7 @@ In order to to increase or decrease the number of instances, change
 the number in ``variables.tf``:
 
 .. literalinclude:: downloads/usecase01/variables.tf
+   :language: terraform
    :caption: variables.tf
    :linenos:
    :lines: 64-70
