@@ -176,8 +176,10 @@ Step by step example
 
      PS C:\Users\Admin> $unattendedXmlPath = "c:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml" ; ipconfig /release6 ; c:\windows\system32\sysprep\Sysprep /generalize /oobe /shutdown /unattend:"$unattendedXmlPath"
 
-   This will take a few minutes. Proceed when the instance is properly
-   shut down:
+   This will take a few minutes, ending with the instance being shut
+   off. If you connected via IPv6, the connection will be broken
+   immediately, but Sysprep should do its job regardless. Proceed when
+   the instance is properly shut down:
 
    .. code-block:: console
 
