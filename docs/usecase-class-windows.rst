@@ -18,8 +18,6 @@ up an arbitrary number of Windows Server instances. The idea is that
 each student is given their own pre-configured instance with a set of
 credentials.
 
-.. WARNING:: This document is under development and may contain errors
-
 
 Overview
 --------
