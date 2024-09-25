@@ -340,7 +340,7 @@ SSH access). To set the password via SSH, use the following command:
 
 .. code-block:: console
 
-   ssh -l Admin -i <ssh-key> <ip-address> net user Admin <password>
+   $ ssh -l Admin -i <ssh-key> <ip-address> net user Admin <password>
 
 In the command above, replace:
 
@@ -402,9 +402,11 @@ your snapshot as a base image for new instances:
 
 * To circumvent an IPv6 bug, and to rearm Cloud Init to initialize on the
   next boot, run ``sysprep.exe`` in the following manner (in the elevated
-  powershell)::
+  powershell):
 
-    $unattendedXmlPath = "c:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml" ; ipconfig /release6 ; c:\windows\system32\sysprep\Sysprep /generalize /oobe /shutdown /unattend:"$unattendedXmlPath"
+  .. code-block:: pwsh-session
+
+    PS C:\Users\Admin> $unattendedXmlPath = "c:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml" ; ipconfig /release6 ; c:\windows\system32\sysprep\Sysprep /generalize /oobe /shutdown /unattend:"$unattendedXmlPath"
 
 If you have connected to your Windows instance over the IPv6 protocol, your connection will
 now be broken. Sysprep should do it's job regardless, and after a while the windows instance

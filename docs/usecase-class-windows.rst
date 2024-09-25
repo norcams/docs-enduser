@@ -140,7 +140,7 @@ Step by step example
      :alt: RDP to master instance
 
 #. Install software and make any changes as required. For the purposes
-   of this demontration, we install Visual Studio Code
+   of this demonstration, we install Visual Studio Code
 
    .. image:: images/usecase01-master-install-vscode.png
      :align: center
