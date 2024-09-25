@@ -184,7 +184,7 @@ Step by step example
      $ openstack server show in9999-master -c status -f value
      SHUTOFF
 
-#. Make a snapshot of the image
+#. Make a snapshot of the instance while it is shut off
 
    .. image:: images/usecase01-master-snapshot1.png
      :align: center
