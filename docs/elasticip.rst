@@ -253,8 +253,9 @@ The Internet as well, if opened in your security groups.
 Example configuration with MetalLB
 ----------------------------------
 
-You can use MetalLB combined with NREC elastic IP to create a LoadBalancer
-resource equal to what you would find in several public cloud offerings.
+If you have a Kubernetes cluster, you can use MetalLB combined with NREC elastic IP
+feature to create a LoadBalancer resource equal to what you would find in several
+public cloud offerings.
 
 .. IMPORTANT::
   If you are using MetalLB, please note that by default MetalLB
