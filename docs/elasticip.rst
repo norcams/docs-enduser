@@ -266,8 +266,8 @@ public cloud offerings.
   you *must* run `MetalLB in FRR mode`_ - running in default BGP mode is not
   supported by the NREC Elastic IP feature.
 
-Start with installing frr itself. An installation manifest that you may apply
-is found here:
+Start with installing the MetalLB with Free Range Routing software itself. An installation manifest
+that you may apply is found here:
 
 .. code-block:: console
 
