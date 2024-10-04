@@ -311,9 +311,9 @@ Using the values used in the Bird example above, a configuration manifest would 
       bfdProfile: bfdprofile
       password: b1ecd7f662e6ff6ce03ab33626f92cfe
       ebgpMultiHop: true
-#      nodeSelectors:
-#          - matchLabels:
-#              node: workloadnode # Select a label mathing the nodes with your public workloads
+  #      nodeSelectors:
+  #          - matchLabels:
+  #              node: workloadnode # Select a label mathing the nodes with your public workloads
   ---
   apiVersion: metallb.io/v1beta2
   kind: BGPPeer
@@ -327,9 +327,9 @@ Using the values used in the Bird example above, a configuration manifest would 
       bfdProfile: bfdprofile
       password: b1ecd7f662e6ff6ce03ab33626f92cfe
       ebgpMultiHop: true
-#      nodeSelectors:
-#          - matchLabels:
-#              node: workloadnode # Select a label mathing the nodes with your public workloads
+  #      nodeSelectors:
+  #          - matchLabels:
+  #              node: workloadnode # Select a label mathing the nodes with your public workloads
   ---
   apiVersion: metallb.io/v1beta1
   kind: IPAddressPool
