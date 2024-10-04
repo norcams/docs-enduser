@@ -1,7 +1,7 @@
 The NREC Elastic IP Service
 ===========================
 
-Last changed: 2024-04-10
+Last changed: 2024-10-04
 
 .. contents::
 
