@@ -1,7 +1,7 @@
 The NREC Elastic IP Service
 ===========================
 
-Last changed: 2023-30-10
+Last changed: 2024-04-10
 
 .. contents::
 
@@ -63,8 +63,8 @@ Whether BFD_ will be enabled         No        Yes or No
 After launching one or more instances attached to "Elastic IP" OpenStack network,
 you are ready to advertise anycast addresses.
 
-Example configuration
----------------------
+Example configuration with Bird
+-------------------------------
 
 In this example we will launch an instance, install a BGP_ speaker and verify
 IPv4 and IPv6 connectivity. Launching the instance is nothing different from what
@@ -250,6 +250,152 @@ The Internet as well, if opened in your security groups.
   and IPv6. Normally, these addresses would of course have been world wide
   addressable, public IP addresses.
 
+Example configuration with MetalLB
+----------------------------------
+
+You can use MetalLB combined with NREC elastic IP to create a LoadBalancer
+resource equal to what you would find in several public cloud offerings.
+
+.. IMPORTANT::
+  If you are using MetalLB, please note that by default MetalLB
+  will try peering all your nodes with the infrastructure. This may not be
+  optimal, so consider deploying only a few nodes to run that service.
+
+.. IMPORTANT::
+  you *must* run `MetalLB in FRR mode`_ - running in default BGP mode is not
+  supported by the NREC Elastic IP feature.
+
+Start with installing frr itself. An installation manifest that you may apply
+is found here:
+
+.. code-block:: console
+
+  https://raw.githubusercontent.com/metallb/metallb/refs/heads/main/config/manifests/metallb-frr.yaml
+
+Download and apply the manifest (paying attention to the nodeselector field). After you have installed
+MetalLB, several new resources have been created, like
+
+.. code-block:: console
+
+  bfdprofiles.metallb.io
+  bgpadvertisements.metallb.io
+  bgppeers.metallb.io
+  communities.metallb.io
+  ipaddresspools.metallb.io
+
+The next step is to configure some of these resources, namely bgppeers, bgpadvertisement,
+ipaddresspool, and optionally (but recommended) a bfdprofile.
+
+Using the values used in the Bird example above, a configuration manifest would look like
+
+.. code-block:: console
+
+  apiVersion: metallb.io/v1beta1
+  kind: BFDProfile
+  metadata:
+      name: bfdprofile
+      namespace: metallb-system
+  spec:
+      receiveInterval: 380
+      transmitInterval: 270
+  ---
+  apiVersion: metallb.io/v1beta2
+  kind: BGPPeer
+  metadata:
+      name: nrec_peer1
+      namespace: metallb-system
+  spec:
+      myASN: 4200000000
+      peerASN: 65535
+      peerAddress: 10.255.255.1
+      bfdProfile: bfdprofile
+      password: b1ecd7f662e6ff6ce03ab33626f92cfe
+      ebgpMultiHop: true
+#      nodeSelectors:
+#          - matchLabels:
+#              node: workloadnode # Select a label mathing the nodes with your public workloads
+  ---
+  apiVersion: metallb.io/v1beta2
+  kind: BGPPeer
+  metadata:
+      name: bgp nrec_peer2
+      namespace: metallb-system
+  spec:
+      myASN: 4200000000
+      peerASN: 65535
+      peerAddress: 10.255.255.2
+      bfdProfile: bfdprofile
+      password: b1ecd7f662e6ff6ce03ab33626f92cfe
+      ebgpMultiHop: true
+#      nodeSelectors:
+#          - matchLabels:
+#              node: workloadnode # Select a label mathing the nodes with your public workloads
+  ---
+  apiVersion: metallb.io/v1beta1
+  kind: IPAddressPool
+  metadata:
+      name: elasticip
+      namespace: metallb-system
+  spec:
+      addresses:
+          - 192.168.0.16/31
+          - fda4:5ff2:8477:1755::/127
+  ---
+  apiVersion: metallb.io/v1beta1
+  kind: BGPAdvertisement
+  metadata:
+      name: elastic
+      namespace: metallb-system
+  spec:
+      ipAddressPools:
+          - elasticip
+
+Normally you would receive a /32 and a /128 prefix, respectively. This will suffice for an ingress
+controller installed by the kubernetes cluster administrator to consume the addresses and exhaust
+the IP address pool. Example config for an ingress controller (in this case, nginx):
+
+.. code-block:: console
+
+  controller:
+    useHostPort: false
+    enablepublishService: true
+    config:
+      useProxyProtocol: false
+    service:
+      enabled: true
+      type: LoadBalancer
+      ipFamilyPolicy: RequireDualStack
+      ipFamilies:
+        - IPv4
+        - IPv6
+      loadBalancerSourceRanges:
+        - 0.0.0.0/0
+        - ::/0
+
+You can log in to an frr container running in a speaker pod in the metallb-system namespace
+and check that the routes have been advertised, and which config that has been applied.
+Each frr container should be able to export the routes, creating ECMP routes in the NREC infrastructure.
+
+.. code-block:: console
+
+  kubectl exec -n metallb-system --stdin --tty speaker-nq3a4 -- /bin/bash
+
+  kubernetes-worker:/# vtysh
+  kubernetes-worker.k8s.io# show bgp neighbors 10.255.255.1 advertised-routes # will show advertised IPv6 routes
+
+  [...]
+    Network          Next Hop            Metric LocPrf Weight Path
+  *> fda4:5ff2:8477:1755::/128
+
+  Total number of prefixes 1
+
+  kubernetes-worker.k8s.io# show ip bgp neighbors 10.255.255.2 advertised-routes # will show advertised IPv4 routes
+
+  [...]
+    Network          Next Hop            Metric LocPrf Weight Path
+  *> 192.168.0.16/32 0.0.0.0                  0         32768 i
+  [...]
+
 Next steps
 ----------
 
@@ -257,11 +403,7 @@ More instances advertising the same IP addresses may be created with
 identical configuration for the BGP speaker software - the only difference
 being the instance's own address. Depending on your usecase, a service health
 checker can be useful. For example, `AnyCast Healthcecker`_ configures the Bird
-daemon directly. If you are using MetalLB, please note that by default MetalLB
-will try peering all your nodes with the infrastructure. This may not be
-optimal, so consider deploying only a few nodes to run that service. Also,
-you *must* run `MetalLB in FRR mode`_ - running in default BGP mode is not
-supported by the NREC Elastic IP feature.
+daemon directly.
 
 Additional example configurations
 ---------------------------------
