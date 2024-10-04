@@ -404,7 +404,12 @@ More instances advertising the same IP addresses may be created with
 identical configuration for the BGP speaker software - the only difference
 being the instance's own address. Depending on your usecase, a service health
 checker can be useful. For example, `AnyCast Healthcecker`_ configures the Bird
-daemon directly.
+daemon directly. The crucial point is to remove the announced routes when the local
+service doesn't respond on a specific node. This is easily done with
+
+.. code-block:: console
+
+  ip (-6) route del <your_announced_prefix> dev lo
 
 Additional example configurations
 ---------------------------------
