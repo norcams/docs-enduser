@@ -34,13 +34,14 @@ other users.
 Policy
 ------
 
-Before a project reaches its expiration date, the administrator of the
-project, as well as the contact if it exists, will be notified by
-email. When a project reaches expiration date, it is put into
-quarantine for 90 days and then deleted. When a project is deleted,
-all of its resources (instances, volumes, snapshots etc.) and all data
-contained within those resources are deleted forever. There are no
-backups.
+A new project is created with a maximum expiration date of 2 years,
+except vGPU projects which is 6 months. Before a project reaches its
+expiration date, the administrator of the project, as well as the 
+contact if it exists, will be notified by email. When a project 
+reaches expiration date, it is put into quarantine for 90 days and
+then deleted. When a project is deleted, all of its resources
+(instances, volumes, snapshots etc.) and all data contained within
+those resources are deleted forever. There are no backups.
 
 Detailed description of the policy:
 
