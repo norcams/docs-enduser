@@ -16,11 +16,11 @@ provider "openstack" {}
 # Create a server
 resource "openstack_compute_instance_v2" "test-server" {
   name = "test-server"
-  image_name = "GOLD CentOS 8"
+  image_name = "GOLD Alma Linux 9"
   flavor_name = "m1.small"
 
   key_pair = "mykey"
-  security_groups = [ "default", "SSH and ICMP from login.uio.no" ]
+  security_groups = [ "default", "ssh_icmp_login.uio.no" ]
 
   network {
     name = "IPv6"

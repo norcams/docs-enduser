@@ -5,6 +5,10 @@ terraform {
     openstack = {
       source  = "terraform-provider-openstack/openstack"
     }
+    ansible = {
+      version = "~> 1.3.0"
+      source  = "ansible/ansible"
+    }
   }
 }
 
@@ -39,12 +43,6 @@ resource "openstack_compute_instance_v2" "web_instance" {
     name = "IPv6"
   }
 
-  metadata = {
-    ssh_user       = lookup(var.role_ssh_user, "web", "unknown")
-    prefer_ipv6    = 1
-    my_server_role = "web"
-  }
-
   lifecycle {
     ignore_changes = [image_name,image_id]
   }
@@ -74,13 +72,6 @@ resource "openstack_compute_instance_v2" "db_instance" {
     name = "IPv6"
   }
 
-  metadata = {
-    ssh_user       = lookup(var.role_ssh_user, "db", "unknown")
-    prefer_ipv6    = 1
-    python_bin     = "/usr/bin/python3"
-    my_server_role = "database"
-  }
-
   lifecycle {
     ignore_changes = [image_name,image_id]
   }
@@ -92,7 +83,7 @@ resource "openstack_compute_instance_v2" "db_instance" {
 }
 
 # Volume
-resource "openstack_blockstorage_volume_v2" "volume" {
+resource "openstack_blockstorage_volume_v3" "volume" {
   name = "database"
   size = var.volume_size
 }
@@ -100,5 +91,45 @@ resource "openstack_blockstorage_volume_v2" "volume" {
 # Attach volume
 resource "openstack_compute_volume_attach_v2" "attach_vol" {
   instance_id = openstack_compute_instance_v2.db_instance[0].id
-  volume_id   = openstack_blockstorage_volume_v2.volume.id
+  volume_id   = openstack_blockstorage_volume_v3.volume.id
+}
+
+# Ansible web hosts
+resource "ansible_host" "web" {
+  count  = lookup(var.role_count, "web", 0)
+  name   = "${var.region}-web-${count.index}"
+  groups = ["osl_web"] # Groups this host is part of
+
+  variables = {
+    ansible_host = trim(openstack_compute_instance_v2.web_instance[count.index].access_ip_v6, "[]")
+  }
+}
+
+# Ansible db hosts
+resource "ansible_host" "db" {
+  count  = lookup(var.role_count, "db", 0)
+  name   = "${var.region}-db-${count.index}"
+  groups = ["osl_db"] # Groups this host is part of
+
+  variables = {
+    ansible_host = trim(openstack_compute_instance_v2.db_instance[count.index].access_ip_v6, "[]")
+  }
+}
+
+# Ansible web group
+resource "ansible_group" "web_group" {
+  name     = "web"
+  children = ["osl_web"]
+  variables = {
+    ansible_user = "almalinux"
+  }
+}
+
+# Ansible db group
+resource "ansible_group" "db_group" {
+  name     = "db"
+  children = ["osl_db"]
+  variables = {
+    ansible_user = "ubuntu"
+  }
 }

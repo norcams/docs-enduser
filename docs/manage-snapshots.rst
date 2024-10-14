@@ -4,6 +4,7 @@
 .. _Upload and manage images: create-images.html
 .. _troubleshooting: troubleshoot.html
 .. _Frequently Asked Questions (FAQ): faq.html
+.. _Downloading a snapshot: manage-snapshots.html#download
 
 Create and manage snapshots
 ===========================
@@ -160,7 +161,7 @@ Upload
 ------
 
 If you have previously downloaded a snapshot as described in
-`Downloading`_, you can upload it to a different project or
+`Downloading a snapshot`_, you can upload it to a different project or
 region. An snapshot is uploaded as an image.
 
 .. NOTE::

@@ -1,9 +1,7 @@
-.. |date| date::
-
 The NREC DNS service
 =======================
 
-Last changed: |date|
+Last changed: 2024-09-24
 
 .. contents::
 
@@ -36,14 +34,18 @@ production purposes:
 #. Instruct the DNS vendor, or the entity that is delegating this zone
    to you, that the authoritative DNS servers for the zone should be:
 
-   * **ns1.nrec.no** (IPv4 address: ``158.37.63.251``, IPv6
-     address: ``2001:700:2:82ff::251``)
-
-   * **ns2.nrec.no** (IPv4 address: ``158.39.77.251``, IPv6
-     address: ``2001:700:2:83ff::251``)
+   +-----------------+-------------------+--------------------------+
+   | DNS Server      | IPv4 address      | IPv6 address             |
+   +=================+===================+==========================+
+   | **ns1.nrec.no** | ``158.37.63.251`` | ``2001:700:2:82ff::251`` |
+   +-----------------+-------------------+--------------------------+
+   | **ns2.nrec.no** | ``158.39.77.251`` | ``2001:700:2:83ff::251`` |
+   +-----------------+-------------------+--------------------------+
 
    You can verify that this change has been made by the vendor, by
-   querying DNS (example)::
+   querying DNS (example):
+
+   .. code-block:: console
 
      $ host -t ns mytestzone.com
      mytestzone.com name server ns1.nrec.no.
@@ -239,14 +241,8 @@ Installing the CLI extension
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to use the command line interface to work with the DNS
-service, you need to install the extension. On RHEL/CentOS and Fedora,
-you can install this extension via the package manager:
-
-* For RHEL7 and CentOS7:
-
-  .. code-block:: console
-
-    # yum install python-designateclient
+service, you need to install the extension. On RHEL/CentOS/etc. and
+Fedora, you can install this extension via the package manager:
 
 * For Fedora and RHEL, Alma Linux, Rocky Linux and CentOS Stream 8.x and later:
 

@@ -1,9 +1,7 @@
-.. |date| date::
-
 Terraform and NREC: Part V - DNS Management
 ==============================================
 
-Last changed: |date|
+Last changed: 2024-09-17
 
 .. contents::
 
@@ -14,17 +12,25 @@ records in Openstack using Terraform_.
 
 The files used in this document can be downloaded:
 
-* :download:`zone.tf <downloads/tf-example5/zone.tf>`
-* :download:`recordset.tf <downloads/tf-example5/recordset.tf>`
+* :download:`static.tf <downloads/tf-example5/static.tf>`
 * :download:`dynamic.tf <downloads/tf-example5/dynamic.tf>`
+
+The examples in this document have been tested and verified
+with **Terraform version 1.9.5**:
+
+.. code-block:: none
+
+  Terraform v1.9.5
+  on linux_amd64
+  + provider registry.terraform.io/terraform-provider-openstack/openstack v2.1.0
 
 
 Creating a DNS zone
 -------------------
 
-It is quite easy to create a DNS zone using Terraform. Consider
-:ref:`zone-tf` below. It is a single resource declaration needed to
-create a zone.
+It is quite easy to create a DNS zone using Terraform. Consider the
+part of :ref:`part5-static-tf` below. It is a single resource
+declaration needed to create a zone.
 
 .. IMPORTANT::
 
@@ -43,11 +49,12 @@ create a zone.
    
 In this example we create a zone "test.com":
 
-.. literalinclude:: downloads/tf-example5/zone.tf
-   :caption: zone.tf
-   :name: zone-tf
+.. literalinclude:: downloads/tf-example5/static.tf
+   :language: terraform
+   :caption: static.tf
+   :name: static-tf
    :linenos:
-   :lines: 16-
+   :lines: 16-21
 
 This is all that is needed. You may add additional parameters, most
 commonly **TTL**, if you need to set a TTL value other than the
@@ -64,13 +71,15 @@ In this example we create 3 records in the "test.com" zone:
    "test01.test.com"
 #. A **CNAME** record (alias) "www" which points to "test01.test.com"
 
-The record resources are specified in the :ref:`recordset-tf` file
+The record resources are specified in the :ref:`part5-static-tf` file
 below:
 
-.. literalinclude:: downloads/tf-example5/recordset.tf
-   :caption: recordset.tf
-   :name: recordset-tf
+.. literalinclude:: downloads/tf-example5/static.tf
+   :language: terraform
+   :caption: static.tf
+   :name: static-tf
    :linenos:
+   :lines: 23-
 
 .. IMPORTANT::
 
@@ -141,6 +150,7 @@ dynamic and flexible way to do this. In order to fetch the needed
 metadata for our zone we use a ``data`` directive in Terraform:
 
 .. literalinclude:: downloads/tf-example5/dynamic.tf
+   :language: terraform
    :caption: dynamic.tf
    :linenos:
    :lines: 16-19,51-54
@@ -150,6 +160,7 @@ creates an arbitrary number of instances. In our example, we create 2
 instances:
 
 .. literalinclude:: downloads/tf-example5/dynamic.tf
+   :language: terraform
    :caption: dynamic.tf
    :linenos:
    :lines: 26-49
@@ -159,6 +170,7 @@ reference the name and IP of the instances. Notice the usage of the
 data variable to reference the zone ID (highlighted):
 
 .. literalinclude:: downloads/tf-example5/dynamic.tf
+   :language: terraform
    :caption: dynamic.tf
    :linenos:
    :lines: 56-
@@ -201,6 +213,7 @@ name servers:
   bgo-test-1.mytestzone.com has address 158.39.74.137
   bgo-test-1.mytestzone.com has IPv6 address 2001:700:2:8300::207e
 
+----------------------------------------------------------------------
 
 Complete example
 ----------------
@@ -208,17 +221,14 @@ Complete example
 A complete listing of the example files used in this document is
 provided below.
 
-.. literalinclude:: downloads/tf-example5/zone.tf
-   :caption: zone.tf
-   :name: part5-zone-tf
-   :linenos:
-
-.. literalinclude:: downloads/tf-example5/recordset.tf
-   :caption: recordset.tf
-   :name: part5-recordset-tf
+.. literalinclude:: downloads/tf-example5/static.tf
+   :language: terraform
+   :caption: static.tf
+   :name: part5-static-tf
    :linenos:
 
 .. literalinclude:: downloads/tf-example5/dynamic.tf
+   :language: terraform
    :caption: dynamic.tf
    :name: part5-dynamic-tf
    :linenos:

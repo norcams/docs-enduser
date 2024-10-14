@@ -3,7 +3,7 @@ variable "region" {
 }
 
 variable "name" {
-  default = "myproject"
+  default = "in9999-h2024"
 }
 
 variable "ssh_public_key" {
@@ -14,11 +14,17 @@ variable "network" {
   default = "IPv6"
 }
 
-variable "volume_size" {
-  default = 20
+# Security group defaults
+variable "allow_icmp_from_v6" {
+  type    = list(string)
+  default = []
 }
 
-# Security group defaults
+variable "allow_icmp_from_v4" {
+  type    = list(string)
+  default = []
+}
+
 variable "allow_ssh_from_v6" {
   type    = list(string)
   default = []
@@ -29,22 +35,12 @@ variable "allow_ssh_from_v4" {
   default = []
 }
 
-variable "allow_http_from_v6" {
+variable "allow_rdp_from_v6" {
   type    = list(string)
   default = []
 }
 
-variable "allow_http_from_v4" {
-  type    = list(string)
-  default = []
-}
-
-variable "allow_mysql_from_v6" {
-  type    = list(string)
-  default = []
-}
-
-variable "allow_mysql_from_v4" {
+variable "allow_rdp_from_v4" {
   type    = list(string)
   default = []
 }
@@ -53,8 +49,7 @@ variable "allow_mysql_from_v4" {
 variable "role_image" {
   type = map(string)
   default = {
-    "web" = "GOLD Alma Linux 9"
-    "db"  = "GOLD Ubuntu 24.04 LTS"
+    "snapshot" = "master-snap-01"
   }
 }
 
@@ -62,8 +57,7 @@ variable "role_image" {
 variable "role_flavor" {
   type = map(string)
   default = {
-    "web" = "m1.small"
-    "db"  = "m1.medium"
+    "flavor" = "d1.medium"
   }
 }
 
@@ -71,7 +65,6 @@ variable "role_flavor" {
 variable "role_count" {
   type = map(string)
   default = {
-    "web" = 4
-    "db"  = 1
+    "students" = 5
   }
 }

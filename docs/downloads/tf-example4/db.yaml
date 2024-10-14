@@ -1,26 +1,27 @@
 ---
-- hosts: os_metadata_my_server_role=database
+- hosts: db
   become: true
 
   tasks:
   - name: Create XFS filesystem on /dev/sdb
-    filesystem:
+    ansible.builtin.filesystem:
       fstype: xfs
       dev: /dev/sdb
 
   - name: Mount volume
-    mount:
+    ansible.builtin.mount:
       path: /var/lib/mysql
       src: /dev/sdb
       fstype: xfs
       state: mounted
 
   - name: Install MariaDB, also starts the service
-    apt:
+    ansible.builtin.apt:
       name: mariadb-server
+      update_cache: yes
 
   - name: Set MariaDB bind-address
-    ini_file:
+    ansible.builtin.ini_file:
       path: /etc/mysql/mariadb.conf.d/90-server.cnf
       section: mysqld
       option: bind-address
@@ -30,18 +31,18 @@
     - restart MariaDB
 
   - name: Make sure MariaDB is running and enabled
-    systemd:
+    ansible.builtin.systemd:
       name: mariadb
       state: started
       enabled: yes
 
   - name: Install PyMySQL, needed by Ansible MySQL module
-    apt:
+    ansible.builtin.apt:
       name: python3-pymysql
 
 
   handlers:
   - name: restart MariaDB
-    systemd:
+    ansible.builtin.systemd:
       name: "mariadb"
       state: restarted

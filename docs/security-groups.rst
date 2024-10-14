@@ -188,42 +188,43 @@ masking using binary numbers is required. This is beyond the scope of
 this document. We will try to explain this more superficially. This is
 an example of a IPv4 blocks using CIDR:
 
-**0.0.0.0/0**
-  All IPv4 addresses in the known universe
-
-**192.168.0.0/16**
-  All 16,384 addresses from ``192.168.0.0`` through ``192.168.255.255``
-
-**192.168.100.0/24**
-  All 256 addresses from ``192.168.100.0`` through ``192.168.100.255``
-
-**192.168.100.64/27**
-  All 32 addresses from ``192.168.100.64`` through ``192.168.100.95``
-
-**192.168.100.200/32**
-  The single IPv4 address ``192.168.100.200``
++------------------------+-----------------------------------------------------------------------+
+| ``0.0.0.0/0``          | All IPv4 addresses in the known universe                              |
++------------------------+-----------------------------------------------------------------------+
+| ``192.168.0.0/16``     | All 16,384 addresses from ``192.168.0.0`` through ``192.168.255.255`` |
++------------------------+-----------------------------------------------------------------------+
+| ``192.168.100.0/24``   | All 256 addresses from ``192.168.100.0`` through ``192.168.100.255``  |
++------------------------+-----------------------------------------------------------------------+
+| ``192.168.100.64/27``  | All 32 addresses from ``192.168.100.64`` through ``192.168.100.95``   |
++------------------------+-----------------------------------------------------------------------+
+| ``192.168.100.200/32`` | The single IPv4 address ``192.168.100.200``                           |
++------------------------+-----------------------------------------------------------------------+
 
 The important thing to understand is that the last number designates
 the size of the block. The larger the number, the smaller the
 block. CIDR notation applies to IPv6 as well:
 
-**::/0**
-  All IPv6 addresses in the known universe
-
-**2001:db8::/32**
-  All addresses from ``2001:db8:0:0:0:0:0:0`` through ``2001:db8:ffff:ffff:ffff:ffff:ffff:ffff``
-
-**2001:db8:aaaa::/56**
-  All addresses from ``2001:db8:a:0:0:0:0:0`` through ``2001:db8:a:00ff:ffff:ffff:ffff:ffff``
-
-**2001:db8:aaaa::/64**
-  All addresses from ``2001:db8:a:0:0:0:0:0`` through ``2001:db8:a:0:ffff:ffff:ffff:ffff``
-
-**2001:db8:aaaa:bbbb:cccc:dddd::/96**
-  All addresses from ``2001:db8:a:b:c:d:0:0`` through ``2001:0db8:a:b:c:d:ffff:ffff``
-
-**2001:db8:a:b:c:d:e:100/128**
-  The single IPv6 address ``2001:db8:a:b:c:d:e:100``
++---------------------------------------+--------------------------------------------------------+
+| ``::/0``                              |All IPv6 addresses in the known universe                |
++---------------------------------------+--------------------------------------------------------+
+| ``2001:db8::/32``                     |All :math:`2^{96}` addresses from                       |
+|                                       |``2001:db8:0:0:0:0:0:0`` through                        |
+|                                       |``2001:db8:ffff:ffff:ffff:ffff:ffff:ffff``              |
++---------------------------------------+--------------------------------------------------------+
+| ``2001:db8:aaaa::/56``                |All :math:`2^{72}` addresses from                       |
+|                                       |``2001:db8:a:0:0:0:0:0`` through                        |
+|                                       |``2001:db8:a:00ff:ffff:ffff:ffff:ffff``                 |
++---------------------------------------+--------------------------------------------------------+
+| ``2001:db8:aaaa::/64``                |All :math:`2^{64}` addresses from                       |
+|                                       |``2001:db8:a:0:0:0:0:0`` through                        |
+|                                       |``2001:db8:a:0:ffff:ffff:ffff:ffff``                    |
++---------------------------------------+--------------------------------------------------------+
+| ``2001:db8:aaaa:bbbb:cccc:dddd::/96`` |All :math:`2^{32}` addresses from                       |
+|                                       |``2001:db8:a:b:c:d:0:0`` through                        |
+|                                       |``2001:0db8:a:b:c:d:ffff:ffff``                         |
++---------------------------------------+--------------------------------------------------------+
+| ``2001:db8:a:b:c:d:e:100/128``        |The single IPv6 address ``2001:db8:a:b:c:d:e:100``      |
++---------------------------------------+--------------------------------------------------------+
 
 The actual number of IPv6 addresses that the ranges contain is so large
 we have omitted them from this list.
@@ -257,7 +258,7 @@ creating security group rules.
 +============================+=============+==============================+
 | ``129.240.0.0/16``         | IPv4        | Entire UiO network           |
 +----------------------------+-------------+------------------------------+
-| ``2001:700:100::/41``      | IPv6        | Entire UiO network           |
+| ``2001:700:100::/48``      | IPv6        | Entire UiO network [#f1]_    |
 +----------------------------+-------------+------------------------------+
 | ``129.177.0.0/16``         | IPv4        | Entire UiB network           |
 +----------------------------+-------------+------------------------------+
@@ -283,23 +284,31 @@ when creating security group rules:
   * IPv6: ``2001:700:200:13::204/128``
 
 IP ranges in NREC may change as more blocks are added. You can list
-the NREC subnets (CIDR addresses) with this command, which is region
-specific. Example for the OSL region:
+the NREC subnets (CIDR addresses) with these commands, that shows the
+subnets in the **IPv6** and **dualStack** networks. This is region
+specific, example is for the OSL region:
 
 .. code-block:: console
 
-  $ openstack subnet list -c Name -c Subnet
+  $ openstack subnet list --network IPv6 -c Name -c Subnet
   +---------------+----------------------+
   | Name          | Subnet               |
   +---------------+----------------------+
-  | public2_IPv4  | 158.39.75.0/24       |
-  | public2_IPv6  | 2001:700:2:8200::/64 |
   | public1_IPv6  | 2001:700:2:8201::/64 |
   | private1_IPv4 | 10.2.0.0/22          |
-  | public1_IPv4  | 158.37.63.0/24       |
-  | public4_IPv4  | 158.39.48.0/24       |
-  | public5_IPv4  | 158.39.200.0/24      |
   +---------------+----------------------+
+  
+  $ openstack subnet list --network dualStack -c Name -c Subnet
+  +--------------+----------------------+
+  | Name         | Subnet               |
+  +--------------+----------------------+
+  | public2_IPv4 | 158.39.75.0/24       |
+  | public6_IPv4 | 158.37.66.0/24       |
+  | public2_IPv6 | 2001:700:2:8200::/64 |
+  | public1_IPv4 | 158.37.63.0/24       |
+  | public4_IPv4 | 158.39.48.0/24       |
+  | public5_IPv4 | 158.39.200.0/24      |
+  +--------------+----------------------+
 
 
 Creating a Security Group
@@ -763,10 +772,12 @@ the server using ``openstack server show``:
 
 .. code-block:: console
 
-  $ openstack server show test
-  ...
-  | security_groups             | name='default'                                           |
-  ...
+  $ openstack server show test -c security_groups
+  +-----------------+----------------+
+  | Field           | Value          |
+  +-----------------+----------------+
+  | security_groups | name='default' |
+  +-----------------+----------------+
 
 In this case only the "default" security group is applied. To apply
 our "SSH and ICMP" security group:
@@ -779,11 +790,13 @@ We can then inspect the server again:
 
 .. code-block:: console
 
-  $ openstack server show test
-  ...
-  | security_groups             | name='default'                                           |
-  |                             | name='SSH and ICMP'                                      |
-  ...
+  $ openstack server show test -c security_groups
+  +-----------------+---------------------+
+  | Field           | Value               |
+  +-----------------+---------------------+
+  | security_groups | name='default'      |
+  |                 | name='SSH and ICMP' |
+  +-----------------+---------------------+
 
 We can also remove a security group from a server. Here, we are
 removing the "SSH and ICMP" security group from the server "test":
@@ -794,3 +807,12 @@ removing the "SSH and ICMP" security group from the server "test":
 
 As with most Openstack commands, we can use either the ID or the name
 when specifying security groups and instances.
+
+
+.. rubric:: Footnotes
+
+.. [#f1] In reality ``2001:700:100::/40`` is the entire address range
+	 delegated to UiO. While ``2001:700:100::/41`` is loosely
+	 defined as the UiO network, the range in use is
+	 ``2001:700:100::/48``. In most cases, ``2001:700:100::/48``
+	 is correct.

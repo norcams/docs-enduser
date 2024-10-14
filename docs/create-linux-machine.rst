@@ -12,6 +12,7 @@ Last changed: |date|
 .. _Using SSH: ssh.html
 .. _Creating a key pair: ssh.html#creating-a-key-pair
 .. _Connecting to the instance: ssh.html#connecting-to-the-instance
+.. _Example remote protocols: console.html#example-remote-protocols
 .. _IPv6 or dualStack: networking.html#ipv6-or-dualstack
 
 
@@ -221,7 +222,9 @@ reachable from the Internet:
 
 You can log in to the virtual machine using the SSH key assigned to
 the virtual machine. For more information, visit `Connecting to the
-instance`_ in the document `Using SSH`_.
+instance`_. For graphical access,
+you need to install required software packages and choose a remote protocol,
+as described in `Example remote protocols`_.
 
 
 Doing the same with CLI

@@ -23,8 +23,8 @@ There are different volume types, including
   the NREC Team. In addition, some projects have access to more specialized storage.
 
 
-Create a volume
----------------
+Create
+------
 
 In the dashboard, select **Volumes** in the **Volumes** tab:
 
@@ -57,7 +57,11 @@ available:
    :align: center
    :alt: Dashboard - Create Volume finished
 
-You can also ``Create Snapshot`` of the volume. The snapshot of the volume
+
+Snapshot
+--------
+
+You can also ``Create Snapshot`` of a volume. The snapshot of the volume
 will be located under **Volumes** tab:
 
 .. image:: images/dashboard-snapshot-01.png
@@ -65,8 +69,8 @@ will be located under **Volumes** tab:
    :alt: Dashboard - Volumes -> Snapshots
 
 
-Attach a volume to a virtual machine
-------------------------------------
+Attach
+------
 
 After creating one or more volumes, you can attach them to virtual
 machines (instances). A volume is a block storage device, and can only
@@ -91,9 +95,91 @@ The volume is now attached to the virtual machine.
    :align: center
    :alt: Dashboard - Attach volume finished
 
+Partition, format and mount
+---------------------------
 
-Detach a volume from a virtual machine
---------------------------------------
+When you have attached the volume, it can be used as a regular block
+device from within the virtual machine. If this is the first time
+using the volume, the corresponding block device in the virtual
+machine needs to be partitioned, formatted and mounted before it can
+be used. Login to the virtual machine with the root user. In the below
+console snippets, the commands are prefixed by # to separate them from
+documentation.
+
+Identify the corresponding block device with ``lsblk``:
+
+.. code-block:: console
+   
+   # lsblk
+   NAME   MAJ:MIN RM    SIZE RO TYPE MOUNTPOINT
+   vda    253:0    0      1G  0 disk
+   `-vda1 253:1    0 1011.9M  0 part /
+   vdb    253:16   0     10G  0 disk
+
+Here, we see that vdb is the block device corresponding to the
+attached volume.  Note that the name of the block device (\*d\*) may
+be different than in this example.
+
+.. Important::
+   Do NOT perform the next step unless this is the very first time you
+   use this volume, and there are NO file systems on it.  If you have
+   any data on it whatsoever, skip the 'mkfs' command! Otherwise you
+   will experience data loss!
+
+
+If there are not any file systems in the block device, you need to
+create one. We will create an EXT4 file system directly on vdb, by
+running ``mkfs.ext4 /dev/vdb``. The file system will then be formatted
+to use the entire vdb block device as one partition. Then we mount the
+formatted block device on ``/persistent01``:
+
+.. code-block:: console
+
+   # mkfs.ext4 /dev/vdb
+   (...output omitted...)
+
+   Create a folder and mount the volume on it:
+   # mkdir /persistent01
+   # mount /dev/vdb /persistent01
+
+   Check the amount of disk space available on the file system:
+   # df -h /persistent01
+   Filesystem                Size      Used Available Use% Mounted on
+   /dev/vdb                  9.8G    150.5M      9.2G   2% /persistent01
+
+Note that in order for the volume to be mounted automatically after a
+reboot, you will have to add an entry to ``/etc/fstab``:
+
+First, unmount the block device using ``umount /persistent01``, and
+verify that it is not mounted with ``df -h``. If the umount command
+returns that the device is busy, you may run umount with ``-f``, or
+alternatively reboot the virtual machine before retrying umount again.
+
+It is recommended to configure fstab to mount the formatted drive by
+UUID: Should the block device change from /dev/vdb to /dev/vdc for
+some reason, for instance, then the mount should still be valid. You
+can find the UUID from ``blkid -s UUID``.
+
+fstab may be set up differently depending on Linux distribution and
+software used to edit fstab. You can check ``man fstab`` to get an
+idea of the recommended configuration. Here, we manually add the
+following line to ``/etc/fstab`` to ensure a mount that is persistent
+through reboots:
+
+.. code-block:: none
+
+   UUID=ca81b002-1037-4698-a0a6-03f6dd4702b0       /persistent01   ext4    defaults        0 2
+
+To apply the mount without a reboot, run ``mount -a`` and verify that
+the device is mounted with ``df -h /persisten01``.
+
+Last, you likely want to read and write to the volume using a non-root
+user. You can change the necessary permissions to r/w to the device
+using sudo from the non-root user $USER: ``sudo chown -R $USER:$USER
+/persistent01/``
+
+Detach
+------
 
 In order to detach a volume from a virtual machine (instance),
 select *Manage Attachments* from the dropdown menu in the **Volumes**:
@@ -117,12 +203,27 @@ confirmation dialog that appears:
 
 The volume is now detached.
 
+Re-type
+-------
 
-Delete a volume
----------------
+It is possible to re-type a volume, for instance
+from **mass-storage-default** to **mass-storage-ssd** type. In that
+case, a re-type operation will move data physically from from spinning
+disks to SSDs. Re-type will not work on a volume that has
+snapshot(s). It should not be necessary to detach a volume before
+re-type. However, some workloads may run into issues because of the
+re-type operation. One such workload is running containers, i.e.,
+Docker, etc. Ensure that there is enough available storage in the
+projects for both types. To re-type, select "Change Volume Type" in
+the drop-down menu for the volume. Under "Migration Policy", select
+"On Demand".
 
-Deleting a volume is pretty straightforward. In the **Volumes**, select the appropriate check boxes for the volumes
-that you want to delete, and click ``Delete Volumes``:
+Delete
+------
+
+Deleting a volume is pretty straightforward. In the **Volumes**,
+select the appropriate check boxes for the volumes that you want to
+delete, and click ``Delete Volumes``:
 
 .. image:: images/dashboard-delete-volume-01.png
    :align: center
@@ -193,7 +294,8 @@ Doing the same with CLI
 
      $ openstack server add volume myserver mytestvolume
 
-   You may also use the IDs of the server and volume instead of the names.
+   You may also use the IDs of the server and volume instead of the
+   names.
 
 #. Confirming that the volume is attached:
 
@@ -206,47 +308,19 @@ Doing the same with CLI
      | a7234dda-a97a-44c3-aa93-9b2952fd2bcf | mytestvolume | in-use |   10 | Attached to myserver on /dev/vdb  |
      +--------------------------------------+--------------+--------+------+-----------------------------------+
 
-#. Mounting the volume:
-
-   When you have attached the volume, it can be used as a regular block device from within the
-   virtual machine (example):
-
-   .. code-block:: console
-
-     If this is the first time using this volume, you need to create a file system on it.
-     Check if there is already an available block device:
-     # lsblk
-     NAME   MAJ:MIN RM    SIZE RO TYPE MOUNTPOINT
-     vda    253:0    0      1G  0 disk
-     `-vda1 253:1    0 1011.9M  0 part /
-     vdb    253:16   0     10G  0 disk
-
-  .. Important::
-     Do NOT perform the next step unless this is the very first time you use this volume, and there are NO filesystem on it.
-     If you have any data on it whatsoever, skip the 'mkfs' commands! Otherwise you will experience data loss!
-
-  .. code-block:: console
-
-     If there are not any file systems, you need to create one:
-     # mkfs.ext4 /dev/vdb
-     [...]
-
-     Create a folder and mount the volume on it:
-     # mkdir /persistent01 && mount /dev/vdb /persistent01
-
-     Check the amount of disk space available on the file system, and start storing data:
-     # df -h /persistent01
-     Filesystem                Size      Used Available Use% Mounted on
-     /dev/vdb                  9.8G    150.5M      9.2G   2% /persistent01
-
-   Note that in order for the volume to be mounted automatically after a reboot,
-   you will have to add an entry to /etc/fstab.
+#. Partition, format and mount: See the relevant above section.
 
 #. Detaching the volume:
 
    .. code-block:: console
 
      $ openstack server remove volume myserver mytestvolume
+
+#. Re-type the volume:
+
+   .. code-block:: console
+
+     $ openstack volume set --type mass-storage-ssd --retype-policy on-demand mytestvolume
 
 #. Deleting the volume:
 
@@ -259,3 +333,4 @@ Doing the same with CLI
    .. code-block:: console
 
      $ openstack volume list
+

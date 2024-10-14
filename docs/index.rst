@@ -19,7 +19,7 @@ Norwegian Research and Education Cloud
    project-application
    login
    dashboard
-   create-virtual-machine
+   create-linux-machine
    create-windows-machine
    ssh
    security-groups
@@ -46,6 +46,7 @@ Norwegian Research and Education Cloud
    terraform-part4
    terraform-part5
    terraform-part6
+   usecase-class-windows
 
 **Other:**
 
@@ -63,6 +64,7 @@ Norwegian Research and Education Cloud
    troubleshoot
    speculativeexecution
    faq
+   usecase-toturials
    changelog
 
 

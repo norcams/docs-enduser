@@ -1,9 +1,7 @@
-.. |date| date::
-
 Terraform and NREC: Part III - Dynamics
 ==========================================
 
-Last changed: |date|
+Last changed: 2024-09-17
 
 .. contents::
 
@@ -20,8 +18,8 @@ The goal with this document is to show how Terraform can be used to
 set up a real environment on NREC. We will create:
 
 * An SSH key pair
-* Four web servers running CentOS
-* One database server running Ubuntu
+* Four web servers running Alma Linux 9
+* One database server running Ubuntu 24.04
 * A volume that is attached to the database server
 * Security groups that allow access to the different servers, as well
   as allowing the web servers to access the database server
@@ -33,6 +31,14 @@ The files used in this document can be downloaded:
 * :download:`variables.tf <downloads/tf-example3/variables.tf>`
 * :download:`terraform.tfvars <downloads/tf-example3/terraform.tfvars>`
 
+The examples in this document have been tested and verified
+with **Terraform version 1.9.5**:
+
+.. code-block:: none
+
+  Terraform v1.9.5
+  on linux_amd64
+  + provider registry.terraform.io/terraform-provider-openstack/openstack v2.1.0
 
 Variables file
 --------------
@@ -45,6 +51,7 @@ overridden. In our example, we are opting for a single file that
 contains all variables, with default values, used throughout the code:
 
 .. literalinclude:: downloads/tf-example3/variables.tf
+   :language: terraform
    :caption: variables.tf
    :linenos:
    :emphasize-lines: 2-3,22-50
@@ -134,6 +141,7 @@ We'll take a look at :ref:`main-tf`. The first part, containing the SSH
 key pair resource, is as before but using variables:
 
 .. literalinclude:: downloads/tf-example3/main.tf
+   :language: terraform
    :caption: main.tf
    :linenos:
    :lines: 16-21
@@ -142,6 +150,7 @@ Next, we'll look at our security groups in :ref:`secgroup-tf`. We now
 have three of them:
 
 .. literalinclude:: downloads/tf-example3/secgroup.tf
+   :language: terraform
    :caption: secgroup.tf
    :linenos:
    :lines: 1-20
@@ -153,6 +162,7 @@ for SSH and ICMP are pretty much the same as before, but using
 variables:
 
 .. literalinclude:: downloads/tf-example3/secgroup.tf
+   :language: terraform
    :caption: secgroup.tf
    :linenos:
    :lines: 22-68
@@ -165,6 +175,7 @@ Let's take a look at the security group rules defined for HTTP and
 MySQL access:
 
 .. literalinclude:: downloads/tf-example3/secgroup.tf
+   :language: terraform
    :caption: secgroup.tf
    :linenos:
    :lines: 70-120
@@ -174,6 +185,7 @@ resource definitions for MySQL access, follows the same logic as that
 of the SSH and ICMP rules. The last two MySQL rules are different:
 
 .. literalinclude:: downloads/tf-example3/secgroup.tf
+   :language: terraform
    :caption: secgroup.tf
    :linenos:
    :lines: 122-
@@ -188,6 +200,7 @@ Openstack. We can allow IP addresses from other security groups
 We'll circle back to :ref:`main-tf`:
 
 .. literalinclude:: downloads/tf-example3/main.tf
+   :language: terraform
    :caption: main.tf
    :linenos:
    :lines: 23-79
@@ -198,6 +211,7 @@ and one for the database server. They use different values defined in
 resource and attach this volume to the database server:
 
 .. literalinclude:: downloads/tf-example3/main.tf
+   :language: terraform
    :caption: main.tf
    :linenos:
    :lines: 81-
@@ -213,6 +227,7 @@ of web servers from 4 to 2, we would change this line in
 :ref:`variables-tf`:
 
 .. literalinclude:: downloads/tf-example3/variables.tf
+   :language: terraform
    :caption: variables.tf
    :linenos:
    :lines: 70-
@@ -232,6 +247,7 @@ Applying this with ``terraform apply`` will then destroy two of the
 web servers. Similarly, if we were to increase the web server count
 from **4** to **5**, Terraform would add a new web server.
 
+----------------------------------------------------------------------
 
 Complete example
 ----------------
@@ -240,16 +256,19 @@ A complete listing of the example files used in this document is
 provided below.
 
 .. literalinclude:: downloads/tf-example3/main.tf
+   :language: terraform
    :caption: main.tf
    :name: main-tf
    :linenos:
 
 .. literalinclude:: downloads/tf-example3/secgroup.tf
+   :language: terraform
    :caption: secgroup.tf
    :name: secgroup-tf
    :linenos:
 
 .. literalinclude:: downloads/tf-example3/variables.tf
+   :language: terraform
    :caption: variables.tf
    :name: variables-tf
    :linenos:
@@ -267,5 +286,6 @@ provided below.
    servers when provisioned:
 
    .. literalinclude:: downloads/tf-example3/alternative-secgroup.tf
+      :language: terraform
       :caption: secgroup alternative
       :linenos:

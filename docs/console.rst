@@ -1,5 +1,7 @@
 .. |date| date::
 
+.. _Lightweight Linux remote desktop environment: usecase-toturials.html#lightweight-linux-remote-desktop-environment
+
 Instance console
 ================
 
@@ -69,11 +71,11 @@ may consider for accessing your instances:
 |                                 |servers are available for many operating systems |
 +---------------------------------+-------------------------------------------------+
 |Remote Desktop Protocol (rdp_)   |RDP is a proprietary protocol from Microsoft,    |
-|                                 |and while clients are available for most systems |
-|                                 |the server is exclusivly Windows based.          |
+|                                 |however, clients are available for most systems. |
+|                                 |For Linux, xrdp is a well-known RDP server       |
 +---------------------------------+-------------------------------------------------+
 
 Please note that all the above-mentioned protocols require you to modify or create
 security groups. In addition, Linux-based cloud images will not have a graphical
 console installed by default. If you want to use a graphical console, you need to
-install the appropriate packages.
+install the appropriate packages. For a full example, see `Lightweight Linux remote desktop environment`_.

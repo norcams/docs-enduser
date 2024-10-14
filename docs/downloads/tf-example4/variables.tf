@@ -18,11 +18,6 @@ variable "volume_size" {
   default = 20
 }
 
-variable "metadata" {
-  type    = list(string)
-  default = []
-}
-
 # Security group defaults
 variable "allow_ssh_from_v6" {
   type    = list(string)
@@ -58,8 +53,8 @@ variable "allow_mysql_from_v4" {
 variable "role_image" {
   type = map(string)
   default = {
-    "web" = "GOLD CentOS 8"
-    "db"  = "GOLD Ubuntu 21.04 LTS"
+    "web" = "GOLD Alma Linux 9"
+    "db"  = "GOLD Ubuntu 24.04 LTS"
   }
 }
 
@@ -78,14 +73,5 @@ variable "role_count" {
   default = {
     "web" = 4
     "db"  = 1
-  }
-}
-
-# Mapping between role and SSH user
-variable "role_ssh_user" {
-  type = map(string)
-  default = {
-    "web" = "centos"
-    "db"  = "ubuntu"
   }
 }

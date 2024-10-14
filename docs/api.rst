@@ -63,18 +63,6 @@ check documentation at OpenStack: `OpenStackClient`_ for more information.
 
       # subscription-manager repos --enable=openstack-16-tools-for-rhel-8-x86_64-rpms
 
-  * For RHEL7 Workstation:
-
-    .. code-block:: console
-
-      # subscription-manager repos --enable=rhel-7-workstation-openstack-14-tools-rpms
-
-  * For RHEL7 Server:
-
-    .. code-block:: console
-
-      # subscription-manager repos --enable=rhel-7-server-openstack-14-tools-rpms
-
   Then, install the CLI tools using yum:
 
   * For RHEL8 and RHEL9:
@@ -82,12 +70,6 @@ check documentation at OpenStack: `OpenStackClient`_ for more information.
     .. code-block:: console
 
       # yum install python3-openstackclient
-
-  * For RHEL7:
-
-    .. code-block:: console
-
-      # yum install python2-openstackclient
 
   In order to use the `DNS service`_ you also need the designate
   client package:
@@ -97,12 +79,6 @@ check documentation at OpenStack: `OpenStackClient`_ for more information.
     .. code-block:: console
 
       # yum install python3-designateclient
-
-  * For RHEL7:
-
-    .. code-block:: console
-
-      # yum install python2-designateclient
 
 
 Using the CLI tools

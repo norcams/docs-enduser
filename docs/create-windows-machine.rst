@@ -75,8 +75,9 @@ keep in mind when considering running Windows in NREC:
   Windows instance.
 
 * If you want to create a snapshot of a Windows instance as a base for
-  new instances, you must run ``sysprep.exe`` in order for any
-  instances launched from the snapshot to work.
+  new instances, you must run ``sysprep.exe`` with specific parameters
+  in order for any instances launched from the snapshot to work correctly.
+  The procedure with the necessary parameters is described on this page.
 
 * The NREC platform supports Windows Server Standard Edition
   only. If you need other variants like the Core Edition, please let
@@ -339,7 +340,7 @@ SSH access). To set the password via SSH, use the following command:
 
 .. code-block:: console
 
-   ssh -l Admin -i <ssh-key> <ip-address> net user Admin <password>
+   $ ssh -l Admin -i <ssh-key> <ip-address> net user Admin <password>
 
 In the command above, replace:
 
@@ -366,9 +367,9 @@ Launch Remote Desktop
 When you have retrieved the password, you are ready to log on. For example, from a linux
 client:
 
-   .. code-block:: console
+.. code-block:: console
 
-     $ xfreerdp /w:1280 /h:1024 /kbd:Norwegian /u:Admin /p:ceq26oGb2xw8RQR3Gcdn /v:158.37.63.197
+  $ xfreerdp /cert:ignore /w:1280 /h:1024 /kbd:Norwegian /u:Admin /p:ceq26oGb2xw8RQR3Gcdn /v:158.37.63.197
 
 This will create a session with a fixed size (the "/w:" and "/h:" options), and Norwegian
 keyboard layout with the user "Admin", which is an account that is automatically created
@@ -384,3 +385,29 @@ create and mount volumes and install software:
 .. image:: images/dashboard-create-windows-13.png
    :align: center
    :alt: Windows desktop
+
+
+Creating a snapshot image
+-------------------------
+
+A Windows instance has specific and necessary steps needed to be taken if you intend to use
+your snapshot as a base image for new instances:
+
+* Before running ``sysprep.exe``, you **must** have restarted the instance
+  at least once after the initial login with the Admin user.
+
+* ``sysprep.exe`` needs elevated privileges. In order to get an elevated
+  shell, start powershell.exe with the "Run as Administrator" option. The
+  procedure will **not** work without elevated privileges.
+
+* To circumvent an IPv6 bug, and to rearm Cloud Init to initialize on the
+  next boot, run ``sysprep.exe`` in the following manner (in the elevated
+  powershell):
+
+  .. code-block:: pwsh-session
+
+    PS C:\Users\Admin> $unattendedXmlPath = "c:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml" ; ipconfig /release6 ; c:\windows\system32\sysprep\Sysprep /generalize /oobe /shutdown /unattend:"$unattendedXmlPath"
+
+If you have connected to your Windows instance over the IPv6 protocol, your connection will
+now be broken. Sysprep should do its job regardless, and after a while the windows instance
+will shutdown. You can then proceed to create your snapshot.

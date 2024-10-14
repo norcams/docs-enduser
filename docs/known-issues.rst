@@ -1,7 +1,48 @@
+.. |Y| unicode:: U+2714
+.. |N| unicode:: U+2716
+.. |W| unicode:: U+26A0
+
 Known Issues
 ============
 
 .. contents::
+
+SSH keys with Windows instances
+-------------------------------
+
+There are certain limitations regarding using various types of SSH
+keys with Windows instances. While all normal SSH keys work while
+simply connecting to an instance, there are limitations to consider if
+you want to use the SSH key to retrieve the Admin password.
+
++-----------------------------+------------+--------------------------+--------------------------+-------------------------------------+
+| Key                         | Connecting | Retrieve password in CLI | Retrieve password in GUI | How to create key                   |
++=============================+============+==========================+==========================+=====================================+
+| ed25519                     | |Y|        | |N|                      | |N|                      | ``ssh-keygen -t ed25519``           |
++-----------------------------+------------+--------------------------+--------------------------+-------------------------------------+
+| ecdsa                       | |Y|        | |N|                      | |N|                      | ``ssh-keygen -t ecdsa``             |
++-----------------------------+------------+--------------------------+--------------------------+-------------------------------------+
+| rsa (regular)               | |Y|        | |N|                      | |N|                      | ``sh-keygen -t rsa -b 4096``        |
++-----------------------------+------------+--------------------------+--------------------------+-------------------------------------+
+| rsa (PEM with passphase)    | |Y|        | |Y|                      | |N|                      | ``sh-keygen -t rsa -b 4096 -m PEM`` |
++-----------------------------+------------+--------------------------+--------------------------+-------------------------------------+
+| rsa (PEM without passphase) | |Y|        | |Y|                      | |Y|                      | ``sh-keygen -t rsa -b 4096 -m PEM`` |
++-----------------------------+------------+--------------------------+--------------------------+-------------------------------------+
+
+We have the following recommendations for SSH keys:
+
+* You should always, if possible, protect your SSH key with a strong
+  passphrase
+
+* **ed25519** is the strongest type overall. Use this if you don't
+  have a reason to use something else (e.g. retrieve Admin password on
+  Windows)
+
+* **ecdsa** is OK, but there is no reason to use this over ed25519
+
+* **RSA** is OK but is getting old. We think that it's probably just a
+  matter of time before RSA becomes obsolete and considered insecure
+
 
 (Jan 2023) New vGPU licenses in OSL
 -----------------------------------

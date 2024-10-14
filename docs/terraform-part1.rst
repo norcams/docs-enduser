@@ -1,9 +1,7 @@
-.. |date| date::
-
 Terraform and NREC: Part I - Basics
 ======================================
 
-Last changed: |date|
+Last changed: 2024-09-17
 
 .. contents::
 
@@ -18,34 +16,29 @@ shows how to use Terraform in its simplest and most basic form.
 The example file can be downloaded here: :download:`basic.tf
 <downloads/tf-example1/basic.tf>`.
 
+The examples in this document have been tested and verified
+with **Terraform version 1.9.5**:
+
+.. code-block:: none
+
+  Terraform v1.9.5
+  on linux_amd64
+  + provider registry.terraform.io/terraform-provider-openstack/openstack v2.1.0
 
 Prerequisites
 -------------
 
 .. _OpenStack CLI tools: api.html
+.. _Install Terraform: https://developer.hashicorp.com/terraform/install?product_intent=terraform
 
-You need to download and install Terraform_ (example):
+You need to download and install Terraform_. Instructions on how to
+install Terraform is provided here:
 
-.. code-block:: console
+* `Install Terraform`_
 
-  $ unzip ~/Downloads/terraform_1.0.2_linux_amd64.zip
-  $ ./terraform --version
-  Terraform v1.0.2
-  on linux_amd64
-
-Install the ``terraform`` binary into ``~/.local/bin`` (e.g. your home
-directory):
-
-.. code-block:: console
-
-  $ mv ./terraform ~/.local/bin/
-
-Usually, this directory should be in your shell path. If
-it isn't, you can add it (for bash):
-
-.. code-block:: console
-
-  $ export PATH=$PATH:~/.local/bin
+Generally we recommend installing via the package manager if
+possible. This option should be available for Linux and MacOS, and
+ensures that updates are easily available.
 
 You also need to have the `OpenStack CLI tools`_ installed.
 
@@ -57,6 +50,7 @@ Here is a Terraform file that works with NREC, in its simplest
 possible form:
 
 .. literalinclude:: downloads/tf-example1/basic.tf
+   :language: terraform
    :caption: basic.tf (minimal)
    :linenos:
    :lines: 1-21,25-
@@ -112,6 +106,7 @@ Having established which key pairs and security groups we wish to use,
 we can add those to our Terraform file:
 
 .. literalinclude:: downloads/tf-example1/basic.tf
+   :language: terraform
    :caption: basic.tf
    :name: basic-tf
    :linenos:
@@ -161,18 +156,14 @@ Next we need to initialise Terraform:
 .. code-block:: console
 
   $ terraform init
-  
   Initializing the backend...
-  
   Initializing provider plugins...
   - Finding latest version of terraform-provider-openstack/openstack...
-  - Installing terraform-provider-openstack/openstack v1.42.0...
-  - Installed terraform-provider-openstack/openstack v1.42.0 (self-signed, key ID 4F80527A391BEFD2)
-  
+  - Installing terraform-provider-openstack/openstack v2.1.0...
+  - Installed terraform-provider-openstack/openstack v2.1.0 (self-signed, key ID 4F80527A391BEFD2)
   Partner and community providers are signed by their developers.
   If you'd like to know more about provider signing, you can read about it here:
   https://www.terraform.io/docs/cli/plugins/signing.html
-  
   Terraform has created a lock file .terraform.lock.hcl to record the provider
   selections it made above. Include this file in your version control repository
   so that Terraform can guarantee to make the same selections by default when
@@ -187,16 +178,17 @@ Next we need to initialise Terraform:
   If you ever set or change modules or backend configuration for Terraform,
   rerun this command to reinitialize your working directory. If you forget, other
   commands will detect it and remind you to do so if necessary.
-
+  
 We can then run ``terraform plan`` to see what actions Terraform will
 perform in a subsequent run:
 
 .. code-block:: console
 
   $ terraform plan
-
-  Terraform used the selected providers to generate the following execution
-  plan. Resource actions are indicated with the following symbols:
+  
+  Terraform used the selected providers to generate the following
+  execution plan. Resource actions are indicated with the following
+  symbols:
     + create
   
   Terraform will perform the following actions:
@@ -208,27 +200,28 @@ perform in a subsequent run:
         + all_metadata        = (known after apply)
         + all_tags            = (known after apply)
         + availability_zone   = (known after apply)
+        + created             = (known after apply)
         + flavor_id           = (known after apply)
         + flavor_name         = "m1.small"
         + force_delete        = false
         + id                  = (known after apply)
         + image_id            = (known after apply)
-        + image_name          = "GOLD CentOS 8"
+        + image_name          = "GOLD Alma Linux 9"
         + key_pair            = "mykey"
         + name                = "test-server"
         + power_state         = "active"
         + region              = (known after apply)
         + security_groups     = [
-            + "SSH and ICMP from login.uio.no",
+            + "ssh_icmp_login.uio.no",
             + "default",
           ]
         + stop_before_destroy = false
+        + updated             = (known after apply)
   
         + network {
             + access_network = false
             + fixed_ip_v4    = (known after apply)
             + fixed_ip_v6    = (known after apply)
-            + floating_ip    = (known after apply)
             + mac            = (known after apply)
             + name           = "IPv6"
             + port           = (known after apply)
@@ -240,8 +233,9 @@ perform in a subsequent run:
   
   ─────────────────────────────────────────────────────────────────────────────
   
-  Note: You didn't use the -out option to save this plan, so Terraform can't
-  guarantee to take exactly these actions if you run "terraform apply" now.
+  Note: You didn't use the -out option to save this plan, so Terraform
+  can't guarantee to take exactly these actions if you run "terraform
+  apply" now.
 
 The next step will be to actually run Terraform:
 
@@ -262,27 +256,28 @@ The next step will be to actually run Terraform:
         + all_metadata        = (known after apply)
         + all_tags            = (known after apply)
         + availability_zone   = (known after apply)
+        + created             = (known after apply)
         + flavor_id           = (known after apply)
         + flavor_name         = "m1.small"
         + force_delete        = false
         + id                  = (known after apply)
         + image_id            = (known after apply)
-        + image_name          = "GOLD CentOS 8"
+        + image_name          = "GOLD Alma Linux 9"
         + key_pair            = "mykey"
         + name                = "test-server"
         + power_state         = "active"
         + region              = (known after apply)
         + security_groups     = [
-            + "SSH and ICMP from login.uio.no",
             + "default",
+            + "ssh_icmp_login.uio.no",
           ]
         + stop_before_destroy = false
+        + updated             = (known after apply)
   
         + network {
             + access_network = false
             + fixed_ip_v4    = (known after apply)
             + fixed_ip_v6    = (known after apply)
-            + floating_ip    = (known after apply)
             + mac            = (known after apply)
             + name           = "IPv6"
             + port           = (known after apply)
@@ -300,12 +295,7 @@ The next step will be to actually run Terraform:
   
   openstack_compute_instance_v2.test-server: Creating...
   openstack_compute_instance_v2.test-server: Still creating... [10s elapsed]
-  openstack_compute_instance_v2.test-server: Still creating... [20s elapsed]
-  openstack_compute_instance_v2.test-server: Still creating... [30s elapsed]
-  openstack_compute_instance_v2.test-server: Still creating... [40s elapsed]
-  openstack_compute_instance_v2.test-server: Still creating... [50s elapsed]
-  openstack_compute_instance_v2.test-server: Still creating... [1m0s elapsed]
-  openstack_compute_instance_v2.test-server: Creation complete after 1m6s [id=ed624da6-fa0d-4fd2-98fd-2635bb605a3a]
+  openstack_compute_instance_v2.test-server: Creation complete after 16s [id=4012ffb2-e63c-4e42-992d-759062755877]
   
   Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
@@ -315,38 +305,35 @@ created:
 .. code-block:: console
 
   $ openstack server list
-  +--------------------------------------+-------------+--------+---------------------------------------+---------------+----------+
-  | ID                                   | Name        | Status | Networks                              | Image         | Flavor   |
-  +--------------------------------------+-------------+--------+---------------------------------------+---------------+----------+
-  | ed624da6-fa0d-4fd2-98fd-2635bb605a3a | test-server | ACTIVE | IPv6=2001:700:2:8201::11b7, 10.2.2.76 | GOLD CentOS 8 | m1.small |
-  +--------------------------------------+-------------+--------+---------------------------------------+---------------+----------+
+  +--------------------------------------+-------------+--------+----------------------------------------+-------------------+----------+
+  | ID                                   | Name        | Status | Networks                               | Image             | Flavor   |
+  +--------------------------------------+-------------+--------+----------------------------------------+-------------------+----------+
+  | 4012ffb2-e63c-4e42-992d-759062755877 | test-server | ACTIVE | IPv6=10.2.0.117, 2001:700:2:8201::10de | GOLD Alma Linux 9 | m1.small |
+  +--------------------------------------+-------------+--------+----------------------------------------+-------------------+----------+
 
 The host should be pingable and accessible via SSH from
 login.uio.no. Let's test that:
 
 .. code-block:: console
 
-  $ ping6 -c3 2001:700:2:8201::11b7
-  PING 2001:700:2:8201::11b7(2001:700:2:8201::11b7) 56 data bytes
-  64 bytes from 2001:700:2:8201::11b7: icmp_seq=1 ttl=57 time=0.607 ms
-  64 bytes from 2001:700:2:8201::11b7: icmp_seq=2 ttl=57 time=0.465 ms
-  64 bytes from 2001:700:2:8201::11b7: icmp_seq=3 ttl=57 time=0.498 ms
+  $ ping -c3 2001:700:2:8201::10de
+  PING 2001:700:2:8201::10de(2001:700:2:8201::10de) 56 data bytes
+  64 bytes from 2001:700:2:8201::10de: icmp_seq=1 ttl=55 time=0.572 ms
+  64 bytes from 2001:700:2:8201::10de: icmp_seq=2 ttl=55 time=0.414 ms
+  64 bytes from 2001:700:2:8201::10de: icmp_seq=3 ttl=55 time=0.455 ms
   
-  --- 2001:700:2:8201::11b7 ping statistics ---
-  3 packets transmitted, 3 received, 0% packet loss, time 2001ms
-  rtt min/avg/max/mdev = 0.465/0.523/0.607/0.063 ms
+  --- 2001:700:2:8201::10de ping statistics ---
+  3 packets transmitted, 3 received, 0% packet loss, time 2051ms
+  rtt min/avg/max/mdev = 0.414/0.480/0.572/0.066 ms
   
-  $ ssh centos@2001:700:2:8201::11b7
-  The authenticity of host '2001:700:2:8201::11b7 (2001:700:2:8201::11b7)' can't be established.
-  ECDSA key fingerprint is SHA256:mfCq19UH3IUu98UdNPee6xe1BaTsdHlNqCMZ9ORCi0g.
-  ECDSA key fingerprint is MD5:60:dd:34:16:c5:43:e7:b6:fe:8c:9d:4e:2d:3e:cc:41.
-  Are you sure you want to continue connecting (yes/no)? yes
-  Warning: Permanently added '2001:700:2:8201::11b7' (ECDSA) to the list of known hosts.
-  Enter passphrase for key '/uio/kant/foo-u1/username/.ssh/id_rsa': 
-  Activate the web console with: systemctl enable --now cockpit.socket
-  
-  Last login: Wed Jun 30 02:10:30 2021 from 158.37.63.253
-  [centos@test-server ~]$ 
+  $ ssh almalinux@2001:700:2:8201::10de
+  The authenticity of host '2001:700:2:8201::10de (2001:700:2:8201::10de)' can't be established.
+  ED25519 key fingerprint is SHA256:aS7m78djSvYgqElbwn4bWDFSCWs+o3vm1DLnmGGDN3Y.
+  This key is not known by any other names
+  Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+  Warning: Permanently added '2001:700:2:8201::10de' (ED25519) to the list of known hosts.
+  Last login: Mon Aug 26 01:32:52 2024 from 158.39.75.247
+  [almalinux@test-server ~]$ 
 
 As stated earlier, Terraform maintains its state in the local
 directory, so we can use Terraform to destroy the resources it has
@@ -355,28 +342,7 @@ previously created:
 .. code-block:: console
 
   $ terraform destroy
-  openstack_compute_instance_v2.test-server: Refreshing state... [id=ed624da6-fa0d-4fd2-98fd-2635bb605a3a]
-  
-  Note: Objects have changed outside of Terraform
-  
-  Terraform detected the following changes made outside of Terraform since the
-  last "terraform apply":
-  
-    # openstack_compute_instance_v2.test-server has been changed
-    ~ resource "openstack_compute_instance_v2" "test-server" {
-          id                  = "ed624da6-fa0d-4fd2-98fd-2635bb605a3a"
-          name                = "test-server"
-        + tags                = []
-          # (15 unchanged attributes hidden)
-  
-          # (1 unchanged block hidden)
-      }
-  
-  Unless you have made equivalent changes to your configuration, or ignored
-  the relevant attributes using ignore_changes, the following plan may include
-  actions to undo or respond to these changes.
-  
-  ────────────────────────────────────────────────────────────────────────────
+  openstack_compute_instance_v2.test-server: Refreshing state... [id=4012ffb2-e63c-4e42-992d-759062755877]
   
   Terraform used the selected providers to generate the following execution
   plan. Resource actions are indicated with the following symbols:
@@ -386,35 +352,38 @@ previously created:
   
     # openstack_compute_instance_v2.test-server will be destroyed
     - resource "openstack_compute_instance_v2" "test-server" {
-        - access_ip_v4        = "10.2.2.76" -> null
-        - access_ip_v6        = "[2001:700:2:8201::11b7]" -> null
+        - access_ip_v4        = "10.2.0.117" -> null
+        - access_ip_v6        = "[2001:700:2:8201::10de]" -> null
         - all_metadata        = {} -> null
         - all_tags            = [] -> null
         - availability_zone   = "osl-default-1" -> null
+        - created             = "2024-09-17 07:17:26 +0000 UTC" -> null
         - flavor_id           = "b128b802-3d12-401d-bf51-878122c0e908" -> null
         - flavor_name         = "m1.small" -> null
         - force_delete        = false -> null
-        - id                  = "ed624da6-fa0d-4fd2-98fd-2635bb605a3a" -> null
-        - image_id            = "9ed0637a-1516-4425-892b-11764de95b35" -> null
-        - image_name          = "GOLD CentOS 8" -> null
+        - id                  = "4012ffb2-e63c-4e42-992d-759062755877" -> null
+        - image_id            = "70cbfbe4-0f7b-4d59-893a-f740537ad5ef" -> null
+        - image_name          = "GOLD Alma Linux 9" -> null
         - key_pair            = "mykey" -> null
         - name                = "test-server" -> null
         - power_state         = "active" -> null
         - region              = "osl" -> null
         - security_groups     = [
-            - "SSH and ICMP from login.uio.no",
             - "default",
+            - "ssh_icmp_login.uio.no",
           ] -> null
         - stop_before_destroy = false -> null
         - tags                = [] -> null
+        - updated             = "2024-09-17 07:17:37 +0000 UTC" -> null
   
         - network {
             - access_network = false -> null
-            - fixed_ip_v4    = "10.2.2.76" -> null
-            - fixed_ip_v6    = "[2001:700:2:8201::11b7]" -> null
-            - mac            = "fa:16:3e:e9:4e:db" -> null
+            - fixed_ip_v4    = "10.2.0.117" -> null
+            - fixed_ip_v6    = "[2001:700:2:8201::10de]" -> null
+            - mac            = "fa:16:3e:e2:2a:c6" -> null
             - name           = "IPv6" -> null
             - uuid           = "62421b56-346d-4794-99b0-fc27fe4e700f" -> null
+              # (1 unchanged attribute hidden)
           }
       }
   
@@ -426,9 +395,9 @@ previously created:
   
     Enter a value: yes
   
-  openstack_compute_instance_v2.test-server: Destroying... [id=ed624da6-fa0d-4fd2-98fd-2635bb605a3a]
-  openstack_compute_instance_v2.test-server: Still destroying... [id=ed624da6-fa0d-4fd2-98fd-2635bb605a3a, 10s elapsed]
-  openstack_compute_instance_v2.test-server: Destruction complete after 11s
+  openstack_compute_instance_v2.test-server: Destroying... [id=4012ffb2-e63c-4e42-992d-759062755877]
+  openstack_compute_instance_v2.test-server: Still destroying... [id=4012ffb2-e63c-4e42-992d-759062755877, 10s elapsed]
+  openstack_compute_instance_v2.test-server: Destruction complete after 10s
   
   Destroy complete! Resources: 1 destroyed.
 
