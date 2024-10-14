@@ -11,4 +11,5 @@ source bin/activate
 pip install -r requirements.txt
 cd docs
 make html
+xdg-open _build/html/index.html &
 ```
