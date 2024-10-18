@@ -308,11 +308,15 @@ directory::
 
   labuser_ssh_keys
 
-The keys are named::
+The keys are named:
 
-  id_ed25519_<instance_name>
+* Private key: ``id_ed25519_<instance_name>``
 
-Example::
+* Public key: ``id_ed25519_<instance_name>.pub``
+
+Example:
+
+.. code-block::
 
   $ ls -l labuser_ssh_keys/
   -rw-------. 1 user group 509 Oct 10 15:06 id_ed25519_in8888-h2024-lab-0
