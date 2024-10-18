@@ -339,7 +339,7 @@ The students will access their lab clone using the SSH key (example):
 .. code-block:: console
 
   $ ssh 2001:700:2:8201::138b -l labuser -i path/to/id_ed25519_in8888-h2024-lab-0
-  Enter passphrase for key 'labuser_ssh_keys/id_ed25519_in8888-h2024-lab-0': 
+  Enter passphrase for key 'path/to/id_ed25519_in8888-h2024-lab-0': 
   [labuser@in8888-h2024-lab-0 ~]$ 
 
 
