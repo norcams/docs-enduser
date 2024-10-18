@@ -177,10 +177,10 @@ students. First, create an empty directory and cd into it, e.g.:
 
 Copy the following files info this directory:
 
-* :download:`main.tf <downloads/usecase01/main.tf>`
-* :download:`secgroup.tf <downloads/usecase01/secgroup.tf>`
-* :download:`variables.tf <downloads/usecase01/variables.tf>`
-* :download:`terraform.tfvars <downloads/usecase01/terraform.tfvars>`
+* :download:`main.tf <downloads/usecase02/main.tf>`
+* :download:`secgroup.tf <downloads/usecase02/secgroup.tf>`
+* :download:`variables.tf <downloads/usecase02/variables.tf>`
+* :download:`terraform.tfvars <downloads/usecase02/terraform.tfvars>`
 
 These files are from `Terraform and NREC\: Part IV - Pairing with
 Ansible`_, but with adjustments for this usecase. Edit these files to
