@@ -282,6 +282,54 @@ and BGO regions):
   |=======================================================================================|
   |    0   N/A  N/A      1104      C   python3                                    2318MiB |
   +---------------------------------------------------------------------------------------+
+After running the shell snippet you may need to reboot the instance.
+
+Checking license status and getting client token
+------------------------------
+This is how you can check the NVIDIA gridd license status
+
+.. code-block:: bash
+
+  ## By running nvidia-smi 
+
+  ## This is an example output if you do not have a license 
+  nvidia-smi  -q | grep -i license
+  vGPU Software Licensed Product
+    License Status                    : Unlicensed
+
+
+  ## This is an example output if you have a license 
+  nvidia-smi  -q | grep -i license
+  vGPU Software Licensed Product
+    License Status   : Licensed (Expiry: 2024-10-19 6:51:17 GMT)
+
+  ## This is another way you can check the status
+  systemctl status nvidia-gridd
+  ## This is an example output (BGO) for a llicsensed product 
+  # Oct 18 07:03:40 vgpu-test nvidia-gridd[2388]: Acquiring license. (Info: lisens88.uib.no; NVIDIA RTX Virtual Workstation)
+  # Oct 18 07:03:42 vgpu-test nvidia-gridd[2388]: License acquired successfully. (Info: lisens88.uib.no, NVIDIA RTX Virtual Workstation; Expiry: 2024-10-19 7:3:42 GMT)
+ 
+  # This is en example output of you are missing the client token
+  # Oct 18 06:55:46 vgpu-test nvidia-gridd[1985]: Unable to fetch the client configuration token file
+
+If you do not have a client token then you can fetch it and restart nvidia-gridd service 
+
+**BGO REGION**
+
+.. code-block:: bash
+
+  ## Get latest NVIDIA GRID client token for BGO
+  cd /tmp
+  curl -O https://download.iaas.uio.no/nrec/nrec-resources/files/nvidia-vgpu/bgo-client-token-latest
+  sudo mv bgo-client-token-latest /etc/nvidia/ClientConfigToken/
+  sudo systemctl status nvidia-gridd 
+  ## You can either wait for the nvidia-gridd service to recognize there now is a (valid) token file or restart the service
+
+  ## If all is okay, then the output could loook something like this 
+  # Oct 18 06:58:26 vgpu88 nvidia-gridd[1985]: NLS initialized
+  # Oct 18 06:58:26 vgpu88 nvidia-gridd[1985]: Acquiring license. (Info: lisens88.uib.no; NVIDIA RTX Virtual Workstation)
+  # Oct 18 06:58:28 vgpu88 nvidia-gridd[1985]: License acquired successfully. (Info: lisens88.uib.no, NVIDIA RTX Virtual Workstation; Expiry: 2024-10-19 6:58:28 GMT
+  
 
 
 Known issues
