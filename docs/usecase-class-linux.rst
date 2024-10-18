@@ -304,7 +304,9 @@ contents:
   in8888-h2024-lab-2,2001:700:2:8201::1485,labuser,sGecTMBp0u11x0.OpEGn
 
 The SSH keys are collected from the instances and placed in this
-directory::
+directory:
+
+.. code-block::
 
   labuser_ssh_keys
 
@@ -316,7 +318,7 @@ The keys are named:
 
 Example:
 
-.. code-block::
+.. code-block:: console
 
   $ ls -l labuser_ssh_keys/
   -rw-------. 1 user group 509 Oct 10 15:06 id_ed25519_in8888-h2024-lab-0
@@ -334,7 +336,7 @@ students along with the pass phrase which is stored in
 
 The students will access their lab clone using the SSH key (example):
 
-.. code-block::
+.. code-block:: console
 
   $ ssh 2001:700:2:8201::138b -l labuser -i path/to/id_ed25519_in8888-h2024-lab-0
   Enter passphrase for key 'labuser_ssh_keys/id_ed25519_in8888-h2024-lab-0': 
