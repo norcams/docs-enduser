@@ -39,7 +39,7 @@ variable "allow_ssh_from_v4" {
 variable "role_image" {
   type = map(string)
   default = {
-    "snapshot" = "master-snap-02"
+    "snapshot" = "master-snap-01"
   }
 }
 
