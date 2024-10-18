@@ -1,4 +1,4 @@
 plugin: cloud.terraform.terraform_provider
-project_path: /home/trondham/terraform/linux
+project_path: /path/to/project
 # Terraform binary (available in the $PATH) or full path to the binary.
 binary_path: terraform
