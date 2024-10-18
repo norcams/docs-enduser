@@ -332,6 +332,15 @@ The SSH private/public key pair can be distributed to the individual
 students along with the pass phrase which is stored in
 ``labusers.csv``.
 
+The students will access their lab clone using the SSH key (example):
+
+.. code-block::
+
+  $ ssh 2001:700:2:8201::138b -l labuser -i path/to/id_ed25519_in8888-h2024-lab-0
+  Enter passphrase for key 'labuser_ssh_keys/id_ed25519_in8888-h2024-lab-0': 
+  [labuser@in8888-h2024-lab-0 ~]$ 
+
+
 
 Adding or removing instances
 ----------------------------
@@ -351,7 +360,7 @@ Then run::
   terraform plan
   terraform apply
 
-Create users as before with::
+Create users and SSH keys as before with::
   
   ansible-playbook -i terraform.yaml add-labuser.yaml
 
