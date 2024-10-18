@@ -55,13 +55,13 @@ check documentation at OpenStack: `OpenStackClient`_ for more information.
 
     .. code-block:: console
 
-      # subscription-manager repos --enable=openstack-17-tools-for-rhel-9-x86_64-rpms
+      # subscription-manager repos --enable=rhoso-tools-18-for-rhel-9-x86_64-rpms
 
   * For RHEL8:
 
     .. code-block:: console
 
-      # subscription-manager repos --enable=openstack-16-tools-for-rhel-8-x86_64-rpms
+      # subscription-manager repos --enable=openstack-17.1-tools-for-rhel-8-x86_64-rpms
 
   Then, install the CLI tools using yum:
 
