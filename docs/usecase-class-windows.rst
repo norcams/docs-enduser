@@ -1,4 +1,4 @@
-Usecase: CS Course with individual Windows instances for students
+USECASE: CS Course with individual Windows instances for students
 =================================================================
 
 Last changed: 2024-09-24
