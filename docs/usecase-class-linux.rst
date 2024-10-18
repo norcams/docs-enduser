@@ -144,22 +144,22 @@ Shut down the master instance:
 
 Proceed when the instance is properly shut down:
 
-   .. code-block:: console
+.. code-block:: console
 
-     $ openstack server show in8888-master -c status -f value
-     SHUTOFF
+  $ openstack server show in8888-master -c status -f value
+  SHUTOFF
 
-#. Make a snapshot of the instance while it is shut off
+Make a snapshot of the instance while it is shut off
 
-   .. image:: images/usecase01-master-snapshot1.png
-     :align: center
-     :alt: Master instance snapshot (1)
+.. image:: images/usecase01-master-snapshot1.png
+   :align: center
+   :alt: Master instance snapshot (1)
 
-   We name the snapshot «master-snap-01»:
+We name the snapshot «master-snap-01»:
 
-   .. image:: images/usecase01-master-snapshot2.png
-     :align: center
-     :alt: Master instance snapshot (2)
+.. image:: images/usecase01-master-snapshot2.png
+   :align: center
+   :alt: Master instance snapshot (2)
 
 We are now ready to proceed with creating student instances.
 
