@@ -73,9 +73,9 @@ Step by step example
 
    .. code-block:: console
 
-     $ ssh-keygen -t ed25519 -a 100 -f ~/.ssh/id_ed25519_in18888
+     $ ssh-keygen -t ed25519 -a 100 -f ~/.ssh/id_ed25519_in8888
 
-#. Import the public key ``~/.ssh/id_ed25519_in18888.pub`` into
+#. Import the public key ``~/.ssh/id_ed25519_in8888.pub`` into
    openstack
 
 #. Create a Linux instance. In this demo, we have chosen:
@@ -85,7 +85,7 @@ Step by step example
    - Flavor: ``m1.small``
    - Network: ``IPv6``
    - Security Groups: ``default`` and others
-   - Key Pair: ``id_ed25519_in18888`` (created above)
+   - Key Pair: ``id_ed25519_in8888`` (created above)
 
    You should add security groups that allow SSH from your current IP
    address.
@@ -101,7 +101,7 @@ Step by step example
 
    .. code-block:: console
 
-     $ ssh 2001:700:2:8201::10ac -l almalinux
+     $ ssh 2001:700:2:8201::10ac -l almalinux -i ~/.ssh/id_ed25519_in8888
      Last login: Mon Sep 30 01:33:18 2024 from 158.39.75.247
      [almalinux@in8888-master ~]$
 
