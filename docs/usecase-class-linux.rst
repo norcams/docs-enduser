@@ -1,7 +1,7 @@
-USECASE: CS Course with individual Linux instances for students
-===============================================================
+Usecase: CS Course with individual student instances (Linux)
+============================================================
 
-Last changed: 2024-09-24
+Last changed: 2024-10-18
 
 .. contents::
 
