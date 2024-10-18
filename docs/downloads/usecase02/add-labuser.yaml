@@ -1,0 +1,113 @@
+- hosts: "{{ myhosts | default('all') }}"
+  gather_facts: no
+
+  vars:
+    csvfile: "{{ playbook_dir }}/labusers.csv"
+    username: "labuser"
+    ssh_dir: "{{ playbook_dir }}/labuser_ssh_keys"
+
+  tasks:
+    - name: Create random but idempotent password
+      ansible.builtin.set_fact:
+        password: "{{ lookup('ansible.builtin.password', '/dev/null',
+                              seed=inventory_hostname+ansible_host,
+                              chars=['ascii_letters', 'digits', '().@%!-_']) }}"
+
+    - name: Ensure lab user is present
+      become: true
+      ansible.builtin.user:
+        name: "{{ username }}"
+        comment: "Labuser for {{ inventory_hostname }}"
+        create_home: true
+        generate_ssh_key: true
+        ssh_key_type: ed25519
+        ssh_key_passphrase: "{{ password }}"
+        ssh_key_file: ".ssh/id_ed25519"
+      register: labuser
+
+    - name: Give labuser general sudo access
+      become: true
+      community.general.sudoers:
+        name: 10-labuser
+        state: present
+        user: labuser
+        runas: root
+        commands: ALL
+        nopassword: true
+
+    - name: Create directory to store ssh keys
+      ansible.builtin.file:
+        path: "{{ ssh_dir }}"
+        state: directory
+        mode: '0700'
+      delegate_to: localhost
+      run_once: true
+
+    - name: Copy private ssh keys to localhost
+      become: true
+      ansible.builtin.fetch:
+        src: /home/labuser/.ssh/id_ed25519
+        dest: "{{ ssh_dir }}/id_ed25519_{{ inventory_hostname }}"
+        flat: yes
+
+    - name: Protect private keys
+      ansible.builtin.file:
+        path: "{{ ssh_dir }}/id_ed25519_{{ inventory_hostname }}"
+        mode: '0600'
+      delegate_to: localhost
+
+    - name: Copy public ssh keys to localhost
+      become: true
+      ansible.builtin.fetch:
+        src: /home/labuser/.ssh/id_ed25519.pub
+        dest: "{{ ssh_dir }}/id_ed25519_{{ inventory_hostname }}.pub"
+        flat: yes
+
+    - name: Create authorized_keys from file
+      become: true
+      ansible.posix.authorized_key:
+        user: labuser
+        state: present
+        key: "{{ lookup('file', '{{ ssh_dir }}/id_ed25519_{{ inventory_hostname }}.pub') }}"
+
+    - name: Print credentials if new/changed
+      ansible.builtin.debug:
+        msg: "NEW credential: {{ username }}:{{ password }}"
+      when: labuser.changed
+
+    - name: Create temporary directory
+      ansible.builtin.tempfile:
+        state: directory
+      register: tmpdir
+      delegate_to: localhost
+      run_once: true
+
+    - name: Create CSV header
+      ansible.builtin.lineinfile:
+        line: "HOST,IPADDR,USERNAME,SSH_PASSPHRASE"
+        path: "{{ tmpdir.path }}/000.csv"
+        create: yes
+      delegate_to: localhost
+      run_once: true
+
+    - name: Save credentials in individual files
+      ansible.builtin.lineinfile:
+        line: "{{ inventory_hostname }},{{ ansible_host }},{{ username }},{{ password }}"
+        path: "{{ tmpdir.path }}/{{ inventory_hostname }}.csv"
+        create: yes
+      delegate_to: localhost
+
+    - name: Assemble CSV file from fragments
+      ansible.builtin.assemble:
+        src: "{{ tmpdir.path }}"
+        dest: "{{ csvfile }}"
+      delegate_to: localhost
+      run_once: true
+
+    - name: Remove temporary dir
+      ansible.builtin.file:
+        path: "{{ tmpdir.path }}"
+        state: absent
+      when: tmpdir.path is defined
+      delegate_to: localhost
+      run_once: true
