@@ -339,7 +339,7 @@ the number in ``variables.tf``:
    :language: terraform
    :caption: variables.tf
    :linenos:
-   :lines: 64-70
+   :lines: 54-60
    :emphasize-lines: 5
 
 Then run::
