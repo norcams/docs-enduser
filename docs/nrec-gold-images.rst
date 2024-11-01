@@ -29,8 +29,8 @@ GOLD image                     Family   Default user name     Boot FW  End of Li
 **CentOS Stream 9**            RedHat   ``cloud-user`` [#f2]_ BIOS     *unknown*            Upstream RHEL [#f1]_
 **Debian 11**                  Debian   ``debian``            UEFI     June, 2026           "Bullseye" release
 **Debian 12**                  Debian   ``debian``            UEFI     June, 2028           "Bookworm" release
-**Fedora 39**                  RedHat   ``fedora``            UEFI     Dec, 2024
 **Fedora 40**                  RedHat   ``fedora``            UEFI     May, 2025
+**Fedora 41**                  RedHat   ``fedora``            UEFI     Dec, 2025
 **UiO Managed RHEL 8**         RedHat   ``cloud-user``        BIOS     May, 2029            UiO projects only
 **UiO Managed RHEL 9**         RedHat   ``cloud-user``        UEFI     May, 2032            UiO projects only
 **Rocky Linux 8**              RedHat   ``rocky``             BIOS     May, 2029            Downstream RHEL [#f1]_
@@ -86,6 +86,7 @@ GOLD image                     Family   Default user name  Boot FW  End of Life 
 |ss| Fedora 36 |se|            RedHat   ``fedora``         BIOS     June, 2023
 |ss| Fedora 37 |se|            RedHat   ``fedora``         UEFI     December, 2023
 |ss| Fedora 38 |se|            RedHat   ``fedora``         UEFI     May, 2024
+|ss| Fedora 39 |se|            RedHat   ``fedora``         UEFI     Dec, 2024
 |ss| Ubuntu 18.04 LTS |se|     Debian   ``ubuntu``         BIOS     April, 2023
 |ss| Ubuntu 21.04 |se|         Debian   ``ubuntu``         BIOS     Dec, 2021
 |ss| Ubuntu 21.10 |se|         Debian   ``ubuntu``         BIOS     July, 2022
