@@ -11,7 +11,6 @@ Last changed: 2024-05-02
    and software. After this upgrade, it will be necessary to update
    the drivers in running instances. See `Upgrading the instance
    drivers`_ for how to upgrade the driver.
-   
 
 .. WARNING::
   This document is a work in progress. More information to come.
@@ -21,6 +20,7 @@ Last changed: 2024-05-02
 .. _apply for an vGPU project: https://request.nrec.no/
 .. _support page: support.html
 .. _contact support: support.html
+.. _NVIDIA Container Toolkit: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
 
 This document describes the use of Virtual GPU accelerated instances in NREC.
 
@@ -224,6 +224,122 @@ Finally run some provided demo applications to verify the system.
 
 The commands should both produce output showing it find a GPU device.
 
+Leverage vGPU support for containers
+------------------------------
+
+In order to leverage vGPU for containers, you need to install the `NVIDIA Container Toolkit`_.
+The NVIDIA Container Toolkit allows users to build and run GPU accelerated containers.
+The toolkit includes a container runtime library and utilities to automatically configure containers to leverage NVIDIA GPUs.
+
+Install with Apt
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Configure the production repository:
+
+.. code-block:: console
+
+   $ curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+     && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+     sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+     sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+
+2. Update the packages list from the repository:
+
+.. code-block:: console
+
+   $ sudo apt-get update
+
+3. Install the NVIDIA Container Toolkit packages:
+
+.. code-block:: console
+
+   $ sudo apt-get install -y nvidia-container-toolkit
+
+Install with Yum or Dnf
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Configure the production repository:
+
+.. code-block:: console
+
+   $ curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo | \
+     sudo tee /etc/yum.repos.d/nvidia-container-toolkit.repo
+
+2. Install the NVIDIA Container Toolkit packages:
+
+.. code-block:: console
+
+   $ sudo dnf install -y nvidia-container-toolkit
+
+Configure Docker to use Nvidia driver
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Configure the container runtime by using the nvidia-ctk command, and then restart the Docker daemon:
+
+.. code-block:: console
+
+   $ sudo nvidia-ctk runtime configure --runtime=docker
+   $ sudo systemctl restart docker
+
+**Rootless mode:**
+
+To configure the container runtime for Docker running in Rootless mode, follow these steps:
+
+1. Configure the container runtime by using the nvidia-ctk command:
+
+.. code-block:: console
+
+   $ nvidia-ctk runtime configure --runtime=docker --config=$HOME/.config/docker/daemon.json
+
+2. Restart the Rootless Docker daemon:
+
+.. code-block:: console
+
+  $ systemctl --user restart docker
+
+3. Configure /etc/nvidia-container-runtime/config.toml by using the sudo nvidia-ctk command:
+
+.. code-block:: console
+
+   $ sudo nvidia-ctk config --set nvidia-container-cli.no-cgroups --in-place
+
+Running a Sample Workload with Docker and vGPU
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+After you install and configure the toolkit and install an NVIDIA GPU Driver, you can verify your installation by running a sample workload.
+
+* Run a sample CUDA container:
+
+.. code-block:: console
+
+   $ sudo docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
+
+Your output should look similar to the following:
+
+
+.. code-block:: console
+
+   +---------------------------------------------------------------------------------------+
+   | NVIDIA-SMI 535.216.01             Driver Version: 535.216.01   CUDA Version: 12.2     |
+   |-----------------------------------------+----------------------+----------------------+
+   | GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+   | Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+   |                                         |                      |               MIG M. |
+   |=========================================+======================+======================|
+   |   0  GRID P40-12Q                   On  | 00000000:05:00.0 Off |                  N/A |
+   | N/A   N/A    P8              N/A /  N/A |    388MiB / 12288MiB |      0%      Default |
+   |                                         |                      |             Disabled |
+   +-----------------------------------------+----------------------+----------------------+
+
+   +---------------------------------------------------------------------------------------+
+   | Processes:                                                                            |
+   |  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+   |        ID   ID                                                             Usage      |
+   |=======================================================================================|
+   |  No running processes found                                                           |
+   +---------------------------------------------------------------------------------------+
+
+
 Upgrading the instance drivers
 ------------------------------
 
@@ -274,7 +390,7 @@ and BGO regions):
   | N/A   N/A    P8              N/A /  N/A |   2318MiB / 12288MiB |      0%      Default |
   |                                         |                      |             Disabled |
   +-----------------------------------------+----------------------+----------------------+
-                                                                                           
+
   +---------------------------------------------------------------------------------------+
   | Processes:                                                                            |
   |  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
@@ -290,29 +406,29 @@ This is how you can check the NVIDIA gridd license status
 
 .. code-block:: bash
 
-  ## By running nvidia-smi 
+  ## By running nvidia-smi
 
-  ## This is an example output if you do not have a license 
+  ## This is an example output if you do not have a license
   nvidia-smi  -q | grep -i license
   vGPU Software Licensed Product
     License Status                    : Unlicensed
 
 
-  ## This is an example output if you have a license 
+  ## This is an example output if you have a license
   nvidia-smi  -q | grep -i license
   vGPU Software Licensed Product
     License Status   : Licensed (Expiry: 2024-10-19 6:51:17 GMT)
 
   ## This is another way you can check the status
   systemctl status nvidia-gridd
-  ## This is an example output (BGO) for a llicsensed product 
+  ## This is an example output (BGO) for a llicsensed product
   # Oct 18 07:03:40 vgpu-test nvidia-gridd[2388]: Acquiring license. (Info: lisens88.uib.no; NVIDIA RTX Virtual Workstation)
   # Oct 18 07:03:42 vgpu-test nvidia-gridd[2388]: License acquired successfully. (Info: lisens88.uib.no, NVIDIA RTX Virtual Workstation; Expiry: 2024-10-19 7:3:42 GMT)
- 
+
   # This is en example output of you are missing the client token
   # Oct 18 06:55:46 vgpu-test nvidia-gridd[1985]: Unable to fetch the client configuration token file
 
-If you do not have a client token then you can fetch it and restart nvidia-gridd service 
+If you do not have a client token then you can fetch it and restart nvidia-gridd service
 
 **BGO REGION**
 
@@ -322,14 +438,14 @@ If you do not have a client token then you can fetch it and restart nvidia-gridd
   cd /tmp
   curl -O https://download.iaas.uio.no/nrec/nrec-resources/files/nvidia-vgpu/bgo-client-token-latest
   sudo mv bgo-client-token-latest /etc/nvidia/ClientConfigToken/
-  sudo systemctl status nvidia-gridd 
+  sudo systemctl status nvidia-gridd
   ## You can either wait for the nvidia-gridd service to recognize there now is a (valid) token file or restart the service
 
-  ## If all is okay, then the output could loook something like this 
+  ## If all is okay, then the output could loook something like this
   # Oct 18 06:58:26 vgpu88 nvidia-gridd[1985]: NLS initialized
   # Oct 18 06:58:26 vgpu88 nvidia-gridd[1985]: Acquiring license. (Info: lisens88.uib.no; NVIDIA RTX Virtual Workstation)
   # Oct 18 06:58:28 vgpu88 nvidia-gridd[1985]: License acquired successfully. (Info: lisens88.uib.no, NVIDIA RTX Virtual Workstation; Expiry: 2024-10-19 6:58:28 GMT
-  
+
 
 
 Known issues
