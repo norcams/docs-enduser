@@ -16,7 +16,7 @@ Last changed: |date|
 .. #    higher quotas in order to run Windows. Ask for access to the "win" flavor.
 .. # 
 .. # .. TIP::
-.. #    Starting with Windows Server 2019, an SSH server is automatically configured
+.. #    An SSH server is automatically configured
 .. #    and started in your Windows Instance. It takes some time from the instance
 .. #    appears configured until it is actually finished. Be patient if you want
 .. #    to start an SSH session to your Windows instance.
@@ -68,11 +68,10 @@ keep in mind when considering running Windows in NREC:
   will need another project with higher quotas in order to run
   Windows. Ask for access to the **d1** or **win** flavors.
 
-* Starting with Windows Server 2019, an SSH server is automatically
-  configured and started in your Windows Instance. It takes some time
-  from the instance appears configured until it is actually
-  finished. Be patient if you want to start an SSH session to your
-  Windows instance.
+* An SSH server is automatically configured and started in your Windows
+  Instance. It takes some time from the instance appears configured until
+  it is actually finished. Be patient if you want to start an SSH session
+  to your Windows instance.
 
 * If you want to create a snapshot of a Windows instance as a base for
   new instances, you must run ``sysprep.exe`` with specific parameters
@@ -87,7 +86,7 @@ keep in mind when considering running Windows in NREC:
 .. # Supported Windows versions
 .. # --------------------------
 .. # 
-.. # The NREC platform supports Windows Server 2019 Standard Edition only. If you
+.. # The NREC platform supports Windows Server Standard Edition only. If you
 .. # need other variants like the Core Edition, please let us know.
 
 
@@ -95,10 +94,9 @@ Setting up a keypair
 --------------------
 
 For Windows instances SSH keys may be used to retreive a random generated
-password, or, for Windows Server 2019 or newer, to create an SSH session
-to the instance. Either way you will need an SSH keypair to go with your
-Windows instance. Refer to :doc:`create-virtual-machine` for more information
-on how to create an SSH keypair.
+password or to create an SSH session to the instance. Either way you will need
+an SSH keypair to go with your Windows instance. Refer to :doc:`create-virtual-machine`
+for more information on how to create an SSH keypair.
 
 
 Create a virtual machine
@@ -206,11 +204,11 @@ Allowing RDP access
 .. _Working with Security Groups: security-groups.html
 
 .. TIP::
-   Starting with Windows Server 2019, an SSH server is automatically configured
-   and started in your Windows Instance. You will have to create a security group
-   that opens for port 22 in order to access the service. Unlike on linux instances,
-   the username is "Admin". When you ssh into your Windows instance, you will
-   start in a CMD shell. If you want powershell instead, just type "powershell"
+   An SSH server is automatically configured and started in your Windows Instance.
+   You will have to create a security group that opens for port 22 in order to
+   access the service. Unlike on linux instances, the username is "Admin". When
+   you ssh into your Windows instance, you will start in a CMD shell. If you want
+   powershell instead, just type "powershell"
 
 While we wait for our virtual machine to be created and configured, we can
 create a security group for the Remote Desktop protocol in order to grant
@@ -238,9 +236,8 @@ for more information on this important topic.
 .. IMPORTANT::
    Unlike linux instances, the Windows instances have both an internal "Windows
    Firewall" and external security groups. By default the internal "Windows Firewall"
-   has the ports for SSH (on Windows Server 2019 and later) open, but you still
-   have to create the proper security groups and associate them with the instance in order
-   to consume the services.
+   has the ports for SSH open, but you still have to create the proper security groups
+   and associate them with the instance in order to consume the services.
 
 .. WARNING::
    In the wake of recent security conserns about the RDP protocol we have been
