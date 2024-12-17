@@ -80,7 +80,7 @@ keep in mind when considering running Windows in NREC:
 
 * The NREC platform supports Windows Server Standard Edition
   only. If you need other variants like the Core Edition, please let
-  us know. For supported windows versions, see :doc:`gold-image`
+  us know. For supported windows versions, see :doc:`nrec-gold-images`
 
 .. # 
 .. # Supported Windows versions
