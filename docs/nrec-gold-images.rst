@@ -38,8 +38,8 @@ GOLD image                     Family   Default user name     Boot FW  End of Li
 **Ubuntu 20.04 LTS**           Debian   ``ubuntu``            BIOS     April, 2025          "Focal Fossa"
 **Ubuntu 22.04 LTS**           Debian   ``ubuntu``            UEFI     April, 2027          "Jammy Jellyfish"
 **Ubuntu 24.04 LTS**           Debian   ``ubuntu``            UEFI     April, 2029          "Noble Numbat"
-**Windows Server 2019 Std**    Windows  ``Admin``             UEFI     January, 2029        Licensed in BGO only
 **Windows Server 2022 Std**    Windows  ``Admin``             UEFI     October, 2031        Licensed in BGO only
+**Windows Server 2025 Std**    Windows  ``Admin``             UEFI     October, 2034        Licensed in BGO only
 ============================== ======== ===================== ======== ==================== =======================
 
 In addition, the following GOLD images are available to GPU
@@ -75,25 +75,26 @@ Retired GOLD images
 
 The following GOLD images are retired and no longer available:
 
-============================== ======== ================== ======== ==================== =======================
-GOLD image                     Family   Default user name  Boot FW  End of Life          Notes
-============================== ======== ================== ======== ==================== =======================
-|ss| CentOS 7 |se|             RedHat   ``centos``         BIOS     May, 2024            Downstream RHEL [#f1]_
-|ss| CentOS 8 |se|             RedHat   ``centos``         BIOS     Dec, 2021            Downstream RHEL [#f1]_
-|ss| CentOS Stream 8 |se|      RedHat   ``centos`` [#f3]_  BIOS     May, 2024            Upstream RHEL [#f1]_
-|ss| Fedora 34 |se|            RedHat   ``fedora``         BIOS     May, 2022
-|ss| Fedora 35 |se|            RedHat   ``fedora``         BIOS     November, 2022
-|ss| Fedora 36 |se|            RedHat   ``fedora``         BIOS     June, 2023
-|ss| Fedora 37 |se|            RedHat   ``fedora``         UEFI     December, 2023
-|ss| Fedora 38 |se|            RedHat   ``fedora``         UEFI     May, 2024
-|ss| Fedora 39 |se|            RedHat   ``fedora``         UEFI     Dec, 2024
-|ss| Ubuntu 18.04 LTS |se|     Debian   ``ubuntu``         BIOS     April, 2023
-|ss| Ubuntu 21.04 |se|         Debian   ``ubuntu``         BIOS     Dec, 2021
-|ss| Ubuntu 21.10 |se|         Debian   ``ubuntu``         BIOS     July, 2022
-|ss| Debian 9 |se|             Debian   ``debian``         BIOS     June, 2022           "Stretch" release
-|ss| Debian 10 |se|            Debian   ``debian``         BIOS     June, 2024           "Buster" release
-|ss| UiO Managed RHEL 7 |se|   RedHat   ``cloud-user``     BIOS     June, 2024           UiO projects only
-============================== ======== ================== ======== ==================== =======================
+================================= ======== ================== ======== ==================== =======================
+GOLD image                        Family   Default user name  Boot FW  End of Life          Notes
+================================= ======== ================== ======== ==================== =======================
+|ss| CentOS 7 |se|                RedHat   ``centos``         BIOS     May, 2024            Downstream RHEL [#f1]_
+|ss| CentOS 8 |se|                RedHat   ``centos``         BIOS     Dec, 2021            Downstream RHEL [#f1]_
+|ss| CentOS Stream 8 |se|         RedHat   ``centos`` [#f3]_  BIOS     May, 2024            Upstream RHEL [#f1]_
+|ss| Fedora 34 |se|               RedHat   ``fedora``         BIOS     May, 2022
+|ss| Fedora 35 |se|               RedHat   ``fedora``         BIOS     November, 2022
+|ss| Fedora 36 |se|               RedHat   ``fedora``         BIOS     June, 2023
+|ss| Fedora 37 |se|               RedHat   ``fedora``         UEFI     December, 2023
+|ss| Fedora 38 |se|               RedHat   ``fedora``         UEFI     May, 2024
+|ss| Fedora 39 |se|               RedHat   ``fedora``         UEFI     Dec, 2024
+|ss| Ubuntu 18.04 LTS |se|        Debian   ``ubuntu``         BIOS     April, 2023
+|ss| Ubuntu 21.04 |se|            Debian   ``ubuntu``         BIOS     Dec, 2021
+|ss| Ubuntu 21.10 |se|            Debian   ``ubuntu``         BIOS     July, 2022
+|ss| Debian 9 |se|                Debian   ``debian``         BIOS     June, 2022           "Stretch" release
+|ss| Debian 10 |se|               Debian   ``debian``         BIOS     June, 2024           "Buster" release
+|ss| UiO Managed RHEL 7 |se|      RedHat   ``cloud-user``     BIOS     June, 2024           UiO projects only
+|ss| Windows Server 2019 Std |se| Windows  ``Admin``          UEFI     January, 2029        Licensed in BGO only
+================================= ======== ================== ======== ==================== =======================
 
 
 UiO Managed
