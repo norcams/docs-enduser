@@ -26,8 +26,8 @@ GOLD image                     Family   Default user name     Boot FW  End of Li
 ============================== ======== ===================== ======== ==================== =======================
 **Alma Linux 8**               RedHat   ``almalinux``         UEFI     May, 2029            Downstream RHEL [#f1]_
 **Alma Linux 9**               RedHat   ``almalinux``         UEFI     May, 2032            Downstream RHEL [#f1]_
-**CentOS Stream 9**            RedHat   ``cloud-user`` [#f2]_ BIOS     May, 2027            Upstream RHEL [#f1]_
-**CentOS Stream 10**           RedHat   ``cloud-user``        UEFI     Expected 2030        Upstream RHEL [#f1]_
+**CentOS Stream 9**            RedHat   ``cloud-user`` [#f3]_ BIOS     May, 2027            Upstream RHEL [#f2]_
+**CentOS Stream 10**           RedHat   ``cloud-user``        UEFI     Expected 2030        Upstream RHEL [#f2]_
 **Debian 11**                  Debian   ``debian``            UEFI     June, 2026           "Bullseye" release
 **Debian 12**                  Debian   ``debian``            UEFI     June, 2028           "Bookworm" release
 **Fedora 40**                  RedHat   ``fedora``            UEFI     May, 2025
@@ -58,15 +58,17 @@ GOLD image                     Family   Default user name     Boot FW  End of Li
 
 .. [#f1] "Downstream RHEL" means that this is a binary compatible
    distribution built from Red Hat Enterprise Linux (RHEL), trailing
-   the release closely. "Upstream RHEL" means that this distribution
-   is *ahead* of RHEL, so if RHEL is in 8.n release, the Stream
-   release will be somewhere near the future 8.n+1 RHEL release.
+   the release closely.
 
-.. [#f2] GOLD images for CentOS Stream 9 released in the period
+.. [#f2] "Upstream RHEL" means that this distribution
+   is *ahead* of RHEL, so if RHEL is in 9.n release, the Stream
+   release will be somewhere near the future 9.n+1 RHEL release.
+
+.. [#f3] GOLD images for CentOS Stream 9 released in the period
    between July 1, 2022 and November 1, 2022 had their default
    username set to "centos".
 
-.. [#f3] GOLD images for CentOS Stream 8 released before December 1,
+.. [#f4] GOLD images for CentOS Stream 8 released before December 1,
    2022 had their default username set to "centos". Between December 1
    and May 1, 2023 the default username was set to "cloud-user".
 
@@ -81,7 +83,7 @@ GOLD image                        Family   Default user name  Boot FW  End of Li
 ================================= ======== ================== ======== ==================== =======================
 |ss| CentOS 7 |se|                RedHat   ``centos``         BIOS     May, 2024            Downstream RHEL [#f1]_
 |ss| CentOS 8 |se|                RedHat   ``centos``         BIOS     Dec, 2021            Downstream RHEL [#f1]_
-|ss| CentOS Stream 8 |se|         RedHat   ``centos`` [#f3]_  BIOS     May, 2024            Upstream RHEL [#f1]_
+|ss| CentOS Stream 8 |se|         RedHat   ``centos`` [#f4]_  BIOS     May, 2024            Upstream RHEL [#f2]_
 |ss| Fedora 34 |se|               RedHat   ``fedora``         BIOS     May, 2022
 |ss| Fedora 35 |se|               RedHat   ``fedora``         BIOS     November, 2022
 |ss| Fedora 36 |se|               RedHat   ``fedora``         BIOS     June, 2023
