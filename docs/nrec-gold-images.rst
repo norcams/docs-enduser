@@ -26,7 +26,8 @@ GOLD image                     Family   Default user name     Boot FW  End of Li
 ============================== ======== ===================== ======== ==================== =======================
 **Alma Linux 8**               RedHat   ``almalinux``         UEFI     May, 2029            Downstream RHEL [#f1]_
 **Alma Linux 9**               RedHat   ``almalinux``         UEFI     May, 2032            Downstream RHEL [#f1]_
-**CentOS Stream 9**            RedHat   ``cloud-user`` [#f2]_ BIOS     *unknown*            Upstream RHEL [#f1]_
+**CentOS Stream 9**            RedHat   ``cloud-user`` [#f2]_ BIOS     May, 2027            Upstream RHEL [#f1]_
+**CentOS Stream 10**           RedHat   ``cloud-user``        UEFI     Expected 2030        Upstream RHEL [#f1]_
 **Debian 11**                  Debian   ``debian``            UEFI     June, 2026           "Bullseye" release
 **Debian 12**                  Debian   ``debian``            UEFI     June, 2028           "Bookworm" release
 **Fedora 40**                  RedHat   ``fedora``            UEFI     May, 2025
