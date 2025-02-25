@@ -52,7 +52,7 @@ How to fix
 
 Follow these steps to fix the issue:
 
-#. We have a Debian 12 instance that has no network connectivity:
+#. We have a Debian 12 instance with no network connectivity:
 
    .. figure:: images/debian12-failed-image-01.png
       :align: center
