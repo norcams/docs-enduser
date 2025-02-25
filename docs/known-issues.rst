@@ -98,7 +98,7 @@ How to fix:
       root@deb12-fail:~# cp /etc/cloud/cloud.cfg.d/custom-networking.cfg /rescue/etc/cloud/cloud.cfg.d/
 
 #. Remove contents of ``/rescue/var/lib/cloud`` to make cloud-init
-   being re-run:
+   being re-run at next boot:
 
    .. code-block:: console
 
