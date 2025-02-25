@@ -119,13 +119,13 @@ How to fix:
       root@deb12-fail:~# umount /rescue
 
 #. Log out from the rescue instance, go back to the dashboard and
-   select 
+   select **Unrescue Instance**:
 
    .. figure:: images/debian12-failed-image-04.png
       :align: center
       :alt: Unrescue Instance
 
-This is it. The Debian 12 instance will now boot with the changes we
+That is all. The Debian 12 instance will now boot with the changes we
 made, and networking should work.
 
 Note that since we re-ran the entire cloud-init things like ssh host
