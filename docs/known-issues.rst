@@ -17,8 +17,8 @@ to you, here is how you fix it.
 Verification
 ~~~~~~~~~~~~
 
-First, make sure that the missing network connectivity is not due to
-missing or wrong security group rules. You can also verify that this
+First make sure that the missing network connectivity is not due to
+missing or wrong security group rules. You can then verify that this
 bug applies to your instance by running
 
 .. code-block:: text
