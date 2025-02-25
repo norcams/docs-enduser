@@ -29,7 +29,6 @@ If the output contains this, your instance is affected by this bug:
 
 .. code-block:: text
 
-   Cloud-init v. 22.4.2 running 'init' at Tue, 25 Feb 2025 12:49:19 +0000. Up 128.85 seconds.
    ci-info: +++++++++++++++++++++++++++Net device info++++++++++++++++++++++++++++
    ci-info: +--------+-------+-----------+-----------+-------+-------------------+
    ci-info: | Device |   Up  |  Address  |    Mask   | Scope |     Hw-Address    |
