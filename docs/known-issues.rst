@@ -44,8 +44,8 @@ If the output contains this, your instance is affected by this bug:
    ci-info: +-------+-------------+---------+-----------+-------+
    ci-info: +-------+-------------+---------+-----------+-------+
 
-In the output above, we see that the network device ``enp3s0`` does
-not receive IP addresses and the routing table is empty.
+In the output above, we see that the network device ``enp3s0`` is down
+and the routing table is empty.
 
 How to fix
 ~~~~~~~~~~
