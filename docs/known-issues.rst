@@ -7,6 +7,131 @@ Known Issues
 
 .. contents::
 
+Debian 12 instance loses network connectivity
+---------------------------------------------
+
+We have had issues with Debian 12 images created before January 2025,
+where the instance loses network connectivity. If this applies to you,
+here is how you fix it. First verify that the missing network
+connectivity is not due to security group rules. You can also verify
+that this bug applies to your instance by running
+
+::
+
+   openstack console log show <server>
+
+If the output contains this, your instance is affected by this bug:
+
+::
+
+   [  128.875086] cloud-init[414]: Cloud-init v. 22.4.2 running 'init' at Tue, 25 Feb 2025 12:49:19 +0000. Up 128.85 seconds.
+   [  128.960228] cloud-init[414]: ci-info: +++++++++++++++++++++++++++Net device info++++++++++++++++++++++++++++
+   [  128.962009] cloud-init[414]: ci-info: +--------+-------+-----------+-----------+-------+-------------------+
+   [  128.962989] cloud-init[414]: ci-info: | Device |   Up  |  Address  |    Mask   | Scope |     Hw-Address    |
+   [  128.968161] cloud-init[414]: ci-info: +--------+-------+-----------+-----------+-------+-------------------+
+   [  128.969337] cloud-init[414]: ci-info: | enp3s0 | False |     .     |     .     |   .   | fa:16:3e:9a:4e:de |
+   [  128.970438] cloud-init[414]: ci-info: |   lo   |  True | 127.0.0.1 | 255.0.0.0 |  host |         .         |
+   [  128.971369] cloud-init[414]: ci-info: |   lo   |  True |  ::1/128  |     .     |  host |         .         |
+   [  128.976254] cloud-init[414]: ci-info: +--------+-------+-----------+-----------+-------+-------------------+
+   [  128.977371] cloud-init[414]: ci-info: +++++++++++++++++++Route IPv6 info+++++++++++++++++++
+   [  128.978319] cloud-init[414]: ci-info: +-------+-------------+---------+-----------+-------+
+   [  128.979016] cloud-init[414]: ci-info: | Route | Destination | Gateway | Interface | Flags |
+   [  128.984120] cloud-init[414]: ci-info: +-------+-------------+---------+-----------+-------+
+   [  128.985146] cloud-init[414]: ci-info: +-------+-------------+---------+-----------+-------+
+
+In the output above, we see that the instance does not receive IP
+addresses and the routing table is empty.
+
+How to fix:
+
+#. We have a Debian 12 image that has no network connectivity:
+
+   .. figure:: images/debian12-failed-image-01.png
+      :align: center
+      :alt: Failed Debian 12 instance
+
+#. Select **Rescue Instance** in the drop-down menu:
+
+   .. figure:: images/debian12-failed-image-02.png
+      :align: center
+      :alt: Rescue Instance
+   
+#. Select **GOLD Debian 12** as the rescue image and click **Confirm**:
+
+   .. figure:: images/debian12-failed-image-03.png
+      :align: center
+      :alt: Rescue Image
+
+#. The instance will now boot into rescue mode, using the image you
+   selected as base. Log into the instance via ssh:
+
+   .. code-block:: console
+
+      $ ssh -l debian 2001:700:2:8301::129d
+      Linux deb12-fail 6.1.0-30-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.124-1 (2025-01-12) x86_64
+      
+      The programs included with the Debian GNU/Linux system are free software;
+      the exact distribution terms for each program are described in the
+      individual files in /usr/share/doc/*/copyright.
+      
+      Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+      permitted by applicable law.
+      Last login: Tue Feb 25 13:51:11 2025 from 2001:700:100:4003::43
+      debian@deb12-fail:~$ 
+
+#. Become root:
+
+   .. code-block:: console
+
+      debian@deb12-fail:~$ sudo -i
+      root@deb12-fail:~# 
+
+#. Create a mount point for the original image:
+
+   .. code-block:: console
+
+      root@deb12-fail:~# mkdir /rescue
+
+#. Mount the original image:
+
+   .. code-block:: console
+
+      root@deb12-fail:~# mount /dev/sdb1 /rescue
+
+#. Replace the file **custom-networking.cfg** with the the one from the
+   rescue image:
+
+   .. code-block:: console
+
+      root@deb12-fail:~# cp /etc/cloud/cloud.cfg.d/custom-networking.cfg /rescue/etc/cloud/cloud.cfg.d/
+
+#. Remove contents of ``/rescue/var/lib/cloud`` to make cloud-init
+   being re-run:
+
+   .. code-block:: console
+
+      root@deb12-fail:~# rm -rf /rescue/var/lib/cloud/*
+      
+#. Unmount the original image:
+
+   .. code-block:: console
+
+      root@deb12-fail:~# umount /rescue
+
+#. Log out from the rescue instance, go back to the dashboard and
+   select 
+
+   .. figure:: images/debian12-failed-image-04.png
+      :align: center
+      :alt: Unrescue Instance
+
+This is it. The Debian 12 instance will now boot with the changes we
+made, and networking should work.
+
+Note that since we re-ran the entire cloud-init things like ssh host
+keys will have changed.
+
+
 SSH keys with Windows instances
 -------------------------------
 
