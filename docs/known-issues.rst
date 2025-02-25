@@ -90,7 +90,7 @@ How to fix:
 
       root@deb12-fail:~# mount /dev/sdb1 /rescue
 
-#. Replace the file **custom-networking.cfg** with the the one from the
+#. Replace the file ``custom-networking.cfg`` with the the one from the
    rescue image:
 
    .. code-block:: console
