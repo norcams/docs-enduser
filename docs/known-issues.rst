@@ -10,11 +10,16 @@ Known Issues
 Debian 12 instance loses network connectivity
 ---------------------------------------------
 
-We have had issues with Debian 12 images created before January 2025,
-where the instance loses network connectivity. If this applies to you,
-here is how you fix it. First verify that the missing network
-connectivity is not due to security group rules. You can also verify
-that this bug applies to your instance by running
+We have had issues with GOLD Debian 12 images created before January
+2025, where the instance loses network connectivity. If this applies
+to you, here is how you fix it.
+
+Verification
+~~~~~~~~~~~~
+
+First, make sure that the missing network connectivity is not due to
+missing or wrong security group rules. You can also verify that this
+bug applies to your instance by running
 
 .. code-block:: text
 
@@ -39,12 +44,15 @@ If the output contains this, your instance is affected by this bug:
    ci-info: +-------+-------------+---------+-----------+-------+
    ci-info: +-------+-------------+---------+-----------+-------+
 
-In the output above, we see that the instance does not receive IP
-addresses and the routing table is empty.
+In the output above, we see that the network device ``enp3s0`` does
+not receive IP addresses and the routing table is empty.
 
-How to fix:
+How to fix
+~~~~~~~~~~
 
-#. We have a Debian 12 image that has no network connectivity:
+Follow these steps to fix the issue:
+
+#. We have a Debian 12 instance that has no network connectivity:
 
    .. figure:: images/debian12-failed-image-01.png
       :align: center
