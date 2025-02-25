@@ -16,28 +16,28 @@ here is how you fix it. First verify that the missing network
 connectivity is not due to security group rules. You can also verify
 that this bug applies to your instance by running
 
-::
+.. code-block:: text
 
    openstack console log show <server>
 
 If the output contains this, your instance is affected by this bug:
 
-::
+.. code-block:: text
 
-   [  128.875086] cloud-init[414]: Cloud-init v. 22.4.2 running 'init' at Tue, 25 Feb 2025 12:49:19 +0000. Up 128.85 seconds.
-   [  128.960228] cloud-init[414]: ci-info: +++++++++++++++++++++++++++Net device info++++++++++++++++++++++++++++
-   [  128.962009] cloud-init[414]: ci-info: +--------+-------+-----------+-----------+-------+-------------------+
-   [  128.962989] cloud-init[414]: ci-info: | Device |   Up  |  Address  |    Mask   | Scope |     Hw-Address    |
-   [  128.968161] cloud-init[414]: ci-info: +--------+-------+-----------+-----------+-------+-------------------+
-   [  128.969337] cloud-init[414]: ci-info: | enp3s0 | False |     .     |     .     |   .   | fa:16:3e:9a:4e:de |
-   [  128.970438] cloud-init[414]: ci-info: |   lo   |  True | 127.0.0.1 | 255.0.0.0 |  host |         .         |
-   [  128.971369] cloud-init[414]: ci-info: |   lo   |  True |  ::1/128  |     .     |  host |         .         |
-   [  128.976254] cloud-init[414]: ci-info: +--------+-------+-----------+-----------+-------+-------------------+
-   [  128.977371] cloud-init[414]: ci-info: +++++++++++++++++++Route IPv6 info+++++++++++++++++++
-   [  128.978319] cloud-init[414]: ci-info: +-------+-------------+---------+-----------+-------+
-   [  128.979016] cloud-init[414]: ci-info: | Route | Destination | Gateway | Interface | Flags |
-   [  128.984120] cloud-init[414]: ci-info: +-------+-------------+---------+-----------+-------+
-   [  128.985146] cloud-init[414]: ci-info: +-------+-------------+---------+-----------+-------+
+   Cloud-init v. 22.4.2 running 'init' at Tue, 25 Feb 2025 12:49:19 +0000. Up 128.85 seconds.
+   ci-info: +++++++++++++++++++++++++++Net device info++++++++++++++++++++++++++++
+   ci-info: +--------+-------+-----------+-----------+-------+-------------------+
+   ci-info: | Device |   Up  |  Address  |    Mask   | Scope |     Hw-Address    |
+   ci-info: +--------+-------+-----------+-----------+-------+-------------------+
+   ci-info: | enp3s0 | False |     .     |     .     |   .   | fa:16:3e:9a:4e:de |
+   ci-info: |   lo   |  True | 127.0.0.1 | 255.0.0.0 |  host |         .         |
+   ci-info: |   lo   |  True |  ::1/128  |     .     |  host |         .         |
+   ci-info: +--------+-------+-----------+-----------+-------+-------------------+
+   ci-info: +++++++++++++++++++Route IPv6 info+++++++++++++++++++
+   ci-info: +-------+-------------+---------+-----------+-------+
+   ci-info: | Route | Destination | Gateway | Interface | Flags |
+   ci-info: +-------+-------------+---------+-----------+-------+
+   ci-info: +-------+-------------+---------+-----------+-------+
 
 In the output above, we see that the instance does not receive IP
 addresses and the routing table is empty.
