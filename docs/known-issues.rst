@@ -68,15 +68,7 @@ How to fix:
    .. code-block:: console
 
       $ ssh -l debian 2001:700:2:8301::129d
-      Linux deb12-fail 6.1.0-30-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.124-1 (2025-01-12) x86_64
-      
-      The programs included with the Debian GNU/Linux system are free software;
-      the exact distribution terms for each program are described in the
-      individual files in /usr/share/doc/*/copyright.
-      
-      Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
-      permitted by applicable law.
-      Last login: Tue Feb 25 13:51:11 2025 from 2001:700:100:4003::43
+      ...
       debian@deb12-fail:~$ 
 
 #. Become root:
