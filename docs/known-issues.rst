@@ -37,7 +37,7 @@ bug applies to your instance by running
 
    openstack console log show <server>
 
-Or access the console log from the dashboard.
+Alternatively, you can access the console log from the dashboard.
 
 If the console log contains the text below, your instance is affected
 by this bug:
