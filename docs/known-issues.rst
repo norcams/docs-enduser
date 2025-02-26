@@ -18,8 +18,9 @@ Root Cause
 ~~~~~~~~~~
 
 At some point in the lifecycle of Debian 12, the network device name
-changed from ``enp1s0`` to ``enp3s0``. The network configuration in
-the NREC GOLD image was using the previous name.
+in the upstream cloud images changed from ``enp1s0`` to
+``enp3s0``. The network configuration in the NREC GOLD image was using
+the previous name.
 
 This has been permanently fixed in the GOLD images by switching to
 cloud-init networking version 2, which allows wildcard in the device
