@@ -37,7 +37,10 @@ bug applies to your instance by running
 
    openstack console log show <server>
 
-If the output contains this, your instance is affected by this bug:
+Or access the console log from the dashboard.
+
+If the console log contains the text below, your instance is affected
+by this bug:
 
 .. code-block:: text
 
