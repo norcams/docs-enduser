@@ -129,7 +129,7 @@ below.
    * - Resize Instance
      - Make size of instance larger
      - This is disabled in Dashboard (Web GUI).
-       Workaround: Use CLI, thoug with caution. **Do not** reseize between flavor-classes (e.g. m1 to shpc).
+       Workaround: Use CLI, though with caution. **Do not** reseize between flavor-classes (e.g. m1 to shpc).
    * - Suspend
      - Suspend Image and store state on disk
      - Workaround: Pause instance
