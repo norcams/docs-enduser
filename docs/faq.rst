@@ -128,7 +128,8 @@ below.
      - Workaround: Shut down and start instance
    * - Resize Instance
      - Make size of instance larger
-     - Workaround: Create snapshot and use as source for a new instance. IP addresses are not retained. Contact support@nrec.no for alternate solutions.
+     - This is disabled in Dashboard (Web GUI).
+       Workaround: Use CLI, thoug with caution. **Do not** reseize between flavor-classes (e.g. m1 to shpc).
    * - Suspend
      - Suspend Image and store state on disk
      - Workaround: Pause instance
