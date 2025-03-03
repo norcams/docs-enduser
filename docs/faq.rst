@@ -128,8 +128,7 @@ below.
      - Workaround: Shut down and start instance
    * - Resize Instance
      - Make size of instance larger
-     - This is disabled in Dashboard (Web GUI).
-       Workaround: Use CLI
+     - Workaround: Create snapshot and use as source for a new instance. IP addresses are not retained. Contact support@nrec.no for alternate solutions.
    * - Suspend
      - Suspend Image and store state on disk
      - Workaround: Pause instance
