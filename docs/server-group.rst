@@ -50,7 +50,8 @@ There is currently one rule supported:
 **max_server_per_host**
   Indicates the max number of instances that can be scheduled to any
   given hypervisor when using the anti-affinity policy. This rule is
-  not compatible with other policies.
+  not compatible with other policies, and can only be specified when
+  creating the server group using OpenStack CLI.
 
 
 Usage
@@ -61,12 +62,39 @@ Usage
   an instance can not move between server groups.
 
 Creating a server group "my-server-group" with
-policy **soft-anti-affinity** and a rule that specifies maximum 2
-instances per hypervisor:
+policy **soft-anti-affinity**:
+
+#. Navigate to **Compute** → **Server Groups**, and click on **Create
+   Server Group**:
+
+   .. figure:: images/server-groups-01.png
+      :align: center
+      :alt: Server Groups Tab
+
+#. Name the server group, select the policy, and click **Submit**:
+   
+   .. figure:: images/server-groups-02.png
+      :align: center
+      :alt: Configure Server Group
+
+#. The server group is now created:
+
+   .. figure:: images/server-groups-03.png
+      :align: center
+      :alt: Configure Server Group
+
+#. When launching an instance, you may select your server group:
+
+   .. figure:: images/server-groups-04.png
+      :align: center
+      :alt: Select Server Group
+
+Doing the same with CLI
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
-  openstack server group create --policy soft-anti-affinity --rule max_server_per_host=2 my-server-group
+  openstack server group create --policy soft-anti-affinity my-server-group
 
 An existing server group can be used when creating a server. Example:
 
