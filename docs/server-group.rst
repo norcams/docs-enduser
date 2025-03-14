@@ -64,7 +64,7 @@ Creating a server group "my-server-group" with
 policy **soft-anti-affinity** and a rule that specifies maximum 2
 instances per hypervisor:
 
-.. clode-block:: console
+.. code-block:: console
 
   openstack server group create --policy soft-anti-affinity --rule max_server_per_host=2 my-server-group
 
