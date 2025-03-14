@@ -20,7 +20,6 @@ Server groups can be configured with a policy and rules. There are
 currently four policies supported:
 
 **affinity** - AVOID THIS
-
   Restricts instances belonging to the server group to the same
   hypervisor.
 
@@ -31,19 +30,16 @@ currently four policies supported:
     policy whenever they are encountered.
 
 **anti-affinity**
-
   Restricts instances belonging to the server group to separate
   hypervisors.
 
 **soft-affinity**
-
   Attempts to restrict instances belonging to the server group to the
   same hypervisor. Where it is not possible to schedule all instances
   on one hypervisor, they will be scheduled together on as few
   hypervisors as possible.
 
 **soft-anti-affinity**
-
   Attempts to restrict instances belonging to the server group to
   separate hypervisors. Where it is not possible to schedule all
   instances to separate hypervisors, they will be scheduled on as many
@@ -52,7 +48,6 @@ currently four policies supported:
 There is currently one rule supported:
 
 **max_server_per_host**
-
   Indicates the max number of instances that can be scheduled to any
   given hypervisor when using the anti-affinity policy. This rule is
   not compatible with other policies.
