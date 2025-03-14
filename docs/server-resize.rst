@@ -57,6 +57,9 @@ The example shows how to resize from ``m1.small`` to
 ``m1.large``. This will be fine as both flavors are in the ``m1``
 flavor set, and we're resizing to a larger disk (10GB → 20GB).
 
+Via NREC Dashboard
+~~~~~~~~~~~~~~~~~~
+
 #. Navigate to **Compute** → **Instances**:
 
    .. figure:: images/server-resize-01.png
@@ -103,9 +106,8 @@ flavor set, and we're resizing to a larger disk (10GB → 20GB).
       :align: center
       :alt: Resize Finished
 
-
-Doing the same with CLI
-~~~~~~~~~~~~~~~~~~~~~~~
+Via OpenStack CLI
+~~~~~~~~~~~~~~~~~
 
 The procedure is the same with OpenStack CLI:
 
