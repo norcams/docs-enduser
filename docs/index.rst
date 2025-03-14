@@ -24,6 +24,8 @@ Norwegian Research and Education Cloud
    ssh
    security-groups
    manage-volumes
+   server-group
+   server-resize
    nrec-gold-images
    create-images
    manage-snapshots
