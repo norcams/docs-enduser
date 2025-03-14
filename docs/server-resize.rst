@@ -50,7 +50,7 @@ for best results:
    cannot be migrated while in this state.
 
 
-How to resize
+How to Resize
 -------------
 
 The example shows how to resize from ``m1.small`` to
