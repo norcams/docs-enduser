@@ -25,6 +25,8 @@ for best results:
    - ``m1.small`` → ``m1.large``
    - ``m1.small`` → ``d1.small``
    - ``m1.medium`` → ``c1.medium``
+   - ``shpc.m1a.2xlarge`` → ``shpc.c1a.4xlarge``
+   - ``shpc.m1a.2xlarge`` → ``shpc.m1ad1.2xlarge``
 
    You can not resize between e.g. ``m1`` and ``shpc.m1a``.
 
