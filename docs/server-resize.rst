@@ -61,14 +61,14 @@ flavor set, and we're resizing to a larger disk (10GB → 20GB).
       :align: center
       :alt: Instance Tab
 
-#. In the drop-down menu, select **Resize**:
+#. In the drop-down menu, select **Resize Instance**:
    
    .. figure:: images/server-resize-02.png
       :align: center
       :alt: Instance → Resize
 
 #. In the pop-up window, select ``m1.large`` as the new flavor and
-   click **Submit**:
+   click **Resize**:
 
    .. figure:: images/server-resize-03.png
       :align: center
