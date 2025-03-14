@@ -1,9 +1,11 @@
 Affinity and Anti-Affinity with Server Groups
 =============================================
 
-Last changed: 2024-11-25
+Last changed: 2025-03-14
 
 .. contents::
+
+.. _Upstream Documentation: https://docs.openstack.org/nova/latest/user/server-groups.html
 
 A **Server Group** is a collection of instances, and can be used as a
 mechanism for indicating the location of instances on hypervisors in
@@ -12,6 +14,11 @@ instances should run on the same hypervisor (Affinity) or different
 hypervisors (Anti-Affinity). Affinity is advantageous if you wish to
 minimise network latency, while anti-affinity can improve
 fault-tolerance and load distribution.
+
+See also:
+
+* `Upstream Documentation`_
+
 
 Policies and rules
 ------------------
