@@ -63,8 +63,8 @@ In order to continue to the dashboard, click ``Continue to NREC``.
 
 
 
-Sign In
--------
+Log In
+------
 
 To log in to the NREC dashboard, point your browser to:
 
