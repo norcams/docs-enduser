@@ -17,10 +17,10 @@ Sign Up
    normal login procedure, skip this step and go directly to
    `Sign In`_.
 
-For first-time login, you need to provision yourself as a user with
-an appropriate group and project. Do this by following the steps below.
+For first-time login, you need to sign up. Do this by following the
+steps below.
 
-To provision yourself as a user, visit the following URL:
+To sign up with NREC, visit the following URL:
 
 * https://access.nrec.no/
 
