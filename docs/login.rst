@@ -1,30 +1,28 @@
-.. |date| date::
-
-Logging in
+Logging In
 ==========
 
-Last changed: |date|
+Last changed: 2025-04-09
 
 .. contents::
 
-.. _Dataporten: https://www.uninett.no/en/service-platform-dataporten
-.. _UNINETT: https://www.uninett.no/en
+.. _Feide: https://www.feide.no/
+.. _Sikt: https://sikt.no/en/home
 
 
-First time login
-----------------
+Sign Up
+-------
 
 .. NOTE::
    This step is only required if you've never previously logged in. For
    normal login procedure, skip this step and go directly to
-   `Subsequent logins`_.
+   `Sign In`_.
 
 For first-time login, you need to provision yourself as a user with
 an appropriate group and project. Do this by following the steps below.
 
 To provision yourself as a user, visit the following URL:
 
-  https://access.nrec.no/
+* https://access.nrec.no/
 
 The following window will appear:
 
@@ -41,7 +39,7 @@ university or college in the list.
    :align: center
    :alt: Access
 
-In order to use this service, and to authenticate using `Dataporten`_,
+In order to use this service, and to authenticate using `Feide`_,
 you need to accept that the service stores some information about
 you.
 
@@ -58,19 +56,19 @@ This finishes the initial login and provision procedure.
 
    This is **the only time** that the API password is generated and shown
    to you. If you misplace or forget the API password and need another
-   one, you have to reset it usimg the *Reset API password* link on the
+   one, you have to reset it using the **Reset API password** link on the
    Access login page. Alternatively contact our support.
 
 In order to continue to the dashboard, click ``Continue to NREC``.
 
 
 
-Subsequent logins
------------------
+Sign In
+-------
 
 To log in to the NREC dashboard, point your browser to:
 
-  https://dashboard.nrec.no/
+* https://dashboard.nrec.no/
 
 You'll be presented with the following:
 
@@ -78,18 +76,18 @@ You'll be presented with the following:
    :align: center
    :alt: The default login screen
 
-There are two methods for logging in. The method labelled "Dataporten"
+There are two methods for logging in. The method labelled "Feide"
 is correct for regular users. The "Local user" method is reserved for
-administrator and testing purposes. Dataporten_ is an external
-authentication service provided by UNINETT_. To log in, choose
-"Dataporten" as authentication mechanism, then click "Connect". You'll
+administrator and testing purposes. Feide_ is an external
+authentication service provided by Sikt_. To log in, choose
+"Feide" as authentication mechanism, then click "Connect". You'll
 be redirected to this page:
 
 .. image:: images/dashboard-login-02.png
    :align: center
-   :alt: Dataporten: choose institution
+   :alt: Feide: choose institution
 
-Select the correct educational institution, by clicking on it, and log in.
+Select the correct educational institution and log in.
 
 You should then be redirected back to the NREC dashboard:
 

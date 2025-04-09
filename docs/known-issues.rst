@@ -293,7 +293,7 @@ No access after changed email address
 -------------------------------------
 
 Sometimes a user's primary email address changes. This is an issue
-due to how Dataporten uses this email address as the user ID, and
+due to how Feide uses this email address as the user ID, and
 thus the user ID and demo/personal projects in NREC is the same as this
 address. The issue might arise when users e.g. changes their status from
 student to employee or vice versa. If this situation applies, then please send

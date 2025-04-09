@@ -3,7 +3,7 @@
 NREC Terms of Service
 ========================
 
-Last changed: 2022-08-17
+Last changed: 2025-04-09
 
 .. contents::
 
@@ -17,7 +17,7 @@ Last changed: 2022-08-17
 Signing up
 ----------
 
-.. _Dataporten: https://www.uninett.no/en/
+.. _Feide: https://www.feide.no/
 .. _access.nrec.no: https://access.nrec.no/
 
 * In order to use the NREC infrastructure service, you must have
@@ -210,7 +210,7 @@ Privacy Policy
 * Email:
 
   Your NREC project is closely related to your email account. We
-  collect your email address via Dataporten_ as we need this
+  collect your email address via Feide_ as we need this
   information for authentication and notification purposes. We keep
   your email in our database as long as you are an active user of our
   services. If you change your email, you are responsible for
