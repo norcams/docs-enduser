@@ -15,7 +15,7 @@ Sign Up
 .. NOTE::
    This step is only required if you've never previously logged in. For
    normal login procedure, skip this step and go directly to
-   `Sign In`_.
+   `Log In`_.
 
 For first-time login, you need to sign up. Do this by following the
 steps below.
