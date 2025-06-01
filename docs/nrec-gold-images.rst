@@ -26,11 +26,13 @@ GOLD image                     Family   Default user name     Boot FW  End of Li
 ============================== ======== ===================== ======== ==================== =======================
 **Alma Linux 8**               RedHat   ``almalinux``         UEFI     May, 2029            Downstream RHEL [#f1]_
 **Alma Linux 9**               RedHat   ``almalinux``         UEFI     May, 2032            Downstream RHEL [#f1]_
+**Alma Linux 10**              RedHat   ``almalinux``         UEFI     May, 2035            Downstream RHEL [#f1]_
 **CentOS Stream 9**            RedHat   ``cloud-user`` [#f3]_ BIOS     May, 2027            Upstream RHEL [#f2]_
 **CentOS Stream 10**           RedHat   ``cloud-user``        UEFI     Expected 2030        Upstream RHEL [#f2]_
 **Debian 11**                  Debian   ``debian``            UEFI     June, 2026           "Bullseye" release
 **Debian 12**                  Debian   ``debian``            UEFI     June, 2028           "Bookworm" release
 **Fedora 41**                  RedHat   ``fedora``            UEFI     Dec, 2025
+**Fedora 42**                  RedHat   ``fedora``            UEFI     June, 2026
 **UiO Managed RHEL 8**         RedHat   ``cloud-user``        BIOS     May, 2029            UiO projects only
 **UiO Managed RHEL 9**         RedHat   ``cloud-user``        UEFI     May, 2032            UiO projects only
 **Rocky Linux 8**              RedHat   ``rocky``             BIOS     May, 2029            Downstream RHEL [#f1]_
@@ -49,6 +51,7 @@ GOLD image                     Family   Default user name     Boot FW  End of Li
 ============================== ======== ===================== ======== ==================== =======================
 **vGPU Alma Linux 8**          RedHat   ``almalinux``         UEFI     May, 2029            Downstream RHEL [#f1]_
 **vGPU Alma Linux 9**          RedHat   ``almalinux``         UEFI     May, 2032            Downstream RHEL [#f1]_
+**vGPU Alma Linux 10**         RedHat   ``almalinux``         UEFI     May, 2035            Downstream RHEL [#f1]_
 **vGPU Ubuntu 22.04 LTS**      Debian   ``ubuntu``            UEFI     April, 2027          "Jammy Jellyfish"
 **vGPU Ubuntu 24.04 LTS**      Debian   ``ubuntu``            UEFI     April, 2029          "Noble Numbat"
 ============================== ======== ===================== ======== ==================== =======================
