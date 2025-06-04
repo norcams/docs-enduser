@@ -5,9 +5,9 @@ NREC flavors
 
 .. contents::
 
-.. shared High-Performance Computing (sHPC): shpc.html
-.. Virtual GPU Accelerated instance (vGPU): vgpu.html
-.. support: support.html
+.. _shared High-Performance Computing (sHPC): shpc.html
+.. _Virtual GPU Accelerated instance (vGPU): vgpu.html
+.. _support: support.html
 
 The NREC Team provides many different flavors depending on use case and pricing. They generally follow the project type. The naming follows broadly:
 
