@@ -37,6 +37,7 @@ GOLD image                     Family   Default user name     Boot FW  End of Li
 **UiO Managed RHEL 9**         RedHat   ``cloud-user``        UEFI     May, 2032            UiO projects only
 **Rocky Linux 8**              RedHat   ``rocky``             BIOS     May, 2029            Downstream RHEL [#f1]_
 **Rocky Linux 9**              RedHat   ``rocky``             UEFI     May, 2032            Downstream RHEL [#f1]_
+**Rocky Linux 10**             RedHat   ``rocky``             UEFI     May, 2035            Downstream RHEL [#f1]_
 **Ubuntu 22.04 LTS**           Debian   ``ubuntu``            UEFI     April, 2027          "Jammy Jellyfish"
 **Ubuntu 24.04 LTS**           Debian   ``ubuntu``            UEFI     April, 2029          "Noble Numbat"
 **Windows Server 2022 Std**    Windows  ``Admin``             UEFI     October, 2031        Licensed in BGO only
