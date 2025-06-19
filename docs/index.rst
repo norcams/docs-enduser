@@ -26,10 +26,10 @@ Norwegian Research and Education Cloud
    manage-volumes
    server-group
    server-resize
-   nrec-gold-images
+   gold-images
    create-images
    manage-snapshots
-   nrec-flavors
+   flavors
    console
    object
 
