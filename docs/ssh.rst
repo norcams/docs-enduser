@@ -483,6 +483,9 @@ Examples:
 
       $ scp ~/thesis/analysis.dat ubuntu@[3001:700:2:8200::268f]:/data/
 
+   In some shells (zsh) you may need to escape the brackets,
+   i.e. ``[`` → ``\[``, or put the whole argument in quotes.
+
 #. Advanced example using proxy host and specifying key, with IPv6:
 
    .. code-block:: console
