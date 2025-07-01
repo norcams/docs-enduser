@@ -522,6 +522,9 @@ Examples:
 
       $ sftp ubuntu@[3001:700:2:8200::268f]
 
+   In some shells (zsh) you may need to escape the brackets,
+   i.e. ``[`` → ``\[``, or put the whole argument in quotes.
+
 #. Advanced example using proxy host and specifying key, with IPv6,
    and also specifying remote directory:
 
@@ -609,6 +612,9 @@ Examples:
 
       $ rsync -av ubuntu@[3001:700:2:8200::268f]:/data/results ~/thesis/
 
+   In some shells (zsh) you may need to escape the brackets,
+   i.e. ``[`` → ``\[``, or put the whole argument in quotes.
+
 If you rely on SSH proxy hosts to connect to the instance, you will
 need to also use the option ``-e`` to specify the remote shell to
 use. In our case, we want to use ssh with options for specifying the
@@ -647,6 +653,9 @@ Examples:
    .. code-block:: console
 
       $ rsync -av -e 'ssh -i ~/.ssh/id_ed25519_nrec -J uiouser@login.uio.no' ubuntu@[3001:700:2:8200::268f]:/data/results ~/thesis/
+
+   In some shells (zsh) you may need to escape the brackets,
+   i.e. ``[`` → ``\[``, or put the whole argument in quotes.
 
 
 Deleting key pairs
