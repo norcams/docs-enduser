@@ -59,7 +59,7 @@ Importing an existing public key (recommended)
 **This is the recommended approach!**
 
 If the local computer is Linux, any BSD variant such as FreeBSD, MacOS
-or Windows 10, the easiest way is to create a key pair locally if you
+or Windows, the easiest way is to create a key pair locally if you
 don't already have one, using the command ``ssh-keygen`` (on Windows
 it's called ``ssh-keygen.exe``):
 
