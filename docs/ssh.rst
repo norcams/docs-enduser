@@ -600,6 +600,9 @@ Examples:
 
       $ rsync -av /tmp/analysis ubuntu@[3001:700:2:8200::268f]:/data/
 
+   In some shells (zsh) you may need to escape the brackets,
+   i.e. ``[`` → ``\[``, or put the whole argument in quotes.
+
 #. From instance to local machine using IPv4:
 
    .. code-block:: console
@@ -641,6 +644,9 @@ Examples:
    .. code-block:: console
 
       $ rsync -av -e 'ssh -i ~/.ssh/id_ed25519_nrec -J uiouser@login.uio.no' /tmp/analysis ubuntu@[3001:700:2:8200::268f]:/data/
+
+   In some shells (zsh) you may need to escape the brackets,
+   i.e. ``[`` → ``\[``, or put the whole argument in quotes.
 
 #. From instance to local machine using IPv4:
 
