@@ -47,7 +47,7 @@ Here are three ways to set the password for the user root on a Linux instance:
      # cloud-config
      chpasswd:
           list: |
-                  cloud-user:debian
+                  cloud-user:root
                   root:rootpassword123
           expire: False
 
