@@ -136,9 +136,9 @@ The linux GOLD images come by default without a password set (password unset) fo
 
 How to get into the GRUB boot menu:
 
-At the time of testing (2025-07-11), with the image ``GOLD Ubuntu 24.04 LTS``, you first get into the QEMU UEFI/BIOS boot menu. From there you can get into the GRUB menu. For both steps you need to press Escape at the right timing:
+At the time of testing (2025-07-11), with the image ``GOLD Ubuntu 24.04 LTS``, you first get into the QEMU UEFI/BIOS boot menu. From there you can get into the GRUB menu. For both steps you need to press Escape at the right time:
 
-First, in console view, press the "Send CtrlAltDelete" button to force a reboot. Then start hitting the Escape key repeatedly (just after restarting the instance and seeing that the text is unavailable in the console window, but before and just on time on the Tiano screen, and not any longer). Then you should be able to access the QEMU UEFI/BIOS menu, which should be the same independently of guest OS. There might be additional tricks to do here for regaining access, such as entering the EFI boot shell or other entries that are available from the boot menu. To continue to the GRUB menu, select continue. Then very shortly after, hit the Escape key one time. This should get you into the GRUB menu. From here you can do any of the three last methods in the above table. Edits here are temporary / do not persist across reboots. Note that if you don't have an english keyboard, you will probably have a hard time finding the keys consisting of ``=`` and ``/``, etc. For some tips regarding the Norwegian keyboard, see the relevant section below:
+First, in console view, press the "Send CtrlAltDelete" button to force a reboot. Then start hitting the Escape key repeatedly (just after restarting the instance and seeing that the text is unavailable in the console window, but before and just on time on the Tiano screen, and not any longer). Then you should be able to access the QEMU UEFI/BIOS menu, which should be the same independently of guest OS. There might be additional tricks to do here for regaining access, such as entering the EFI boot shell or other entries that are available from the boot menu. To continue to the GRUB menu, select continue. Then very shortly after, hit the Escape key one time. This should get you into the GRUB menu. From here you can do any of the three last methods in the above table. Edits here are temporary / do not persist across reboots. Note that if you don't have an English keyboard, you will probably have a hard time finding the keys consisting of ``=`` and ``/``, etc. For some tips regarding the Norwegian keyboard, see the relevant section below:
 
 - Single User Mode
 
@@ -149,13 +149,13 @@ On Centos and possibly other RHEL derivatives like Alma Linux, you have to remov
 
 - Recovery mode
 
-Select "Advanced options for Ubuntu", or the related entry for your choosen linux guest OS, and press Enter. From there, select the entry with recovery mode in it that has the highest version number (lates kernel version), then press Enter. This should get you into a Recovery menu. Select the root entry ("Drop to root shell prompt"), press Enter. This should get you into a shell with root privileges. Proceed setting passwords and reboot like in the previous method.
+Select "Advanced options for Ubuntu", or the related entry for your choosen linux guest OS, and press Enter. From there, select the entry with recovery mode in it that has the highest version number (latest kernel version), then press Enter. This should get you into a Recovery menu. Select the root entry ("Drop to root shell prompt"), press Enter. This should get you into a shell with root privileges. Proceed setting passwords and reboot like in the previous method.
 
 Note that setting the root password again using the single user and recovery methods, will ask you to first enter the previous root password. If you have forgot the existing root password, there is at least one more method to try that will bypass needing to write the existing root password:
 
 - Read/Write bash shell
 
-When having selected the OS (ubuntu in this case), press the letter ``e``. Now, the method is to look for the place in the line starting with ``linux`` that has the work ``ro`` (read-only). Then replace ``ro`` with ``rw init=/bin/bash`` and delete words trailing/followed after this replacement. For the Ubuntu image in the example, the stuff that was removed were different tty parameters. Then press ``ctrl + x`` to continue booting. This should get you into a shell with root privileges. Procees setting passwords and reboot like in the previous two previous methods.
+When having selected the OS (Ubuntu in this case), press the letter ``e``. Now, the method is to look for the place in the line starting with ``linux`` that has the word ``ro`` (read-only). Then replace ``ro`` with ``rw init=/bin/bash`` and delete all letters trailing/followed after this replacement. For the Ubuntu image in the example, the stuff that was removed were different tty parameters. Then press ``ctrl + x`` to continue booting. This should get you into a shell with root privileges. Proceed setting passwords and reboot like in the two previous methods.
 
 Note on non-US keyboard in GRUB:
 
