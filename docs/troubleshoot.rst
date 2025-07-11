@@ -113,7 +113,7 @@ The first to check is the current state of the instance, as well as which types 
 Below is a table summarizing various methods for re-gaining access (a question mark indicates not fully tested):
 
 +--------------------------------+---------------------+--------------------------+------------------+------------+----------------+--------------------------------------------------------------+
-| Method                         | Solves access       | OS                       | Boot state       | Difficulty | Preserves data | Notes                                                        |
+| Method                         | Solves access       | OS                       | State when lost  | Difficulty | Preserves data | Notes                                                        |
 +================================+=====================+==========================+==================+============+================+==============================================================+
 | snapshot + rebuild with new key| SSH                 | Any                      | Login            | Easy       | Yes (snapshot) | Replaces server, preserves IP (only CLI)                     |
 +--------------------------------+---------------------+--------------------------+------------------+------------+----------------+--------------------------------------------------------------+
