@@ -100,20 +100,68 @@ There can be multiple reasons for losing access to an instance.
 - Lost SSH key
 - Disk trouble e.g. wrong mount path (`Rescue instance`_)
 - Problems with NIC/network (`Rescue instance`_)
+- Failed resize operation
 
-Don't fret, there is maybe a way (workaround) to fix this by accsessing the console/terminal.
-But you need to do some "hacks" to do so if you didn't set/change a users password.
+The first to check is the current state of the instance, as well as which types of cloud and recovery options that the guest OS may support:
+
+- The console view on the dashboard may give some hints about the current state of the instance. You can get a direct URL to this VNC console from the CLI command ``openstack console url show <server name or id>`` or by clicking the link "Click here to show only console" visible above the console in the dashboard. You can also print additional console logs from ``openstack console log show <server name or id>``. If you have set the password for the cloud user or any other user (including root, not default), you can login here. This may be sufficient to fix SSH access by temporarily enabling password-based login for instance.
+
+- If the instance runs successfully (e.g., shows a normal login prompt in the console, replies to SSH and/or ping, and does the tasks it was originally set up to do), there is a high chance that you can regain access to the instance by using built-in Openstack functions, such as rebuild, snapshot and rescue.
+
+- If the instance has problems booting (e.g., hangs on console, or doesn't show any login prompt or boots into rescue mode), then it may be necessary to regain access using more generic boot loader tricks. The guest OS may come with a boot loader that can be modified to gain root access to the instance. For the GOLD Linux images, this involves temporarily editing the GRUB boot loader.
+
+Below is a table summarizing various methods for re-gaining access (a question mark indicates not fully tested):
+
++--------------------------------+---------------------+--------------------------+------------------+------------+----------------+--------------------------------------------------------------+
+| Method                         | Solves access       | OS                       | Boot state       | Difficulty | Preserves data | Notes                                                        |
++================================+=====================+==========================+==================+============+================+==============================================================+
+| snapshot + rebuild with new key| SSH                 | Any                      | Login            | Easy       | Yes (snapshot) | Replaces server, preserves IP (only CLI)                     |
++--------------------------------+---------------------+--------------------------+------------------+------------+----------------+--------------------------------------------------------------+
+| set --password                 | Console             | Any (cloud)              | Login            | Easy       | Yes            | Sets root password; requires cloud-init support              |
++--------------------------------+---------------------+--------------------------+------------------+------------+----------------+--------------------------------------------------------------+
+| rescue with password           | Console             | ?                        | Pre-login        | Easy       | Yes (volume)   | Rescue image with cloud-init password injection support      |
++--------------------------------+---------------------+--------------------------+------------------+------------+----------------+--------------------------------------------------------------+
+| rebuild with user data         | Console             | ?                        | Login            | Intermediate| Yes           | Requires cloud-init support                                  |
++--------------------------------+---------------------+--------------------------+------------------+------------+----------------+--------------------------------------------------------------+
+| snapshot + create              | SSH                 | Any                      | Working snapshot | Easy       | Yes (snapshot) | Creates new server and IP from existing snapshot             |
++--------------------------------+---------------------+--------------------------+------------------+------------+----------------+--------------------------------------------------------------+
+| single user mode (root)        | Console             | Linux                    | Pre-login        | Hard       | Yes            | Boot key stroke may vary; requires unset root password       |
++--------------------------------+---------------------+--------------------------+------------------+------------+----------------+--------------------------------------------------------------+
+| recovery mode (root)           | Console             | Linux                    | Pre-login        | Hard       | Yes            | Boot key stroke may vary; requires unset root password       |
++--------------------------------+---------------------+--------------------------+------------------+------------+----------------+--------------------------------------------------------------+
+| read/write bash shell (root)   | Console             | Linux                    | Pre-login        | Hard       | Yes            | Boot key stroke may vary                                     |
++--------------------------------+---------------------+--------------------------+------------------+------------+----------------+--------------------------------------------------------------+
+
+The linux GOLD images come by default without a password set (password unset) for the cloud and root user. Because of this, it is not possible to login to the console. Similarly, SSH login with the root user is disabled.
+
+How to get into the GRUB boot menu:
+
+At the time of testing (2025-07-11), with the image ``GOLD Ubuntu 24.04 LTS``, you first get into the QEMU UEFI/BIOS boot menu. From there you can get into the GRUB menu. For both steps you need to press Escape at the right timing:
+
+First, in console view, press the "Send CtrlAltDelete" button to force a reboot. Then start hitting the Escape key repeatedly (just after restarting the instance and seeing that the text is unavailable in the console window, but before and just on time on the Tiano screen, and not any longer). Then you should be able to access the QEMU UEFI/BIOS menu, which should be the same independently of guest OS. There might be additional tricks to do here for regaining access, such as entering the EFI boot shell or other entries that are available from the boot menu. To continue to the GRUB menu, select continue. Then very shortly after, hit the Escape key one time. This should get you into the GRUB menu. From here you can do any of the three last methods in the above table. Edits here are temporary / do not persist across reboots. Note that if you don't have an english keyboard, you will probably have a hard time finding the keys consisting of ``=`` and ``/``, etc. For some tips regarding the Norwegian keyboard, see the relevant section below:
+
+- Single User Mode
+
+When having selected the OS (Ubuntu in this case), press the letter ``e``. Add at the end of the line starting with ``linux``, the word ``single`` (with a space `` `` before that). Press ``ctrl + x`` to continue booting. When asked to press ``ctrl + D`` to get into maintenance, do that. This gets you into a shell with root privileges. From here you can set password for any user: Set root password: ``passwd``. Set ubuntu password: ``passwd ubuntu``, and so on. Then ``reboot``.
+
+On Centos and possibly other RHEL derivatives like Alma Linux, you have to remove all ``console=ttys`` besides the ``tty0`` and add ``rd.break enforcing=0`` at the end of the line starting with linux16. There exist several examples and documentation on the general web, for how to start your Linux server/instance in single mode (root access). For these distros there are possibly additional steps you need to follow to be able to set passwords: You need to mount :file:`/sysroot` by running `mount -o remount,rw /sysroot` and then change root by running `chroot /sysroot`. Now you can run e.g. `passwd`
 
 
-Possible solution (workaround [#f1]_)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Recovery mode
 
-Got to console, press the "Send ctrlAltDel" button then activate the console window and interrupt the boot by pressing an arrow key for example. Choose a boot entry and press :kbd:`e` for edit.
-Depending on which OS is in use you can edit the boot loader in the console and boot to single user by adding single to the end of the line that start with linux on ubuntu, on centos you have to remove all ``console=ttys`` besides the ``tty0`` and add ``rd.break enforcing=0`` at the end of the line starting with linux16.
-There a several exampels and documentation on how to start your Linux server/instance in singel mode (root access) which you can find by searching the web. On centos you have to be fast to interrupt the normal boot.
-Depending on if you are using Ubuntu or Centos you should now have a console and logged in as root. The keyboard layout is probably en_US.UTF8 which means you have to figure out what keys on your keyboard represent :kbd:`=`, :kbd:`/`, :kbd:`-` and :kbd:`:` etc.
+Select "Advanced options for Ubuntu", or the related entry for your choosen linux guest OS, and press Enter. From there, select the entry with recovery mode in it that has the highest version number (lates kernel version), then press Enter. This should get you into a Recovery menu. Select the root entry ("Drop to root shell prompt"), press Enter. This should get you into a shell with root privileges. Proceed setting passwords and reboot like in the previous method.
 
-On my keyboard (norwegian):
+Note that setting the root password again using the single user and recovery methods, will ask you to first enter the previous root password. If you have forgot the existing root password, there is at least one more method to try that will bypass needing to write the existing root password:
+
+- Read/Write bash shell
+
+When having selected the OS (ubuntu in this case), press the letter ``e``. Now, the method is to look for the place in the line starting with ``linux`` that has the work ``ro`` (read-only). Then replace ``ro`` with ``rw init=/bin/bash`` and delete words trailing/followed after this replacement. For the Ubuntu image in the example, the stuff that was removed were different tty parameters. Then press ``ctrl + x`` to continue booting. This should get you into a shell with root privileges. Procees setting passwords and reboot like in the previous two previous methods.
+
+Note on non-US keyboard in GRUB:
+
+The keyboard layout is probably en_US.UTF8 which means you have to figure out what keys on your keyboard represent :kbd:`=`, :kbd:`/`, :kbd:`-` and :kbd:`:` etc.
+
+On my keyboard (Norwegian):
 
 :kbd:`=` is :kbd:`\\` left key from backspace
 
@@ -123,32 +171,27 @@ On my keyboard (norwegian):
 
 :kbd:`:` is :kbd:`shift` + :kbd:`ø`
 
-Now you can issue a password change for e.g. the root account by running `passwd` or `passwd username`.
-If you are using Centos you have to do some additional steps as follows.
-You need to mount :file:`/sysroot` by running `mount -o remount,rw /sysroot` and then change root by running `chroot /sysroot`.
-Now you can run e.g `passwd`
-After you've don that, reboot and log in to console again on normal boot.
-Now you can fix the authorized_keys. I fetched my public ssh keys from github.
+Great, now I have console access. How can I now get SSH access with my new key?
+
+You need to change the file ``~/.ssh/authorized_keys`` for the affected users. You can fetch your public SSH keys from GitHub like this:
 
 E.g
 ``wget https://github.com/username.keys``
 or
 ``curl -o pub.keys https://github.com/username.keys``
 
-Then add or replace the keys in authorized_keys
+Then add or replace the keys in ``~/.ssh/authorized_keys``
 
 E.g
-``cat username.keys >> authorized_keys``
+``cat username.keys >> ~/.ssh/authorized_keys``
 
-The authorized_keys file is located in :file:`/home/username/.ssh/authorized_keys`
-Now you should be able to login using ssh with the new key(s).
+~/ means that the authorized_keys file is located in for instance :file:`/home/username/.ssh/authorized_keys`
+After updating this file with your new public key(s), you should be able to login using SSH with the new key(s).
 
 .. NOTE::
    If you are experiencing problem with booting up and you have attached
    volumes(s), try dettach them first then run rescue agian.
 
-
-----------
 
 Rescue instance
 ---------------
@@ -249,7 +292,7 @@ will not receive a network connection.
 
 The solution is to set the correct properties of the uploaded
 image. The properties that need to be set in order for the image to
-perform optimally can be found in our image repository [#f2]_. Look
+perform optimally can be found in our image repository [#f1]_. Look
 for the gold image that best matches your image, and set each property
 with the following command:
 
@@ -264,7 +307,7 @@ Example:
   openstack image set --property hw_machine_type=q35 <image ID>
 
 Specifically, for a Debian 12 instance, the properties that
-needs to be set are specified in our image repository [#f2]_ under
+needs to be set are specified in our image repository [#f1]_ under
 'debian12'::'properties' and is a subset of the properties seen with
 the ``openstack image show`` command above.
 
@@ -284,6 +327,4 @@ the ``openstack image show`` command above.
 
 .. rubric:: Footnotes
 
-.. [#f1] Since setting a password when rescuing an instance do not work.
-
-.. [#f2] https://github.com/norcams/himlarcli/blob/master/config/images/default.yaml
+.. [#f1] https://github.com/norcams/himlarcli/blob/master/config/images/default.yaml
