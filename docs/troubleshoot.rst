@@ -121,7 +121,7 @@ Below is a table summarizing various methods for re-gaining access (a question m
 +--------------------------------+---------------------+--------------------------+------------------+------------+----------------+--------------------------------------------------------------+
 | rescue with password           | Console             | ?                        | Pre-login        | Easy       | Yes (volume)   | Rescue image with cloud-init password injection support      |
 +--------------------------------+---------------------+--------------------------+------------------+------------+----------------+--------------------------------------------------------------+
-| rebuild with user data         | Console             | ?                        | Login            | Intermediate| Yes           | Requires cloud-init support                                  |
+| rebuild with user data         | Console             | ?                        | Login            | Intermediate| Yes (snapshot)| Requires cloud-init support                                  |
 +--------------------------------+---------------------+--------------------------+------------------+------------+----------------+--------------------------------------------------------------+
 | snapshot + create              | SSH                 | Any                      | Working snapshot | Easy       | Yes (snapshot) | Creates new server and IP from existing snapshot             |
 +--------------------------------+---------------------+--------------------------+------------------+------------+----------------+--------------------------------------------------------------+
