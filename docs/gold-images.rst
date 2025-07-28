@@ -117,7 +117,10 @@ from a dnf configuration file, while for distributions in the Debian
 family, the same effect is achieved with unattended-upgrades and apt
 configuration. For Windows, the configuration varies.
 
+-------------------------------------------------------------------
 
+Bookmarks
+---------
 
 .. [#f1] GOLD images for CentOS Stream 9 released in the period
    between July 1, 2022 and November 1, 2022 had their default
