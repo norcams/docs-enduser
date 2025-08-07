@@ -1,5 +1,7 @@
 .. |date| date::
 
+.. _Lost access to instance: troubleshoot.html#lost-access-to-instance
+
 Frequently asked questions (FAQ)
 ================================
 
@@ -10,7 +12,7 @@ Last changed: |date|
 How do I set the root password for my Linux instance?
 -----------------------------------------------------
 
-Here are three ways to set the password for the user root on a Linux instance:
+There are multiple ways to set the password for the user root on a Linux instance:
 
 - passwd
 
@@ -50,6 +52,10 @@ Here are three ways to set the password for the user root on a Linux instance:
                   cloud-user:root
                   root:rootpassword123
           expire: False
+
+- More advanced methods
+
+  It may still be possible to set the root password in other ways. See `Lost access to instance`_.
 
 Project quotas vs. flavors
 --------------------------
