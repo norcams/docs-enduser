@@ -46,12 +46,11 @@ There are multiple ways to set the password for the user root on a Linux instanc
 
   .. code-block:: console
 
-     # cloud-config
+     #cloud-config
      chpasswd:
-          list: |
-                  cloud-user:root
-                  root:rootpassword123
-          expire: False
+       list: |
+         root:rootpassword123
+       expire: False
 
 - More advanced methods
 
