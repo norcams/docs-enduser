@@ -191,9 +191,9 @@ Installation of CUDA libraries
    issue.
 
 
-Now head over to the download page on the NVIDIA website and select Drivers->All NVIDIA
-Drivers. Search for Linux 64-bit drivers in the "Data Center / Tesla" product type.
-Download and install the package installing only the CUDA libraries, excluding the driver,
+Now head over to the download page on the NVIDIA DEVELOPER website and select Platform and Tools -> CUDA Toolkit. 
+Select Linux -> x86_64 -> [Your distribution] -> [Your version] -> runfile (local).
+Download and install the package, installing only the CUDA libraries, excluding the driver,
 but including samples for this example:
 
 .. code-block:: console
