@@ -21,41 +21,42 @@ Current GOLD images
 
 Currently available GOLD images in NREC:
 
-============================== ======== ===================== ============ ==================== =======================
+============================== ======== ===================== ============ ==================== ===============================
 GOLD image                     Family   Default user name     Boot FW      End of Life          Notes
-============================== ======== ===================== ============ ==================== =======================
+============================== ======== ===================== ============ ==================== ===============================
 **Alma Linux 8**               RedHat   ``almalinux``         UEFI         May, 2029            Downstream RHEL
 **Alma Linux 9**               RedHat   ``almalinux``         UEFI         May, 2032            Downstream RHEL
 **Alma Linux 10**              RedHat   ``almalinux``         UEFI         May, 2035            Downstream RHEL
 **CentOS Stream 9**            RedHat   ``cloud-user`` [#f1]_ UEFI [#f3]_  May, 2027            Upstream RHEL
 **CentOS Stream 10**           RedHat   ``cloud-user``        UEFI         Expected 2030        Upstream RHEL
-**Debian 11**                  Debian   ``debian``            UEFI         June, 2026           "Bullseye" release
-**Debian 12**                  Debian   ``debian``            UEFI         June, 2028           "Bookworm" release
 **Fedora 41**                  RedHat   ``fedora``            UEFI         Dec, 2025
 **Fedora 42**                  RedHat   ``fedora``            UEFI         June, 2026
-**UiO Managed RHEL 8**         RedHat   ``cloud-user``        BIOS         May, 2029            UiO projects only
-**UiO Managed RHEL 9**         RedHat   ``cloud-user``        UEFI         May, 2032            UiO projects only
 **Rocky Linux 8**              RedHat   ``rocky``             BIOS         May, 2029            Downstream RHEL
 **Rocky Linux 9**              RedHat   ``rocky``             UEFI         May, 2032            Downstream RHEL
 **Rocky Linux 10**             RedHat   ``rocky``             UEFI         May, 2035            Downstream RHEL
-**Ubuntu 22.04 LTS**           Debian   ``ubuntu``            UEFI         April, 2027          "Jammy Jellyfish"
-**Ubuntu 24.04 LTS**           Debian   ``ubuntu``            UEFI         April, 2029          "Noble Numbat"
+**UiO Managed RHEL 8**         RedHat   ``cloud-user``        BIOS         May, 2029            UiO projects only
+**UiO Managed RHEL 9**         RedHat   ``cloud-user``        UEFI         May, 2032            UiO projects only
+**Debian 11**                  Debian   ``debian``            UEFI         June, 2026           Code name "Bullseye"
+**Debian 12**                  Debian   ``debian``            UEFI         June, 2028           Code name "Bookworm"
+**Debian 13**                  Debian   ``debian``            UEFI         June, 2030           Code name "Trixie"
+**Ubuntu 22.04 LTS**           Debian   ``ubuntu``            UEFI         April, 2027          Code name "Jammy Jellyfish"
+**Ubuntu 24.04 LTS**           Debian   ``ubuntu``            UEFI         April, 2029          Code name "Noble Numbat"
 **Windows Server 2022 Std**    Windows  ``Admin``             UEFI         October, 2031        Licensed in BGO only
 **Windows Server 2025 Std**    Windows  ``Admin``             UEFI         October, 2034        Licensed in BGO only
-============================== ======== ===================== ============ ==================== =======================
+============================== ======== ===================== ============ ==================== ===============================
 
 In addition, the following GOLD images are available to GPU
 users. These images have the correct GPU driver preinstalled:
 
-============================== ======== ===================== ============ ==================== =======================
+============================== ======== ===================== ============ ==================== ===============================
 GOLD image                     Family   Default user name     Boot FW      End of Life          Notes
-============================== ======== ===================== ============ ==================== =======================
+============================== ======== ===================== ============ ==================== ===============================
 **vGPU Alma Linux 8**          RedHat   ``almalinux``         UEFI         May, 2029            Downstream RHEL
 **vGPU Alma Linux 9**          RedHat   ``almalinux``         UEFI         May, 2032            Downstream RHEL
 **vGPU Alma Linux 10**         RedHat   ``almalinux``         UEFI         May, 2035            Downstream RHEL
-**vGPU Ubuntu 22.04 LTS**      Debian   ``ubuntu``            UEFI         April, 2027          "Jammy Jellyfish"
-**vGPU Ubuntu 24.04 LTS**      Debian   ``ubuntu``            UEFI         April, 2029          "Noble Numbat"
-============================== ======== ===================== ============ ==================== =======================
+**vGPU Ubuntu 22.04 LTS**      Debian   ``ubuntu``            UEFI         April, 2027          Code name "Jammy Jellyfish"
+**vGPU Ubuntu 24.04 LTS**      Debian   ``ubuntu``            UEFI         April, 2029          Code name "Noble Numbat"
+============================== ======== ===================== ============ ==================== ===============================
 
 .. NOTE::
    "Downstream RHEL" means that this is a binary compatible
@@ -72,9 +73,9 @@ Retired GOLD images
 
 The following GOLD images are retired and no longer available:
 
-================================= ======== ================== ============ ==================== =======================
+================================= ======== ================== ============ ==================== ==========================
 GOLD image                        Family   Default user name  Boot FW      End of Life          Notes
-================================= ======== ================== ============ ==================== =======================
+================================= ======== ================== ============ ==================== ==========================
 |ss| CentOS 7 |se|                RedHat   ``centos``         BIOS         May, 2024            Downstream RHEL
 |ss| CentOS 8 |se|                RedHat   ``centos``         BIOS         Dec, 2021            Downstream RHEL
 |ss| CentOS Stream 8 |se|         RedHat   ``centos`` [#f2]_  BIOS         May, 2024            Upstream RHEL
@@ -85,15 +86,15 @@ GOLD image                        Family   Default user name  Boot FW      End o
 |ss| Fedora 38 |se|               RedHat   ``fedora``         UEFI         May, 2024
 |ss| Fedora 39 |se|               RedHat   ``fedora``         UEFI         Dec, 2024
 |ss| Fedora 40 |se|               RedHat   ``fedora``         UEFI         May, 2025
-|ss| Ubuntu 18.04 LTS |se|        Debian   ``ubuntu``         BIOS         April, 2023
-|ss| Ubuntu 21.04 |se|            Debian   ``ubuntu``         BIOS         Dec, 2021
-|ss| Ubuntu 21.10 |se|            Debian   ``ubuntu``         BIOS         July, 2022
-|ss| Ubuntu 20.04 LTS |se|        Debian   ``ubuntu``         BIOS         April, 2025          "Focal Fossa"
-|ss| Debian 9 |se|                Debian   ``debian``         BIOS         June, 2022           "Stretch" release
-|ss| Debian 10 |se|               Debian   ``debian``         BIOS         June, 2024           "Buster" release
 |ss| UiO Managed RHEL 7 |se|      RedHat   ``cloud-user``     BIOS         June, 2024           UiO projects only
+|ss| Debian 9 |se|                Debian   ``debian``         BIOS         June, 2022           Code name "Stretch"
+|ss| Debian 10 |se|               Debian   ``debian``         BIOS         June, 2024           Code name "Buster"
+|ss| Ubuntu 18.04 LTS |se|        Debian   ``ubuntu``         BIOS         April, 2023          Code name "Bionic Beaver"
+|ss| Ubuntu 21.04 |se|            Debian   ``ubuntu``         BIOS         Dec, 2021            Code name "Hirsute Hippo"
+|ss| Ubuntu 21.10 |se|            Debian   ``ubuntu``         BIOS         July, 2022           Code name "Impish Indri"
+|ss| Ubuntu 20.04 LTS |se|        Debian   ``ubuntu``         BIOS         April, 2025          Code name "Focal Fossa"
 |ss| Windows Server 2019 Std |se| Windows  ``Admin``          UEFI         January, 2029        Licensed in BGO only
-================================= ======== ================== ============ ==================== =======================
+================================= ======== ================== ============ ==================== ==========================
 
 
 UiO Managed
