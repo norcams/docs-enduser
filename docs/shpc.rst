@@ -141,6 +141,8 @@ Detailed information about the sHPC flavors:
 +---------------------+------------+-------+---------------+
 |``shpc.r1a.12xlarge``| 48         |384 GiB|by request only|
 +---------------------+------------+-------+---------------+
+|``shpc.r1a.16xlarge``| 64         |512 GiB|by request only|
++---------------------+------------+-------+---------------+
 
 The therm vCPU refers to physical threads, which is two pr physical
 CPU core. So, 64 vCPUs translates into 32 physical, multithreaded real
