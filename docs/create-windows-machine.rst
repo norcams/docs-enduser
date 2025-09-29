@@ -303,7 +303,7 @@ When you click "Decrypt Password", the password will be shown in the "Password" 
 
 .. TIP::
    You can retrieve the passord from the command line, using the "nova" client. The
-   openstack client has not yet implemented this feature. Every instance has a name
+   openstack client has not yet implemented this feature. Both the openstack and nova client can be installed with pip in a python virtual environment. The packages are called python-openstackclient and python-novaclient. Since they both rely on the UNIX-style openrc format to set environmental variables, they are most easily accessed in Windows from inside WSL. Every instance has a name
    and ID:
 
    .. code-block:: console
