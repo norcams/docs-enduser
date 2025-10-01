@@ -29,7 +29,6 @@ GOLD image                     Family   Default user name     Boot FW      End o
 **Alma Linux 10**              RedHat   ``almalinux``         UEFI         May, 2035            Downstream RHEL
 **CentOS Stream 9**            RedHat   ``cloud-user`` [#f1]_ UEFI [#f3]_  May, 2027            Upstream RHEL
 **CentOS Stream 10**           RedHat   ``cloud-user``        UEFI         Expected 2030        Upstream RHEL
-**Fedora 41**                  RedHat   ``fedora``            UEFI         Dec, 2025
 **Fedora 42**                  RedHat   ``fedora``            UEFI         June, 2026
 **Rocky Linux 8**              RedHat   ``rocky``             BIOS         May, 2029            Downstream RHEL
 **Rocky Linux 9**              RedHat   ``rocky``             UEFI         May, 2032            Downstream RHEL
@@ -51,7 +50,6 @@ users. These images have the correct GPU driver preinstalled:
 ============================== ======== ===================== ============ ==================== ===============================
 GOLD image                     Family   Default user name     Boot FW      End of Life          Notes
 ============================== ======== ===================== ============ ==================== ===============================
-**vGPU Alma Linux 8**          RedHat   ``almalinux``         UEFI         May, 2029            Downstream RHEL
 **vGPU Alma Linux 9**          RedHat   ``almalinux``         UEFI         May, 2032            Downstream RHEL
 **vGPU Alma Linux 10**         RedHat   ``almalinux``         UEFI         May, 2035            Downstream RHEL
 **vGPU Ubuntu 22.04 LTS**      Debian   ``ubuntu``            UEFI         April, 2027          Code name "Jammy Jellyfish"
@@ -86,6 +84,7 @@ GOLD image                        Family   Default user name  Boot FW      End o
 |ss| Fedora 38 |se|               RedHat   ``fedora``         UEFI         May, 2024
 |ss| Fedora 39 |se|               RedHat   ``fedora``         UEFI         Dec, 2024
 |ss| Fedora 40 |se|               RedHat   ``fedora``         UEFI         May, 2025
+|ss| Fedora 41 |se|               RedHat   ``fedora``         UEFI         Dec, 2025
 |ss| UiO Managed RHEL 7 |se|      RedHat   ``cloud-user``     BIOS         June, 2024           UiO projects only
 |ss| Debian 9 |se|                Debian   ``debian``         BIOS         June, 2022           Code name "Stretch"
 |ss| Debian 10 |se|               Debian   ``debian``         BIOS         June, 2024           Code name "Buster"
@@ -94,6 +93,7 @@ GOLD image                        Family   Default user name  Boot FW      End o
 |ss| Ubuntu 21.10 |se|            Debian   ``ubuntu``         BIOS         July, 2022           Code name "Impish Indri"
 |ss| Ubuntu 20.04 LTS |se|        Debian   ``ubuntu``         BIOS         April, 2025          Code name "Focal Fossa"
 |ss| Windows Server 2019 Std |se| Windows  ``Admin``          UEFI         January, 2029        Licensed in BGO only
+|ss| vGPU Alma Linux 8 |se|       RedHat   ``almalinux``      UEFI         May, 2029            Downstream RHEL
 ================================= ======== ================== ============ ==================== ==========================
 
 
