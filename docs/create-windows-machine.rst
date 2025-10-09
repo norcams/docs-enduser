@@ -268,9 +268,6 @@ instance. This is described in the previous chapter, "Create a Linux virtual mac
 Retrive Admin password
 ----------------------
 
-.. IMPORTANT::
-   2025-09-29: The "Retrieve Password" option is currently not available in the dashboard. For this functionality, you need to use the command line. Please see below for how.
-
 .. TIP:: See below for how to set the Admin password instead of
 	 retrieving it
 
