@@ -1,19 +1,11 @@
 ==============================================
-(BETA) Virtual GPU Accelerated instance (vGPU)
+Virtual GPU Accelerated instance (vGPU)
 ==============================================
 
-Last changed: 2024-05-02
-
-.. IMPORTANT::
-   **vGPU infrastructure upgrade Thursday, February 15, 2024**
-
-   The vGPU hypervisors will be upgraded with new NVIDIA vGPU drivers
-   and software. After this upgrade, it will be necessary to update
-   the drivers in running instances. See `Upgrading the instance
-   drivers`_ for how to upgrade the driver.
+Last changed: 2025-10-17
 
 .. WARNING::
-  This document is a work in progress. More information to come.
+  This document is a work in progress.
 
 .. contents::
 
@@ -21,40 +13,36 @@ Last changed: 2024-05-02
 .. _support page: support.html
 .. _contact support: support.html
 .. _NVIDIA Container Toolkit: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
+.. _Norwegian AI Cloud: https://naic.no
 
 This document describes the use of Virtual GPU accelerated instances in NREC.
 
-
-.. IMPORTANT::
-   The vGPU service in NREC is in a beta stage. The stability in
-   this service may be lacking compared to the standard NREC
-   services.
-
-Getting Access
---------------
-
-Please use the normal form to `apply for an vGPU project`_, for access
-to the GPU infrastructure. If you have any questions, please use the
-normal support channels as described on our `support page`_. You will
-not be able to use an existing project with vGPU.
-
-Policies
---------
+Policies and Getting Access
+---------------------------
 
 The following are the preliminary policies that are in effect for
 access and use of the vGPU infrastructure. The main purpose of the
 policies is to ensure that resources aren't wasted. The policies may
 change in the future:
 
-* We want "pure" vGPU projects for easier resource control. To use the
-  vGPU infrastructure, `apply for an vGPU project`_.
+* Short lived (<= 48h) vGPU instances in NREC for use in AI/ML tasks are provided by `Norwegian AI Cloud`_. To apply, please contact support@nrec.no.
+
+* For other vGPU instances required to run for a longer duration (~6 months), `apply for an vGPU project`_.
+
+* We want "pure" vGPU projects for easier resource control.
 
 * The vGPU resources must be used. Having instances running idle is not
   acceptable in the vGPU infrastructure.
 
 * Delete the instance when it's no longer needed.
 
-If you paid for the hardware yourself only the first two policies apply.
+* You will not be able to use an existing project with vGPU.
+
+If you paid for the hardware yourself, we will not interfere
+in whether non-needed instances are deleted.
+
+If you have any questions, please use the
+normal support channels as described on our `support page`_.
 
 Hardware
 --------
@@ -99,15 +87,13 @@ resources.
 +------------------+-----------------------+
 | Distribution     | Image name            |
 +==================+=======================+
-| Ubuntu 20.04 LTS | vGPU Ubuntu 20.04 LTS |
-+------------------+-----------------------+
 | Ubuntu 22.04 LTS | vGPU Ubuntu 22.04 LTS |
 +------------------+-----------------------+
 | Ubuntu 24.04 LTS | vGPU Ubuntu 24.04 LTS |
 +------------------+-----------------------+
-| Alma Linux 8.x   | vGPU Alma Linux 8     |
-+------------------+-----------------------+
 | Alma Linux 9.x   | vGPU Alma Linux 9     |
++------------------+-----------------------+
+| Alma Linux 10.x   | vGPU Alma Linux 10   |
 +------------------+-----------------------+
 
 
