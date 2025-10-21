@@ -43,11 +43,11 @@ Users that are not from any of the institutions mentioned above will
 need a guest account at either UiB or UiO. See below for how to
 proceed:
 
-* **UiB**: More information:
+* **UiB**:
 
   - `How to register guests for user account`_ | `Norwegian version <https://hjelpekort.app.uib.no/KI-1433.html>`_
 
-* **UiO**: More information:
+* **UiO**:
   
   - `Guest Registration – invite service for UiO's guests`_ | `Norwegian version <https://www.uio.no/tjenester/it/brukernavn-passord/gjestetjenesten/>`_
   - `Guest access to UiO's IT systems [For employees]`_ | `Norwegian version <https://www.uio.no/for-ansatte/arbeidsstotte/lonnsadministrasjon/gjest.html>`_
