@@ -42,6 +42,7 @@ Getting a Guest Account
 -----------------------
 
 .. _Norwegian version: https://www.uio.no/tjenester/it/brukernavn-passord/gjestetjenesten/
+.. _Norwegian version : https://www.uio.no/for-ansatte/arbeidsstotte/lonnsadministrasjon/gjest.html
 
 Users that are not from any of the institutions mentioned above will
 need a guest account at either UiB or UiO. The guest services at UiB
@@ -52,10 +53,7 @@ and UiO are well documented:
 * **UiO**: More information:
   
   - `Guest Registration – invite service for UiO's guests`_ | `Norwegian version`_
-
-.. _Norwegian version: https://www.uio.no/for-ansatte/arbeidsstotte/lonnsadministrasjon/gjest.html
-    
-  - `Guest access to UiO's IT systems [For employees]`_ | `Norwegian version`_
+  - `Guest access to UiO's IT systems [For employees]`_ | `Norwegian version `_
 
 When the guest account has been generated the user may use NREC as any
 other UiB or UiO user.
