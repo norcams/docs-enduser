@@ -42,8 +42,8 @@ Getting a Guest Account
 -----------------------
 
 Users that are not from any of the institutions mentioned above will
-need a guest account at either UiB or UiO. The guest services at UiB
-and UiO are well documented:
+need a guest account at either UiB or UiO. See below for how to
+proceed:
 
 * **UiB**: Use the `Guest Service`_
 
