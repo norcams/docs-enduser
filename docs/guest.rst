@@ -30,7 +30,7 @@ and fully use NREC:
 * University of Oslo (UiO)
 
 Users at the following Norwegian universities and institutions can
-`sign up`_ natively and be a member of an UiB or UiO project:
+`sign up`_ natively and be a **member** of a UiB or UiO project:
 
 * Norwegian University of Science and Technology (NTNU)
 * The Arctic University of Norway (UiT)
