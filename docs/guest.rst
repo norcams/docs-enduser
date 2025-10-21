@@ -5,9 +5,7 @@ Last changed: 2025-10-21
 
 .. contents::
 
-.. _Gjestetjenesten – registreringsløsning for gjester: https://www.uio.no/tjenester/it/brukernavn-passord/gjestetjenesten/
 .. _Guest Registration – invite service for UiO's guests: https://www.uio.no/english/services/it/username-password/guest-registration/
-.. _Gjestetilgang til UiOs IT-systemer [For ansatte]: https://www.uio.no/for-ansatte/arbeidsstotte/lonnsadministrasjon/gjest.html
 .. _Guest access to UiO's IT systems [For employees]: https://www.uio.no/english/for-employees/support/payroll/guest.html
 
 .. _Guest Service: https://gjest.uib.no/
@@ -15,16 +13,16 @@ Last changed: 2025-10-21
 .. _sign up: login.html#sign-up
 
 NREC currently only supports authentication via Feide. UiB and UiO
-users can `sign up`_ natively. The same is true for users at a couple
-of other Norwegian universities. Other users will need to get
-a **guest account** at UiB or UiO to use NREC.
+users can `sign up`_ natively. The same is true for users at a few
+other Norwegian universities. Other users will need to get a **guest
+account** at UiB or UiO to use NREC.
 
 
 Who can use NREC natively
 -------------------------
 
 Users at the following Norwegian universities can `sign up`_ natively
-and fully use NREC:
+and have full access to NREC:
 
 * University of Bergen (UiB)
 * University of Oslo (UiO)
