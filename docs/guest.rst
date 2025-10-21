@@ -41,6 +41,8 @@ Users at the following Norwegian universities and institutions can
 Getting a Guest Account
 -----------------------
 
+.. _Norwegian version: https://www.uio.no/tjenester/it/brukernavn-passord/gjestetjenesten/
+
 Users that are not from any of the institutions mentioned above will
 need a guest account at either UiB or UiO. The guest services at UiB
 and UiO are well documented:
@@ -48,10 +50,12 @@ and UiO are well documented:
 * **UiB**: Use the `Guest Service`_
 
 * **UiO**: More information:
-  - English: `Guest Registration – invite service for UiO's guests`_
-  - English: `Guest access to UiO's IT systems [For employees]`_
-  - Norwegian: `Gjestetjenesten – registreringsløsning for gjester`_
-  - Norwegian: `Gjestetilgang til UiOs IT-systemer [For ansatte]`_
+  
+  - `Guest Registration – invite service for UiO's guests`_ | `Norwegian version`_
+
+.. _Norwegian version: https://www.uio.no/for-ansatte/arbeidsstotte/lonnsadministrasjon/gjest.html
+    
+  - `Guest access to UiO's IT systems [For employees]`_ | `Norwegian version`_
 
 When the guest account has been generated the user may use NREC as any
 other UiB or UiO user.
