@@ -46,7 +46,7 @@ need a guest account at either UiB or UiO. The guest services at UiB
 and UiO are well documented:
 
 **UiB**
-
+  FIXME.
 
 **UiO**
   English:
