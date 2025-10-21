@@ -8,7 +8,7 @@ Last changed: 2025-10-21
 .. _Guest Registration – invite service for UiO's guests: https://www.uio.no/english/services/it/username-password/guest-registration/
 .. _Guest access to UiO's IT systems [For employees]: https://www.uio.no/english/for-employees/support/payroll/guest.html
 
-.. _Guest Service: https://gjest.uib.no/
+.. _How to register guests for user account: https://hjelpekort.app.uib.no/en/KI-1433.html
 
 .. _sign up: login.html#sign-up
 
@@ -43,7 +43,9 @@ Users that are not from any of the institutions mentioned above will
 need a guest account at either UiB or UiO. See below for how to
 proceed:
 
-* **UiB**: Use the `Guest Service`_
+* **UiB**: More information:
+
+  - `How to register guests for user account`_ | `Norwegian version <https://hjelpekort.app.uib.no/KI-1433.html>`_
 
 * **UiO**: More information:
   
