@@ -52,5 +52,5 @@ proceed:
   - `Guest Registration – invite service for UiO's guests`_ | `Norwegian version <https://www.uio.no/tjenester/it/brukernavn-passord/gjestetjenesten/>`_
   - `Guest access to UiO's IT systems [For employees]`_ | `Norwegian version <https://www.uio.no/for-ansatte/arbeidsstotte/lonnsadministrasjon/gjest.html>`_
 
-When the guest account has been generated the user may use NREC as any
-other UiB or UiO user.
+When the guest account has been generated the user may use NREC like
+any other UiB or UiO user.
