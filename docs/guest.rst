@@ -45,17 +45,13 @@ Users that are not from any of the institutions mentioned above will
 need a guest account at either UiB or UiO. The guest services at UiB
 and UiO are well documented:
 
-**UiB**
-  `Guest Service`_
+* **UiB**: Use the `Guest Service`_
 
-**UiO**
-  English:
-    * `Guest Registration – invite service for UiO's guests`_
-    * `Guest access to UiO's IT systems [For employees]`_
-
-  Norwegian:
-    * `Gjestetjenesten – registreringsløsning for gjester`_
-    * `Gjestetilgang til UiOs IT-systemer [For ansatte]`_
+* **UiO**: More information:
+  - English: `Guest Registration – invite service for UiO's guests`_
+  - English: `Guest access to UiO's IT systems [For employees]`_
+  - Norwegian: `Gjestetjenesten – registreringsløsning for gjester`_
+  - Norwegian: `Gjestetilgang til UiOs IT-systemer [For ansatte]`_
 
 When the guest account has been generated the user may use NREC as any
 other UiB or UiO user.
