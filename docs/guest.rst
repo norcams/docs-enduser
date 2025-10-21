@@ -50,7 +50,6 @@ and UiO are well documented:
 
 **UiO**
   English:
-  
     * `Guest Registration – invite service for UiO's guests`_
     * `Guest access to UiO's IT systems [For employees]`_
 
