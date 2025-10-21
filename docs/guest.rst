@@ -10,7 +10,7 @@ Last changed: 2025-10-21
 .. _Gjestetilgang til UiOs IT-systemer [For ansatte]: https://www.uio.no/for-ansatte/arbeidsstotte/lonnsadministrasjon/gjest.html
 .. _Guest access to UiO's IT systems [For employees]: https://www.uio.no/english/for-employees/support/payroll/guest.html
 
-.. _foo: foo.html
+.. _Guest Service: https://gjest.uib.no/
 
 .. _sign up: login.html#sign-up
 
@@ -46,7 +46,7 @@ need a guest account at either UiB or UiO. The guest services at UiB
 and UiO are well documented:
 
 **UiB**
-  FIXME.
+  `Guest Service`_
 
 **UiO**
   English:
