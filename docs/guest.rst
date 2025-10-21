@@ -58,3 +58,5 @@ and UiO are well documented:
     * `Gjestetjenesten – registreringsløsning for gjester`_
     * `Gjestetilgang til UiOs IT-systemer [For ansatte]`_
 
+When the guest account has been generated the user may use NREC as any
+other UiB or UiO user.
