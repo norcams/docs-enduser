@@ -28,12 +28,17 @@ and have full access to NREC:
 * University of Oslo (UiO)
 
 Users at the following Norwegian universities and institutions can
-`sign up`_ natively and be a **member** of a UiB or UiO project:
+`sign up`_ natively but resources are controlled. These users may
+either become a **member** of an existing UiB or UiO project, or get
+their own projects as a paying customer:
 
 * Norwegian University of Science and Technology (NTNU)
 * The Arctic University of Norway (UiT)
 * University of Agder (UiA)
 * Norwegian Agency for Shared Services in Education and Research (Sikt)
+* Norwegian Veterinary Institute (Vetinst)
+* Norwegian University of Life Sciences (NMBU)
+* Western Norway University of Applied Sciences (HVL)
 
 
 Getting a Guest Account
