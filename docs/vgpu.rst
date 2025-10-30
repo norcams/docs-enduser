@@ -101,7 +101,7 @@ resources.
 +------------------+-----------------------+
 | Alma Linux 9.x   | vGPU Alma Linux 9     |
 +------------------+-----------------------+
-| Alma Linux 10.x   | vGPU Alma Linux 10   |
+| Alma Linux 10.x  | vGPU Alma Linux 10    |
 +------------------+-----------------------+
 
 
