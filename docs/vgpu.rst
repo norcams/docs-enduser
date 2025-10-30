@@ -2,10 +2,10 @@
 Virtual GPU Accelerated instance (vGPU)
 ==============================================
 
-Last changed: 2025-10-17
+Last changed: 2025-10-30
 
 .. WARNING::
-  This document is a work in progress.
+  This document is a work in progress
 
 .. contents::
 
@@ -15,66 +15,74 @@ Last changed: 2025-10-17
 .. _NVIDIA Container Toolkit: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
 .. _Norwegian AI Cloud: https://naic.no
 
-This document describes the use of Virtual GPU accelerated instances in NREC.
+This document describes the use of Virtual GPU (vGPU) accelerated instances in NREC.
 
-Policies and Getting Access
----------------------------
+Access Policy
+-------------
 
-The following are the preliminary policies that are in effect for
-access and use of the vGPU infrastructure. The main purpose of the
-policies is to ensure that resources aren't wasted. The policies may
-change in the future:
+This is based on estimated life span of the vGPU instance:
 
-* Short lived (<= 48h) vGPU instances in NREC for use in AI/ML tasks are provided by `Norwegian AI Cloud`_. To apply, please contact support@nrec.no.
+* Short lived (<= 48h) vGPU instances in NREC for AI/ML tasks are provided by `Norwegian AI Cloud`_ (NAIC). To apply, please contact support@naic.no.
 
-* For other vGPU instances required to run for a longer duration (~6 months), `apply for an vGPU project`_.
+* For vGPU instances required to run for a longer duration (~6 months), `apply for an vGPU project`_.
 
-* We want "pure" vGPU projects for easier resource control.
+In general, we want "pure" vGPU projects for easier resource control. The vGPU resources must be used. Having instances running idle is not acceptable in the vGPU infrastructure. Please remember to delete the instance when it's no longer needed.
 
-* The vGPU resources must be used. Having instances running idle is not
-  acceptable in the vGPU infrastructure.
-
-* Delete the instance when it's no longer needed.
-
-* You will not be able to use an existing project with vGPU.
+.. NOTE::
+  You will not be able to add vGPU resources to an existing non-vGPU project
 
 If you paid for the hardware yourself, we will not interfere
-in whether non-needed instances are deleted.
-
-If you have any questions, please use the
+in whether non-needed instances are deleted. For any inquiries, please use the
 normal support channels as described on our `support page`_.
 
 Hardware
 --------
 
-There will be different types of hardware used in vGPU but this is the
-initial setup:
+The hypervisors providing the vGPU resources have CPU and GPU of the following types:
 
-**BGO:**
-
-* GPU: NVIDIA Tesla V100 PCIe 16GB (each split between 2 instances)
-* CPU: Intel Xeon Gold 5215 CPU @ 2.50GHz
-
-**OSL:**
-
-* GPU: NVIDIA Tesla P40 PCIe 24GB (each split between 2 instances)
-* CPU: Intel Xeon Gold 6226R CPU @ 2.90GHz
++----------------------------------------+---------------------------------+---------+
+|Central Processing Unit (CPU)           |Graphical Processing Unit (GPU)  | Region  |
++========================================+=================================+=========+
+|Intel Xeon Gold 5215 CPU @ 2.50GHz      |NVIDIA Tesla V100 PCIe 16G       |BGO      |
++----------------------------------------+---------------------------------+---------+
+|Intel Xeon Gold 6226R CPU @ 2.90GHz     |NVIDIA Tesla P40 PCIe 24G        |OSL      |
++----------------------------------------+---------------------------------+---------+
+|Intel(R) Xeon(R) Silver 4410Y @ 2.00GHz |NVIDIA L40S 48GB                 |BGO      |
++----------------------------------------+---------------------------------+---------+
+|Intel(R) Xeon(R) Silver 4410Y @ 2.00GHz |NVIDIA L40S 48GB                 |OSL      |
++----------------------------------------+---------------------------------+---------+
 
 Flavors
 -------
 
-We currently have the following flavors for use with vGPU:
+We provide the following flavor configurations for Virtual CPU cores, main memory, physical disk storage space and virtual GPU type and memory:
 
-+------------------+--------------+---------+---------+----------+----------+
-|Flavor name       |Virtual CPUs  |Disk     |Memory   |Virtual   |Virtual   |
-|                  |              |         |         |GPU (BGO) |GPU (OSL) |
-+==================+==============+=========+=========+==========+==========+
-|vgpu.m1.large     |2             |50 GB    |8 GiB    |V100 8 GiB|P40 12 GiB|
-+------------------+--------------+---------+---------+----------+----------+
-|vgpu.m1.xlarge    |4             |50 GB    |16 GiB   |V100 8 GiB|P40 12 GiB|
-+------------------+--------------+---------+---------+----------+----------+
-|vgpu.m1.2xlarge   |8             |50 GB    |32 GiB   |V100 8 GiB|P40 12 GiB|
-+------------------+--------------+---------+---------+----------+----------+
++---------------------+--------------+---------+---------+------------+------------+
+|Flavor name          |vCPU cores    |Disk     |Memory   |vGPU        |Region      |
++=====================+==============+=========+=========+============+============+
+|vgpu.m1.large        |2             |50 GB    |8 GiB    |V100 8 GiB  |BGO         |
++---------------------+--------------+---------+---------+------------+------------+
+|vgpu.m1.large        |2             |50 GB    |8 GiB    |P40 12 GiB  |OSL         |
++---------------------+--------------+---------+---------+------------+------------+
+|vgpu.m1.xlarge       |4             |50 GB    |16 GiB   |V100 8 GiB  |BGO         |
++---------------------+--------------+---------+---------+------------+------------+
+|vgpu.m1.xlarge       |4             |50 GB    |16 GiB   |P40 12 GiB  |OSL         |
++---------------------+--------------+---------+---------+------------+------------+
+|vgpu.m1.2xlarge      |8             |50 GB    |32 GiB   |V100 8 GiB  |BGO         |
++---------------------+--------------+---------+---------+------------+------------+
+|vgpu.m1.2xlarge      |8             |50 GB    |32 GiB   |P40 12 GiB  |OSL         |
++---------------------+--------------+---------+---------+------------+------------+
+|vgpu.r1.4xlarge      |16            |100 GB   |120 GiB  |L40s 24 GiB |BGO         |
++---------------------+--------------+---------+---------+------------+------------+
+|vgpu.r1.4xlarge      |16            |200 GB   |120 GiB  |L40s 24 GiB |OSL         |
++---------------------+--------------+---------+---------+------------+------------+
+|gr1.L40S.24g.4xlarge |16            |100 GB   |120 GiB  |L40s 24 GiB |BGO         |
++---------------------+--------------+---------+---------+------------+------------+
+|gr1.L40S.24g.4xlarge |16            |200 GB   |120 GiB  |L40s 24 GiB |OSL         |
++---------------------+--------------+---------+---------+------------+------------+
+
+.. NOTE::
+  The L40s flavors are mainly provided for short lived instances through NAIC
 
 Prebuilt images
 ---------------
