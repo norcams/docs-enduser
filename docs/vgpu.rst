@@ -2,7 +2,7 @@
 Virtual GPU Accelerated instance (vGPU)
 ==============================================
 
-Last changed: 2025-10-30
+Last changed: 2025-10-31
 
 .. WARNING::
   This document is a work in progress
@@ -22,9 +22,9 @@ Access Policy
 
 This is based on estimated life span of the vGPU instance:
 
-* Short lived (<= 48h) vGPU instances in NREC for AI/ML tasks are provided by `Norwegian AI Cloud`_ (NAIC). To apply, please contact support@naic.no.
+* Short lived vGPU instances in NREC for AI/ML tasks are provided by `Norwegian AI Cloud`_ (NAIC). To apply, please contact support@naic.no.
 
-* For vGPU instances required to run for a longer duration (~6 months), `apply for an vGPU project`_.
+* For vGPU instances required to run for a longer duration (maximum 6 months), `apply for an vGPU project`_.
 
 In general, we want "pure" vGPU projects for easier resource control. The vGPU resources must be used. Having instances running idle is not acceptable in the vGPU infrastructure. Please remember to delete the instance when it's no longer needed.
 
@@ -57,29 +57,25 @@ Flavors
 
 We provide the following flavor configurations for Virtual CPU cores, main memory, physical disk storage space and virtual GPU type and memory:
 
-+---------------------+--------------+---------+---------+------------+------------+
-|Flavor name          |vCPU cores    |Disk     |Memory   |vGPU        |Region      |
-+=====================+==============+=========+=========+============+============+
-|vgpu.m1.large        |2             |50 GB    |8 GiB    |V100 8 GiB  |BGO         |
-+---------------------+--------------+---------+---------+------------+------------+
-|vgpu.m1.large        |2             |50 GB    |8 GiB    |P40 12 GiB  |OSL         |
-+---------------------+--------------+---------+---------+------------+------------+
-|vgpu.m1.xlarge       |4             |50 GB    |16 GiB   |V100 8 GiB  |BGO         |
-+---------------------+--------------+---------+---------+------------+------------+
-|vgpu.m1.xlarge       |4             |50 GB    |16 GiB   |P40 12 GiB  |OSL         |
-+---------------------+--------------+---------+---------+------------+------------+
-|vgpu.m1.2xlarge      |8             |50 GB    |32 GiB   |V100 8 GiB  |BGO         |
-+---------------------+--------------+---------+---------+------------+------------+
-|vgpu.m1.2xlarge      |8             |50 GB    |32 GiB   |P40 12 GiB  |OSL         |
-+---------------------+--------------+---------+---------+------------+------------+
-|vgpu.r1.4xlarge      |16            |100 GB   |120 GiB  |L40s 24 GiB |BGO         |
-+---------------------+--------------+---------+---------+------------+------------+
-|vgpu.r1.4xlarge      |16            |200 GB   |120 GiB  |L40s 24 GiB |OSL         |
-+---------------------+--------------+---------+---------+------------+------------+
-|gr1.L40S.24g.4xlarge |16            |100 GB   |120 GiB  |L40s 24 GiB |BGO         |
-+---------------------+--------------+---------+---------+------------+------------+
-|gr1.L40S.24g.4xlarge |16            |200 GB   |120 GiB  |L40s 24 GiB |OSL         |
-+---------------------+--------------+---------+---------+------------+------------+
++---------------------+--------------+---------+---------+------------+----------------+
+|Flavor name          |vCPU cores    |Disk     |Memory   |vGPU        |Region          |
++=====================+==============+=========+=========+============+================+
+|vgpu.m1.large        |2             |50 GB    |8 GiB    |V100 8 GiB  |BGO             |
++---------------------+--------------+---------+---------+------------+----------------+
+|vgpu.m1.large        |2             |50 GB    |8 GiB    |P40 12 GiB  |OSL             |
++---------------------+--------------+---------+---------+------------+----------------+
+|vgpu.m1.xlarge       |4             |50 GB    |16 GiB   |V100 8 GiB  |BGO             |
++---------------------+--------------+---------+---------+------------+----------------+
+|vgpu.m1.xlarge       |4             |50 GB    |16 GiB   |P40 12 GiB  |OSL             |
++---------------------+--------------+---------+---------+------------+----------------+
+|vgpu.m1.2xlarge      |8             |50 GB    |32 GiB   |V100 8 GiB  |BGO             |
++---------------------+--------------+---------+---------+------------+----------------+
+|vgpu.m1.2xlarge      |8             |50 GB    |32 GiB   |P40 12 GiB  |OSL             |
++---------------------+--------------+---------+---------+------------+----------------+
+|gr1.L40S.24g.4xlarge |16            |100 GB   |120 GiB  |L40s 24 GiB |BGO             |
++---------------------+--------------+---------+---------+------------+----------------+
+|gr1.L40S.24g.4xlarge |16            |200 GB   |120 GiB  |L40s 24 GiB |OSL (NAIC only) |
++---------------------+--------------+---------+---------+------------+----------------+
 
 .. NOTE::
   The L40s flavors are mainly provided for short lived instances through NAIC
