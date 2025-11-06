@@ -54,6 +54,9 @@ commonly used security groups:
 +----------------------------+----------------------------------------------+--------------------------------------------------------------------------------------------+
 | ssh_icmp_from_uh_sector    | Allows ssh and ping from Norwegian UH sector | :download:`create-secgroup-uh-sector.sh <downloads/secgroup/create-secgroup-uh-sector.sh>` |
 +----------------------------+----------------------------------------------+--------------------------------------------------------------------------------------------+
+| uio_managed_v1             |   Minimal requirement for UiO Managed (v1)   |                         :download:`create-secgroup-uio-managed.sh                          |
+|                            |                                              |                    <downloads/secgroup/create-secgroup-uio-managed.sh>`                    |
++----------------------------+----------------------------------------------+--------------------------------------------------------------------------------------------+
 
 In all cases:
 
