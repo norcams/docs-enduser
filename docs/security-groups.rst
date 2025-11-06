@@ -45,18 +45,17 @@ Script snippets to create common security groups
 You may use the following bash script snippets to quickly create
 commonly used security groups:
 
-+----------------------------+----------------------------------------------+--------------------------------------------------------------------------------------------+
-| Name                       | Description                                  | Download                                                                                   |
-+============================+==============================================+============================================================================================+
-| ssh_icmp_from_login.uib.no | Allows ssh and ping from login hosts at UiB  | :download:`create-secgroup-uib-login.sh <downloads/secgroup/create-secgroup-uib-login.sh>` |
-+----------------------------+----------------------------------------------+--------------------------------------------------------------------------------------------+
-| ssh_icmp_from_login.uio.no | Allows ssh and ping from login hosts at UiO  | :download:`create-secgroup-uio-login.sh <downloads/secgroup/create-secgroup-uio-login.sh>` |
-+----------------------------+----------------------------------------------+--------------------------------------------------------------------------------------------+
-| ssh_icmp_from_uh_sector    | Allows ssh and ping from Norwegian UH sector | :download:`create-secgroup-uh-sector.sh <downloads/secgroup/create-secgroup-uh-sector.sh>` |
-+----------------------------+----------------------------------------------+--------------------------------------------------------------------------------------------+
-| uio_managed_v1             |   Minimal requirement for UiO Managed (v1)   |                         :download:`create-secgroup-uio-managed.sh                          |
-|                            |                                              |                    <downloads/secgroup/create-secgroup-uio-managed.sh>`                    |
-+----------------------------+----------------------------------------------+--------------------------------------------------------------------------------------------+
++----------------------------+----------------------------------------------+-------------------------------------------------------------------------------------------------+
+| Name                       | Description                                  | Download                                                                                        |
++============================+==============================================+=================================================================================================+
+| ssh_icmp_from_login.uib.no | Allows ssh and ping from login hosts at UiB  |   :download:`create-secgroup-uib-login.sh <downloads/secgroup/create-secgroup-uib-login.sh>`    |
++----------------------------+----------------------------------------------+-------------------------------------------------------------------------------------------------+
+| ssh_icmp_from_login.uio.no | Allows ssh and ping from login hosts at UiO  |   :download:`create-secgroup-uio-login.sh <downloads/secgroup/create-secgroup-uio-login.sh>`    |
++----------------------------+----------------------------------------------+-------------------------------------------------------------------------------------------------+
+| ssh_icmp_from_uh_sector    | Allows ssh and ping from Norwegian UH sector |   :download:`create-secgroup-uh-sector.sh <downloads/secgroup/create-secgroup-uh-sector.sh>`    |
++----------------------------+----------------------------------------------+-------------------------------------------------------------------------------------------------+
+| uio_managed_v1             |   Minimal requirement for UiO Managed (v1)   | :download:`create-secgroup-uio-managed.sh <downloads/secgroup/create-secgroup-uio-managed.sh>`  |
++----------------------------+----------------------------------------------+-------------------------------------------------------------------------------------------------+
 
 In all cases:
 
