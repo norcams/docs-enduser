@@ -1,19 +1,11 @@
 ==============================================
-(BETA) Virtual GPU Accelerated instance (vGPU)
+Virtual GPU Accelerated instance (vGPU)
 ==============================================
 
-Last changed: 2024-05-02
-
-.. IMPORTANT::
-   **vGPU infrastructure upgrade Thursday, February 15, 2024**
-
-   The vGPU hypervisors will be upgraded with new NVIDIA vGPU drivers
-   and software. After this upgrade, it will be necessary to update
-   the drivers in running instances. See `Upgrading the instance
-   drivers`_ for how to upgrade the driver.
+Last changed: 2025-10-31
 
 .. WARNING::
-  This document is a work in progress. More information to come.
+  This document is a work in progress
 
 .. contents::
 
@@ -21,72 +13,72 @@ Last changed: 2024-05-02
 .. _support page: support.html
 .. _contact support: support.html
 .. _NVIDIA Container Toolkit: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
+.. _Norwegian AI Cloud: https://naic.no
 
-This document describes the use of Virtual GPU accelerated instances in NREC.
+This document describes the use of Virtual GPU (vGPU) accelerated instances in NREC.
 
+Access Policy
+-------------
 
-.. IMPORTANT::
-   The vGPU service in NREC is in a beta stage. The stability in
-   this service may be lacking compared to the standard NREC
-   services.
+This is based on estimated life span of the vGPU instance:
 
-Getting Access
---------------
+* Short lived vGPU instances in NREC for AI/ML tasks are provided by `Norwegian AI Cloud`_ (NAIC). To apply, please contact support@naic.no.
 
-Please use the normal form to `apply for an vGPU project`_, for access
-to the GPU infrastructure. If you have any questions, please use the
-normal support channels as described on our `support page`_. You will
-not be able to use an existing project with vGPU.
+* For vGPU instances required to run for a longer duration (maximum 6 months), `apply for an vGPU project`_.
 
-Policies
---------
+In general, we want "pure" vGPU projects for easier resource control. The vGPU resources must be used. Having instances running idle is not acceptable in the vGPU infrastructure. Please remember to delete the instance when it's no longer needed.
 
-The following are the preliminary policies that are in effect for
-access and use of the vGPU infrastructure. The main purpose of the
-policies is to ensure that resources aren't wasted. The policies may
-change in the future:
+.. NOTE::
+  You will not be able to add vGPU resources to an existing non-vGPU project
 
-* We want "pure" vGPU projects for easier resource control. To use the
-  vGPU infrastructure, `apply for an vGPU project`_.
-
-* The vGPU resources must be used. Having instances running idle is not
-  acceptable in the vGPU infrastructure.
-
-* Delete the instance when it's no longer needed.
-
-If you paid for the hardware yourself only the first two policies apply.
+If you paid for the hardware yourself, we will not interfere
+in whether non-needed instances are deleted. For any inquiries, please use the
+normal support channels as described on our `support page`_.
 
 Hardware
 --------
 
-There will be different types of hardware used in vGPU but this is the
-initial setup:
+The hypervisors providing the vGPU resources have CPU and GPU of the following types:
 
-**BGO:**
-
-* GPU: NVIDIA Tesla V100 PCIe 16GB (each split between 2 instances)
-* CPU: Intel Xeon Gold 5215 CPU @ 2.50GHz
-
-**OSL:**
-
-* GPU: NVIDIA Tesla P40 PCIe 24GB (each split between 2 instances)
-* CPU: Intel Xeon Gold 6226R CPU @ 2.90GHz
++----------------------------------------+---------------------------------+---------+
+|Central Processing Unit (CPU)           |Graphical Processing Unit (GPU)  | Region  |
++========================================+=================================+=========+
+|Intel Xeon Gold 5215 CPU @ 2.50GHz      |NVIDIA Tesla V100 PCIe 16G       |BGO      |
++----------------------------------------+---------------------------------+---------+
+|Intel Xeon Gold 6226R CPU @ 2.90GHz     |NVIDIA Tesla P40 PCIe 24G        |OSL      |
++----------------------------------------+---------------------------------+---------+
+|Intel(R) Xeon(R) Silver 4410Y @ 2.00GHz |NVIDIA L40S 48GB                 |BGO      |
++----------------------------------------+---------------------------------+---------+
+|Intel(R) Xeon(R) Silver 4410Y @ 2.00GHz |NVIDIA L40S 48GB                 |OSL      |
++----------------------------------------+---------------------------------+---------+
 
 Flavors
 -------
 
-We currently have the following flavors for use with vGPU:
+We provide the following flavor configurations for Virtual CPU cores, main memory, physical disk storage space and virtual GPU type and memory:
 
-+------------------+--------------+---------+---------+----------+----------+
-|Flavor name       |Virtual CPUs  |Disk     |Memory   |Virtual   |Virtual   |
-|                  |              |         |         |GPU (BGO) |GPU (OSL) |
-+==================+==============+=========+=========+==========+==========+
-|vgpu.m1.large     |2             |50 GB    |8 GiB    |V100 8 GiB|P40 12 GiB|
-+------------------+--------------+---------+---------+----------+----------+
-|vgpu.m1.xlarge    |4             |50 GB    |16 GiB   |V100 8 GiB|P40 12 GiB|
-+------------------+--------------+---------+---------+----------+----------+
-|vgpu.m1.2xlarge   |8             |50 GB    |32 GiB   |V100 8 GiB|P40 12 GiB|
-+------------------+--------------+---------+---------+----------+----------+
++---------------------+--------------+---------+---------+------------+----------------+
+|Flavor name          |vCPU cores    |Disk     |Memory   |vGPU        |Region          |
++=====================+==============+=========+=========+============+================+
+|vgpu.m1.large        |2             |50 GB    |8 GiB    |V100 8 GiB  |BGO             |
++---------------------+--------------+---------+---------+------------+----------------+
+|vgpu.m1.large        |2             |50 GB    |8 GiB    |P40 12 GiB  |OSL             |
++---------------------+--------------+---------+---------+------------+----------------+
+|vgpu.m1.xlarge       |4             |50 GB    |16 GiB   |V100 8 GiB  |BGO             |
++---------------------+--------------+---------+---------+------------+----------------+
+|vgpu.m1.xlarge       |4             |50 GB    |16 GiB   |P40 12 GiB  |OSL             |
++---------------------+--------------+---------+---------+------------+----------------+
+|vgpu.m1.2xlarge      |8             |50 GB    |32 GiB   |V100 8 GiB  |BGO             |
++---------------------+--------------+---------+---------+------------+----------------+
+|vgpu.m1.2xlarge      |8             |50 GB    |32 GiB   |P40 12 GiB  |OSL             |
++---------------------+--------------+---------+---------+------------+----------------+
+|gr1.L40S.24g.4xlarge |16            |100 GB   |120 GiB  |L40s 24 GiB |BGO             |
++---------------------+--------------+---------+---------+------------+----------------+
+|gr1.L40S.24g.4xlarge |16            |200 GB   |120 GiB  |L40s 24 GiB |OSL (NAIC only) |
++---------------------+--------------+---------+---------+------------+----------------+
+
+.. NOTE::
+  The L40s flavors are mainly provided for short lived instances through NAIC
 
 Prebuilt images
 ---------------
@@ -99,15 +91,13 @@ resources.
 +------------------+-----------------------+
 | Distribution     | Image name            |
 +==================+=======================+
-| Ubuntu 20.04 LTS | vGPU Ubuntu 20.04 LTS |
-+------------------+-----------------------+
 | Ubuntu 22.04 LTS | vGPU Ubuntu 22.04 LTS |
 +------------------+-----------------------+
 | Ubuntu 24.04 LTS | vGPU Ubuntu 24.04 LTS |
 +------------------+-----------------------+
-| Alma Linux 8.x   | vGPU Alma Linux 8     |
-+------------------+-----------------------+
 | Alma Linux 9.x   | vGPU Alma Linux 9     |
++------------------+-----------------------+
+| Alma Linux 10.x  | vGPU Alma Linux 10    |
 +------------------+-----------------------+
 
 
@@ -191,9 +181,9 @@ Installation of CUDA libraries
    issue.
 
 
-Now head over to the download page on the NVIDIA website and select Drivers->All NVIDIA
-Drivers. Search for Linux 64-bit drivers in the "Data Center / Tesla" product type.
-Download and install the package installing only the CUDA libraries, excluding the driver,
+Now head over to the download page on the NVIDIA DEVELOPER website and select Platform and Tools -> CUDA Toolkit. 
+Select Linux -> x86_64 -> [Your distribution] -> [Your version] -> runfile (local).
+Download and install the package, installing only the CUDA libraries, excluding the driver,
 but including samples for this example:
 
 .. code-block:: console

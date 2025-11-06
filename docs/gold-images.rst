@@ -28,8 +28,9 @@ GOLD image                     Family   Default user name     Boot FW      End o
 **Alma Linux 9**               RedHat   ``almalinux``         UEFI         May, 2032            Downstream RHEL
 **Alma Linux 10**              RedHat   ``almalinux``         UEFI         May, 2035            Downstream RHEL
 **CentOS Stream 9**            RedHat   ``cloud-user`` [#f1]_ UEFI [#f3]_  May, 2027            Upstream RHEL
-**CentOS Stream 10**           RedHat   ``cloud-user``        UEFI         Expected 2030        Upstream RHEL
-**Fedora 42**                  RedHat   ``fedora``            UEFI         June, 2026
+**CentOS Stream 10**           RedHat   ``cloud-user``        UEFI         *Expected 2030*      Upstream RHEL
+**Fedora 42**                  RedHat   ``fedora``            UEFI         May, 2026
+**Fedora 43**                  RedHat   ``fedora``            UEFI         December, 2026
 **Rocky Linux 8**              RedHat   ``rocky``             BIOS         May, 2029            Downstream RHEL
 **Rocky Linux 9**              RedHat   ``rocky``             UEFI         May, 2032            Downstream RHEL
 **Rocky Linux 10**             RedHat   ``rocky``             UEFI         May, 2035            Downstream RHEL
