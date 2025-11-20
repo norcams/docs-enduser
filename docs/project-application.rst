@@ -12,10 +12,13 @@ quota for this demo project that can not be altered. If you need additional reso
 project in which you wish to collaborate with other users, please
 apply for a standard project using `this web form`_.
 
-Demo projects use excess resources that are usually available under
-normal operation, however, if there is a shortage of resources please
-note that we may terminate some or all instances running in demo
-projects without prior notice.
+.. WARNING::
+   Virtual machines (instances) in demo projects have a maximum lifetime
+   of 90 days. After 90 days the demo instances will be permanently deleted.
+   Demo projects use excess resources that are usually available under
+   normal operation, however, if there is a shortage of resources please
+   note that we may terminate some or all instances running in demo
+   projects without prior notice.
 
 Quotas are set by region. Projects that haven't been given a quota in
 their respective region will be automatically given a default quota.
