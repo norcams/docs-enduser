@@ -7,8 +7,8 @@ Demo projects
 .. _this web form: https://request.nrec.no
 
 You will be allocated a demo project the first time you logon . This
-project is personal and for testing purposes.  There is a limited
-quota for this demo project. If you need additional resources or a
+project is for demo purposes to get to know the platform. There is a limited
+quota for this demo project that can not be altered. If you need additional resources or a
 project in which you wish to collaborate with other users, please
 apply for a standard project using `this web form`_.
 
