@@ -184,7 +184,7 @@ in the template above) with:
 
 .. code-block:: bash
 
-  export OS_PASSWORD=$(secret-tool lookup NREC_OPENSTACK_API_KEY)
+  export OS_PASSWORD=$(secret-tool lookup password NREC_OPENSTACK_API_KEY)
 
 
 .. NOTE::
