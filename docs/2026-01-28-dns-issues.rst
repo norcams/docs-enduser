@@ -47,6 +47,14 @@ The perceived timeline for customers may differ from the one above,
 due to local cache on their respective resolvers.
 
 
+Consequences
+------------
+
+DNS zones that was delegated a long time ago were using the old
+nameserver names. These zones failed to resolve for approximately one
+hour.
+
+
 How could this be avoided?
 --------------------------
 
