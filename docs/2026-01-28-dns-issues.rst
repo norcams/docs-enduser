@@ -26,23 +26,23 @@ NREC changed its name from "UH-IaaS" to "NREC" a few years ago, and a
 new DNS domain ``nrec.no`` was also aquired to replace the obsolete
 ``uh-iaas.no`` domain. The domain ``uh-iaas.no`` had been working in
 parallel since the name change, and we decided that it was time to
-delete the old domain.
+remove all records in the old domain.
 
 We failed to recognize that some delegated domains still used the old
 addresses for the authoritative name servers (``ns1.uh-iaas.no`` and
-``ns2.uh-iaas.no``). The unintended and unforeseen consequence was that
-these domains failed to resolve when the ``uh-iaas.no`` domain was
-removed.
+``ns2.uh-iaas.no``). The unintended and unforeseen consequence was
+that these domains failed to resolve when records in the
+``uh-iaas.no`` domain were removed.
 
 Timeline:
 
-* **11:45**: The ``uh-iaas.no`` domain was removed
+* **11:45**: All records in the DNS zone ``uh-iaas.no`` are removed
 
-* **12:09**: The first issues with DNS in NREC is reported. The NREC
-  team quickly identified the problem and decided on a solution
+* **12:09**: The first issues with DNS in NREC are reported. The NREC
+  team quickly identifies the problem and decides on a solution
 
-* **12:45**: The ``uh-iaas.no`` domain, including ``A`` records for
-  ``ns1.uh-iaas.no`` and ``ns2.uh-iaas.no`` was restored
+* **12:45**: Records ``A`` and ``AAAA`` for ``ns1.uh-iaas.no`` and
+  ``ns2.uh-iaas.no`` are restored in the ``uh-iaas.no`` zone
 
 The perceived timeline for customers may differ from the one above,
 due to local cache on their respective resolvers.
@@ -67,7 +67,8 @@ Could we have handled the issue better?
 ---------------------------------------
 
 Not really. We monitored the situation for potential issues after
-deleting the ``uh-iaas.no`` domain, and were quick to respond.
+deleting records from the ``uh-iaas.no`` domain, and were quick to
+respond when problems were reported.
 
 
 Mitigation Measures
@@ -82,4 +83,4 @@ future:
    the delegation to using the new (correct) DNS server names
 
 #. When all delegated zones have been verified as using the correct
-   DNS server names, delete the ``uh-iaas.no`` zone
+   DNS server names, empty the ``uh-iaas.no`` zone
