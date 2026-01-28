@@ -1,5 +1,5 @@
-.. |date| 2026-01-28
-.. |author| Trond H. Amundsen
+.. |date| replace::   2026-01-28
+.. |author| replace:: Trond H. Amundsen
 
 [|date|] Deviation Report: DNS Issues
 =====================================
