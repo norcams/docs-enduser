@@ -4,11 +4,8 @@
 [|date|] Deviation Report: DNS Issues
 =====================================
 
-+------------------+
-| Date: |date|     |
-+------------------+
-| Author: |author| |
-+------------------+
+* Date: |date|
+* Author: |author|
 
 .. contents::
 
