@@ -15,7 +15,7 @@ Summary
 
 Some DNS domains that were delegated to the NREC name servers and
 administered with the NREC DNS Service, failed to resolve for
-approximately one hour starting at 11:45.
+approximately one hour starting at 11:45 CET.
 
 
 Description
@@ -35,12 +35,13 @@ that these domains failed to resolve when records in the
 
 Timeline:
 
-* **11:45**: All records in the DNS zone ``uh-iaas.no`` are removed
+* **11:45 CET**: All records in the DNS zone ``uh-iaas.no`` are
+  removed
 
-* **12:09**: The first issues with DNS in NREC are reported. The NREC
-  team quickly identifies the problem and decides on a solution
+* **12:09 CET**: The first issues with DNS in NREC are reported. The
+  NREC team quickly identifies the problem and decides on a solution
 
-* **12:45**: Records ``A`` and ``AAAA`` for ``ns1.uh-iaas.no`` and
+* **12:45 CET**: Records ``A`` and ``AAAA`` for ``ns1.uh-iaas.no`` and
   ``ns2.uh-iaas.no`` are restored in the ``uh-iaas.no`` zone
 
 The perceived timeline for customers may differ from the one above,
