@@ -13,7 +13,7 @@
 Summary
 -------
 
-Some DNS domains that was delegated to the NREC name servers and
+Some DNS domains that were delegated to the NREC name servers and
 administered with the NREC DNS Service, failed to resolve for
 approximately one hour starting at 11:45.
 
