@@ -71,7 +71,7 @@ Norwegian Research and Education Cloud
    faq
    usecase-toturials
    changelog
-   incident-reports
+   incident-reports/index
 
 
 Indices and tables
