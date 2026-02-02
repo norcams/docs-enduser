@@ -1,8 +1,8 @@
 .. |date| replace::   2026-01-28
 .. |author| replace:: Trond H. Amundsen
 
-[|date|] Deviation Report: DNS Issues
-=====================================
+[|date|] DNS Issues
+===================
 
 * Date: |date|
 * Author: |author|
