@@ -1,5 +1,5 @@
-NREC – Incident Reports
-=======================
+Incident Reports
+================
 
 .. toctree::
    :maxdepth: 1
