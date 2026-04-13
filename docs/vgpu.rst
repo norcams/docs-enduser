@@ -405,14 +405,14 @@ This is how you can check the NVIDIA gridd license status:
 
 Example output if you have a valid license:
 
-.. code-block:: bash
+.. code-block:: console
 
   nvidia-smi -q | grep 'License Status'
     License Status   : Licensed (Expiry: 2024-10-19 6:51:17 GMT)
 
 Example output if you do not have a valid license:
 
-.. code-block:: bash
+.. code-block:: console
 
   nvidia-smi -q | grep 'License Status'
     License Status                    : Unlicensed
@@ -429,7 +429,7 @@ service:
 
 Example output if you have a valid license:
 
-.. code-block:: bash
+.. code-block:: console
 
   $ sudo systemctl status nvidia-gridd
   Oct 18 07:03:40 vgpu-test nvidia-gridd[2388]: Acquiring license. (Info: lisens88.uib.no; NVIDIA RTX Virtual Workstation)
@@ -437,7 +437,7 @@ Example output if you have a valid license:
 
 Example output if you do not have a valid license:
 
-.. code-block:: bash
+.. code-block:: console
 
   $ sudo systemctl status nvidia-gridd
   Oct 18 06:55:46 vgpu-test nvidia-gridd[1985]: Unable to fetch the client configuration token file
