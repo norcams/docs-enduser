@@ -407,14 +407,14 @@ Example output if you have a valid license:
 
 .. code-block:: console
 
-  nvidia-smi -q | grep 'License Status'
+  $ nvidia-smi -q | grep 'License Status'
     License Status   : Licensed (Expiry: 2024-10-19 6:51:17 GMT)
 
 Example output if you do not have a valid license:
 
 .. code-block:: console
 
-  nvidia-smi -q | grep 'License Status'
+  $ nvidia-smi -q | grep 'License Status'
     License Status                    : Unlicensed
 
 Status via nvidia-gridd service
