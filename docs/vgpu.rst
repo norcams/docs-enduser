@@ -401,7 +401,7 @@ This is how you can check the NVIDIA gridd license status:
 
 .. code-block:: none
 
-  nvidia-smi -q | grep -i license
+  nvidia-smi -q | grep 'License Status'
 
 Example output if you have a valid license:
 
