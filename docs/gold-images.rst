@@ -40,6 +40,7 @@ GOLD image                     Family   Default user name     Boot FW      End o
 **Debian 13**                  Debian   ``debian``            UEFI         June, 2030           Code name "Trixie"
 **Ubuntu 22.04 LTS**           Debian   ``ubuntu``            UEFI         April, 2027          Code name "Jammy Jellyfish"
 **Ubuntu 24.04 LTS**           Debian   ``ubuntu``            UEFI         April, 2029          Code name "Noble Numbat"
+**Ubuntu 26.04 LTS**           Debian   ``ubuntu``            UEFI         April, 2031          Code name "Resolute Raccoon"
 **Windows Server 2022 Std**    Windows  ``Admin``             UEFI         October, 2031        Licensed in BGO only
 **Windows Server 2025 Std**    Windows  ``Admin``             UEFI         October, 2034        Licensed in BGO only
 ============================== ======== ===================== ============ ==================== ===============================
