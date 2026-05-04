@@ -36,7 +36,7 @@ GOLD image                     Family   Default user name     Boot FW      End o
 **Rocky Linux 10**             RedHat   ``rocky``             UEFI         May, 2035            Downstream RHEL
 **UiO Managed RHEL 8**         RedHat   ``cloud-user``        BIOS         May, 2029            UiO projects only
 **UiO Managed RHEL 9**         RedHat   ``cloud-user``        UEFI         May, 2032            UiO projects only
-**Debian 11**                  Debian   ``debian``            UEFI         June, 2026           Code name "Bullseye"
+**Debian 11**                  Debian   ``debian``            UEFI         August, 2026         Code name "Bullseye"
 **Debian 12**                  Debian   ``debian``            UEFI         June, 2028           Code name "Bookworm"
 **Debian 13**                  Debian   ``debian``            UEFI         June, 2030           Code name "Trixie"
 **Ubuntu 22.04 LTS**           Debian   ``ubuntu``            UEFI         April, 2027          Code name "Jammy Jellyfish"
