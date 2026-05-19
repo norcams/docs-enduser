@@ -118,7 +118,7 @@ Identify the corresponding block device with ``lsblk``:
 
 Here, we see that vdb is the block device corresponding to the
 attached volume.  Note that the name of the block device (\*d\*) may
-be different than in this example.
+be different than in this example (e.g., /dev/sdb for Ubuntu and /dev/sd2 for OpenBSD).
 
 .. Important::
    Do NOT perform the next step unless this is the very first time you
