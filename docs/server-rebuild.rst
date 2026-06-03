@@ -9,7 +9,7 @@ Rebuilding a server means re-creating a virtual machine instance according to it
 
 - Rebuild instance from image. The image can be a snapshot or server backup of the instance or a completely new server image. This can be used to restore an instance. If the instance is stopped, omit --wait since it will hang indefinitely::
 
-     openstack --os-compute-api-version 2.79 server rebuild --fit-width --image $backup_reupload --wait [server name or uuid]
+     openstack --os-compute-api-version 2.79 server rebuild --image $backup_reupload --wait [server name or uuid]
 
 - Rebuild instance with user data. In the example, user data is used to set the root password of an instance supporting cloud-init::
 
