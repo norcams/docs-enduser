@@ -26,6 +26,7 @@ Norwegian Research and Education Cloud
    manage-volumes
    server-group
    server-resize
+   server-rebuild
    gold-images
    create-images
    manage-snapshots
