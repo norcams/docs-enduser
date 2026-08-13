@@ -2,7 +2,10 @@
 Virtual GPU Accelerated instance (vGPU)
 ==============================================
 
-Last changed: 2026-04-13
+Last changed: 2026-08-13
+
+.. NOTE::
+  The NAIC orchestrator is temporarily unavailable. For alternative solutions for short lived vGPU instances in NREC for AI/ML tasks, please `contact support`_
 
 .. WARNING::
   This document is a work in progress
