@@ -36,7 +36,6 @@ GOLD image                     Family   Default user name     Boot FW      End o
 **Rocky Linux 10**             RedHat   ``rocky``             UEFI         May, 2035            Downstream RHEL
 **UiO Managed RHEL 8**         RedHat   ``cloud-user``        BIOS         May, 2029            UiO projects only
 **UiO Managed RHEL 9**         RedHat   ``cloud-user``        UEFI         May, 2032            UiO projects only
-**Debian 11**                  Debian   ``debian``            UEFI         August, 2026         Code name "Bullseye"
 **Debian 12**                  Debian   ``debian``            UEFI         June, 2028           Code name "Bookworm"
 **Debian 13**                  Debian   ``debian``            UEFI         June, 2030           Code name "Trixie"
 **Ubuntu 22.04 LTS**           Debian   ``ubuntu``            UEFI         April, 2027          Code name "Jammy Jellyfish"
@@ -91,6 +90,7 @@ GOLD image                        Family   Default user name  Boot FW      End o
 |ss| UiO Managed RHEL 7 |se|      RedHat   ``cloud-user``     BIOS         June, 2024           UiO projects only
 |ss| Debian 9 |se|                Debian   ``debian``         BIOS         June, 2022           Code name "Stretch"
 |ss| Debian 10 |se|               Debian   ``debian``         BIOS         June, 2024           Code name "Buster"
+|ss| Debian 11 |se|               Debian   ``debian``         UEFI         August, 2026         Code name "Bullseye"
 |ss| Ubuntu 18.04 LTS |se|        Debian   ``ubuntu``         BIOS         April, 2023          Code name "Bionic Beaver"
 |ss| Ubuntu 21.04 |se|            Debian   ``ubuntu``         BIOS         Dec, 2021            Code name "Hirsute Hippo"
 |ss| Ubuntu 21.10 |se|            Debian   ``ubuntu``         BIOS         July, 2022           Code name "Impish Indri"
