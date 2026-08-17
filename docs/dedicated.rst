@@ -31,8 +31,8 @@ means that downtime on a hypervisor, such as scheduled downtime due to
 maintenance, also applies to the instances running on that hypervisor.
 
 
-When to use the dedicated service
----------------------------------
+When to use Dedicated Instances
+-------------------------------
 
 There are two usecases where the Dedicated Instances service is
 useful:
