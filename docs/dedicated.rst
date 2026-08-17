@@ -1,6 +1,6 @@
 .. |date| date::
 
-Dedicated Computing
+Dedicated Instances
 ===================
 
 Last changed: 2026-08-17
@@ -12,7 +12,7 @@ Last changed: 2026-08-17
 .. _IMPORTANT: **Only available in OSL**
    The dedicated compute service is only available in the OSL region.
 
-This document describes the **Dedicated Computing** service offering in
+This document describes the **Dedicated Instances** service offering in
 NREC. This service differs from the general compute service in one key
 area:
 
@@ -34,7 +34,8 @@ maintenance, also applies to the instances running on that hypervisor.
 When to use the dedicated service
 ---------------------------------
 
-There are two usecases where the dedicated service is useful:
+There are two usecases where the Dedicated Instances service is
+useful:
 
 **Critical Instances:**
   Instances that are highly critical for a limited time, such as
@@ -60,8 +61,7 @@ Please contact us via support@nrec.no for access to this service.
 Flavors
 -------
 
-We currently have the following flavors for use with dedicated
-hardware:
+We currently have the following flavors for dedicated instances:
 
 +--------------------------+--------------+---------+
 | Flavor name              | Virtual CPUs | Memory  |
