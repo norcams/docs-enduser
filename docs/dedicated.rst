@@ -38,7 +38,7 @@ There are two usecases where the dedicated service is useful:
 
 **Critical Instances:**
   Instances that are highly critical for a limited time, such as
-  instances running exam software. The dedicated resources assures
+  instances running exam software. The dedicated resources guarantee
   that no other instances on the hypervisor can interfere by causing
   resource starvation.
 
