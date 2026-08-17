@@ -9,12 +9,8 @@ Last changed: 2026-08-17
 
 .. _Shared HPC: shpc.html
 
-.. _High-performance computing (HPC): https://en.wikipedia.org/wiki/Supercomputer
-.. _Non-uniform memory access (NUMA): https://en.wikipedia.org/wiki/Non-uniform_memory_access
-.. _AMD EPYC 7551 32-Core Processor: https://www.amd.com/en/products/cpu/amd-epyc-7551
-.. _AMD EPYC 7552 48-Core Processor: https://www.amd.com/en/products/cpu/amd-epyc-7552
-.. _apply for an HPC project: http://request.nrec.no/
-.. _support page: support.html
+.. _IMPORTANT: **Only available in OSL**
+   The dedicated compute service is only available in the OSL region.
 
 This document describes the **Dedicated Computing** service offering in
 NREC. This service differs from the general compute service in one key
@@ -59,18 +55,6 @@ Please contact us via `email:support@nrec.no` for access to this
 service.
 
 
-Hardware
---------
-
-The hardware used for the dedicated service is listed below.
-
-* 4 x compute hosts (hypervisors) with:
-
-  - 2 x `AMD EPYC 7551 32-Core Processor`_
-  - 512 GiB memory
-
-
-
 Flavors
 -------
 
@@ -88,16 +72,3 @@ hardware:
 +----------------------+--------------+---------+
 |dedicated.m1a.16xlarge| 64           | 240 GiB |
 +----------------------+--------------+---------+
-
-
-.. IMPORTANT::
-   The therm vCPU refers to physical threads, which is two pr physical
-   CPU core. So, 64 vCPUs translates into 32 physical, multithreaded
-   real CPU cores.
-
-
-Note that due to hardware constraints in the AMD EPYC CPU
-architecture, instances that use a flavor with more than 16 vCPUs will
-have `Non-uniform memory access (NUMA)`_. The operating system and/or
-the application may need to take that into account.
-
