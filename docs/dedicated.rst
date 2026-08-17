@@ -19,8 +19,8 @@ area:
 * The resources assigned to an instance are "dedicated", in the sense
   that there is no sharing or overcommit of resources. This applies to
   CPU and RAM resources, that are usually shared among instances. In
-  the dedicated service, actual CPU cores and memory chunks are
-  assigned exclusively to the instance.
+  the Dedicated Instances service, actual CPU cores and memory chunks
+  are assigned exclusively to the instance.
 
 Note that network resources (including disk I/O) are still shared
 among instances running on the hypervisor.
