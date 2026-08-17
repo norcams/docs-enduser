@@ -44,7 +44,7 @@ There are two usecases where the dedicated service is useful:
 
 **Heavy Performance Needs:**
   Running high-performance computing (HPC) or complex database engines
-  requiring predictable throughput. Instances that utilize 100% CPU
+  requiring predictable throughput, or instances that utilize 100% CPU
   and/or memory for an extended time period, i.e. HPC workloads. Such
   instances may not fit in a shared environment such as `Shared HPC`_.
 
