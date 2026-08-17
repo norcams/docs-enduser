@@ -54,8 +54,7 @@ There may be other usecases that we haven't identified.
 Getting Access
 --------------
 
-Please contact us via `email:support@nrec.no` for access to this
-service.
+Please contact us via support@nrec.no for access to this service.
 
 
 Flavors
