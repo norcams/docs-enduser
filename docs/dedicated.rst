@@ -10,7 +10,7 @@ Last changed: 2026-08-17
 .. _Shared HPC: shpc.html
 
 .. IMPORTANT:: **Only available in OSL**
-   The dedicated compute service is only available in the OSL region.
+   The Dedicated Instances service is only available in the OSL region.
 
 This document describes the **Dedicated Instances** service offering in
 NREC. This service differs from the general compute service in one key
