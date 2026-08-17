@@ -9,7 +9,7 @@ Last changed: 2026-08-17
 
 .. _Shared HPC: shpc.html
 
-.. _IMPORTANT: **Only available in OSL**
+.. IMPORTANT:: **Only available in OSL**
    The dedicated compute service is only available in the OSL region.
 
 This document describes the **Dedicated Instances** service offering in
