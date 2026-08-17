@@ -36,14 +36,17 @@ When to use the dedicated service
 
 There are two usecases where the dedicated service is useful:
 
-#. Instances that are highly critical for a limited time, such as
-   instances running exam software. The dedicated resources assures
-   that no other instances on the hypervisor can interfere by causing
-   resource starvation.
+**Critical Instances:**
+  Instances that are highly critical for a limited time, such as
+  instances running exam software. The dedicated resources assures
+  that no other instances on the hypervisor can interfere by causing
+  resource starvation.
 
-#. Instances that utilize 100% CPU and/or memory for an extended time
-   period, i.e. HPC workloads. Such instances may not fit in a shared
-   environment such as `Shared HPC`_.
+**Heavy Performance Needs:**
+  Running high-performance computing (HPC) or complex database engines
+  requiring predictable throughput. Instances that utilize 100% CPU
+  and/or memory for an extended time period, i.e. HPC workloads. Such
+  instances may not fit in a shared environment such as `Shared HPC`_.
 
 There may be other usecases that we haven't identified.
 
