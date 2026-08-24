@@ -363,7 +363,7 @@ this work.
   # Clean up
   rm -f ./linux-grid-latest
 
-After running the shell snippet you may need to reboot the instance.
+If driver installation fails due to already loaded nvidia kernel module(s), you can try to uninstall the existing driver first by using the downloaded script with --uninstall: ./linux-grid-latest --uninstall, followed by a reboot. Then try the above shell snippet again to install the driver. After driver installation has completed, you may need to reboot the instance.
 
 Verify that the driver works by running **nvidia-smi**. The output
 should look like the example below (it varies slightly between the OSL
@@ -372,25 +372,26 @@ and BGO regions):
 .. code-block:: console
 
   $ nvidia-smi
-  +---------------------------------------------------------------------------------------+
-  | NVIDIA-SMI 535.154.05             Driver Version: 535.154.05   CUDA Version: 12.2     |
-  |-----------------------------------------+----------------------+----------------------+
-  | GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
-  | Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
-  |                                         |                      |               MIG M. |
-  |=========================================+======================+======================|
-  |   0  GRID P40-12Q                   On  | 00000000:05:00.0 Off |                  N/A |
-  | N/A   N/A    P8              N/A /  N/A |   2318MiB / 12288MiB |      0%      Default |
-  |                                         |                      |             Disabled |
-  +-----------------------------------------+----------------------+----------------------+
+  +-----------------------------------------------------------------------------------------+
+  | NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |
+  +-----------------------------------------+------------------------+----------------------+
+  | GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+  | Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+  |                                         |                        |               MIG M. |
+  |=========================================+========================+======================|
+  |   0  GRID RTX6000P-12Q              On  |   00000000:06:00.0 Off |                    0 |
+  | N/A   N/A    P0            N/A  /  N/A  |       1MiB /  12288MiB |      0%      Default |
+  |                                         |                        |                  N/A |
+  +-----------------------------------------+------------------------+----------------------+
 
-  +---------------------------------------------------------------------------------------+
-  | Processes:                                                                            |
-  |  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
-  |        ID   ID                                                             Usage      |
-  |=======================================================================================|
-  |    0   N/A  N/A      1104      C   python3                                    2318MiB |
-  +---------------------------------------------------------------------------------------+
+  +-----------------------------------------------------------------------------------------+
+  | Processes:                                                                              |
+  |  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+  |        ID   ID                                                               Usage      |
+  |=========================================================================================|
+  |  No running processes found                                                             |
+  +-----------------------------------------------------------------------------------------+
+
 After running the shell snippet you may need to reboot the instance.
 
 
