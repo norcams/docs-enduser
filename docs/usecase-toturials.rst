@@ -10,6 +10,10 @@ Last changed: |date|
 
 .. contents::
 
+.. note::
+
+    Please be advised that these are merely examples of use cases, and they may be outdated.
+
 Changing network interface for a running instance
 -------------------------------------------------
 
