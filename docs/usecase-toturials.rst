@@ -472,8 +472,3 @@ This tutorial demonstrates how to run `Qwen3.6-35B-A3B <https://unsloth.ai/docs/
    **Performance**
 
    With the 24 GB vGPU and ``gr1.L40S.24g.4xlarge`` flavor, this setup delivers up to 200 tokens/s inference speed.
-
-.. TIP::
-   **Stopping the server**
-
-   Stop the server with ``Ctrl+C``. All resources are freed when the process exits.
