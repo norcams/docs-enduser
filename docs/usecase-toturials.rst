@@ -269,3 +269,102 @@ RDP: Remote Desktop Protocol, SSH: Secure Shell, GUI: Graphical User Interface, 
 .. [#f2] https://sourceforge.net/p/lxde/bugs/968/
 
 .. [#f3] https://github.com/neutrinolabs/xrdp/issues/308
+
+Deploy one-click VPS with TurboVNC and GNOME
+--------------------------------------------
+
+This tutorial demonstrates how to deploy a ready-to-use Ubuntu 24.04 LTS VM with a GNOME desktop and TurboVNC remote access on NREC OpenStack, using the one-click deployment scripts from the `nrec-oneclick-vps <https://github.com/norcams/nrec-oneclick-vps/>`_ repository.
+
+.. TIP::
+   **Prerequisites**
+
+   - Terraform >= 1.5
+   - NREC OpenStack credentials (``OS_USERNAME``, ``OS_PASSWORD``, ``OS_PROJECT_NAME``, ``OS_REGION_NAME``)
+   - SSH client
+   - TurboVNC viewer
+   - Git (to clone the repository)
+
+1. Clone the repository
+
+   .. code-block:: console
+
+      git clone https://github.com/norcams/nrec-oneclick-vps.git
+      cd nrec-oneclick-vps
+
+2. Create and fill in the environment file
+
+   .. code-block:: console
+
+      cp env.sh.template env.sh
+
+   Edit ``env.sh`` and set your OpenStack API credentials:
+
+   - ``OS_USERNAME``: your username (e.g. ``user@institution.no``)
+   - ``OS_PASSWORD``: your password
+   - ``OS_PROJECT_NAME``: your project name
+   - ``OS_REGION_NAME``: your region (e.g. ``bgo``)
+
+   The ``OS_AUTH_URL`` is pre-set to ``https://identity.api.bgo.nrec.no:5000/v3``.
+
+.. TIP::
+   **Windows**
+
+   Windows users: copy ``env.ps1.template`` to ``env.ps1`` and set the same OpenStack credentials there. Run ``deploy.ps1`` instead of ``deploy.sh``.
+
+3. Deploy the VM
+
+   .. code-block:: console
+
+      ./deploy.sh
+
+   The script will:
+
+   - Auto-detect your public IPv4/IPv6 address
+   - Generate a ``terraform.tfvars`` with default flavor (``c1.xlarge``) and image (``GOLD Ubuntu 24.04 LTS``). These can be changed directly in ``deploy.sh``.
+   - Generate a TLS private key and save it to ``keys/vps-<deployment-id>.pem``
+   - Create an OpenStack keypair
+   - Create a security group with SSH-only ingress
+   - Launch a VM with cloud-init (installs TurboVNC, GNOME desktop, Google Chrome)
+   - Print the VM IP addresses and SSH command
+
+   Credentials are saved to:
+
+   - VNC password: ``keys/vps-<deployment-id>.vncpass``
+   - On VM: ``cat /home/ubuntu/.vnc-passwd``
+
+4. SSH login with VNC tunnel
+
+   .. code-block:: console
+
+      ssh -L 55901:localhost:5901 -i keys/vps-<deployment-id>.pem ubuntu@<VM_IP>
+
+   If you are connecting from IPv6-only:
+
+   .. code-block:: console
+
+      ssh -L 55901:localhost:5901 -i keys/vps-<deployment-id>.pem ubuntu@<VM_IPv6>
+
+5. Start a VNC session and connect
+
+   .. code-block:: console
+
+      vncserver :1
+
+   Then connect with TurboVNC to ``localhost:55901``, using the password from ``/home/ubuntu/.vnc-passwd``.
+
+   .. TIP::
+      **Desktop session**
+
+      The default session starts with GNOME Flashback (Metacity). For the full modern GNOME session:
+
+      .. code-block:: console
+
+         vncserver :1 -wm gnome
+
+6. Tear down the VM
+
+   When finished, destroy all provisioned resources (including the VM, security groups, keypair, and local key files):
+
+   .. code-block:: console
+
+      terraform destroy
