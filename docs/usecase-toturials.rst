@@ -443,7 +443,7 @@ This tutorial demonstrates how to run `Qwen3.6-35B-A3B <https://unsloth.ai/docs/
    Key options explained:
 
    - ``--spec-type draft-mtp --spec-draft-n-max 2``: enables multi-token prediction, a speculative decoding technique that speeds up inference significantly
-   - ``--mmproj``: enables image recognition capability (the multimodal projector); Hermes desktop should auto-detect and use it
+   - ``--mmproj``: enables image recognition capability (the multimodal projector); agentic frameworks with built-in image tools such as Hermes desktop should auto-detect and use it
    - ``--chat-template-kwargs '{"preserve_thinking":true}'``: adds extra reasoning tokens that improve the model's reasoning quality
    - ``--no-mmap``: avoids memory mapping for better GPU performance
    - ``--image-min-tokens 1024``: minimum tokens allocated for image processing
@@ -452,9 +452,9 @@ This tutorial demonstrates how to run `Qwen3.6-35B-A3B <https://unsloth.ai/docs/
 
    To use the CLI instead of the server, run ``llama-cli`` with the same arguments (omit ``--port``).
 
-6. Connect your AI agent
+6. Connect an agentic framework
 
-   Configure your AI agent (e.g., Hermes) to use the local endpoint:
+   Configure your agentic framework (e.g., agentic frameworks with built-in image tools such as Hermes desktop) to use the local endpoint:
 
    .. code-block:: console
 
