@@ -467,8 +467,3 @@ This tutorial demonstrates how to run `Qwen3.6-35B-A3B <https://unsloth.ai/docs/
       # endpoint: http://127.0.0.1:8001/v1
 
    Stop the server with ``Ctrl+C``.
-
-.. TIP::
-   **Performance**
-
-   With the 24 GB vGPU and ``gr1.L40S.24g.4xlarge`` flavor, this setup delivers up to 200 tokens/s inference speed.
