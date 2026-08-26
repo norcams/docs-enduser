@@ -10,6 +10,10 @@ Last changed: |date|
 
 .. contents::
 
+.. note::
+
+    Please be advised that these are merely examples of use cases, and they may be outdated.
+
 Changing network interface for a running instance
 -------------------------------------------------
 
@@ -164,8 +168,8 @@ Shared account:
 
 A shared user group1 may be created with password, and the password can be shared within the group. All members of the group should then be able to login to the VM using user group1 and shared password simultaneously. Shared accounts may also be accomplished by sharing the full (private+public) SSH key and possibly OTP app. However, this use case would go against introducing these increased security measures in the first place.
 
-Lightweight Linux remote desktop environment
---------------------------------------------
+Lightweight Linux DE - LXDE + XRDP
+-----------------------------------
 
 This is a tutorial on how you may setup a minimal graphical desktop environment (DE) in your linux VM, and access it remotely using the Remote Desktop Protocol (RDP) over a Secure Shell (SSH) tunnel.
 
@@ -269,3 +273,197 @@ RDP: Remote Desktop Protocol, SSH: Secure Shell, GUI: Graphical User Interface, 
 .. [#f2] https://sourceforge.net/p/lxde/bugs/968/
 
 .. [#f3] https://github.com/neutrinolabs/xrdp/issues/308
+
+VirtualGL Linux DE - GNOME + TurboVNC (Terraform)
+-------------------------------------------------
+
+This tutorial demonstrates how to deploy a ready-to-use Ubuntu 24.04 LTS VM with a GNOME desktop and TurboVNC remote access on NREC OpenStack, using the one-click deployment scripts from the `nrec-oneclick-vps <https://github.com/norcams/nrec-oneclick-vps/>`_ repository.
+
+.. TIP::
+   **Prerequisites**
+
+   - Terraform >= 1.5
+   - NREC OpenStack credentials (``OS_USERNAME``, ``OS_PASSWORD``, ``OS_PROJECT_NAME``, ``OS_REGION_NAME``)
+   - SSH client
+   - TurboVNC viewer
+   - Git (to clone the repository)
+
+1. Clone the repository
+
+   .. code-block:: console
+
+      git clone https://github.com/norcams/nrec-oneclick-vps.git
+      cd nrec-oneclick-vps
+
+2. Create and fill in the environment file
+
+   .. code-block:: console
+
+      cp env.sh.template env.sh
+
+   Edit ``env.sh`` and set your OpenStack API credentials:
+
+   - ``OS_USERNAME``: your username (e.g. ``user@institution.no``)
+   - ``OS_PASSWORD``: your password
+   - ``OS_PROJECT_NAME``: your project name
+   - ``OS_REGION_NAME``: your region (e.g. ``bgo``)
+
+   The ``OS_AUTH_URL`` is pre-set to ``https://identity.api.bgo.nrec.no:5000/v3``.
+
+.. TIP::
+   **Windows**
+
+   Windows users: copy ``env.ps1.template`` to ``env.ps1`` and set the same OpenStack credentials there. Run ``deploy.ps1`` instead of ``deploy.sh``.
+
+3. Deploy the VM
+
+   .. code-block:: console
+
+      ./deploy.sh
+
+   The script will:
+
+   - Auto-detect your public IPv4/IPv6 address
+   - Generate a ``terraform.tfvars`` with default flavor (``c1.xlarge``) and image (``GOLD Ubuntu 24.04 LTS``). These can be changed directly in ``deploy.sh``.
+   - Generate a TLS private key and save it to ``keys/vps-<deployment-id>.pem``
+   - Create an OpenStack keypair
+   - Create a security group with SSH-only ingress
+   - Launch a VM with cloud-init (installs TurboVNC, GNOME desktop, Google Chrome)
+   - Print the VM IP addresses and SSH command
+
+   Credentials are saved to:
+
+   - VNC password: ``keys/vps-<deployment-id>.vncpass``
+   - On VM: ``cat /home/ubuntu/.vnc-passwd``
+
+4. SSH login with VNC tunnel
+
+   .. code-block:: console
+
+      ssh -L 55901:localhost:5901 -i keys/vps-<deployment-id>.pem ubuntu@<VM_IP>
+
+   If you are connecting from IPv6-only:
+
+   .. code-block:: console
+
+      ssh -L 55901:localhost:5901 -i keys/vps-<deployment-id>.pem ubuntu@<VM_IPv6>
+
+5. Start a VNC session and connect
+
+   .. code-block:: console
+
+      vncserver :1
+
+   Then connect with TurboVNC to ``localhost:55901``, using the password from ``/home/ubuntu/.vnc-passwd``.
+
+   .. TIP::
+      **Desktop session**
+
+      The default session starts with GNOME Flashback (Metacity). For the full modern GNOME session:
+
+      .. code-block:: console
+
+         vncserver :1 -wm gnome
+
+6. Tear down the VM
+
+   When finished, destroy all provisioned resources (including the VM, security groups, keypair, and local key files):
+
+   .. code-block:: console
+
+      terraform destroy
+
+Fast Qwen3.6 inference on L40s flavor for agentic tasks
+-------------------------------------------------------
+
+This tutorial demonstrates how to run the `Qwen3.6-35B-A3B <https://unsloth.ai/docs/models/qwen3.6#mtp-qwen3.6-35b-a3b>`_ LLM with decent inference speed on an NREC L40s instance using llama.cpp and multi-token prediction (MTP).
+
+.. TIP::
+   **Instance requirements**
+
+   - Flavor: ``gr1.L40S.24g.4xlarge`` (24 GB NVIDIA L40S vGPU)
+   - Image: GOLD Ubuntu 24.04 LTS
+   - Model: `unsloth/Qwen3.6-35B-A3B-MTP-GGUF <https://huggingface.co/unsloth/Qwen3.6-35B-A3B-MTP-GGUF>`_ with UD-Q2_K_XL dynamic 2-bit quantization
+
+   The UD-Q2_K_XL quantization is a dynamic 2-bit format from Unsloth that reduces memory usage and increases inference speed. The A3B suffix indicates a Mixture of Experts (MoE) variant; no equivalent MoE variant exists yet for Qwen3.8.
+
+1. Create and prepare the instance
+
+   Create a new instance with the flavor and image above. After login, install required packages:
+
+   .. code-block:: console
+
+      sudo apt update
+      sudo apt install -y nvidia-cuda-toolkit git python3-venv python3-pip pciutils build-essential cmake curl libcurl4-openssl-dev nvtop
+
+   Follow the "Upgrading the instance drivers" section from the `NREC vGPU documentation <https://docs.nrec.no/vgpu.html#upgrading-the-instance-drivers>`_ to install the latest NVIDIA drivers.
+
+2. Verify GPU
+
+   .. code-block:: console
+
+      nvidia-smi
+
+   You should see the NVIDIA L40S GPU listed.
+
+3. Build llama.cpp
+
+   .. code-block:: console
+
+      git clone https://github.com/ggml-org/llama.cpp
+      cd llama.cpp
+      cmake -B build -DBUILD_SHARED_LIBS=OFF -DGGML_CUDA=ON
+      cmake --build build --config Release -j --clean-first --target llama-cli llama-mtmd-cli llama-server llama-gguf-split
+      cp build/bin/llama-* .
+
+4. Create a Python environment and download the model
+
+   .. code-block:: console
+
+      python3 -m venv hf-llama
+      source hf-llama/bin/activate
+      pip install -U "huggingface_hub"
+
+   .. code-block:: console
+
+      hf download unsloth/Qwen3.6-35B-A3B-MTP-GGUF \
+          --local-dir unsloth/Qwen3.6-35B-A3B-MTP-GGUF \
+          --include "*mmproj-F16*" \
+          --include "*UD-Q2_K_XL*"
+
+5. Start the inference server
+
+   .. code-block:: console
+
+      ./llama-server \
+          --model unsloth/Qwen3.6-35B-A3B-MTP-GGUF/Qwen3.6-35B-A3B-UD-Q2_K_XL.gguf \
+          --mmproj unsloth/Qwen3.6-35B-A3B-MTP-GGUF/mmproj-F16.gguf \
+          --temp 0.6 --top-p 0.95 --min-p 0.00 --top-k 20 \
+          --ctx-size 262144 --port 8001 \
+          --spec-type draft-mtp --spec-draft-n-max 2 \
+          --chat-template-kwargs '{"preserve_thinking":true}' \
+          --no-mmap --image-min-tokens 1024
+
+   Key options explained:
+
+   - ``--spec-type draft-mtp --spec-draft-n-max 2``: enables multi-token prediction, a speculative decoding technique that speeds up inference significantly
+   - ``--mmproj``: enables image recognition capability (the multimodal projector); agentic frameworks with built-in image tools such as Hermes desktop should auto-detect and use it
+   - ``--chat-template-kwargs '{"preserve_thinking":true}'``: adds extra reasoning tokens that improve the model's reasoning quality
+   - ``--no-mmap``: avoids memory mapping for better GPU performance
+   - ``--image-min-tokens 1024``: minimum tokens allocated for image processing
+
+   The server exposes an OpenAI-compatible API at ``http://127.0.0.1:8001/v1``.
+
+   To use the CLI instead of the server, run ``llama-cli`` with the same arguments (omit ``--port``).
+
+6. Connect an agentic framework
+
+   Configure your agentic framework (e.g., agentic frameworks with built-in image tools such as Hermes desktop) to use the local endpoint:
+
+   .. code-block:: console
+
+      # In your agent config:
+      # provider: custom
+      # endpoint: http://127.0.0.1:8001/v1
+
+   Stop the server with ``Ctrl+C``.
