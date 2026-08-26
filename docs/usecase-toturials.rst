@@ -168,8 +168,8 @@ Shared account:
 
 A shared user group1 may be created with password, and the password can be shared within the group. All members of the group should then be able to login to the VM using user group1 and shared password simultaneously. Shared accounts may also be accomplished by sharing the full (private+public) SSH key and possibly OTP app. However, this use case would go against introducing these increased security measures in the first place.
 
-Lightweight Linux remote desktop environment
---------------------------------------------
+Lightweight Linux DE - LXDE + XRDP
+-----------------------------------
 
 This is a tutorial on how you may setup a minimal graphical desktop environment (DE) in your linux VM, and access it remotely using the Remote Desktop Protocol (RDP) over a Secure Shell (SSH) tunnel.
 
@@ -274,8 +274,8 @@ RDP: Remote Desktop Protocol, SSH: Secure Shell, GUI: Graphical User Interface, 
 
 .. [#f3] https://github.com/neutrinolabs/xrdp/issues/308
 
-Deploy one-click VPS with TurboVNC and GNOME
---------------------------------------------
+VirtualGL Linux DE - GNOME + TurboVNC (Terraform)
+-------------------------------------------------
 
 This tutorial demonstrates how to deploy a ready-to-use Ubuntu 24.04 LTS VM with a GNOME desktop and TurboVNC remote access on NREC OpenStack, using the one-click deployment scripts from the `nrec-oneclick-vps <https://github.com/norcams/nrec-oneclick-vps/>`_ repository.
 
@@ -373,10 +373,10 @@ This tutorial demonstrates how to deploy a ready-to-use Ubuntu 24.04 LTS VM with
 
       terraform destroy
 
-Fast Qwen3.6 inference on L40s GPU
------------------------------------
+Fast Qwen3.6 inference on L40s flavor for agentic tasks
+-------------------------------------------------------
 
-This tutorial demonstrates how to run `Qwen3.6-35B-A3B <https://unsloth.ai/docs/models/qwen3.6#mtp-qwen3.6-35b-a3b>`_ with up to 200 tokens/s inference speed on an NREC L40s instance using llama.cpp and multi-token prediction (MTP).
+This tutorial demonstrates how to run the `Qwen3.6-35B-A3B <https://unsloth.ai/docs/models/qwen3.6#mtp-qwen3.6-35b-a3b>`_ LLM with decent inference speed on an NREC L40s instance using llama.cpp and multi-token prediction (MTP).
 
 .. TIP::
    **Instance requirements**
