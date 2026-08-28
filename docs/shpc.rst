@@ -1,9 +1,7 @@
-.. |date| date::
-
 shared High-Performance Computing (sHPC)
 ========================================
 
-Last changed: |date|
+Last changed: 2026-08-28
 
 .. contents::
 
@@ -12,6 +10,18 @@ Last changed: |date|
 
 This document describes the shared High-performance computing (sHPC)
 service offering in NREC.
+
+.. WARNING::
+   **Instance disk robustness**
+
+   In the sHPC service, the instance disk (also known as the OS disk) is
+   stored on local storage on the hypervisor. This maximises I/O
+   performance, but at the cost of robustness: a catastrophic disk
+   failure means the instance disk is lost.
+
+   Disk health monitoring mitigates this risk, but it remains higher
+   than for central storage, which is more redundant. Keep anything you
+   cannot afford to lose on central storage, i.e. in volumes.
 
 
 What's different
