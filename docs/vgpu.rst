@@ -5,10 +5,12 @@ Virtual GPU Accelerated instance (vGPU)
 Last changed: 2026-08-13
 
 .. NOTE::
-  The NAIC orchestrator is temporarily unavailable. For alternative solutions for short lived vGPU instances in NREC for AI/ML tasks, please `contact support`_
+   The NAIC orchestrator is temporarily unavailable. For alternative
+   solutions for short lived vGPU instances in NREC for AI/ML tasks,
+   please `contact support`_
 
 .. WARNING::
-  This document is a work in progress
+   This document is a work in progress
 
 .. contents::
 
@@ -20,23 +22,42 @@ Last changed: 2026-08-13
 
 This document describes the use of Virtual GPU (vGPU) accelerated instances in NREC.
 
+.. WARNING::
+   **Instance disk robustness**
+
+   In the vGPU service, the instance disk (also known as the OS disk) is
+   stored on local storage on the hypervisor. This maximises I/O
+   performance, but at the cost of robustness: a catastrophic disk
+   failure means the instance disk is lost.
+
+   Disk health monitoring mitigates this risk, but it remains higher
+   than for central storage, which is more redundant. Keep anything you
+   cannot afford to lose on central storage, i.e. in volumes.
+
+
 Access Policy
 -------------
 
 This is based on estimated life span of the vGPU instance:
 
-* Short lived vGPU instances in NREC for AI/ML tasks are provided by `Norwegian AI Cloud`_ (NAIC). To apply, please contact support@naic.no.
+* Short lived vGPU instances in NREC for AI/ML tasks are provided by
+  `Norwegian AI Cloud`_ (NAIC). To apply, please contact
+  support@naic.no.
 
-* For vGPU instances required to run for a longer duration (maximum 6 months), `apply for an vGPU project`_.
+* For vGPU instances required to run for a longer duration (maximum 6
+  months), `apply for an vGPU project`_.
 
-In general, we want "pure" vGPU projects for easier resource control. The vGPU resources must be used. Having instances running idle is not acceptable in the vGPU infrastructure. Please remember to delete the instance when it's no longer needed.
+In general, we want "pure" vGPU projects for easier resource
+control. The vGPU resources must be used. Having instances running
+idle is not acceptable in the vGPU infrastructure. Please remember to
+delete the instance when it's no longer needed.
 
 .. NOTE::
   You will not be able to add vGPU resources to an existing non-vGPU project
 
-If you paid for the hardware yourself, we will not interfere
-in whether non-needed instances are deleted. For any inquiries, please use the
-normal support channels as described on our `support page`_.
+If you paid for the hardware yourself, we will not interfere in
+whether non-needed instances are deleted. For any inquiries, please
+use the normal support channels as described on our `support page`_.
 
 Hardware
 --------
@@ -48,7 +69,7 @@ The hypervisors providing the vGPU resources have CPU and GPU of the following t
 +========================================+=================================+=========+
 |Intel Xeon Gold 5215 CPU @ 2.50GHz      |NVIDIA Tesla V100 PCIe 16G       |BGO      |
 +----------------------------------------+---------------------------------+---------+
-|Intel Xeon Gold 6226R CPU @ 2.90GHz     |NVIDIA Tesla P40 PCIe 24G        |OSL      |
+|Intel Xeon Gold 6226R CPU @ 2.90GHz     |NVIDIA Quadro RTX 6000 PCIe 24G  |OSL      |
 +----------------------------------------+---------------------------------+---------+
 |Intel(R) Xeon(R) Silver 4410Y @ 2.00GHz |NVIDIA L40S 48GB                 |BGO      |
 +----------------------------------------+---------------------------------+---------+
@@ -58,26 +79,31 @@ The hypervisors providing the vGPU resources have CPU and GPU of the following t
 Flavors
 -------
 
-We provide the following flavor configurations for Virtual CPU cores, main memory, physical disk storage space and virtual GPU type and memory:
+We provide the following flavor configurations for Virtual CPU cores,
+main memory, physical disk storage space and virtual GPU type and
+memory:
 
 +---------------------+--------------+---------+---------+------------+------------------+
 |Flavor name          |vCPU cores    |Disk     |Memory   |vGPU        |Region            |
 +=====================+==============+=========+=========+============+==================+
 |vgpu.m1.large        |2             |50 GB    |8 GiB    |V100 8 GiB  |BGO               |
-+---------------------+--------------+---------+---------+------------+------------------+
-|vgpu.m1.large        |2             |50 GB    |8 GiB    |P40 12 GiB  |OSL               |
+|                     |--------------+---------+---------+------------+------------------+
+|                     |2             |50 GB    |8 GiB    |RTX 6000 12 |OSL               |
+|                     |              |         |         |GiB         |                  |
 +---------------------+--------------+---------+---------+------------+------------------+
 |vgpu.m1.xlarge       |4             |50 GB    |16 GiB   |V100 8 GiB  |BGO               |
-+---------------------+--------------+---------+---------+------------+------------------+
-|vgpu.m1.xlarge       |4             |50 GB    |16 GiB   |P40 12 GiB  |OSL               |
+|                     |--------------+---------+---------+------------+------------------+
+|                     |4             |50 GB    |16 GiB   |RTX 6000 12 |OSL               |
+|                     |              |         |         |GiB         |                  |
 +---------------------+--------------+---------+---------+------------+------------------+
 |vgpu.m1.2xlarge      |8             |50 GB    |32 GiB   |V100 8 GiB  |BGO               |
-+---------------------+--------------+---------+---------+------------+------------------+
-|vgpu.m1.2xlarge      |8             |50 GB    |32 GiB   |P40 12 GiB  |OSL               |
+|                     |--------------+---------+---------+------------+------------------+
+|                     |8             |50 GB    |32 GiB   |RTX 6000 12 |OSL               |
+|                     |              |         |         |GiB         |                  |
 +---------------------+--------------+---------+---------+------------+------------------+
 |gr1.L40S.24g.4xlarge |16            |100 GB   |120 GiB  |L40s 24 GiB |BGO (NAIC mostly) |
-+---------------------+--------------+---------+---------+------------+------------------+
-|gr1.L40S.24g.4xlarge |16            |200 GB   |120 GiB  |L40s 24 GiB |OSL (NAIC only)   |
+|                     |--------------+---------+---------+------------+------------------+
+|                     |16            |200 GB   |120 GiB  |L40s 24 GiB |OSL (NAIC only)   |
 +---------------------+--------------+---------+---------+------------+------------------+
 
 .. NOTE::
