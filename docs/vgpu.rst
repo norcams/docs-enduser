@@ -195,19 +195,6 @@ Installation of CUDA libraries
    NVIDIA display drivers witch removes the vGPU drivers provided by the NREC Team.
    Only install drivers and driver updates provided by the NREC Team.
 
-.. NOTE::
-   The CUDA library installation require a huge amount of space in addition to
-   the instalaltion file itself. If you have a root disk of 20 GB, you will
-   probably run into a full file system during the process. We recommend that
-   you create a volume of at least 20 GB, create a filesystem on it and mount it
-   temporarily somewhere, where you downlaod the file and perform the
-   installation.
-   This volume can be removed afterwards.
-
-   NREC is considering creating vGPU flavors with a large root disk due to this
-   issue.
-
-
 Now head over to the download page on the NVIDIA DEVELOPER website and select **Platform and Tools** → **CUDA Toolkit**. 
 Select **Linux** → **x86_64** → *[Your distribution]* → *[Your version]* → **runfile (local)**.
 Download and install the package, installing only the CUDA libraries, excluding the driver,
