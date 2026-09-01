@@ -10,19 +10,6 @@ Last changed: 2026-08-13
    please `contact support`_
 
 .. WARNING::
-   This document is a work in progress
-
-.. contents::
-
-.. _apply for an vGPU project: https://request.nrec.no/
-.. _support page: support.html
-.. _contact support: support.html
-.. _NVIDIA Container Toolkit: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
-.. _Norwegian AI Cloud: https://naic.no
-
-This document describes the use of Virtual GPU (vGPU) accelerated instances in NREC.
-
-.. WARNING::
    **Instance disk robustness**
 
    In the vGPU service, the instance disk (also known as the OS disk) is
@@ -33,6 +20,17 @@ This document describes the use of Virtual GPU (vGPU) accelerated instances in N
    Disk health monitoring mitigates this risk, but it remains higher
    than for central storage, which is more redundant. Keep anything you
    cannot afford to lose on central storage, i.e. in volumes.
+
+.. contents::
+
+.. _apply for an vGPU project: https://request.nrec.no/
+.. _support page: support.html
+.. _contact support: support.html
+.. _NVIDIA Container Toolkit: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
+.. _Norwegian AI Cloud: https://naic.no
+
+This document describes the use of Virtual GPU (vGPU) accelerated
+instances in NREC.
 
 
 Access Policy
