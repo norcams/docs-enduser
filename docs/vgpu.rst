@@ -60,19 +60,22 @@ use the normal support channels as described on our `support page`_.
 Hardware
 --------
 
-The hypervisors providing the vGPU resources have CPU and GPU of the following types:
+The hypervisors providing the vGPU resources have CPU and GPU of the
+following types:
 
-+----------------------------------------+---------------------------------+---------+
-|Central Processing Unit (CPU)           |Graphical Processing Unit (GPU)  | Region  |
-+========================================+=================================+=========+
-|Intel Xeon Gold 5215 CPU @ 2.50GHz      |NVIDIA Tesla V100 PCIe 16G       |BGO      |
-+----------------------------------------+---------------------------------+---------+
-|Intel Xeon Gold 6226R CPU @ 2.90GHz     |NVIDIA Quadro RTX 6000 PCIe 24G  |OSL      |
-+----------------------------------------+---------------------------------+---------+
-|Intel(R) Xeon(R) Silver 4410Y @ 2.00GHz |NVIDIA L40S 48GB                 |BGO      |
-+----------------------------------------+---------------------------------+---------+
-|Intel(R) Xeon(R) Silver 4410Y @ 2.00GHz |NVIDIA L40S 48GB                 |OSL      |
-+----------------------------------------+---------------------------------+---------+
++----------------------------------------+---------------------------------+---------+---------+
+|Central Processing Unit (CPU)           |Graphical Processing Unit (GPU)  |VRAM     | Region  |
++========================================+=================================+---------+=========+
+|Intel Xeon Gold 5215 CPU @ 2.50GHz      |NVIDIA Tesla V100 PCIe           |16 GiB   |BGO      |
++----------------------------------------+---------------------------------+---------+---------+
+|Intel Xeon Gold 6226R CPU @ 2.90GHz     |NVIDIA Quadro RTX 6000 PCIe      |24 GiB   |OSL      |
++----------------------------------------+---------------------------------+---------+---------+
+|Intel Xeon Gold 6248R CPU @ 3.00GHz     |NVIDIA Quadro RTX 6000 PCIe      |24 GiB   |OSL      |
++----------------------------------------+---------------------------------+---------+---------+
+|Intel(R) Xeon(R) Silver 4410Y @ 2.00GHz |NVIDIA L40S                      |48 GiB   |BGO      |
++----------------------------------------+---------------------------------+---------+---------+
+|Intel(R) Xeon(R) Silver 4410Y @ 2.00GHz |NVIDIA L40S                      |48 GiB   |OSL      |
++----------------------------------------+---------------------------------+---------+---------+
 
 Flavors
 -------
