@@ -382,7 +382,7 @@ This tutorial demonstrates how to run the `Qwen3.6-35B-A3B <https://unsloth.ai/d
    **Instance requirements**
 
    - Flavor: ``gr1.L40S.24g.4xlarge`` (24 GB NVIDIA L40S vGPU)
-   - Image: GOLD Ubuntu 24.04 LTS
+   - Image: vGPU Ubuntu 24.04 LTS
    - Model: `unsloth/Qwen3.6-35B-A3B-MTP-GGUF <https://huggingface.co/unsloth/Qwen3.6-35B-A3B-MTP-GGUF>`_ with UD-Q2_K_XL dynamic 2-bit quantization
 
    The UD-Q2_K_XL quantization is a dynamic 2-bit format from Unsloth that reduces memory usage and increases inference speed. The A3B suffix indicates a Mixture of Experts (MoE) variant; no equivalent MoE variant exists yet for Qwen3.8.
@@ -506,10 +506,10 @@ This is an adaptation of the `Fast Qwen3.6 inference on L40s flavor for agentic 
    Follow the "Upgrading the instance drivers" section from the `NREC vGPU documentation <https://docs.nrec.no/vgpu.html#upgrading-the-instance-drivers>`_ to install the latest NVIDIA drivers.
 
    .. NOTE::
-      Ubuntu 26.04 LTS ships with an older NVIDIA kernel module (e.g., 580.159.03)
-      baked into the image, while the ``cuda-toolkit-13`` package installs a newer
+      The NREC vGPU Ubuntu 26.04 LTS ships with a specific NVIDIA kernel module (e.g., 580.159.03)
+      baked into the image, and the ``cuda-toolkit-13`` package may install a newer
       userspace NVML library (e.g., 580.173.02). This version mismatch breaks
-      ``nvidia-smi`` and ``nvitop``. Fix it by re-linking the NVML symlink:
+      ``nvidia-smi`` and ``nvitop``. Fix it by either upgrading the instance driver as mentioned above, or by re-linking the NVML symlink:
 
       .. code-block:: console
 
