@@ -138,7 +138,7 @@ and visualization is not available.
 vGPU software product version
 -----------------------------
 
-The current version of the NVIDIA Grid Software is 15 (driver 525 series). When
+The current version of the NVIDIA Grid Software is 19 (driver 580 series). When
 the product version in the NREC infrastructure is upgraded, an upgrade of the
 software in the running instances may be required. We will provide information
 on how to upgrade running instances when necessary.
@@ -208,8 +208,8 @@ Installation of CUDA libraries
    issue.
 
 
-Now head over to the download page on the NVIDIA DEVELOPER website and select Platform and Tools -> CUDA Toolkit. 
-Select Linux -> x86_64 -> [Your distribution] -> [Your version] -> runfile (local).
+Now head over to the download page on the NVIDIA DEVELOPER website and select **Platform and Tools** → **CUDA Toolkit**. 
+Select **Linux** → **x86_64** → *[Your distribution]* → *[Your version]* → **runfile (local)**.
 Download and install the package, installing only the CUDA libraries, excluding the driver,
 but including samples for this example:
 
