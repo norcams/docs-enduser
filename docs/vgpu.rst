@@ -153,7 +153,7 @@ vGPU device is present:
 .. code-block:: console
 
   $ sudo lspci | grep -i nvidia
-  05:00.0 3D controller: NVIDIA Corporation GV100GL [Tesla V100 PCIe 16GB] (rev a1)
+  06:00.0 VGA compatible controller: NVIDIA Corporation TU102GL [Quadro RTX 6000/8000] (rev a1)
 
 From this output it seems like you have got the whole PCIe card. However, running
 the vGPU software reveals that you have only got a partition of the card:
@@ -161,25 +161,25 @@ the vGPU software reveals that you have only got a partition of the card:
 .. code-block:: console
 
   $ nvidia-smi
-  +-----------------------------------------------------------------------------+
-  | NVIDIA-SMI 470.63.01    Driver Version: 470.63.01    CUDA Version: 11.4     |
-  |-------------------------------+----------------------+----------------------+
-  | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-  | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-  |                               |                      |               MIG M. |
-  |===============================+======================+======================|
-  |   0  GRID V100-8C        On   | 00000000:05:00.0 Off |                    0 |
-  | N/A   N/A    P0    N/A /  N/A |    592MiB /  8192MiB |      0%      Default |
-  |                               |                      |                  N/A |
-  +-------------------------------+----------------------+----------------------+
-
-  +-----------------------------------------------------------------------------+
-  | Processes:                                                                  |
-  |  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
-  |        ID   ID                                                   Usage      |
-  |=============================================================================|
-  |  No running processes found                                                 |
-  +-----------------------------------------------------------------------------+
+  +-----------------------------------------------------------------------------------------+
+  | NVIDIA-SMI 580.159.03             Driver Version: 580.159.03     CUDA Version: 13.0     |
+  +-----------------------------------------+------------------------+----------------------+
+  | GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+  | Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+  |                                         |                        |               MIG M. |
+  |=========================================+========================+======================|
+  |   0  GRID RTX6000P-24Q              On  |   00000000:06:00.0 Off |                    0 |
+  | N/A   N/A    P0            N/A  /  N/A  |   17506MiB /  24576MiB |      0%      Default |
+  |                                         |                        |                  N/A |
+  +-----------------------------------------+------------------------+----------------------+
+  
+  +-----------------------------------------------------------------------------------------+
+  | Processes:                                                                              |
+  |  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+  |        ID   ID                                                               Usage      |
+  |=========================================================================================|
+  |    0   N/A  N/A           58470      C   ...nux/forge-neo/venv/bin/python      17505MiB |
+  +-----------------------------------------------------------------------------------------+
 
 Now that we have verified that the vGPU is available and ready for use, we
 are ready to install software that can utilize the accelerator. Only the drivers
@@ -387,7 +387,15 @@ this work.
   # Clean up
   rm -f ./linux-grid-latest
 
-If driver installation fails due to already loaded nvidia kernel module(s), you can try to uninstall the existing driver first by using the downloaded script with --uninstall: ./linux-grid-latest --uninstall, followed by a reboot. Then try the above shell snippet again to install the driver. After driver installation has completed, you may need to reboot the instance.
+If driver installation fails due to already loaded nvidia kernel
+module(s), you can try to uninstall the existing driver first by using
+the downloaded script with ``--uninstall``::
+
+  ./linux-grid-latest --uninstall
+
+followed by a reboot. Then try the above shell snippet again to
+install the driver. After driver installation has completed, you may
+need to reboot the instance.
 
 Verify that the driver works by running **nvidia-smi**. The output
 should look like the example below (it varies slightly between the OSL
