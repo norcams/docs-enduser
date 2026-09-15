@@ -485,7 +485,7 @@ Uploading files larger than approximately 2 GB to an object storage
 container via the OpenStack dashboard (Horizon) fails. This is a known
 limitation of the dashboard upload mechanism.
 
-Workaround: Use an S3-compatible CLI tool such as ``AWS CLI``_ for
+Workaround: Use an S3-compatible CLI tool such as `AWS CLI`_ for
 uploading large files.
 
 .. _AWS CLI: https://docs.nrec.no/object.html#amazon-s3-tools-s3cmd-s3
