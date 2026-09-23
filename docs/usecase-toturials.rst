@@ -623,3 +623,396 @@ This is an adaptation of the `Fast Qwen3.6 inference on L40s flavor for agentic 
       # endpoint: http://127.0.0.1:8001/v1
 
    Stop the server with ``Ctrl+C``.
+
+Fast Qwen3.8 LLM inference on Fox HPC via Slurm GPU job (llama.cpp)
+--------------------------------------------------------------
+
+This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed on the Fox HPC cluster (Educloud). You can either run interactively with ``salloc`` (no SSH tunnel needed) or submit a batch job with ``sbatch`` (requires SSH tunnel).
+
+.. TIP::
+
+   **Prerequisites**
+
+   - Fox Educloud account (e.g. ``ec-ivarth@fox.educloud.no``)
+   - SSH client with port forwarding support (only for batch jobs)
+
+0. Find available partitions and GPU resources
+
+   Before submitting jobs, check what partitions and GPU types are available:
+
+   .. code-block:: console
+
+      $ sinfo -p accel
+      $ scontrol show partition accel
+      $ projects
+
+   ``sinfo -p accel`` shows partition status and which nodes are available (idle, mix, drain). ``scontrol show partition accel`` shows all GPU types (TRES) and account quotas. ``projects`` lists your available Educloud project accounts.
+
+1. Interactive mode (salloc)
+
+   Allocate an A100 80GB GPU interactively and run ``llama-cli`` directly. First, SSH to the login node, then request an interactive GPU session:
+
+   .. code-block:: console
+
+      ssh ec-ivarth@fox.educloud.no
+      # Run salloc from the login node to get an interactive shell on a compute node
+      salloc --partition=accel --gpus=a100_80:1 --ntasks=1 --cpus-per-task=32 --mem-per-cpu=4G --time=00:30:00 --qos=devel --account=ec367
+      module purge
+      module load CUDA/12.8.0 CMake/4.0.3-GCCcore-14.3.0
+      mkdir -p ~/llm-inference && cd ~/llm-inference
+
+      # Install huggingface_hub for model download (cached after first run)
+      if [ ! -d "hf-venv" ]; then
+         python3 -m venv hf-venv
+         source hf-venv/bin/activate
+         pip install -U "huggingface_hub"
+      else
+         source hf-venv/bin/activate
+      fi
+
+      # Clone and build llama.cpp (cached after first run)
+      if [ ! -d "llama.cpp" ]; then
+         git clone https://github.com/ggml-org/llama.cpp
+         cd llama.cpp
+         cmake -B build -DBUILD_SHARED_LIBS=OFF -DGGML_CUDA=ON -DCUDA_ARCHITECTURES=80
+         cmake --build build --config Release -j 32 --target llama-server llama-cli
+         cp build/bin/llama-* .
+         cd ..
+      fi
+
+      # Download model (cached after first run)
+      if [ ! -d "models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF" ]; then
+         mkdir -p models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF
+         env HF_HUB_DISABLE_XET=1 python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF', filename='Qwen3.8-27B-Uncensored-YMQ-M.gguf', local_dir='models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF'); hf_hub_download(repo_id='zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF', filename='mmproj/Qwen3.8-27B-Uncensored-vision-Q8_0.gguf', local_dir='models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/mmproj')"
+      fi
+
+      # Start interactive chat
+      ./llama.cpp/llama-server --model models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/Qwen3.8-27B-Uncensored-YMQ-M-TI.gguf --ctx-size 262144 --mmproj models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/mmproj/Qwen3.8-27B-Uncensored-vision-Q6_K.gguf --cache-type-k q8_0 --cache-type-v q4_0 --spec-type draft-mtp --spec-draft-n-max 2 --timeout 36000 --checkpoint-min-step 2048 --ctx-checkpoints 4 --n-predict -1 --temp 0.6 --top-p 0.95 --top-k 20 --repeat-penalty 1.05 --jinja -fa --port 8001
+
+   Type your prompt and press Enter to chat. Exit with ``Ctrl+D``.
+
+   .. NOTE::
+
+      Interactive jobs stop when you log out from the login node. Use ``tmux`` to keep the session alive across disconnects:
+
+      .. code-block:: console
+
+         ssh ec-ivarth@fox.educloud.no
+         tmux
+         salloc --partition=accel --gpus=a100_80:1 --ntasks=1 --cpus-per-task=32 --mem-per-cpu=4G --time=00:30:00 --qos=devel --account=ec367
+         # ... run your commands ...
+         exit
+         tmux detach (Ctrl-B then D)
+
+      Reconnect later with ``tmux attach`` from the login node.
+
+2. Batch mode (sbatch)
+
+   For non-interactive usage, create a Slurm job script:
+
+   .. code-block:: console
+
+      cat > qwen38-llamacpp-job.sh << 'EOF'
+      #!/bin/bash
+      #SBATCH --job-name=qwen38-llamacpp
+      #SBATCH --partition=accel
+      #SBATCH --account=ec367
+      #SBATCH --gpus=a100_80:1
+      #SBATCH --ntasks-per-node=1
+      #SBATCH --cpus-per-task=32
+      #SBATCH --mem-per-cpu=4G
+      #SBATCH --time=00:30:00
+      #SBATCH --output=slurm-%j.out
+      #SBATCH --error=slurm-%j.err
+
+      module purge
+      module load CUDA/12.8.0 CMake/4.0.3-GCCcore-14.3.0
+
+      WORKDIR=$HOME/llm-inference
+      mkdir -p $WORKDIR
+      cd $WORKDIR
+
+      # Install huggingface_hub for model download (cached after first run)
+      if [ ! -d "hf-venv" ]; then
+         python3 -m venv hf-venv
+         source hf-venv/bin/activate
+         pip install -U "huggingface_hub"
+      else
+         source hf-venv/bin/activate
+      fi
+
+      # Clone and build llama.cpp (cached after first run)
+      if [ ! -d "llama.cpp" ]; then
+         git clone https://github.com/ggml-org/llama.cpp
+         cd llama.cpp
+         cmake -B build -DBUILD_SHARED_LIBS=OFF -DGGML_CUDA=ON -DCUDA_ARCHITECTURES=80
+         cmake --build build --config Release -j 32 --target llama-server llama-cli
+         cp build/bin/llama-* .
+         cd ..
+      fi
+
+      # Download model (cached after first run)
+      if [ ! -d "models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF" ]; then
+         mkdir -p models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF
+         env HF_HUB_DISABLE_XET=1 python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF', filename='Qwen3.8-27B-Uncensored-YMQ-M.gguf', local_dir='models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF'); hf_hub_download(repo_id='zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF', filename='mmproj/Qwen3.8-27B-Uncensored-vision-Q8_0.gguf', local_dir='models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/mmproj')"
+      fi
+
+      # Start the inference server
+      ./llama.cpp/llama-server --model models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/Qwen3.8-27B-Uncensored-YMQ-M.gguf --mmproj models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/mmproj/Qwen3.8-27B-Uncensored-vision-Q8_0.gguf --ctx-size 262144 --port 8001 --chat-template-kwargs '{"preserve_thinking":true}' --flash-attn on --batch-size 2048 --ubatch-size 1024 --cache-type-k q8_0 --cache-type-v q8_0 --spec-type draft-mtp --spec-draft-n-max 2
+
+      echo "Server running on port 8001"
+      EOF
+
+3. Submit the job
+
+   .. code-block:: console
+
+      chmod +x qwen38-llamacpp-job.sh
+      sbatch qwen38-llamacpp-job.sh
+
+4. Monitor the job
+
+   .. code-block:: console
+
+      squeue -u ec-ivarth
+      sstat -j <job-id>
+
+5. Connect to the inference server
+
+   Create an SSH tunnel from your local machine to the GPU node (``gpu-17``):
+
+   .. code-block:: console
+
+      ssh -l ec-ivarth fox.educloud.no -L 8001:gpu-17:8001
+
+   The server exposes an OpenAI-compatible API at ``http://127.0.0.1:8001/v1``.
+
+   Test with curl (stream mode):
+
+   .. code-block:: console
+
+      curl -N http://127.0.0.1:8001/v1/chat/completions \
+         -H "Content-Type: application/json" \
+         -d '{"model":"qwen3.8-27b","messages":[{"role":"user","content":"Hello"}],"max_tokens":50,"stream":true}'
+
+6. Stop the job
+
+   When finished, stop the Slurm job:
+
+   .. code-block:: console
+
+      scancel <job-id>
+
+   Or press ``Ctrl+C`` if the job is running interactively.
+
+.. NOTE::
+
+   - Fox GPU jobs are accounted per-GPU, not per-CPU. Requesting 6 GPUs costs 6× the rate.
+   - The ``accel`` partition is the only partition with GPUs — use ``--partition=accel``.
+   - Qwen3.8 models support up to 262K tokens natively; use ``--ctx-size 262144`` for maximum context.
+   - For the larger Qwen3.8-2.4T-A95B model, llama.cpp loads split GGUF files automatically — do not specify individual files.
+
+llama.cpp model selection
+=========================
+
+**Model**: `zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF` with YMQ-M-TI quantization (~14 GB).
+
+The YMQ-M-TI (Thinking/Instruction-tuned) checkpoint includes the MTP (Multi-Token Prediction) speculative head, which enables draft-based speculative decoding in llama.cpp.
+
+Benchmark context: Qwen3.8-27B YMQ-M-TI on A100 80GB with llama.cpp achieves ~35-45 tok/s baseline.
+
+**With MTP speculative decoding** (`--spec-type draft-mtp --spec-draft-n-max 2`): The same model with MTP speculative decoding achieves ~50-65 tok/s — a 1.3-1.5x speedup over baseline. This is the highest throughput achievable with llama.cpp on single GPU.
+
+Key flags: ``--cache-type-k q8_0 --cache-type-v q4_0`` optimizes KV cache memory, ``--ctx-size 262144`` uses the model's native maximum context length, ``--ctx-checkpoints 4`` enables checkpointing for long conversations, and ``--jinja`` uses the modern Jinja2 chat template.
+.. [2] `I tested all llama.cpp's speculative decoding methods on Qwen 3.6 27B <https://www.reddit.com/r/LocalLLaMA/comments/1uyg3za/>`_
+
+Fast Qwen3.8 LLM inference on Fox HPC via Slurm GPU job (vLLM)
+----------------------------------------------------------
+
+This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed on the Fox HPC cluster (Educloud) using vLLM and a Slurm GPU job. You can either run interactively with ``salloc`` (no SSH tunnel needed) or submit a batch job with ``sbatch`` (requires SSH tunnel).
+
+.. TIP::
+
+   **Prerequisites**
+
+   - Fox Educloud account (e.g. ``ec-ivarth@fox.educloud.no``)
+   - SSH client with port forwarding support (only for batch jobs)
+   - Python 3.10+ environment
+   - vLLM >= 0.27.0
+
+0. Find available partitions and GPU resources
+
+   Before submitting jobs, check what partitions and GPU types are available:
+
+   .. code-block:: console
+
+      $ sinfo -p accel
+      $ scontrol show partition accel
+      $ projects
+
+   ``sinfo -p accel`` shows partition status and which nodes are available (idle, mix, drain). ``scontrol show partition accel`` shows all GPU types (TRES) and account quotas. ``projects`` lists your available Educloud project accounts.
+
+1. Interactive mode (salloc)
+
+   Allocate an A100 80GB GPU interactively, start the vLLM server, and chat via curl. First, SSH to the login node, then request an interactive GPU session:
+
+   .. code-block:: console
+
+      ssh ec-ivarth@fox.educloud.no
+      # Run salloc from the login node to get an interactive shell on a compute node
+      salloc --partition=accel --gpus=a100_80:1 --ntasks=1 --cpus-per-task=32 --mem-per-cpu=4G --time=00:30:00 --qos=devel --account=ec367
+      module purge
+      module load CUDA/12.8.0 CMake/4.0.3-GCCcore-14.3.0 Python
+      mkdir -p ~/llm-inference && cd ~/llm-inference
+
+      # Create Python environment (cached after first run)
+      if [ ! -d "vllm-env" ]; then
+         python3 -m venv vllm-env
+         source vllm-env/bin/activate
+         pip install "vllm>=0.27.0"
+      else
+         source vllm-env/bin/activate
+      fi
+
+      # Start the vLLM inference server
+      vllm serve unsloth/Qwen3.8-27B-GGUF \
+         --served-model-name qwen3.8-27b \
+         --trust-remote-code \
+         --tensor-parallel-size 1 \
+         --max-model-len 262144 \
+         --port 8001 \
+         --quantization fp8 \
+         --gpu-memory-utilization 0.95 \
+         --max-num-batched-tokens 32768 \
+         --enable-chunked-prefill
+
+      # Chat via curl (stream mode)
+      curl -N http://127.0.0.1:8001/v1/chat/completions \
+         -H "Content-Type: application/json" \
+         -d '{"model":"qwen3.8-27b","messages":[{"role":"user","content":"Hello"}],"max_tokens":50,"stream":true}'
+
+   .. NOTE::
+
+      Interactive jobs stop when you log out from the login node. Use ``tmux`` to keep the session alive across disconnects:
+
+      .. code-block:: console
+
+         ssh ec-ivarth@fox.educloud.no
+         tmux
+         salloc --partition=accel --gpus=a100_80:1 --ntasks=1 --cpus-per-task=32 --mem-per-cpu=4G --time=00:30:00 --qos=devel --account=ec367
+         # ... start vllm serve & curl ...
+         exit
+         tmux detach (Ctrl-B then D)
+
+      Reconnect later with ``tmux attach`` from the login node.
+
+2. Batch mode (sbatch)
+
+   For non-interactive usage, create a Slurm job script:
+
+   .. code-block:: console
+
+      cat > qwen38-vllm-job.sh << 'EOF'
+      #!/bin/bash
+      #SBATCH --job-name=qwen38-vllm
+      #SBATCH --partition=accel
+      #SBATCH --account=ec367
+      #SBATCH --gpus=a100_80:1
+      #SBATCH --ntasks-per-node=1
+      #SBATCH --cpus-per-task=32
+      #SBATCH --mem-per-cpu=4G
+      #SBATCH --time=00:30:00
+      #SBATCH --output=slurm-%j.out
+      #SBATCH --error=slurm-%j.err
+
+      module purge
+      module load CUDA/12.8.0 CMake/4.0.3-GCCcore-14.3.0 Python
+
+      WORKDIR=$HOME/llm-inference
+      mkdir -p $WORKDIR
+      cd $WORKDIR
+
+      # Create Python environment (cached after first run)
+      if [ ! -d "vllm-env" ]; then
+         python3 -m venv vllm-env
+         source vllm-env/bin/activate
+         pip install "vllm>=0.27.0"
+      else
+         source vllm-env/bin/activate
+      fi
+
+      # Start the vLLM inference server
+      vllm serve unsloth/Qwen3.8-27B-GGUF \
+         --served-model-name qwen3.8-27b \
+         --trust-remote-code \
+         --tensor-parallel-size 1 \
+         --max-model-len 262144 \
+         --port 8001 \
+         --quantization fp8 \
+         --gpu-memory-utilization 0.95 \
+         --max-num-batched-tokens 32768 \
+         --enable-chunked-prefill
+
+      echo "vLLM server running on port 8001"
+      EOF
+
+3. Submit the job
+
+   .. code-block:: console
+
+      chmod +x qwen38-vllm-job.sh
+      sbatch qwen38-vllm-job.sh
+
+4. Monitor the job
+
+   .. code-block:: console
+
+      squeue -u ec-ivarth
+      sstat -j <job-id>
+
+5. Connect to the inference server
+
+   Create an SSH tunnel from your local machine to the GPU node (``gpu-17``):
+
+   .. code-block:: console
+
+      ssh -l ec-ivarth fox.educloud.no -L 8001:gpu-17:8001
+
+   The server exposes an OpenAI-compatible API at ``http://127.0.0.1:8001/v1``.
+
+   Test with curl (stream mode):
+
+   .. code-block:: console
+
+      curl -N http://127.0.0.1:8001/v1/chat/completions \
+         -H "Content-Type: application/json" \
+         -d '{"model":"qwen3.8-27b","messages":[{"role":"user","content":"Hello"}],"max_tokens":50,"stream":true}'
+
+6. Stop the job
+
+   When finished, stop the Slurm job:
+
+   .. code-block:: console
+
+      scancel <job-id>
+
+   Or press ``Ctrl+C`` if the job is running interactively.
+
+.. NOTE::
+
+   - Fox GPU jobs are accounted per-GPU, not per-CPU. Requesting 6 GPUs costs 6× the rate.
+   - The ``accel`` partition is the only partition with GPUs — use ``--partition=accel``.
+   - Qwen3.8 models support up to 262K tokens natively; use ``--max-model-len 262144`` for maximum context.
+   - Use ``--quantization fp8`` for FP8 quantization on A100.
+
+vLLM model selection
+====================
+
+**Model**: `unsloth/Qwen3.8-27B-GGUF` with FP8 quantization (~28 GB) served through vLLM.
+
+The A100 is an Ampere-architecture GPU with native FP8 Tensor Core support. The FP8 quantized checkpoint runs efficiently on A100's FP8 cores, delivering significant speedup over BF16 while using only ~28 GB VRAM (half of BF16's ~56 GB), leaving substantially more room for KV cache at 262K context.
+
+Benchmark context: Qwen3.8-27B FP8 with vLLM on single A100 GPU achieves ~60-80 tok/s generation, outperforming llama.cpp by ~1.2-1.5x through continuous batching and PagedAttention. FP8 quantization also reduces KV memory by ~50%, enabling longer effective context windows.
+
+vLLM's day-0 Qwen3.8 support leverages PagedAttention and continuous batching. The ``--quantization fp8`` flag enables FP8 model loading, further improving throughput. The FP8 checkpoint delivers near-BF16 quality with FP8-level speed, making it the optimal choice for A100 single-GPU inference.
+
