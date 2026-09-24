@@ -687,24 +687,9 @@ This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed o
       fi
 
       # Start interactive chat
-      ./llama.cpp/llama-server --model models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/Qwen3.8-27B-Uncensored-YMQ-M-TI.gguf --ctx-size 262144 --mmproj models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/mmproj/Qwen3.8-27B-Uncensored-vision-Q6_K.gguf --cache-type-k q8_0 --cache-type-v q4_0 --spec-type draft-mtp --spec-draft-n-max 2 --timeout 36000 --checkpoint-min-step 2048 --ctx-checkpoints 4 --n-predict -1 --temp 0.6 --top-p 0.95 --top-k 20 --repeat-penalty 1.05 --jinja -fa --port 8001
+      ./llama.cpp/llama-cli --model models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/Qwen3.8-27B-Uncensored-YMQ-M.gguf --mmproj models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/mmproj/mmproj/Qwen3.8-27B-Uncensored-vision-Q8_0.gguf --ctx-size 262144 --chat-template-kwargs '{"preserve_thinking":true}' --flash-attn on --batch-size 2048 --ubatch-size 1024 --cache-type-k q8_0 --cache-type-v q8_0 --spec-type draft-mtp --spec-draft-n-max 2
 
    Type your prompt and press Enter to chat. Exit with ``Ctrl+D``.
-
-   .. NOTE::
-
-      Interactive jobs stop when you log out from the login node. Use ``tmux`` to keep the session alive across disconnects:
-
-      .. code-block:: console
-
-         ssh ec-ivarth@fox.educloud.no
-         tmux
-         salloc --partition=accel --gpus=a100_80:1 --ntasks=1 --cpus-per-task=32 --mem-per-cpu=4G --time=00:30:00 --qos=devel --account=ec367
-         # ... run your commands ...
-         exit
-         tmux detach (Ctrl-B then D)
-
-      Reconnect later with ``tmux attach`` from the login node.
 
 2. Batch mode (sbatch)
 
@@ -758,7 +743,7 @@ This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed o
       fi
 
       # Start the inference server
-      ./llama.cpp/llama-server --model models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/Qwen3.8-27B-Uncensored-YMQ-M.gguf --mmproj models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/mmproj/Qwen3.8-27B-Uncensored-vision-Q8_0.gguf --ctx-size 262144 --port 8001 --chat-template-kwargs '{"preserve_thinking":true}' --flash-attn on --batch-size 2048 --ubatch-size 1024 --cache-type-k q8_0 --cache-type-v q8_0 --spec-type draft-mtp --spec-draft-n-max 2
+      ./llama.cpp/llama-server --model models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/Qwen3.8-27B-Uncensored-YMQ-M.gguf --mmproj models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/mmproj/Qwen3.8-27B-Uncensored-vision-Q8_0.gguf --ctx-size 262144 --port 55000 --chat-template-kwargs '{"preserve_thinking":true}' --flash-attn on --batch-size 2048 --ubatch-size 1024 --cache-type-k q8_0 --cache-type-v q8_0 --spec-type draft-mtp --spec-draft-n-max 2 --host 0.0.0.0
 
       echo "Server running on port 8001"
       EOF
@@ -783,17 +768,15 @@ This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed o
 
    .. code-block:: console
 
-      ssh -l ec-ivarth fox.educloud.no -L 8001:gpu-17:8001
+      ssh -l ec-ivarth fox.educloud.no -L 50000:gpu-17:55000
 
-   The server exposes an OpenAI-compatible API at ``http://127.0.0.1:8001/v1``.
+   The server exposes an OpenAI-compatible API at ``http://0.0.0.0:55000/v1``.
 
    Test with curl (stream mode):
 
    .. code-block:: console
 
-      curl -N http://127.0.0.1:8001/v1/chat/completions \
-         -H "Content-Type: application/json" \
-         -d '{"model":"qwen3.8-27b","messages":[{"role":"user","content":"Hello"}],"max_tokens":50,"stream":true}'
+      curl -N http://127.0.0.1:50000/v1/chat/completions -H "Content-Type: application/json" -d '{"model":"qwen3.8-27b","messages":[{"role":"user","content":"Hello"}],"max_tokens":50,"stream":true}'
 
 6. Stop the job
 
@@ -815,13 +798,15 @@ This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed o
 llama.cpp model selection
 =========================
 
-**Model**: `zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF` with YMQ-M-TI quantization (~14 GB).
+**Model**: `zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF` with YMQ-M quantization (~28 GB).
 
-The YMQ-M-TI (Thinking/Instruction-tuned) checkpoint includes the MTP (Multi-Token Prediction) speculative head, which enables draft-based speculative decoding in llama.cpp.
+The YMQ-M (Mixture of Quantizations) checkpoint includes the MTP (Multi-Token Prediction) speculative head, which enables draft-based speculative decoding in llama.cpp.
 
-Benchmark context: Qwen3.8-27B YMQ-M-TI on A100 80GB with llama.cpp achieves ~35-45 tok/s baseline.
+Benchmark context: Qwen3.8-27B YMQ-M on A100 80GB with llama.cpp achieves ~35-45 tok/s baseline [1]_.
 
-**With MTP speculative decoding** (`--spec-type draft-mtp --spec-draft-n-max 2`): The same model with MTP speculative decoding achieves ~50-65 tok/s — a 1.3-1.5x speedup over baseline. This is the highest throughput achievable with llama.cpp on single GPU.
+**With MTP speculative decoding** (`--spec-type draft-mtp --spec-draft-n-max 2`): The same model with MTP speculative decoding achieves ~50-65 tok/s — a 1.3-1.5x speedup over baseline.
+
+.. [1] `Qwen3.8-27B on DGX Spark using vLLM: NVFP4 vs FP8 performance <https://forums.developer.nvidia.com/t/qwen3-8-27b-on-dgx-spark-using-vllm-nvfp4-vs-fp8-performance/380258>`_
 
 Key flags: ``--cache-type-k q8_0 --cache-type-v q4_0`` optimizes KV cache memory, ``--ctx-size 262144`` uses the model's native maximum context length, ``--ctx-checkpoints 4`` enables checkpointing for long conversations, and ``--jinja`` uses the modern Jinja2 chat template.
 .. [2] `I tested all llama.cpp's speculative decoding methods on Qwen 3.6 27B <https://www.reddit.com/r/LocalLLaMA/comments/1uyg3za/>`_
