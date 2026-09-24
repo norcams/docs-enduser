@@ -293,6 +293,7 @@ This tutorial demonstrates how to deploy a ready-to-use Ubuntu 24.04 LTS VM with
 
       git clone https://github.com/norcams/nrec-oneclick-vps.git
       cd nrec-oneclick-vps
+      git checkout turbovnc
 
 2. Create and fill in the environment file
 
