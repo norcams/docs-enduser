@@ -726,24 +726,24 @@ The following table summarizes verified inference performance across all Qwen mo
 .. table::
    :widths: auto
 
-   +----------------------------------+-----------------+------------+----------------+----------+------------------+------------------+
-   | **Model**                        | **Quantization**| **Size**   | **Platform**   | **Backend** | **Throughput**   | **Reasoning**    | **Coding**       |
-   +=================================+=================+============+================+============+==================+==================+==================+
-   | `unsloth/Qwen3.6-35B-A3B-MTP-   | UD-Q2_K_XL      | ~17 GB     | NREC L40S     | llama.cpp  | ~160-190 tok/s   | 5/6 correct      | 14/24 tests      |
-   |   GGUF`                          |                 |            | Half GPU +     |            |                  | ~655 tok/output  | (drifts on       |
-   |                                  |                 |            | 16-core CPU    |            |                  | ~2.8s reply      | constraints)     |
-   +----------------------------------+-----------------+------------+----------------+------------+------------------+------------------+------------------+
-   | `zerodigest/Qwen3.8-27B-        | YMQ-M (IQ3_XXS) | ~14 GB     | Fox A100      | llama.cpp  | ~50-65 tok/s     | 6/6 correct      | 14/24 tests      |
-   |   Uncensored-YMQ-MTP-GGUF`     |                 |            | (80 GB)        |            |                  | ~97 tok/output   | (budget exhausted|
-   |                                  |                 |            |                |            |                  | ~1.7s reply      | on coding tasks) |
-   +----------------------------------+-----------------+------------+----------------+------------+------------------+------------------+------------------+
-   | `HauhauCS/Qwen3.8-27B-          | Q4_K_P +        | ~19 GB +    | Fox A100      | llama.cpp  | ~50-65 tok/s     | 6/6 correct      | **24/30 tests**  |
-   |   Uncensored-HauhauCS-         | FastMTP sidecar | 903 MB      | (80 GB)        |            |                  | ~298 tok/output  | (best agentic    |
-   |   Aggressive-MTP-GGUF`         |                 |            |                |            |                  | ~9.2s reply      | performance)     |
-   +----------------------------------+-----------------+------------+----------------+------------+------------------+------------------+------------------+
-   | `unsloth/Qwen3.8-27B-GGUF`     | FP8             | ~28 GB     | Fox A100      | vLLM       | ~60-80 tok/s (unverified)     | Not tested       | Not tested       |
-   |                                  |                 |            | (80 GB)        |            |                  |                  |                  |
-   +----------------------------------+-----------------+------------+----------------+------------+------------------+------------------+------------------+
+   +------------------------------+-----------------+---------+-------------+------------+--------------------------+----------------+------------------+
+   | **Model**                    | **Quantization**| **Size**| **Platform**| **Backend**| **Throughput**           | **Reasoning**  | **Coding**       |
+   +==============================+=================+=========+=============+============+==========================+================+==================+
+   | `unsloth/Qwen3.6-35B-A3B-MTP-| UD-Q2_K_XL      | ~17 GB  | NREC L40S   | llama.cpp  | ~160-190 tok/s           | 5/6 correct    | 14/24 tests      |
+   | GGUF`                        |                 |         | Half GPU +  |            |                          | ~655 tok/output| (drifts on       |
+   |                              |                 |         | 16-core CPU |            |                          | ~2.8s reply    | constraints)     |
+   +------------------------------+-----------------+---------+-------------+------------+--------------------------+----------------+------------------+
+   | `zerodigest/Qwen3.8-27B-     | YMQ-M (IQ3_XXS) | ~14 GB  | Fox A100    | llama.cpp  | ~50-65 tok/s             | 6/6 correct    | 14/24 tests      |
+   | Uncensored-YMQ-MTP-GGUF`     |                 |         | (80 GB)     |            |                          | ~97 tok/output | (budget exhausted|
+   |                              |                 |         |             |            |                          | ~1.7s reply    | on coding tasks) |
+   +------------------------------+-----------------+---------+-------------+------------+--------------------------+----------------+------------------+
+   | `HauhauCS/Qwen3.8-27B-       | Q4_K_P +        | ~19 GB +| Fox A100    | llama.cpp  | ~50-65 tok/s             | 6/6 correct    | **24/30 tests**  |
+   | Uncensored-HauhauCS-         | FastMTP sidecar | 903 MB  | (80 GB)     |            |                          | ~298 tok/output| (best agentic    |
+   | Aggressive-MTP-GGUF`         |                 |         |             |            |                          | ~9.2s reply    | performance)     |
+   +------------------------------+-----------------+---------+-------------+------------+--------------------------+----------------+------------------+
+   | `unsloth/Qwen3.8-27B-GGUF`   | FP8             | ~28 GB  | Fox A100    | vLLM       | ~60-80 tok/s (unverified)| Not tested     | Not tested       |
+   |                              |                 |         | (80 GB)     |            |                          |                |                  |
+   +------------------------------+-----------------+---------+-------------+------------+--------------------------+----------------+------------------+
 
 Key highlights:
 
@@ -791,7 +791,7 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
 
    **Backend choice**
 
-   vLLM installs from precompiled pip wheels (no build step), while llama.cpp requires compilation from source. Compiling llama.cpp against the specific GPU architecture (sm_80 for A100) may yield better performance. Additionally, llama.cpp includes ``llama-cli`` for interactive testing before connecting from your agent harness.
+   vLLM installs from precompiled pip wheels (no build step), while llama.cpp requires compilation from source. Compiling llama.cpp against the specific GPU architecture (sm_80 for A100) may yield better performance. Additionally, llama.cpp includes ``llama-cli`` for interactive testing before connecting from your agent framework.
 
 .. TIP::
 
@@ -800,17 +800,32 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
    - Fox Educloud account (e.g. ``ec-[username]@fox.educloud.no``)
    - SSH client with port forwarding support (only for batch jobs)
 
-0. Find available partitions and GPU resources
+0. Select a model
 
-   Before submitting jobs, check what partitions and GPU types are available:
+   Two verified Qwen3.8-27B models are available for llama.cpp on A100 80GB. Choose one before proceeding.
 
-   .. code-block:: console
+   .. table::
+      :widths: auto
 
-      $ sinfo -p accel
-      $ scontrol show partition accel
-      $ projects
-
-   ``sinfo -p accel`` shows partition status and which nodes are available (idle, mix, drain). ``scontrol show partition accel`` shows all GPU types (TRES) and account quotas. ``projects`` lists your available Educloud project accounts.
+      +-----------------------------+--------------------------------------------+
+      | **zerodigest YMQ-M**        | **HauhauCS Aggressive Q4_K_P**             |
+      +=============================+============================================+
+      | `zerodigest/Qwen3.8-27B-    | `HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS- |
+      | Uncensored-YMQ-MTP-GGUF`    | Aggressive-MTP-GGUF`                       |
+      +-----------------------------+--------------------------------------------+
+      | Quantization: YMQ-M (~14 GB)| Quantization: Q4_K_P (~19 GB) + FastMTP    |
+      |                             | sidecar (903 MB)                           |
+      +-----------------------------+--------------------------------------------+
+      | ~50-65 tok/s with           | ~50-65 tok/s with                          |
+      | ``--spec-type draft-mtp     | ``--spec-draft-model`` + ``--spec-draft-ngl|
+      | --spec-draft-n-max 2``      | all --spec-type draft-mtp --spec-draft-    |
+      |                             | n-max 3 --spec-draft-p-min 0``             |
+      +-----------------------------+--------------------------------------------+
+      | No patch required           | Requires FastMTP patch before build        |
+      +-----------------------------+--------------------------------------------+
+      | Standard MTP speculative    | Up to 3.02x document throughput vs MTP     |
+      | decoding                    | disabled                                   |
+      +-----------------------------+--------------------------------------------+
 
 1. Interactive mode (salloc)
 
@@ -842,30 +857,55 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
       if [ ! -d "llama.cpp" ]; then
          git clone https://github.com/ggml-org/llama.cpp
          cd llama.cpp
-         cmake -B build -DBUILD_SHARED_LIBS=OFF -DGGML_CUDA=ON -DCUDA_ARCHITECTURES=80
+         cmake -B build -DBUILD_SHARED_LIBS=OFF -DGGML_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=80
          cmake --build build --config Release -j 32 --target llama-server llama-cli
          cp build/bin/llama-* .
          cd ..
       fi
 
-      # Download model (cached after first run)
+      # HauhauCS only: apply FastMTP patch and rebuild
+      if [ -d "models/HauhauCS" ] && [ ! -d "models/zerodigest" ]; then
+         cd llama.cpp
+         git checkout 4df29be4f4c3673f428170fda944a5b19f743bb8
+         curl -L -o HauhauCS-FastMTP-llama.cpp.patch https://huggingface.co/HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF/resolve/main/HauhauCS-FastMTP-llama.cpp.patch
+         git apply --check HauhauCS-FastMTP-llama.cpp.patch
+         git apply HauhauCS-FastMTP-llama.cpp.patch
+         cmake --build build --config Release -j 32 --target llama-server llama-cli
+         cp build/bin/llama-* .
+         cd ..
+      fi
+
+**Choice 1: zerodigest YMQ-M (~14 GB)**
+
+   .. code-block:: console
+
+      # Download model + mmproj (cached after first run)
       if [ ! -d "models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF" ]; then
          mkdir -p models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF
-         env HF_HUB_DISABLE_XET=1 python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF', filename='Qwen3.8-27B-Uncensored-YMQ-M.gguf', local_dir='models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF'); hf_hub_download(repo_id='zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF', filename='mmproj/Qwen3.8-27B-Uncensored-vision-Q8_0.gguf', local_dir='models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/mmproj')"
+         HF_HUB_DISABLE_XET=1 python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF', filename='Qwen3.8-27B-Uncensored-YMQ-M.gguf', local_dir='models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF'); hf_hub_download(repo_id='zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF', filename='mmproj/Qwen3.8-27B-Uncensored-vision-Q8_0.gguf', local_dir='models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/mmproj')"
       fi
 
       # Start interactive chat
       ./llama.cpp/llama-cli --model models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/Qwen3.8-27B-Uncensored-YMQ-M.gguf --mmproj models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/mmproj/mmproj/Qwen3.8-27B-Uncensored-vision-Q8_0.gguf --ctx-size 262144 --chat-template-kwargs '{"preserve_thinking":true}' --flash-attn on --batch-size 2048 --ubatch-size 1024 --cache-type-k q8_0 --cache-type-v q8_0 --spec-type draft-mtp --spec-draft-n-max 2
 
-   Type your prompt and press Enter to chat. Exit with ``Ctrl+D``.
+   **Verified throughput**: ~50-65 tok/s on A100 80GB with ``--spec-type draft-mtp --spec-draft-n-max 2`` (1.3-1.5x speedup over baseline).
+
+**Choice 2: HauhauCS Aggressive Q4_K_P (~19 GB) + FastMTP sidecar (903 MB)**
+
+   .. code-block:: console
+
+      # Download model + mmproj + FastMTP sidecar (cached after first run)
+      if [ ! -d "models/HauhauCS" ]; then
+         mkdir -p models/HauhauCS
+         HF_HUB_DISABLE_XET=1 python3 -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF', allow_patterns=['*Q4_K_P*', '*mmproj*', '*FastMTP*'], local_dir='models/HauhauCS')"
+      fi
+
+      # Start interactive chat
+      ./llama.cpp/llama-cli --model models/HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf --mmproj models/HauhauCS/mmproj-Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-BF16.gguf --spec-draft-model models/HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-FastMTP-32K.gguf --spec-draft-ngl all --spec-type draft-mtp --spec-draft-n-max 3 --spec-draft-p-min 0 --ctx-size 262144 --parallel 1 --batch-size 2048 --ubatch-size 512 --n-gpu-layers all --split-mode none --flash-attn on --no-mmap --temp 1.0 --top-k 20 --top-p 0.95 --min-p 0 --presence-penalty 0 --repeat-penalty 1.0 --jinja --reasoning on --reasoning-effort xhigh --reasoning-preserve --reasoning-format deepseek
+
+   **Verified throughput**: ~50-65 tok/s on A100 80GB with FastMTP sidecar (up to 3.02x document throughput vs MTP disabled).
 
 2. Batch mode (sbatch)
-
-   For non-interactive usage, create a Slurm job script:
-
-   .. NOTE::
-
-      For llama.cpp, the ``llama-server`` command can also be run in the interactive ``salloc`` job (step 1), avoiding the need for a separate Slurm script.
 
    .. code-block:: console
 
@@ -902,28 +942,53 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
       if [ ! -d "llama.cpp" ]; then
          git clone https://github.com/ggml-org/llama.cpp
          cd llama.cpp
-         cmake -B build -DBUILD_SHARED_LIBS=OFF -DGGML_CUDA=ON -DCUDA_ARCHITECTURES=80
+         cmake -B build -DBUILD_SHARED_LIBS=OFF -DGGML_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=80
          cmake --build build --config Release -j 32 --target llama-server llama-cli
          cp build/bin/llama-* .
          cd ..
       fi
 
-      # Download model (cached after first run)
+      # HauhauCS only: apply FastMTP patch and rebuild
+      if [ -d "models/HauhauCS" ] && [ ! -d "models/zerodigest" ]; then
+         cd llama.cpp
+         git checkout 4df29be4f4c3673f428170fda944a5b19f743bb8
+         curl -L -o HauhauCS-FastMTP-llama.cpp.patch https://huggingface.co/HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF/resolve/main/HauhauCS-FastMTP-llama.cpp.patch
+         git apply --check HauhauCS-FastMTP-llama.cpp.patch
+         git apply HauhauCS-FastMTP-llama.cpp.patch
+         cmake --build build --config Release -j 32 --target llama-server llama-cli
+         cp build/bin/llama-* .
+         cd ..
+      fi
+
+**Choice 1: zerodigest YMQ-M**
+
+   .. code-block:: console
+
+      # Download model + mmproj (cached after first run)
       if [ ! -d "models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF" ]; then
          mkdir -p models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF
-         env HF_HUB_DISABLE_XET=1 python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF', filename='Qwen3.8-27B-Uncensored-YMQ-M.gguf', local_dir='models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF'); hf_hub_download(repo_id='zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF', filename='mmproj/Qwen3.8-27B-Uncensored-vision-Q8_0.gguf', local_dir='models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/mmproj')"
+         HF_HUB_DISABLE_XET=1 python3 -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF', filename='Qwen3.8-27B-Uncensored-YMQ-M.gguf', local_dir='models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF'); hf_hub_download(repo_id='zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF', filename='mmproj/Qwen3.8-27B-Uncensored-vision-Q8_0.gguf', local_dir='models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/mmproj')"
       fi
 
       # Start the inference server
       ./llama.cpp/llama-server --model models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/Qwen3.8-27B-Uncensored-YMQ-M.gguf --mmproj models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/mmproj/Qwen3.8-27B-Uncensored-vision-Q8_0.gguf --ctx-size 262144 --port 55000 --chat-template-kwargs '{"preserve_thinking":true}' --flash-attn on --batch-size 2048 --ubatch-size 1024 --cache-type-k q8_0 --cache-type-v q8_0 --spec-type draft-mtp --spec-draft-n-max 2 --host 0.0.0.0
-
       echo "Server running on port 55000"
-      EOF
 
-3. Submit the job
+**Choice 2: HauhauCS Aggressive Q4_K_P**
 
    .. code-block:: console
 
+      # Download model + mmproj + FastMTP sidecar (cached after first run)
+      if [ ! -d "models/HauhauCS" ]; then
+         mkdir -p models/HauhauCS
+         HF_HUB_DISABLE_XET=1 python3 -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF', allow_patterns=['*Q4_K_P*', '*mmproj*', '*FastMTP*'], local_dir='models/HauhauCS')"
+      fi
+
+      # Start the inference server
+      ./llama.cpp/llama-server --model models/HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf --mmproj models/HauhauCS/mmproj-Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-BF16.gguf --spec-draft-model models/HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-FastMTP-32K.gguf --spec-draft-ngl all --spec-type draft-mtp --spec-draft-n-max 3 --spec-draft-p-min 0 --ctx-size 262144 --parallel 1 --batch-size 2048 --ubatch-size 512 --n-gpu-layers all --split-mode none --flash-attn on --no-mmap --temp 1.0 --top-k 20 --top-p 0.95 --min-p 0 --presence-penalty 0 --repeat-penalty 1.0 --jinja --reasoning on --reasoning-effort xhigh --reasoning-preserve --reasoning-format deepseek --host 0.0.0.0 --port 55000
+      echo "Server running on port 55000"
+
+      EOF
       chmod +x qwen38-llamacpp-job.sh
       sbatch qwen38-llamacpp-job.sh
 
@@ -934,7 +999,7 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
       squeue -u ec-[username]
       sstat -j <job-id>
 
-5. Connect an agent harness to the inference server
+5. Connect an agent framework to the inference server
 
    First, find the GPU node your job is running on (e.g. ``gpu-17``):
 
@@ -943,7 +1008,7 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
       squeue -u ec-[username]
       sstat -j <job-id>
 
-   Create an SSH tunnel from your local machine or NREC instance to the GPU node. An SSH tunnel is always required when connecting from your agent harness:
+   Create an SSH tunnel from your local machine or NREC instance to the GPU node. An SSH tunnel is always required when connecting from your agent framework:
 
    .. code-block:: console
 
@@ -953,7 +1018,7 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
 
       The server port (``55000``) may be in use by another user following this tutorial. Change it to an available port (e.g. ``56000``) in both the server startup command and the SSH tunnel.
 
-   Configure your agent harness to use the local endpoint:
+   Configure your agent framework to use the local endpoint:
 
    .. code-block:: console
 
@@ -1026,7 +1091,7 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
 
    **Backend choice**
 
-   vLLM installs from precompiled pip wheels (no build step), while llama.cpp requires compilation from source. Compiling llama.cpp against the specific GPU architecture (sm_80 for A100) may yield better performance. Additionally, llama.cpp includes ``llama-cli`` for interactive testing before connecting from your agent harness.
+   vLLM installs from precompiled pip wheels (no build step), while llama.cpp requires compilation from source. Compiling llama.cpp against the specific GPU architecture (sm_80 for A100) may yield better performance. Additionally, llama.cpp includes ``llama-cli`` for interactive testing before connecting from your agent framework.
 
 .. TIP::
 
@@ -1037,17 +1102,6 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
    - Python 3.10+ environment
    - vLLM >= 0.27.0
 
-0. Find available partitions and GPU resources
-
-   Before submitting jobs, check what partitions and GPU types are available:
-
-   .. code-block:: console
-
-      $ sinfo -p accel
-      $ scontrol show partition accel
-      $ projects
-
-   ``sinfo -p accel`` shows partition status and which nodes are available (idle, mix, drain). ``scontrol show partition accel`` shows all GPU types (TRES) and account quotas. ``projects`` lists your available Educloud project accounts.
 
 1. Interactive mode (salloc)
 
@@ -1171,7 +1225,7 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
       squeue -u ec-[username]
       sstat -j <job-id>
 
-5. Connect an agent harness to the inference server
+5. Connect an agent framework to the inference server
 
    First, find the GPU node your job is running on (e.g. ``gpu-17``):
 
@@ -1180,7 +1234,7 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
       squeue -u ec-[username]
       sstat -j <job-id>
 
-   Create an SSH tunnel from your local machine or NREC instance to the GPU node. An SSH tunnel is always required when connecting from your agent harness:
+   Create an SSH tunnel from your local machine or NREC instance to the GPU node. An SSH tunnel is always required when connecting from your agent framework:
 
    .. code-block:: console
 
@@ -1190,7 +1244,7 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
 
       The server port (``55000``) may be in use by another user following this tutorial. Change it to an available port (e.g. ``56000``) in both the server startup command and the SSH tunnel.
 
-   Configure your agent harness to use the local endpoint:
+   Configure your agent framework to use the local endpoint:
 
    .. code-block:: console
 
