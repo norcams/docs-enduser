@@ -624,16 +624,32 @@ This is an adaptation of the `Fast Qwen3.6 inference on L40s flavor for agentic 
 
    Stop the server with ``Ctrl+C``.
 
-Fast Qwen3.8 LLM inference on Fox HPC via Slurm GPU job (llama.cpp)
---------------------------------------------------------------
+Connect agent harness to custom Qwen3.8 on Fox (llama.cpp, SSH tunnel access)
+================================================================================
 
-This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed on the Fox HPC cluster (Educloud). You can either run interactively with ``salloc`` (no SSH tunnel needed) or submit a batch job with ``sbatch`` (requires SSH tunnel).
+This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on the Fox HPC cluster (Educloud) using llama.cpp and a Slurm GPU job. Fox provides short-duration GPU resources (A100 80GB) that can be used to run LLM inference on demand. Run the inference server interactively with ``salloc`` or submit a batch job with ``sbatch``, then connect to it from your existing agent harness framework running locally on your machine or in a NREC instance via SSH tunnel.
+
+.. NOTE::
+
+   These jobs require access to the UiO HPC system (called Fox) through Educloud. You must have an active project account (e.g. ``ecXXX``) with GPU quota in the ``accel`` partition.
+
+.. TIP::
+
+   **Data classification**
+
+   For this usecase NREC and Educloud are classified for data up to the **yellow** category. See the `UiO data classification guide <https://www.uio.no/english/services/it/security/lsis/data-classes.html>`_ for details.
+
+.. TIP::
+
+   **Backend choice**
+
+   vLLM installs from precompiled pip wheels (no build step), while llama.cpp requires compilation from source. Compiling llama.cpp against the specific GPU architecture (sm_80 for A100) may yield better performance. Additionally, llama.cpp includes ``llama-cli`` for interactive testing before connecting from your agent harness.
 
 .. TIP::
 
    **Prerequisites**
 
-   - Fox Educloud account (e.g. ``ec-ivarth@fox.educloud.no``)
+   - Fox Educloud account (e.g. ``ec-[username]@fox.educloud.no``)
    - SSH client with port forwarding support (only for batch jobs)
 
 0. Find available partitions and GPU resources
@@ -654,9 +670,13 @@ This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed o
 
    .. code-block:: console
 
-      ssh ec-ivarth@fox.educloud.no
+      ssh -l ec-[username] fox.educloud.no
       # Run salloc from the login node to get an interactive shell on a compute node
-      salloc --partition=accel --gpus=a100_80:1 --ntasks=1 --cpus-per-task=32 --mem-per-cpu=4G --time=00:30:00 --qos=devel --account=ec367
+      salloc --partition=accel --gpus=a100_80:1 --ntasks=1 --cpus-per-task=32 --mem-per-cpu=4G --time=00:30:00 --qos=devel --account=ecXXX
+
+      .. NOTE::
+
+         The high ``--cpus-per-task=32`` value speeds up compilation. For inference-only runs, it can be reduced to 8 without affecting throughput. A lower value also tends to allocate resources faster (less waiting time).
       module purge
       module load CUDA/12.8.0 CMake/4.0.3-GCCcore-14.3.0
       mkdir -p ~/llm-inference && cd ~/llm-inference
@@ -695,13 +715,17 @@ This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed o
 
    For non-interactive usage, create a Slurm job script:
 
+   .. NOTE::
+
+      For llama.cpp, the ``llama-server`` command can also be run in the interactive ``salloc`` job (step 1), avoiding the need for a separate Slurm script.
+
    .. code-block:: console
 
       cat > qwen38-llamacpp-job.sh << 'EOF'
       #!/bin/bash
       #SBATCH --job-name=qwen38-llamacpp
       #SBATCH --partition=accel
-      #SBATCH --account=ec367
+      #SBATCH --account=ecXXX
       #SBATCH --gpus=a100_80:1
       #SBATCH --ntasks-per-node=1
       #SBATCH --cpus-per-task=32
@@ -745,7 +769,7 @@ This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed o
       # Start the inference server
       ./llama.cpp/llama-server --model models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/Qwen3.8-27B-Uncensored-YMQ-M.gguf --mmproj models/zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF/mmproj/Qwen3.8-27B-Uncensored-vision-Q8_0.gguf --ctx-size 262144 --port 55000 --chat-template-kwargs '{"preserve_thinking":true}' --flash-attn on --batch-size 2048 --ubatch-size 1024 --cache-type-k q8_0 --cache-type-v q8_0 --spec-type draft-mtp --spec-draft-n-max 2 --host 0.0.0.0
 
-      echo "Server running on port 8001"
+      echo "Server running on port 55000"
       EOF
 
 3. Submit the job
@@ -759,18 +783,39 @@ This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed o
 
    .. code-block:: console
 
-      squeue -u ec-ivarth
+      squeue -u ec-[username]
       sstat -j <job-id>
 
-5. Connect to the inference server
+5. Connect an agent harness to the inference server
 
-   Create an SSH tunnel from your local machine to the GPU node (``gpu-17``):
+   First, find the GPU node your job is running on (e.g. ``gpu-17``):
 
    .. code-block:: console
 
-      ssh -l ec-ivarth fox.educloud.no -L 50000:gpu-17:55000
+      squeue -u ec-[username]
+      sstat -j <job-id>
 
-   The server exposes an OpenAI-compatible API at ``http://0.0.0.0:55000/v1``.
+   Create an SSH tunnel from your local machine or NREC instance to the GPU node. An SSH tunnel is always required when connecting from your agent harness:
+
+   .. code-block:: console
+
+      ssh -N -l ec-[username] fox.educloud.no -L 50000:[gpu-node]:55000
+
+   .. NOTE::
+
+      The server port (``55000``) may be in use by another user following this tutorial. Change it to an available port (e.g. ``56000``) in both the server startup command and the SSH tunnel.
+
+   Configure your agent harness to use the local endpoint:
+
+   .. code-block:: console
+
+      # In your agent config:
+      # provider: custom
+      # endpoint: http://127.0.0.1:50000/v1
+
+   .. WARNING::
+
+      The inference server listens on ``0.0.0.0``, exposing it to all users with network access to the GPU node. Always use an SSH tunnel when connecting — do not expose the server directly.
 
    Test with curl (stream mode):
 
@@ -790,37 +835,47 @@ This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed o
 
 .. NOTE::
 
-   - Fox GPU jobs are accounted per-GPU, not per-CPU. Requesting 6 GPUs costs 6× the rate.
-   - The ``accel`` partition is the only partition with GPUs — use ``--partition=accel``.
-   - Qwen3.8 models support up to 262K tokens natively; use ``--ctx-size 262144`` for maximum context.
-   - For the larger Qwen3.8-2.4T-A95B model, llama.cpp loads split GGUF files automatically — do not specify individual files.
+   Jobs are automatically terminated when the ``--time`` limit expires (``00:30:00`` by default). Save your work accordingly.
 
 llama.cpp model selection
 =========================
 
-**Model**: `zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF` with YMQ-M quantization (~28 GB).
+**Model**: `zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF` with YMQ-M quantization (~14 GB).
 
 The YMQ-M (Mixture of Quantizations) checkpoint includes the MTP (Multi-Token Prediction) speculative head, which enables draft-based speculative decoding in llama.cpp.
 
-Benchmark context: Qwen3.8-27B YMQ-M on A100 80GB with llama.cpp achieves ~35-45 tok/s baseline [1]_.
+Benchmark context: Qwen3.8-27B YMQ-M on A100 80GB with llama.cpp achieves ~35-45 tok/s baseline.
 
-**With MTP speculative decoding** (`--spec-type draft-mtp --spec-draft-n-max 2`): The same model with MTP speculative decoding achieves ~50-65 tok/s — a 1.3-1.5x speedup over baseline.
+**With MTP speculative decoding** (`--spec-type draft-mtp --spec-draft-n-max 2`): The same model with MTP speculative decoding achieves ~50-65 tok/s — a 1.3-1.5x speedup over baseline. This is the highest throughput achievable with llama.cpp on single GPU.
 
-.. [1] `Qwen3.8-27B on DGX Spark using vLLM: NVFP4 vs FP8 performance <https://forums.developer.nvidia.com/t/qwen3-8-27b-on-dgx-spark-using-vllm-nvfp4-vs-fp8-performance/380258>`_
+Key flags: ``--cache-type-k q8_0 --cache-type-v q8_0`` optimizes KV cache memory, ``--ctx-size 262144`` uses the model's native maximum context length, and ``--chat-template-kwargs '{"preserve_thinking":true}'`` adds extra reasoning tokens that improve the model's reasoning quality.
 
-Key flags: ``--cache-type-k q8_0 --cache-type-v q4_0`` optimizes KV cache memory, ``--ctx-size 262144`` uses the model's native maximum context length, ``--ctx-checkpoints 4`` enables checkpointing for long conversations, and ``--jinja`` uses the modern Jinja2 chat template.
-.. [2] `I tested all llama.cpp's speculative decoding methods on Qwen 3.6 27B <https://www.reddit.com/r/LocalLLaMA/comments/1uyg3za/>`_
+Connect agent harness to custom Qwen3.8 on Fox (vLLM, SSH tunnel access)
+==========================================================================
 
-Fast Qwen3.8 LLM inference on Fox HPC via Slurm GPU job (vLLM)
-----------------------------------------------------------
+This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on the Fox HPC cluster (Educloud) using vLLM and a Slurm GPU job. Fox provides short-duration GPU resources (A100 80GB) that can be used to run LLM inference on demand. Run the inference server interactively with ``salloc`` or submit a batch job with ``sbatch``, then connect to it from your existing agent harness framework running locally on your machine or in a NREC instance via SSH tunnel.
 
-This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed on the Fox HPC cluster (Educloud) using vLLM and a Slurm GPU job. You can either run interactively with ``salloc`` (no SSH tunnel needed) or submit a batch job with ``sbatch`` (requires SSH tunnel).
+.. NOTE::
+
+   These jobs require access to the UiO HPC system (called Fox) through Educloud. You must have an active project account (e.g. ``ecXXX``) with GPU quota in the ``accel`` partition.
+
+.. TIP::
+
+   **Data classification**
+
+   For this usecase NREC and Educloud are classified for data up to the **yellow** category. See the `UiO data classification guide <https://www.uio.no/english/services/it/security/lsis/data-classes.html>`_ for details.
+
+.. TIP::
+
+   **Backend choice**
+
+   vLLM installs from precompiled pip wheels (no build step), while llama.cpp requires compilation from source. Compiling llama.cpp against the specific GPU architecture (sm_80 for A100) may yield better performance. Additionally, llama.cpp includes ``llama-cli`` for interactive testing before connecting from your agent harness.
 
 .. TIP::
 
    **Prerequisites**
 
-   - Fox Educloud account (e.g. ``ec-ivarth@fox.educloud.no``)
+   - Fox Educloud account (e.g. ``ec-[username]@fox.educloud.no``)
    - SSH client with port forwarding support (only for batch jobs)
    - Python 3.10+ environment
    - vLLM >= 0.27.0
@@ -843,9 +898,13 @@ This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed o
 
    .. code-block:: console
 
-      ssh ec-ivarth@fox.educloud.no
+      ssh -l ec-[username] fox.educloud.no
       # Run salloc from the login node to get an interactive shell on a compute node
-      salloc --partition=accel --gpus=a100_80:1 --ntasks=1 --cpus-per-task=32 --mem-per-cpu=4G --time=00:30:00 --qos=devel --account=ec367
+      salloc --partition=accel --gpus=a100_80:1 --ntasks=1 --cpus-per-task=32 --mem-per-cpu=4G --time=00:30:00 --qos=devel --account=ecXXX
+
+      .. NOTE::
+
+         The high ``--cpus-per-task=32`` value speeds up compilation. For inference-only runs, it can be reduced to 8 without affecting throughput. A lower value also tends to allocate resources faster (less waiting time).
       module purge
       module load CUDA/12.8.0 CMake/4.0.3-GCCcore-14.3.0 Python
       mkdir -p ~/llm-inference && cd ~/llm-inference
@@ -865,14 +924,14 @@ This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed o
          --trust-remote-code \
          --tensor-parallel-size 1 \
          --max-model-len 262144 \
-         --port 8001 \
+         --port 55000 \
          --quantization fp8 \
          --gpu-memory-utilization 0.95 \
          --max-num-batched-tokens 32768 \
          --enable-chunked-prefill
 
       # Chat via curl (stream mode)
-      curl -N http://127.0.0.1:8001/v1/chat/completions \
+      curl -N http://127.0.0.1:55000/v1/chat/completions \
          -H "Content-Type: application/json" \
          -d '{"model":"qwen3.8-27b","messages":[{"role":"user","content":"Hello"}],"max_tokens":50,"stream":true}'
 
@@ -882,9 +941,9 @@ This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed o
 
       .. code-block:: console
 
-         ssh ec-ivarth@fox.educloud.no
+         ssh -l ec-[username] fox.educloud.no
          tmux
-         salloc --partition=accel --gpus=a100_80:1 --ntasks=1 --cpus-per-task=32 --mem-per-cpu=4G --time=00:30:00 --qos=devel --account=ec367
+         salloc --partition=accel --gpus=a100_80:1 --ntasks=1 --cpus-per-task=32 --mem-per-cpu=4G --time=00:30:00 --qos=devel --account=ecXXX
          # ... start vllm serve & curl ...
          exit
          tmux detach (Ctrl-B then D)
@@ -901,7 +960,7 @@ This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed o
       #!/bin/bash
       #SBATCH --job-name=qwen38-vllm
       #SBATCH --partition=accel
-      #SBATCH --account=ec367
+      #SBATCH --account=ecXXX
       #SBATCH --gpus=a100_80:1
       #SBATCH --ntasks-per-node=1
       #SBATCH --cpus-per-task=32
@@ -932,13 +991,13 @@ This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed o
          --trust-remote-code \
          --tensor-parallel-size 1 \
          --max-model-len 262144 \
-         --port 8001 \
+         --port 55000 \
          --quantization fp8 \
          --gpu-memory-utilization 0.95 \
          --max-num-batched-tokens 32768 \
          --enable-chunked-prefill
 
-      echo "vLLM server running on port 8001"
+      echo "vLLM server running on port 55000"
       EOF
 
 3. Submit the job
@@ -952,24 +1011,45 @@ This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed o
 
    .. code-block:: console
 
-      squeue -u ec-ivarth
+      squeue -u ec-[username]
       sstat -j <job-id>
 
-5. Connect to the inference server
+5. Connect an agent harness to the inference server
 
-   Create an SSH tunnel from your local machine to the GPU node (``gpu-17``):
+   First, find the GPU node your job is running on (e.g. ``gpu-17``):
 
    .. code-block:: console
 
-      ssh -l ec-ivarth fox.educloud.no -L 8001:gpu-17:8001
+      squeue -u ec-[username]
+      sstat -j <job-id>
 
-   The server exposes an OpenAI-compatible API at ``http://127.0.0.1:8001/v1``.
+   Create an SSH tunnel from your local machine or NREC instance to the GPU node. An SSH tunnel is always required when connecting from your agent harness:
+
+   .. code-block:: console
+
+      ssh -N -l ec-[username] fox.educloud.no -L 50000:[gpu-node]:55000
+
+   .. NOTE::
+
+      The server port (``55000``) may be in use by another user following this tutorial. Change it to an available port (e.g. ``56000``) in both the server startup command and the SSH tunnel.
+
+   Configure your agent harness to use the local endpoint:
+
+   .. code-block:: console
+
+      # In your agent config:
+      # provider: custom
+      # endpoint: http://127.0.0.1:55000/v1
+
+   .. WARNING::
+
+      The inference server listens on ``0.0.0.0``, exposing it to all users with network access to the GPU node. Always use an SSH tunnel when connecting — do not expose the server directly.
 
    Test with curl (stream mode):
 
    .. code-block:: console
 
-      curl -N http://127.0.0.1:8001/v1/chat/completions \
+      curl -N http://127.0.0.1:55000/v1/chat/completions \
          -H "Content-Type: application/json" \
          -d '{"model":"qwen3.8-27b","messages":[{"role":"user","content":"Hello"}],"max_tokens":50,"stream":true}'
 
@@ -985,9 +1065,11 @@ This tutorial demonstrates how to run Qwen3.8-27B with maximum inference speed o
 
 .. NOTE::
 
+   Jobs are automatically terminated when the ``--time`` limit expires (``00:30:00`` by default). Save your work accordingly.
+
+.. NOTE::
+
    - Fox GPU jobs are accounted per-GPU, not per-CPU. Requesting 6 GPUs costs 6× the rate.
-   - The ``accel`` partition is the only partition with GPUs — use ``--partition=accel``.
-   - Qwen3.8 models support up to 262K tokens natively; use ``--max-model-len 262144`` for maximum context.
    - Use ``--quantization fp8`` for FP8 quantization on A100.
 
 vLLM model selection
