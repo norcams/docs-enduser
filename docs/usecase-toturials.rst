@@ -167,9 +167,8 @@ Any user logged into the VM may change to another user with password enabled (us
 Shared account:
 
 A shared user group1 may be created with password, and the password can be shared within the group. All members of the group should then be able to login to the VM using user group1 and shared password simultaneously. Shared accounts may also be accomplished by sharing the full (private+public) SSH key and possibly OTP app. However, this use case would go against introducing these increased security measures in the first place.
-
 Lightweight Linux DE - LXDE + XRDP
------------------------------------
+----------------------------------
 
 This is a tutorial on how you may setup a minimal graphical desktop environment (DE) in your linux VM, and access it remotely using the Remote Desktop Protocol (RDP) over a Secure Shell (SSH) tunnel.
 
@@ -373,8 +372,99 @@ This tutorial demonstrates how to deploy a ready-to-use Ubuntu 24.04 LTS VM with
 
       terraform destroy
 
-Fast Qwen3.6 inference on L40s flavor for agentic tasks
--------------------------------------------------------
+Lightweight Linux DE - GNOME + XRDP (Terraform)
+-----------------------------------------------
+This tutorial demonstrates how to deploy a ready-to-use Ubuntu 24.04 LTS VM with a GNOME desktop and XRDP remote access on NREC OpenStack, using the one-click deployment scripts from the `nrec-oneclick-vps <https://github.com/norcams/nrec-oneclick-vps/>`_ repository.
+
+The steps are similar to the `VirtualGL Linux DE - GNOME + TurboVNC (Terraform)`_ tutorial. The main difference is that this tutorial uses the main branch of the repository (GNOME + XRDP) instead of the ``turbovnc`` branch (GNOME + TurboVNC).
+
+.. TIP::
+   **Prerequisites**
+
+   - Terraform >= 1.5
+   - NREC OpenStack credentials (``OS_USERNAME``, ``OS_PASSWORD``, ``OS_PROJECT_NAME``, ``OS_REGION_NAME``)
+   - SSH client
+   - RDP viewer (built-in on Windows, Remmina on Linux)
+   - Git (to clone the repository)
+
+1. Clone the repository
+
+   .. code-block:: console
+
+      git clone https://github.com/norcams/nrec-oneclick-vps.git
+      cd nrec-oneclick-vps
+
+2. Create and fill in the environment file
+
+   .. code-block:: console
+
+      cp env.sh.template env.sh
+
+   Edit ``env.sh`` and set your OpenStack API credentials:
+
+   - ``OS_USERNAME``: your username (e.g. ``user@institution.no``)
+   - ``OS_PASSWORD``: your password
+   - ``OS_PROJECT_NAME``: your project name
+   - ``OS_REGION_NAME``: your region (e.g. ``bgo``)
+
+   The ``OS_AUTH_URL`` is pre-set to ``https://identity.api.bgo.nrec.no:5000/v3``.
+
+3. Deploy the VM
+
+   .. code-block:: console
+
+      ./deploy.sh
+
+   The script will:
+
+   - Auto-detect your public IPv4/IPv6 address
+   - Generate a ``terraform.tfvars`` with default flavor (``c1.xlarge``) and image (``GOLD Ubuntu 24.04 LTS``). These can be changed directly in ``deploy.sh``.
+   - Generate a TLS private key and save it to ``keys/vps-<deployment-id>.pem``
+   - Create an OpenStack keypair
+   - Create a security group with SSH-only ingress
+   - Launch a VM with cloud-init (installs XRDP, GNOME desktop, Google Chrome)
+   - Print the VM IP addresses and SSH command
+
+   Credentials are saved to:
+
+   - On VM: ``cat /home/ubuntu/.admin-password`` (for XRDP login)
+
+4. SSH login with RDP connection
+
+   .. code-block:: console
+
+      ssh ubuntu@<IPv6 address> -L 45000:localhost:3389
+
+   where we choose a high numbered port that we want to use to access our DE on ``localhost`` on our local machine.
+
+   If you are on a IPv4 only network such as eduroam, you can connect through ``login.uio.no`` or ``login.uib.no``, e.g., for UiO users
+
+   .. code-block:: console
+
+      ssh -J <username>@login.uio.no ubuntu@<IPv6 address> -L 45000:localhost:3389
+
+   where <username> is your UiO username. This requires that your SSH key is installed on the login host.
+
+5. First RDP login
+
+   Use an RDP Client to connect to ``localhost:45000``. The client to use on Windows is the built-in Windows Remote Desktop. A good Linux client is Remmina.
+
+   You will be asked to login as user ubuntu with the password from ``/home/ubuntu/.admin-password``.
+
+6. Tear down the VM
+
+   When finished, destroy all provisioned resources (including the VM, security groups, keypair, and local key files):
+
+
+   .. code-block:: console
+
+      terraform destroy
+
+Local AI
+========
+
+Local Qwen3.6 inference on L40s flavor for agentic tasks
+--------------------------------------------------------
 
 This tutorial demonstrates how to run the `Qwen3.6-35B-A3B <https://unsloth.ai/docs/models/qwen3.6#mtp-qwen3.6-35b-a3b>`_ LLM with decent inference speed on an NREC L40s instance using llama.cpp and multi-token prediction (MTP).
 
@@ -477,10 +567,10 @@ This tutorial demonstrates how to run the `Qwen3.6-35B-A3B <https://unsloth.ai/d
 
    Stop the server with ``Ctrl+C``.
 
-Fast Qwen3.6 inference on L40s flavor for agentic tasks (Ubuntu 26.04 LTS)
---------------------------------------------------------------------------
+Local Qwen3.6 inference on L40s flavor for agentic tasks (Ubuntu 26.04 LTS)
+---------------------------------------------------------------------------
 
-This is an adaptation of the `Fast Qwen3.6 inference on L40s flavor for agentic tasks`_ tutorial for Ubuntu 26.04 LTS (Resolute Raccoon).
+This is an adaptation of the `Local Qwen3.6 inference on L40s flavor for agentic tasks`_ tutorial for Ubuntu 26.04 LTS (Resolute Raccoon).
 
 .. TIP::
    **Instance requirements**
