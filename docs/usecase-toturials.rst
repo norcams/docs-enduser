@@ -12,7 +12,10 @@ Last changed: |date|
 
 .. note::
 
-    Please be advised that these are merely examples of use cases, and they may be outdated.
+    These are highly specific use cases where many choices were made regarding software
+    versions, configurations, and tooling. They capture verified working combinations at
+    a point in time and will at some point likely become outdated. Treat them as time
+    snapshots of successful combinations rather than prescriptive guides.
 
 Changing network interface for a running instance
 -------------------------------------------------
@@ -715,10 +718,64 @@ This is an adaptation of the `Local Qwen3.6 inference on L40s flavor for agentic
 
    Stop the server with ``Ctrl+C``.
 
-Connect agent harness to custom Qwen3.8 on Fox (llama.cpp, SSH tunnel access)
-================================================================================
+LLM model performance summary
+=============================
 
-This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on the Fox HPC cluster (Educloud) using llama.cpp and a Slurm GPU job. Fox provides short-duration GPU resources (A100 80GB) that can be used to run LLM inference on demand. Run the inference server interactively with ``salloc`` or submit a batch job with ``sbatch``, then connect to it from your existing agent harness framework running locally on your machine or in a NREC instance via SSH tunnel.
+The following table summarizes verified inference performance across all Qwen model tutorials. Benchmarks reflect tested throughput on NREC L40S (24 GB) and Fox HPC A100 (80 GB) hardware.
+
+.. table::
+   :widths: auto
+
+   +----------------------------------+-----------------+------------+----------------+----------+------------------+------------------+
+   | **Model**                        | **Quantization**| **Size**   | **Platform**   | **Backend** | **Throughput**   | **Reasoning**    | **Coding**       |
+   +=================================+=================+============+================+============+==================+==================+==================+
+   | `unsloth/Qwen3.6-35B-A3B-MTP-   | UD-Q2_K_XL      | ~17 GB     | NREC L40S     | llama.cpp  | ~160-190 tok/s   | 5/6 correct      | 14/24 tests      |
+   |   GGUF`                          |                 |            | Half GPU +     |            |                  | ~655 tok/output  | (drifts on       |
+   |                                  |                 |            | 16-core CPU    |            |                  | ~2.8s reply      | constraints)     |
+   +----------------------------------+-----------------+------------+----------------+------------+------------------+------------------+------------------+
+   | `zerodigest/Qwen3.8-27B-        | YMQ-M (IQ3_XXS) | ~14 GB     | Fox A100      | llama.cpp  | ~50-65 tok/s     | 6/6 correct      | 14/24 tests      |
+   |   Uncensored-YMQ-MTP-GGUF`     |                 |            | (80 GB)        |            |                  | ~97 tok/output   | (budget exhausted|
+   |                                  |                 |            |                |            |                  | ~1.7s reply      | on coding tasks) |
+   +----------------------------------+-----------------+------------+----------------+------------+------------------+------------------+------------------+
+   | `HauhauCS/Qwen3.8-27B-          | Q4_K_P +        | ~19 GB +    | Fox A100      | llama.cpp  | ~50-65 tok/s     | 6/6 correct      | **24/30 tests**  |
+   |   Uncensored-HauhauCS-         | FastMTP sidecar | 903 MB      | (80 GB)        |            |                  | ~298 tok/output  | (best agentic    |
+   |   Aggressive-MTP-GGUF`         |                 |            |                |            |                  | ~9.2s reply      | performance)     |
+   +----------------------------------+-----------------+------------+----------------+------------+------------------+------------------+------------------+
+   | `unsloth/Qwen3.8-27B-GGUF`     | FP8             | ~28 GB     | Fox A100      | vLLM       | ~60-80 tok/s (unverified)     | Not tested       | Not tested       |
+   |                                  |                 |            | (80 GB)        |            |                  |                  |                  |
+   +----------------------------------+-----------------+------------+----------------+------------+------------------+------------------+------------------+
+
+Key highlights:
+
+- **Fastest throughput**: Qwen3.6-35B-A3B on NREC L40S (~160-190 tok/s), leveraging MTP speculative decoding on 24 GB VRAM
+- **Second fastest**: vLLM with FP8 on A100 (~60-80 tok/s (unverified)), leveraging PagedAttention and continuous batching
+- **Best for agentic tasks**: HauhauCS Q4_K_P with FastMTP sidecar (**24/30 coding tests**), up to 3.02x document throughput vs MTP disabled
+- **Lowest VRAM**: zerodigest YMQ-M IQ3_XXS (~14 GB) fits comfortably on 24 GB L40S systems
+- **Most token-efficient**: zerodigest YMQ-M IQ3_XXS (~97 mean output tokens, ~1.7s reply time) — 3.1× fewer tokens and ~5× faster than Q4_K_P
+
+
+   ``sinfo -p accel`` shows partition status and which nodes are available (idle, mix, drain). ``scontrol show partition accel`` shows all GPU types (TRES) and account quotas. ``projects`` lists your available Educloud project accounts.
+
+
+- **Maximum context**: All models support 262144 context length on 80 GB A100 systems
+- **Speculative decoding**: llama.cpp MTP and vLLM both enable significant speedups over baseline inference
+
+
+0. Find available partitions and GPU resources
+
+Before submitting jobs, check what partitions and GPU types are available:
+
+.. code-block:: console
+
+   $ sinfo -p accel
+   $ scontrol show partition accel
+   $ projects
+
+OnDemand local Qwen3.8 on Fox for agentic tasks (llama.cpp, SSH tunnel access)
+
+==============================================================================
+
+This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on the Fox HPC cluster (Educloud) using llama.cpp and a Slurm GPU job. Fox provides short-duration GPU resources (A100 80GB) that can be used to run LLM inference on demand. Run the inference server interactively with ``salloc`` or submit a batch job with ``sbatch``, then connect to it from your existing agent framework running locally on your machine or in a NREC instance via SSH tunnel.
 
 .. NOTE::
 
@@ -931,20 +988,29 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
 llama.cpp model selection
 =========================
 
-**Model**: `zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF` with YMQ-M quantization (~14 GB).
+**Model 1**: `zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF` with YMQ-M quantization (~14 GB).
 
 The YMQ-M (Mixture of Quantizations) checkpoint includes the MTP (Multi-Token Prediction) speculative head, which enables draft-based speculative decoding in llama.cpp.
 
-Benchmark context: Qwen3.8-27B YMQ-M on A100 80GB with llama.cpp achieves ~35-45 tok/s baseline.
+**Verified throughput**: ~50-65 tok/s on A100 80GB with ``--spec-type draft-mtp --spec-draft-n-max 2`` (1.3-1.5x speedup over baseline).
 
-**With MTP speculative decoding** (`--spec-type draft-mtp --spec-draft-n-max 2`): The same model with MTP speculative decoding achieves ~50-65 tok/s — a 1.3-1.5x speedup over baseline. This is the highest throughput achievable with llama.cpp on single GPU.
+**Model 2**: `HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF` with Q4_K_P quantization (~19 GB) plus the HauhauCS FastMTP sidecar (903 MB).
 
-Key flags: ``--cache-type-k q8_0 --cache-type-v q8_0`` optimizes KV cache memory, ``--ctx-size 262144`` uses the model's native maximum context length, and ``--chat-template-kwargs '{"preserve_thinking":true}'`` adds extra reasoning tokens that improve the model's reasoning quality.
+The HauhauCS Aggressive variant provides direct answers with no refusal behavior. The Q4_K_P quantization fits A100 80GB systems while the embedded NextN head enables MTP. The separate FastMTP sidecar achieves up to 3.02x document throughput and 1.93x reasoning throughput versus MTP disabled — significantly higher than standard embedded MTP.
 
-Connect agent harness to custom Qwen3.8 on Fox (vLLM, SSH tunnel access)
-==========================================================================
+**Verified throughput**: ~50-65 tok/s on A100 80GB with FastMTP sidecar (up to 3.02x document throughput vs MTP disabled).
 
-This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on the Fox HPC cluster (Educloud) using vLLM and a Slurm GPU job. Fox provides short-duration GPU resources (A100 80GB) that can be used to run LLM inference on demand. Run the inference server interactively with ``salloc`` or submit a batch job with ``sbatch``, then connect to it from your existing agent harness framework running locally on your machine or in a NREC instance via SSH tunnel.
+Key flags for both models: ``--cache-type-k q8_0 --cache-type-v q8_0`` optimizes KV cache memory, ``--ctx-size 262144`` uses the model's native maximum context length, and ``--chat-template-kwargs '{"preserve_thinking":true}'`` adds extra reasoning tokens that improve the model's reasoning quality.
+
+OnDemand local Qwen3.8 on Fox for agentic tasks (vLLM, SSH tunnel access) ⚠️ Unverified draft
+=============================================================================================
+
+.. WARNING::
+
+   This tutorial is unverified. The vLLM backend for Qwen3.8-27B on Fox has not yet been tested.
+   Performance estimates (~60-80 tok/s) are preliminary and subject to change. Use with caution.
+
+This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on the Fox HPC cluster (Educloud) using vLLM and a Slurm GPU job. Fox provides short-duration GPU resources (A100 80GB) that can be used to run LLM inference on demand. Run the inference server interactively with ``salloc`` or submit a batch job with ``sbatch``, then connect to it from your existing agent framework running locally on your machine or in a NREC instance via SSH tunnel.
 
 .. NOTE::
 
@@ -1170,7 +1236,7 @@ vLLM model selection
 
 The A100 is an Ampere-architecture GPU with native FP8 Tensor Core support. The FP8 quantized checkpoint runs efficiently on A100's FP8 cores, delivering significant speedup over BF16 while using only ~28 GB VRAM (half of BF16's ~56 GB), leaving substantially more room for KV cache at 262K context.
 
-Benchmark context: Qwen3.8-27B FP8 with vLLM on single A100 GPU achieves ~60-80 tok/s generation, outperforming llama.cpp by ~1.2-1.5x through continuous batching and PagedAttention. FP8 quantization also reduces KV memory by ~50%, enabling longer effective context windows.
+Benchmark context: Qwen3.8-27B FP8 with vLLM on single A100 GPU estimated ~60-80 tok/s generation (unverified), outperforming llama.cpp by ~1.2-1.5x through continuous batching and PagedAttention. FP8 quantization also reduces KV memory by ~50%, enabling longer effective context windows.
 
 vLLM's day-0 Qwen3.8 support leverages PagedAttention and continuous batching. The ``--quantization fp8`` flag enables FP8 model loading, further improving throughput. The FP8 checkpoint delivers near-BF16 quality with FP8-level speed, making it the optimal choice for A100 single-GPU inference.
 
