@@ -16,7 +16,10 @@ time. You can also create a snapshot from or delete a volume.
 There are different volume types, including
 
 * **mass-storage-default**: Storage backed by spinning hard drives,
-  available to everybody and is the default type.
+  available to everybody and is the default type. Reported by users to
+  be too slow for container runtimes (Docker, containerd) and
+  PostgreSQL workloads that require consistent low-latency I/O.
+  Consider **mass-storage-ssd** or the OS drive for such workloads.
 * **rbd**: Legacy storage backed by spinning hard drives.
 * **mass-storage-ssd**: Fast storage backed by solid state drives.
   This volume type is only available after access has been granted by
