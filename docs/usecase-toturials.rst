@@ -17,6 +17,9 @@ Last changed: |date|
     a point in time and will at some point likely become outdated. Treat them as time
     snapshots of successful combinations rather than prescriptive guides.
 
+Infrastructure Basics
+=====================
+
 Changing network interface for a running instance
 -------------------------------------------------
 
@@ -170,6 +173,10 @@ Any user logged into the VM may change to another user with password enabled (us
 Shared account:
 
 A shared user group1 may be created with password, and the password can be shared within the group. All members of the group should then be able to login to the VM using user group1 and shared password simultaneously. Shared accounts may also be accomplished by sharing the full (private+public) SSH key and possibly OTP app. However, this use case would go against introducing these increased security measures in the first place.
+
+Remote Desktop Access
+=====================
+
 Lightweight Linux DE - LXDE + XRDP
 ----------------------------------
 
@@ -276,8 +283,96 @@ RDP: Remote Desktop Protocol, SSH: Secure Shell, GUI: Graphical User Interface, 
 
 .. [#f3] https://github.com/neutrinolabs/xrdp/issues/308
 
-VirtualGL Linux DE - GNOME + TurboVNC (Terraform)
--------------------------------------------------
+Remote Desktop - GNOME + XRDP (Terraform)
+-----------------------------------------
+This tutorial demonstrates how to deploy a ready-to-use Ubuntu 24.04 LTS VM with a GNOME desktop and XRDP remote access on NREC OpenStack, using the one-click deployment scripts from the `nrec-oneclick-vps <https://github.com/norcams/nrec-oneclick-vps/>`_ repository.
+
+The steps are similar to the `Remote Desktop - GNOME + TurboVNC (Terraform)`_ tutorial. The main difference is that this tutorial uses the main branch of the repository (GNOME + XRDP) instead of the ``turbovnc`` branch (GNOME + TurboVNC).
+
+.. TIP::
+   **Prerequisites**
+
+   - Terraform >= 1.5
+   - NREC OpenStack credentials (``OS_USERNAME``, ``OS_PASSWORD``, ``OS_PROJECT_NAME``, ``OS_REGION_NAME``)
+   - SSH client
+   - RDP viewer (built-in on Windows, Remmina on Linux)
+   - Git (to clone the repository)
+
+1. Clone the repository
+
+   .. code-block:: console
+
+      git clone https://github.com/norcams/nrec-oneclick-vps.git
+      cd nrec-oneclick-vps
+
+2. Create and fill in the environment file
+
+   .. code-block:: console
+
+      cp env.sh.template env.sh
+
+   Edit ``env.sh`` and set your OpenStack API credentials:
+
+   - ``OS_USERNAME``: your username (e.g. ``user@institution.no``)
+   - ``OS_PASSWORD``: your password
+   - ``OS_PROJECT_NAME``: your project name
+   - ``OS_REGION_NAME``: your region (e.g. ``bgo``)
+
+   The ``OS_AUTH_URL`` is pre-set to ``https://identity.api.bgo.nrec.no:5000/v3``.
+
+3. Deploy the VM
+
+   .. code-block:: console
+
+      ./deploy.sh
+
+   The script will:
+
+   - Auto-detect your public IPv4/IPv6 address
+   - Generate a ``terraform.tfvars`` with default flavor (``c1.xlarge``) and image (``GOLD Ubuntu 24.04 LTS``). These can be changed directly in ``deploy.sh``.
+   - Generate a TLS private key and save it to ``keys/vps-<deployment-id>.pem``
+   - Create an OpenStack keypair
+   - Create a security group with SSH-only ingress
+   - Launch a VM with cloud-init (installs XRDP, GNOME desktop, Google Chrome)
+   - Print the VM IP addresses and SSH command
+
+   Credentials are saved to:
+
+   - On VM: ``cat /home/ubuntu/.admin-password`` (for XRDP login)
+
+4. SSH login with RDP connection
+
+   .. code-block:: console
+
+      ssh ubuntu@<IPv6 address> -L 45000:localhost:3389
+
+   where we choose a high numbered port that we want to use to access our DE on ``localhost`` on our local machine.
+
+   If you are on a IPv4 only network such as eduroam, you can connect through ``login.uio.no`` or ``login.uib.no``, e.g., for UiO users
+
+   .. code-block:: console
+
+      ssh -J <username>@login.uio.no ubuntu@<IPv6 address> -L 45000:localhost:3389
+
+   where <username> is your UiO username. This requires that your SSH key is installed on the login host.
+
+5. First RDP login
+
+   Use an RDP Client to connect to ``localhost:45000``. The client to use on Windows is the built-in Windows Remote Desktop. A good Linux client is Remmina.
+
+   You will be asked to login as user ubuntu with the password from ``/home/ubuntu/.admin-password``.
+
+6. Tear down the VM
+
+   When finished, destroy all provisioned resources (including the VM, security groups, keypair, and local key files):
+
+
+   .. code-block:: console
+
+      terraform destroy
+
+Remote Desktop - GNOME + TurboVNC (Terraform)
+---------------------------------------------
 
 This tutorial demonstrates how to deploy a ready-to-use Ubuntu 24.04 LTS VM with a GNOME desktop and TurboVNC remote access on NREC OpenStack, using the one-click deployment scripts from the `nrec-oneclick-vps <https://github.com/norcams/nrec-oneclick-vps/>`_ repository.
 
@@ -376,99 +471,11 @@ This tutorial demonstrates how to deploy a ready-to-use Ubuntu 24.04 LTS VM with
 
       terraform destroy
 
-Lightweight Linux DE - GNOME + XRDP (Terraform)
------------------------------------------------
-This tutorial demonstrates how to deploy a ready-to-use Ubuntu 24.04 LTS VM with a GNOME desktop and XRDP remote access on NREC OpenStack, using the one-click deployment scripts from the `nrec-oneclick-vps <https://github.com/norcams/nrec-oneclick-vps/>`_ repository.
+Local AI Inference
+==================
 
-The steps are similar to the `VirtualGL Linux DE - GNOME + TurboVNC (Terraform)`_ tutorial. The main difference is that this tutorial uses the main branch of the repository (GNOME + XRDP) instead of the ``turbovnc`` branch (GNOME + TurboVNC).
-
-.. TIP::
-   **Prerequisites**
-
-   - Terraform >= 1.5
-   - NREC OpenStack credentials (``OS_USERNAME``, ``OS_PASSWORD``, ``OS_PROJECT_NAME``, ``OS_REGION_NAME``)
-   - SSH client
-   - RDP viewer (built-in on Windows, Remmina on Linux)
-   - Git (to clone the repository)
-
-1. Clone the repository
-
-   .. code-block:: console
-
-      git clone https://github.com/norcams/nrec-oneclick-vps.git
-      cd nrec-oneclick-vps
-
-2. Create and fill in the environment file
-
-   .. code-block:: console
-
-      cp env.sh.template env.sh
-
-   Edit ``env.sh`` and set your OpenStack API credentials:
-
-   - ``OS_USERNAME``: your username (e.g. ``user@institution.no``)
-   - ``OS_PASSWORD``: your password
-   - ``OS_PROJECT_NAME``: your project name
-   - ``OS_REGION_NAME``: your region (e.g. ``bgo``)
-
-   The ``OS_AUTH_URL`` is pre-set to ``https://identity.api.bgo.nrec.no:5000/v3``.
-
-3. Deploy the VM
-
-   .. code-block:: console
-
-      ./deploy.sh
-
-   The script will:
-
-   - Auto-detect your public IPv4/IPv6 address
-   - Generate a ``terraform.tfvars`` with default flavor (``c1.xlarge``) and image (``GOLD Ubuntu 24.04 LTS``). These can be changed directly in ``deploy.sh``.
-   - Generate a TLS private key and save it to ``keys/vps-<deployment-id>.pem``
-   - Create an OpenStack keypair
-   - Create a security group with SSH-only ingress
-   - Launch a VM with cloud-init (installs XRDP, GNOME desktop, Google Chrome)
-   - Print the VM IP addresses and SSH command
-
-   Credentials are saved to:
-
-   - On VM: ``cat /home/ubuntu/.admin-password`` (for XRDP login)
-
-4. SSH login with RDP connection
-
-   .. code-block:: console
-
-      ssh ubuntu@<IPv6 address> -L 45000:localhost:3389
-
-   where we choose a high numbered port that we want to use to access our DE on ``localhost`` on our local machine.
-
-   If you are on a IPv4 only network such as eduroam, you can connect through ``login.uio.no`` or ``login.uib.no``, e.g., for UiO users
-
-   .. code-block:: console
-
-      ssh -J <username>@login.uio.no ubuntu@<IPv6 address> -L 45000:localhost:3389
-
-   where <username> is your UiO username. This requires that your SSH key is installed on the login host.
-
-5. First RDP login
-
-   Use an RDP Client to connect to ``localhost:45000``. The client to use on Windows is the built-in Windows Remote Desktop. A good Linux client is Remmina.
-
-   You will be asked to login as user ubuntu with the password from ``/home/ubuntu/.admin-password``.
-
-6. Tear down the VM
-
-   When finished, destroy all provisioned resources (including the VM, security groups, keypair, and local key files):
-
-
-   .. code-block:: console
-
-      terraform destroy
-
-Local AI
-========
-
-Local Qwen3.6 inference on L40s flavor for agentic tasks
---------------------------------------------------------
+Qwen3.6 on L40S for agentic tasks
+---------------------------------
 
 This tutorial demonstrates how to run the `Qwen3.6-35B-A3B <https://unsloth.ai/docs/models/qwen3.6#mtp-qwen3.6-35b-a3b>`_ LLM with decent inference speed on an NREC L40s instance using llama.cpp and multi-token prediction (MTP).
 
@@ -571,10 +578,10 @@ This tutorial demonstrates how to run the `Qwen3.6-35B-A3B <https://unsloth.ai/d
 
    Stop the server with ``Ctrl+C``.
 
-Local Qwen3.6 inference on L40s flavor for agentic tasks (Ubuntu 26.04 LTS)
----------------------------------------------------------------------------
+Qwen3.6 on L40S for agentic tasks (Ubuntu 26.04 LTS)
+-----------------------------------------------------
 
-This is an adaptation of the `Local Qwen3.6 inference on L40s flavor for agentic tasks`_ tutorial for Ubuntu 26.04 LTS (Resolute Raccoon).
+This is an adaptation of the `Qwen3.6 on L40S for agentic tasks`_ tutorial for Ubuntu 26.04 LTS (Resolute Raccoon).
 
 .. TIP::
    **Instance requirements**
@@ -718,50 +725,9 @@ This is an adaptation of the `Local Qwen3.6 inference on L40s flavor for agentic
 
    Stop the server with ``Ctrl+C``.
 
-LLM model performance summary
-=============================
-
-The following table summarizes verified inference performance across all Qwen model tutorials. Benchmarks reflect tested throughput on NREC L40S (24 GB) and Fox HPC A100 (80 GB) hardware.
-
-.. table::
-   :widths: auto
-
-   +------------------------------+-----------------+---------+-------------+------------+--------------------------+----------------+------------------+
-   | **Model**                    | **Quantization**| **Size**| **Platform**| **Backend**| **Throughput**           | **Reasoning**  | **Coding**       |
-   +==============================+=================+=========+=============+============+==========================+================+==================+
-   | `unsloth/Qwen3.6-35B-A3B-MTP-| UD-Q2_K_XL      | ~17 GB  | NREC L40S   | llama.cpp  | ~160-190 tok/s           | 5/6 correct    | 14/24 tests      |
-   | GGUF`                        |                 |         | Half GPU +  |            |                          | ~655 tok/output| (drifts on       |
-   |                              |                 |         | 16-core CPU |            |                          | ~2.8s reply    | constraints)     |
-   +------------------------------+-----------------+---------+-------------+------------+--------------------------+----------------+------------------+
-   | `zerodigest/Qwen3.8-27B-     | YMQ-M (IQ3_XXS) | ~14 GB  | Fox A100    | llama.cpp  | ~50-65 tok/s             | 6/6 correct    | 14/24 tests      |
-   | Uncensored-YMQ-MTP-GGUF`     |                 |         | (80 GB)     |            |                          | ~97 tok/output | (budget exhausted|
-   |                              |                 |         |             |            |                          | ~1.7s reply    | on coding tasks) |
-   +------------------------------+-----------------+---------+-------------+------------+--------------------------+----------------+------------------+
-   | `HauhauCS/Qwen3.8-27B-       | Q4_K_P +        | ~19 GB +| Fox A100    | llama.cpp  | ~50-65 tok/s             | 6/6 correct    | **24/30 tests**  |
-   | Uncensored-HauhauCS-         | FastMTP sidecar | 903 MB  | (80 GB)     |            |                          | ~298 tok/output| (best agentic    |
-   | Aggressive-MTP-GGUF`         |                 |         |             |            |                          | ~9.2s reply    | performance)     |
-   +------------------------------+-----------------+---------+-------------+------------+--------------------------+----------------+------------------+
-   | `unsloth/Qwen3.8-27B-GGUF`   | FP8             | ~28 GB  | Fox A100    | vLLM       | ~60-80 tok/s (unverified)| Not tested     | Not tested       |
-   |                              |                 |         | (80 GB)     |            |                          |                |                  |
-   +------------------------------+-----------------+---------+-------------+------------+--------------------------+----------------+------------------+
-
-Key highlights:
-
-- **Fastest throughput**: Qwen3.6-35B-A3B on NREC L40S (~160-190 tok/s), leveraging MTP speculative decoding on 24 GB VRAM
-- **Second fastest**: vLLM with FP8 on A100 (~60-80 tok/s (unverified)), leveraging PagedAttention and continuous batching
-- **Best for agentic tasks**: HauhauCS Q4_K_P with FastMTP sidecar (**24/30 coding tests**), up to 3.02x document throughput vs MTP disabled
-- **Lowest VRAM**: zerodigest YMQ-M IQ3_XXS (~14 GB) fits comfortably on 24 GB L40S systems
-- **Most token-efficient**: zerodigest YMQ-M IQ3_XXS (~97 mean output tokens, ~1.7s reply time) — 3.1× fewer tokens and ~5× faster than Q4_K_P
-
-
-   ``sinfo -p accel`` shows partition status and which nodes are available (idle, mix, drain). ``scontrol show partition accel`` shows all GPU types (TRES) and account quotas. ``projects`` lists your available Educloud project accounts.
-
-
-- **Maximum context**: All models support 262144 context length on 80 GB A100 systems
-- **Speculative decoding**: llama.cpp MTP and vLLM both enable significant speedups over baseline inference
-
-
-0. Find available partitions and GPU resources
+OnDemand Qwen3.8 on Fox (llama.cpp, SSH tunnel access)
+-------------------------------------------------------
+1. Find available partitions and GPU resources
 
 Before submitting jobs, check what partitions and GPU types are available:
 
@@ -771,9 +737,7 @@ Before submitting jobs, check what partitions and GPU types are available:
    $ scontrol show partition accel
    $ projects
 
-OnDemand local Qwen3.8 on Fox for agentic tasks (llama.cpp, SSH tunnel access)
 
-==============================================================================
 
 This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on the Fox HPC cluster (Educloud) using llama.cpp and a Slurm GPU job. Fox provides short-duration GPU resources (A100 80GB) that can be used to run LLM inference on demand. Run the inference server interactively with ``salloc`` or submit a batch job with ``sbatch``, then connect to it from your existing agent framework running locally on your machine or in a NREC instance via SSH tunnel.
 
@@ -800,7 +764,7 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
    - Fox Educloud account (e.g. ``ec-[username]@fox.educloud.no``)
    - SSH client with port forwarding support (only for batch jobs)
 
-0. Select a model
+2. Select a model
 
    Two verified Qwen3.8-27B models are available for llama.cpp on A100 80GB. Choose one before proceeding.
 
@@ -827,7 +791,7 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
       | decoding                    | disabled                                   |
       +-----------------------------+--------------------------------------------+
 
-1. Interactive mode (salloc)
+3. Interactive mode (salloc)
 
    Allocate an A100 80GB GPU interactively and run ``llama-cli`` directly. First, SSH to the login node, then request an interactive GPU session:
 
@@ -905,7 +869,7 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
 
    **Verified throughput**: ~50-65 tok/s on A100 80GB with FastMTP sidecar (up to 3.02x document throughput vs MTP disabled).
 
-2. Batch mode (sbatch)
+4. Batch mode (sbatch)
 
    .. code-block:: console
 
@@ -992,14 +956,14 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
       chmod +x qwen38-llamacpp-job.sh
       sbatch qwen38-llamacpp-job.sh
 
-4. Monitor the job
+5. Monitor the job
 
    .. code-block:: console
 
       squeue -u ec-[username]
       sstat -j <job-id>
 
-5. Connect an agent framework to the inference server
+6. Connect an agent framework to the inference server
 
    First, find the GPU node your job is running on (e.g. ``gpu-17``):
 
@@ -1036,7 +1000,7 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
 
       curl -N http://127.0.0.1:50000/v1/chat/completions -H "Content-Type: application/json" -d '{"model":"qwen3.8-27b","messages":[{"role":"user","content":"Hello"}],"max_tokens":50,"stream":true}'
 
-6. Stop the job
+7. Stop the job
 
    When finished, stop the Slurm job:
 
@@ -1050,25 +1014,8 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
 
    Jobs are automatically terminated when the ``--time`` limit expires (``00:30:00`` by default). Save your work accordingly.
 
-llama.cpp model selection
-=========================
-
-**Model 1**: `zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF` with YMQ-M quantization (~14 GB).
-
-The YMQ-M (Mixture of Quantizations) checkpoint includes the MTP (Multi-Token Prediction) speculative head, which enables draft-based speculative decoding in llama.cpp.
-
-**Verified throughput**: ~50-65 tok/s on A100 80GB with ``--spec-type draft-mtp --spec-draft-n-max 2`` (1.3-1.5x speedup over baseline).
-
-**Model 2**: `HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF` with Q4_K_P quantization (~19 GB) plus the HauhauCS FastMTP sidecar (903 MB).
-
-The HauhauCS Aggressive variant provides direct answers with no refusal behavior. The Q4_K_P quantization fits A100 80GB systems while the embedded NextN head enables MTP. The separate FastMTP sidecar achieves up to 3.02x document throughput and 1.93x reasoning throughput versus MTP disabled — significantly higher than standard embedded MTP.
-
-**Verified throughput**: ~50-65 tok/s on A100 80GB with FastMTP sidecar (up to 3.02x document throughput vs MTP disabled).
-
-Key flags for both models: ``--cache-type-k q8_0 --cache-type-v q8_0`` optimizes KV cache memory, ``--ctx-size 262144`` uses the model's native maximum context length, and ``--chat-template-kwargs '{"preserve_thinking":true}'`` adds extra reasoning tokens that improve the model's reasoning quality.
-
-OnDemand local Qwen3.8 on Fox for agentic tasks (vLLM, SSH tunnel access) ⚠️ Unverified draft
-=============================================================================================
+OnDemand Qwen3.8 on Fox (vLLM, SSH tunnel access) ⚠️ Unverified draft
+-----------------------------------------------------------------------
 
 .. WARNING::
 
@@ -1283,8 +1230,70 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
    - Fox GPU jobs are accounted per-GPU, not per-CPU. Requesting 6 GPUs costs 6× the rate.
    - Use ``--quantization fp8`` for FP8 quantization on A100.
 
+Performance comparison
+----------------------
+
+The following table summarizes verified inference performance across all Qwen model tutorials. Benchmarks reflect tested throughput on NREC L40S (24 GB) and Fox HPC A100 (80 GB) hardware.
+
+.. table::
+   :widths: auto
+
+   +------------------------------+-----------------+---------+-------------+------------+--------------------------+----------------+------------------+
+   | **Model**                    | **Quantization**| **Size**| **Platform**| **Backend**| **Throughput**           | **Reasoning**  | **Coding**       |
+   +==============================+=================+=========+=============+============+==========================+================+==================+
+   | `unsloth/Qwen3.6-35B-A3B-MTP-| UD-Q2_K_XL      | ~17 GB  | NREC L40S   | llama.cpp  | ~160-190 tok/s           | 5/6 correct    | 14/24 tests      |
+   | GGUF`                        |                 |         | Half GPU +  |            |                          | ~655 tok/output| (drifts on       |
+   |                              |                 |         | 16-core CPU |            |                          | ~2.8s reply    | constraints)     |
+   +------------------------------+-----------------+---------+-------------+------------+--------------------------+----------------+------------------+
+   | `zerodigest/Qwen3.8-27B-     | YMQ-M (IQ3_XXS) | ~14 GB  | Fox A100    | llama.cpp  | ~50-65 tok/s             | 6/6 correct    | 14/24 tests      |
+   | Uncensored-YMQ-MTP-GGUF`     |                 |         | (80 GB)     |            |                          | ~97 tok/output | (budget exhausted|
+   |                              |                 |         |             |            |                          | ~1.7s reply    | on coding tasks) |
+   +------------------------------+-----------------+---------+-------------+------------+--------------------------+----------------+------------------+
+   | `HauhauCS/Qwen3.8-27B-       | Q4_K_P +        | ~19 GB +| Fox A100    | llama.cpp  | ~50-65 tok/s             | 6/6 correct    | **24/30 tests**  |
+   | Uncensored-HauhauCS-         | FastMTP sidecar | 903 MB  | (80 GB)     |            |                          | ~298 tok/output| (best agentic    |
+   | Aggressive-MTP-GGUF`         |                 |         |             |            |                          | ~9.2s reply    | performance)     |
+   +------------------------------+-----------------+---------+-------------+------------+--------------------------+----------------+------------------+
+   | `unsloth/Qwen3.8-27B-GGUF`   | FP8             | ~28 GB  | Fox A100    | vLLM       | ~60-80 tok/s (unverified)| Not tested     | Not tested       |
+   |                              |                 |         | (80 GB)     |            |                          |                |                  |
+   +------------------------------+-----------------+---------+-------------+------------+--------------------------+----------------+------------------+
+
+Key highlights:
+
+- **Fastest throughput**: Qwen3.6-35B-A3B on NREC L40S (~160-190 tok/s), leveraging MTP speculative decoding on 24 GB VRAM
+- **Second fastest**: vLLM with FP8 on A100 (~60-80 tok/s (unverified)), leveraging PagedAttention and continuous batching
+- **Best for agentic tasks**: HauhauCS Q4_K_P with FastMTP sidecar (**24/30 coding tests**), up to 3.02x document throughput vs MTP disabled
+- **Lowest VRAM**: zerodigest YMQ-M IQ3_XXS (~14 GB) fits comfortably on 24 GB L40S systems
+- **Most token-efficient**: zerodigest YMQ-M IQ3_XXS (~97 mean output tokens, ~1.7s reply time) — 3.1× fewer tokens and ~5× faster than Q4_K_P
+
+
+
+
+- **Maximum context**: All models support 262144 context length on 80 GB A100 systems
+
+- **Speculative decoding**: llama.cpp MTP and vLLM both enable significant speedups over baseline inference
+
+References
+==========
+
+llama.cpp model selection
+-------------------------
+
+**Model 1**: `zerodigest/Qwen3.8-27B-Uncensored-YMQ-MTP-GGUF` with YMQ-M quantization (~14 GB).
+
+The YMQ-M (Mixture of Quantizations) checkpoint includes the MTP (Multi-Token Prediction) speculative head, which enables draft-based speculative decoding in llama.cpp.
+
+**Verified throughput**: ~50-65 tok/s on A100 80GB with ``--spec-type draft-mtp --spec-draft-n-max 2`` (1.3-1.5x speedup over baseline).
+
+**Model 2**: `HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF` with Q4_K_P quantization (~19 GB) plus the HauhauCS FastMTP sidecar (903 MB).
+
+The HauhauCS Aggressive variant provides direct answers with no refusal behavior. The Q4_K_P quantization fits A100 80GB systems while the embedded NextN head enables MTP. The separate FastMTP sidecar achieves up to 3.02x document throughput and 1.93x reasoning throughput versus MTP disabled — significantly higher than standard embedded MTP.
+
+**Verified throughput**: ~50-65 tok/s on A100 80GB with FastMTP sidecar (up to 3.02x document throughput vs MTP disabled).
+
+Key flags for both models: ``--cache-type-k q8_0 --cache-type-v q8_0`` optimizes KV cache memory, ``--ctx-size 262144`` uses the model's native maximum context length, and ``--chat-template-kwargs '{"preserve_thinking":true}'`` adds extra reasoning tokens that improve the model's reasoning quality.
+
 vLLM model selection
-====================
+--------------------
 
 **Model**: `unsloth/Qwen3.8-27B-GGUF` with FP8 quantization (~28 GB) served through vLLM.
 
@@ -1293,4 +1302,5 @@ The A100 is an Ampere-architecture GPU with native FP8 Tensor Core support. The 
 Benchmark context: Qwen3.8-27B FP8 with vLLM on single A100 GPU estimated ~60-80 tok/s generation (unverified), outperforming llama.cpp by ~1.2-1.5x through continuous batching and PagedAttention. FP8 quantization also reduces KV memory by ~50%, enabling longer effective context windows.
 
 vLLM's day-0 Qwen3.8 support leverages PagedAttention and continuous batching. The ``--quantization fp8`` flag enables FP8 model loading, further improving throughput. The FP8 checkpoint delivers near-BF16 quality with FP8-level speed, making it the optimal choice for A100 single-GPU inference.
+
 
