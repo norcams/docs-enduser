@@ -382,7 +382,7 @@ This tutorial demonstrates how to run the `Qwen3.6-35B-A3B <https://unsloth.ai/d
    **Instance requirements**
 
    - Flavor: ``gr1.L40S.24g.4xlarge`` (24 GB NVIDIA L40S vGPU)
-   - Image: GOLD Ubuntu 24.04 LTS
+   - Image: vGPU Ubuntu 24.04 LTS
    - Model: `unsloth/Qwen3.6-35B-A3B-MTP-GGUF <https://huggingface.co/unsloth/Qwen3.6-35B-A3B-MTP-GGUF>`_ with UD-Q2_K_XL dynamic 2-bit quantization
 
    The UD-Q2_K_XL quantization is a dynamic 2-bit format from Unsloth that reduces memory usage and increases inference speed. The A3B suffix indicates a Mixture of Experts (MoE) variant; no equivalent MoE variant exists yet for Qwen3.8.
@@ -394,7 +394,9 @@ This tutorial demonstrates how to run the `Qwen3.6-35B-A3B <https://unsloth.ai/d
    .. code-block:: console
 
       sudo apt update
-      sudo apt install -y nvidia-cuda-toolkit git python3-venv python3-pip pciutils build-essential cmake curl libcurl4-openssl-dev nvtop
+      sudo apt install -y nvidia-cuda-toolkit git python3-venv python3-pip pciutils build-essential cmake curl libcurl4-openssl-dev nvtop nload
+
+      sudo timedatectl set-timezone Europe/Oslo
 
    Follow the "Upgrading the instance drivers" section from the `NREC vGPU documentation <https://docs.nrec.no/vgpu.html#upgrading-the-instance-drivers>`_ to install the latest NVIDIA drivers.
 
@@ -420,6 +422,7 @@ This tutorial demonstrates how to run the `Qwen3.6-35B-A3B <https://unsloth.ai/d
 
    .. code-block:: console
 
+      cd /home/ubuntu/llama.cpp
       python3 -m venv hf-llama
       source hf-llama/bin/activate
       pip install -U "huggingface_hub"
@@ -455,6 +458,159 @@ This tutorial demonstrates how to run the `Qwen3.6-35B-A3B <https://unsloth.ai/d
    The server exposes an OpenAI-compatible API at ``http://127.0.0.1:8001/v1``.
 
    To use the CLI instead of the server, run ``llama-cli`` with the same arguments (omit ``--port``).
+
+   .. NOTE::
+      The ``--spec-type draft-mtp --spec-draft-n-max 2`` flags cause a CUDA kernel
+      crash with very short inputs (1-2 characters) in ``llama-cli``. These flags are
+      safe to use with ``llama-server`` (which handles longer context), but should be
+      omitted when running ``llama-cli`` interactively.
+
+6. Connect an agentic framework
+
+   Configure your agentic framework (e.g., agentic frameworks with built-in image tools such as Hermes desktop) to use the local endpoint:
+
+   .. code-block:: console
+
+      # In your agent config:
+      # provider: custom
+      # endpoint: http://127.0.0.1:8001/v1
+
+   Stop the server with ``Ctrl+C``.
+
+Fast Qwen3.6 inference on L40s flavor for agentic tasks (Ubuntu 26.04 LTS)
+--------------------------------------------------------------------------
+
+This is an adaptation of the `Fast Qwen3.6 inference on L40s flavor for agentic tasks`_ tutorial for Ubuntu 26.04 LTS (Resolute Raccoon).
+
+.. TIP::
+   **Instance requirements**
+
+   - Flavor: ``gr1.L40S.24g.4xlarge`` (24 GB NVIDIA L40S vGPU)
+   - Image: ``vGPU Ubuntu 26.04 LTS``
+   - Model: `unsloth/Qwen3.6-35B-A3B-MTP-GGUF <https://huggingface.co/unsloth/Qwen3.6-35B-A3B-MTP-GGUF>`_ with UD-Q2_K_XL dynamic 2-bit quantization
+
+   The UD-Q2_K_XL quantization is a dynamic 2-bit format from Unsloth that reduces memory usage and increases inference speed. The A3B suffix indicates a Mixture of Experts (MoE) variant; no equivalent MoE variant exists yet for Qwen3.8.
+
+1. Create and prepare the instance
+
+   Create a new instance with the flavor and image above. After login, install
+   required packages:
+
+   .. code-block:: console
+
+      sudo apt update
+      sudo apt install -y cuda-toolkit-13 gcc-14 g++-14 git cmake nvtop btop tree nvitop nload python3.14-venv
+
+      sudo timedatectl set-timezone Europe/Oslo
+
+   .. NOTE::
+      **Two pre-built fixes are required on Ubuntu 26.04 LTS.**
+
+      **NVML version mismatch:** The vGPU image ships with kernel module ``580.159.03``,
+      but ``cuda-toolkit-13`` installs userspace ``580.173.02``. This breaks ``nvidia-smi``.
+      Fix by re-linking the NVML symlink:
+
+      .. code-block:: console
+
+         sudo ln -sf libnvidia-ml.so.580.159.03 /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1
+
+      Substitute the actual kernel module version with
+      ``ls /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.580.* | head -1`` to find the correct version.
+
+      **CUDA/GCC incompatibility:** CUDA 13.1 does not support GCC 15 (the default on
+      Ubuntu 26.04 LTS). nvcc reads GCC 15's ``bits/mathcalls.h`` which conflicts with
+      CUDA 13.1's ``math_functions.h`` (``noexcept(true)`` vs no ``noexcept``).
+      Patch before building:
+
+      .. code-block:: console
+
+         MATH_F=/usr/local/cuda/targets/x86_64-linux/include/crt/math_functions.h
+         sudo sed -i 's/extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ double                 rsqrt(double x);/extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ double                 rsqrt(double x) noexcept(true);/' $MATH_F
+         sudo sed -i 's/extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ float                  rsqrtf(float x);/extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ float                  rsqrtf(float x) noexcept(true);/' $MATH_F
+
+      These cmake flags alone cannot fix these issues — both fixes are mandatory.
+
+2. Verify GPU
+
+   .. code-block:: console
+
+      nvidia-smi
+
+   You should see the NVIDIA L40S GPU listed.
+
+3. Build llama.cpp
+
+   .. code-block:: console
+
+      git clone https://github.com/ggml-org/llama.cpp
+      cd llama.cpp
+      export PATH=/usr/local/cuda/bin:\$PATH
+      cmake -B build \
+        -DBUILD_SHARED_LIBS=OFF \
+        -DGGML_CUDA=ON \
+        -DCMAKE_CUDA_HOST_COMPILER=g++-14 \
+        -DCMAKE_CXX_COMPILER=g++-14 \
+        -DCMAKE_CUDA_COMPILER=/usr/local/cuda/bin/nvcc \
+        -DCMAKE_CUDA_ARCHITECTURES=86
+      cmake --build build --config Release -j
+      cp build/bin/llama-* .
+
+   Key build flags:
+
+   - ``-DCMAKE_CUDA_HOST_COMPILER=g++-14``: tells nvcc to use GCC 14 (required because CUDA 13.1 does not support GCC 15)
+   - ``-DCMAKE_CUDA_ARCHITECTURES=86``: targets sm_86 (L40S Ampere compute capability)
+
+4. Create a Python environment and download the model
+
+   .. code-block:: console
+
+      python3 -m venv hf-llama
+      source hf-llama/bin/activate
+      pip install -U "huggingface_hub"
+
+   .. code-block:: console
+
+      hf download unsloth/Qwen3.6-35B-A3B-MTP-GGUF \
+          --local-dir unsloth/Qwen3.6-35B-A3B-MTP-GGUF \
+          --include "*mmproj-F16*" \
+          --include "*UD-Q2_K_XL*"
+
+5. Start the inference server
+
+   .. code-block:: console
+
+      ./llama-server \
+          --model unsloth/Qwen3.6-35B-A3B-MTP-GGUF/Qwen3.6-35B-A3B-UD-Q2_K_XL.gguf \
+          --mmproj unsloth/Qwen3.6-35B-A3B-MTP-GGUF/mmproj-F16.gguf \
+          --temp 0.6 --top-p 0.95 --min-p 0.00 --top-k 20 \
+          --ctx-size 262144 --port 8001 \
+          --spec-type draft-mtp --spec-draft-n-max 2 \
+          --chat-template-kwargs '{"preserve_thinking":true}' \
+          --load-mode mmap --image-min-tokens 1024
+
+   Key options explained:
+
+   - ``--spec-type draft-mtp --spec-draft-n-max 2``: enables multi-token prediction, a speculative decoding technique that speeds up inference significantly
+   - ``--mmproj``: enables image recognition capability (the multimodal projector); agentic frameworks with built-in image tools such as Hermes desktop should auto-detect and use it
+   - ``--chat-template-kwargs '{"preserve_thinking":true}'``: adds extra reasoning tokens that improve the model's reasoning quality
+   - ``--load-mode mmap``: memory-mapped model loading (replaces the deprecated ``--no-mmap``)
+   - ``--image-min-tokens 1024``: minimum tokens allocated for image processing
+
+   The server exposes an OpenAI-compatible API at ``http://127.0.0.1:8001/v1``.
+
+   To use the CLI instead of the server, run ``llama-cli`` with the same arguments (omit ``--port``).
+
+   .. NOTE::
+      The ``--spec-type draft-mtp --spec-draft-n-max 2`` flags cause a CUDA kernel
+      crash with very short inputs (1-2 characters) in ``llama-cli``. These flags are
+      safe to use with ``llama-server`` (which handles longer context), but should be
+      omitted when running ``llama-cli`` interactively.
+
+   Benchmarks measured on the L40S:
+
+   - Model load time: ~4.6s
+   - Prompt eval: ~10.2ms/token (98 t/s)
+   - MTP generation: ~5.0ms/token (200 t/s), 100% draft acceptance, 12 drafts accepted
 
 6. Connect an agentic framework
 
