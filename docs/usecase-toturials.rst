@@ -802,7 +802,7 @@ Before submitting jobs, check what partitions and GPU types are available:
 
       .. NOTE::
 
-         The high ``--cpus-per-task=32`` value speeds up compilation. For inference-only runs, it can be reduced to 8 without affecting throughput. A lower value also tends to allocate resources faster (less waiting time).
+         The benchmarks were run with ``--cpus-per-task=32`` (for compilation) or ``--cpus-per-task=8`` (for inference-only runs). Reducing to 8 does not affect GPU throughput and tends to allocate resources faster (less waiting time).
       module purge
       module load CUDA/12.8.0 CMake/4.0.3-GCCcore-14.3.0
       mkdir -p ~/llm-inference && cd ~/llm-inference
@@ -1061,7 +1061,7 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
 
       .. NOTE::
 
-         The high ``--cpus-per-task=32`` value speeds up compilation. For inference-only runs, it can be reduced to 8 without affecting throughput. A lower value also tends to allocate resources faster (less waiting time).
+         The benchmarks were run with ``--cpus-per-task=32`` (for compilation) or ``--cpus-per-task=8`` (for inference-only runs). Reducing to 8 does not affect GPU throughput and tends to allocate resources faster (less waiting time).
       module purge
       module load CUDA/12.8.0 CMake/4.0.3-GCCcore-14.3.0 Python
       mkdir -p ~/llm-inference && cd ~/llm-inference
