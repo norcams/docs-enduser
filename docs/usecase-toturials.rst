@@ -727,17 +727,6 @@ This is an adaptation of the `Qwen3.6 on L40S for agentic tasks`_ tutorial for U
 
 OnDemand Qwen3.8 on Fox (llama.cpp, SSH tunnel access)
 -------------------------------------------------------
-1. Find available partitions and GPU resources
-
-Before submitting jobs, check what partitions and GPU types are available:
-
-.. code-block:: console
-
-   $ sinfo -p accel
-   $ scontrol show partition accel
-   $ projects
-
-
 
 This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on the Fox HPC cluster (Educloud) using llama.cpp and a Slurm GPU job. Fox provides short-duration GPU resources (A100 80GB) that can be used to run LLM inference on demand. Run the inference server interactively with ``salloc`` or submit a batch job with ``sbatch``, then connect to it from your existing agent framework running locally on your machine or in a NREC instance via SSH tunnel.
 
@@ -763,6 +752,16 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
 
    - Fox Educloud account (e.g. ``ec-[username]@fox.educloud.no``)
    - SSH client with port forwarding support (only for batch jobs)
+
+1. Find available partitions and GPU resources
+
+Before submitting jobs, check what partitions and GPU types are available:
+
+.. code-block:: console
+
+   $ sinfo -p accel
+   $ scontrol show partition accel
+   $ projects
 
 2. Select a model
 
