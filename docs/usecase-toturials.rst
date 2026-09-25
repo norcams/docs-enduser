@@ -1245,12 +1245,18 @@ The following table summarizes verified inference performance across all Qwen mo
    |                              |                 |         | 16-core CPU |            |                          | ~2.8s reply    | constraints)     |
    +------------------------------+-----------------+---------+-------------+------------+--------------------------+----------------+------------------+
    | `zerodigest/Qwen3.8-27B-     | YMQ-M (IQ3_XXS) | ~14 GB  | Fox A100    | llama.cpp  | ~50-65 tok/s             | 6/6 correct    | 14/24 tests      |
-   | Uncensored-YMQ-MTP-GGUF`     |                 |         | (80 GB)     |            |                          | ~97 tok/output | (budget exhausted|
-   |                              |                 |         |             |            |                          | ~1.7s reply    | on coding tasks) |
+   | Uncensored-YMQ-MTP-GGUF`     |                 |         | (80 GB),    |            |                          | ~97 tok/output | (budget exhausted|
+   |                              |                 |         | 32-core     |            |                          | ~1.7s reply    | on coding tasks) |
+   |                              |                 |         | (compilation)|           |                          |                |                  |
+   |                              |                 |         | / 8-core    |            |                          |                |                  |
+   |                              |                 |         | (inference) |            |                          |                |                  |
    +------------------------------+-----------------+---------+-------------+------------+--------------------------+----------------+------------------+
    | `HauhauCS/Qwen3.8-27B-       | Q4_K_P +        | ~19 GB +| Fox A100    | llama.cpp  | ~50-65 tok/s             | 6/6 correct    | **24/30 tests**  |
-   | Uncensored-HauhauCS-         | FastMTP sidecar | 903 MB  | (80 GB)     |            |                          | ~298 tok/output| (best agentic    |
-   | Aggressive-MTP-GGUF`         |                 |         |             |            |                          | ~9.2s reply    | performance)     |
+   | Uncensored-HauhauCS-         | FastMTP sidecar | 903 MB  | (80 GB),    |            |                          | ~298 tok/output| (best agentic    |
+   | Aggressive-MTP-GGUF`         |                 |         | 32-core     |            |                          | ~9.2s reply    | performance)     |
+   |                              |                 |         | (compilation)|           |                          |                |                  |
+   |                              |                 |         | / 8-core    |            |                          |                |                  |
+   |                              |                 |         | (inference) |            |                          |                |                  |
    +------------------------------+-----------------+---------+-------------+------------+--------------------------+----------------+------------------+
    | `unsloth/Qwen3.8-27B-GGUF`   | FP8             | ~28 GB  | Fox A100    | vLLM       | ~60-80 tok/s (unverified)| Not tested     | Not tested       |
    |                              |                 |         | (80 GB)     |            |                          |                |                  |
