@@ -765,7 +765,7 @@ Before submitting jobs, check what partitions and GPU types are available:
 
 2. Select a model
 
-   Two verified Qwen3.8-27B models are available for llama.cpp on A100 80GB. Choose one before proceeding.
+   Two verified Qwen3.8-27B models are available for llama.cpp on A100 80GB and A40 48GB. Choose one before proceeding.
 
    .. table::
       :widths: auto
@@ -792,7 +792,7 @@ Before submitting jobs, check what partitions and GPU types are available:
 
 3. Interactive mode (salloc)
 
-   Allocate an A100 80GB GPU interactively and run ``llama-cli`` directly. First, SSH to the login node, then request an interactive GPU session:
+   Allocate an A100 80GB or A40 48GB GPU interactively and run ``llama-cli`` directly. First, SSH to the login node, then request an interactive GPU session:
 
    .. code-block:: console
 
@@ -1051,7 +1051,7 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
 
 1. Interactive mode (salloc)
 
-   Allocate an A100 80GB GPU interactively, start the vLLM server, and chat via curl. First, SSH to the login node, then request an interactive GPU session:
+   Allocate an A100 80GB or A40 48GB GPU interactively, start the vLLM server, and chat via curl. First, SSH to the login node, then request an interactive GPU session:
 
    .. code-block:: console
 
@@ -1232,7 +1232,7 @@ This tutorial demonstrates how to run Qwen3.8-27B with usable inference speed on
 Performance comparison
 ----------------------
 
-The following table summarizes verified inference performance across all Qwen model tutorials. Benchmarks reflect tested throughput on NREC L40S (24 GB) and Fox HPC A100 (80 GB) hardware.
+The following table summarizes verified inference performance across all Qwen model tutorials. Benchmarks reflect tested throughput on NREC L40S (24 GB), Fox HPC A100 (80 GB), and Fox HPC A40 (48 GB) hardware.
 
 .. table::
    :widths: auto
@@ -1267,7 +1267,7 @@ Key highlights:
 
 
 
-- **Maximum context**: All models support 262144 context length on 80 GB A100 systems
+- **Maximum context**: All models support 262144 context length on 80 GB A100 and 48 GB A40 systems
 
 - **Speculative decoding**: llama.cpp MTP and vLLM both enable significant speedups over baseline inference
 
@@ -1285,7 +1285,7 @@ The YMQ-M (Mixture of Quantizations) checkpoint includes the MTP (Multi-Token Pr
 
 **Model 2**: `HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF` with Q4_K_P quantization (~19 GB) plus the HauhauCS FastMTP sidecar (903 MB).
 
-The HauhauCS Aggressive variant provides direct answers with no refusal behavior. The Q4_K_P quantization fits A100 80GB systems while the embedded NextN head enables MTP. The separate FastMTP sidecar achieves up to 3.02x document throughput and 1.93x reasoning throughput versus MTP disabled — significantly higher than standard embedded MTP.
+The HauhauCS Aggressive variant provides direct answers with no refusal behavior. The Q4_K_P quantization fits A100 80GB and A40 48 GB systems while the embedded NextN head enables MTP. The separate FastMTP sidecar achieves up to 3.02x document throughput and 1.93x reasoning throughput versus MTP disabled — significantly higher than standard embedded MTP.
 
 **Verified throughput**: ~50-65 tok/s on A100 80GB with FastMTP sidecar (up to 3.02x document throughput vs MTP disabled).
 
@@ -1299,6 +1299,8 @@ vLLM model selection
 The A100 is an Ampere-architecture GPU with native FP8 Tensor Core support. The FP8 quantized checkpoint runs efficiently on A100's FP8 cores, delivering significant speedup over BF16 while using only ~28 GB VRAM (half of BF16's ~56 GB), leaving substantially more room for KV cache at 262K context.
 
 Benchmark context: Qwen3.8-27B FP8 with vLLM on single A100 GPU estimated ~60-80 tok/s generation (unverified), outperforming llama.cpp by ~1.2-1.5x through continuous batching and PagedAttention. FP8 quantization also reduces KV memory by ~50%, enabling longer effective context windows.
+
+Note: Throughput figures (~50-65 tok/s for llama.cpp, ~60-80 tok/s for vLLM) are measured on A100 80GB. A40 48GB throughput will be lower due to reduced VRAM and bandwidth.
 
 vLLM's day-0 Qwen3.8 support leverages PagedAttention and continuous batching. The ``--quantization fp8`` flag enables FP8 model loading, further improving throughput. The FP8 checkpoint delivers near-BF16 quality with FP8-level speed, making it the optimal choice for A100 single-GPU inference.
 
