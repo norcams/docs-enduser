@@ -11,15 +11,14 @@ that cannot be altered and instances with a maximum lifetime of 90 days.
 
 .. _access.nrec.no: https://access.nrec.no/
 
+Applying for additional projects
+--------------------------------
+
 If you need additional resources or a project in which you wish to
 collaborate with other users, you can apply for different types of
 projects through the request portal at `this web form`_.
 
 .. _this web form: https://request.nrec.no
-
-
-Applying for additional projects
---------------------------------
 
 * **Personal projects**: Single-user projects. See the quota tables below; when applying you must specify a
   tier (small, medium, or large).
