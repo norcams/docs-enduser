@@ -21,12 +21,10 @@ projects through the request portal at `this web form`_.
 Applying for additional projects
 --------------------------------
 
-* **Personal projects**: Single-user projects. See `Personal projects`_
-  below. See the quota tables below; when applying you must specify a
+* **Personal projects**: Single-user projects. See the quota tables below; when applying you must specify a
   tier (small, medium, or large).
 
-* **Shared projects**: Multi-user projects. See `Shared projects`_
-  below. Users can be added or removed at any time. Quotas are
+* **Shared projects**: Multi-user projects. Users can be added or removed at any time. Quotas are
   specified per project and adjusted by contacting support.
 
 * **vGPU projects**: GPU-assisted compute for accelerated desktops,
@@ -116,24 +114,3 @@ Quota definitions
 **Volume snapshots**
   The total number of snapshots of all volumes in a project.
 
-
-.. _Personal projects:
-
-Personal projects
-~~~~~~~~~~~~~~~~~
-
-Personal projects are used by only one user. Only you will have
-access to your personal project.
-
-
-.. _Shared projects:
-
-Shared projects
-~~~~~~~~~~~~~~~
-
-Shared projects can have multiple users. Users can be added or
-removed at any time, but access control is done by contacting
-NREC support. In order to add a user, the user must have logged
-in to NREC at least once, else the user isn't known in the
-system. Shared project quotas are adjusted by contacting support
-at `support@nrec.no <support.html>`_.
