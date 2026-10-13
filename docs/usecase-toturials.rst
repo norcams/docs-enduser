@@ -765,7 +765,7 @@ Before submitting jobs, check what partitions and GPU types are available:
 
 2. Select a model
 
-   Two verified Qwen3.8-27B models are available for llama.cpp on A100 80GB and A40 48GB. Choose one before proceeding.
+   This toturial tested the following Qwen3.8-27B model with llama.cpp on A100 80GB and A40 48GB. In addition, the HauhauCS model was also tested on RTX 3090 with smaller context window. Choose one before proceeding.
 
    .. table::
       :widths: auto
@@ -865,6 +865,21 @@ Before submitting jobs, check what partitions and GPU types are available:
 
       # Start interactive chat
       ./llama.cpp/llama-cli --model models/HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf --mmproj models/HauhauCS/mmproj-Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-BF16.gguf --spec-draft-model models/HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-FastMTP-32K.gguf --spec-draft-ngl all --spec-type draft-mtp --spec-draft-n-max 3 --spec-draft-p-min 0 --ctx-size 262144 --parallel 1 --batch-size 2048 --ubatch-size 512 --n-gpu-layers all --split-mode none --flash-attn on --no-mmap --temp 1.0 --top-k 20 --top-p 0.95 --min-p 0 --presence-penalty 0 --repeat-penalty 1.0 --jinja --reasoning on --reasoning-effort xhigh --reasoning-preserve --reasoning-format deepseek
+
+   **Verified throughput**: ~50-65 tok/s on A100 80GB with FastMTP sidecar (up to 3.02x document throughput vs MTP disabled).
+
+**Choice 3: HauhauCS Aggressive IQ4_XS (~X GB) + FastMTP sidecar (903 MB) on 1 x RTX 3090**
+
+   .. code-block:: console
+
+      # Download model + mmproj + FastMTP sidecar (cached after first run)
+      if [ ! -d "models/HauhauCS" ]; then
+         mkdir -p models/HauhauCS
+         HF_HUB_DISABLE_XET=1 python3 -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF', allow_patterns=['*Q4_K_P*', '*mmproj*', '*FastMTP*'], local_dir='models/HauhauCS')"
+      fi
+
+      # Start interactive chat
+      ./llama.cpp/llama-cli --model models/HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-IQ4_XS.gguf --mmproj models/HauhauCS/mmproj-Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-BF16.gguf --spec-draft-model models/HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-FastMTP-32K.gguf --spec-draft-ngl all --spec-type draft-mtp --spec-draft-n-max 3 --spec-draft-p-min 0 --ctx-size 99328 --parallel 1 --batch-size 4096  --ubatch-size 1024 --n-gpu-layers all --split-mode none --flash-attn on --no-mmap --temp 1.0 --top-k 20 --top-p 0.95 --min-p 0 --presence-penalty 0 --repeat-penalty 1.0 --jinja --reasoning on --reasoning-effort xhigh --reasoning-preserve --reasoning-format deepseek
 
    **Verified throughput**: ~50-65 tok/s on A100 80GB with FastMTP sidecar (up to 3.02x document throughput vs MTP disabled).
 
