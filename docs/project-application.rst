@@ -20,8 +20,9 @@ projects at `request.nrec.no`_.
 
 .. _request.nrec.no: https://request.nrec.no
 
-* **Personal projects**: Single-user projects. See the quota tables below; when applying you must specify a
-  tier (small, medium, or large).
+* **Personal projects**: Single-user projects. Personal projects are
+  always provided a 'small' quota, unless a valid justification is
+  provided.
 
 * **Shared projects**: Multi-user projects. Users can be added or removed at any time. Quotas are
   specified per project and adjusted by contacting support.
