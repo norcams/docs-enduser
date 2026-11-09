@@ -58,7 +58,8 @@ Who can use NREC?
 .. _University of Bergen (UiB): http://www.uib.no/
 .. _University of Oslo (UiO): http://www.uio.no/
 .. _Norwegian Veterinary Institute: https://www.vetinst.no/
-
+.. _Western Norway University of Applied Sciences (HVL): https://www.hvl.no/
+.. _University of Adger (UiA): https://www.uia.no/
 
 
 .. IMPORTANT::
@@ -66,9 +67,10 @@ Who can use NREC?
    with our `Terms of Service`_.
 
 The following educational institutions are eligible for using NREC.
-The requirement is that you have a Feide account from any of these universities or colleges.
-NREC is free for UiB and UiO. This includes both private and shared projects.
-Other institutions follow a pricing scheme according to `Pricing`_.
+The requirement is that you have a Feide account from any of these
+universities or colleges.  Use of NREC is covered by UiB and UiO for
+their users. This includes both private and shared projects.  Other
+institutions follow a pricing scheme according to `Pricing`_.
 
 +----------------------------------------------------------+---------------------------------+
 | University / College / Organization                      | Type of access                  |
@@ -86,6 +88,10 @@ Other institutions follow a pricing scheme according to `Pricing`_.
 | `University of Oslo (UiO)`_                              | Full Access                     |
 +----------------------------------------------------------+---------------------------------+
 | `Norwegian Veterinary Institute`_                        | Limited testing                 |
++----------------------------------------------------------+---------------------------------+
+| `University of Adger (UiA)`_                             | Limited testing                 |
++----------------------------------------------------------+---------------------------------+
+| `Western Norway University of Applied Sciences (HVL)`_   | Limited testing                 |
 +----------------------------------------------------------+---------------------------------+
 
 Before using the service, you must register with the authentication
