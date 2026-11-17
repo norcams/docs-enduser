@@ -29,8 +29,8 @@ GOLD image                     Family   Default user name     Boot FW      End o
 **Alma Linux 10**              RedHat   ``almalinux``         UEFI         May, 2035            Downstream RHEL
 **CentOS Stream 9**            RedHat   ``cloud-user`` [#f1]_ UEFI [#f3]_  May, 2027            Upstream RHEL
 **CentOS Stream 10**           RedHat   ``cloud-user``        UEFI         *Expected 2030*      Upstream RHEL
-**Fedora 43**                  RedHat   ``fedora``            UEFI         December, 2026
 **Fedora 44**                  RedHat   ``fedora``            UEFI         May, 2027
+**Fedora 45**                  RedHat   ``fedora``            UEFI         December, 2027
 **Rocky Linux 8**              RedHat   ``rocky``             BIOS         May, 2029            Downstream RHEL
 **Rocky Linux 9**              RedHat   ``rocky``             UEFI         May, 2032            Downstream RHEL
 **Rocky Linux 10**             RedHat   ``rocky``             UEFI         May, 2035            Downstream RHEL
@@ -88,6 +88,7 @@ GOLD image                        Family   Default user name  Boot FW      End o
 |ss| Fedora 40 |se|               RedHat   ``fedora``         UEFI         May, 2025
 |ss| Fedora 41 |se|               RedHat   ``fedora``         UEFI         Dec, 2025
 |ss| Fedora 42 |se|               RedHat   ``fedora``         UEFI         May, 2026
+|ss| Fedora 43 |se|               RedHat   ``fedora``         UEFI         December, 2026
 |ss| UiO Managed RHEL 7 |se|      RedHat   ``cloud-user``     BIOS         June, 2024           UiO projects only
 |ss| Debian 9 |se|                Debian   ``debian``         BIOS         June, 2022           Code name "Stretch"
 |ss| Debian 10 |se|               Debian   ``debian``         BIOS         June, 2024           Code name "Buster"
